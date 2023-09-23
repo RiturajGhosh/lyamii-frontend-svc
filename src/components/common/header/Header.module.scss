@@ -1,0 +1,28 @@
+@import '../../../styles/variables';
+
+.header {
+  background-color: $white;
+  p {
+    margin-bottom: 0;
+  }
+}
+.currentPage {
+  border-left-color: $header-spacer;
+  border-style: solid;
+  height: 47px;
+  border-width: 0;
+  border-left-width: 1px;
+  margin-left: 1.25rem;
+  padding-left: 1.25rem;
+}
+.linkContainer {
+  a {
+    color: $header-links;
+  }
+}
+
+.link {
+  color: $header-links;
+  margin-right: 1.6875rem;
+  text-decoration: none;
+}
