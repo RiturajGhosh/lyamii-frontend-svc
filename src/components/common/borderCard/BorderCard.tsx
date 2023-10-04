@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Button, Image, Col } from "react-bootstrap";
 import style from "./BorderCard.module.scss";
-import {FaArrowRightLong} from "react-icons/fa6";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 type BorderCardType = {
   title?: string;
@@ -11,6 +11,8 @@ type BorderCardType = {
   imageAbove?: string;
   minHeight?: string;
   buttonColor?: string;
+  titleStyling?: string;
+  descriptionStyling?: string;
 };
 const BorderCard: FC<BorderCardType> = ({
   className,
@@ -19,6 +21,8 @@ const BorderCard: FC<BorderCardType> = ({
   children,
   imageAbove,
   minHeight,
+  titleStyling,
+  descriptionStyling,
   buttonColor,
 }) => {
   return (
@@ -30,16 +34,22 @@ const BorderCard: FC<BorderCardType> = ({
         <Image className="h-25 card-img-top p-0 rounded-3" src={imageAbove} />
       )}
       <div className="card-body">
-        {title && <h1 className="card-title text-secondary">{title}</h1>}
-        {text && <p className="card-text text-primary">{text}</p>}
+        {title && (
+          <h1 className={`${titleStyling} card-title text-secondary`}>
+            {title}
+          </h1>
+        )}
+        {text && <p className={`${descriptionStyling} card-text`}>{text}</p>}
+
+        <button
+          className={`btn btn-circle d-flex justify-items-center ${style.btmRght} ${buttonColor} p-4 ${style.navigationButton}`}
+        >
+          <Col xs={4} className="social-icons align-self-center w-100">
+            <FaArrowRightLong />
+          </Col>
+        </button>
       </div>
       {children}
-      <button
-        className={`btn btn-circle d-flex justify-items-center ${style.btmRght} ${buttonColor} p-4 ${style.navigationButton}`}
-      ><Col xs={4} className="social-icons align-self-center w-100">
-      <FaArrowRightLong />
-  </Col>
-      </button>
     </div>
   );
 };

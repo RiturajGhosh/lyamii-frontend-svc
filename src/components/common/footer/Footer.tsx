@@ -20,12 +20,12 @@ const Footer: FC = () => {
   return (
     <Container fluid className="footer float-right p-5">
       <span className="row d-flex justify-content-around">
-        <Col md="4" className="">
+        <Col md="4" className="mt-2">
           <h1>Lyamii.com</h1>
           <p>Inspiring a new generation of wanderers</p>
         </Col>
         <Col md="2" className="">
-          <h3>Community</h3>
+          <h3 className="ft-20">Community</h3>
           <>
             {communities.map((community: HeaderList) => {
               return (
@@ -46,7 +46,7 @@ const Footer: FC = () => {
           </>
         </Col>
         <Col md="2" className="">
-          <h3>Support</h3>
+          <h3 className="ft-20">Support</h3>
           <>
             {supports.map((support: HeaderList) => {
               return (

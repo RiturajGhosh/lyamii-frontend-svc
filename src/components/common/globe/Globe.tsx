@@ -1,4 +1,4 @@
-import React, { PointerEvent, useState } from "react";
+import React, { FC, PointerEvent, useState } from "react";
 import ReactGlobe, { Coordinates, Marker } from "react-globe";
 import defaultMarkers from "./markers";
 import "tippy.js/dist/tippy.css";
@@ -21,7 +21,11 @@ const options = {
   markerTooltipRenderer,
 };
 
-function Globe() {
+// type GlobeProps = {
+//   width: any;
+//   height: any;
+// }
+const Globe:FC=()=> {
   const [, setEvent] = useState({}) as any;
   const dispatch = useDispatch();
   const history = useHistory();
@@ -56,10 +60,10 @@ function Globe() {
   return (
     <div>
       <ReactGlobe
-        height="400px"
+        height={window.screen.width > 500 ? '400px': '200px'}
         markers={defaultMarkers}
         options={options}
-        width="400px"
+        width={window.screen.width > 500 ? '400px': '200px'} 
         onDefocus={onDefocus}
         globeBackgroundTexture={null}
         onClickMarker={onClickMarker}

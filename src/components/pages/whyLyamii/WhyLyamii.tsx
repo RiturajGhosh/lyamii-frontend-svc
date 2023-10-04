@@ -1,33 +1,44 @@
 import React, { FC } from "react";
-import { Card, Col, Container, Row } from "react-bootstrap";
-import { mapDescription } from "../../common/enum/enum";
-
+import { Card, Col, Container, Image, Row } from "react-bootstrap";
+import { mapDescription, reasons } from "../../common/enum/enum";
+import fingerPrint from "../../../Assets/fingerprint.svg";
+import style from './WhyLamii.module.scss'
 const WhyLyamii: FC = () => {
   return (
-    <Container className="home-about-section py-4" fluid id="about">
+    <Container
+      className="home-about-section sectionContainer py-42"
+      fluid
+      id="about"
+    >
       <Container>
         <Row>
           <Col md={2} className="card-body m-auto w-25">
-            {<p className="card-text text-primary ft-32">So why</p>}
-            {<h1 className="card-title text-secondary ft-57">Lyamii ?</h1>}
+            {<p className="card-text text-secondary ft-32">So why</p>}
+            {<h1 className="card-title text-warning ft-57">Lyamii ?</h1>}
           </Col>
           <Col md={8} className="justify-content-between d-flex">
-            {Array.from({ length: 2 }).map((_, idx) => (
-              <Col key={idx}>
-                {Array.from({ length: 2 }).map((_, idx) => (
-                  <Card style={{ maxWidth: "500px" }} className="my-2 mx-1">
-                    <Card.Img
-                      variant="top"
-                      src="https://cdn.pixabay.com/photo/2016/08/05/15/06/tunnel-1572456_1280.jpg"
-                    />
+            <Row className="w-100">
+              {reasons.map((reason, idx) => (
+                <Col key={idx}>
+                  <Card
+                  className={`${style.reasonCard} my-2 mx-1`}
+                  >
                     <Card.Body>
-                      <Card.Title>Card title</Card.Title>
-                      <Card.Text>{mapDescription}</Card.Text>
+                      <Card.Img
+                        variant="top"
+                        className=""
+                        style={{ width: "200px" }}
+                        src={reason.img}
+                      />
+                      <Card.Body>
+                        <Card.Title className="bold">{reason.title}</Card.Title>
+                        <Card.Text>{reason.description}</Card.Text>
+                      </Card.Body>
                     </Card.Body>
                   </Card>
-                ))}
-              </Col>
-            ))}
+                </Col>
+              ))}
+            </Row>
           </Col>
         </Row>
       </Container>

@@ -1,31 +1,46 @@
 import React, { FC } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
-import { mapDescription } from "../../common/enum/enum";
+import { mapDescription, reviews } from "../../common/enum/enum";
+import InvertedComma from "../../common/icon/invertedComma";
+import style from './CustomerReview.module.scss'
 
 const CustomerReviews: FC = () => {
   return (
-    <Container className="home-about-section py-4" fluid id="about">
+    <Container
+      className="home-about-section sectionContainer py-42"
+      fluid
+      id="about"
+    >
       <Container>
         <Row>
           <div className="card-body w-25">
             {
-              <p className="card-text text-primary ft-32">
-                What our Customers say?
+              <p className="card-text text-orange ft-32">
+                What our <span style={{ color: "#297568" }}>Customers</span>{" "}
+                say?
               </p>
             }
           </div>
           <Row className="g-4">
-            {Array.from({ length: 3 }).map((_, idx) => (
+            {reviews.map((review, idx) => (
               <Col key={idx}>
-                <Card style={{}}>
+                <Card className={`${style.reviewCard}`}>
                   <Card.Body>
-                    <img
-                      className="img-round w-25 h-25 mb-3"
-                      src="https://cdn.pixabay.com/photo/2016/08/05/15/06/tunnel-1572456_1280.jpg"
-                    />
-                    <p className="font-italic secondary ft-16">{mapDescription}</p>
-                    <Card.Title className="ft-16">Card title</Card.Title>
-                    <Card.Text className="ft-16 secondary">{mapDescription}</Card.Text>
+                    <Row className="d-flex justify-content-between">
+                      <img
+                        className="img-round mb-3"
+                        style={{ width: "80px", height: "80px"}}
+                        src="https://cdn.pixabay.com/photo/2016/08/05/15/06/tunnel-1572456_1280.jpg"
+                      />
+                      <InvertedComma className="w-25" />
+                    </Row>
+                    <p className="font-italic secondary ft-16">
+                      {review.review}
+                    </p>
+                    <Card.Title className="ft-16">{review.name}</Card.Title>
+                    <Card.Text className="ft-16 secondary">
+                      {"customer"}
+                    </Card.Text>
                   </Card.Body>
                 </Card>
               </Col>

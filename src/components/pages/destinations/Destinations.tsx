@@ -5,7 +5,7 @@ import style from './Destinations.module.scss'
 
 const Destinations: FC = () => {
   return (
-    <Container className="home-about-section py-42" fluid id="about">
+    <Container className="home-about-section sectionContainer py-42" fluid id="about">
       <Container>
         <Row>
           <Col md={7} className="home-about-description my-auto pl-20">

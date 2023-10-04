@@ -1,0 +1,20 @@
+.reasonCard {
+  min-width: 300px !important;
+  min-height: 550px !important;
+  @media only screen and (min-width: 767px) and (max-width: 1200px) {
+    min-height: 0px !important;
+    min-width: 250px !important;
+  }
+  @media only screen and (min-width: 500px) and (max-width: 767px) {
+    min-height: 0px !important;
+    min-width: 250px !important;
+  }
+  @media only screen and (min-width: 400px) and (max-width: 500px) {
+    min-height: 0px !important;
+    min-width: 250px !important;
+  }
+  @media only screen and (max-width: 400px) {
+    min-height: 0px !important;
+    min-width: 250px !important;
+  }
+}
