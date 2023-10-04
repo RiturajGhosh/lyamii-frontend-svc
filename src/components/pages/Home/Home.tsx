@@ -10,6 +10,17 @@ import CardWithoutBorder from "../../common/cardWithoutBorder/CardWithoutBorder"
 const Home: FC = () => {
   const mapDescription =
     "Explore stunning destinations, from exotic tropical paradises to historic landmarks and vibrant cityscapes with Lyamii.";
+
+  const array = [{
+    image: '',
+    description: ''
+  },{
+    image: '',
+    description: ''
+  },{
+    image: '',
+    description: ''
+  }]
   return (
     <section>
       <Container
@@ -106,7 +117,7 @@ const Home: FC = () => {
               }
             </div>
             <Row xs={1} md={2} className="g-4">
-              {Array.from({ length: 3 }).map((_, idx) => (
+              {array.map((_, idx) => (
                 <Col key={idx}>
                   <Card style={{ width: "100%" }}>
                     <Card.Img

@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-const WalkingFingerSvg: FC = () => {
+const WalkingFinger: FC = () => {
   return (
     <div className="curve-container b400 bundle-bb-curve-container">
       <svg
@@ -43,4 +43,4 @@ const WalkingFingerSvg: FC = () => {
   );
 };
 
-export default WalkingFingerSvg;
+export default WalkingFinger;
