@@ -1,0 +1,21 @@
+svg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.img {
+  margin: 20px auto;
+  display: block;
+  width: 540px;
+  height: 600px;
+  -webkit-mask-image: url(https://tympanus.net/codrops-playground/assets/images/cssref/properties/mask-position/mask-image.png);
+  mask-image: url(https://tympanus.net/codrops-playground/assets/images/cssref/properties/mask-position/mask-image.png);
+  -webkit-mask-position: top left;
+  mask-position: top left;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 450px 600px;
+  mask-size: 450px 600px;
+}

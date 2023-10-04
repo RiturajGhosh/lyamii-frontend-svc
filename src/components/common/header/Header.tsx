@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import style from "./Header.module.scss";
+import { Container, Nav, Navbar } from "react-bootstrap";
 
 export type HeaderList = {
   name: string;
@@ -8,8 +9,10 @@ export type HeaderList = {
 };
 const Header: FC = () => {
   const [headers, setHeaders] = useState<HeaderList[]>([]);
-  const [, updateExpanded] = useState(false);
-  const [, updateNavbar] = useState(false);
+  const [expand, updateExpanded] = useState(false);
+  const [navColour, updateNavbar] = useState(false);
+
+  window.addEventListener("scroll", scrollHandler);
 
   function scrollHandler() {
     if (window.scrollY >= 20) {
@@ -32,7 +35,7 @@ const Header: FC = () => {
     { name: "Home", path: "/" },
     { name: "Contact", path: "/" },
     { name: "FAQs", path: "/" },
-    { name: "My Account", path: "/" },
+    { name: "My Profile", path: "/" },
   ];
 
   useEffect(() => {
@@ -44,30 +47,48 @@ const Header: FC = () => {
   }, [loggedIn]);
 
   return (
-    <>
-      <header>
-        <div className={style.currentPage}>
-          <h3>Lyamii.com</h3>
-        </div>
-
-        <div className="flex-grow-0" id="responsive-navbar-nav">
-          <nav className="ml-auto row d-flex">
+    <Navbar
+      expanded={expand}
+      fixed="top"
+      expand="md"
+      className={navColour ? "sticky" : "navbar"}
+    >
+      <Container className="d-flex container align-items-center d-print-block justify-content-between">
+        <Navbar.Brand href="/" className="align-self-center">
+          <div className={`d-flex align-items-center ${style.currentPage}`}>
+            <h3>Lyamii.com</h3>
+          </div>
+        </Navbar.Brand>
+        <Navbar.Toggle
+          aria-controls="responsive-navbar-nav"
+          onClick={() => {
+            updateExpanded(expand ? false : true);
+          }}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </Navbar.Toggle>
+        <Navbar.Collapse className={`flex-grow-0`} id="responsive-navbar-nav">
+          <Nav className="ml-auto" defaultActiveKey="#home">
             {headers?.map((header: HeaderList, index: number) => {
               return (
-                <Link
-                  className={style.link}
-                  key={index}
-                  to={header.path}
-                  onClick={() => updateExpanded(false)}
-                >
-                  <p className="body">{header?.name}</p>
-                </Link>
+                <Nav.Item>
+                  <Nav.Link
+                    as={Link}
+                    key={index}
+                    to={header.path}
+                    onClick={() => updateExpanded(false)}
+                  >
+                    <p className="body m-0">{header?.name}</p>
+                  </Nav.Link>
+                </Nav.Item>
               );
             })}
-          </nav>
-        </div>
-      </header>
-    </>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 

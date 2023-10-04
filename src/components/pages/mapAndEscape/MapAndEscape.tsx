@@ -1,0 +1,44 @@
+import React, { FC } from "react";
+import { Col, Container, Row } from "react-bootstrap";
+import style from "./MapAndEscape.module.scss";
+import BorderCard from "../../common/borderCard/BorderCard";
+import Globe from "../../common/globe/Globe";
+import { mapDescription } from "../../common/enum/enum";
+
+const MapAndEscape: FC = () => {
+  return (
+    <Container className="home-about-section py-42" fluid id="about">
+      <Container>
+        <Row>
+          <Col md={7} className="">
+            <BorderCard
+              title="Play with MAP"
+              text={mapDescription}
+              minHeight="630px"
+              buttonColor="bg-warning"
+              className={`border-5 pt-32 shadow-lg justify-content-start ${style.bgBluePink}`}
+            >
+              <div style={{ width: "25%", height: "25%" }}>
+                <Globe />
+              </div>
+            </BorderCard>
+          </Col>
+          <Col md={5} className="">
+            <BorderCard
+              title="The Escape Plan"
+              text={mapDescription}
+              minHeight="630px"
+              buttonColor="bg-light"
+              className="border-5 shadow-lg bg-dark mh-2 text-white"
+              imageAbove={
+                "https://cdn.pixabay.com/photo/2016/08/05/15/06/tunnel-1572456_1280.jpg"
+              }
+            ></BorderCard>
+          </Col>
+        </Row>
+      </Container>
+    </Container>
+  );
+};
+
+export default MapAndEscape;

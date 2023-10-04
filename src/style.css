@@ -185,7 +185,7 @@ html {
 /* Navbar Section  */
 /* --------- */
 .sticky {
-  background-color: #212935d8 !important;
+  background-color: #4d668ed8 !important;
   transition: all 0.3s ease-out 0s !important;
   box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.171) !important;
   backdrop-filter: blur(15px) !important;
@@ -389,12 +389,11 @@ html {
 .home-section {
   position: relative;
   z-index: 2;
-  min-height: 950px;
-  background-image: var(--image-gradient), url(./Assets/home.jpg);
+  height: fit-content;
+  background-image: var(--image-gradient), url(./Assets/remote.jpg);
   background-position: top center;
   background-repeat: no-repeat;
-  background-size: 100%;
-  padding-bottom: 30px !important;
+  background-size: auto;
   padding-top: 30px !important;
 }
 .home-content {
@@ -457,8 +456,8 @@ html {
     flex-direction: column !important;
   }
   .home-section {
-    min-height: 900px !important;
-    background-size: cover;
+    height: auto !important;
+    background-size: auto;
     padding-top: 30px !important;
   }
   .heading {
@@ -493,8 +492,9 @@ html {
 }
 @media (max-width: 767px) and (min-width: 400px) {
   .home-section {
-    min-height: 800px !important;
-    background-size: cover;
+    height: auto;
+    /* min-height: 755px !important; */
+    background-size: auto;
     padding-top: 30px !important;
   }
   .heading {
@@ -535,16 +535,10 @@ html {
 
 .home-about-section {
   position: relative;
-  padding-bottom: 70px !important;
-  padding-top: 70px !important;
-  @media only screen and (min-width: 500px) and (max-width: 767px) {
-    padding-top: 0 !important;
-  }
 }
 
 .home-about-description {
   color: white !important;
-  padding-top: 100px !important;
   padding-bottom: 20px !important;
   text-align: center;
   @media only screen and (max-width: 500px) {
@@ -612,7 +606,7 @@ html {
 .social-icons {
   display: inline-block !important;
   padding-right: 15px;
-  padding-left: 15px;
+  size: 60px;
 }
 
 .icon-colour {
@@ -634,10 +628,8 @@ html {
 /* Footer */
 /* --------- */
 .footer {
-  background-color: #212935d8;
+  background-color: #4d668ed8;
   bottom: 0 !important;
-  padding-top: 10px !important;
-  padding-bottom: 8px !important ;
 }
 .footer-copywright {
   text-align: center !important;

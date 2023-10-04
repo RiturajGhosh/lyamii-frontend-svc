@@ -14,7 +14,7 @@ import PrivateRoute, {
 const App: FC = () => {
   let routesToBeMapped: UserRouteConfig[] = [...commonSiteMap];
   return (
-    <>
+    <HashRouter>
       <Header />
       <HashRouter>
         <Switch>
@@ -33,7 +33,7 @@ const App: FC = () => {
         </Switch>
       </HashRouter>
       <Footer />
-    </>
+    </HashRouter>
   );
 };
 
