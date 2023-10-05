@@ -1,9 +1,3 @@
-#screenshot of desktop screen ![screencapture-localhost-3000-2023-10-05-03_00_01](https://github.com/RiturajGhosh/lyamii-frontend-svc/assets/53268799/b26cb207-8d20-479e-aa83-87a374d989b5)
-
-#screenshot of mobile screen ![screencapture-localhost-3000-2023-10-05-03_05_43](https://github.com/RiturajGhosh/lyamii-frontend-svc/assets/53268799/3c7342f6-5011-46a0-88bf-5d453ea04ea8)
-
-#screenshot of menu on mobile screen <img width="384" alt="Screenshot 2023-10-05 at 3 07 34 AM" src="https://github.com/RiturajGhosh/lyamii-frontend-svc/assets/53268799/b848c02d-3dee-42bc-8573-b3b81a6b3642">
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
