@@ -1,4 +1,4 @@
-import React, { FC, PointerEvent, useState } from "react";
+import React, { FC, PointerEvent, useEffect, useState } from "react";
 import ReactGlobe, { Coordinates, Marker } from "react-globe";
 import defaultMarkers from "./markers";
 import "tippy.js/dist/tippy.css";
@@ -6,7 +6,8 @@ import "tippy.js/animations/scale.css";
 import { Object3D } from "three";
 import { useHistory } from "react-router-dom";
 import { SET_SELECTED_LOCATION } from "../../../state/actions/types/globeDataActionType";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
 
 function markerTooltipRenderer(marker: Marker) {
   const tooltipContent = document.createElement("div");
@@ -25,8 +26,9 @@ const options = {
 //   width: any;
 //   height: any;
 // }
-const Globe:FC=()=> {
+const Globe: FC = () => {
   const [, setEvent] = useState({}) as any;
+  const screenSize = useSelector(selectScreenSize);
   const dispatch = useDispatch();
   const history = useHistory();
   function onClickMarker(
@@ -60,16 +62,16 @@ const Globe:FC=()=> {
   return (
     <div>
       <ReactGlobe
-        height={window.screen.width > 500 ? '400px': '200px'}
+        height={!screenSize.isMobile ? "400px" : "300px"}
         markers={defaultMarkers}
         options={options}
-        width={window.screen.width > 500 ? '400px': '200px'} 
+        width={!screenSize.isMobile ? "400px" : "300px"}
         onDefocus={onDefocus}
         globeBackgroundTexture={null}
         onClickMarker={onClickMarker}
       />
     </div>
   );
-}
+};
 
 export default Globe;

@@ -1,6 +1,7 @@
 .reviewCard {
   min-width: 300px !important;
-  min-height: 408px !important;
+  min-height: 416px !important;
+  overflow: hidden;
   @media only screen and (min-width: 500px) and (max-width: 767px) {
     min-height: 0px  !important;
     min-width: 300px !important;
@@ -12,5 +13,21 @@
   @media only screen and (max-width: 400px) {
     min-height: 0px !important;
     min-width: 300px !important;
+  }
+}
+.review {
+  min-height: 240px !important;
+  @media only screen and (min-width: 767px){
+    height: 240px !important;
+    min-height: 0px  !important;
+  }
+  @media only screen and (min-width: 500px) and (max-width: 767px) {
+    min-height: 0px  !important;
+  }
+  @media only screen and (min-width: 400px) and (max-width: 500px) {
+    min-height: 0px !important;
+  }
+  @media only screen and (max-width: 400px) {
+    min-height: 0px !important;
   }
 }

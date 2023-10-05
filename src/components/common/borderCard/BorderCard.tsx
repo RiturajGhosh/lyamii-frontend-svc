@@ -39,8 +39,6 @@ const BorderCard: FC<BorderCardType> = ({
             {title}
           </h1>
         )}
-        {text && <p className={`${descriptionStyling} card-text`}>{text}</p>}
-
         <button
           className={`btn btn-circle d-flex justify-items-center ${style.btmRght} ${buttonColor} p-4 ${style.navigationButton}`}
         >
@@ -48,6 +46,7 @@ const BorderCard: FC<BorderCardType> = ({
             <FaArrowRightLong />
           </Col>
         </button>
+        {text && <p className={`${descriptionStyling} card-text`}>{text}</p>}
       </div>
       {children}
     </div>

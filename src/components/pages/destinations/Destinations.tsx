@@ -20,7 +20,7 @@ const Destinations: FC = () => {
               of the interconnections that binds us all.
             </p>
           </Col>
-          <Col md={5} className="align-self-center">
+          <Col md={3} className="align-self-center">
             <img src={walkingFinger} className={`${style.img}`} alt="avatar" />
           </Col>
         </Row>

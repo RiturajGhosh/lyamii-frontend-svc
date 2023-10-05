@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Button,Container } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import Destinations from "../destinations/Destinations";
 import style from "./Home.module.scss";
 import Wave from "../../common/icon/waveBottom";
@@ -7,8 +7,10 @@ import CustomerReviews from "../customerReview/CustomerReview";
 import WhyLyamii from "../whyLyamii/WhyLyamii";
 import MapAndEscape from "../mapAndEscape/MapAndEscape";
 import Contact from "../contact/Contact";
+import { useHistory } from "react-router-dom";
 
 const Home: FC = () => {
+  const history = useHistory();
   return (
     <section>
       <Container
@@ -28,7 +30,10 @@ const Home: FC = () => {
             of worlds culture, nature and history. Lyamii will provide you with
             excellent service and support throughout your journey.
           </p>
-          <Button className="align-middle justify-self-center">
+          <Button
+            className="align-middle justify-self-center"
+            onClick={() => history.push("/PassportRegistration")}
+          >
             Get your Passport
           </Button>
         </Container>
@@ -40,7 +45,7 @@ const Home: FC = () => {
       <MapAndEscape />
       <WhyLyamii />
       <CustomerReviews />
-      <Contact/>
+      <Contact />
     </section>
   );
 };

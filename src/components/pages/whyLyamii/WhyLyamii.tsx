@@ -17,7 +17,7 @@ const WhyLyamii: FC = () => {
             {<h1 className="card-title text-warning ft-57">Lyamii ?</h1>}
           </Col>
           <Col md={8} className="justify-content-between d-flex">
-            <Row className="w-100">
+            <Row className="w-100 m-0 d-flex justify-content-center">
               {reasons.map((reason, idx) => (
                 <Col key={idx}>
                   <Card

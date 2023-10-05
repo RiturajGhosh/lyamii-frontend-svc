@@ -1,5 +1,4 @@
-import { FC } from "react";
-
+import React, { FC } from "react";
 const Wave: FC = () => {
   return (
     <div className="curve-container b400 bundle-bb-curve-container">

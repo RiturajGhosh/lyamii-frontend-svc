@@ -4,8 +4,12 @@ import style from "./MapAndEscape.module.scss";
 import BorderCard from "../../common/borderCard/BorderCard";
 import Globe from "../../common/globe/Globe";
 import { mapDescription } from "../../common/enum/enum";
+import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
+import { useSelector } from "react-redux";
 
 const MapAndEscape: FC = () => {
+
+  const screenSize = useSelector(selectScreenSize);
   return (
     <Container className="home-about-section sectionContainer py-42" fluid id="about">
       <Container>
@@ -14,7 +18,7 @@ const MapAndEscape: FC = () => {
             <BorderCard
               title="Play with MAP"
               text={mapDescription}
-              minHeight={window.innerWidth > 500 ? "630px" : "0px"}
+              minHeight={screenSize.isDesktop ? "630px" : "0px"}
               buttonColor="bg-warning"
               descriptionStyling="text-blue"
               className={`border-5 pt-32 shadow-lg justify-content-start ${style.bgBluePink}`}
@@ -28,7 +32,7 @@ const MapAndEscape: FC = () => {
             <BorderCard
               title="The Escape Plan"
               text={mapDescription}
-              minHeight={window.innerWidth > 500 ? "630px" : "0px"}
+              minHeight={screenSize.isDesktop ? "630px" : "0px"}
               buttonColor="bg-light"
               descriptionStyling="text-blue"
               className="border-5 shadow-lg bg-dark mh-2 text-white"

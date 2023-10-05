@@ -12,7 +12,7 @@ const CustomerReviews: FC = () => {
       id="about"
     >
       <Container>
-        <Row>
+        <Row className="d-flex justify-content-center">
           <div className="card-body w-25">
             {
               <p className="card-text text-orange ft-32">
@@ -34,7 +34,7 @@ const CustomerReviews: FC = () => {
                       />
                       <InvertedComma className="w-25" />
                     </Row>
-                    <p className="font-italic secondary ft-16">
+                    <p className={`${style.review} font-italic secondary overflow-hidden ft-16`}>
                       {review.review}
                     </p>
                     <Card.Title className="ft-16">{review.name}</Card.Title>

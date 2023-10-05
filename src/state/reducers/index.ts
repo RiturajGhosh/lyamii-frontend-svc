@@ -1,9 +1,11 @@
 import { combineReducers } from "redux";
 import globeDataReducer from "./globeDataReducer";
+import screenSizeReducer from "./screenSize";
 
 
 const reducers = combineReducers({
-  globeData: globeDataReducer
+  globeData: globeDataReducer,
+  screenSize: screenSizeReducer
 });
 
 const rootReducer = (state:any, action:any)=>{
