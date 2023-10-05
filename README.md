@@ -1,3 +1,11 @@
+desktop view ![screencapture-localhost-3000-2023-10-06-00_56_31](https://github.com/RiturajGhosh/lyamii-frontend-svc/assets/53268799/c5974ff9-47e5-4ea5-abb8-5e9053be75d9)
+
+tab view![screencapture-localhost-3000-2023-10-06-00_57_17](https://github.com/RiturajGhosh/lyamii-frontend-svc/assets/53268799/45ab32fc-417b-41ae-b036-23b219447b5e)
+
+mobile view![screencapture-localhost-3000-2023-10-06-00_58_29](https://github.com/RiturajGhosh/lyamii-frontend-svc/assets/53268799/2ecebb11-30c1-4cd3-a3d9-afc62543501d)
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
