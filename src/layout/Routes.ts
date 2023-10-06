@@ -1,5 +1,7 @@
 import ContainerSection from "../components/common/container/Container";
 import Home from "../components/pages/Home/Home";
+import Contact from "../components/pages/contact/Contact";
+import CustomerReviews from "../components/pages/customerReview/CustomerReview";
 import Explore from "../components/pages/destinations/Explore";
 import PassportRegistrationForm from "../components/pages/passportRegistrationForm/PassportRegistrationForm";
 import { UserRouteConfig } from "../components/routing/PrivateRoute";
@@ -39,7 +41,7 @@ export const commonSiteMap: UserRouteConfig[] = [
   {
     exact: true,
     path: "/contact",
-    Component: ContainerSection,
+    Component: Contact,
     access: AccessType.YES,
   },
   {
@@ -57,7 +59,7 @@ export const commonSiteMap: UserRouteConfig[] = [
   {
     exact: true,
     path: "/reviews",
-    Component: ContainerSection,
+    Component: CustomerReviews,
     access: AccessType.YES,
   },
   {
