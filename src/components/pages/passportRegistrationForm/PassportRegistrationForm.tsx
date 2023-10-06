@@ -1,49 +1,109 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { Button, Col, Row, Form, Card } from "react-bootstrap";
+import FormInput from "../../common/formInput/FormInput";
 
 const PassportRegistrationForm: FC = () => {
+  const [detail, setDetail] = useState({
+    firstName: "",
+    lastName: "",
+    city: "",
+    zipcode: "",
+    state: "",
+    address: "",
+    address2: "",
+    email: "",
+    password: "",
+    check: "off",
+  });
   return (
-    <Card className="m-3 p-3">
+    <Card className="m-3 my-5 p-3">
+      <Card.Title className="py-5 ft-32">Passport Registration Form</Card.Title>
       <Form>
         <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridEmail">
-            <Form.Label>First Name</Form.Label>
-            <Form.Control type="text" placeholder="First Name" />
-          </Form.Group>
+          <FormInput
+            direction={Col}
+            value={detail.firstName}
+            label={"First Name"}
+            type={"text"}
+            placeHolder={"First name"}
+            controlId={"forGridFirstName"}
+            onchange={(e: any) =>
+              setDetail({ ...detail, firstName: e.target.value })
+            }
+          />
 
-          <Form.Group as={Col} controlId="formGridPassword">
-            <Form.Label>Last Name</Form.Label>
-            <Form.Control type="text" placeholder="Last Name" />
-          </Form.Group>
+          <FormInput
+            direction={Col}
+            value={detail.lastName}
+            label={"Last Name"}
+            type={"text"}
+            placeHolder={"Last name"}
+            controlId={"forGridLastName"}
+            onchange={(e: any) =>
+              setDetail({ ...detail, lastName: e.target.value })
+            }
+          />
         </Row>
         <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridEmail">
-            <Form.Label>Email</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
-          </Form.Group>
-
-          <Form.Group as={Col} controlId="formGridPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
-          </Form.Group>
+          <FormInput
+            direction={Col}
+            value={detail.email}
+            label={"Email"}
+            type={"email"}
+            placeHolder={"Enter email"}
+            controlId={"formGridEmail"}
+            onchange={(e: any) =>
+              setDetail({ ...detail, email: e.target.value })
+            }
+          />
+          <FormInput
+            direction={Col}
+            value={detail.password}
+            label={"Password"}
+            type={"password"}
+            placeHolder={"Password"}
+            controlId={"forGridPassword"}
+            onchange={(e: any) =>
+              setDetail({ ...detail, password: e.target.value })
+            }
+          />
         </Row>
 
-        <Form.Group className="mb-3" controlId="formGridAddress1">
-          <Form.Label>Address</Form.Label>
-          <Form.Control placeholder="1234 Main St" />
-        </Form.Group>
+        <FormInput
+          className="mb-3"
+          value={detail.address}
+          label={"Address"}
+          type={"text"}
+          placeHolder={"1234 Main St"}
+          controlId={"forGridAddress"}
+          onchange={(e: any) =>
+            setDetail({ ...detail, address: e.target.value })
+          }
+        />
 
-        <Form.Group className="mb-3" controlId="formGridAddress2">
-          <Form.Label>Address 2</Form.Label>
-          <Form.Control placeholder="Apartment, studio, or floor" />
-        </Form.Group>
+        <FormInput
+          className="mb-3"
+          value={detail.address2}
+          label={"Address 2"}
+          type={"text"}
+          placeHolder={"Apartment, studio, or floor"}
+          controlId={"forGridLastName"}
+          onchange={(e: any) =>
+            setDetail({ ...detail, address2: e.target.value })
+          }
+        />
 
         <Row className="mb-3">
-          <Form.Group as={Col} controlId="formGridCity">
-            <Form.Label>City</Form.Label>
-            <Form.Control />
-          </Form.Group>
-
+          <FormInput
+            direction={Col}
+            value={detail.city}
+            label={"City"}
+            type={"text"}
+            controlId={"forGridCity"}
+            onchange={(e: any) =>
+              setDetail({ ...detail, city: e.target.value })
+            }
+          />
           <Form.Group as={Col} controlId="formGridState">
             <Form.Label>State</Form.Label>
             <Form.Select defaultValue="Choose...">
@@ -52,17 +112,30 @@ const PassportRegistrationForm: FC = () => {
             </Form.Select>
           </Form.Group>
 
-          <Form.Group as={Col} controlId="formGridZip">
-            <Form.Label>Zip</Form.Label>
-            <Form.Control />
-          </Form.Group>
+          <FormInput
+            direction={Col}
+            value={detail.zipcode}
+            label={"ZipCode"}
+            type={"number"}
+            controlId={"forGridZipCode"}
+            onchange={(e: any) =>
+              setDetail({ ...detail, zipcode: e.target.value })
+            }
+          />
         </Row>
 
         <Form.Group className="mb-3" id="formGridCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
+          <Form.Check
+            type="checkbox"
+            label="Check me out"
+            value={detail.check}
+            onClick={(e: any) =>
+              setDetail({ ...detail, check: e.target.value })
+            }
+          />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Button onClick={() => {}} variant="primary" type="submit">
           Submit
         </Button>
       </Form>
