@@ -13,6 +13,7 @@ type BorderCardType = {
   buttonColor?: string;
   titleStyling?: string;
   descriptionStyling?: string;
+  onClick?: Function;
 };
 const BorderCard: FC<BorderCardType> = ({
   className,
@@ -24,6 +25,7 @@ const BorderCard: FC<BorderCardType> = ({
   titleStyling,
   descriptionStyling,
   buttonColor,
+  onClick
 }) => {
   return (
     <div
@@ -41,6 +43,7 @@ const BorderCard: FC<BorderCardType> = ({
         )}
         <button
           className={`btn btn-circle d-flex justify-items-center ${style.btmRght} ${buttonColor} p-4 ${style.navigationButton}`}
+          onClick={()=>onClick && onClick()}
         >
           <Col xs={4} className="social-icons align-self-center w-100">
             <FaArrowRightLong />

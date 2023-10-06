@@ -1,9 +1,14 @@
 import {
   SET_GLOBE_DATA,
   SET_SELECTED_LOCATION,
+  globeDataActionType,
 } from "../actions/types/globeDataActionType";
 
-const initialState: any = {
+export interface globeDataState{
+  globeData: any,
+  selectedLocation: any
+}
+const initialState: globeDataState = {
   globeData: [
     {
       id: 1,
@@ -53,8 +58,8 @@ const initialState: any = {
 
 export default function globeDataReducer(
   state = initialState,
-  action: any
-): any {
+  action: globeDataActionType
+): globeDataState {
   switch (action.type) {
     case SET_GLOBE_DATA:
       return {

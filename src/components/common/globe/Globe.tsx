@@ -46,7 +46,7 @@ const Globe: FC = () => {
       type: SET_SELECTED_LOCATION,
       payload: marker,
     });
-    history.push("/");
+    history.push("/explore");
   }
   function onDefocus(previousFocus: Coordinates) {
     setEvent({
