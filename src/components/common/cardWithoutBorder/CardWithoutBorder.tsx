@@ -28,7 +28,7 @@ const CardWithoutBorder: FC<CardWithoutBorderType> = ({
       )}
       <div className="card-body">
         {title && <h1 className="card-title text-secondary">{title}</h1>}
-        {text && <p className="card-text text-primary">{text}</p>}
+        {text && <p className="text-primary">{text}</p>}
       </div>
       {children}
     </div>

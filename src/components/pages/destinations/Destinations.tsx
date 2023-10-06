@@ -9,9 +9,7 @@ const Destinations: FC = () => {
       <Container>
         <Row>
           <Col md={7} className="home-about-description my-auto pl-20">
-            <h1 className="text-start ft-57 textColor">Check all</h1>
-            <h1 className="text-start ft-57 textColor">the possible</h1>
-            <h1 className="text-start ft-57 textColor">destinations</h1>
+            <h1 className="text-start title textColor">Check all the possible destinations</h1>
             <p className="text-start ome-about-body home-text">
               With each step, we take on foreign soil, we unravel the mysteries
               of diverse traditions, forge meaningful connections and expand our
