@@ -27,15 +27,15 @@ const Header: FC = () => {
   const loggedIn = true;
   const headerList: HeaderList[] = [
     { name: "Home", path: "/" },
-    { name: "Contact", path: "/" },
-    { name: "FAQs", path: "/" },
-    { name: "Login", path: "/" },
+    { name: "Contact", path: "/contact" },
+    { name: "FAQs", path: "/faqs" },
+    { name: "Login", path: "/login" },
   ];
   const loggedHeaderList: HeaderList[] = [
     { name: "Home", path: "/" },
-    { name: "Contact", path: "/" },
-    { name: "FAQs", path: "/" },
-    { name: "My Profile", path: "/" },
+    { name: "Contact", path: "/contact" },
+    { name: "FAQs", path: "/faqs" },
+    { name: "My Profile", path: "/profile" },
   ];
 
   useEffect(() => {

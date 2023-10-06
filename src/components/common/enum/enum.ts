@@ -1,3 +1,5 @@
+import { HeaderList } from "../header/Header";
+
 export enum axiosType {
   get = "get",
   post = "post",
@@ -51,4 +53,19 @@ export const reviews = [
     review:
       "This website has a wide range of travel options, but my experience was a bit mixed. I found a great deal on a tour package to a beautiful destination, but the booking process felt a bit clunky, and I had some trouble with payment processing. Eventually, I managed to secure my reservation with the help of customer support, but it was a bit frustrating. On the positive side, the tour itself was fantastic, and the local guides were knowledgeable and friendly.",
   },
+];
+
+export const communities: HeaderList[] = [
+  { name: "About us", path: "/about" },
+  { name: "Our Mission", path: "/mission" },
+  { name: "Join us", path: "/joinus" },
+  { name: "Reviews", path: "/reviews" },
+  { name: "Privacy policy", path: "/privacypolicy" },
+  { name: "Terms and conditions", path: "/termconditions" },
+  { name: "FAQ", path: "/" },
+];
+export const supports: HeaderList[] = [
+  { name: "My Profile", path: "/profile" },
+  { name: "Helpdesk", path: "/helpdesk" },
+  { name: "Feedback", path: "/feedback" },
 ];

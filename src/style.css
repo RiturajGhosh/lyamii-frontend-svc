@@ -628,7 +628,7 @@ html {
 /* Footer */
 /* --------- */
 .footer {
-  background-color: #4d668ed8;
+  background-image: linear-gradient(to top , #4d668ed8, #f6f7f8);
   bottom: 0 !important;
 }
 .footer-copywright {
@@ -650,11 +650,8 @@ html {
   }
 }
 
-.footer h3 {
-  font-size: 1em;
-  color: black !important;
-  margin-top: 0.5em !important;
-  margin-bottom: 0.5em !important;
+.footer h1 {
+  color: #2a6fa5 !important;
 }
 .footer-icons {
   margin-top: 0.5em !important;

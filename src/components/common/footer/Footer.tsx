@@ -1,22 +1,10 @@
 import React, { FC } from "react";
-import { Container, Col } from "react-bootstrap";
+import { Container, Col, Nav } from "react-bootstrap";
 import { HeaderList } from "../header/Header";
+import { Link } from "react-router-dom";
+import { communities, supports } from "../enum/enum";
 
 const Footer: FC = () => {
-  const communities: HeaderList[] = [
-    { name: "About us", path: "/" },
-    { name: "Our Mission", path: "/" },
-    { name: "Join us", path: "/" },
-    { name: "Reviews", path: "/" },
-    { name: "Privacy policy", path: "/" },
-    { name: "Terms and conditions", path: "/" },
-    { name: "FAQ", path: "/" },
-  ];
-  const supports: HeaderList[] = [
-    { name: "My Profile", path: "/" },
-    { name: "Helpdesk", path: "/" },
-    { name: "Feedback", path: "/" },
-  ];
   return (
     <Container fluid className="footer float-right p-5">
       <span className="row d-flex justify-content-around">
@@ -25,20 +13,19 @@ const Footer: FC = () => {
           <p>Inspiring a new generation of wanderers</p>
         </Col>
         <Col md="2" className="">
-          <h3 className="ft-20">Community</h3>
+          <h2 className="ft-24 mt-2">Community</h2>
           <>
-            {communities.map((community: HeaderList) => {
+            {communities.map((community: HeaderList, index: number) => {
               return (
-                <ul className="footer-icons">
-                  <li className="social-icons">
-                    <a
-                      href={community.path}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="icon-colour"
+                <ul className="p-0 my-0">
+                  <li className="social-icons py-0">
+                    <Link
+                      key={index}
+                      to={community.path}
+                      className="py-0 icon-colour"
                     >
-                      {community.name}
-                    </a>
+                      <p className="ft-16">{community.name}</p>
+                    </Link>
                   </li>
                 </ul>
               );
@@ -46,20 +33,19 @@ const Footer: FC = () => {
           </>
         </Col>
         <Col md="2" className="">
-          <h3 className="ft-20">Support</h3>
+          <h2 className="ft-24 mt-2">Support</h2>
           <>
-            {supports.map((support: HeaderList) => {
+            {supports.map((support: HeaderList, index: number) => {
               return (
-                <ul className="footer-icons">
-                  <li className="social-icons">
-                    <a
-                      href={support.path}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="icon-colour"
+                <ul className="p-0 my-0">
+                  <li className="social-icons py-0">
+                    <Link
+                      key={index}
+                      to={support.path}
+                      className="py-0 icon-colour"
                     >
-                      {support.name}
-                    </a>
+                      <p className="ft-16">{support.name}</p>
+                    </Link>
                   </li>
                 </ul>
               );
