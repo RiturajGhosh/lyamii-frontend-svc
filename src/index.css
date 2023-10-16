@@ -17,7 +17,9 @@ label {
   color: #666;
 }
 body {
-  background: #f6f7f8;
+  background: #f6f7f8 !important;
+  color: #737373 !important;
+  font-family: sans-serif !important;
 }
 .box8 {
   box-shadow: 0px 0px 5px 1px #999;

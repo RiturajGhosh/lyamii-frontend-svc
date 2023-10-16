@@ -13,6 +13,7 @@ import PrivateRoute, {
 import {
   SET_IS_DESKTOP,
   SET_IS_MOBILE,
+  SET_SCREENSIZE,
 } from "./state/actions/types/screenSizeType";
 import { useDispatch } from "react-redux";
 
@@ -21,7 +22,7 @@ const App: FC = () => {
   const dispatch = useDispatch();
   //choose the screen size
   const handleResize = () => {
-    if (window.innerWidth < 1000) {
+    if (window.innerWidth < 768) {
       dispatch({
         type: SET_IS_MOBILE,
         payload: true,
@@ -32,6 +33,10 @@ const App: FC = () => {
         payload: true,
       });
     }
+    dispatch({
+      type: SET_SCREENSIZE,
+      payload: window.innerWidth,
+    });
   };
 
   // create an event listener

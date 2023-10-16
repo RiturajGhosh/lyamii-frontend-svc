@@ -3,7 +3,8 @@ import { Col, Container, Row } from "react-bootstrap";
 import style from "./MapAndEscape.module.scss";
 import BorderCard from "../../common/borderCard/BorderCard";
 import Globe from "../../common/globe/Globe";
-import { mapDescription } from "../../common/enum/enum";
+import escape from "../../../Assets/escape.jpeg";
+import { exploreDescription, mapDescription } from "../../common/enum/enum";
 import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -23,7 +24,7 @@ const MapAndEscape: FC = () => {
         <Row className="g-4">
           <Col md={7} className="">
             <BorderCard
-              title="Play with MAP"
+              title="Home among the Stars"
               text={mapDescription}
               minHeight={screenSize.isDesktop ? "630px" : "0px"}
               buttonColor="bg-warning"
@@ -35,9 +36,9 @@ const MapAndEscape: FC = () => {
                 });
                 history.push("explore");
               }}
-              className={`border-5 pt-32 shadow-lg justify-content-start ${style.bgBluePink}`}
+              className={`border-5 pt-32 border-white shadow-lg justify-content-start d-table ${style.bgBluePink}`}
             >
-              <div style={{ width: "25%", height: "25%" }}>
+              <div style={{ width: "25%", height: "25%", paddingLeft: "10px" }}>
                 <Globe />
               </div>
             </BorderCard>
@@ -45,11 +46,11 @@ const MapAndEscape: FC = () => {
           <Col md={5} className="">
             <BorderCard
               title="The Escape Plan"
-              text={mapDescription}
+              text={exploreDescription}
               minHeight={screenSize.isDesktop ? "630px" : "0px"}
               buttonColor="bg-light"
               descriptionStyling="text-blue"
-              className="border-5 shadow-lg bg-dark mh-2 text-white"
+              className="border-5 shadow-lg border-white bg-dark text-white d-table"
               onClick={() => {
                 dispatch({
                   type: SET_SELECTED_LOCATION,
@@ -57,9 +58,7 @@ const MapAndEscape: FC = () => {
                 });
                 history.push("explore");
               }}
-              imageAbove={
-                "https://cdn.pixabay.com/photo/2016/08/05/15/06/tunnel-1572456_1280.jpg"
-              }
+              imageAbove={escape}
             ></BorderCard>
           </Col>
         </Row>

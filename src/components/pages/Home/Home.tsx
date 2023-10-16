@@ -8,6 +8,9 @@ import WhyLyamii from "../whyLyamii/WhyLyamii";
 import MapAndEscape from "../mapAndEscape/MapAndEscape";
 import Contact from "../contact/Contact";
 import { useHistory } from "react-router-dom";
+import LifetimeJourney from "../lifetimeJourney/LifetimeJourney";
+import BeyoundObvious from "../beyoundObvious/BeyoundObvious";
+import Trees from "../../common/icon/trees";
 
 const Home: FC = () => {
   const history = useHistory();
@@ -15,13 +18,13 @@ const Home: FC = () => {
     <section>
       <Container
         fluid
-        className={`home-section position-relative ${style.imageSection}`}
+        className={`home-section position-relative p-0 ${style.imageSection}`}
         id="home"
       >
         <Container className="home-content d-grid justify-content-center">
-          <h1 className="text-center">Meet your </h1>
-          <h1 className="text-center">"SOUL"</h1>
-          <p className="text-center">
+          <h1 className="text-center text-shadow-light">Each Day </h1>
+          <h1 className="text-center text-shadow-light">Counts</h1>
+          <p className="text-center text-shadow-light">
             Explore stunning destinations, from exotic tropical paradises to
             historic landmarks and vibrant cityscapes with Lyamii. Get insider
             insights into must see attractions, local cuisine, cultural
@@ -37,12 +40,13 @@ const Home: FC = () => {
             Get your Passport
           </Button>
         </Container>
-        <div className="flex-grow-1">
-          <Wave></Wave>
+        <div className={`flex-grow-1 w-100 position-absolute ${style.bgImage}`}>
         </div>
       </Container>
       <Destinations></Destinations>
       <MapAndEscape />
+      <LifetimeJourney />
+      <BeyoundObvious />
       <WhyLyamii />
       <CustomerReviews />
       <Contact />

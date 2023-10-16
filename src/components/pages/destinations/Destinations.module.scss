@@ -8,7 +8,82 @@ svg {
   background-image: linear-gradient(to top right, #fed8f7, #c4f1fe);
   outline: white;
 }
-
+.navigationButton {
+  border-radius: 50px !important;
+  float: right;
+}
+.bgImage {
+  position: relative;
+  z-index: 0;
+  -webkit-mask-image: url(../../../Assets/image.png);
+  mask-image: url(../../../Assets/image.png);
+  background-color: #337d94;
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: auto;
+  margin: 20px auto;
+  display: block;
+  width: 100%;
+  height: 600px;
+  -webkit-mask-position: top right;
+  mask-position: top right;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 120px 150px;
+  mask-size: 120px 150px;
+  @media only screen and (min-width: 768px) and (max-width: 1200px) {
+    height: 430px;
+    -webkit-mask-size: 120px 150px;
+    mask-size: 120px 150px;
+  }
+  @media only screen and (min-width: 500px) and (max-width: 767px) {
+    height: 500px;
+    -webkit-mask-size: 120px 150px;
+    mask-size: 120px 150px;
+  }
+  @media only screen and (min-width: 400px) and (max-width: 500px) {
+    height: 430px;
+    -webkit-mask-size: 120px 150px;
+    mask-size: 120px 150px;
+  }
+  @media only screen and (max-width: 400px) {
+    height: 360px;
+    -webkit-mask-size: 120px 150px;
+    mask-size: 120px 150px;
+  }
+}
+.downImage {
+  position: relative;
+  z-index: 0;
+  -webkit-mask-image: url(../../../Assets/parachute.png);
+  mask-image: url(../../../Assets/parachute.png);
+  background-color: #337d94;
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: auto;
+  margin: 20px auto;
+  display: block;
+  width: 100%;
+  height: 600px;
+  -webkit-mask-position: top left;
+  mask-position: top left;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 200px 150px;
+  mask-size: 200px 150px;
+  @media only screen and (max-width: 1200px) {
+    height: 200px;
+    -webkit-mask-size: 200px 150px;
+    mask-size: 200px 150px;
+  }
+}
+.bgImage::before {
+  background-color: #fff !important;
+}
+.btmRght {
+  right: 10px !important;
+  bottom: 10px !important;
+}
 .img {
   margin: 20px auto;
   display: block;

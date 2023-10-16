@@ -24,7 +24,7 @@ const Footer: FC = () => {
                       to={community.path}
                       className="py-0 icon-colour"
                     >
-                      <p className="ft-16">{community.name}</p>
+                      <p className="p">{community.name}</p>
                     </Link>
                   </li>
                 </ul>
@@ -44,7 +44,7 @@ const Footer: FC = () => {
                       to={support.path}
                       className="py-0 icon-colour"
                     >
-                      <p className="ft-16">{support.name}</p>
+                      <p className="p">{support.name}</p>
                     </Link>
                   </li>
                 </ul>

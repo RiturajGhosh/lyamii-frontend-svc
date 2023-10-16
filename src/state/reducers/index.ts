@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 import globeDataReducer from "./globeDataReducer";
-import screenSizeReducer from "./screenSize";
+import screenSizeReducer from "./screenSizeReducer";
 
 
 const reducers = combineReducers({

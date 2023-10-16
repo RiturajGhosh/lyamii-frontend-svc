@@ -185,7 +185,7 @@ html {
 /* Navbar Section  */
 /* --------- */
 .sticky {
-  background-color: #4d668ed8 !important;
+  background-color: #05264973 !important;
   transition: all 0.3s ease-out 0s !important;
   box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.171) !important;
   backdrop-filter: blur(15px) !important;
@@ -390,24 +390,28 @@ html {
   position: relative;
   z-index: 2;
   height: fit-content;
-  background-image: var(--image-gradient), url(./Assets/remote.jpg);
-  background-position: top center;
+  /* background-image: var(--image-gradient), url(./Assets/remote.jpg); */
+  background-image: var(--image-gradient), url(./Assets/header.jpeg);
+  background-position: top center, bottom;
   background-repeat: no-repeat;
   background-size: auto;
   padding-top: 30px !important;
 }
 .home-content {
-  padding: 9rem 0 2rem !important;
+  padding: 9rem 0 16rem !important;
   color: whitesmoke;
   text-align: left;
+  @media (max-width: 600px) {
+    padding: 9rem 1rem 12rem 1rem !important;
+  }
 }
 .home-text {
   color: #6aa2a4;
 }
-.heading {
+/* .heading {
   font-size: 2.4em !important;
   padding-left: 45px !important;
-}
+} */
 
 .heading-name {
   font-size: 2.5em !important;
@@ -460,10 +464,10 @@ html {
     background-size: auto;
     padding-top: 30px !important;
   }
-  .heading {
+  /* .heading {
     font-size: 1.4em !important;
     padding-left: 5px !important;
-  }
+  } */
   .heading-name {
     font-size: 1.8em !important;
     padding-left: 5px !important;
@@ -497,10 +501,10 @@ html {
     background-size: auto;
     padding-top: 30px !important;
   }
-  .heading {
+  /* .heading {
     font-size: 1.4em !important;
     padding-left: 5px !important;
-  }
+  } */
   .heading-name {
     font-size: 1.5em !important;
     padding-left: 5px !important;
@@ -628,7 +632,8 @@ html {
 /* Footer */
 /* --------- */
 .footer {
-  background-image: linear-gradient(to top , #4d668ed8, #f6f7f8);
+  font-family: sans-serif !important;
+  background-image: linear-gradient(to top, #4d668ed8, #f6f7f8);
   bottom: 0 !important;
 }
 .footer-copywright {
@@ -737,7 +742,7 @@ html {
   border-radius: 0px !important;
 }
 
-.btn-primary {
+/* .btn-primary {
   color: #fff !important;
   background-color: #212935d8 !important;
   border-color: #212935d8 !important;
@@ -747,7 +752,7 @@ html {
   color: #fff !important;
   background-color: #212935d8 !important;
   border-color: #ffffff !important;
-}
+} */
 .btn:focus {
   outline: none !important;
   box-shadow: none !important;

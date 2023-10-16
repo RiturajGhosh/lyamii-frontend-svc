@@ -1,4 +1,4 @@
-import React, { FC, PointerEvent, useEffect, useState } from "react";
+import React, { FC, PointerEvent, useState } from "react";
 import ReactGlobe, { Coordinates, Marker } from "react-globe";
 import defaultMarkers from "./markers";
 import "tippy.js/dist/tippy.css";
@@ -19,7 +19,10 @@ function markerTooltipRenderer(marker: Marker) {
 }
 
 const options = {
-  markerTooltipRenderer,
+  markerTooltipRenderer: (marker: any) => `
+  <img src=${marker.image} className={'w-100'}/><br/>
+  ${marker.city}
+`,
 };
 
 // type GlobeProps = {
@@ -46,6 +49,7 @@ const Globe: FC = () => {
       type: SET_SELECTED_LOCATION,
       payload: marker,
     });
+    window.scroll(0, 0);
     history.push("/explore");
   }
   function onDefocus(previousFocus: Coordinates) {
@@ -62,13 +66,13 @@ const Globe: FC = () => {
   return (
     <div>
       <ReactGlobe
-        height={!screenSize.isMobile ? "400px" : "300px"}
+        height={!screenSize.isMobile ? "350px" : "300px"}
         markers={defaultMarkers}
         options={options}
-        width={!screenSize.isMobile ? "400px" : "300px"}
+        width={!screenSize.isMobile ? "350px" : "300px"}
         onDefocus={onDefocus}
         globeBackgroundTexture={null}
-        onClickMarker={onClickMarker}
+        // onClickMarker={onClickMarker}
       />
     </div>
   );

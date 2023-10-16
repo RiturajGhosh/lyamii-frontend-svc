@@ -1,8 +1,9 @@
 import React, { FC } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
-import { mapDescription, reviews } from "../../common/enum/enum";
+import { reviews } from "../../common/enum/enum";
 import InvertedComma from "../../common/icon/invertedComma";
 import style from './CustomerReview.module.scss'
+import avatar from '../../../Assets/avatar.png';
 
 const CustomerReviews: FC = () => {
   return (
@@ -15,30 +16,29 @@ const CustomerReviews: FC = () => {
         <Row className="d-flex justify-content-center">
           <div className="card-body w-25">
             {
-              <p className="card-text text-orange ft-32">
-                What our <span style={{ color: "#297568" }}>Customers</span>{" "}
-                say?
+              <p className="card-text heading text-orange fw-bold text-shadow-dark ft-32">
+                Clients <span style={{ color: "#297568" }}>Testimonials</span>{" "}
               </p>
             }
           </div>
           <Row className="g-4">
             {reviews.map((review, idx) => (
-              <Col key={idx}>
+              <Col md={6} lg={4} className={'mt-4'} key={idx}>
                 <Card className={`${style.reviewCard}`}>
                   <Card.Body>
                     <Row className="d-flex justify-content-between">
                       <img
-                        className="img-round mb-3"
-                        style={{ width: "80px", height: "80px"}}
-                        src="https://cdn.pixabay.com/photo/2016/08/05/15/06/tunnel-1572456_1280.jpg"
+                        className="mb-3"
+                        style={{ width: "180px", height: "180px"}}
+                        src={avatar}
                       />
                       <InvertedComma className="w-25" />
                     </Row>
-                    <p className={`${style.review} font-italic secondary overflow-hidden ft-16`}>
+                    <p className={`${style.review} small font-italic overflow-hidden p`}>
                       {review.review}
                     </p>
-                    <Card.Title className="ft-16">{review.name}</Card.Title>
-                    <Card.Text className="ft-16 secondary">
+                    <Card.Title className="small">{review.name}</Card.Title>
+                    <Card.Text className="small">
                       {"customer"}
                     </Card.Text>
                   </Card.Body>

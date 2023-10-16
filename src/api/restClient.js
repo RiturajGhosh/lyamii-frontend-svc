@@ -3,14 +3,14 @@ import { axiosType } from "../components/common/enum/enum";
 
 export const restClient = async ({
   url,
-  params,
+  // params,
   type,
   payload,
   responseType = "",
 }) => {
   // const authParams = getUserAuthParams(); // will import from auth.service
   const config = {
-    params: { ...params, ...authParams },
+    // params: { ...params, ...authParams },
     responseType,
   };
 
@@ -37,6 +37,6 @@ export const restClient = async ({
     case axiosType.delete:
       return await axiosInstance.delete(url, { ...config, data: payload });
     default:
-      return await axiosInstance.get(url, params);
+      // return await axiosInstance.get(url, params);
   }
 };

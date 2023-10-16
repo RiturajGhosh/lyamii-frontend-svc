@@ -1,0 +1,105 @@
+.col reasonCard {
+  min-width: 30% !important;
+  min-height: 250px !important;
+  max-height: 250px !important;
+  &:first-child,
+  .leftcolumn {
+    @media only screen and (min-width: 767px) and (max-width: 1000px) {
+      min-width: 30% !important;
+      min-height: 30% !important;
+      max-height: 30% !important;
+    }
+    @media only screen and (min-width: 500px) and (max-width: 767px) {
+      min-height: 0px !important;
+      min-width: 200px !important;
+      max-height: 300px !important;
+    }
+    @media only screen and (min-width: 400px) and (max-width: 500px) {
+      min-height: 0px !important;
+      max-width: 160px !important;
+      max-height: 300px !important;
+    }
+    @media only screen and (max-width: 400px) {
+      min-height: 0px !important;
+      max-width: 160px !important;
+      max-height: 300px !important;
+    }
+  }
+  &:not(:first-child),
+  .rightcolumn {
+    @media only screen and (min-width: 767px) and (max-width: 1000px) {
+      min-width: 30% !important;
+      min-height: 30% !important;
+      max-height: 30% !important;
+    }
+    @media only screen and (min-width: 500px) and (max-width: 767px) {
+      min-height: 300px !important;
+      min-width: 250px !important;
+    }
+    @media only screen and (min-width: 400px) and (max-width: 500px) {
+      min-height: 300px !important;
+      min-width: 200px !important;
+    }
+    @media only screen and (max-width: 400px) {
+      min-height: 250px !important;
+      min-width: 200px !important;
+    }
+  }
+}
+
+.leftcolumn {
+  float: left;
+  width: 60%;
+}
+
+/* Right column */
+.rightcolumn {
+  float: right;
+  width: 40%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.bgImage {
+  position: relative;
+  z-index: 0;
+  -webkit-mask-image: url(../../../Assets/parachute1.png);
+  background-image: url(../../../Assets/parachute1.png);
+  background-color: #337d94;
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: auto;
+  margin: 20px auto;
+  display: block;
+  width: 100%;
+  height: 300px;
+  -webkit-mask-position: top right;
+  mask-position: top right;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 360px 355px;
+  mask-size: 120px 150px;
+  @media only screen and (min-width: 768px) and (max-width: 1200px) {
+    height: 430px;
+    -webkit-mask-size: 120px 150px;
+    mask-size: 120px 150px;
+  }
+  @media only screen and (min-width: 500px) and (max-width: 767px) {
+    height: 500px;
+    -webkit-mask-size: 120px 150px;
+    mask-size: 120px 150px;
+  }
+  @media only screen and (min-width: 400px) and (max-width: 500px) {
+    height: 430px;
+    -webkit-mask-size: 120px 150px;
+    mask-size: 120px 150px;
+  }
+  @media only screen and (max-width: 400px) {
+    height: 360px;
+    -webkit-mask-size: 120px 150px;
+    mask-size: 120px 150px;
+  }
+}

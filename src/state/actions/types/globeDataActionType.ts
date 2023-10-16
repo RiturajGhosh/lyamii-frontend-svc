@@ -1,5 +1,6 @@
 export const SET_GLOBE_DATA = "SET_GLOBE_DATA";
 export const SET_SELECTED_LOCATION = "SET_SELECTED_LOCATION";
+export const SET_HOTELS = "SET_HOTELS";
 
 export interface GlobeDataDto {
   id: string;
@@ -16,5 +17,11 @@ interface SetSelectedLocation {
   type: typeof SET_SELECTED_LOCATION;
   payload: GlobeDataDto;
 }
-
-export type globeDataActionType = SetGlobeDataI | SetSelectedLocation;
+interface SetHotels {
+  type: typeof SET_HOTELS;
+  payload: any;
+}
+export type globeDataActionType =
+  | SetGlobeDataI
+  | SetSelectedLocation
+  | SetHotels;

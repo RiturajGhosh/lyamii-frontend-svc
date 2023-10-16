@@ -6,7 +6,14 @@
 @import "bootstrap/scss/_utilities";
 @import "_variables";
 // @import "../libraries/tempusdomius-bootstrap/src/sass/tempusdomius-bootstrap-build.scss";
-
+html {
+  --font-size-h1: 18px;
+  --font-size-h2: 18px;
+  --font-size-h3: 16px;
+  --font-size-h4: 16px;
+  --font-size-h5: 14px;
+  --font-size-h6: 14px;
+}
 $grey-50: #797b86;
 
 $chart-colors: (
@@ -36,6 +43,30 @@ $chart-colors: (
   "24": #6ebc46,
   "25": #6ebc46,
 );
+.purple {
+  color: var(--imp-text-color) !important;
+}
+.lightGreen {
+  color: var(--chakra-colors-button1) !important;
+}
+.green {
+  color: var(--imp-text-green-color) !important;
+}
+.orange {
+  color: var(--imp-text-orange-color) !important;
+}
+.grey {
+  color: var(--imp-text-grey-color) !important;
+}
+.secondary {
+  color: var(--chakra-colors-textSecondary) !important;
+}
+.brown {
+  color: rgb(149 128 81) !important;
+}
+.darkBlue {
+  color: #327b9b !important;
+}
 .bold {
   font-weight: 700 !important;
 }
@@ -55,6 +86,69 @@ $custom-spacers: 10px;
 }
 .float-right {
   float: right;
+}
+
+@media (min-width: var(--screen-sm-min)) {
+  .h1-sm {
+    font-size: var(--font-size-h1);
+  }
+  .h2-sm {
+    font-size: var(--font-size-h2);
+  }
+  .h3-sm {
+    font-size: var(--font-size-h3);
+  }
+  .h4-sm {
+    font-size: var(--font-size-h4);
+  }
+  .h5-sm {
+    font-size: var(--font-size-h5);
+  }
+  .h6-sm {
+    font-size: var(--font-size-h6);
+  }
+}
+
+@media (min-width: var(--screen-md-min)) {
+  .h1-md {
+    font-size: var(--font-size-h1);
+  }
+  .h2-md {
+    font-size: var(--font-size-h2);
+  }
+  .h3-md {
+    font-size: var(--font-size-h3);
+  }
+  .h4-md {
+    font-size: var(--font-size-h4);
+  }
+  .h5-md {
+    font-size: var(--font-size-h5);
+  }
+  .h6-md {
+    font-size: var(--font-size-h6);
+  }
+}
+
+@media (min-width: var(--screen-lg-min)) {
+  .h1-lg {
+    font-size: var(--font-size-h1);
+  }
+  .h2-lg {
+    font-size: var(--font-size-h2);
+  }
+  .h3-lg {
+    font-size: var(--font-size-h3);
+  }
+  .h4-lg {
+    font-size: var(--font-size-h4);
+  }
+  .h5-lg {
+    font-size: var(--font-size-h5);
+  }
+  .h6-lg {
+    font-size: var(--font-size-h6);
+  }
 }
 .display-1 {
   font-size: 3.4375rem;
@@ -96,11 +190,48 @@ $custom-spacers: 10px;
   font-size: 12px;
   line-height: 1.42857;
 }
+.sticky {
+  background-color: #05264973 !important;
+  transition: all 0.3s ease-out 0s !important;
+  box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.171) !important;
+  backdrop-filter: blur(15px) !important;
+}
+@keyframes wave-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  } /* The following five values can be played with to make the waving more or less extreme */
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  } /* Reset for the last half to pause */
+  100% {
+    transform: rotate(0deg);
+  }
+}
 .card {
   border: 0px !important;
   box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.171) !important;
 }
-
+.bg-blue-pink {
+  background-image: linear-gradient(to top right, #fed8f7, #c4f1fe);
+}
+.bg-blue-white {
+  background-image: linear-gradient(to top, #f6f7f8, #f4e9d8);
+}
 .title {
   font-size: 57px !important;
   @media only screen and (min-width: 768px) and (max-width: 1200px) {
@@ -127,11 +258,51 @@ $custom-spacers: 10px;
   line-height: 1.42857;
   border-radius: 50% !important;
 }
+.pl-0 {
+  padding-left: 0px !important;
+}
+.pl-1 {
+  padding-left: 4px !important;
+}
+.pl-2 {
+  padding-left: 8px !important;
+}
+.pl-3 {
+  padding-left: 16px !important;
+}
+.pl-4 {
+  padding-left: 24px !important;
+}
+.pl-5 {
+  padding-left: 48px !important;
+}
+.pr-0 {
+  padding-right: 0px !important;
+}
+.pr-1 {
+  padding-right: 4px !important;
+}
+.pr-2 {
+  padding-right: 8px !important;
+}
+.pr-3 {
+  padding-right: 16px !important;
+}
+.pr-4 {
+  padding-right: 24px !important;
+}
+.pr-5 {
+  padding-right: 48px !important;
+}
 .p-7 {
   padding: 0.4375rem;
 }
 .p-8 {
   padding: 0.5rem;
+}
+.py-8 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 .p-9 {
   padding: 0.565rem;
@@ -221,6 +392,30 @@ $custom-spacers: 10px;
 .w-90 {
   width: 90% !important;
 }
+.mw-10 {
+  max-width: 10% !important;
+}
+.mw-15 {
+  max-width: 15% !important;
+}
+.mw-20 {
+  max-width: 20% !important;
+}
+.mw-30 {
+  max-width: 30% !important;
+}
+.mw-40 {
+  max-width: 40% !important;
+}
+.mw-50 {
+  max-width: 50% !important;
+}
+.mw-60 {
+  max-width: 60% !important;
+}
+.mw-90 {
+  max-width: 90% !important;
+}
 .h-10 {
   height: 10% !important;
 }
@@ -233,28 +428,66 @@ $custom-spacers: 10px;
 .h-90 {
   height: 90% !important;
 }
-h1 {
-  font-size: 78px;
+h1,
+.h1 {
+  font-size: 78px !important;
   @media only screen and (min-width: 500px) and (max-width: 767px) {
-    font-size: 58px;
+    font-size: 58px !important;
   }
   @media only screen and (min-width: 400px) and (max-width: 500px) {
-    font-size: 48px;
+    font-size: 48px !important;
   }
   @media only screen and (max-width: 400px) {
-    font-size: 38px;
+    font-size: 38px !important;
   }
 }
-p {
-  font-size: 24px;
+p,
+.p {
+  font-size: 24px !important;
   @media only screen and (min-width: 500px) and (max-width: 767px) {
-    font-size: 24px;
+    font-size: 24px !important;
   }
   @media only screen and (min-width: 400px) and (max-width: 500px) {
-    font-size: 20px;
+    font-size: 20px !important;
   }
   @media only screen and (max-width: 400px) {
-    font-size: 16px;
+    font-size: 16px !important;
+  }
+}
+.row {
+  flex-wrap: wrap;
+  margin-top: 0 !important;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.small {
+  font-size: 16px !important;
+  @media only screen and (min-width: 400px) and (max-width: 767px) {
+    font-size: 14px !important;
+  }
+  @media only screen and (max-width: 400px) {
+    font-size: 12px !important;
+  }
+}
+.heading {
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+  font-size: 40px !important;
+  @media only screen and (min-width: 768px) and (max-width: 1200px) {
+    font-size: 40px !important;
+  }
+  @media only screen and (min-width: 500px) and (max-width: 767px) {
+    font-size: 32px !important;
+  }
+  @media only screen and (min-width: 400px) and (max-width: 500px) {
+    font-size: 24px !important;
+  }
+  @media only screen and (max-width: 400px) {
+    font-size: 20px !important;
   }
 }
 button {
@@ -273,6 +506,17 @@ button {
 .svg__image {
   clip-path: url(#clip-path);
 }
+.footer {
+  background-image: linear-gradient(to top, #4d668ed8, #f6f7f8);
+  bottom: 0 !important;
+}
+.text-shadow-dark {
+  text-shadow: 1px 1px #000;
+}
+.text-shadow-light {
+  text-shadow: 1px 1px #ffffff;
+}
+
 // Change Bootstrap utility classes here
 
 $utilities: map-merge(
@@ -357,3 +601,37 @@ $utilities: map-merge(
     ),
   )
 );
+
+.product-list-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.product-list {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  white-space: nowrap;
+  padding: 16px;
+  margin: 8px;-webkit-overflow-scrolling: touch;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.product-card {
+  display: inline-block;
+  width: 400px;
+  margin: 0 10px;
+  border: 1px solid #ddd;
+  padding: 16px;
+}
+
+.product-card h3 {
+  margin: 0;
+}
+
+.product-card img {
+  max-width: 100%; 
+  min-height: 315px !important;
+}

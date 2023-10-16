@@ -1,12 +1,14 @@
 import {
   SET_GLOBE_DATA,
+  SET_HOTELS,
   SET_SELECTED_LOCATION,
   globeDataActionType,
 } from "../actions/types/globeDataActionType";
 
-export interface globeDataState{
-  globeData: any,
-  selectedLocation: any
+export interface globeDataState {
+  hotels: any;
+  globeData: any;
+  selectedLocation: any;
 }
 const initialState: globeDataState = {
   globeData: [
@@ -53,7 +55,14 @@ const initialState: globeDataState = {
       value: 100,
     },
   ],
-  selectedLocation: {},
+  selectedLocation: {
+    id: "",
+    city: "",
+    color: "",
+    coordinates: [],
+    value: 0,
+  },
+  hotels: [],
 };
 
 export default function globeDataReducer(
@@ -70,6 +79,11 @@ export default function globeDataReducer(
       return {
         ...state,
         selectedLocation: { ...action.payload },
+      };
+    case SET_HOTELS:
+      return {
+        ...state,
+        hotels: { ...action.payload },
       };
     default:
       return state;

@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import style from "./Header.module.scss";
 import { Container, Nav, Navbar } from "react-bootstrap";
 
@@ -11,11 +11,14 @@ const Header: FC = () => {
   const [headers, setHeaders] = useState<HeaderList[]>([]);
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
-
+  const location = useLocation();
   window.addEventListener("scroll", scrollHandler);
 
   function scrollHandler() {
-    if (window.scrollY >= 20) {
+    if (
+      (window.scrollY >= 20 && location.pathname.includes("/")) ||
+      (location.pathname.length > 1 && window.screenY >= 20)
+    ) {
       updateNavbar(true);
     } else {
       updateNavbar(false);
@@ -51,7 +54,12 @@ const Header: FC = () => {
       expanded={expand}
       fixed="top"
       expand="md"
-      className={navColour ? "sticky" : "navbar"}
+      className={
+        (location.pathname.length === 1 && navColour ) ||
+        location.pathname.length > 1
+          ? "sticky"
+          : "navbar"
+      }
     >
       <Container className="d-flex container align-items-center d-print-block justify-content-between">
         <Navbar.Brand href="/" className="align-self-center">

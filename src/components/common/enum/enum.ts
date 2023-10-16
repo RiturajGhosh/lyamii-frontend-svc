@@ -7,31 +7,34 @@ export enum axiosType {
   delete = "delete",
 }
 
-export const mapDescription =
+export const exploreDescription =
   "Explore stunning destinations, from exotic tropical paradises to historic landmarks and vibrant cityscapes with Lyamii.";
+
+export const mapDescription =
+  "It is an invitation to expand the horizons of your existence and witness the remarkable resilience of human spirit. Through travel, we become citizens of the FaWordpressSimple, the best version of ourselves.";
 
 export const reasons = [
   {
     title: "Global Reach",
-    img: require("../../../Assets/globe.png"),
+    img: require("../../../Assets/blueglobe.png"),
     description:
       "Our global accommodations cover all continents, from vibrant cities to serene islands. Find comfort and convenience wherever you wander.",
   },
   {
     title: "Complete Tours",
-    img: require("../../../Assets/tick.png"),
+    img: require("../../../Assets/tick1.png"),
     description:
       "Travel insurance? Check. Local SIM card? Sorted. Visa requirements? We've got you covered. Choose your destination, pack your bags, and leave the rest to us.",
   },
   {
     title: "Secure & Convenient",
-    img: require("../../../Assets/fingerprint.png"),
+    img: require("../../../Assets/fingerprint1.png"),
     description:
       "Experience secure and seamless online transactions. Enjoy convenience and peace of mind. Embrace effortless financial interactions from home. No more headaches.",
   },
   {
     title: "Has something for Everyone",
-    img: require("../../../Assets/gift.png"),
+    img: require("../../../Assets/giftbox.png"),
     description:
       "Unforgettable moments guaranteed. Handpicked attractions tailored to each destinations essence. VIP experiences, breathtaking sights, thrilling adventures -all included for an exciting journey.",
   },
@@ -68,4 +71,42 @@ export const supports: HeaderList[] = [
   { name: "My Profile", path: "/profile" },
   { name: "Helpdesk", path: "/helpdesk" },
   { name: "Feedback", path: "/feedback" },
+];
+
+export const journeyOptions = [
+  {
+    name: "ROYAL BHARAT EDITION",
+    path: "https://cdn.pixabay.com/photo/2018/08/29/09/27/india-3639503_1280.jpg",
+  },
+  {
+    name: "BACKPACKERS EDITION",
+    path: "https://cdn.pixabay.com/photo/2016/11/22/19/25/adventure-1850178_1280.jpg",
+  },
+  {
+    name: "COMBOS",
+    path: "https://cdn.pixabay.com/photo/2015/04/28/17/04/musician-743973_1280.jpg",
+  },
+];
+
+export const internationalTours = [
+  {
+    from: "IND",
+    to: "ITALY",
+    path: "https://cdn.pixabay.com/photo/2016/04/15/13/30/fassa-valley-1331004_1280.jpg",
+  },
+  {
+    from: "IND",
+    to: "FRANCE",
+    path: "https://cdn.pixabay.com/photo/2014/11/13/23/34/palace-530055_1280.jpg",
+  },
+  {
+    from: "IND",
+    to: "GERMANY",
+    path: "https://cdn.pixabay.com/photo/2015/03/31/23/08/neuschwanstein-701732_1280.jpg",
+  },
+  {
+    from: "IND",
+    to: "SWITZERLAND",
+    path: "https://cdn.pixabay.com/photo/2016/08/22/10/20/city-1611657_1280.jpg",
+  },
 ];
