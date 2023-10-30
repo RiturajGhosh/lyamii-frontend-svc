@@ -1,10 +1,9 @@
 import React, { FC } from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import walkingFinger from "../../../Assets/boat.jpg";
+import { Col, Container, Image, Row } from "react-bootstrap";
 import style from "./Destinations.module.scss";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { useHistory } from "react-router-dom";
-import climbing from "../../../Assets/mountainClimbing.png";
+import destinationMap from "../../../Assets/map.jpg";
 
 const Destinations: FC = () => {
   const history = useHistory();
@@ -43,11 +42,10 @@ const Destinations: FC = () => {
               </p>
             </Col>
 
-            <Col md={3} className="align-self-center">
-              <img
-                src={walkingFinger}
-                className={`${style.img}`}
-                alt="avatar"
+            <Col md={5} className="align-self-center">
+              <Image
+                className={`w-100 p-0 rounded-3`}
+                src={destinationMap}
               />
             </Col>
           </Row>

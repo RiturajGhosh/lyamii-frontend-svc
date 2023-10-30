@@ -1,4 +1,4 @@
-export const hotels = [
+export const tours = [
   {
     displayName: {
       text: "Treebo Trend Morjim Banyan Resort Morjim",

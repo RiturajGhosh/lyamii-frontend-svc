@@ -55,7 +55,7 @@ const Header: FC = () => {
       fixed="top"
       expand="md"
       className={
-        (location.pathname.length === 1 && navColour ) ||
+        (location.pathname.length === 1 && navColour) ||
         location.pathname.length > 1
           ? "sticky"
           : "navbar"
@@ -64,7 +64,10 @@ const Header: FC = () => {
       <Container className="d-flex container align-items-center d-print-block justify-content-between">
         <Navbar.Brand href="/" className="align-self-center">
           <div className={`d-flex align-items-center ${style.currentPage}`}>
-            <h3>Lyamii.com</h3>
+            <h3>
+              Lyam<span className={style.dot}>ii</span>
+              <span>.</span>com
+            </h3>
           </div>
         </Navbar.Brand>
         <Navbar.Toggle

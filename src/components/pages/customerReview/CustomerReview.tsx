@@ -16,8 +16,8 @@ const CustomerReviews: FC = () => {
         <Row className="d-flex justify-content-center">
           <div className="card-body w-25">
             {
-              <p className="card-text heading text-orange fw-bold text-shadow-dark ft-32">
-                Clients <span style={{ color: "#297568" }}>Testimonials</span>{" "}
+              <p className="card-text heading text-color-brown-blue fw-bold ft-32">
+                Clients Testimonials
               </p>
             }
           </div>
@@ -26,7 +26,7 @@ const CustomerReviews: FC = () => {
               <Col md={6} lg={4} className={'mt-4'} key={idx}>
                 <Card className={`${style.reviewCard}`}>
                   <Card.Body>
-                    <Row className="d-flex justify-content-between">
+                    <Row className="d-flex m-4 justify-content-between">
                       <img
                         className="mb-3"
                         style={{ width: "180px", height: "180px"}}

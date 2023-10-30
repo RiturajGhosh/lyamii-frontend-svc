@@ -43,6 +43,7 @@ const BorderCard: FC<BorderCardType> = ({
             {title}
           </h1>
         )}
+        {children}
         {onClick && <button
           className={`btn btn-circle d-flex justify-items-center ${style.btmRght} ${buttonColor} p-4 ${style.navigationButton}`}
           onClick={()=>onClick && onClick()}
@@ -53,7 +54,6 @@ const BorderCard: FC<BorderCardType> = ({
         </button>}
         {text && <p className={`${descriptionStyling} card-text`}>{text}</p>}
       </div>
-      {children}
     </div>
   );
 };

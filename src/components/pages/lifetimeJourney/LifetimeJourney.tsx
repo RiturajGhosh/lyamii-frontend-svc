@@ -40,9 +40,9 @@ const LifetimeJourney: FC = () => {
                 className={` ${
                   screenSize.screenSize < 786 ? "mx-1" : "my-2 mx-1"
                 } h-100`}
-                onClick={() => history.push("/backpackers")}
+                onClick={() => history.push("/bharat-tours")}
               >
-                <Card.Body className="p-0">
+                <Card.Body className="p-0 d-contents">
                   <Card.Img
                     className={`p-0 m-0 justify-content-center`}
                     style={{
@@ -51,11 +51,10 @@ const LifetimeJourney: FC = () => {
                     }}
                     src={journeyOptions[0].path}
                   />
-                  <Card.Body>
-                    <Card.Title className="bold p fs-6 fw-bold">
+                  <Card.Body className="align-items-center justify-content-center d-flex">
+                    <h1 className="bold p fs-6 fw-bold">
                       {journeyOptions[0].name}
-                    </Card.Title>
-                    <Card.Text>{}</Card.Text>
+                    </h1>
                   </Card.Body>
                 </Card.Body>
               </Card>
@@ -78,7 +77,7 @@ const LifetimeJourney: FC = () => {
                   } h-100`}
                   onClick={() => history.push("/backpackers")}
                 >
-                  <Card.Body className="p-0">
+                  <Card.Body className="p-0 d-contents">
                     <Card.Img
                       className={`p-0 m-0 justify-content-center`}
                       style={{
@@ -87,11 +86,10 @@ const LifetimeJourney: FC = () => {
                       }}
                       src={journeyOptions[1].path}
                     />
-                    <Card.Body>
-                      <Card.Title className="bold fs-6 p fw-bold">
+                    <Card.Body className="align-items-center justify-content-center d-flex">
+                      <h1 className="bold p fs-6 fw-bold">
                         {journeyOptions[1].name}
-                      </Card.Title>
-                      <Card.Text>{}</Card.Text>
+                      </h1>
                     </Card.Body>
                   </Card.Body>
                 </Card>
@@ -102,9 +100,9 @@ const LifetimeJourney: FC = () => {
                   className={` ${
                     screenSize.screenSize < 786 ? "mx-1 mt-2" : "my-2 mx-1"
                   } h-100`}
-                  onClick={() => history.push("/backpackers")}
+                  onClick={() => history.push("/combo")}
                 >
-                  <Card.Body className="p-0">
+                  <Card.Body className="p-0 d-contents">
                     <Card.Img
                       className={`p-0 m-0 justify-content-center`}
                       style={{
@@ -113,11 +111,10 @@ const LifetimeJourney: FC = () => {
                       }}
                       src={journeyOptions[2].path}
                     />
-                    <Card.Body>
-                      <Card.Title className="bold p fs-6 fw-bold">
+                    <Card.Body className="align-items-center justify-content-center d-flex">
+                      <h1 className="bold p fs-6 fw-bold">
                         {journeyOptions[2].name}
-                      </Card.Title>
-                      <Card.Text>{}</Card.Text>
+                      </h1>
                     </Card.Body>
                   </Card.Body>
                 </Card>

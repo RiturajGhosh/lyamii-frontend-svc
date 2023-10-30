@@ -35,7 +35,7 @@ const FormInput: FC<FormInputType> = ({
     >
       {floatingLabel && floatingLabel.length > 0 && (
         <span
-          className={`input-group-text ${labelStyling}`}
+          className={`input-group-text fit-content p-1 ${labelStyling}`}
           id="addon-wrapping"
         >
           {floatingLabel}

@@ -36,26 +36,26 @@
   mask-position: top left;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
-  -webkit-mask-size: 200px 150px;
-  mask-size: 200px 150px;
+  -webkit-mask-size: 130px 150px;
+  mask-size: 130px 150px;
   @media only screen and (max-width: 1200px) {
     height: 200px;
-    -webkit-mask-size: 200px 150px;
-    mask-size: 200px 150px;
+    -webkit-mask-size: 130px 150px;
+    mask-size: 130px 150px;
   }
   @media only screen and (min-width: 500px) and (max-width: 767px) {
     height: 150px;
-    -webkit-mask-size: 150px 130px;
+    -webkit-mask-size: 100px 120px;
     mask-size: 150px 130px;
   }
   @media only screen and (min-width: 400px) and (max-width: 500px) {
     height: 430px;
-    -webkit-mask-size: 120px 150px;
-    mask-size: 120px 150px;
+    -webkit-mask-size: 90px 110px;
+    mask-size: 90px 110px;
   }
   @media only screen and (max-width: 400px) {
     height: 360px;
-    -webkit-mask-size: 120px 150px;
-    mask-size: 120px 150px;
+    -webkit-mask-size: 80px 90px;
+    mask-size: 80px 90px;
   }
 }

@@ -15,8 +15,8 @@ const WhyLyamii: FC = () => {
       <Container>
         <Row>
           <Col md={12} lg={3} className="card-body m-auto">
-            {<p className="card-text text-secondary fw-bold ft-32 text-shadow-light">Why</p>}
-            {<h1 className="card-title text-warning fw-bold title text-shadow-dark">Lyamii ?</h1>}
+            {<p className="card-text text-secondary fw-bold title text-shadow-light">Why</p>}
+            {<h1 className="card-title text-warning fw-bold heading text-shadow-dark">Lyamii ?</h1>}
           </Col>
           <Col md={12} lg={9} className="justify-content-between p-0 d-flex">
             <Row className="w-100 m-0 d-flex justify-content-center">

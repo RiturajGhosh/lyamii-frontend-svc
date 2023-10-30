@@ -13,7 +13,7 @@ const CardWithShadow: FC<CardWithShadowType> = ({
 }) => {
   return (
     <Col md={col} className={classname}>
-      <Card>
+      <Card className="p-0">
         <Card.Body>{children}</Card.Body>
       </Card>
     </Col>

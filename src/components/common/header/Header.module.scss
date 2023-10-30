@@ -1,4 +1,4 @@
-@import '../../../styles/variables';
+@import "../../../styles/variables";
 
 .header {
   color: $white;
@@ -25,4 +25,9 @@
   color: $header-links;
   margin-right: 1.6875rem;
   text-decoration: none;
+}
+.dot {
+  background: -webkit-linear-gradient(#12856e, #eee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

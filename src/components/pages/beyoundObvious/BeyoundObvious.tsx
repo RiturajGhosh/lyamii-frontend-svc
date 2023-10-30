@@ -1,10 +1,6 @@
 import React, { FC, useState } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
-import {
-  internationalTours,
-  journeyOptions,
-  reasons,
-} from "../../common/enum/enum";
+import { internationalTours } from "../../common/enum/enum";
 import style from "./BeyoundObvious.module.scss";
 import { FaPlane } from "react-icons/fa6";
 import { useSelector } from "react-redux";
@@ -37,8 +33,8 @@ const BeyoundObvious: FC = () => {
       <Row>
         <Col md={12} lg={3} className="card-body m-auto">
           {
-            <h1 className="heading card-text darkBlue text-shadow-dark fw-bold">
-              Beyound <span style={{ color: "#297568" }}>Obvious</span>
+            <h1 className="heading card-text text-color-yellow-blue fw-bold">
+              Beyound Obvious
             </h1>
           }
         </Col>
@@ -50,7 +46,7 @@ const BeyoundObvious: FC = () => {
           >
             <Row className="w-100 justify-content-center scrolling-wrapper-flexbox">
               {internationalTours.map((option, idx) => (
-                <Col key={idx} md={6} lg={6}>
+                <Col key={idx} md={6} lg={6} className="py-2">
                   <Card className={`my-2 mx-1`}>
                     <Card.Body className="p-0">
                       <Card.Img
@@ -86,7 +82,7 @@ const BeyoundObvious: FC = () => {
           <Row>
             <div className="product-list" onScroll={(e) => handleScroll(e)}>
               {internationalTours.map((option, idx) => (
-                <Col onClick = {()=>{}} key={idx} sm={12} xs={12}>
+                <Col onClick={() => {}} key={idx} sm={12} xs={12}>
                   <Card className={`my-2 mx-1`}>
                     <Card.Body className="p-0">
                       <Card.Img

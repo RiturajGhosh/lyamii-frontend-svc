@@ -1,0 +1,12 @@
+.tourSection {
+  height: fit-content;
+  background: var(--image-gradient), url(../../../Assets/backpacker.png);
+  background-repeat: no-repeat;
+  padding-top: 30px !important;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}

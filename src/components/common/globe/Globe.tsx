@@ -1,4 +1,4 @@
-import React, { FC, PointerEvent, useState } from "react";
+import React, { FC, useState } from "react";
 import ReactGlobe, { Coordinates, Marker } from "react-globe";
 import defaultMarkers from "./markers";
 import "tippy.js/dist/tippy.css";
@@ -10,19 +10,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
 
 function markerTooltipRenderer(marker: Marker) {
-  const tooltipContent = document.createElement("div");
-  tooltipContent.innerHTML = `
-    <img src="${marker.image}" className={'w-100'}/><br/>
-    ${marker.city}
-  `;
+  const tooltipContent = 
+  // document.createElement("div");
+  // tooltipContent.innerHTML = `
+  //   <img src="${marker.image}" className={'w-100'}/><br/>
+  'marker.city';
   return tooltipContent;
 }
 
 const options = {
-  markerTooltipRenderer: (marker: any) => `
-  <img src=${marker.image} className={'w-100'}/><br/>
-  ${marker.city}
-`,
+  markerTooltipRenderer: markerTooltipRenderer,
 };
 
 // type GlobeProps = {
@@ -72,7 +69,7 @@ const Globe: FC = () => {
         width={!screenSize.isMobile ? "350px" : "300px"}
         onDefocus={onDefocus}
         globeBackgroundTexture={null}
-        // onClickMarker={onClickMarker}
+        onClickMarker={onClickMarker}
       />
     </div>
   );

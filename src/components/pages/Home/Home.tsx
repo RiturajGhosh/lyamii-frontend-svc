@@ -22,9 +22,8 @@ const Home: FC = () => {
         id="home"
       >
         <Container className="home-content d-grid justify-content-center">
-          <h1 className="text-center text-shadow-light">Each Day </h1>
-          <h1 className="text-center text-shadow-light">Counts</h1>
-          <p className="text-center text-shadow-light">
+          <h1 className="text-center text-shadow-light">Each Day Counts</h1>
+          <p className="text-center">
             Explore stunning destinations, from exotic tropical paradises to
             historic landmarks and vibrant cityscapes with Lyamii. Get insider
             insights into must see attractions, local cuisine, cultural
