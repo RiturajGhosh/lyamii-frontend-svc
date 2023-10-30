@@ -225,8 +225,8 @@ const ExploreDestination: FC = () => {
         </Container>
       </Container>
 
-      <Container className={"p-0"}>
-        <RecommandedTours />
+      <Container className={"p-0 px-2"}>
+        <RecommandedTours/>
         <Row className="p-0 m-0 fit-content pb-5 justify-content-between d-flex">
           <Col md={6} sm={6} xs={6} className="p-0 m-0">
             <Row className="d-flex">

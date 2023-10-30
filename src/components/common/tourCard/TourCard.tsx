@@ -53,7 +53,7 @@ const TourCard: FC<TourCardType> = ({
       >
         <Col md={5} lg={5} sm={5} className="p-0 m-0">
           <Col>
-            <Col className="text-white position-relative p-0 m-0">
+            <Col className="text-white position-relative p-0 m-0 pb-2">
               {propertyData.photos.relativeUrl && (
                 <Ratio aspectRatio={imageRatio}>
                   <>
@@ -82,70 +82,150 @@ const TourCard: FC<TourCardType> = ({
                 </Ratio>
               )}
             </Col>
+            {screenSize.screenSize < 576 && (
+              <Col className="position-relative p-0">
+                <Card.Body className="p-0 px-2 m-0">
+                  <Card.Title className="small text-wrap">
+                    {tourname.text && tourname.text}
+                  </Card.Title>
+                  <Card.Text className="small min-vh-25">
+                    {"overview"}
+                  </Card.Text>
+                </Card.Body>
+              </Col>
+            )}
           </Col>
-          <Row className={`m-1 py-8 p-0 d-block`}>
-            <Row
-              md={12}
-              lg={12}
-              sm={12}
-              className="position-relative justify-content-between p-0 text-wrap border-1 w-100 border  bg-transparent border-secondary text-white"
-            >
-              <BsHouseCheck
-                fill={"grey"}
-                className="w-15 h-15 p-0 justify-content-start d-flex"
-              />
-              <LuParkingCircle
-                fill={"grey"}
-                className="w-15 h-15 p-0 justify-content-start d-flex"
-              />
+          {screenSize.screenSize > 576 && (
+            <Row className={`m-1 py-8 p-0 d-block`}>
+              <Row
+                md={12}
+                lg={12}
+                sm={12}
+                className="position-relative justify-content-between p-0 text-wrap border-1 w-100 border  bg-transparent border-secondary text-white"
+              >
+                <BsHouseCheck
+                  fill={"grey"}
+                  className="w-15 h-15 p-0 justify-content-start d-flex"
+                />
+                <LuParkingCircle
+                  fill={"grey"}
+                  className="w-15 h-15 p-0 justify-content-start d-flex"
+                />
 
-              <Col className="w-15 text-white p-0">
-                <PrivateBathroom height="20px" width="24px" />
-              </Col>
-            </Row>
-            <Row
-              md={12}
-              lg={12}
-              sm={12}
-              className="position-relative justify-content-between p-0 mt-1 text-wrap border-1 w-100 border  bg-transparent border-secondary text-white"
-            >
-              <BsHouseCheck
-                fill={"grey"}
-                className="w-15 h-15 p-0 justify-content-start d-flex"
-              />
-              <LuParkingCircle
-                fill={"grey"}
-                className="w-15 h-15 p-0 justify-content-start d-flex"
-              />
+                <Col className="w-15 text-white p-0">
+                  <PrivateBathroom height="20px" width="24px" />
+                </Col>
+              </Row>
+              <Row
+                md={12}
+                lg={12}
+                sm={12}
+                className="position-relative justify-content-between p-0 mt-1 text-wrap border-1 w-100 border  bg-transparent border-secondary text-white"
+              >
+                <BsHouseCheck
+                  fill={"grey"}
+                  className="w-15 h-15 p-0 justify-content-start d-flex"
+                />
+                <LuParkingCircle
+                  fill={"grey"}
+                  className="w-15 h-15 p-0 justify-content-start d-flex"
+                />
 
-              <Col className="w-15 text-white p-0">
-                <PrivateBathroom height="20px" width="24px" />
-              </Col>
+                <Col className="w-15 text-white p-0">
+                  <PrivateBathroom height="20px" width="24px" />
+                </Col>
+              </Row>
             </Row>
+          )}
+        </Col>
+
+        <Col
+          md={7}
+          lg={7}
+          sm={7}
+          xs={7}
+          sx={12}
+          className={`col-12 py-8 p-0 m-0`}
+        >
+          <Row className="p-0 m-0">
+            {screenSize.screenSize < 576 && (
+              <Col className={`col-6 py-8 p-0 m-0`}>
+                <Row className={`m-1 py-8 p-0 d-block m-0`}>
+                  <Row
+                    md={12}
+                    lg={12}
+                    sm={12}
+                    className="position-relative justify-content-between p-0 text-wrap border-1 w-100 border  bg-transparent border-secondary text-white"
+                  >
+                    <BsHouseCheck
+                      fill={"grey"}
+                      className="w-15 h-15 p-0 justify-content-start d-flex"
+                    />
+                    <LuParkingCircle
+                      fill={"grey"}
+                      className="w-15 h-15 p-0 justify-content-start d-flex"
+                    />
+
+                    <Col className="w-15 text-white p-0">
+                      <PrivateBathroom height="20px" width="24px" />
+                    </Col>
+                  </Row>
+                  <Row
+                    md={12}
+                    lg={12}
+                    sm={12}
+                    className="position-relative justify-content-between p-0 mt-1 text-wrap border-1 w-100 border  bg-transparent border-secondary text-white"
+                  >
+                    <BsHouseCheck
+                      fill={"grey"}
+                      className="w-15 h-15 p-0 justify-content-start d-flex"
+                    />
+                    <LuParkingCircle
+                      fill={"grey"}
+                      className="w-15 h-15 p-0 justify-content-start d-flex"
+                    />
+
+                    <Col className="w-15 text-white p-0">
+                      <PrivateBathroom height="20px" width="24px" />
+                    </Col>
+                  </Row>
+                </Row>
+              </Col>
+            )}
+            <Col
+              md={12}
+              sm={12}
+              lg={12}
+              className="col-6 p-0 m-0"
+            >
+              {screenSize.screenSize > 576 && (
+                <Col className="position-relative p-0">
+                  <Card.Body className="p-0 px-2 m-0">
+                    <Card.Title className="small text-wrap">
+                      {tourname.text && tourname.text}
+                    </Card.Title>
+                    <Card.Text className="small min-vh-25">
+                      {"overview"}
+                    </Card.Text>
+                  </Card.Body>
+                </Col>
+              )}
+              <Col className="position-relative p-0 border-1 text-center justify-content-end text-white">
+                <Button
+                  className="align-middle justify-self-center w-100 mb-1 btn-secondary"
+                  style={{ background: "Brown" }}
+                  onClick={() => {}}
+                >
+                  {"STAYS"}
+                </Button>
+              </Col>
+            </Col>
           </Row>
         </Col>
-        <Col md={7} lg={7} sm={7} className="p-0 m-0">
-          <Col className="position-relative p-0">
-            <Card.Body className="p-0 px-2 m-0">
-              <Card.Title className="small text-wrap">
-                {tourname.text && tourname.text}
-              </Card.Title>
-              <Card.Text className="small min-vh-25">{"overview"}</Card.Text>
-            </Card.Body>
-          </Col>
-          <Col className="position-relative p-0 border-1 text-center justify-content-end text-white">
-            <Button
-              className="align-middle justify-self-center w-100 mb-1 btn-secondary"
-              style={{ background: "Brown" }}
-              onClick={() => {}}
-            >
-              {"STAYS"}
-            </Button>
-          </Col>
-        </Col>
       </Row>
+
       <Row className="position-relative p-0 m-0">
-        <Col md={3} sm={3} lg={3} className="align-self-center">
+        <Col className="col-3 align-self-center">
           <Col
             className={`${titleStyling} fw-bold align-items-center text-nowrap text-secondary`}
           >
@@ -174,9 +254,9 @@ const TourCard: FC<TourCardType> = ({
             </Row>
           </Col>
         </Col>
-        <Col md={4} sm={4} lg={4} className="align-self-center">
+        <Col className="col-4 px-1 align-self-center">
           <Col
-            className={`${titleStyling} fw-bold align-self-center text-nowrap text-secondary`}
+            className={`${titleStyling} fw-bold justify-content-center d-flex align-self-center text-nowrap text-secondary`}
           >
             <button
               className={`d-flex align-self-center justify-items-center text-white ${style.btmRght} px-4`}
@@ -187,7 +267,7 @@ const TourCard: FC<TourCardType> = ({
             </button>
           </Col>
         </Col>
-        <Col md={5} sm={5} lg={5} className="p-0">
+        <Col className="col-5 p-0">
           <Col className="justify-content-end d-flex flex-column p-0">
             <Button
               className="align-middle justify-self-center w-100 btn-secondary mb-1"
