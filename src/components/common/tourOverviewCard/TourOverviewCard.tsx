@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import style from "./TourOverviewCard.module.scss";
 import { FaPlane } from "react-icons/fa6";
+import { useHistory } from "react-router-dom";
 
 export type TourOverviewCardType = {
   title?: string;
@@ -15,6 +16,7 @@ const TourOverviewCard: FC<TourOverviewCardType> = ({
   titleStyling,
   children,
 }) => {
+  const history = useHistory();
   return (
     <section>
       {title && (
@@ -69,11 +71,15 @@ const TourOverviewCard: FC<TourOverviewCardType> = ({
                           {"D"}
                         </Card.Text>
                         <Card.Text className="bold p p-2 text-white position-absolute text-shadow-dark fw-bold top-0 end-0">
-                          {option.priceInUSD}
-                          <br></br>
-                          {option.priceInEUR}
-                          <br></br>
-                          {option.priceInAED}
+                          <select
+                            className="form-select"
+                            aria-label="Default select example"
+                          >
+                            <option selected>{option.priceInUSD}</option>
+                            <option value="1">{option.priceInUSD}</option>
+                            <option value="2">{option.priceInEUR}</option>
+                            <option value="3">{option.priceInAED}</option>
+                          </select>
                         </Card.Text>
                         {option.tourType ? (
                           <Card.Text className="bold w-100 justify-content-center p p-2 text-white d-flex flex-nowrap text-shadow-dark position-absolute fw-bold top-50 translate-middle start-50">
@@ -90,7 +96,11 @@ const TourOverviewCard: FC<TourOverviewCardType> = ({
                     </Card.Body>
                     <section className="overflow-auto second">
                       {option.places.map((place: string, idx: number) => (
-                        <div className="timeline" key={idx}>
+                        <div
+                          className="timeline"
+                          key={idx}
+                          onClick={() => history.push("/tour-detail")}
+                        >
                           {idx % 2 === 0 && (
                             <>
                               <div className="timeline-empty"></div>

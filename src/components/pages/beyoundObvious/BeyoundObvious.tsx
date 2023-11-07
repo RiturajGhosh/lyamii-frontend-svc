@@ -5,9 +5,11 @@ import style from "./BeyoundObvious.module.scss";
 import { FaPlane } from "react-icons/fa6";
 import { useSelector } from "react-redux";
 import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
+import { useHistory } from "react-router-dom";
 
 const BeyoundObvious: FC = () => {
   const screenSize = useSelector(selectScreenSize);
+  const history = useHistory();
   const [products, setProducts] = useState(
     Array.from({ length: 10 }, (_, i) => `Product ${i + 1}`)
   ); // Initial set of products
@@ -82,7 +84,12 @@ const BeyoundObvious: FC = () => {
           <Row>
             <div className="product-list" onScroll={(e) => handleScroll(e)}>
               {internationalTours.map((option, idx) => (
-                <Col onClick={() => {}} key={idx} sm={12} xs={12}>
+                <Col
+                  onClick={() => history.push("/tour-detail")}
+                  key={idx}
+                  sm={12}
+                  xs={12}
+                >
                   <Card className={`my-2 mx-1`}>
                     <Card.Body className="p-0">
                       <Card.Img

@@ -1,29 +1,24 @@
 .reasonCard {
-  min-width: 300px !important;
-  min-height: 608px !important;
-  max-height: 608px !important;
+  min-width: 50% !important;
+  min-height: 50% !important;  padding: 2.7rem !important;
   @media only screen and (min-width: 767px) and (max-width: 1200px) {
-    min-height: 708px !important;
-    min-width: 300px !important;
+    padding: 2.7rem !important;
   }
   @media only screen and (min-width: 500px) and (max-width: 767px) {
-    min-height: 0px !important;
-    min-width: 250px !important;
+    padding: 1.7rem !important;
   }
   @media only screen and (min-width: 400px) and (max-width: 500px) {
-    min-height: 0px !important;
-    min-width: 250px !important;
+    padding: 1rem !important;
   }
   @media only screen and (max-width: 400px) {
-    min-height: 0px !important;
-    min-width: 250px !important;
+    padding: 1rem !important;
   }
 }
 .downImage {
   position: relative;
   z-index: 0;
-  -webkit-mask-image: url(../../../Assets/boarding.png);
-  mask-image: url(../../../Assets/boarding.png);
+  -webkit-mask-image: url(../../../Assets/men.png);
+  mask-image: url(../../../Assets/men.png);
   background-color: #337d94;
   background-position: top left;
   background-repeat: no-repeat;
@@ -31,22 +26,22 @@
   margin: 20px auto;
   display: block;
   width: 100%;
-  height: 600px;
+  height: 750px;
   -webkit-mask-position: top left;
   mask-position: top left;
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
-  -webkit-mask-size: 130px 150px;
-  mask-size: 130px 150px;
+  -webkit-mask-size: 430px 650px;
+  mask-size: 430px 650px;
   @media only screen and (max-width: 1200px) {
-    height: 200px;
-    -webkit-mask-size: 130px 150px;
-    mask-size: 130px 150px;
+    height: 650px;
+    -webkit-mask-size: 430px 650px;
+    mask-size: 430px 650px;
   }
   @media only screen and (min-width: 500px) and (max-width: 767px) {
-    height: 150px;
-    -webkit-mask-size: 100px 120px;
-    mask-size: 150px 130px;
+    height: 550px;
+    -webkit-mask-size: 270px 550px;
+    mask-size: 270px 550px;
   }
   @media only screen and (min-width: 400px) and (max-width: 500px) {
     height: 430px;

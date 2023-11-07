@@ -226,58 +226,67 @@ const ExploreDestination: FC = () => {
       </Container>
 
       <Container className={"p-0 px-2"}>
-        <RecommandedTours/>
+        <RecommandedTours />
         <Row className="p-0 m-0 fit-content pb-5 justify-content-between d-flex">
-          <Col md={6} sm={6} xs={6} className="p-0 m-0">
-            <Row className="d-flex">
-              <Card className="img-round w-30 h-30 p-0 m-0">
-                <Card.Img
-                  className={`p-0 m-0 img-round h-100 justify-content-center`}
-                  style={{
-                    // width: "100%",
-                    padding: "0px !important",
-                    margin: "0px !important",
-                  }}
-                  onClick={() => {
-                    setUpdate(false);
-                    handleFilters("season", "summer");
-                  }}
-                  src={require("../../../Assets/summer.jpg")}
-                />
-              </Card>
-              <Card className="img-round w-30 h-30 p-0 m-0 mx-2">
-                <Card.Img
-                  className={`p-0 m-0 img-round h-100 justify-content-center`}
-                  style={{
-                    // width: "100%",
-                    padding: "0px !important",
-                    margin: "0px !important",
-                  }}
-                  onClick={() => {
-                    setUpdate(false);
-                    handleFilters("season", "winter");
-                  }}
-                  src={require("../../../Assets/winter.jpg")}
-                />
-              </Card>
-              <Card className="img-round w-30 h-30 p-0 m-0">
-                <Card.Img
-                  className={`p-0 m-0 img-round h-100 justify-content-center`}
-                  style={{
-                    // width: "100%",
-                    padding: "0px !important",
-                    margin: "0px !important",
-                  }}
-                  onClick={() => {
-                    setUpdate(false);
-                    handleFilters("season", "spring");
-                  }}
-                  src={require("../../../Assets/spring.jpg")}
-                />
-              </Card>
+          <Col md={7} sm={7} xs={7} className="p-0 m-0">
+            <Row className="d-flex gap-2">
+              <Col className="p-0 m-0 w-30">
+                <Card className="img-round w-100 h-100 p-0 m-0">
+                  <Card.Img
+                    className={`p-0 m-0 img-round h-100 justify-content-center`}
+                    style={{
+                      // width: "100%",
+                      padding: "0px !important",
+                      margin: "0px !important",
+                    }}
+                    onClick={() => {
+                      setUpdate(false);
+                      handleFilters("season", "summer");
+                    }}
+                    src={require("../../../Assets/summer.jpg")}
+                  />
+                </Card>
+                <p className="justify-content-center d-flex">{"Summer"}</p>
+              </Col>
+              <Col className="p-0 m-0 w-30">
+                <Card className="img-round w-100 h-100 p-0 m-0">
+                  <Card.Img
+                    className={`p-0 m-0 img-round h-100 justify-content-center`}
+                    style={{
+                      // width: "100%",
+                      padding: "0px !important",
+                      margin: "0px !important",
+                    }}
+                    onClick={() => {
+                      setUpdate(false);
+                      handleFilters("season", "winter");
+                    }}
+                    src={require("../../../Assets/winter.jpg")}
+                  />
+                </Card>{" "}
+                <p className="justify-content-center d-flex">{"Winter"}</p>
+              </Col>
+              <Col className="p-0 m-0 w-30">
+                <Card className="img-round w-100 h-100 p-0 m-0">
+                  <Card.Img
+                    className={`p-0 m-0 img-round h-100 justify-content-center`}
+                    style={{
+                      // width: "100%",
+                      padding: "0px !important",
+                      margin: "0px !important",
+                    }}
+                    onClick={() => {
+                      setUpdate(false);
+                      handleFilters("season", "spring");
+                    }}
+                    src={require("../../../Assets/spring.jpg")}
+                  />
+                </Card>{" "}
+                <p className="justify-content-center d-flex">{"Spring"}</p>
+              </Col>
             </Row>
           </Col>
-          <Card className="w-30 p-0 m-0 h-10 align-items-center align-self-center justify-content-end">
+          <Card className="w-25 p-0 m-0 h-10 align-items-center align-self-center justify-content-end">
             <Card.Text
               className="small"
               onClick={() => {
@@ -341,7 +350,7 @@ const ExploreDestination: FC = () => {
                       coordinates={[]}
                       className={"small"}
                       imageStyling={`img-fluid`}
-                      imageRatio={screenSize.isMobile ? 50 : 100}
+                      imageRatio={100}
                       titleStyling="small"
                       tourname={tour?.displayName}
                       mealPaln={tour?.mealPlanIncluded}

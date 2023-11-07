@@ -1,145 +1,356 @@
-import React, { FC, useState } from "react";
-import { Button, Col, Row, Form, Card } from "react-bootstrap";
+import React, { FC, useEffect, useState } from "react";
+import { Button, Col, Row, Form, Card, Container } from "react-bootstrap";
 import FormInput from "../../common/formInput/FormInput";
+import style from "./PassportRegistrationForm.module.scss";
+import PhoneInput from "react-phone-number-input";
+import Input, {
+  getCountries,
+  getCountryCallingCode,
+} from "react-phone-number-input/input";
+import { FaCircle } from "react-icons/fa6";
+// import countryNames from 'react-phone-number-input/locale/en'
+
+// Outputs: [AC, AD, AE, ...]
 
 const PassportRegistrationForm: FC = () => {
   const [detail, setDetail] = useState({
-    firstName: "",
+    fullName: "",
     lastName: "",
     city: "",
     zipcode: "",
     state: "",
-    address: "",
-    address2: "",
+    Adhaar: "",
+    phone: "",
+    station: "",
     email: "",
-    password: "",
     check: "off",
   });
+  const [step, setStep] = useState(3);
+  console.log(getCountries());
+
+  // Outputs: United States
+  // console.log(countryNames["US"])
+
+  // Outputs: +1
+  // console.log("+" + getCountryCallingCode("US"))
+
+  // +{getCountryCallingCode("US")}
+  useEffect(() => {
+    console.log(step);
+  }, [step]);
+
   return (
-    <Card className="m-3 my-5 p-3">
-      <Card.Title className="py-5 ft-32">Passport Registration Form</Card.Title>
-      <Form>
-        <Row className="mb-3">
-          <FormInput
-            direction={Col}
-            value={detail.firstName}
-            label={"First Name"}
-            type={"text"}
-            placeHolder={"First name"}
-            controlId={"forGridFirstName"}
-            onchange={(e: any) =>
-              setDetail({ ...detail, firstName: e.target.value })
-            }
-          />
+    <div
+      className={`bg-white align-content-start flex-wrap p-5 min-vh-100 min-vw-100 mw-100 w-100 align-items-center justify-content-end d-flex m-0`}
+    >
+      <Row className="py-42">
+        <Col className="col-6 position-relative align-items-center d-flex flex-column align-self-start justify-content-start" style={{top:"90px"}}>
+          <Col className="p-0 m-0 text-align-start flex-column d-flex">
+            <h6>
+              Already have a Passport? <a>Upload here</a>
+            </h6>
+            <div
+              className="border-2 border my-2"
+              style={{ border: "#14a8e3" }}
+            ></div>
 
-          <FormInput
-            direction={Col}
-            value={detail.lastName}
-            label={"Last Name"}
-            type={"text"}
-            placeHolder={"Last name"}
-            controlId={"forGridLastName"}
-            onchange={(e: any) =>
-              setDetail({ ...detail, lastName: e.target.value })
-            }
-          />
-        </Row>
-        <Row className="mb-3">
-          <FormInput
-            direction={Col}
-            value={detail.email}
-            label={"Email"}
-            type={"email"}
-            placeHolder={"Enter email"}
-            controlId={"formGridEmail"}
-            onchange={(e: any) =>
-              setDetail({ ...detail, email: e.target.value })
-            }
-          />
-          <FormInput
-            direction={Col}
-            value={detail.password}
-            label={"Password"}
-            type={"password"}
-            placeHolder={"Password"}
-            controlId={"forGridPassword"}
-            onchange={(e: any) =>
-              setDetail({ ...detail, password: e.target.value })
-            }
-          />
-        </Row>
+            <p>Create your passport in just 3 steps!</p>
 
-        <FormInput
-          className="mb-3"
-          value={detail.address}
-          label={"Address"}
-          type={"text"}
-          placeHolder={"1234 Main St"}
-          controlId={"forGridAddress"}
-          onchange={(e: any) =>
-            setDetail({ ...detail, address: e.target.value })
-          }
-        />
+            <h6 className="small">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+              tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo
+            </h6>
+            <ul>
+              <li>
+                Fill up the required details and upload your documentations.
+              </li>
+              <li>Pay online seamlessly & securely.</li>
+              <li>Visit offline center and you will get it within few days</li>
+            </ul>
+          </Col>
+        </Col>
+        <Col className="col-6 align-self-start position-relative"  style={{top:"90px"}}>
+          <Form className="gap-4 d-flex flex-column">
+            <Row className="position-relative align-items-center p-0 mt-3 m-0 justify-content-center d-flex w-100">
+              <Col className="col-1 d-contents p-0 m-0">
+                <FaCircle className="" size={"20px"} />
+                <div className="active small text-nowrap">Step 1</div>
+              </Col>
+              <Col className="col-1 border-top-1 border p-0 m-0 w-30 timeline-line"></Col>
+              <Col className="col-1  d-contents p-0 m-0">
+                <FaCircle className="" size={"20px"} />
+                <div className="active small text-nowrap">Step 2</div>
+              </Col>
+              <Col className="col-1 border-top-1 border p-0 m-0 w-30 timeline-line"></Col>
 
-        <FormInput
-          className="mb-3"
-          value={detail.address2}
-          label={"Address 2"}
-          type={"text"}
-          placeHolder={"Apartment, studio, or floor"}
-          controlId={"forGridLastName"}
-          onchange={(e: any) =>
-            setDetail({ ...detail, address2: e.target.value })
-          }
-        />
+              <Col className="col-1  d-contents p-0 m-0">
+                <FaCircle className="" size={"20px"} />
+                <div className="active small text-nowrap">Step 3</div>
+              </Col>
+            </Row>
+            {step === 1 && (
+              <Col className="gap-5 d-flex flex-column">
+                <FormInput
+                  direction={Col}
+                  value={detail.fullName}
+                  inputStyling={"border-0"}
+                  className="border-bottom border-dark"
+                  type={"text"}
+                  placeHolder={"Name"}
+                  controlId={"forGridFirstName"}
+                  onchange={(e: any) => {
+                    setDetail({ ...detail, fullName: e.target.value });
+                  }}
+                />
+                <Col>
+                  <h6 className="small p-0 m-0">phone</h6>
+                  <PhoneInput
+                    placeholder="Enter phone number"
+                    value={detail.phone}
+                    defaultCountry="IN"
+                    className="flex-row d-flex"
+                    onChange={(value: any) =>
+                      setDetail({ ...detail, phone: value })
+                    }
+                  />
+                </Col>
+                <FormInput
+                  direction={Col}
+                  value={detail.email}
+                  type={"email"}
+                  className="border-bottom border-dark"
+                  placeHolder={"Email Address"}
+                  inputStyling={"border-0"}
+                  controlId={"formGridEmail"}
+                  onchange={(e: any) =>
+                    setDetail({ ...detail, email: e.target.value })
+                  }
+                />
+                <Col>
+                  <h6 className="small p-0 m-0">Upload Your Adhaar</h6>
+                  <div className="p-0  m-0">
+                    <input
+                      className="form-control bg-white p-0 m-0 border-0"
+                      type="file"
+                      value={detail.Adhaar}
+                      style={{ background: "#19bca1" }}
+                      onChange={(e: any) =>
+                        setDetail({ ...detail, Adhaar: e.target.value })
+                      }
+                      id="formFile"
+                    />
+                  </div>
+                  <h6 className="small">Document format should be in .pdf </h6>
+                </Col>
+              </Col>
+            )}
+            {step === 2 && (
+              <Col className="gap-5 d-flex flex-column">
+                <Form.Group
+                  as={Col}
+                  className="border-bottom border-dark"
+                  controlId="formGridState"
+                >
+                  <Form.Label>Passport Seva Kendra</Form.Label>
+                  <Form.Select
+                    className="border-0"
+                    value={detail.city}
+                    // onSelect={(e: any) =>
+                    //   setDetail({ ...detail, city: e.target.value })
+                    // }
+                    onClick={(e: any) =>
+                      setDetail({ ...detail, city: e.target.value })
+                    }
+                    defaultValue="Select Your Preferable City"
+                  >
+                    <option value="1">Select Your Preferable City</option>
+                    <option value="2">mumbai</option>
+                  </Form.Select>
+                </Form.Group>
+              </Col>
+            )}
+            {step === 3 && (
+              <Col className="gap-4 d-flex flex-column">
+                <FormInput
+                  value={detail.station}
+                  type={"text"}
+                  inputStyling={"border-0 p-0 m-0"}
+                  className="border-bottom border-dark"
+                  placeHolder={"Nearly Police Station"}
+                  controlId={"forGridAddress"}
+                  onchange={(e: any) =>
+                    setDetail({ ...detail, station: e.target.value })
+                  }
+                />
 
-        <Row className="mb-3">
-          <FormInput
-            direction={Col}
-            value={detail.city}
-            label={"City"}
-            type={"text"}
-            controlId={"forGridCity"}
-            onchange={(e: any) =>
-              setDetail({ ...detail, city: e.target.value })
-            }
-          />
-          <Form.Group as={Col} controlId="formGridState">
-            <Form.Label>State</Form.Label>
-            <Form.Select defaultValue="Choose...">
-              <option>Choose...</option>
-              <option>...</option>
-            </Form.Select>
-          </Form.Group>
+                <Row className="gap-3">
+                  <Form.Group
+                    as={Col}
+                    className="border-bottom p-0 m-0 border-dark"
+                    controlId="formGridState"
+                  >
+                    <Form.Label>Day</Form.Label>
+                    <Form.Select
+                      className="border-0 p-0 m-0"
+                      defaultValue="Select Day"
+                    >
+                      <option>Select Day</option>
+                      <option>...</option>
+                    </Form.Select>
+                  </Form.Group>
+                  <Form.Group
+                    as={Col}
+                    className="border-bottom p-0 m-0 border-dark"
+                    controlId="formGridState"
+                  >
+                    <Form.Label>Month</Form.Label>
+                    <Form.Select
+                      className="border-0 p-0 m-0"
+                      defaultValue="Select Month"
+                    >
+                      <option>Select Month</option>
+                      <option>...</option>
+                    </Form.Select>
+                  </Form.Group>
+                  <Form.Group
+                    as={Col}
+                    className="border-bottom border-dark"
+                    controlId="formGridState"
+                  >
+                    <Form.Label>Year</Form.Label>
+                    <Form.Select
+                      className="border-0 p-0 m-0"
+                      defaultValue="2023"
+                    >
+                      <option>2023</option>
+                      <option>...</option>
+                    </Form.Select>
+                  </Form.Group>
+                </Row>
+                <Col>
+                  <h6 className="small p-0 m-0">Upload Birth Certificate</h6>
+                  <div className="p-0  m-0">
+                    {" "}
+                    <input
+                      className="form-control bg-white p-0 m-0 border-0"
+                      type="file"
+                      value={detail.city}
+                      style={{ background: "#19bca1" }}
+                      onChange={(e: any) =>
+                        setDetail({ ...detail, city: e.target.value })
+                      }
+                      id="formFile"
+                    />
+                  </div>
+                </Col>
+                <Row className="">
+                  <Col className="col-7 p-0 m-0">
+                    <Form.Group
+                      as={Col}
+                      className="border-bottom border-dark p-0 m-0 w-100"
+                      controlId="formGridState"
+                    >
+                      <Form.Label>Education</Form.Label>
+                      <Form.Select
+                        className="border-0 p-0 m-0"
+                        defaultValue="Select Qualification"
+                      >
+                        <option>Select Qualification</option>
+                        <option>...</option>
+                      </Form.Select>
+                    </Form.Group>{" "}
+                  </Col>
+                  <Col className="col-5 flex-column justify-self-end">
+                    <h6 className="small p-0 m-0">
+                      Upload Education Certificate
+                    </h6>
+                    <div className="p-0 m-0">
+                      {" "}
+                      <input
+                        className="form-control bg-white p-0 m-0 border-0"
+                        style={{ background: "#19bca1" }}
+                        type="file"
+                        value={detail.Adhaar}
+                        onChange={(e: any) =>
+                          setDetail({ ...detail, Adhaar: e.target.value })
+                        }
+                        id="formFile"
+                      />
+                    </div>
+                  </Col>
+                </Row>
+                <div className="">
+                  <textarea
+                    className="form-control"
+                    id="exampleFormControlTextarea1"
+                    placeholder="Your message to Lyamii"
+                    rows={5}
+                  ></textarea>
+                </div>
+                <Form.Group className="mb-3" id="formGridCheckbox">
+                  <h6 className="small p-0 m-0">Consent</h6>
+                  <Form.Check
+                    type="checkbox"
+                    label="Yes, I agree with the privacy policy and terms and condition"
+                    value={detail.check}
+                    onClick={(e: any) =>
+                      setDetail({ ...detail, check: e.target.value })
+                    }
+                  />
+                </Form.Group>
+              </Col>
+            )}
 
-          <FormInput
-            direction={Col}
-            value={detail.zipcode}
-            label={"ZipCode"}
-            type={"number"}
-            controlId={"forGridZipCode"}
-            onchange={(e: any) =>
-              setDetail({ ...detail, zipcode: e.target.value })
-            }
-          />
-        </Row>
-
-        <Form.Group className="mb-3" id="formGridCheckbox">
-          <Form.Check
-            type="checkbox"
-            label="Check me out"
-            value={detail.check}
-            onClick={(e: any) =>
-              setDetail({ ...detail, check: e.target.value })
-            }
-          />
-        </Form.Group>
-
-        <Button onClick={() => {}} variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
-    </Card>
+            <Row className="justify-content-between d-flex flex-row p-0 m-0">
+              <Row className="w-50">
+                {step > 1 && (
+                  <Col className="justify-content-start d-flex">
+                    <Button
+                      style={{ background: "#19bca1" }}
+                      className="fit-content "
+                      onClick={() => setStep(step - 1)}
+                      variant="primary"
+                      type="submit"
+                    >
+                      {"Previous"}
+                    </Button>
+                  </Col>
+                )}
+                <Col className="justify-content-start fit-content align-self-center d-flex">
+                  <Card.Text className="small" onClick={() => {}}>
+                    Save as Draft
+                  </Card.Text>
+                </Col>
+              </Row>
+              <Col className="justify-content-end d-flex">
+                <Button
+                  style={{ background: step === 3 ? "#14a8e3" : "#19bca1" }}
+                  className="fit-content "
+                  onClick={() => {
+                    if (
+                      step === 1 &&
+                      detail.fullName.length > 2 &&
+                      detail.phone.length > 5 &&
+                      detail.email.length > 6 &&
+                      detail.Adhaar.length > 0
+                    ) {
+                      setStep(step + 1);
+                    }
+                    if (step === 2 && detail.city.length > 0) {
+                      setStep(step + 1);
+                    }
+                  }}
+                  variant="primary"
+                  type="submit"
+                >
+                  {step === 3 ? "Pay to Continue" : "Next"}
+                </Button>
+              </Col>
+            </Row>
+          </Form>
+        </Col>
+      </Row>
+    </div>
   );
 };
 

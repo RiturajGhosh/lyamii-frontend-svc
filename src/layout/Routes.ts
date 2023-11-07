@@ -1,12 +1,17 @@
 import ContainerSection from "../components/common/container/Container";
+import SideNav from "../components/common/sideNav/SideNav";
+import TourDetailCard from "../components/common/tourDetailCard/TourDetailCard";
 import Home from "../components/pages/Home/Home";
 import BackpackersTours from "../components/pages/backpackersTours/BackpackersTours";
 import BharatTours from "../components/pages/bharatTours/BharatTours";
 import ComboTours from "../components/pages/comboTours/ComboTours";
 import Contact from "../components/pages/contact/Contact";
 import CustomerReviews from "../components/pages/customerReview/CustomerReview";
+import Dashboard from "../components/pages/dashboard/Dashboard";
 import ExploreDestination from "../components/pages/exploreDestination/ExploreDestination";
 import PassportRegistrationForm from "../components/pages/passportRegistrationForm/PassportRegistrationForm";
+import Personal from "../components/pages/personal/Personal";
+import Profile from "../components/pages/profile/Profile";
 import { UserRouteConfig } from "../components/routing/PrivateRoute";
 import { AccessType } from "./accessType";
 
@@ -80,12 +85,6 @@ export const commonSiteMap: UserRouteConfig[] = [
   },
   {
     exact: true,
-    path: "/profile",
-    Component: ContainerSection,
-    access: AccessType.YES,
-  },
-  {
-    exact: true,
     path: "/privacypolicy",
     Component: ContainerSection,
     access: AccessType.YES,
@@ -106,6 +105,29 @@ export const commonSiteMap: UserRouteConfig[] = [
     exact: true,
     path: "/combo",
     Component: ComboTours,
+    access: AccessType.YES,
+  },
+  {
+    exact: true,
+    path: "/tour-detail",
+    Component: TourDetailCard,
+    access: AccessType.YES,
+  }, {
+    exact: true,
+    path: "/profile",
+    Component: Profile,
+    access: AccessType.YES,
+  },
+  {
+    exact: true,
+    path: "/profile/personalData",
+    Component: Personal,
+    access: AccessType.YES,
+  },
+  {
+    exact: true,
+    path: "/profile/dashboard",
+    Component: Dashboard,
     access: AccessType.YES,
   },
 ];

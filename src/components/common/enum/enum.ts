@@ -16,7 +16,7 @@ export const mapDescription =
 export const reasons = [
   {
     title: "Global Reach",
-    img: require("../../../Assets/blueglobe.png"),
+    img: require("../../../Assets/globe.png"),
     description:
       "Our global accommodation covers 77+ countries. 500+ volunteers are always there to assist you on the way. Find comfort wherever you wander.",
   },

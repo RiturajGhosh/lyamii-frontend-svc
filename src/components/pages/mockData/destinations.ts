@@ -3,6 +3,18 @@ export const tours = [
     displayName: {
       text: "Treebo Trend Morjim Banyan Resort Morjim",
     },
+    features: [
+      "Entire apartment",
+      "16 m² size",
+      "Free parking",
+      "Private bathroom",
+      "Pets allowed",
+      "View",
+      "Free WiFi",
+      "Shower",
+      "Kitchenette",
+      "Non-smoking rooms",
+    ],
     showGeniusLoginMessage: false,
     mealPlanIncluded: {
       text: "Breakfast included",
@@ -151,7 +163,8 @@ export const tours = [
       showFreeCancellation: false,
     },
     description: null,
-  },{
+  },
+  {
     displayName: {
       text: "Treebo Trend Morjim Banyan Resort Morjim",
     },
@@ -304,4 +317,4 @@ export const tours = [
     },
     description: null,
   },
-]
+];

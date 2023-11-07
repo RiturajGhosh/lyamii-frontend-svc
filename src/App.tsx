@@ -1,7 +1,5 @@
-import React, { FC, useEffect, useState } from "react";
-import { HashRouter, Switch, Route, useLocation } from "react-router-dom";
-import Header from "./components/common/header/Header";
-import Footer from "./components/common/footer/Footer";
+import React, { FC, useEffect } from "react";
+import { HashRouter, Switch, Route } from "react-router-dom";
 import Home from "./components/pages/Home/Home";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -38,15 +36,16 @@ const App: FC = () => {
       payload: window.innerWidth,
     });
   };
-
   // create an event listener
   useEffect(() => {
     window.addEventListener("resize", handleResize);
   });
 
+  console.log(window.location.href.includes("profile"));
   return (
     <HashRouter>
-      <Header />
+      {/* {!isOnProfile && <Header />}
+       {isOnProfile && <SideNav />} */}
       <HashRouter>
         <Switch>
           {routesToBeMapped.map(({ exact, path, Component, access }) => {
@@ -63,7 +62,8 @@ const App: FC = () => {
           <Route path="/login" component={Home} />
         </Switch>
       </HashRouter>
-      <Footer />
+
+      {/* {!isOnProfile && <Footer />} */}
     </HashRouter>
   );
 };

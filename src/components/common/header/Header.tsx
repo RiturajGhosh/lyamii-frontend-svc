@@ -64,9 +64,9 @@ const Header: FC = () => {
       <Container className="d-flex container align-items-center d-print-block justify-content-between">
         <Navbar.Brand href="/" className="align-self-center">
           <div className={`d-flex align-items-center ${style.currentPage}`}>
-            <h3>
+            <h3 className="text-white">
               Lyam<span className={style.dot}>ii</span>
-              <span>.</span>com
+              <span style={{color:'#12856e'}}>.</span>com
             </h3>
           </div>
         </Navbar.Brand>
@@ -88,10 +88,11 @@ const Header: FC = () => {
                   <Nav.Link
                     as={Link}
                     key={index}
+                    className="text-decoration-none"
                     to={header.path}
                     onClick={() => updateExpanded(false)}
                   >
-                    <p className="body m-0">{header?.name}</p>
+                    <h6 className="body fw-bold h6 m-0">{header?.name}</h6>
                   </Nav.Link>
                 </Nav.Item>
               );

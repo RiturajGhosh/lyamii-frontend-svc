@@ -8,6 +8,7 @@ import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
 import { useSelector } from "react-redux";
 import PrivateBathroom from "../icon/privateBathroom";
 import { LuParkingCircle } from "react-icons/lu";
+import { useHistory } from "react-router-dom";
 
 type TourCardType = {
   key?: number;
@@ -45,13 +46,14 @@ const TourCard: FC<TourCardType> = ({
 }) => {
   const screenSize = useSelector(selectScreenSize);
   const [IsWishlisted, setToWishList] = useState(false);
+  const history = useHistory();
   return (
     <>
       <Row
         className={`${className} ${style.card} p-0`}
         style={{ minHeight: "100%" }}
       >
-        <Col md={5} lg={5} sm={5} className="p-0 m-0">
+        <Col md={5} lg={5} sm={5} className="p-0 col-5 m-0">
           <Col>
             <Col className="text-white position-relative p-0 m-0 pb-2">
               {propertyData.photos.relativeUrl && (
@@ -82,61 +84,47 @@ const TourCard: FC<TourCardType> = ({
                 </Ratio>
               )}
             </Col>
-            {screenSize.screenSize < 576 && (
-              <Col className="position-relative p-0">
-                <Card.Body className="p-0 px-2 m-0">
-                  <Card.Title className="small text-wrap">
-                    {tourname.text && tourname.text}
-                  </Card.Title>
-                  <Card.Text className="small min-vh-25">
-                    {"overview"}
-                  </Card.Text>
-                </Card.Body>
-              </Col>
-            )}
           </Col>
-          {screenSize.screenSize > 576 && (
-            <Row className={`m-1 py-8 p-0 d-block`}>
-              <Row
-                md={12}
-                lg={12}
-                sm={12}
-                className="position-relative justify-content-between p-0 text-wrap border-1 w-100 border  bg-transparent border-secondary text-white"
-              >
-                <BsHouseCheck
-                  fill={"grey"}
-                  className="w-15 h-15 p-0 justify-content-start d-flex"
-                />
-                <LuParkingCircle
-                  fill={"grey"}
-                  className="w-15 h-15 p-0 justify-content-start d-flex"
-                />
+          <Row className={`m-1 py-8 p-0 d-block`}>
+            <Row
+              md={12}
+              lg={12}
+              sm={12}
+              className="position-relative justify-content-between p-0 text-wrap border-1 w-100 border  bg-transparent border-secondary text-white"
+            >
+              <BsHouseCheck
+                fill={"grey"}
+                className="w-15 h-15 p-0 justify-content-start d-flex"
+              />
+              <LuParkingCircle
+                fill={"grey"}
+                className="w-15 h-15 p-0 justify-content-start d-flex"
+              />
 
-                <Col className="w-15 text-white p-0">
-                  <PrivateBathroom height="20px" width="24px" />
-                </Col>
-              </Row>
-              <Row
-                md={12}
-                lg={12}
-                sm={12}
-                className="position-relative justify-content-between p-0 mt-1 text-wrap border-1 w-100 border  bg-transparent border-secondary text-white"
-              >
-                <BsHouseCheck
-                  fill={"grey"}
-                  className="w-15 h-15 p-0 justify-content-start d-flex"
-                />
-                <LuParkingCircle
-                  fill={"grey"}
-                  className="w-15 h-15 p-0 justify-content-start d-flex"
-                />
-
-                <Col className="w-15 text-white p-0">
-                  <PrivateBathroom height="20px" width="24px" />
-                </Col>
-              </Row>
+              <Col className="w-15 text-white p-0">
+                <PrivateBathroom height="20px" width="24px" />
+              </Col>
             </Row>
-          )}
+            <Row
+              md={12}
+              lg={12}
+              sm={12}
+              className="position-relative justify-content-between p-0 mt-1 text-wrap border-1 w-100 border  bg-transparent border-secondary text-white"
+            >
+              <BsHouseCheck
+                fill={"grey"}
+                className="w-15 h-15 p-0 justify-content-start d-flex"
+              />
+              <LuParkingCircle
+                fill={"grey"}
+                className="w-15 h-15 p-0 justify-content-start d-flex"
+              />
+
+              <Col className="w-15 text-white p-0">
+                <PrivateBathroom height="20px" width="24px" />
+              </Col>
+            </Row>
+          </Row>
         </Col>
 
         <Col
@@ -145,71 +133,20 @@ const TourCard: FC<TourCardType> = ({
           sm={7}
           xs={7}
           sx={12}
-          className={`col-12 py-8 p-0 m-0`}
+          className={`col-7 py-8 p-0 m-0`}
         >
           <Row className="p-0 m-0">
-            {screenSize.screenSize < 576 && (
-              <Col className={`col-6 py-8 p-0 m-0`}>
-                <Row className={`m-1 py-8 p-0 d-block m-0`}>
-                  <Row
-                    md={12}
-                    lg={12}
-                    sm={12}
-                    className="position-relative justify-content-between p-0 text-wrap border-1 w-100 border  bg-transparent border-secondary text-white"
-                  >
-                    <BsHouseCheck
-                      fill={"grey"}
-                      className="w-15 h-15 p-0 justify-content-start d-flex"
-                    />
-                    <LuParkingCircle
-                      fill={"grey"}
-                      className="w-15 h-15 p-0 justify-content-start d-flex"
-                    />
-
-                    <Col className="w-15 text-white p-0">
-                      <PrivateBathroom height="20px" width="24px" />
-                    </Col>
-                  </Row>
-                  <Row
-                    md={12}
-                    lg={12}
-                    sm={12}
-                    className="position-relative justify-content-between p-0 mt-1 text-wrap border-1 w-100 border  bg-transparent border-secondary text-white"
-                  >
-                    <BsHouseCheck
-                      fill={"grey"}
-                      className="w-15 h-15 p-0 justify-content-start d-flex"
-                    />
-                    <LuParkingCircle
-                      fill={"grey"}
-                      className="w-15 h-15 p-0 justify-content-start d-flex"
-                    />
-
-                    <Col className="w-15 text-white p-0">
-                      <PrivateBathroom height="20px" width="24px" />
-                    </Col>
-                  </Row>
-                </Row>
+            <Col md={12} sm={12} lg={12} className="col-12 p-0 m-0">
+              <Col className="position-relative p-0">
+                <Card.Body className="p-0 px-2 m-0">
+                  <Card.Title className="small text-wrap" onClick={()=>history.push('')}>
+                    {tourname.text && tourname.text}
+                  </Card.Title>
+                  <Card.Text className="small min-vh-25">
+                    {"overview"}
+                  </Card.Text>
+                </Card.Body>
               </Col>
-            )}
-            <Col
-              md={12}
-              sm={12}
-              lg={12}
-              className="col-6 p-0 m-0"
-            >
-              {screenSize.screenSize > 576 && (
-                <Col className="position-relative p-0">
-                  <Card.Body className="p-0 px-2 m-0">
-                    <Card.Title className="small text-wrap">
-                      {tourname.text && tourname.text}
-                    </Card.Title>
-                    <Card.Text className="small min-vh-25">
-                      {"overview"}
-                    </Card.Text>
-                  </Card.Body>
-                </Col>
-              )}
               <Col className="position-relative p-0 border-1 text-center justify-content-end text-white">
                 <Button
                   className="align-middle justify-self-center w-100 mb-1 btn-secondary"
