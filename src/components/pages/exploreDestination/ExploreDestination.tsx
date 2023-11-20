@@ -308,12 +308,13 @@ const ExploreDestination: FC = () => {
             </Card>
           )}
         </Row>
-        <Row className="p-0 m-0 w-100 d-flex justify-content-between">
+        <Row className="p-0 m-0 pb-5 justify-content-between d-flex">
           {update && showFilter && (
-            <CardWithShadow col={3} classname={"p-0"}>
+            <CardWithShadow col={12} classname={"p-0 flex-row"}>
+              <Row className="p-0 m-0 justify-content-between d-flex">
               {filters.map((field) => {
                 return (
-                  <>
+                  <Col className="col-3">
                     <h3 className="p-2">{field?.filterName}</h3>
                     {field?.subFilter.map((sub, index: number) => {
                       return (
@@ -328,11 +329,14 @@ const ExploreDestination: FC = () => {
                         />
                       );
                     })}
-                  </>
+                  </Col>
                 );
               })}
+              </Row>
             </CardWithShadow>
           )}
+        </Row>
+        <Row className="p-0 m-0 w-100 d-flex justify-content-between">
           <Col className="p-0">
             <Row className="p-0 w-100">
               {tourlist.map((tour, idx) => (

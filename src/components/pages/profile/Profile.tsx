@@ -69,46 +69,42 @@ const Profile: FC = () => {
   ];
 
   return (
-    <>
-      <Col className="col-9">
-        <div
-          className={`bg-violet-blue align-content-start flex-wrap p-5 min-vh-100 min-vw-100 mw-100 w-100 align-items-center justify-content-end d-flex m-0`}
-        >
-          <Container className="p-0 m-0 justify-content-end d-flex flex-column w-100">
-            <Row className="p-0 m-0 align-items-center justify-content-end d-flex">
-              <Col className="col-9 p-0 m-0">
-                <Col>
-                  <div
-                    className="py-5 text-white title font-weight-normal pl-2"
-                    style={{ textShadow: "2px 2px #000000 !important" }}
-                  >
-                    Profile Managements
-                  </div>
-                </Col>
-                <Row>
-                  {menus.map((menu) => {
-                    return (
-                      <Col md={6} sm={6} lg={6} xs={6} sx={6}>
-                        <SubCard
-                          titleStyling="small text-dark shadow bg-blue"
-                          className="my-3"
-                          cardColor="#e4e9ff "
-                        >
-                          <Card.Title onClick={() => history.push(menu.path)}>
-                            {menu.title}
-                          </Card.Title>
-                          <Card.Subtitle>{menu.subTitle}</Card.Subtitle>
-                        </SubCard>
-                      </Col>
-                    );
-                  })}
-                </Row>
-              </Col>
+    <div
+      className={`bg-violet-blue px-4 min-vh-100 mw-100 w-100 align-items-center justify-content-end d-flex m-0`}
+    >
+      <Container className="p-0 m-0 min-vh-100 justify-content-end d-flex flex-column w-100">
+        <Row className="p-0 m-0 min-vh-100 align-items-center justify-content-end d-flex">
+          <Col className="col-12 py-4 m-0 gap-4 align-items-center d-grid p-0">
+            <Col>
+              <div
+                className="py-5 text-dark title font-weight-normal pl-2"
+                style={{ textShadow: "2px 2px #000000 !important" }}
+              >
+                Profile Managements
+              </div>
+            </Col>
+            <Row>
+              {menus.map((menu) => {
+                return (
+                  <Col md={6} sm={6} lg={6} xs={6} sx={6}>
+                    <SubCard
+                      titleStyling="small text-dark shadow bg-blue"
+                      className="my-3"
+                      cardColor="#e4e9ff "
+                    >
+                      <Card.Title onClick={() => history.push(menu.path)}>
+                        {menu.title}
+                      </Card.Title>
+                      <Card.Subtitle>{menu.subTitle}</Card.Subtitle>
+                    </SubCard>
+                  </Col>
+                );
+              })}
             </Row>
-          </Container>
-        </div>
-      </Col>
-    </>
+          </Col>
+        </Row>
+      </Container>
+    </div>
   );
 };
 

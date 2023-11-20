@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Button, Container } from "react-bootstrap";
+import { Button, Container, Row } from "react-bootstrap";
 import Destinations from "../destinations/Destinations";
 import style from "./Home.module.scss";
 import Wave from "../../common/icon/waveBottom";
@@ -10,7 +10,6 @@ import Contact from "../contact/Contact";
 import { useHistory } from "react-router-dom";
 import LifetimeJourney from "../lifetimeJourney/LifetimeJourney";
 import BeyoundObvious from "../beyoundObvious/BeyoundObvious";
-import Trees from "../../common/icon/trees";
 
 const Home: FC = () => {
   const history = useHistory();
@@ -39,8 +38,9 @@ const Home: FC = () => {
             Get your Passport
           </Button>
         </Container>
-        <div className={`flex-grow-1 w-100 position-absolute ${style.bgImage}`}>
-        </div>
+        <div
+          className={`flex-grow-1 w-100 bottom-0 position-absolute travel-image position-bottom`}
+        ></div>
       </Container>
       <Destinations></Destinations>
       <MapAndEscape />
@@ -49,6 +49,23 @@ const Home: FC = () => {
       <WhyLyamii />
       <CustomerReviews />
       <Contact />
+      <div className="position-relative p-0 m-0 w-100">
+        <Row className="p-0 m-0 w-100 flex-row d-flex position-absolute justify-content-around">
+          <div
+            className="piller float-left left-0"
+            style={{ zIndex: "1" }}
+          ></div>
+          <div className="col-4"></div>
+          <div
+            className="piller float-left right-0"
+            style={{ zIndex: "1" }}
+          ></div>
+        </Row>
+        <div
+          className={`flex-grow-1 footer w-100 top-0 rotate-180 p-0 m-0 travel-image position-bottom p-0 m-0`}
+          style={{ minHeight: "150px" }}
+        ></div>
+      </div>
     </section>
   );
 };

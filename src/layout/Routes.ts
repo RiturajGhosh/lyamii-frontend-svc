@@ -9,6 +9,7 @@ import Contact from "../components/pages/contact/Contact";
 import CustomerReviews from "../components/pages/customerReview/CustomerReview";
 import Dashboard from "../components/pages/dashboard/Dashboard";
 import ExploreDestination from "../components/pages/exploreDestination/ExploreDestination";
+import Login from "../components/pages/login/Login";
 import PassportRegistrationForm from "../components/pages/passportRegistrationForm/PassportRegistrationForm";
 import Personal from "../components/pages/personal/Personal";
 import Profile from "../components/pages/profile/Profile";
@@ -128,6 +129,12 @@ export const commonSiteMap: UserRouteConfig[] = [
     exact: true,
     path: "/profile/dashboard",
     Component: Dashboard,
+    access: AccessType.YES,
+  },
+  {
+    exact: true,
+    path: "/login",
+    Component: Login,
     access: AccessType.YES,
   },
 ];

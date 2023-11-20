@@ -63,12 +63,17 @@ export const communities: HeaderList[] = [
   { name: "Our Mission", path: "/mission" },
   { name: "Join us", path: "/joinus" },
   { name: "Reviews", path: "/reviews" },
-  { name: "Privacy policy", path: "/privacypolicy" },
+];
+
+export const mustReads: HeaderList[] = [
   { name: "Terms and conditions", path: "/termconditions" },
+  { name: "Privacy policy", path: "/privacypolicy" },
+  { name: "Cancellation ploicy", path: "/cancellationpolicy" },
+  { name: "Refund ploicy", path: "/refundpolicy" },
   { name: "FAQ", path: "/" },
 ];
 export const supports: HeaderList[] = [
-  { name: "My Profile", path: "/profile" },
+  { name: "My Profile", path: "/login" },
   { name: "Helpdesk", path: "/helpdesk" },
   { name: "Feedback", path: "/feedback" },
 ];

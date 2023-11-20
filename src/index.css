@@ -5,7 +5,7 @@ body {
     sans-serif, 'sans';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f6f7f8 !important;
+  background-color: #8dc498 !important;
 }
 
 code {
@@ -17,7 +17,7 @@ label {
   color: #666;
 }
 body {
-  background: #f6f7f8 !important;
+  background: #8dc498 !important;
   color: #737373 !important;
   font-family: sans-serif !important;
 }

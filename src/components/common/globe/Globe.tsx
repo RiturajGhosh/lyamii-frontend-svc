@@ -1,6 +1,5 @@
 import React, { FC, useState } from "react";
 import ReactGlobe, { Coordinates, Marker } from "react-globe";
-import defaultMarkers from "./markers";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/scale.css";
 import { Object3D } from "three";
@@ -8,13 +7,14 @@ import { useHistory } from "react-router-dom";
 import { SET_SELECTED_LOCATION } from "../../../state/actions/types/globeDataActionType";
 import { useDispatch, useSelector } from "react-redux";
 import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
+import defaultMarkers from "./markers";
 
 function markerTooltipRenderer(marker: Marker) {
-  const tooltipContent = 
-  // document.createElement("div");
-  // tooltipContent.innerHTML = `
-  //   <img src="${marker.image}" className={'w-100'}/><br/>
-  'marker.city';
+  const tooltipContent =
+    // document.createElement("div");
+    // tooltipContent.innerHTML = `
+    //   <img src="${marker.image}" className={'w-100'}/><br/>
+    `${marker.city}`;
   return tooltipContent;
 }
 
@@ -59,7 +59,19 @@ const Globe: FC = () => {
       payload: {},
     });
   }
-
+  // console.log(
+  //   cities?.map((city: any, index: number) => {
+  //     return city?.Column2 && {
+  //       id: index.toString(),
+  //       city: city?.Column2,
+  //       color: "red",
+  //       coordinates: [
+  //         ...Array(parseFloat(city?.Column3), parseFloat(city?.Column4)),
+  //       ],
+  //       value: 50,
+  //     };
+  //   })
+  // );
   return (
     <div>
       <ReactGlobe

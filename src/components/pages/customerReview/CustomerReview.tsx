@@ -16,9 +16,9 @@ const CustomerReviews: FC = () => {
         <Row className="d-flex justify-content-center">
           <div className="card-body w-25">
             {
-              <p className="card-text heading text-color-brown-blue fw-bold ft-32">
-                Clients Testimonials
-              </p>
+              <span className="display-2 float-right text-color-brown-blue fw-bold">
+              Reviews
+              </span>
             }
           </div>
           <Row className="g-4">
@@ -37,10 +37,10 @@ const CustomerReviews: FC = () => {
                     <p className={`${style.review} small font-italic overflow-hidden p`}>
                       {review.review}
                     </p>
-                    <Card.Title className="small">{review.name}</Card.Title>
-                    <Card.Text className="small">
+                    <span className="text-italic h3 float-right">{review.name}</span>
+                    {/* <Card.Text className="small">
                       {"customer"}
-                    </Card.Text>
+                    </Card.Text> */}
                   </Card.Body>
                 </Card>
               </Col>

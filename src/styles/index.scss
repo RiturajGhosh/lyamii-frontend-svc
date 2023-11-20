@@ -72,12 +72,21 @@ $color-blue: #148cb8;
 .darkBlue {
   color: #327b9b !important;
 }
+.green {
+  background-color: #8dc498;
+}
 .bold {
   font-weight: 700 !important;
 }
 .sectionContainer {
   margin-top: 5rem;
   margin-bottom: 5rem;
+  margin: 0px;
+}
+.piller {
+  height: 70px !important;
+  width: 50px !important;
+  background-color: #000;
 }
 .text-orange {
   color: #9b6c32 !important;
@@ -422,12 +431,21 @@ $custom-spacers: 10px;
   padding-top: 2.625rem;
   padding-bottom: 2.625rem;
 }
+.pt-42 {
+  padding-top: 2.625rem !important;
+}
+.pb-42 {
+  padding-bottom: 2.625rem !important;
+}
 .my-42 {
   margin-top: 2.625rem !important;
   margin-bottom: 2.625rem !important;
 }
 .ft-57 {
   font-size: 3.625rem !important;
+}
+.w-5 {
+  width: 5% !important;
 }
 .w-10 {
   width: 10% !important;
@@ -470,6 +488,30 @@ $custom-spacers: 10px;
 }
 .mw-90 {
   max-width: 90% !important;
+}
+.mh-10 {
+  max-height: 10% !important;
+}
+.mh-15 {
+  max-height: 15% !important;
+}
+.mh-20 {
+  max-height: 20% !important;
+}
+.mh-30 {
+  max-height: 30% !important;
+}
+.mh-40 {
+  max-height: 40% !important;
+}
+.mh-50 {
+  max-height: 50% !important;
+}
+.mh-60 {
+  max-height: 60% !important;
+}
+.mh-90 {
+  max-height: 90% !important;
 }
 .min-vw-50 {
   min-width: 50vw !important;
@@ -572,6 +614,9 @@ p,
     font-size: 28px !important;
   }
 }
+.rotate-180 {
+  transform: rotate(180deg);
+}
 .card {
   display: block;
   top: 0px;
@@ -650,7 +695,8 @@ button {
   clip-path: url(#clip-path);
 }
 .footer {
-  background-image: linear-gradient(to top, #4d668ed8, #f6f7f8);
+  background-color: #000 !important;
+  // background-image: linear-gradient(to top, #4d668ed8, #f6f7f8);
   bottom: 0 !important;
 }
 .text-shadow-dark {
@@ -694,7 +740,34 @@ button {
   display: flex;
   flex-direction: column;
 }
-
+.position-bottom {
+  background-position: bottom;
+}
+.position-top {
+  background-position: top;
+}
+.travel-image {
+  z-index: 0;
+  background-image: url(../Assets/travel.png);
+  background-repeat: no-repeat !important;
+  background-size: contain;
+  width: 100% !important;
+  height: 100% !important;
+}
+.travel-invert-image {
+  z-index: 0;
+  background-image: url(../Assets/travel-invert.png);
+  background-repeat: no-repeat !important;
+  background-size: contain;
+  width: 100% !important;
+  height: 100% !important;
+}
+.bottom-0 {
+  bottom: 0px !important;
+}
+.top-0 {
+  top: 0px !important;
+}
 .timeline-content {
   // background: #1f1f1f;
   // -webkit-box-shadow: 5px 5px 10px #1a1a1a, -5px -5px 10px #242424;
@@ -808,7 +881,9 @@ button {
   width: 100%;
   transform: translateY(0);
 }
-
+.justify-self-center{
+  justify-self: center !important;
+}
 $utilities: map-merge(
   $utilities,
   (
@@ -844,6 +919,13 @@ $utilities: map-merge(
         activity: $box-shadow-activity,
         none: none,
       ),
+    ),
+    "justify-self":(
+      property: justify-self,
+      class:justify-self,
+      values:(
+        center:center
+      )
     ),
     "border-color": (
       property: border-color,
@@ -1199,15 +1281,15 @@ ul:nth-child(1) {
   padding-left: 0;
   padding-right: 0;
 }
-input[type='file']::file-selector-button {
+input[type="file"]::file-selector-button {
   border: 2px solid #19bca1 !important;
   padding: 6px 12px !important;
-  color: white; 
+  color: white;
   background-color: #19bca1 !important;
   transition: 1s;
 }
 
-input[type='file']::file-selector-button:hover {
+input[type="file"]::file-selector-button:hover {
   background-color: #81ecec;
   border: 2px solid #00cec9;
 }

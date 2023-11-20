@@ -33,18 +33,23 @@ const BeyoundObvious: FC = () => {
   return (
     <Container className="position-relative">
       <Row>
-        <Col md={12} lg={3} className="card-body m-auto">
-          {
-            <h1 className="heading card-text text-color-yellow-blue fw-bold">
-              Beyound Obvious
-            </h1>
-          }
+        <Col
+          md={12}
+          lg={8}
+          className="card-body position-absolute green top-0 end-0 m-auto"
+        >
+          <span className="display-3 text-white fw-bold">
+            BEYOUND
+          </span>
+          <span className="display-5 text-success fw-bold">
+            Obvious
+          </span>
         </Col>
         {screenSize.isDesktop && (
           <Col
             md={12}
             lg={12}
-            className="justify-content-between p-0 d-flex overflow-auto"
+            className="border-5 border border-dark p-5 my-5 justify-content-between p-0 d-flex overflow-auto"
           >
             <Row className="w-100 justify-content-center scrolling-wrapper-flexbox">
               {internationalTours.map((option, idx) => (

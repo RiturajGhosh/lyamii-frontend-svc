@@ -665,7 +665,8 @@ media (max-width: 767px) {
 /* --------- */
 .footer {
   font-family: sans-serif !important;
-  background-image: linear-gradient(to top, #4d668ed8, #f6f7f8);
+  background-color: #000000 !important;
+  /* background-image: linear-gradient(to top, #4d668ed8, #f6f7f8); */
   bottom: 0 !important;
 }
 .footer-copywright {
@@ -1434,3 +1435,86 @@ a:-webkit-any-link {
 		}
 	}
 } */ 
+
+
+
+
+
+
+.x-axis,
+.y-axis,
+.point-text,
+.chart-label,
+.today-line,
+.text {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 14px;
+  color: #212529;
+}
+.x-axis line.tick {
+  stroke: #212529;
+}
+.x-axis line.tick:first-child {
+  stroke: transparent;
+}
+.y-axis .tick line {
+  stroke: transparent;
+}
+.x-axis path {
+  stroke: #212529;
+}
+.y-axis path {
+  stroke: transparent;
+  fill-opacity: 0;
+}
+
+.c-line {
+  stroke: #2f1986;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.dataPoint {
+  fill: #2f1986;
+  stroke-width: 1;
+  transition: all 0.1s linear;
+}
+
+.dataPoint.active {
+  stroke: white;
+  stroke-width: 1;
+}
+
+.grid line {
+  stroke: #212529;
+  stroke-opacity: 0.95;
+  stroke-width: 0.5;
+  shape-rendering: crispEdges;
+}
+
+.grid path {
+  stroke-width: 0;
+}
+
+rect.chart-normal-range {
+  fill: #cbe6dd;
+  fill-opacity: 0.9;
+  z-index: -1;
+}
+
+rect.chart-sub-normal-range {
+  fill: #fff7cc;
+  fill-opacity: 0.9;
+}
+
+rect.chart-high-range,
+rect.chart-low-range {
+  fill: #f9dcdd;
+  fill-opacity: 0.9;
+}
+
+rect.chart-highest-range {
+  fill: #f2b9ba;
+  fill-opacity: 0.9;
+}

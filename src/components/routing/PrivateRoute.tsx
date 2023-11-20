@@ -41,6 +41,13 @@ const PrivateRoute: FC<PrivateRouteProps> = ({
     });
   }, [window.location, path]);
   const loginError = false; //will use selector
+  const openNav = () => {
+    let sideNav = document?.getElementById("sidenav") as HTMLElement;
+    sideNav.style.maxWidth = "250px";
+    let main = document?.getElementById("main") as HTMLElement;
+    main.style.marginLeft = "250px";
+  };
+
   const checkErrorAndLogin = () => {
     if (loginError) {
       return <Redirect to="/" />;
@@ -50,10 +57,20 @@ const PrivateRoute: FC<PrivateRouteProps> = ({
         {!path.includes("profile") && <Header />}
         {path.includes("profile") && (
           <Row>
-            <Col className="col-2 p-0 m-0">
+            <Col
+              id="sidenav"
+              className="p-0 m-0 position-fixed"
+              style={{ maxWidth: "0px" }}
+            >
+              {/* <span
+                style={{ fontSize: "30px", cursor: "pointer" }}
+                onClick={() => openNav()}
+              >
+                open
+              </span> */}
               <SideNav />
             </Col>
-            <Col className="">
+            <Col id="main" className="p-0" style={{ marginLeft: "270px" }}>
               <Route path={path} render={(props) => <Component {...props} />} />
             </Col>
           </Row>

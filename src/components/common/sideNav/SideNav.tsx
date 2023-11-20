@@ -73,7 +73,7 @@ const SideNav: FC = () => {
   }, [location]);
   const history = useHistory();
   return (
-    <Col className="w-20 p-0 m-0 bg-violet-blue position-absolute">
+    <Col className="fit-content p-0 m-0 bg-violet-blue position-absolute">
       <nav
         className="sidenav justify-content-center flex-column d-flex h-100 p-3 flex-wrap min-vh-100 mw-100 w-100 align-content-between justify-content-start d-flex m-0"
         id="sidenav"

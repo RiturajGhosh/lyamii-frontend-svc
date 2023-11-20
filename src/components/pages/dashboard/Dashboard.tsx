@@ -81,7 +81,7 @@ const Dashboard: FC = () => {
 
   return (
       <div
-        className={`bg-white px-4 min-vh-100 min-vw-100 mw-100 w-100 align-items-center justify-content-end d-flex m-0`}
+        className={`bg-white px-4 min-vh-100 mw-100 w-100 align-items-center justify-content-end d-flex m-0`}
       >
         <Container className="p-0 m-0 min-vh-100 justify-content-end d-flex flex-column w-100">
           <Row className="p-0 m-0 min-vh-100 align-items-center justify-content-end d-flex">
