@@ -43,7 +43,7 @@ const FormInput: FC<FormInputType> = ({
       )}
 
       {label && label.length > 0 && <Form.Label>{label}</Form.Label>}
-      <Form.Control
+      <input
         type={type}
         placeholder={placeHolder}
         value={value}

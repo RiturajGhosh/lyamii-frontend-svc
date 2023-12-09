@@ -19,26 +19,34 @@ const WhyLyamii: FC = () => {
         id="about"
       >
         <Container>
-          <Row>
-            <Col md={12} lg={3} className="card-body m-auto">
-              {
-                <p className="card-text text-secondary fw-bold title text-shadow-light">
+          <Col>
+            <Col md={12} lg={5} className="card-body">
+              <Col>
+                <p className="card-text text-white fw-bold heading position-absolute px-5 text-shadow-dark">
                   Why
                 </p>
-              }
-              {
-                <h1 className="card-title text-warning fw-bold heading text-shadow-dark">
-                  Lyamii ?
-                </h1>
-              }
+                <Row className="">
+                  <span className="fw-bold display-1 w-100 py-4 d-flex text-shadow-light" style={{color:"#b64746"}}>
+                    Lyamii
+                    <Card.Img
+                      className={`w-15 h-100 p-2 m-0 justify-content-center`}
+                      style={{
+                        padding: "0px !important",
+                        margin: "0px !important",
+                      }}
+                      src={require("../../../Assets/quesMark.png")}
+                    />
+                  </span>
+                </Row>
+              </Col>
             </Col>
-            <Col md={12} lg={9} className="justify-content-between p-0 d-flex">
+            <Col md={12} lg={12} className="justify-content-between p-0 d-flex">
               <Row className="justify-content-center flex-wrap g-2 flex-row scrolling-wrapper-flexbox">
                 {reasons.map((reason, idx) => (
                   <Col
                     key={idx}
-                    md={6}
-                    lg={6}
+                    md={3}
+                    lg={3}
                     className={`d-flex mb-4 p-0 m-0 col-6`}
                   >
                     {/* <Card className={`my-2 box box-1 d-flex mx-1`}>
@@ -72,7 +80,7 @@ const WhyLyamii: FC = () => {
                       </section>
                     </Card> */}
                     <div
-                      className={`${style.reasonCard} bg-white my-2 mx-1 flipcard shadow position-relative h-100 overflow-hidden p-0 m-0`}
+                      className={`bg-white form__input my-2 mx-1 flipcard shadow position-relative h-100 overflow-hidden p-0 m-0`}
                     >
                       <div className="content position-relative p-0 m-0 h-100">
                         <Card.Body className="position-relative p-0 m-0 h-100 front">
@@ -85,8 +93,8 @@ const WhyLyamii: FC = () => {
                             src={reason.img}
                           />
                         </Card.Body>
-                        <section className="bg-danger align-items-center m-0 d-flex h-100 w-100 back">
-                          <Card.Body className="pt-0 p-4 d-flex flex-column align-items-center align-self-center">
+                        <section className="bg-danger align-items-center m-0 d-flex h-100 p-2 w-100 back">
+                          <Card.Body className="p-0 d-flex flex-column align-items-center align-self-center">
                             <Card.Title className="bold p fw-bold">
                               {reason.title}
                             </Card.Title>
@@ -101,7 +109,7 @@ const WhyLyamii: FC = () => {
                 ))}
               </Row>
             </Col>
-          </Row>
+          </Col>
         </Container>
       </Container>
     </>

@@ -9,7 +9,7 @@ const Footer: FC = () => {
     <footer>
       <Container fluid className="footer float-right p-0 m-0 w-100">
         <Col className="m-0 p-0 w-100">
-          <Container className="mt-5 row d-flex justify-content-between m-5">
+          <Col className="mt-5 row d-flex justify-content-between m-5">
             <Col md={7} lg={7}>
               <Row>
                 <Col className="p-0">
@@ -78,7 +78,7 @@ const Footer: FC = () => {
               <h1>Lyamii.com</h1>
               <p>Inspiring a new generation of wanderers</p>
             </Col>
-          </Container>
+          </Col>
         </Col>
       </Container>
     </footer>

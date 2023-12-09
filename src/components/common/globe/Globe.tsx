@@ -75,10 +75,10 @@ const Globe: FC = () => {
   return (
     <div>
       <ReactGlobe
-        height={!screenSize.isMobile ? "350px" : "300px"}
+        height={!screenSize.isMobile ? "500px" : "300px"}
         markers={defaultMarkers}
         options={options}
-        width={!screenSize.isMobile ? "350px" : "300px"}
+        width={!screenSize.isMobile ? "500px" : "300px"}
         onDefocus={onDefocus}
         globeBackgroundTexture={null}
         onClickMarker={onClickMarker}

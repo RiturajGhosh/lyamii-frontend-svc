@@ -8,6 +8,8 @@ import Header from "../common/header/Header";
 import SideNav from "../common/sideNav/SideNav";
 import Footer from "../common/footer/Footer";
 import { Col, Row } from "react-bootstrap";
+import Login from "../common/login/Login";
+import { paths } from "../common/enum/enum";
 
 type ComponentProps =
   | React.ComponentType<RouteComponentProps<any>>
@@ -16,13 +18,13 @@ type ComponentProps =
 
 export type UserRouteConfig = {
   exact: boolean;
-  path: string | string[];
+  path: string;
   Component: ComponentProps;
   access: AccessType;
 };
 export type PrivateRouteProps = {
   exact: boolean;
-  path: string | string[];
+  path: string;
   component: ComponentProps;
   access: string;
 };
@@ -41,20 +43,22 @@ const PrivateRoute: FC<PrivateRouteProps> = ({
     });
   }, [window.location, path]);
   const loginError = false; //will use selector
-  const openNav = () => {
-    let sideNav = document?.getElementById("sidenav") as HTMLElement;
-    sideNav.style.maxWidth = "250px";
-    let main = document?.getElementById("main") as HTMLElement;
-    main.style.marginLeft = "250px";
-  };
+  // const openNav = () => {
+  //   let sideNav = document?.getElementById("sidenav") as HTMLElement;
+  //   sideNav.style.maxWidth = "250px";
+  //   let main = document?.getElementById("main") as HTMLElement;
+  //   main.style.marginLeft = "250px";
+  // };
 
+  console.log(paths, path);
   const checkErrorAndLogin = () => {
     if (loginError) {
       return <Redirect to="/" />;
     }
+
     return (
       <div className={styles.mainContainer}>
-        {!path.includes("profile") && <Header />}
+        {!paths.includes(path) && <Header />}
         {path.includes("profile") && (
           <Row>
             <Col
@@ -75,10 +79,15 @@ const PrivateRoute: FC<PrivateRouteProps> = ({
             </Col>
           </Row>
         )}
-        {!path.includes("profile") && (
+        {path.includes("login") && (
+          <Col style={{ background: "#b4f5c5" }}>
+            <Login />
+          </Col>
+        )}
+        {!path.includes("profile") && !path.includes("login") && (
           <Route path={path} render={(props) => <Component {...props} />} />
         )}
-        {!path.includes("profile") && <Footer />}
+        {!paths.includes(path) && <Footer />}
       </div>
     );
   };

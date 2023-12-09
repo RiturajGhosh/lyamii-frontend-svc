@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { Button, Container, Row } from "react-bootstrap";
 import Destinations from "../destinations/Destinations";
 import style from "./Home.module.scss";
@@ -10,9 +10,13 @@ import Contact from "../contact/Contact";
 import { useHistory } from "react-router-dom";
 import LifetimeJourney from "../lifetimeJourney/LifetimeJourney";
 import BeyoundObvious from "../beyoundObvious/BeyoundObvious";
+import { getData } from "../../../api/getData";
 
 const Home: FC = () => {
   const history = useHistory();
+  useEffect(() => {
+    getData(1).then(() => console.log("done"));
+  }, []);
   return (
     <section>
       <Container
@@ -20,7 +24,7 @@ const Home: FC = () => {
         className={`home-section position-relative p-0 ${style.imageSection}`}
         id="home"
       >
-        <Container className="home-content d-grid justify-content-center">
+        <Container className="home-content position-relative zi-2 d-grid justify-content-center">
           <h1 className="text-center text-shadow-light">Each Day Counts</h1>
           <p className="text-center">
             Explore stunning destinations, from exotic tropical paradises to
@@ -31,12 +35,15 @@ const Home: FC = () => {
             of worlds culture, nature and history. Lyamii will provide you with
             excellent service and support throughout your journey.
           </p>
-          <Button
+          <button
             className="align-middle justify-self-center"
-            onClick={() => history.push("/PassportRegistration")}
+            onClick={() => {
+              console.log("hi");
+              history.push("/passportRegistration");
+            }}
           >
             Get your Passport
-          </Button>
+          </button>
         </Container>
         <div
           className={`flex-grow-1 w-100 bottom-0 position-absolute travel-image position-bottom`}

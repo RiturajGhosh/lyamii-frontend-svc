@@ -2,6 +2,7 @@ import React, { FC, useEffect } from "react";
 import { HashRouter, Switch, Route } from "react-router-dom";
 import Home from "./components/pages/Home/Home";
 import "./App.css";
+import "country-flag-icons/3x2/flags.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
 import { commonSiteMap } from "./layout/Routes";

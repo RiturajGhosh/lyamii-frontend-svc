@@ -11,7 +11,7 @@ import {
 } from "react-bootstrap";
 import style from "./TourDetailCard.module.scss";
 import { IoIosHeart, IoMdHeartEmpty } from "react-icons/io";
-import { AiFillStar } from "react-icons/ai";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { BsHouseCheck, BsShare } from "react-icons/bs";
 import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
 import { useSelector } from "react-redux";
@@ -22,10 +22,19 @@ import markers from "../globe/markers";
 import ContainerSection from "../container/Container";
 import { selectTourData } from "../../../state/selectors/selectTourData";
 import { tours } from "../../pages/mockData/destinations";
-import { backpackersTours } from "../enum/enum";
+import {
+  backpackersTours,
+  facilities,
+  isoCountries,
+  tourReviews,
+} from "../enum/enum";
 import Switch from "../switch/Switch";
 import { FaIndianRupeeSign, FaRupeeSign } from "react-icons/fa6";
 import { BiSolidBellRing } from "react-icons/bi";
+import CustomCoursel from "../../pages/coursel/CustomCoursel";
+import MainContainer from "../container/MainContainer";
+import Tick from "../icon/tick";
+import { selectedTourDataDto } from "../../../state/actions/types/tourDataActionType";
 
 const TourDetailCard: FC = () => {
   const screenSize = useSelector(selectScreenSize);
@@ -33,7 +42,7 @@ const TourDetailCard: FC = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState<any[]>(markers.slice(0, 10));
   const [page, setPage] = useState(0);
-  const selectedtourData: any = tours[0] || {};
+  const selectedtourData: selectedTourDataDto = useSelector(selectTourData);
   // (selectTourData);
   const features = [
     "Entire apartment",
@@ -50,61 +59,42 @@ const TourDetailCard: FC = () => {
   const [statusState, setStatusState] = useState(true);
   const [count, setCount] = useState(0);
 
+  // const flag = (id: any) => {
+  //   isoCountries?.length > 0 && isoCountries?.filter((country) => country?.id?.includes(id));
+  // };
   return (
-    <ContainerSection>
-      <Col className="gap-3 d-flex flex-column">
+    <MainContainer>
+      <CustomCoursel data={data} page={0} />
+      <Col
+        className="gap-4 pt-5 d-flex text-dark flex-column"
+        style={{ background: "#8ca0bd" }}
+      >
         <Col className="position-relative d-flex">
           <Row className={`${style.card} p-0`} style={{ minHeight: "100%" }}>
-            <Col md={6} lg={6} sm={6} className="p-0 gap-4 m-0">
-              <Col>
+            <Col md={4} lg={4} sm={4} className="p-0 gap-4 m-0">
+              <Col className="position-relative">
                 <Card
-                  style={{ height: window.innerWidth / 3 }}
-                  className="text-white position-relative p-0 m-0 pb-2"
+                  style={{ height: window.innerWidth / 6 }}
+                  className="bg-dark display-1 text-center justify-content-center text-white position-relative p-0 m-0 pb-2"
                 >
-                  <Ratio aspectRatio={""}>
-                    <>
-                      <Image
-                        className={`p-0 rounded-3 position-absolute`}
-                        src={require("../../../Assets/escape.jpeg")}
-                      />
-                    </>
-                  </Ratio>
+                  {selectedtourData.basicPropertyData.location.city.toUpperCase()}
+                  <Col
+                    className={`
+                    flag:${selectedtourData.basicPropertyData.location.countryCode.toUpperCase()} position-absolute top-0 end-0 border-1 text-black bg-white w-30 h-20`}
+                    id="flag"
+                  ></Col>
                 </Card>
               </Col>{" "}
-              <Col className="position-relative pt-3 p-0 border-0 shadow-lg border-white text-center justify-content-end text-white">
-                <Button
-                  className="align-middle small border-white justify-self-center w-100 h-75"
-                  style={{ background: "#759da6" }}
-                  onClick={() => {}}
-                >
-                  {"STAYS"}
-                </Button>
-              </Col>
-              <Col className="p-0 m-0 d-flex justify-content-end align-items-center flex-row py-3 ">
-                <Card.Text className="p-0 m-0">{"30,000"}</Card.Text>
-                <FaIndianRupeeSign size={"30px"} />
-              </Col>
-              <p>Facilities</p>
-              <Row className="position-relative justify-content-center d-flex gap-2">
-                {selectedtourData?.features?.map((feature: any) => (
-                  <Card
-                    className="w-30 m-0 p-1 shadow-2 border-white"
-                    style={{ background: "antiquewhite" }}
-                  >
-                    {feature}
-                  </Card>
-                ))}
-              </Row>
             </Col>
-            <Col md={6} sm={6} lg={6} className="col-6 p-0 m-0">
+            <Col md={8} sm={8} lg={8} className="col-6 p-0 m-0">
               <Col className="position-relative p-0">
-                <Card.Body className="p-0 px-4 gap-3 d-flex flex-column m-0">
-                  <Card.Title className="p text-wrap">
-                    {selectedtourData?.displayName?.text &&
-                      selectedtourData?.displayName?.text}
-                  </Card.Title>
+                <Card.Body className="p-0 px-4 gap-3 d-flex h-100 align-items-center d-flex flex-column m-0">
+                  {/* <Card.Title className="p text-wrap">
+                      {selectedtourData?.displayName?.text &&
+                        selectedtourData?.displayName?.text}
+                    </Card.Title> */}
 
-                  <Card.Text className="small min-vh-25">
+                  <Card.Text className="display-6">
                     Collection O Hotel La Veera features air-conditioned rooms
                     with cable TV in the Navarangpura district of Ahmedabad.
                     This 3-star hotel offers a shared kitchen and free WiFi.
@@ -117,30 +107,155 @@ const TourDetailCard: FC = () => {
                     chain/brand: OYO Rooms Distance in property description is
                     calculated using © OpenStreetMap
                   </Card.Text>
-
-                  <Row className="align-items-center d-flex">
-                    <Col className="p-0 m-0">
-                      <Card className="p-2 m-0">Departure Date : </Card>
-                    </Col>
-                  </Row>
-
-                  <p>Highlights</p>
+                </Card.Body>
+              </Col>
+            </Col>
+          </Row>
+        </Col>
+        <Col>
+          <Row className={`${style.card} p-0`} style={{ minHeight: "100%" }}>
+            <Col md={6} sm={6} lg={6} className="col-6 p-0 m-0 gap-4 d-grid">
+              <Row className="d-flex justify-content-between">
+                <Col className="p-2 mx-4 display-5 col-2 align-self-center text-white text-center bg-dark">
+                  {"5D"}
+                </Col>{" "}
+                <Col className="col-8 px-1 align-self-center text-white position-relative p-0 m-0">
+                  <Card
+                    className="fw-bold align-items-center shadow-sm text-white flex-nowrap py-3 justify-content-center flex-row d-flex m-0 p-0 position-relative"
+                    style={{ background: "#50809d" }}
+                  >
+                    <span className="p-0 m-0 display-5 text-center fit-content">
+                      {"CZ22***05***"}
+                    </span>
+                  </Card>
+                  <Col className="position-relative w-100 p-0 border-1 text-center mx-42 justify-content-end text-white">
+                    <span
+                      className="align-middle justify-self-center p-1 h3 rounded-3 position-absolute top-100 mx-42 start-50 translate-middle"
+                      style={{
+                        background: "#024774",
+                        color: "white",
+                        width: "max-content",
+                      }}
+                      onClick={() => {}}
+                    >
+                      TOUR ID
+                    </span>
+                  </Col>
+                </Col>
+              </Row>
+              <Row
+                className={`${style.card} justify-content-between d-flex p-0`}
+                // style={{ minHeight: "100%" }}
+              >
+                <Col className="p-0 col-12 m-0">
+                  <Col>
+                    <Card className="text-white scroll position-relative p-0 m-0 p-2">
+                      <section
+                        className={`overflow-auto ${style.routeTimeline}`}
+                      > 
+                        {backpackersTours[0]?.places?.map(
+                          (place: string, idx: number) => (
+                            <Col className="py-2">
+                              <Row>
+                                <Col className="p-0 display-6 m-0 col-2 text-white align-self-center p-2 text-center bg-dark">
+                                  {idx < 9 ? "0" + (idx + 1) : idx + 1}
+                                </Col>
+                                <Col>
+                                  <div className="pl-2 h2 p-0 m-0 text-dark ">
+                                    {place}
+                                  </div>
+                                  <div className="p-2 h5 p-0 m-0 text-dark">
+                                    {"sub-title"}
+                                  </div>
+                                </Col>
+                              </Row>
+                            </Col>
+                          )
+                        )}
+                      </section>
+                    </Card>
+                  </Col>
+                </Col>
+              </Row>
+              <Row className="align-items-center d-flex justify-content-between">
+                <Card
+                  className="text-white shadow-sm p-2 col-6 bold h3"
+                  style={{ background: "#a8c0f0" }}
+                >
+                  Departure Date :
+                </Card>
+                <Col className="position-relative col-2 align-items-end d-flex bg-white  p-0 m-0 border-0 text-center justify-content-end">
+                  <InputGroup className="">
+                    <Button
+                      className="border-0"
+                      variant="outline-secondary"
+                      id="button-addon1"
+                      onClick={() => setCount(count - 1)}
+                    >
+                      -
+                    </Button>
+                    <Form.Control
+                      value={count}
+                      onChange={(e) => setCount(parseInt(e.target.value))}
+                      aria-label="Example text with button addon"
+                      aria-describedby="basic-addon1"
+                      className="w-10 border-bottom-0 border-top-0"
+                    />
+                    <Button
+                      className="border-0"
+                      variant="outline-secondary"
+                      id="button-addon1"
+                      onClick={() => setCount(count + 1)}
+                    >
+                      +
+                    </Button>
+                  </InputGroup>
+                </Col>
+              </Row>
+              <Card
+                className="fw-bold align-items-center shadow-sm text-white flex-nowrap py-3 mx-4 justify-content-center flex-row d-flex m-0 p-0 position-relative"
+                style={{ background: "#50809d" }}
+              >
+                <span className="p-0 m-0 display-5 text-center fit-content">
+                  {facilities.map((facility: any) => {
+                    return (
+                      <Card.Img
+                        className={`p-0 m-0 justify-content-center`}
+                        style={{
+                          width: "70px",
+                          padding: "0px !important",
+                          margin: "0px !important",
+                        }}
+                        src={facility}
+                      />
+                    );
+                  })}
+                </span>
+              </Card>
+            </Col>
+            <Col md={6} sm={6} lg={6} className="col-6 p-0 m-0">
+              <Col className="position-relative h-100 d-flex align-items-center p-0">
+                <Card.Body className="p-0 px-4 gap-3 d-flex flex-column m-0">
                   <Card
                     style={{ height: window.innerWidth / 3 }}
-                    className="text-white position-relative p-0 m-0 pb-2"
+                    className="text-white align-items-center d-flex h-100 bg-dark position-relative p-2 m-0"
                   >
-                    <Ratio aspectRatio={""}>
-                      <>
-                        <Image
-                          className={`p-0 rounded-3 position-absolute`}
-                          src={require("../../../Assets/escape.jpeg")}
-                        />
-                      </>
-                    </Ratio>
-                  </Card>
-
-                  <Row className="position-relative justify-content-between d-flex w-100 p-0 m-0">
-                    <Col lg={3} xs={3} className="col-6 align-self-center">
+                    <Col className="pt-4">
+                      {tourReviews?.map((review: string) => (
+                        <Row className="p-2">
+                          <Button
+                            style={{ background: "#5a8ffd" }}
+                            className="align-items-center justify-content-center p-2 col-1 btn btn-circle-sm d-flex"
+                          >
+                            <Tick width="50" height="50"/>
+                          </Button>
+                          <Col className="fs-5 align-items-center pr-0 d-flex">
+                            {review}
+                          </Col>
+                        </Row>
+                      ))}
+                    </Col>
+                    <Col lg={3} xs={3} className="col-6 py-2 align-self-end">
                       <Col
                         className={`fw-bold align-items-center text-nowrap text-secondary`}
                       >
@@ -155,7 +270,7 @@ const TourDetailCard: FC = () => {
                               return (
                                 <AiFillStar
                                   key={index}
-                                  size={15}
+                                  size={25}
                                   style={{
                                     color: "#fed02b",
                                     width: "fit-content",
@@ -176,11 +291,11 @@ const TourDetailCard: FC = () => {
                               ),
                             ]?.map((index: number) => {
                               return (
-                                <AiFillStar
+                                <AiOutlineStar
                                   key={index}
-                                  size={15}
+                                  size={25}
                                   style={{
-                                    color: "black",
+                                    color: "white",
                                     width: "fit-content",
                                     paddingLeft: "0px",
                                     paddingRight: "0px",
@@ -193,136 +308,93 @@ const TourDetailCard: FC = () => {
                         </Row>
                       </Col>
                     </Col>
-                    <Col className="col-3 px-1 align-self-center">
-                      <Col
-                        className={`fw-bold justify-content-center flex-column justify-content-center align-items-center d-flex align-self-center text-nowrap text-secondary`}
+                  </Card>
+
+                  <Row className="position-relative justify-content-around d-flex w-100 p-0 m-0">
+                    <Col className="col-4 px-1 align-self-center text-white position-relative p-0 m-0">
+                      <Card
+                        className="fw-bold align-items-center text-white shadow-sm flex-nowrap py-3 justify-content-center flex-row d-flex m-0 p-0 position-relative"
+                        style={{ background: "#50809d" }}
                       >
-                        <button
-                          className={`btn d-flex justify-content-center justify-items-center ${style.btmRght} ${style.navigationButton}`}
+                        <Card.Text className="p-0 m-0 text-center fit-content">
+                          {"30,000"}
+                        </Card.Text>
+                        <FaIndianRupeeSign
+                          className="fit-content p-0 m-0"
+                          size={"30px"}
+                        />
+                      </Card>
+                      <Col className="position-relative w-100 p-0 border-1 text-center mx-3 justify-content-end text-white">
+                        <span
+                          className="align-middle justify-self-center p-1 rounded-3 position-absolute top-100 ml-42 start-50 translate-middle"
+                          style={{
+                            background: "#024774",
+                            color: "white",
+                            width: "max-content",
+                          }}
                           onClick={() => {}}
                         >
-                          FAQs
-                        </button>
+                          Book Now
+                        </span>
                       </Col>
                     </Col>
-                    <Col className="align-items-center justify-content-center col-3 d-flex">
-                      <BsShare className="h-75 w-30" onClick={() => {}} />
+                    <Col className="col-4 px-1 align-self-center text-white position-relative p-0 m-0">
+                      <Card
+                        className="fw-bold align-items-center text-white shadow-sm flex-nowrap py-3 justify-content-center flex-row d-flex m-0 p-0 position-relative"
+                        style={{ background: "#50809d" }}
+                      >
+                        <Card.Text className="p-0 m-0 text-center fit-content">
+                          {"30,000"}
+                        </Card.Text>
+                        <FaIndianRupeeSign
+                          className="fit-content p-0 m-0"
+                          size={"30px"}
+                        />
+                      </Card>
+                      <Col className="position-relative w-100 p-0 border-1 text-center mx-3 justify-content-end text-white">
+                        <span
+                          className="align-middle justify-self-center p-1 shadow-sm border-0 rounded-3 position-absolute top-100 ml-42 start-50 translate-middle"
+                          style={{
+                            background: "#024774",
+                            color: "white",
+                            width: "max-content",
+                          }}
+                          onClick={() => {}}
+                        >
+                          Buy Now
+                        </span>
+                      </Col>
                     </Col>
+                    <Button className="align-items-center bg-white justify-content-center  col-2 btn btn-circle btn-xl display-6 d-flex">
+                      <BsShare
+                        className="h-75 w-100 text-dark"
+                        onClick={() => {}}
+                      />
+                    </Button>
                   </Row>
                 </Card.Body>
               </Col>
             </Col>
           </Row>
-        </Col>{" "}
-        <p className="p-0 m-0">Greetings</p>
-        <Row
-          className={`${style.card} justify-content-between d-flex p-0`}
-          // style={{ minHeight: "100%" }}
-        >
-          <Col className="p-0 col-12 m-0">
-            <Col>
-              <Card className="text-white position-relative p-0 m-0 p-2">
-                <section
-                  className={`overflow-scroll second ${style.routeTimeline}`}
-                >
-                  {backpackersTours[0]?.places?.map(
-                    (place: string, idx: number) => (
-                      <div
-                        className="timeline position-relative my-2"
-                        key={idx}
-                      >
-                        {idx % 2 === 0 && (
-                          <>
-                            <div className="timeline-empty"></div>
-
-                            <div className="timeline-middle">
-                              <div className="timeline-circle"></div>
-                            </div>
-                          </>
-                        )}
-                        <Col
-                          className={
-                            "timeline-component justify-content-center shadow text-dark small h-100 position-relative p-2 timeline-content"
-                          }
-                        >
-                          {"Day " + (idx + 1) + " " + place}
-                          <ul>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                          </ul>
-                        </Col>
-                        {idx % 2 !== 0 && (
-                          <>
-                            <div className="timeline-middle">
-                              <div className="timeline-circle"></div>
-                            </div>
-                            <div className="timeline-empty"></div>
-                          </>
-                        )}
-                      </div>
-                    )
-                  )}
-                </section>
-              </Card>
-            </Col>
-          </Col>
-        </Row>
-        <Row className="p-0 m-0 justify-content-between">
-          <Col className="align-items-center col-2 justify-content-center p-0 m-0 flex-wrap justify-content-center d-flex">
-            <Card.Text className="rounded-3 w-100 justify-content-center align-items-center d-flex text-decoration-none p-0 m-0">
-              <BiSolidBellRing
-                onClick={() => {}}
-                className="px-2 p-0 m-0"
-                size="39px"
-              />
-              <Col onClick={() => {}} className=" col-5 p-0 m-0">
-                Helpdesk
-              </Col>
+        </Col>
+        <Col className="position-relative p-0">
+          <Card.Body className="p-0 px-4 gap-3 d-flex flex-column m-0">
+            <Card.Text className="display-6 min-vh-25">
+              Praque is a city that celebrates love in all its forms, from its
+              breathtaking architecture to its poetic ambiance, The blend of
+              history, culture, and beauty creates an imesistible allure,
+              inviting you to create your own love story amidst its romantic
+              landscapes. Whether you're strolling through its picturesque
+              streets, savoring delicious Czech cuisine, or simply admiring the
+              breathtaking views from Prague Castle, the city's undeniable charm
+              will ignite the flames of passion and create memories to last a
+              lifetime, in Prague, love is in the air, and every moment spent
+              together becomes a chapter in your own personal fairytale,
             </Card.Text>
-          </Col>
-          <Col lg={3} xs={3} className="col-7">
-            <Row>
-              <Col className="position-relative align-items-end d-flex col-6 p-0 m-0 border-0 text-center justify-content-end">
-                <InputGroup className="">
-                  <Button
-                    variant="outline-secondary"
-                    id="button-addon1"
-                    onClick={() => setCount(count + 1)}
-                  >
-                    +
-                  </Button>
-                  <Form.Control
-                    value={count}
-                    onChange={(e) => setCount(parseInt(e.target.value))}
-                    aria-label="Example text with button addon"
-                    aria-describedby="basic-addon1"
-                    className="w-25"
-                  />
-                  <Button
-                    variant="outline-secondary"
-                    id="button-addon1"
-                    onClick={() => setCount(count - 1)}
-                  >
-                    -
-                  </Button>
-                </InputGroup>
-              </Col>
-              <Col className="position-relative p-0 col-6 m-0 border-0 text-center justify-content-end">
-                <Col>Tour ID</Col>
-                <Button
-                  className="align-middle small border-white justify-self-center"
-                  style={{ background: "#759da6" }}
-                  onClick={() => {}}
-                >
-                  {"Add to Cart"}
-                </Button>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
+          </Card.Body>
+        </Col>
       </Col>
-    </ContainerSection>
+    </MainContainer>
   );
 };
 

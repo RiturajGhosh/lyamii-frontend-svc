@@ -13,11 +13,12 @@ export const restClient = async ({
     // params: { ...params, ...authParams },
     responseType,
   };
-
   const axiosInstance = axios.create({
-    baseURL: "",
+    baseURL: "https://localhost:8081",
     withCredentials: true,
-    headers: {},
+    headers: {
+      "Content-Type": "application/json",
+    },
   });
 
   axiosInstance.interceptors.response.use(
@@ -37,6 +38,6 @@ export const restClient = async ({
     case axiosType.delete:
       return await axiosInstance.delete(url, { ...config, data: payload });
     default:
-      // return await axiosInstance.get(url, params);
+    // return await axiosInstance.get(url, params);
   }
 };

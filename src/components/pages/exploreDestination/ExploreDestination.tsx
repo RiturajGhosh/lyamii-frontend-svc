@@ -6,7 +6,9 @@ import {
   Col,
   Container,
   Form,
+  Image,
   Modal,
+  Ratio,
   Row,
 } from "react-bootstrap";
 import FormInput from "../../common/formInput/FormInput";
@@ -22,8 +24,14 @@ import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
 import TourCard from "../../common/tourCard/TourCard";
 import RecommandedTours from "../recommandedTours/RecommandedTours";
 import { filterList } from "../../common/enum/enum";
+import Coursel from "../coursel/Coursel";
+import RecentlyViewedTours from "../recentlyViewedTours/RecentlyViewedTours";
+import MainContainer from "../../common/container/MainContainer";
+import HorizontalScroll from "../../common/horizontalScroll/HorizontalScroll";
+import { SET_SELECTED_TOUR_DATA } from "../../../state/actions/types/tourDataActionType";
+import { useHistory } from "react-router-dom";
 
-type stateType = {
+export type stateType = {
   data: any[];
   hasMore: boolean;
 };
@@ -33,6 +41,7 @@ const ExploreDestination: FC = () => {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const [update, setUpdate] = useState(true);
+  const history = useHistory();
   const [tourlist, settourList] = useState<any[]>(tours);
   const [showFilter, setShowFilter] = useState(true);
   const [filters, setFilters] = useState(filterList);
@@ -53,7 +62,7 @@ const ExploreDestination: FC = () => {
     const newData = markers;
     // await getTours(''); /* Your API call here */
 
-    if (newData.length === 0) {
+    if (newData?.length === 0) {
       setState({ data: state.data, hasMore: false });
     } else {
       setState((prevState) => ({
@@ -113,80 +122,110 @@ const ExploreDestination: FC = () => {
   }, [screenSize]);
 
   return (
-    <>
-      <Container
-        fluid
-        className={`${style.tourSection} position-relative p-0`}
-        id="home"
-      >
-        <Container className={`py-5 content p-0 d-grid justify-content-center`}>
-          <Row className="p-0">
-            <Col md={4}>
-              <Card.Title className="py-5 title pl-2">
-                Explore your next destination
-              </Card.Title>
-            </Col>
-            <Col md={8} className="align-self-center p-0">
-              <Card className="p-2">
-                <Form>
-                  <Row className="justify-content-start d-flex">
-                    <FormInput
-                      direction={screenSize.isMobile ? Row : Col}
-                      value={tourDetail.city}
-                      label={""}
-                      className={`col-lg-3 col-md-12 col-sm-12 p-0 justify-content-start ${
-                        screenSize.screenSize < 1000 &&
-                        screenSize.screenSize > 768 &&
-                        "mb-1"
-                      }`}
-                      type={"text"}
-                      inputStyling="p-1"
-                      placeHolder={"Enter a Destination"}
-                      controlId={"forGridFirstName"}
-                      onchange={(e: any) =>
-                        setTourDetail({ ...tourDetail, city: e.target.value })
-                      }
-                    />
+    <MainContainer background="#84f18f">
+      <Coursel />
+      <Row className="p-0 m-0 fit-content py-5 justify-content-between align-items-center d-flex">
+        <Col className="p-0 col-9 m-0">
+          <Row className="d-flex">
+            <Col className="col-6 pr-5 align-self-center pl-0">
+              <Col
+                className=" position-relative p-0 m-0"
+                style={{
+                  background: "#cdface",
+                  color: "#218a43",
+                  textShadow: "#218a43",
+                }}
+              >
+                <Row className="flex-nowrap w-90 p-0 m-0 position-relative">
+                  <Col className="col-11">
+                    <span className="py-2 p-0 display-6 text-end w-100">
+                      {"Indian Passport Holders"}
+                    </span>
+                    <span className="py-2 p-0 display-6 text-end w-100">
+                      {"Others"}
+                    </span>
+                  </Col>
+                  <Col className="flex-nowrap col-1 p-0 m-0 position-relative">
+                    <Col className="align-middle justify-content-end position-absolute top-50 col-1 h3 start-100 translate-middle-y">
+                      <Checkbox
+                        option={filterList[0].subFilter[3]}
+                        onClick={(label: string) => {
+                          setUpdate(false);
+                          handleFilters("Type", "Indian Passport Holders");
+                        }}
+                        label={false}
+                        type={"checkbox"}
+                      />
+                    </Col>
 
-                    <FormInput
-                      direction={screenSize.isMobile ? Row : Col}
-                      value={tourDetail.startDate}
-                      floatingLabel={"From:"}
-                      type={"date"}
-                      className={`p-0 ${
-                        screenSize.isDesktop ? "ml-1" : "my-1"
-                      }`}
-                      labelStyling=""
-                      inputStyling="p-1"
-                      placeHolder={"Last name"}
-                      controlId={"forGridLastName"}
-                      onchange={(e: any) =>
-                        setTourDetail({
-                          ...tourDetail,
-                          startDate: e.target.value,
-                        })
-                      }
-                    />
-                    <FormInput
-                      direction={screenSize.isMobile ? Row : Col}
-                      value={tourDetail.endDate}
-                      floatingLabel={"To:"}
-                      type={"date"}
-                      className={`p-0 ${
-                        screenSize.isDesktop ? "mx-1" : "mb-1"
-                      }`}
-                      inputStyling="p-1"
-                      labelStyling=""
-                      placeHolder={"Last name"}
-                      controlId={"forGridLastName"}
-                      onchange={(e: any) =>
-                        setTourDetail({
-                          ...tourDetail,
-                          endDate: e.target.value,
-                        })
-                      }
-                    />
-                    <Button
+                    <Col className="align-middle justify-self-center position-absolute top-50 col-1 h3 start-100 translate-middle-y">
+                      <Checkbox
+                        option={filterList[0].subFilter[3]}
+                        onClick={(label: string) => {
+                          setUpdate(false);
+                          handleFilters("Type", "Others");
+                        }}
+                        label={false}
+                        type={"checkbox"}
+                      />
+                    </Col>
+                  </Col>
+                </Row>
+                <Col className="position-relative p-0 border-1 text-center mx-42 justify-content-end text-white">
+                  <Button
+                    className="align-middle justify-self-center position-absolute top-100 mx-42 start-0 translate-middle btn-secondary"
+                    style={{ background: "#0a99d7" }}
+                    onClick={() => setShow(!show)}
+                  >
+                    Filter
+                  </Button>
+                </Col>
+              </Col>
+            </Col>
+            <Col className="align-self-center col-6 justify-content-center p-0">
+              <Col className="justify-content-center d-flex">
+                <input
+                  className="form__input w-100 bg-white h2 justify-content-center p-1 px-2 text-dark text-center m-0 border-0"
+                  type="text"
+                  placeholder="USER ID"
+                  value={tourDetail.city}
+                  style={{ background: "#19bca1" }}
+                  onChange={(e: any) =>
+                    setTourDetail({ ...tourDetail, city: e.target.value })
+                  }
+                />
+              </Col>
+              <Row className="pt-2 gap-2">
+                <Col className="justify-content-center d-flex form__input w-60 bg-white p-0 h2">
+                  <label className="">from:</label>
+                  <input
+                    className="form__input w-60 bg-white justify-content-center h2 p-1 px-2 text-dark text-center m-0 border-0"
+                    type="text"
+                    value={tourDetail.endDate}
+                    style={{ background: "#19bca1" }}
+                    onChange={(e: any) =>
+                      setTourDetail({
+                        ...tourDetail,
+                        startDate: e.target.value,
+                      })
+                    }
+                  />
+                </Col>
+                <Col className="justify-content-center d-flex form__input w-60 bg-white p-0 h2">
+                  <label className="">to:</label>
+                  <input
+                    className="form__input w-60 bg-white justify-content-center h2 p-1 px-2 text-dark text-center m-0 border-0"
+                    type="text"
+                    value={tourDetail.endDate}
+                    style={{ background: "#19bca1" }}
+                    onChange={(e: any) =>
+                      setTourDetail({ ...tourDetail, endDate: e.target.value })
+                    }
+                  />
+                </Col>
+              </Row>
+
+              {/* <Button
                       onClick={async () => {
                         const filterData = markers.filter(
                           (marker: any) =>
@@ -216,135 +255,40 @@ const ExploreDestination: FC = () => {
                       } btn-secondary px-2 p-0 m-0 text-nowrap`}
                     >
                       Submit
-                    </Button>
-                  </Row>
-                </Form>
-              </Card>
+                    </Button> */}
             </Col>
           </Row>
-        </Container>
-      </Container>
-
-      <Container className={"p-0 px-2"}>
-        <RecommandedTours />
-        <Row className="p-0 m-0 fit-content pb-5 justify-content-between d-flex">
-          <Col md={7} sm={7} xs={7} className="p-0 m-0">
-            <Row className="d-flex gap-2">
-              <Col className="p-0 m-0 w-30">
-                <Card className="img-round w-100 h-100 p-0 m-0">
-                  <Card.Img
-                    className={`p-0 m-0 img-round h-100 justify-content-center`}
-                    style={{
-                      // width: "100%",
-                      padding: "0px !important",
-                      margin: "0px !important",
-                    }}
-                    onClick={() => {
-                      setUpdate(false);
-                      handleFilters("season", "summer");
-                    }}
-                    src={require("../../../Assets/summer.jpg")}
-                  />
-                </Card>
-                <p className="justify-content-center d-flex">{"Summer"}</p>
-              </Col>
-              <Col className="p-0 m-0 w-30">
-                <Card className="img-round w-100 h-100 p-0 m-0">
-                  <Card.Img
-                    className={`p-0 m-0 img-round h-100 justify-content-center`}
-                    style={{
-                      // width: "100%",
-                      padding: "0px !important",
-                      margin: "0px !important",
-                    }}
-                    onClick={() => {
-                      setUpdate(false);
-                      handleFilters("season", "winter");
-                    }}
-                    src={require("../../../Assets/winter.jpg")}
-                  />
-                </Card>{" "}
-                <p className="justify-content-center d-flex">{"Winter"}</p>
-              </Col>
-              <Col className="p-0 m-0 w-30">
-                <Card className="img-round w-100 h-100 p-0 m-0">
-                  <Card.Img
-                    className={`p-0 m-0 img-round h-100 justify-content-center`}
-                    style={{
-                      // width: "100%",
-                      padding: "0px !important",
-                      margin: "0px !important",
-                    }}
-                    onClick={() => {
-                      setUpdate(false);
-                      handleFilters("season", "spring");
-                    }}
-                    src={require("../../../Assets/spring.jpg")}
-                  />
-                </Card>{" "}
-                <p className="justify-content-center d-flex">{"Spring"}</p>
-              </Col>
-            </Row>
-          </Col>
-          <Card className="w-25 p-0 m-0 h-10 align-items-center align-self-center justify-content-end">
-            <Card.Text
-              className="small"
+        </Col>
+        <Col className="p-0 m-0 col-3 d-flex justify-content-center">
+          <Card className="rounded-circle w-75 h-100 p-0 m-0">
+            <Card.Img
+              className={`p-0 m-0 rounded-circle h-100 justify-content-center`}
+              style={{
+                // width: "100%",
+                padding: "0px !important",
+                margin: "0px !important",
+              }}
               onClick={() => {
                 setUpdate(false);
                 handleFilters("season", "spring");
               }}
-            >
-              Profile/Sign In
-            </Card.Text>
-          </Card>
-          {!showFilter && (
-            <Card className="fit-content m-0 h-10 align-items-center align-self-center justify-content-end p-0">
-              <Button
-                className={"px-2 fit-content float-right"}
-                onClick={() => setShow(!show)}
-              >
-                Filter
-              </Button>
-            </Card>
-          )}
-        </Row>
-        <Row className="p-0 m-0 pb-5 justify-content-between d-flex">
-          {update && showFilter && (
-            <CardWithShadow col={12} classname={"p-0 flex-row"}>
-              <Row className="p-0 m-0 justify-content-between d-flex">
-              {filters.map((field) => {
-                return (
-                  <Col className="col-3">
-                    <h3 className="p-2">{field?.filterName}</h3>
-                    {field?.subFilter.map((sub, index: number) => {
-                      return (
-                        <Checkbox
-                          key={index}
-                          option={sub}
-                          onClick={(label: string) => {
-                            setUpdate(false);
-                            handleFilters(field?.filterName, label);
-                          }}
-                          type={"checkbox"}
-                        />
-                      );
-                    })}
-                  </Col>
-                );
-              })}
-              </Row>
-            </CardWithShadow>
-          )}
-        </Row>
-        <Row className="p-0 m-0 w-100 d-flex justify-content-between">
+              src={require("../../../Assets/spring.jpg")}
+            />
+          </Card>{" "}
+          <p className="justify-content-center d-flex display-1">{""}</p>
+        </Col>
+      </Row>
+
+      <Col className={"p-4"}>
+        {/* <Row className="p-0 m-0 w-100 d-flex justify-content-between">
           <Col className="p-0">
             <Row className="p-0 w-100">
               {tourlist.map((tour, idx) => (
                 <Col
                   onClick={() => {}}
                   key={idx}
-                  lg={6}
-                  md={6}
+                  lg={3}
+                  md={3}
                   sm={12}
                   xs={12}
                   className="p-0"
@@ -353,9 +297,10 @@ const ExploreDestination: FC = () => {
                     <TourCard
                       coordinates={[]}
                       className={"small"}
-                      imageStyling={`img-fluid`}
-                      imageRatio={100}
+                      imageStyling={``}
+                      imageRatio={150}
                       titleStyling="small"
+                      tour={tour}
                       tourname={tour?.displayName}
                       mealPaln={tour?.mealPlanIncluded}
                       recommendedDate={tour?.recommendedDate}
@@ -370,8 +315,62 @@ const ExploreDestination: FC = () => {
               ))}
             </Row>
           </Col>
-        </Row>
-        <Modal show={show} fullscreen={true} onHide={() => setShow(false)}>
+        </Row> */}
+        <Col>
+          <HorizontalScroll
+            title={""}
+            // className={""}
+            setPage={(e: any) => setPage(e)}
+            page={page}
+          >
+            {tourlist.map((tour, index) => (
+              <Col md={6} lg={4} sx={12} sm={8} className="mx-3 col-12 d-inline-block position-relative">
+                <Card key={index} className={`p-0 `}>
+                  <TourCard
+                    coordinates={[]}
+                    className={"small"}
+                    imageStyling={`img-fluid`}
+                    imageRatio={150}
+                    titleStyling="small"
+                    tourname={tour?.displayName}
+                    mealPaln={tour?.mealPlanIncluded}
+                    recommendedDate={tour?.recommendedDate}
+                    location={tour?.location}
+                    acceptsWalletCredit={tour?.acceptsWalletCredit}
+                    unitConfigurations={tour?.matchingUnitConfigurations}
+                    price={tour?.priceDisplayInfoIrene}
+                    propertyData={tour?.basicPropertyData}
+                  />
+                </Card>
+                <Card.Text
+                  className="position-absolute top-0 mt-5 start-90 translate-middle fit-content text-white border-5 my-4 border"
+                  style={{ background: "#79c78d", borderColor: "#9e9e9e " }}
+                  onClick={() => {
+                    dispatch({
+                      type: SET_SELECTED_TOUR_DATA,
+                      payload: tour,
+                    });
+                    history.push("/tour-detail");
+                  }}
+                >
+                  {tour?.displayName?.text && tour?.displayName?.text}
+                </Card.Text>
+              </Col>
+            ))}
+            {loading && (
+              <div className="spinner-box h-100 ">
+                <Col className="p-0 h-100 m-0">
+                  <div className="circle-border">
+                    <div className="circle-core"></div>
+                  </div>
+                </Col>
+              </div>
+            )}
+          </HorizontalScroll>
+        </Col>
+        <RecommandedTours />
+        <RecentlyViewedTours />
+        <Modal show={show} fullscreen={"false"} onHide={() => setShow(false)}>
           <Modal.Header closeButton>
             <Modal.Title>Filter</Modal.Title>
           </Modal.Header>
@@ -398,8 +397,8 @@ const ExploreDestination: FC = () => {
             })}
           </Modal.Body>
         </Modal>
-      </Container>
-    </>
+      </Col>
+    </MainContainer>
   );
 };
 

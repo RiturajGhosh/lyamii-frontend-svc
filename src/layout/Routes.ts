@@ -1,4 +1,5 @@
 import ContainerSection from "../components/common/container/Container";
+import Login from "../components/common/login/Login";
 import SideNav from "../components/common/sideNav/SideNav";
 import TourDetailCard from "../components/common/tourDetailCard/TourDetailCard";
 import Home from "../components/pages/Home/Home";
@@ -9,7 +10,8 @@ import Contact from "../components/pages/contact/Contact";
 import CustomerReviews from "../components/pages/customerReview/CustomerReview";
 import Dashboard from "../components/pages/dashboard/Dashboard";
 import ExploreDestination from "../components/pages/exploreDestination/ExploreDestination";
-import Login from "../components/pages/login/Login";
+import Hostel from "../components/pages/hostel/Hostel";
+import Hotel from "../components/pages/hotel/Hotel";
 import PassportRegistrationForm from "../components/pages/passportRegistrationForm/PassportRegistrationForm";
 import Personal from "../components/pages/personal/Personal";
 import Profile from "../components/pages/profile/Profile";
@@ -20,7 +22,7 @@ export const commonSiteMap: UserRouteConfig[] = [
   { exact: true, path: "/", Component: Home, access: AccessType.YES },
   {
     exact: true,
-    path: "/PassportRegistration",
+    path: "/passportRegistration",
     Component: PassportRegistrationForm,
     access: AccessType.YES,
   },
@@ -135,6 +137,16 @@ export const commonSiteMap: UserRouteConfig[] = [
     exact: true,
     path: "/login",
     Component: Login,
+    access: AccessType.YES,
+  },{
+    exact: true,
+    path: "/addHotel",
+    Component: Hotel,
+    access: AccessType.YES,
+  },{
+    exact: true,
+    path: "/addHostel",
+    Component: Hostel,
     access: AccessType.YES,
   },
 ];

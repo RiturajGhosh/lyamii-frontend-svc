@@ -8,12 +8,16 @@ import { BsArrowRightCircle, BsFillPersonFill } from "react-icons/bs";
 import { MdOutlineLocationOn } from "react-icons/md";
 import { HiShoppingCart } from "react-icons/hi";
 import ArrowButton from "../arrowButton/ArrowButton";
+import { SET_LOGIN_DATA } from "../../../state/actions/types/loginDataActionType";
+import { useDispatch, useSelector } from "react-redux";
+import { selectLoginData } from "../../../state/selectors/selectLoginData";
 // import "./sidebar.scss";
 export type SideNavList = {
   name: string;
   path: string;
 };
 const SideNav: FC = () => {
+  const dispatch = useDispatch();
   const sidebarNavItems = [
     {
       display: "Dashboard",
@@ -47,6 +51,7 @@ const SideNav: FC = () => {
     },
   ];
 
+  const userData = useSelector(selectLoginData);
   const [activeIndex, setActiveIndex] = useState(0);
   const [stepHeight, setStepHeight] = useState(0);
   const sidebarRef = useRef<any>();
@@ -63,7 +68,15 @@ const SideNav: FC = () => {
   //   }, 50);
   // }, []);
 
-  // change active index
+  // change active index 
+  function check () {
+    if (
+      userData?.loginData?.userId?.length > 0 &&
+      userData?.loginData?.password?.length > 0
+    ) {
+      history.push("/");
+    }
+  }
   useEffect(() => {
     const curPath = window.location.pathname.split("/")[1];
     const activeItem = sidebarNavItems.findIndex(
@@ -176,6 +189,13 @@ const SideNav: FC = () => {
           <Col className="align-items-center w-100 justify-content-center p-0 m-0 h-0 fit-content flex-wrap justify-content-center d-flex">
             <Nav.Link
               href="#"
+              onClick={(e: any) => {
+                dispatch({
+                  type: SET_LOGIN_DATA,
+                  payload: {},
+                });
+                check();
+              }}
               className="bg-light-grey form__input align-items-center d-flex text-decoration-none fit-content p-2 px-4 m-0"
               style={{ minHeight: "0" }}
             >

@@ -2,13 +2,17 @@ import React, { FC, useState } from "react";
 import { Image, Col, Row, Ratio, Card, Button } from "react-bootstrap";
 import style from "./TourCard.module.scss";
 import { IoIosHeart, IoMdHeartEmpty } from "react-icons/io";
-import { AiFillStar } from "react-icons/ai";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { BsHouseCheck } from "react-icons/bs";
 import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PrivateBathroom from "../icon/privateBathroom";
-import { LuParkingCircle } from "react-icons/lu";
+import { LuChevronRightCircle, LuParkingCircle } from "react-icons/lu";
 import { useHistory } from "react-router-dom";
+import { SET_SELECTED_TOUR_DATA } from "../../../state/actions/types/tourDataActionType";
+import { backpackersTours, facilities } from "../enum/enum";
+import MainContainer from "../container/MainContainer";
+import { GoDotFill } from "react-icons/go";
 
 type TourCardType = {
   key?: number;
@@ -26,6 +30,7 @@ type TourCardType = {
   className?: string;
   minHeight?: string;
   coordinates?: number[];
+  tour?: any;
 };
 const TourCard: FC<TourCardType> = ({
   tourname,
@@ -42,186 +47,179 @@ const TourCard: FC<TourCardType> = ({
   coordinates,
   propertyData,
   imageStyling,
+  tour,
   titleStyling,
 }) => {
   const screenSize = useSelector(selectScreenSize);
   const [IsWishlisted, setToWishList] = useState(false);
   const history = useHistory();
+  const dispatch = useDispatch();
   return (
-    <>
-      <Row
-        className={`${className} ${style.card} p-0`}
-        style={{ minHeight: "100%" }}
+    <Row
+      className={`${className} ${style.card} p-0`}
+      style={{ minHeight: "100%", background: "#cdface" }}
+    >
+      <Col md={6} lg={6} sm={6} className="p-0 col-6 m-0">
+        <Col>
+          <Col className="text-white position-relative p-2 m-0 pb-2">
+            {propertyData?.photos?.relativeUrl && (
+              <Ratio aspectRatio={imageRatio}>
+                <>
+                  <Image
+                    className={`p-0 rounded-3 position-absolute ${imageStyling}`}
+                    src={propertyData?.photos?.relativeUrl}
+                    onClick={() => {
+                      dispatch({
+                        type: SET_SELECTED_TOUR_DATA,
+                        payload: tour,
+                      });
+                      history.push("/tour-detail");
+                    }}
+                  />
+                  <Col className="position-relative p-0 border-1 text-center justify-content-end text-white">
+                    <Button
+                      className="align-middle justify-self-center position-absolute top-100 start-50 translate-middle-y mb-1 btn-secondary"
+                      style={{ background: "#0a99d7" }}
+                      onClick={() => {}}
+                    >
+                      {"42000"}
+                      {"$"}
+                    </Button>
+                  </Col>
+                </>
+              </Ratio>
+            )}
+          </Col>
+        </Col>
+        <div className="fw-bold align-items-center text-white flex-nowrap py-3 mx-4 justify-content-center flex-row d-flex m-0 p-0 position-relative">
+          <span className="p-0 m-0 display-5 d-flex flex-wrap w-90 text-center fit-content">
+            {facilities.map((facility: any) => {
+              return (
+                <img
+                  className={`p-0 m-0 justify-content-center`}
+                  style={{
+                    width: "25px",
+                    padding: "0px !important",
+                    margin: "0px !important",
+                  }}
+                  src={facility}
+                />
+              );
+            })}
+          </span>
+        </div>
+      </Col>
+      <Col
+        md={6}
+        lg={6}
+        sm={6}
+        xs={6}
+        sx={12}
+        className={`col-6 p-0 m-0 align-self-end`}
       >
-        <Col md={5} lg={5} sm={5} className="p-0 col-5 m-0">
-          <Col>
-            <Col className="text-white position-relative p-0 m-0 pb-2">
-              {propertyData.photos.relativeUrl && (
-                <Ratio aspectRatio={imageRatio}>
-                  <>
-                    <Image
-                      className={`p-0 rounded-3 position-absolute ${imageStyling}`}
-                      src={propertyData.photos.relativeUrl}
-                    />
-                    <Card.Body className="py-0">
-                      {IsWishlisted ? (
-                        <Card.Text
-                          className="bold p-2 text-white position-absolute text-shadow-dark fw-bold top-0 end-0"
-                          onClick={() => setToWishList(false)}
-                        >
-                          <IoMdHeartEmpty />
-                        </Card.Text>
-                      ) : (
-                        <Card.Text
-                          className="bold p-2 text-white position-absolute text-shadow-dark fw-bold top-0 end-0"
-                          onClick={() => setToWishList(true)}
-                        >
-                          <IoIosHeart />
-                        </Card.Text>
-                      )}
-                    </Card.Body>
-                  </>
-                </Ratio>
-              )}
-            </Col>
-          </Col>
-          <Row className={`m-1 py-8 p-0 d-block`}>
-            <Row
-              md={12}
-              lg={12}
-              sm={12}
-              className="position-relative justify-content-between p-0 text-wrap border-1 w-100 border  bg-transparent border-secondary text-white"
-            >
-              <BsHouseCheck
-                fill={"grey"}
-                className="w-15 h-15 p-0 justify-content-start d-flex"
-              />
-              <LuParkingCircle
-                fill={"grey"}
-                className="w-15 h-15 p-0 justify-content-start d-flex"
-              />
-
-              <Col className="w-15 text-white p-0">
-                <PrivateBathroom height="20px" width="24px" />
-              </Col>
-            </Row>
-            <Row
-              md={12}
-              lg={12}
-              sm={12}
-              className="position-relative justify-content-between p-0 mt-1 text-wrap border-1 w-100 border  bg-transparent border-secondary text-white"
-            >
-              <BsHouseCheck
-                fill={"grey"}
-                className="w-15 h-15 p-0 justify-content-start d-flex"
-              />
-              <LuParkingCircle
-                fill={"grey"}
-                className="w-15 h-15 p-0 justify-content-start d-flex"
-              />
-
-              <Col className="w-15 text-white p-0">
-                <PrivateBathroom height="20px" width="24px" />
-              </Col>
-            </Row>
-          </Row>
-        </Col>
-
-        <Col
-          md={7}
-          lg={7}
-          sm={7}
-          xs={7}
-          sx={12}
-          className={`col-7 py-8 p-0 m-0`}
-        >
-          <Row className="p-0 m-0">
-            <Col md={12} sm={12} lg={12} className="col-12 p-0 m-0">
-              <Col className="position-relative p-0">
-                <Card.Body className="p-0 px-2 m-0">
-                  <Card.Title className="small text-wrap" onClick={()=>history.push('')}>
-                    {tourname.text && tourname.text}
-                  </Card.Title>
-                  <Card.Text className="small min-vh-25">
-                    {"overview"}
-                  </Card.Text>
-                </Card.Body>
-              </Col>
-              <Col className="position-relative p-0 border-1 text-center justify-content-end text-white">
-                <Button
-                  className="align-middle justify-self-center w-100 mb-1 btn-secondary"
-                  style={{ background: "Brown" }}
-                  onClick={() => {}}
+        <Row className="p-0 m-0 h-90">
+          <Col className="position-relative m-0 d-flex p-0">
+            <Col className="p-0 gap-3 d-flex flex-column m-0">
+              <Col
+                className="text-white flex-column d-flex h-100 position-relative m-0"
+                style={{
+                  background: "#9e9e9e "
+                }}
+              >
+                <Col
+                  className={`overflow-hidden hidden-scroll ${style.routeTimeline}`}
                 >
-                  {"STAYS"}
-                </Button>
+                  {backpackersTours[0]?.places?.map(
+                    (place: string, idx: number) => (
+                      <Col className="py-2 d-inline fit-content">
+                        <Row className="d-flex gx-0">
+                          <Col>
+                            <div
+                              className="pl-2 float-right h6 p-0 m-0"
+                              style={{
+                                color: "#f7de26 ",
+                              }}
+                            >
+                              {place}
+                            </div>
+                          </Col>
+                          <Col className="col-2">
+                            <GoDotFill fill="#f7de26" />
+                          </Col>
+                        </Row>
+                      </Col>
+                    )
+                  )}
+                </Col>
+                <Row>
+                  <Col lg={8} xs={8} className="col-8 py-2 align-self-end">
+                    <Col lg={12} xs={12} className=" py-2 align-self-end">
+                      <Col
+                        className={`fw-bold d-flex flex-column align-items-center text-nowrap text-secondary`}
+                      >
+                        <Col
+                          className="display-6 justify-content-center"
+                          style={{
+                            color: "#f7de26",
+                          }}
+                        >
+                          5D
+                        </Col>
+                        <Row className="w-100 justify-content-center">
+                          {[...Array(3)]?.map((index: number) => {
+                            return (
+                              <AiFillStar
+                                size={15}
+                                style={{
+                                  color: "#f7de26",
+                                  width: "fit-content",
+                                  paddingLeft: "0px",
+                                  paddingRight: "0px",
+                                  marginTop: "0px",
+                                }}
+                                className="d-flex"
+                              />
+                            );
+                          })}
+                          {[...Array(2)]?.map((index: number) => {
+                            return (
+                              <AiOutlineStar
+                                size={15}
+                                style={{
+                                  color: "f7de26",
+                                  width: "fit-content",
+                                  paddingLeft: "0px",
+                                  paddingRight: "0px",
+                                  marginTop: "0px",
+                                }}
+                                className="d-flex"
+                              />
+                            );
+                          })}
+                        </Row>
+                      </Col>
+                    </Col>
+                  </Col>
+                  <Col className="col-4 justify-content-center p-0 align-self-center">
+                    <LuChevronRightCircle
+                      fill="#fed02b"
+                      size={"40px"}
+                      onClick={() => {
+                        dispatch({
+                          type: SET_SELECTED_TOUR_DATA,
+                          payload: tour,
+                        });
+                        history.push("/tour-detail");
+                      }}
+                    />
+                  </Col>
+                </Row>
               </Col>
             </Col>
-          </Row>
-        </Col>
-      </Row>
-
-      <Row className="position-relative p-0 m-0">
-        <Col className="col-3 align-self-center">
-          <Col
-            className={`${titleStyling} fw-bold align-items-center text-nowrap text-secondary`}
-          >
-            <span className="text-align-center justify-content-center small d-flex">
-              {"Review"}
-            </span>
-            <Row className="w-100 justify-content-center">
-              {[...Array(propertyData.starRating.value)].map(
-                (index: number) => {
-                  return (
-                    <AiFillStar
-                      key={index}
-                      size={15}
-                      style={{
-                        color: "#fed02b",
-                        width: "fit-content",
-                        paddingLeft: "0px",
-                        paddingRight: "0px",
-                        marginTop: "0px",
-                      }}
-                      className="d-flex"
-                    />
-                  );
-                }
-              )}
-            </Row>
           </Col>
-        </Col>
-        <Col className="col-4 px-1 align-self-center">
-          <Col
-            className={`${titleStyling} fw-bold justify-content-center d-flex align-self-center text-nowrap text-secondary`}
-          >
-            <button
-              className={`d-flex align-self-center justify-items-center text-white ${style.btmRght} px-4`}
-              style={{ background: "rgb(0 91 90)" }}
-              onClick={() => {}}
-            >
-              {"FAQ"}
-            </button>
-          </Col>
-        </Col>
-        <Col className="col-5 p-0">
-          <Col className="justify-content-end d-flex flex-column p-0">
-            <Button
-              className="align-middle justify-self-center w-100 btn-secondary mb-1"
-              onClick={() => {}}
-            >
-              {"BOOK NOW"}
-            </Button>
-            <Button
-              className="align-middle justify-self-center w-100 btn-secondary"
-              onClick={() => {}}
-            >
-              {"BUY NOW"}
-            </Button>
-          </Col>
-        </Col>
-      </Row>
-    </>
+        </Row>
+      </Col>
+    </Row>
   );
 };
 

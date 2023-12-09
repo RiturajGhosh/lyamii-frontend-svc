@@ -4,10 +4,18 @@ import { getData } from "../../../api/getData";
 type HorizontalScrollType = {
   setPage: Function;
   page: number;
+  background?: string;
+
   children: React.ReactNode;
   title?: string;
 };
-const HorizontalScroll: FC<HorizontalScrollType> = ({ page,children, setPage,title }) => {
+const HorizontalScroll: FC<HorizontalScrollType> = ({
+  page,
+  children,
+  background,
+  setPage,
+  title,
+}) => {
   const [disableScroll, setdisableScroll] = useState(false);
   const [loading, setLoading] = useState(false);
   const [scrollWidth, setscrollWidth] = useState(0);
@@ -61,7 +69,7 @@ const HorizontalScroll: FC<HorizontalScrollType> = ({ page,children, setPage,tit
   function getClonesWidth() {
     const clones = document.getElementsByClassName("is-clone");
     let clonesWidth = 0;
-    for (let i = 0; i < clones.length; i++) {
+    for (let i = 0; i < clones?.length; i++) {
       clonesWidth = clonesWidth + clones[i].clientWidth;
     }
     return clonesWidth;
@@ -89,20 +97,20 @@ const HorizontalScroll: FC<HorizontalScrollType> = ({ page,children, setPage,tit
   }, []);
 
   return (
-    <Container className={`py-5 p-0 justify-content-center`}>
-      <Row className="p-0">
-        {title && <div className="text-secondary title p-0">{title}</div>}
-        <Col className="card-container p-0 d-block position-relative">
-          <div
-            ref={scrollContainerRef}
-            className="scrolling-wrapper"
-            onScroll={handleScroll}
-          >
-            {children}
-          </div>
-        </Col>
-      </Row>
-    </Container>
+    // <Container className={`py-5 p-0 justify-content-center`}>
+    <Row className={`p-0 ${background && background}`}>
+      {title && <div className="text-secondary title p-0">{title}</div>}
+      <Col className="card-container p-0 d-block position-relative">
+        <div
+          ref={scrollContainerRef}
+          className="scrolling-wrapper"
+          onScroll={handleScroll}
+        >
+          {children}
+        </div>
+      </Col>
+    </Row>
+    // </Container>
   );
 };
 

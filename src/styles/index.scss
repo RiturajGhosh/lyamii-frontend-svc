@@ -101,6 +101,96 @@ $custom-spacers: 10px;
 .float-right {
   float: right;
 }
+.bg-dark-green {
+  background-color: #063b2d !important;
+}
+.text-dark-green {
+  color: #063b2d !important;
+}
+.text-green {
+  color: #398062;
+}
+.translate-x-20 {
+  translate: -20% !important;
+}
+.start-90 {
+  left: 90%;
+}
+.zi-0 {
+  z-index: 0;
+}
+.zi-2 {
+  z-index: 2;
+}
+.rotate-20 {
+  transform: rotate(-20deg) !important;
+}
+.flip-x {
+  -webkit-transform: scaleX(-1) !important;
+  transform: scaleX(-1) !important;
+}
+.triangle-5 {
+  width: 22% !important;
+  height: 50% !important;
+  border-top: solid calc(0.28 * 70vw) #fd8704 !important;
+  border-left: solid calc(0.3 * 70vw) transparent !important;
+  border-bottom-width: 0;
+  border-right: solid calc(0.3 * 70vw) transparent !important;
+}
+
+.triangle-reverse-5 {
+  left: 86% !important;
+  width: 10% !important;
+  height: 59% !important;
+  border-bottom: solid calc(0.08 * 70vw) #fd8704 !important;
+  border-right: solid calc(0.08 * 70vw) transparent !important;
+  border-top-width: 10px;
+  border-left: solid calc(0.08 * 70vw) transparent !important;
+}
+.triangle-transparent {
+  width: 36% !important;
+  height: 100% !important;
+  border-top: solid calc(0.5 * 70vw) rgb(15 149 255 / 28%) !important;
+  border-left: solid 0 transparent !important;
+  border-bottom: 10px;
+  border-right: solid calc(0.4 * 70vw) transparent !important;
+}
+.triangle-reverse-transparent {
+  left: 84% !important;
+  width: 10% !important;
+  height: 50% !important;
+  border-bottom: solid calc(0.45 * 70vw) rgb(15 149 255 / 28%) !important;
+  border-right: solid 0 transparent !important;
+  border-top-width: 10px;
+  border-left: solid calc(0.4 * 70vw) transparent !important;
+}
+.triangle-4 {
+  width: 34% !important;
+  height: 50% !important;
+  border-top: solid calc(0.3 * 70vw) #ffbb00 !important;
+  border-left: solid calc(0.28 * 70vw) transparent !important;
+  border-bottom-width: 0;
+  border-right: solid calc(0.28 * 70vw) transparent !important;
+}
+
+.triangle-3 {
+  width: 33% !important;
+  height: 50% !important;
+  border-top: solid calc(0.32 * 70vw) #d0b821 !important;
+  border-left: solid calc(0.28 * 70vw) transparent !important;
+  border-bottom-width: 0;
+  border-right: solid calc(0.28 * 70vw) transparent !important;
+}
+
+.triangle-reverse-4 {
+  left: 83% !important;
+  width: 10% !important;
+  height: 52% !important;
+  border-bottom: solid calc(0.06 * 70vw) #ffbb00 !important;
+  border-right: solid calc(0.06 * 70vw) transparent !important;
+  border-top-width: 10px;
+  border-left: solid calc(0.06 * 70vw) transparent !important;
+}
 .bg-violet-blue {
   background-image: linear-gradient(
     to top,
@@ -192,6 +282,10 @@ $custom-spacers: 10px;
   font-size: 2.3125rem;
   line-height: 4.2rem;
 }
+.display-5 {
+  font-size: calc(0.03*100vw) !important;
+  line-height: 3rem;
+}
 .lock-scroll {
   overflow: hidden;
 }
@@ -199,7 +293,7 @@ $custom-spacers: 10px;
 .pointer {
   cursor: pointer;
 }
-.btn-circle.btn-xl {
+.btn-circle .btn-xl {
   width: 70px;
   height: 70px;
   padding: 10px 16px;
@@ -209,13 +303,20 @@ $custom-spacers: 10px;
 }
 
 .btn-circle {
-  width: 30px;
-  height: 30px;
-  padding: 6px 0px;
-  border-radius: 15px;
-  text-align: center;
-  font-size: 12px;
-  line-height: 1.42857;
+  width: 70px !important;
+  height: 70px !important;
+  border-radius: 50px !important;
+  text-align: center !important;
+  font-size: 12px !important;
+  line-height: 1.42857 !important;
+}
+.btn-circle-sm {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 25px !important;
+  text-align: center !important;
+  font-size: 12px !important;
+  line-height: 1.42857 !important;
 }
 .background-no-repeat {
   background: no-repeat;
@@ -226,7 +327,7 @@ $custom-spacers: 10px;
   width: 37% !important;
 }
 .sticky {
-  background-color: #05264973 !important;
+  background-color: #00000073 !important;
   transition: all 0.3s ease-out 0s !important;
   box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.171) !important;
   backdrop-filter: blur(15px) !important;
@@ -295,6 +396,12 @@ $custom-spacers: 10px;
   }
 }
 
+.body-color {
+  background-color: #8dc498 !important;
+}
+.system-ui {
+  font-family: system-ui !important;
+}
 .img-round,
 .img-rel-round {
   width: 50%;
@@ -441,6 +548,10 @@ $custom-spacers: 10px;
   margin-top: 2.625rem !important;
   margin-bottom: 2.625rem !important;
 }
+.mx-42 {
+  margin-left: 2.625rem !important;
+  margin-right: 2.625rem !important;
+}
 .ft-57 {
   font-size: 3.625rem !important;
 }
@@ -458,6 +569,9 @@ $custom-spacers: 10px;
 }
 .w-30 {
   width: 30% !important;
+}
+.w-40 {
+  width: 40% !important;
 }
 .w-60 {
   width: 60% !important;
@@ -516,6 +630,9 @@ $custom-spacers: 10px;
 .min-vw-50 {
   min-width: 50vw !important;
 }
+.min-vh-0 {
+  min-height: 0 !important;
+}
 .min-vw-25 {
   min-width: 25vw !important;
 }
@@ -548,6 +665,9 @@ $custom-spacers: 10px;
 }
 .h-30 {
   height: 30% !important;
+}
+.h-60 {
+  height: 60% !important;
 }
 .h-90 {
   height: 90% !important;
@@ -617,6 +737,10 @@ p,
 .rotate-180 {
   transform: rotate(180deg);
 }
+.text-outline {
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
 .card {
   display: block;
   top: 0px;
@@ -681,6 +805,11 @@ button {
   }
   @media only screen and (max-width: 400px) {
     font-size: 12px;
+  }
+}
+.scroll {
+  &::-webkit-scrollbar {
+    padding: 2px;
   }
 }
 .d-contents {
@@ -881,7 +1010,7 @@ button {
   width: 100%;
   transform: translateY(0);
 }
-.justify-self-center{
+.justify-self-center {
   justify-self: center !important;
 }
 $utilities: map-merge(
@@ -920,12 +1049,12 @@ $utilities: map-merge(
         none: none,
       ),
     ),
-    "justify-self":(
+    "justify-self": (
       property: justify-self,
-      class:justify-self,
-      values:(
-        center:center
-      )
+      class: justify-self,
+      values: (
+        center: center,
+      ),
     ),
     "border-color": (
       property: border-color,
@@ -1003,7 +1132,15 @@ $utilities: map-merge(
     ),
   )
 );
-
+.hidden-scroll {
+  overflow: scroll !important;
+  &::-webkit-scrollbar {
+    width: 0px !important;
+  }
+}
+.max-content {
+  width: -webkit-fill-available;
+}
 .product-list-container {
   text-align: center;
   padding: 20px;
@@ -1144,7 +1281,7 @@ body {
 }
 
 .container {
-  width: 1200px;
+  width: 1200px !important;
   margin: auto;
 }
 

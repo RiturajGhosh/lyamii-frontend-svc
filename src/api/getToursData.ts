@@ -3,7 +3,7 @@ import { axiosType } from "../components/common/enum/enum";
 
 export async function getToursData(payload:any) {
   return restClient({
-    type: axiosType.get,
+    type: axiosType.post,
     url: "/",
     payload: payload,
     // params: '',
