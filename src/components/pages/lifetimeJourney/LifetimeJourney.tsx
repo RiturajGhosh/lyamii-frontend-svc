@@ -1,11 +1,6 @@
 import React, { FC } from "react";
-import { Button, Card, Col, Container, Image, Row } from "react-bootstrap";
-import {
-  journeyOptions,
-  mapDescription,
-  reasons,
-} from "../../common/enum/enum";
-import fingerPrint from "../../../Assets/fingerprint.svg";
+import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { journeyOptions } from "../../common/enum/enum";
 import style from "./LifetimeJourney.module.scss";
 import { useHistory } from "react-router-dom";
 import { selectScreenSize } from "../../../state/selectors/selectScreenSize";

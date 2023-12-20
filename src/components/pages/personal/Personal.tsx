@@ -1,7 +1,6 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 import { Col, Row, Button, Container, Form } from "react-bootstrap";
 import SubCard from "../../common/subCard/SubCard";
-import SideNav from "../../common/sideNav/SideNav";
 
 const Personal: FC = () => {
   const [edit, setEdit] = useState(false);

@@ -1,15 +1,11 @@
 import React, { FC, useState } from "react";
-import { backpackersTours } from "../../common/enum/enum";
 import style from "./BackpackersTours.module.scss";
-import { Card, Col, Container, Row } from "react-bootstrap";
-import TourOverviewCard from "../../common/tourOverviewCard/TourOverviewCard";
+import { Card, Col, Row } from "react-bootstrap";
 import MainContainer from "../../common/container/MainContainer";
 import Coursel from "../coursel/Coursel";
-import HorizontalScroll from "../../common/horizontalScroll/HorizontalScroll";
 import TourCard from "../../common/tourCard/TourCard";
 import RecommandedTours from "../recommandedTours/RecommandedTours";
-import RecentlyViewedTours from "../recentlyViewedTours/RecentlyViewedTours";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { tours } from "../mockData/destinations";
 import { SET_SELECTED_TOUR_DATA } from "../../../state/actions/types/tourDataActionType";

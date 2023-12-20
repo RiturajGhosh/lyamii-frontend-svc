@@ -2,9 +2,7 @@ import React, { FC, useEffect, useState } from "react";
 import markers from "../../common/globe/markers";
 import { Card, Col, Row } from "react-bootstrap";
 import HorizontalScroll from "../../common/horizontalScroll/HorizontalScroll";
-import { getData } from "../../../api/getData";
 import style from "./Coursel.module.scss";
-import { FaPlane } from "react-icons/fa6";
 import { useHistory } from "react-router-dom";
 
 const Coursel: FC = () => {
@@ -14,7 +12,7 @@ const Coursel: FC = () => {
   const history = useHistory();
 
   useEffect(() => {
-    getData(page).then((res:any) => setData([...data, ...res]));
+    // getData(page).then((res:any) => setData([...data, ...res]));
     setLoading(false);
   }, [page]);
 

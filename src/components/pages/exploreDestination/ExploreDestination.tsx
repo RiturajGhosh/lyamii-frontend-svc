@@ -1,24 +1,9 @@
 import React, { FC, useEffect, useState } from "react";
-import ContainerSection from "../../common/container/Container";
-import {
-  Button,
-  Card,
-  Col,
-  Container,
-  Form,
-  Image,
-  Modal,
-  Ratio,
-  Row,
-} from "react-bootstrap";
-import FormInput from "../../common/formInput/FormInput";
-import style from "./ExploreDestination.module.scss";
+import { Button, Card, Col, Modal, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { selectedLocation } from "../../../state/selectors/selectGlobeData";
-import { SET_SELECTED_LOCATION } from "../../../state/actions/types/globeDataActionType";
 import markers from "../../common/globe/markers";
 import Checkbox from "../../common/checkbox/Checkbox";
-import CardWithShadow from "../../common/cardWithoutBorder/CardWithShadow";
 import { tours } from "../mockData/destinations";
 import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
 import TourCard from "../../common/tourCard/TourCard";
@@ -30,6 +15,7 @@ import MainContainer from "../../common/container/MainContainer";
 import HorizontalScroll from "../../common/horizontalScroll/HorizontalScroll";
 import { SET_SELECTED_TOUR_DATA } from "../../../state/actions/types/tourDataActionType";
 import { useHistory } from "react-router-dom";
+import RoundButton from "../../common/roundButton/RoundButton";
 
 export type stateType = {
   data: any[];
@@ -128,37 +114,31 @@ const ExploreDestination: FC = () => {
         <Col className="p-0 col-9 m-0">
           <Row className="d-flex">
             <Col className="col-6 pr-5 align-self-center pl-0">
-              <Col
-                className=" position-relative p-0 m-0"
-                style={{
-                  background: "#cdface",
-                  color: "#218a43",
-                  textShadow: "#218a43",
-                }}
-              >
-                <Row className="flex-nowrap w-90 p-0 m-0 position-relative">
-                  <Col className="col-11">
-                    <span className="py-2 p-0 display-6 text-end w-100">
+              <Row className="p-0 m-0">
+                <Col
+                  className={"col-1"}
+                  style={{ background: "#0a99d7" }}
+                ></Col>
+                <Col
+                  className="bg-dark position-relative p-0 m-0"
+                  style={{
+                    background: "#cdface",
+                    color: "#218a43",
+                    textShadow: "#218a43",
+                  }}
+                >
+                  <div className="w-100 position-relative">
+                    <Col
+                      className="py-2 px-4 col-11 p-0 display-6 text-end w-100"
+                      style={{
+                        background: "#cdface",
+                        color: "#218a43",
+                        textShadow: "#218a43",
+                      }}
+                    >
                       {"Indian Passport Holders"}
-                    </span>
-                    <span className="py-2 p-0 display-6 text-end w-100">
-                      {"Others"}
-                    </span>
-                  </Col>
-                  <Col className="flex-nowrap col-1 p-0 m-0 position-relative">
-                    <Col className="align-middle justify-content-end position-absolute top-50 col-1 h3 start-100 translate-middle-y">
-                      <Checkbox
-                        option={filterList[0].subFilter[3]}
-                        onClick={(label: string) => {
-                          setUpdate(false);
-                          handleFilters("Type", "Indian Passport Holders");
-                        }}
-                        label={false}
-                        type={"checkbox"}
-                      />
                     </Col>
-
-                    <Col className="align-middle justify-self-center position-absolute top-50 col-1 h3 start-100 translate-middle-y">
+                    <div className="position-absolute top-50 start-100 h3 translate-middle">
                       <Checkbox
                         option={filterList[0].subFilter[3]}
                         onClick={(label: string) => {
@@ -168,19 +148,42 @@ const ExploreDestination: FC = () => {
                         label={false}
                         type={"checkbox"}
                       />
+                    </div>
+                  </div>
+                  <div className="position-relative">
+                    <Col
+                      className="py-2 px-4 p-0 display-6 text-end w-100"
+                      style={{
+                        background: "#cdface",
+                        color: "#218a43",
+                        textShadow: "#218a43",
+                      }}
+                    >
+                      {"Others"}
                     </Col>
+                    <div className="position-absolute top-50 start-100 h3 translate-middle">
+                      <Checkbox
+                        option={filterList[0].subFilter[3]}
+                        onClick={(label: string) => {
+                          setUpdate(false);
+                          handleFilters("Type", "Indian Passport Holders");
+                        }}
+                        label={false}
+                        type={"checkbox"}
+                      />
+                    </div>
+                  </div>
+                  <Col className="position-relative p-0 border-1 text-center mx-42 justify-content-end text-white">
+                    <Button
+                      className="align-middle justify-self-center position-absolute top-100 mx-42 start-0 translate-middle btn-secondary"
+                      style={{ background: "#0a99d7" }}
+                      onClick={() => setShow(!show)}
+                    >
+                      Filter
+                    </Button>
                   </Col>
-                </Row>
-                <Col className="position-relative p-0 border-1 text-center mx-42 justify-content-end text-white">
-                  <Button
-                    className="align-middle justify-self-center position-absolute top-100 mx-42 start-0 translate-middle btn-secondary"
-                    style={{ background: "#0a99d7" }}
-                    onClick={() => setShow(!show)}
-                  >
-                    Filter
-                  </Button>
                 </Col>
-              </Col>
+              </Row>
             </Col>
             <Col className="align-self-center col-6 justify-content-center p-0">
               <Col className="justify-content-center d-flex">
@@ -260,7 +263,16 @@ const ExploreDestination: FC = () => {
           </Row>
         </Col>
         <Col className="p-0 m-0 col-3 d-flex justify-content-center">
-          <Card className="rounded-circle w-75 h-100 p-0 m-0">
+          <Col className="col-7 d-flex position-relative p-0 m-0">
+            <RoundButton
+              className="border-5 border circle-core"
+              bordercolor="#0e3c30"
+              size={"calc(12*100vw"}
+              fill={"#8dc498"}
+              img={require("../../../Assets/avatar.png")}
+            />
+          </Col>
+          {/* <Card className="rounded-circle w-75 h-100 p-0 m-0">
             <Card.Img
               className={`p-0 m-0 rounded-circle h-100 justify-content-center`}
               style={{
@@ -275,11 +287,11 @@ const ExploreDestination: FC = () => {
               src={require("../../../Assets/spring.jpg")}
             />
           </Card>{" "}
-          <p className="justify-content-center d-flex display-1">{""}</p>
+          <p className="justify-content-center d-flex display-1">{""}</p> */}
         </Col>
       </Row>
 
-      <Col className={"p-4"}>
+      <Col className={"p-5"}>
         {/* <Row className="p-0 m-0 w-100 d-flex justify-content-between">
           <Col className="p-0">
             <Row className="p-0 w-100">
@@ -324,7 +336,13 @@ const ExploreDestination: FC = () => {
             page={page}
           >
             {tourlist.map((tour, index) => (
-              <Col md={6} lg={4} sx={12} sm={8} className="mx-3 col-12 d-inline-block position-relative">
+              <Col
+                md={6}
+                lg={4}
+                sx={12}
+                sm={8}
+                className="mx-3 col-12 d-inline-block position-relative"
+              >
                 <Card key={index} className={`p-0 `}>
                   <TourCard
                     coordinates={[]}

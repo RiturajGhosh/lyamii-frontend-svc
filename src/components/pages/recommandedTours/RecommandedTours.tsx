@@ -1,12 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
-import markers from "../../common/globe/markers";
-import { Card, Col, Row } from "react-bootstrap";
+import { Card, Col } from "react-bootstrap";
 import HorizontalScroll from "../../common/horizontalScroll/HorizontalScroll";
-import { getData } from "../../../api/getData";
-import style from "./RecommandedTours.module.scss";
-import { FaPlane } from "react-icons/fa6";
 import { useHistory } from "react-router-dom";
-import CardWithShadow from "../../common/cardWithoutBorder/CardWithShadow";
 import TourCard from "../../common/tourCard/TourCard";
 import { tours } from "../mockData/destinations";
 

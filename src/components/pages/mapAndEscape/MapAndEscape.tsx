@@ -1,15 +1,11 @@
 import React, { FC } from "react";
-import { Card, Col, Container, Image, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import style from "./MapAndEscape.module.scss";
-import BorderCard from "../../common/borderCard/BorderCard";
 import Globe from "../../common/globe/Globe";
-import escape from "../../../Assets/escape.jpeg";
-import { exploreDescription, mapDescription } from "../../common/enum/enum";
+import { mapDescription } from "../../common/enum/enum";
 import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { SET_SELECTED_LOCATION } from "../../../state/actions/types/globeDataActionType";
-import { FaArrowRightLong, FaCircle } from "react-icons/fa6";
 import RoundButton from "../../common/roundButton/RoundButton";
 
 const MapAndEscape: FC = () => {
@@ -31,7 +27,7 @@ const MapAndEscape: FC = () => {
             >
               <div className="card-body flex-wrap d-flex">
                 <h1
-                  className={`text-green text-shadow-light fw-bold heading`}
+                  className={`text-shadow-dark fw-bold heading`}
                   style={{ color: "#266d59" }}
                 >
                   Home among the Stars
@@ -78,7 +74,7 @@ const MapAndEscape: FC = () => {
                       <Row className="position-relative align-items-center p-0 my-3 m-0 justify-content-center d-flex w-100">
                         <Col className="col-2 d-flex position-relative p-0 m-0">
                           <RoundButton
-                            className="border-5 border circle-core" 
+                            className="border-5 border circle-core"
                             bordercolor="#0e3c30"
                             size={"calc(0.12*100vw"}
                             fill={"#8dc498"}

@@ -1,8 +1,7 @@
-import React, { FC, useEffect } from "react";
-import { Button, Container, Row } from "react-bootstrap";
+import React, { FC } from "react";
+import { Container, Row } from "react-bootstrap";
 import Destinations from "../destinations/Destinations";
 import style from "./Home.module.scss";
-import Wave from "../../common/icon/waveBottom";
 import CustomerReviews from "../customerReview/CustomerReview";
 import WhyLyamii from "../whyLyamii/WhyLyamii";
 import MapAndEscape from "../mapAndEscape/MapAndEscape";
@@ -10,13 +9,9 @@ import Contact from "../contact/Contact";
 import { useHistory } from "react-router-dom";
 import LifetimeJourney from "../lifetimeJourney/LifetimeJourney";
 import BeyoundObvious from "../beyoundObvious/BeyoundObvious";
-import { getData } from "../../../api/getData";
 
 const Home: FC = () => {
   const history = useHistory();
-  useEffect(() => {
-    getData(1).then(() => console.log("done"));
-  }, []);
   return (
     <section>
       <Container
@@ -38,7 +33,6 @@ const Home: FC = () => {
           <button
             className="align-middle justify-self-center"
             onClick={() => {
-              console.log("hi");
               history.push("/passportRegistration");
             }}
           >

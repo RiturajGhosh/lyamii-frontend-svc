@@ -2,7 +2,6 @@ import React, { FC } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { US } from "country-flag-icons/react/3x2";
 import { reviews } from "../../common/enum/enum";
-import InvertedComma from "../../common/icon/invertedComma";
 import style from "./CustomerReview.module.scss";
 import avatar from "../../../Assets/avatar.png";
 

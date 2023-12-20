@@ -1,9 +1,7 @@
 import React, { FC, useState } from "react";
-import { Card, Col, Container, Image, Row } from "react-bootstrap";
-import { mapDescription, reasons } from "../../common/enum/enum";
-import fingerPrint from "../../../Assets/fingerprint.svg";
+import { Card, Col, Container, Row } from "react-bootstrap";
+import { reasons } from "../../common/enum/enum";
 import style from "./WhyLamii.module.scss";
-import { tours } from "../mockData/destinations";
 
 const WhyLyamii: FC = () => {
   const [flipped, setFliped] = useState(false);
@@ -26,7 +24,10 @@ const WhyLyamii: FC = () => {
                   Why
                 </p>
                 <Row className="">
-                  <span className="fw-bold display-1 w-100 py-4 d-flex text-shadow-light" style={{color:"#b64746"}}>
+                  <span
+                    className="fw-bold display-1 w-100 py-4 d-flex text-shadow-light"
+                    style={{ color: "#b64746" }}
+                  >
                     Lyamii
                     <Card.Img
                       className={`w-15 h-100 p-2 m-0 justify-content-center`}

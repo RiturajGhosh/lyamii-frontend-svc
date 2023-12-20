@@ -1,23 +1,12 @@
 .reasonCard {
-  min-height: 200px !important;
-  max-height: 200px !important;
-  max-width: 200px !important;
+  min-height: 0.15 * 100vw !important;
+  max-height: 0.15 * 100vw !important;
+  max-width: 0.15 * 100vw !important;
   padding: 20px 5px !important;
 
-  @media only screen and (min-width: 767px) and (max-width: 1000px) {
-    min-height: 10% !important;
-    max-height: 10% !important;
-  }
-  @media only screen and (min-width: 500px) and (max-width: 767px) {
-    min-height: 0px !important;
-    max-height: 300px !important;
-  }
-  @media only screen and (min-width: 400px) and (max-width: 500px) {
-    min-height: 0px !important;
-    max-height: 300px !important;
-  }
-  @media only screen and (max-width: 400px) {
-    min-height: 0px !important;
-    max-height: 300px !important;
+  @media only screen and (max-width: 767px) {
+    min-height:0.3 * 100vw !important;
+    max-height:0.3 * 100vw !important;
+    max-width: 0.3 * 100vw !important;
   }
 }

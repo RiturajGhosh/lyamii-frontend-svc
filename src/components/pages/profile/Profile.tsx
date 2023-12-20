@@ -1,35 +1,10 @@
-import React, { FC, useEffect, useState } from "react";
-import {
-  Image,
-  Col,
-  Row,
-  Ratio,
-  Card,
-  Button,
-  Container,
-} from "react-bootstrap";
-import style from "./TourDetailCard.module.scss";
-import { IoIosHeart, IoMdHeartEmpty } from "react-icons/io";
-import { AiFillStar } from "react-icons/ai";
-import { BsHouseCheck } from "react-icons/bs";
-import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
-import { useSelector } from "react-redux";
-import { selectTourData } from "../../../state/selectors/selectTourData";
-import { tours } from "../../pages/mockData/destinations";
-import ContainerSection from "../../common/container/Container";
+import React, { FC } from "react";
+import { Col, Row, Card, Container } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-import path from "path";
 import SubCard from "../../common/subCard/SubCard";
 
 const Profile: FC = () => {
-  const screenSize = useSelector(selectScreenSize);
-  const [IsWishlisted, setToWishList] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [show, setShow] = useState(true);
-  const [page, setPage] = useState(0);
   const history = useHistory();
-  const selectedtourData: any = tours[0] || {};
-  // (selectTourData);
   const menus = [
     {
       title: "Personal Data",

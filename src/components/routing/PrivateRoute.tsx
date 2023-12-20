@@ -49,8 +49,6 @@ const PrivateRoute: FC<PrivateRouteProps> = ({
   //   let main = document?.getElementById("main") as HTMLElement;
   //   main.style.marginLeft = "250px";
   // };
-
-  console.log(paths, path);
   const checkErrorAndLogin = () => {
     if (loginError) {
       return <Redirect to="/" />;

@@ -1,8 +1,5 @@
 import React, { FC } from "react";
-import { Container, Col, Row, Card } from "react-bootstrap";
-import { HeaderList } from "../header/Header";
-import { Link } from "react-router-dom";
-import { communities, supports } from "../enum/enum";
+import { Col, Card } from "react-bootstrap";
 
 type SwitchType = {
   isOn?: boolean;
@@ -16,13 +13,17 @@ const Switch: FC<SwitchType> = ({ isOn, label1, label2 }) => {
       style={{ borderRadius: "45%" }}
     >
       <Col
-        className={`border-1 p-1 text-center text-nowrap overflow-hidden ${isOn && "btn-warning w-100"}`}
+        className={`border-1 p-1 text-center text-nowrap overflow-hidden ${
+          isOn && "btn-warning w-100"
+        }`}
         style={{ borderRadius: "45%" }}
       >
         {label1}
       </Col>
       <Col
-        className={`border-1 text-center p-1 text-nowrap overflow-hidden ${!isOn && "btn-warning w-100"}`}
+        className={`border-1 text-center p-1 text-nowrap overflow-hidden ${
+          !isOn && "btn-warning w-100"
+        }`}
         style={{ borderRadius: "45%" }}
       >
         {label2}

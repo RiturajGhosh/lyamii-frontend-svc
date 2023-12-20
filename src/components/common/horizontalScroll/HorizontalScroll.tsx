@@ -98,8 +98,8 @@ const HorizontalScroll: FC<HorizontalScrollType> = ({
 
   return (
     // <Container className={`py-5 p-0 justify-content-center`}>
-    <Row className={`p-0 ${background && background}`}>
-      {title && <div className="text-secondary title p-0">{title}</div>}
+    <Row className={`p-0 flex-column ${background && background}`}>
+      {title && <div className="h2 rounded-4 fit-content text-shadow-dark p-2" style={{color:"#dfe047",background:"#7ac68e"}}>{title}</div>}
       <Col className="card-container p-0 d-block position-relative">
         <div
           ref={scrollContainerRef}

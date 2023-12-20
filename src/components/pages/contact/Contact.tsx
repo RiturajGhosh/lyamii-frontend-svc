@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Button, Card, Col, Container, Image, Row } from "react-bootstrap";
+import { Card, Col, Container, Image, Row } from "react-bootstrap";
 
 const Contact: FC = () => {
   return (

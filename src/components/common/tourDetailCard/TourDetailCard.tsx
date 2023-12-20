@@ -1,36 +1,14 @@
-import React, { FC, useEffect, useState } from "react";
-import {
-  Image,
-  Col,
-  Row,
-  Ratio,
-  Card,
-  Button,
-  Form,
-  InputGroup,
-} from "react-bootstrap";
+import React, { FC, useState } from "react";
+import { Col, Row, Card, Button, Form, InputGroup } from "react-bootstrap";
 import style from "./TourDetailCard.module.scss";
-import { IoIosHeart, IoMdHeartEmpty } from "react-icons/io";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import { BsHouseCheck, BsShare } from "react-icons/bs";
+import { BsShare } from "react-icons/bs";
 import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
 import { useSelector } from "react-redux";
-import PrivateBathroom from "../icon/privateBathroom";
-import { LuParkingCircle } from "react-icons/lu";
-import HorizontalScroll from "../horizontalScroll/HorizontalScroll";
 import markers from "../globe/markers";
-import ContainerSection from "../container/Container";
 import { selectTourData } from "../../../state/selectors/selectTourData";
-import { tours } from "../../pages/mockData/destinations";
-import {
-  backpackersTours,
-  facilities,
-  isoCountries,
-  tourReviews,
-} from "../enum/enum";
-import Switch from "../switch/Switch";
-import { FaIndianRupeeSign, FaRupeeSign } from "react-icons/fa6";
-import { BiSolidBellRing } from "react-icons/bi";
+import { backpackersTours, facilities, tourReviews } from "../enum/enum";
+import { FaIndianRupeeSign } from "react-icons/fa6";
 import CustomCoursel from "../../pages/coursel/CustomCoursel";
 import MainContainer from "../container/MainContainer";
 import Tick from "../icon/tick";
@@ -152,7 +130,7 @@ const TourDetailCard: FC = () => {
                     <Card className="text-white scroll position-relative p-0 m-0 p-2">
                       <section
                         className={`overflow-auto ${style.routeTimeline}`}
-                      > 
+                      >
                         {backpackersTours[0]?.places?.map(
                           (place: string, idx: number) => (
                             <Col className="py-2">
@@ -247,7 +225,7 @@ const TourDetailCard: FC = () => {
                             style={{ background: "#5a8ffd" }}
                             className="align-items-center justify-content-center p-2 col-1 btn btn-circle-sm d-flex"
                           >
-                            <Tick width="50" height="50"/>
+                            <Tick width="50" height="50" />
                           </Button>
                           <Col className="fs-5 align-items-center pr-0 d-flex">
                             {review}

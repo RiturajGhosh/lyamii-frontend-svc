@@ -783,6 +783,18 @@ export const backpackersTours = [
 //   4. West Coast Combo.
 //   (Kerala, Goa, Maharashtra, Gujrat)
 // ];
+export const amenities = [
+  { checked: false, label: "Local Tour", value: "LOCAL_TOUR" },
+  { checked: false, label: "BreakFast Buffet", value: "BREAKFAST_BUFFET" },
+  { checked: false, label: "Female Dorm", value: "FEMALE_DORM" },
+  { checked: false, label: "Locker", value: "LOCKER" },
+  { checked: false, label: "No Racism", value: "NO_RACISM" },
+  { checked: false, label: "Wifi", value: "WIFI" },
+  { checked: false, label: "Airport Transfer", value: "AIRPORT_TRANSFER" },
+  { checked: false, label: "Lunch Buffet", value: "LUNCH_BUFFET" },
+  { checked: false, label: "Pool", value: "POOL" },
+  { checked: false, label: "Gym", value: "GYM" },
+];
 export const filterList = [
   {
     filterName: "Type",

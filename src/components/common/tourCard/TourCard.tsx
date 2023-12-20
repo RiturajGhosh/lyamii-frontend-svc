@@ -1,17 +1,13 @@
 import React, { FC, useState } from "react";
-import { Image, Col, Row, Ratio, Card, Button } from "react-bootstrap";
+import { Image, Col, Row, Ratio, Button } from "react-bootstrap";
 import style from "./TourCard.module.scss";
-import { IoIosHeart, IoMdHeartEmpty } from "react-icons/io";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import { BsHouseCheck } from "react-icons/bs";
 import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
 import { useDispatch, useSelector } from "react-redux";
-import PrivateBathroom from "../icon/privateBathroom";
-import { LuChevronRightCircle, LuParkingCircle } from "react-icons/lu";
+import { LuChevronRightCircle } from "react-icons/lu";
 import { useHistory } from "react-router-dom";
 import { SET_SELECTED_TOUR_DATA } from "../../../state/actions/types/tourDataActionType";
 import { backpackersTours, facilities } from "../enum/enum";
-import MainContainer from "../container/MainContainer";
 import { GoDotFill } from "react-icons/go";
 
 type TourCardType = {
@@ -123,7 +119,7 @@ const TourCard: FC<TourCardType> = ({
               <Col
                 className="text-white flex-column d-flex h-100 position-relative m-0"
                 style={{
-                  background: "#9e9e9e "
+                  background: "#9e9e9e ",
                 }}
               >
                 <Col

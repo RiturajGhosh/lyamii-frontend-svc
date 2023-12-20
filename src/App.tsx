@@ -15,6 +15,8 @@ import {
   SET_SCREENSIZE,
 } from "./state/actions/types/screenSizeType";
 import { useDispatch } from "react-redux";
+import { refresh } from "./api/refresh";
+import { getCookie } from "./components/common/enum/functions";
 
 const App: FC = () => {
   let routesToBeMapped: UserRouteConfig[] = [...commonSiteMap];
@@ -41,8 +43,9 @@ const App: FC = () => {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
   });
-
-  console.log(window.location.href.includes("profile"));
+  useEffect(() => {
+    refresh(getCookie("user"));
+  }, []);
   return (
     <HashRouter>
       {/* {!isOnProfile && <Header />}

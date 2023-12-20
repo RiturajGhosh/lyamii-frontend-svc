@@ -1,16 +1,8 @@
 import React, { FC, useEffect, useState } from "react";
-import { Button, Col, Row, Form, Card, Container } from "react-bootstrap";
+import { Button, Col, Row, Form, Card } from "react-bootstrap";
 import FormInput from "../../common/formInput/FormInput";
-import style from "./PassportRegistrationForm.module.scss";
 import PhoneInput from "react-phone-number-input";
-import Input, {
-  getCountries,
-  getCountryCallingCode,
-} from "react-phone-number-input/input";
-import { FaCircle } from "react-icons/fa6";
-// import countryNames from 'react-phone-number-input/locale/en'
-
-// Outputs: [AC, AD, AE, ...]
+import RoundButton from "../../common/roundButton/RoundButton";
 
 const PassportRegistrationForm: FC = () => {
   const [detail, setDetail] = useState({
@@ -26,15 +18,7 @@ const PassportRegistrationForm: FC = () => {
     check: "off",
   });
   const [step, setStep] = useState(3);
-  console.log(getCountries());
 
-  // Outputs: United States
-  // console.log(countryNames["US"])
-
-  // Outputs: +1
-  // console.log("+" + getCountryCallingCode("US"))
-
-  // +{getCountryCallingCode("US")}
   useEffect(() => {
     console.log(step);
   }, [step]);
@@ -44,7 +28,10 @@ const PassportRegistrationForm: FC = () => {
       className={`bg-white align-content-start flex-wrap p-5 min-vh-100 min-vw-100 mw-100 w-100 align-items-center justify-content-end d-flex m-0`}
     >
       <Row className="py-42">
-        <Col className="col-6 position-relative align-items-center d-flex flex-column align-self-start justify-content-start" style={{top:"90px"}}>
+        <Col
+          className="col-6 position-relative align-items-center d-flex flex-column align-self-start justify-content-start"
+          style={{ top: "90px" }}
+        >
           <Col className="p-0 m-0 text-align-start flex-column d-flex">
             <h6>
               Already have a Passport? <a>Upload here</a>
@@ -69,10 +56,44 @@ const PassportRegistrationForm: FC = () => {
             </ul>
           </Col>
         </Col>
-        <Col className="col-6 align-self-start position-relative"  style={{top:"90px"}}>
+        <Col
+          className="col-6 align-self-start position-relative"
+          style={{ top: "90px" }}
+        >
           <Form className="gap-4 d-flex flex-column">
-            <Row className="position-relative align-items-center p-0 mt-3 m-0 justify-content-center d-flex w-100">
-              <Col className="col-1 d-contents p-0 m-0">
+            <Col className="justify-content-center d-flex w-100">
+              <Row className="position-relative align-items-center justify-content-center p-0 m-0 d-flex w-100">
+                <Col className="col-1 d-flex position-relative p-0 m-0">
+                  <RoundButton
+                    className="circle-core"
+                    size={"calc(0.10*100vw"}
+                    fill={"#8dc498"}
+                  />
+                </Col>
+                <Col className="col-1 active small text-nowrap">Step 1</Col>
+                <Col className="col-2 border-2 border p-0 mx-2 m-0"></Col>
+                <Col className="col-1 position-relative d-flex p-0 m-0">
+                  <RoundButton
+                    className="circle-core"
+                    size={"calc(0.10*100vw"}
+                    fill={"#8dc498"}
+                  />
+                </Col>
+                <Col className="col-1 active small text-nowrap">Step 2</Col>
+                <Col className="col-2 border-2 border p-0 mx-2 m-0"></Col>
+
+                <Col className="col-1 position-relative d-flex p-0 m-0">
+                  <RoundButton
+                    className="circle-core"
+                    size={"calc(0.10*100vw"}
+                    fill={"#8dc498"}
+                  />
+                </Col>
+                <Col className="col-1 active small text-nowrap">Step 3</Col>
+              </Row>
+            </Col>
+            {/* <Row className="position-relative align-items-center p-0 mt-3 m-0 justify-content-between d-flex w-100"> */}
+            {/* <Col className="col-1 d-contents p-0 m-0">
                 <FaCircle className="" size={"20px"} />
                 <div className="active small text-nowrap">Step 1</div>
               </Col>
@@ -88,6 +109,41 @@ const PassportRegistrationForm: FC = () => {
                 <div className="active small text-nowrap">Step 3</div>
               </Col>
             </Row>
+            <Col className="justify-content-center d-flex"> */}
+            {/* <Row className="position-relative align-items-center p-0 my-3 m-0 justify-content-center d-flex w-100"> */}
+
+            {/* </Row> */}
+            {/* <input
+                        className="rounded-circle display-1 p-5 w-50"
+                        type="text"
+                        value={""}
+                        style={{ background: "#19bca1" }}
+                        onChange={(e: any) => {
+                          {
+                          }
+                        }}
+                      />
+                      <input
+                        className="rounded-circle display-1 p-5 w-50"
+                        type="text"
+                        value={""}
+                        style={{ background: "#19bca1" }}
+                        onChange={(e: any) => {
+                          {
+                          }
+                        }}
+                      />{" "}
+                      <input
+                        className="rounded-circle display-1 p-5 w-50"
+                        type="text"
+                        value={""}
+                        style={{ background: "#19bca1" }}
+                        onChange={(e: any) => {
+                          {
+                          }
+                        }}
+                      /> */}
+            {/* </Col> */}
             {step === 1 && (
               <Col className="gap-5 d-flex flex-column">
                 <FormInput

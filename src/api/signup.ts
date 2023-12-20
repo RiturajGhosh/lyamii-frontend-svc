@@ -1,10 +1,15 @@
 import { restClient } from "./restClient";
 import { axiosType } from "../components/common/enum/enum";
 
-export async function signUp(email: string) {
+export async function signUp(props: any) {
   return restClient({
     type: axiosType.post,
-    url: "/v1/authenticate/verify/otp",
-    payload: { email },
+    url: "/v1/authenticate/signup",
+    payload: {
+      username: props.username,
+      email: props.email,
+      role: [props.role],
+      password: props.password,
+    },
   });
 }
