@@ -1,13 +1,14 @@
 import React, { FC, useEffect, useState } from "react";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Button, Card, Col, Row } from "react-bootstrap";
 import { RiUploadCloud2Line } from "react-icons/ri";
 import style from "./RegistrationForm.module.scss";
-import { amenities, reviews } from "../../common/enum/enum";
+import { amenities } from "../../common/enum/enum";
 import { useHistory, useLocation } from "react-router-dom";
 import Tick from "../../common/icon/tick";
 import { FaUpload } from "react-icons/fa6";
 import { RegistrationDetailDto } from "../../../state/actions/types/registrationType";
 import Checkbox from "../../common/checkbox/Checkbox";
+import { getBase64 } from "../../../utils/getBase64";
 
 type RegistrationFormType = {
   detail: RegistrationDetailDto;
@@ -25,6 +26,15 @@ const RegistrationForm: FC<RegistrationFormType> = ({
 }) => {
   const location = useLocation();
   const history = useHistory();
+  const [preview, setPreview] = React.useState({
+    dorm1: "",
+    dorm2: "",
+    single: "",
+    prime: "",
+    budget: "",
+    midRange: "",
+    property: "",
+  });
   const [state, setState] = useState<RegistrationDetailDto>(detail);
 
   useEffect(() => {
@@ -44,8 +54,14 @@ const RegistrationForm: FC<RegistrationFormType> = ({
     await setState({ ...state, amenities: amenity });
   }
   return (
-    <section style={{ background: "#b5f4c5" }}>
-      <Container className="min-vh-100 align-items-center d-flex">
+    <section
+      style={{ background: "#b5f4c5" }}
+      className="justify-content-center align-items-center d-flex"
+    >
+      <Col
+        lg={10}
+        className="min-vh-100 justify-content-center align-items-center d-flex"
+      >
         <Col className="gap-2 lh-1 d-flex flex-column">
           <Col className="p-0 m-0">
             <Row className="d-flex justify-content-start fit-content gap-2">
@@ -106,88 +122,93 @@ const RegistrationForm: FC<RegistrationFormType> = ({
               lg={8}
               className="justify-content-center d-flex col-12 flex-column"
             >
-              {stayType.includes("HOTEL") ? (
+              <Col className="lh-lg">
+                {stayType.includes("HOTEL") ? (
+                  <Col className="justify-content-start d-flex">
+                    <Col className="p text-nowrap w-30 text-dark p-0 system-ui d-flex align-items-center">
+                      HOTEL NAME:
+                    </Col>
+                    <div className="p-0 m-0 border-bottom border-dark border-2 d-flex align-items-center w-100">
+                      <input
+                        className="px-3 p justify-content-start p-0 text-dark m-0 border-0"
+                        type="text"
+                        value={detail.stayName}
+                        style={{ background: "none" }}
+                        onChange={(e: any) =>
+                          setState({ ...state, stayName: e.target.value })
+                        }
+                      />
+                    </div>
+                  </Col>
+                ) : (
+                  <Col className="justify-content-start d-flex">
+                    <Col className="p text-nowrap w-30 text-dark p-0 system-ui d-flex align-items-center">
+                      HOSTEL NAME:
+                    </Col>
+                    <div className="p-0 m-0 border-bottom border-dark border-2 d-flex align-items-center w-100">
+                      <input
+                        className="px-3 p justify-content-start p-0 text-dark m-0 border-0"
+                        type="text"
+                        value={detail.stayName}
+                        style={{ background: "none" }}
+                        onChange={(e: any) =>
+                          setState({ ...state, stayName: e.target.value })
+                        }
+                      />
+                    </div>
+                  </Col>
+                )}
                 <Col className="justify-content-start d-flex">
-                  <span className="h3 w-40 text-dark p-0 m-0 system-ui d-flex align-items-center ">
-                    HOTEL NAME:
-                  </span>
+                  <Col className="p text-nowrap w-30 text-dark p-0 system-ui d-flex align-items-center">
+                    Country:
+                  </Col>
                   <div className="p-0 m-0 border-bottom border-dark border-2 d-flex align-items-center w-100">
                     <input
-                      className="px-3 h3 justify-content-start p-0 text-dark m-0 border-0"
+                      className="px-3 w-100 p justify-content-start p-0 text-dark  m-0  border-0"
                       type="text"
-                      value={detail.stayName}
+                      value={detail.countryDisplayCode}
                       style={{ background: "none" }}
                       onChange={(e: any) =>
-                        setState({ ...state, stayName: e.target.value })
+                        setState({
+                          ...state,
+                          countryDisplayCode: e.target.value,
+                        })
                       }
                     />
                   </div>
                 </Col>
-              ) : (
                 <Col className="justify-content-start d-flex">
-                  <span className="h3 w-30 text-dark p-0 m-0 max-content system-ui d-flex align-items-center ">
-                    HOSTEL NAME:
-                  </span>
-                  <Col className="p-0 m-0 border-bottom border-dark border-2 d-flex align-items-center w-100">
+                  <Col className="p text-nowrap w-30 text-dark p-0 system-ui d-flex align-items-center">
+                    Pin Code:
+                  </Col>
+                  <div className="p-0 m-0 border-bottom border-dark border-2 d-flex align-items-center w-100">
                     <input
-                      className="px-3 h3 justify-content-start p-0 text-dark m-0 border-0"
+                      className="px-3 w-100 p justify-content-start p-0 text-dark m-0 border-0"
                       type="text"
-                      value={detail.stayName}
+                      value={detail.pincode}
                       style={{ background: "none" }}
                       onChange={(e: any) =>
-                        setState({ ...state, stayName: e.target.value })
+                        setState({ ...state, pincode: e.target.value })
                       }
                     />
+                  </div>
+                </Col>
+                <Col className="justify-content-start d-flex">
+                  <Col className="p text-nowrap w-30 text-dark p-0 system-ui d-flex align-items-center">
+                    Reception:
                   </Col>
+                  <div className="p-0 m-0 border-bottom border-dark border-2 d-flex align-items-center w-100">
+                    <input
+                      className="px-3 w-100 p justify-content-start p-0 text-dark  m-0 border-0"
+                      type="text"
+                      value={detail.hostName}
+                      style={{ background: "none" }}
+                      onChange={(e: any) =>
+                        setState({ ...state, hostName: e.target.value })
+                      }
+                    />
+                  </div>
                 </Col>
-              )}
-              <Col className="justify-content-start d-flex">
-                <span className="h3 w-15 text-dark p-0 m-0 system-ui d-flex align-items-center ">
-                  Country:
-                </span>
-                <Col className="p-0 m-0 border-bottom border-dark border-2 d-flex align-items-center w-100">
-                  <input
-                    className="px-3 w-100 h3 justify-content-start p-0 text-dark  m-0  border-0"
-                    type="text"
-                    value={detail.countryDisplayCode}
-                    style={{ background: "none" }}
-                    onChange={(e: any) =>
-                      setState({ ...state, countryDisplayCode: e.target.value })
-                    }
-                  />
-                </Col>
-              </Col>
-              <Col className="justify-content-start d-flex">
-                <span className="h3 w-20 text-dark p-0 m-0 system-ui d-flex align-items-center ">
-                  Pin Code:
-                </span>
-                <Col className="p-0 m-0 border-bottom border-dark border-2 d-flex align-items-center w-100">
-                  <input
-                    className="px-3 w-100 h3 justify-content-start p-0 text-dark  m-0 border-0"
-                    type="text"
-                    value={detail.pincode}
-                    style={{ background: "none" }}
-                    onChange={(e: any) =>
-                      setState({ ...state, pincode: e.target.value })
-                    }
-                  />
-                </Col>
-              </Col>
-              <Col className="justify-content-start d-flex">
-                <span className="h3 w-20 text-dark p-0 system-ui d-flex align-items-center ">
-                  Reception:
-                </span>
-                <span className="p-0 m-0 border-bottom border-dark border-2 d-flex align-items-center w-100">
-                  <input
-                    className="px-3 w-100 h3 justify-content-start p-0 text-dark m-0 border-0"
-                    type="text"
-                    value={detail.hostName}
-                    style={{ background: "none" }}
-                    onChange={(e: any) =>
-                      setState({ ...state, hostName: e.target.value })
-                    }
-                  />
-                </span>
               </Col>
             </Col>
             <Col>
@@ -225,7 +246,29 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                         className={"w-100 h-100 p-1 text-dark"}
                         width={"100px"}
                         height={"100px"}
-                      />
+                      >
+                        <input
+                          className="w-10 position-absolute"
+                          id="file-upload"
+                          accept=".jpg,.gif,.png"
+                          style={{ visibility: "hidden" }}
+                          placeholder=""
+                          onChange={(event: any) => {
+                            if (event.target.files?.length > 0) {
+                              getBase64(event.target.files[0]).then(
+                                (result) => {
+                                  setPreview({
+                                    ...preview,
+                                    property: `${result}`,
+                                  });
+                                  fileUpload("PROPERTY", event);
+                                }
+                              );
+                            }
+                          }}
+                          type="file"
+                        />
+                      </RiUploadCloud2Line>
                       <Col>(Property Pictures)</Col>
                     </Col>
                   </Col>
@@ -234,29 +277,55 @@ const RegistrationForm: FC<RegistrationFormType> = ({
             </Col>
           </Row>
 
-          {!stayType.includes("HOTEL") ? (
-            <Row className="gap-5 my-5 justify-content-around position-relative">
+          {stayType.includes("HOTEL") ? (
+            <Row className="gap-5 my-3 justify-content-around position-relative">
               <Col
                 md={3}
                 xs={3}
                 sx={3}
                 lg={3}
-                className={`align-items-center col-12 flex-column m-0 justify-content-center position-relative d-flex `}
+                className={`align-items-center col-12 flex-column m-0 position-relative justify-content-center position-relative d-flex `}
               >
                 <Col
-                  className={`p-0 m-0 justify-content-center align-self-center d-flex w-100 ${style.reasonCard}`}
+                  className={`p-0 m-0 justify-content-center position-relative align-self-center d-flex w-100 ${style.reasonCard}`}
                   style={{
                     background: "#7dc07c",
                   }}
                 >
                   <Card.Img
-                    className={`p-0 m-0 justify-content-center ${style.reasonCard}`}
+                    className={`p-0 m-0 justify-content-center position-relative ${style.reasonCard}`}
                     style={{
                       // width: "100%",
                       padding: "0px !important",
                       margin: "0px !important",
+                      background: `url(${preview.prime})`,
                     }}
-                    src={require("../../../Assets/accomodation.png")}
+                    // src={require("../../../Assets/accomodation.png")}
+                  />
+                  <label
+                    htmlFor="file-upload"
+                    style={{
+                      color: "#7dc07c",
+                    }}
+                    className="position-absolute top-0 pt-2 start-90"
+                  >
+                    <FaUpload color="green" />
+                  </label>
+                  <input
+                    className="w-10 position-absolute"
+                    id="file-upload"
+                    accept=".jpg,.gif,.png"
+                    style={{ visibility: "hidden" }}
+                    placeholder=""
+                    onChange={(event: any) => {
+                      if (event.target.files?.length > 0) {
+                        getBase64(event.target.files[0]).then((result) => {
+                          setPreview({ ...preview, prime: `${result}` });
+                          fileUpload("PRIME", event);
+                        });
+                      }
+                    }}
+                    type="file"
                   />
                 </Col>
                 <Col
@@ -267,7 +336,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                 </Col>
                 <Col className="p-0 m-0 border-bottom border-dark border-2 w-100">
                   <input
-                    className=" h3 justify-content-start p-0 text-dark  m-0 border-0"
+                    className=" p justify-content-start p-0 text-dark  m-0 border-0"
                     type="text"
                     value={""}
                     style={{ background: "none" }}
@@ -283,24 +352,44 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                 className={`align-items-center col-12 flex-column m-0 justify-content-center position-relative d-flex `}
               >
                 <Col
-                  className={`p-0 m-0 flex-column justify-content-center align-self-center d-flex w-100  w-100  ${style.reasonCard}`}
+                  className={`p-0 m-0 justify-content-center position-relative align-self-center d-flex w-100 ${style.reasonCard}`}
                   style={{
                     background: "#7dc07c",
                   }}
                 >
+                  <Card.Img
+                    className={`p-0 m-0 justify-content-center position-relative ${style.reasonCard}`}
+                    style={{
+                      // width: "100%",
+                      padding: "0px !important",
+                      margin: "0px !important",
+                      background: `url(${preview.midRange})`,
+                    }}
+                    // src={require("../../../Assets/accomodation.png")}
+                  />
                   <label
                     htmlFor="file-upload"
-                    className="justify-content-center align-self-center bold h3 rounded-3 gap-2 flex-row d-flex p-2"
+                    style={{
+                      color: "#7dc07c",
+                    }}
+                    className="position-absolute top-0 pt-2 start-90"
                   >
-                    <span>Uploading...</span>
+                    <FaUpload color="green" />
                   </label>
                   <input
-                    className="w-100"
+                    className="w-10 position-absolute"
                     id="file-upload"
-                    accept="image/*"
+                    accept=".jpg,.gif,.png"
                     style={{ visibility: "hidden" }}
                     placeholder=""
-                    onChange={(event) => fileUpload(event)}
+                    onChange={(event: any) => {
+                      if (event.target.files?.length > 0) {
+                        getBase64(event.target.files[0]).then((result) => {
+                          setPreview({ ...preview, midRange: `${result}` });
+                          fileUpload("MID_RANGE", event);
+                        });
+                      }
+                    }}
                     type="file"
                   />
                 </Col>
@@ -312,7 +401,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                 </Col>
                 <Col className="p-0 m-0 border-bottom border-dark border-2 w-100">
                   <input
-                    className=" h3 justify-content-start p-0 text-dark  m-0 border-0"
+                    className=" p justify-content-start p-0 text-dark  m-0 border-0"
                     type="text"
                     value={""}
                     style={{ background: "none" }}
@@ -328,28 +417,44 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                 className={`align-items-center col-12 flex-column m-0 justify-content-center position-relative d-flex `}
               >
                 <Col
-                  className={`p-0 m-0 flex-column justify-content-center align-self-center d-flex w-100 ${style.reasonCard}`}
+                  className={`p-0 m-0 justify-content-center position-relative align-self-center d-flex w-100 ${style.reasonCard}`}
                   style={{
                     background: "#7dc07c",
                   }}
                 >
+                  <Card.Img
+                    className={`p-0 m-0 justify-content-center position-relative ${style.reasonCard}`}
+                    style={{
+                      // width: "100%",
+                      padding: "0px !important",
+                      margin: "0px !important",
+                      background: `url(${preview.budget})`,
+                    }}
+                    src={require("../../../Assets/accomodation.png")}
+                  />
                   <label
                     htmlFor="file-upload"
                     style={{
                       color: "#7dc07c",
                     }}
-                    className="bg-primary justify-content-center align-self-center bold h5 rounded-3 gap-2 flex-row d-flex p-2"
+                    className="position-absolute top-0 pt-2 start-90"
                   >
-                    <FaUpload />
-                    <span>Upload Image</span>
+                    <FaUpload color="green" />
                   </label>
                   <input
-                    className="w-100"
+                    className="w-10 position-absolute"
                     id="file-upload"
-                    accept="image/*"
+                    accept=".jpg,.gif,.png"
                     style={{ visibility: "hidden" }}
                     placeholder=""
-                    onChange={(event) => fileUpload(event)}
+                    onChange={(event: any) => {
+                      if (event.target.files?.length > 0) {
+                        getBase64(event.target.files[0]).then((result) => {
+                          setPreview({ ...preview, budget: `${result}` });
+                          fileUpload("BUDGET", event);
+                        });
+                      }
+                    }}
                     type="file"
                   />
                 </Col>
@@ -361,7 +466,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                 </Col>
                 <Col className="p-0 m-0 border-bottom border-dark border-2 w-100">
                   <input
-                    className="px-3 h3 justify-content-start p-0 text-dark  m-0 border-0"
+                    className="px-3 p justify-content-start p-0 text-dark  m-0 border-0"
                     type="text"
                     value={""}
                     style={{ background: "none" }}
@@ -371,9 +476,13 @@ const RegistrationForm: FC<RegistrationFormType> = ({
               </Col>
             </Row>
           ) : (
-            <Row className="gap-5 my-5 justify-content-around position-relative">
+            <Row className="gap-5 my-3 justify-content-around position-relative">
               <Col
-                className={`align-items-center col-3 flex-column m-0 justify-content-center position-relative d-flex `}
+                md={3}
+                xs={3}
+                sx={3}
+                lg={3}
+                className={`align-items-center col-12 flex-column m-0 justify-content-center position-relative d-flex `}
               >
                 <Col
                   className={`p-0 m-0 justify-content-center align-self-center d-flex w-100 ${style.reasonCard}`}
@@ -387,19 +496,45 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                       // width: "100%",
                       padding: "0px !important",
                       margin: "0px !important",
+                      background: `url(${preview.dorm1})`,
                     }}
-                    src={require("../../../Assets/accomodation.png")}
+                    // src={require("../../../Assets/accomodation.png")}
+                  />
+                  <label
+                    htmlFor="file-upload"
+                    style={{
+                      color: "#7dc07c",
+                    }}
+                    className="position-absolute top-0 pt-2 start-90"
+                  >
+                    <FaUpload color="green" />
+                  </label>
+                  <input
+                    className="w-10 position-absolute"
+                    id="file-upload"
+                    accept=".jpg,.gif,.png"
+                    style={{ visibility: "hidden" }}
+                    placeholder=""
+                    onChange={(event: any) => {
+                      if (event.target.files?.length > 0) {
+                        getBase64(event.target.files[0]).then((result) => {
+                          setPreview({ ...preview, dorm1: `${result}` });
+                          fileUpload("DORM", event);
+                        });
+                      }
+                    }}
+                    type="file"
                   />
                 </Col>
                 <Col
-                  className="h2 w-100 text-white p-0 m-0 justify-content-center d-flex round-edges py-2 mt-2"
+                  className="display-6 w-100 text-white p-0 m-0 justify-content-center d-flex round-edges py-2 mt-2"
                   style={{ background: "#4a915b" }}
                 >
                   DORMITORY 1
                 </Col>
                 <Col className="p-0 m-0 border-bottom border-dark border-2  w-100">
                   <input
-                    className=" h3 justify-content-start p-0 text-dark  m-0 border-0"
+                    className=" p justify-content-start p-0 text-dark  m-0 border-0"
                     type="text"
                     value={""}
                     style={{ background: "none" }}
@@ -408,27 +543,51 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                 </Col>
               </Col>
               <Col
-                className={`align-items-center col-3 flex-column m-0 justify-content-center position-relative d-flex `}
+                md={3}
+                xs={3}
+                sx={3}
+                lg={3}
+                className={`align-items-center col-12 flex-column m-0 justify-content-center position-relative d-flex `}
               >
                 <Col
-                  className={`p-0 m-0 flex-column justify-content-center align-self-center d-flex w-100  w-100  ${style.reasonCard}`}
+                  className={`p-0 m-0 justify-content-center position-relative align-self-center d-flex w-100 ${style.reasonCard}`}
                   style={{
                     background: "#7dc07c",
                   }}
                 >
+                  <Card.Img
+                    className={`p-0 m-0 justify-content-center position-relative ${style.reasonCard}`}
+                    style={{
+                      // width: "100%",
+                      padding: "0px !important",
+                      margin: "0px !important",
+                      background: `url(${preview.dorm2})`,
+                    }}
+                    // src={require("../../../Assets/accomodation.png")}
+                  />
                   <label
                     htmlFor="file-upload"
-                    className="justify-content-center align-self-center bold h3 rounded-3 gap-2 flex-row d-flex p-2"
+                    style={{
+                      color: "#7dc07c",
+                    }}
+                    className="position-absolute top-0 pt-2 start-90"
                   >
-                    <span>Uploading...</span>
+                    <FaUpload color="green" />
                   </label>
                   <input
-                    className="w-100"
+                    className="w-10 position-absolute"
                     id="file-upload"
-                    accept="image/*"
+                    accept=".jpg,.gif,.png"
                     style={{ visibility: "hidden" }}
                     placeholder=""
-                    onChange={(event) => fileUpload(event)}
+                    onChange={(event: any) => {
+                      if (event.target.files?.length > 0) {
+                        getBase64(event.target.files[0]).then((result) => {
+                          setPreview({ ...preview, dorm2: `${result}` });
+                          fileUpload("DORM", event);
+                        });
+                      }
+                    }}
                     type="file"
                   />
                 </Col>
@@ -440,7 +599,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                 </Col>
                 <Col className="p-0 m-0 border-bottom border-dark border-2  w-100">
                   <input
-                    className="px-3 h3 justify-content-start p-0 text-dark  m-0 border-0"
+                    className="px-3 p justify-content-start p-0 text-dark  m-0 border-0"
                     type="text"
                     value={""}
                     style={{ background: "none" }}
@@ -449,31 +608,51 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                 </Col>
               </Col>
               <Col
-                className={`align-items-center col-3 flex-column m-0 justify-content-center position-relative d-flex `}
+                md={3}
+                xs={3}
+                sx={3}
+                lg={3}
+                className={`align-items-center col-12 flex-column m-0 justify-content-center position-relative d-flex `}
               >
                 <Col
-                  className={`p-0 m-0 flex-column justify-content-center align-self-center d-flex w-100 ${style.reasonCard}`}
+                  className={`p-0 m-0 justify-content-center position-relative align-self-center d-flex w-100 ${style.reasonCard}`}
                   style={{
                     background: "#7dc07c",
                   }}
                 >
+                  <Card.Img
+                    className={`p-0 m-0 justify-content-center position-relative ${style.reasonCard}`}
+                    style={{
+                      // width: "100%",
+                      padding: "0px !important",
+                      margin: "0px !important",
+                      background: `url(${preview.single})`,
+                    }}
+                    // src={require("../../../Assets/accomodation.png")}
+                  />
                   <label
                     htmlFor="file-upload"
                     style={{
                       color: "#7dc07c",
                     }}
-                    className="bg-primary justify-content-center align-self-center bold h5 rounded-3 gap-2 flex-row d-flex p-2"
+                    className="position-absolute top-0 pt-2 start-90"
                   >
-                    <FaUpload />
-                    <span>Upload Image</span>
+                    <FaUpload color="green" />
                   </label>
                   <input
-                    className="w-100"
+                    className="w-10 position-absolute"
                     id="file-upload"
-                    accept="image/*"
+                    accept=".jpg,.gif,.png"
                     style={{ visibility: "hidden" }}
                     placeholder=""
-                    onChange={(event) => fileUpload(event)}
+                    onChange={(event: any) => {
+                      if (event.target.files?.length > 0) {
+                        getBase64(event.target.files[0]).then((result) => {
+                          setPreview({ ...preview, single: `${result}` });
+                          fileUpload("SINGLE_ROOM", event);
+                        });
+                      }
+                    }}
                     type="file"
                   />
                 </Col>
@@ -485,7 +664,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                 </Col>
                 <Col className="p-0 m-0 border-bottom border-dark border-2 w-100">
                   <input
-                    className="px-3 h3 justify-content-start p-0 text-dark  m-0 border-0"
+                    className="px-3 p justify-content-start p-0 text-dark  m-0 border-0"
                     type="text"
                     value={""}
                     style={{ background: "none" }}
@@ -496,21 +675,15 @@ const RegistrationForm: FC<RegistrationFormType> = ({
             </Row>
           )}
           <Row className="d-flex">
-            <Col
-              md={10}
-              xs={10}
-              sx={10}
-              lg={10}
-              className="justify-content-center d-flex col-12 flex-column"
-            >
+            <Col className="justify-content-center d-flex lh-lg flex-column">
               {stayType.includes("HOTEL") && (
                 <Col className="justify-content-start d-flex">
-                  <span className="h3 w-20 text-dark p-0 m-0 system-ui d-flex align-items-center ">
+                  <Col className="p text-nowrap w-30 text-dark p-0 system-ui d-flex align-items-center">
                     Host Name:
-                  </span>
-                  <Col className="p-0 m-0 border-bottom border-dark border-2 d-flex align-items-center w-100">
+                  </Col>
+                  <div className="p-0 m-0 border-bottom border-dark border-2 d-flex align-items-center w-100">
                     <input
-                      className="px-3 w-100 h3 p-0 m-0 justify-content-start text-dark  m-0 border-bottom border-0 border-dark"
+                      className="px-3 w-100 p p-0 m-0 justify-content-start text-dark m-0 border-0 border-dark"
                       type="text"
                       value={detail.hostName}
                       style={{ background: "none" }}
@@ -522,17 +695,17 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                         })
                       }
                     />
-                  </Col>
+                  </div>
                 </Col>
               )}
               {stayType.includes("HOTEL") && (
                 <Col className="justify-content-start d-flex">
-                  <span className="h3 w-25 text-dark p-0 m-0 system-ui d-flex align-items-center ">
+                  <Col className="p text-nowrap w-30 text-dark p-0 system-ui d-flex align-items-center">
                     Contact Number:
-                  </span>
-                  <Col className="p-0 m-0 border-bottom border-dark border-2 d-flex align-items-center w-100">
+                  </Col>
+                  <div className="p-0 m-0 border-bottom border-dark border-2 d-flex align-items-center w-100">
                     <input
-                      className="px-3 w-100 h3 justify-content-start p-0 text-dark  m-0 border-0"
+                      className="px-3 w-100 p justify-content-start p-0 text-dark  m-0 border-0"
                       type="text"
                       value={detail.contactNumber}
                       style={{ background: "none" }}
@@ -544,16 +717,16 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                         })
                       }
                     />
-                  </Col>
+                  </div>
                 </Col>
               )}
               <Col className="justify-content-start d-flex">
-                <span className="h3 w-30 text-dark p-0 m-0 system-ui d-flex align-items-center ">
+                <Col className="p text-nowrap w-40 text-dark p-0 system-ui d-flex align-items-center">
                   Active Email Address:
-                </span>
-                <Col className="p-0 m-0 border-bottom border-dark border-2 d-flex align-items-center w-100">
+                </Col>
+                <div className="p-0 m-0 border-bottom border-dark border-2 d-flex align-items-center w-100">
                   <input
-                    className="px-3 w-100 h3 p-0 m-0 justify-content-start text-dark  m-0 border-bottom border-0 border-dark"
+                    className="px-3 w-100 p p-0 m-0 justify-content-start text-dark m-0 border-0 border-dark"
                     type="text"
                     value={detail.emailAddress}
                     style={{ background: "none" }}
@@ -561,17 +734,17 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                       setState({ ...state, emailAddress: e.target.value })
                     }
                   />
-                </Col>
+                </div>
               </Col>
 
               {!stayType.includes("HOTEL") && (
                 <Col className="justify-content-start d-flex">
-                  <span className="h3 w-40 text-dark p-0 m-0 system-ui d-flex align-items-center ">
+                  <Col className="p text-nowrap w-40 text-dark p-0 system-ui d-flex align-items-center">
                     Marketing team Contact:
-                  </span>
-                  <Col className="p-0 m-0 border-bottom border-dark border-2 d-flex align-items-center w-100">
+                  </Col>
+                  <div className="p-0 m-0 border-bottom border-dark border-2 d-flex align-items-center w-100">
                     <input
-                      className="px-3 w-100 h3 justify-content-start p-0 text-dark  m-0 border-0"
+                      className="px-3 w-100 p justify-content-start p-0 text-dark  m-0 border-0"
                       type="text"
                       value={detail.marketingContact}
                       style={{ background: "none" }}
@@ -579,18 +752,18 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                         setState({ ...state, marketingContact: e.target.value })
                       }
                     />
-                  </Col>
+                  </div>
                 </Col>
               )}
 
               {!stayType.includes("HOTEL") && (
                 <Col className="justify-content-start d-flex">
-                  <span className="h3 w-40 text-dark m-0 p-0 system-ui d-flex align-items-center ">
+                  <Col className="p text-nowrap w-40 text-dark p-0 system-ui d-flex align-items-center">
                     Operations Team Contact:
-                  </span>
-                  <Col className="p-0 m-0 border-bottom border-dark border-2 d-flex align-items-center w-100">
+                  </Col>
+                  <div className="p-0 m-0 border-bottom border-dark border-2 d-flex align-items-center w-100">
                     <input
-                      className="px-3 w-100 h3 justify-content-start p-0 text-dark  m-0 border-0"
+                      className="px-3 w-100 p justify-content-start p-0 text-dark  m-0 border-0"
                       type="text"
                       value={detail.opsContact}
                       style={{ background: "none" }}
@@ -598,11 +771,11 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                         setState({ ...state, opsContact: e.target.value })
                       }
                     />
-                  </Col>
+                  </div>
                 </Col>
               )}
             </Col>
-            <Col className="align-self-center justify-content-end d-flex">
+            <Col className="col-3 align-self-center justify-content-center d-flex">
               <Button
                 className="align-items-center bg-primary justify-content-center d-flex"
                 onClick={() => submit()}
@@ -612,7 +785,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
             </Col>
           </Row>
         </Col>
-      </Container>
+      </Col>
     </section>
   );
 };

@@ -8,7 +8,7 @@ const Contact: FC = () => {
       fluid
       id="about"
     >
-      <Container className="p-0">
+      <Container className="p-0 w-100">
         <Card className="m-0 p-0" style={{ background: "#f2e7cf" }}>
           <Card.Body>
             <Row className="justify-content-between">

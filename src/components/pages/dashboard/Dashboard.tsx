@@ -1,11 +1,7 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { Col, Row, Card, Container, Nav } from "react-bootstrap";
 import { IoLogoFacebook } from "react-icons/io";
 import { AiFillTwitterCircle, AiOutlineInstagram } from "react-icons/ai";
-import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
-import { useSelector } from "react-redux";
-import { tours } from "../mockData/destinations";
-import { useHistory } from "react-router-dom";
 import SubCard from "../../common/subCard/SubCard";
 import { FaHeart } from "react-icons/fa6";
 import { FaMapMarkerAlt } from "react-icons/fa";
@@ -15,52 +11,6 @@ import { IoIosPaperPlane } from "react-icons/io";
 import ArrowButton from "../../common/arrowButton/ArrowButton";
 
 const Dashboard: FC = () => {
-  const screenSize = useSelector(selectScreenSize);
-  const [IsWishlisted, setToWishList] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [show, setShow] = useState(true);
-  const [page, setPage] = useState(0);
-  const history = useHistory();
-  const selectedtourData: any = tours[0] || {};
-  // (selectTourData);
-  const menus = [
-    {
-      title: "Personal Data",
-      subTitle: "Edit Personal Details",
-      path: "/personalData",
-    },
-    {
-      title: "Prefences",
-      subTitle: "Change your preference in your way",
-      path: "/personalData",
-    },
-    {
-      title: "Privacy & Security",
-      subTitle: "Your Privacy Your Choice",
-      path: "/personalData",
-    },
-    {
-      title: "Payments",
-      subTitle: "Manage your payment methods",
-      path: "/personalData",
-    },
-    {
-      title: "Documentations",
-      subTitle: "Stay updated with Digital Documents",
-      path: "/personalData",
-    },
-    {
-      title: "Account Information",
-      subTitle: "Edit Personal Details",
-      path: "/personalData",
-    },
-    {
-      title: "Manage Travellers",
-      subTitle: "Add members to Lyamii.",
-      path: "/personalData",
-    },
-  ];
-
   return (
     <div
       className={`bg-white px-4 min-vh-100 mw-100 w-100 align-items-center justify-content-end d-flex m-0`}

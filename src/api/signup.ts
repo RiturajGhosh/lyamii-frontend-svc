@@ -6,9 +6,9 @@ export async function signUp(props: any) {
     type: axiosType.post,
     url: "/v1/authenticate/signup",
     payload: {
-      username: props.username,
+      username: props.userName,
       email: props.email,
-      role: [props.role],
+      role: props.type || [],
       password: props.password,
     },
   });

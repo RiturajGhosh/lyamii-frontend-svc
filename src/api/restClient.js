@@ -3,26 +3,26 @@ import { axiosType } from "../components/common/enum/enum";
 
 export const restClient = async ({
   url,
-  // params,
+  params = {},
   type,
-  payload,
+  payload = {},
   responseType = "",
 }) => {
   // const authParams = getUserAuthParams(); // will import from auth.service
   const config = {
-    // params: { ...params, ...authParams },
-    responseType,
+    params,
+    // responseType,
   };
   const axiosInstance = axios.create({
-    baseURL: "https://localhost:8081",
-    withCredentials: true,
-    headers: {
-      "Content-Type": "application/json",
-    },
+    timeout: 40000,
+    baseURL: "http://localhost:8081",
+    headers: { "Content-Type": "application/json" },
   });
 
   axiosInstance.interceptors.response.use(
-    (response) => response,
+    (response) => {
+      return response;
+    },
     (error) => {
       throw error;
     }
@@ -38,6 +38,6 @@ export const restClient = async ({
     case axiosType.delete:
       return await axiosInstance.delete(url, { ...config, data: payload });
     default:
-    // return await axiosInstance.get(url, params);
+      return await axiosInstance.get(url, config);
   }
 };

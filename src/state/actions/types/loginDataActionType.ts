@@ -2,8 +2,11 @@ export const SET_LOGIN_DATA = "SET_LOGIN_DATA";
 export const OTP_VERIFICATION = "OTP_VERIFICATION";
 
 export interface LoginDataDto {
-  userId: string;
+  email: string;
   password: string;
+  id: number;
+  token: string;
+  role: string[];
 }
 export interface LoginVerifyDto {
   status: boolean;

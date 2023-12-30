@@ -12,8 +12,11 @@ export interface loginDataState {
 }
 const initialState: loginDataState = {
   loginData: {
-    userId: "",
+    email: "",
     password: "",
+    token:"",
+    id:0,
+    role:[]
   },
   verify: {
     status: false,

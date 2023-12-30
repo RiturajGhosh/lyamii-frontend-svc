@@ -1,17 +1,15 @@
 import React, { FC, useEffect, useRef, useState } from "react";
-import { Link, useHistory, useLocation } from "react-router-dom";
-// import style from "./Header.module.scss";
-import { Button, Col, Container, Nav, Navbar } from "react-bootstrap";
-import SubCard from "../subCard/SubCard";
+import { useHistory, useLocation } from "react-router-dom";
+import { Col, Nav, Navbar } from "react-bootstrap";
 import { AiTwotoneHome } from "react-icons/ai";
 import { BsArrowRightCircle, BsFillPersonFill } from "react-icons/bs";
 import { MdOutlineLocationOn } from "react-icons/md";
 import { HiShoppingCart } from "react-icons/hi";
-import ArrowButton from "../arrowButton/ArrowButton";
 import { SET_LOGIN_DATA } from "../../../state/actions/types/loginDataActionType";
 import { useDispatch, useSelector } from "react-redux";
 import { selectLoginData } from "../../../state/selectors/selectLoginData";
-// import "./sidebar.scss";
+import { setCookie } from "../enum/functions";
+
 export type SideNavList = {
   name: string;
   path: string;
@@ -51,31 +49,11 @@ const SideNav: FC = () => {
     },
   ];
 
-  const userData = useSelector(selectLoginData);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [stepHeight, setStepHeight] = useState(0);
-  const sidebarRef = useRef<any>();
-  const indicatorRef = useRef<any>();
   const location = useLocation();
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     const sidebarItem = sidebarRef.current.querySelector(
-  //       ".sidebar__menu__item"
-  //     );
-  //     indicatorRef.current.style.height = `${sidebarItem.clientHeight}px`;
-  //     setStepHeight(sidebarItem.clientHeight);
-  //   }, 50);
-  // }, []);
-
-  // change active index 
-  function check () {
-    if (
-      userData?.loginData?.userId?.length > 0 &&
-      userData?.loginData?.password?.length > 0
-    ) {
-      history.push("/");
-    }
+  function navigate() {
+    history.push("/");
   }
   useEffect(() => {
     const curPath = window.location.pathname.split("/")[1];
@@ -181,9 +159,7 @@ const SideNav: FC = () => {
             >
               <p className="text-start px-2">Helpdesk</p>
               <span className="small text-start px-2">Facing any problem?</span>
-              <span className="small text-start px-2">
-                Let me handle !
-              </span>
+              <span className="small text-start px-2">Let me handle !</span>
             </div>
           </Col>
           <Col className="align-items-center w-100 justify-content-center p-0 m-0 h-0 fit-content flex-wrap justify-content-center d-flex">
@@ -194,7 +170,8 @@ const SideNav: FC = () => {
                   type: SET_LOGIN_DATA,
                   payload: {},
                 });
-                check();
+                setCookie("user", {});
+                navigate();
               }}
               className="bg-light-grey form__input align-items-center d-flex text-decoration-none fit-content p-2 px-4 m-0"
               style={{ minHeight: "0" }}

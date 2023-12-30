@@ -57,23 +57,23 @@ const ExploreDestination: FC = () => {
       }));
     }
   };
-  function handleScroll(e: any) {
-    const element = e.target;
-    if (element.scrollLeft + element.clientWidth >= element.scrollWidth) {
-      loadMoreProducts();
-    }
-  }
+  // function handleScroll(e: any) {
+  //   const element = e.target;
+  //   if (element.scrollLeft + element.clientWidth >= element.scrollWidth) {
+  //     loadMoreProducts();
+  //   }
+  // }
   // Function to load more products
-  const loadMoreProducts = () => {
-    // Simulate fetching more products (you would typically make an API call here)
-    setTimeout(() => {
-      const newProducts = Array.from(
-        { length: 10 },
-        (_, i) => `Product ${products.length + i + 1}`
-      );
-      setProducts([...products, ...newProducts]);
-    }, 1000);
-  };
+  // const loadMoreProducts = () => {
+  //   // Simulate fetching more products (you would typically make an API call here)
+  //   setTimeout(() => {
+  //     const newProducts = Array.from(
+  //       { length: 10 },
+  //       (_, i) => `Product ${products.length + i + 1}`
+  //     );
+  //     setProducts([...products, ...newProducts]);
+  //   }, 1000);
+  // };
 
   const [tourDetail, setTourDetail] = useState({
     city: destination.city,

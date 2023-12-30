@@ -1,10 +1,10 @@
 import React, { FC, useState } from "react";
-import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import RegistrationForm from "../registrationForm/RegistrationForm";
 import { RegistrationDetailDto } from "../../../state/actions/types/registrationType";
 import { registration } from "../../../api/registration";
-import { imageUpload } from "../../../api/imageUpload";
+import { imageUploadApi } from "../../../api/imageUploadApi";
+import { getBase64 } from "../../../utils/getBase64";
 
 const Hostel: FC = () => {
   const [detail, setDetail] = useState<RegistrationDetailDto>({
@@ -12,32 +12,34 @@ const Hostel: FC = () => {
     stayType: "HOSTEL",
     countryDisplayCode: "",
     pincode: 0,
-    address: "",
-    contactNumber: "",
+    address: "karnwal house",
+    contactNumber: "9058004056",
     emailAddress: "",
     hostName: "",
     marketingContact: "",
     opsContact: "",
     amenities: [],
   });
-  const dispatch = useDispatch();
   const history = useHistory();
-  const fileUpload = (event: any) => {
-    const files = event.target.files;
-    const filesLength = files.length;
-    console.log("event", files);
-    if (filesLength > 0) {
-      imageUpload(files);
-      // let imgSrc = URL.createObjectURL(files[0]) || "";
-      // let imafePreviewElement = document.querySelector("image") || "";
-      // imafePreviewElement.src = imgSrc;
-      // imafePreviewElement?.style.display = "block";
-    }
+
+  const fileUpload = (type: string, event: any) => {
+    const files = event.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(files);
+    console.log(files.name.split(".").pop());
+    getBase64(files).then((result: any) => {
+      imageUploadApi({
+        file: JSON.stringify(result).split(",")[1].split("=")[0],
+        type: type,
+        fileName: files.name,
+        fileType: files.name.split(".").pop(),
+      });
+    });
   };
   const submit = async () => {
     try {
       const response = await registration(detail);
-      history.push("/");
+      response.status === 201 && history.push("/submitted");
     } catch (error: any) {
       console.log(error);
     }

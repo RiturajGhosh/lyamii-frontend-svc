@@ -1,4 +1,3 @@
-import { $CombinedState } from "redux";
 import { RootStore } from "../store";
 import { createSelector } from "@reduxjs/toolkit";
 import { tourDataState } from "../reducers/tourDataReducer";

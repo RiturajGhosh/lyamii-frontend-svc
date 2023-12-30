@@ -15,8 +15,8 @@ import {
   SET_SCREENSIZE,
 } from "./state/actions/types/screenSizeType";
 import { useDispatch } from "react-redux";
-import { refresh } from "./api/refresh";
-import { getCookie } from "./components/common/enum/functions";
+import { getCookie, setCookie } from "./components/common/enum/functions";
+import { refreshApi } from "./api/refreshApi";
 
 const App: FC = () => {
   let routesToBeMapped: UserRouteConfig[] = [...commonSiteMap];
@@ -44,7 +44,10 @@ const App: FC = () => {
     window.addEventListener("resize", handleResize);
   });
   useEffect(() => {
-    refresh(getCookie("user"));
+    const user = getCookie("user");
+    JSON.stringify(user).length > 2
+      ? refreshApi(user)
+      : setCookie("user", { email: "", token: "" });
   }, []);
   return (
     <HashRouter>

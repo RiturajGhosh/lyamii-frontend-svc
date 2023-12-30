@@ -1,17 +1,14 @@
 import React, { FC, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import style from "./Header.module.scss";
-import { Col, Container, Nav, Navbar } from "react-bootstrap";
-import { useSelector } from "react-redux";
-import { selectLoginData } from "../../../state/selectors/selectLoginData";
+import { Col, Nav, Navbar } from "react-bootstrap";
+import { getCookie } from "../enum/functions";
 
 export type HeaderList = {
   name: string;
   path: string;
 };
 const Header: FC = () => {
-  const loginData = useSelector(selectLoginData);
-  const [userData, setUserData] = useState(loginData);
   const [headers, setHeaders] = useState<HeaderList[]>([]);
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
@@ -31,7 +28,7 @@ const Header: FC = () => {
 
   window.addEventListener("scroll", scrollHandler);
 
-  const loggedIn = userData.loginData.userId && userData.loginData.password;
+  const token = JSON.parse(getCookie("user")).token;
   const headerList: HeaderList[] = [
     { name: "Home", path: "/" },
     { name: "Contact", path: "/contact" },
@@ -46,12 +43,12 @@ const Header: FC = () => {
   ];
 
   useEffect(() => {
-    if (loggedIn) {
+    if (token) {
       setHeaders(loggedHeaderList);
     } else {
       setHeaders(headerList);
     }
-  }, [loggedIn]);
+  }, [token]);
 
   return (
     <header>

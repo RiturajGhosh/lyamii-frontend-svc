@@ -12,7 +12,7 @@ const CustomerReviews: FC = () => {
       fluid
       id="about"
     >
-      <Container className="p-0">
+      <Container className="p-0 w-100">
         <Row className="d-flex justify-content-center">
           <div className="card-body w-25">
             {

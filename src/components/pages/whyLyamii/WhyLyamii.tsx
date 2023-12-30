@@ -16,7 +16,7 @@ const WhyLyamii: FC = () => {
         fluid
         id="about"
       >
-        <Container>
+        <Container className="w-100">
           <Col>
             <Col md={12} lg={5} className="card-body">
               <Col>

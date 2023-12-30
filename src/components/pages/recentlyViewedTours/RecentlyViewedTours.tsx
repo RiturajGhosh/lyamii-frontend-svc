@@ -7,7 +7,7 @@ import { tours } from "../mockData/destinations";
 const RecentlyViewedTours: FC = () => {
   const [loading, setLoading] = useState(false);
   // const [tourlist, settourList] = useState<any[]>(tours);
-  const [data, setData] = useState<any[]>(tours.slice(0, 4));
+  const [data] = useState<any[]>(tours.slice(0, 4));
   const [page, setPage] = useState(0);
 
   useEffect(() => {

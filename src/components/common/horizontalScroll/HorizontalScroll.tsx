@@ -1,6 +1,5 @@
 import React, { FC, useEffect, useRef, useState } from "react";
-import { Card, Col, Container, Row } from "react-bootstrap";
-import { getData } from "../../../api/getData";
+import { Col, Row } from "react-bootstrap";
 type HorizontalScrollType = {
   setPage: Function;
   page: number;
@@ -18,17 +17,15 @@ const HorizontalScroll: FC<HorizontalScrollType> = ({
 }) => {
   const [disableScroll, setdisableScroll] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [scrollWidth, setscrollWidth] = useState(0);
-  const [data, setData] = useState<any[]>([]);
-  const [scrollPos, setscrollPos] = useState(1);
-  // const [page, setPage] = useState(0);
-  const [clonesWidth, setclonesWidth] = useState(0);
   const scrollContainerRef = useRef<HTMLInputElement>(null);
+  const [scrollWidth, setscrollWidth] = useState(scrollContainerRef.current?.clientWidth || 0);
+  const [scrollPos, setscrollPos] = useState(1);
+  const [clonesWidth, setclonesWidth] = useState(getClonesWidth());
 
   function reCalc() {
     let scrollpos = scrollPos;
-    let scrollWidth = scrollContainerRef.current?.clientWidth || 0;
-    let clonesWidth = getClonesWidth();
+    // let scrollWidth = scrollContainerRef.current?.clientWidth || 0;
+    // let clonesWidth = getClonesWidth();
 
     if (scrollPos <= 0) {
       scrollpos = 1;
@@ -97,9 +94,15 @@ const HorizontalScroll: FC<HorizontalScrollType> = ({
   }, []);
 
   return (
-    // <Container className={`py-5 p-0 justify-content-center`}>
     <Row className={`p-0 flex-column ${background && background}`}>
-      {title && <div className="h2 rounded-4 fit-content text-shadow-dark p-2" style={{color:"#dfe047",background:"#7ac68e"}}>{title}</div>}
+      {title && (
+        <div
+          className="h2 rounded-4 fit-content text-shadow-dark p-2"
+          style={{ color: "#dfe047", background: "#7ac68e" }}
+        >
+          {title}
+        </div>
+      )}
       <Col className="card-container p-0 d-block position-relative">
         <div
           ref={scrollContainerRef}
@@ -110,7 +113,6 @@ const HorizontalScroll: FC<HorizontalScrollType> = ({
         </div>
       </Col>
     </Row>
-    // </Container>
   );
 };
 

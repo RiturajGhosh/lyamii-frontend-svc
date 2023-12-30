@@ -12,7 +12,7 @@ const LifetimeJourney: FC = () => {
   return (
     <>
       {/* <div className={`${style.bgImage} position-absolute`}></div> */}
-      <Container className="position-relative sectionContainer py-42 ">
+      <Container className="position-relative sectionContainer py-42 w-100">
         <Col className="card-body w-100">
           {
             <>

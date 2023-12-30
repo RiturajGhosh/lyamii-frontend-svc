@@ -1,6 +1,5 @@
 import ContainerSection from "../components/common/container/Container";
 import Login from "../components/common/login/Login";
-import SideNav from "../components/common/sideNav/SideNav";
 import TourDetailCard from "../components/common/tourDetailCard/TourDetailCard";
 import Home from "../components/pages/Home/Home";
 import BackpackersTours from "../components/pages/backpackersTours/BackpackersTours";
@@ -15,6 +14,7 @@ import Hotel from "../components/pages/hotel/Hotel";
 import PassportRegistrationForm from "../components/pages/passportRegistrationForm/PassportRegistrationForm";
 import Personal from "../components/pages/personal/Personal";
 import Profile from "../components/pages/profile/Profile";
+import SubmitPage from "../components/pages/submitPage/SubmitPage";
 import { UserRouteConfig } from "../components/routing/PrivateRoute";
 import { AccessType } from "./accessType";
 
@@ -147,6 +147,11 @@ export const commonSiteMap: UserRouteConfig[] = [
     exact: true,
     path: "/addHostel",
     Component: Hostel,
+    access: AccessType.YES,
+  },{
+    exact: true,
+    path: "/submitted",
+    Component: SubmitPage,
     access: AccessType.YES,
   },
 ];

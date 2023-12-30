@@ -3,7 +3,6 @@ import { Col, Row, Card, Button, Form, InputGroup } from "react-bootstrap";
 import style from "./TourDetailCard.module.scss";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { BsShare } from "react-icons/bs";
-import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
 import { useSelector } from "react-redux";
 import markers from "../globe/markers";
 import { selectTourData } from "../../../state/selectors/selectTourData";
@@ -15,26 +14,8 @@ import Tick from "../icon/tick";
 import { selectedTourDataDto } from "../../../state/actions/types/tourDataActionType";
 
 const TourDetailCard: FC = () => {
-  const screenSize = useSelector(selectScreenSize);
-  const [IsWishlisted, setToWishList] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [data, setData] = useState<any[]>(markers.slice(0, 10));
-  const [page, setPage] = useState(0);
   const selectedtourData: selectedTourDataDto = useSelector(selectTourData);
-  // (selectTourData);
-  const features = [
-    "Entire apartment",
-    "16 m² size",
-    "Free parking",
-    "Private bathroom",
-    "Pets allowed",
-    "View",
-    "Free WiFi",
-    "Shower",
-    "Kitchenette",
-    "Non-smoking rooms",
-  ];
-  const [statusState, setStatusState] = useState(true);
   const [count, setCount] = useState(0);
 
   // const flag = (id: any) => {

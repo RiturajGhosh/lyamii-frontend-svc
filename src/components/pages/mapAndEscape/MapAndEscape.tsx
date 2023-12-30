@@ -3,26 +3,20 @@ import { Col, Container, Row } from "react-bootstrap";
 import style from "./MapAndEscape.module.scss";
 import Globe from "../../common/globe/Globe";
 import { mapDescription } from "../../common/enum/enum";
-import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import RoundButton from "../../common/roundButton/RoundButton";
 
 const MapAndEscape: FC = () => {
-  const history = useHistory();
-  const dispatch = useDispatch();
-  const screenSize = useSelector(selectScreenSize);
   return (
     <Container
       className="home-about-section sectionContainer py-42"
       fluid
       id="about"
     >
-      <Container>
-        <Row className="g-4">
+      <Container className="w-100 p-0">
+        <Row className="g-4 p-0">
           <Col md={6} className="">
             <div
-              className={`border-5 pt-32 border-white justify-content-start d-table  p-2 border-3 ${style.card}`}
+              className={`border-5 pt-32 border-white justify-content-start d-table p-0 border-3 ${style.card}`}
               style={{ minHeight: "100%" }}
             >
               <div className="card-body flex-wrap d-flex">
@@ -55,9 +49,9 @@ const MapAndEscape: FC = () => {
               <Globe />
             </div>
           </Col>
-          <Col className="card-12">
+          <Col className="card-12 w-100 p-0 m-0">
             <div
-              className={`border-5 pt-32 w-100 border-white justify-content-start d-table  p-2 border-3 ${style.card}`}
+              className={`border-5 pt-32 w-100 border-white justify-content-start d-table  p-0 m-0 border-3 ${style.card}`}
               style={{ minHeight: "100%" }}
             >
               <div className=" flex-wrap d-flex">
@@ -68,7 +62,7 @@ const MapAndEscape: FC = () => {
                   The Escape Plan
                 </h1>
 
-                <div className="card w-100 border border-5 border-dark">
+                <div className="card w-100 border border-5 p-0 m-0 border-dark">
                   <div className="card-header h-100">
                     <Col className="justify-content-center d-flex">
                       <Row className="position-relative align-items-center p-0 my-3 m-0 justify-content-center d-flex w-100">

@@ -32,7 +32,7 @@ const BeyoundObvious: FC = () => {
     }, 1000);
   };
   return (
-    <Container className="position-relative">
+    <Container className="position-relative w-100">
       <Row>
         <Col
           md={12}

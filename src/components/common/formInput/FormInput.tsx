@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Form, FloatingLabel } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 type FormInputType = {
   direction?: any;

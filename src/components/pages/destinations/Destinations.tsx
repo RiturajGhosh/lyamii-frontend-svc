@@ -13,7 +13,7 @@ const Destinations: FC = () => {
         fluid
         id="about"
       >
-        <Container>
+        <Container className="w-100">
           <Row>
             <Col className="home-about-description my-auto pl-20">
               <div className="text-start heading row textColor">

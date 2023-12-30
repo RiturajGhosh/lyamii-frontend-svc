@@ -1,16 +1,16 @@
 import React, { FC, useEffect, useState } from "react";
 import { Card, Col } from "react-bootstrap";
 import HorizontalScroll from "../../common/horizontalScroll/HorizontalScroll";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import TourCard from "../../common/tourCard/TourCard";
 import { tours } from "../mockData/destinations";
 
 const RecommandedTours: FC = () => {
   const [loading, setLoading] = useState(false);
   // const [tourlist, settourList] = useState<any[]>(tours);
-  const [data, setData] = useState<any[]>(tours.slice(0, 4));
+  const [data] = useState<any[]>(tours.slice(0, 4));
   const [page, setPage] = useState(0);
-  const history = useHistory();
+  // const history = useHistory();
 
   useEffect(() => {
     // getData(page).then((res) => setData([...data, ...res]));
