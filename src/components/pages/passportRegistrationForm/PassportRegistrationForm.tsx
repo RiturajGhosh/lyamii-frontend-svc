@@ -19,10 +19,6 @@ const PassportRegistrationForm: FC = () => {
   });
   const [step, setStep] = useState(3);
 
-  useEffect(() => {
-    console.log(step);
-  }, [step]);
-
   return (
     <div
       className={`bg-white align-content-start flex-wrap p-5 min-vh-100 min-vw-100 mw-100 w-100 align-items-center justify-content-end d-flex m-0`}

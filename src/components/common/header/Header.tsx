@@ -27,8 +27,8 @@ const Header: FC = () => {
   }
 
   window.addEventListener("scroll", scrollHandler);
-
-  const token = JSON.parse(getCookie("user")).token;
+  const cookie = getCookie("user");
+  const token = cookie && JSON.parse(cookie).token;
   const headerList: HeaderList[] = [
     { name: "Home", path: "/" },
     { name: "Contact", path: "/contact" },
@@ -86,7 +86,7 @@ const Header: FC = () => {
             <Nav className="ml-auto" defaultActiveKey="#home">
               {headers?.map((header: HeaderList, index: number) => {
                 return (
-                  <Nav.Item>
+                  <Nav.Item key={index}>
                     <Nav.Link
                       as={Link}
                       key={index}

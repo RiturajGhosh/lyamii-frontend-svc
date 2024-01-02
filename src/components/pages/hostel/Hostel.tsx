@@ -5,6 +5,7 @@ import { RegistrationDetailDto } from "../../../state/actions/types/registration
 import { registration } from "../../../api/registration";
 import { imageUploadApi } from "../../../api/imageUploadApi";
 import { getBase64 } from "../../../utils/getBase64";
+import ErrorMessage from "../../common/errorMessage/ErrorMessage";
 
 const Hostel: FC = () => {
   const [detail, setDetail] = useState<RegistrationDetailDto>({
@@ -12,8 +13,8 @@ const Hostel: FC = () => {
     stayType: "HOSTEL",
     countryDisplayCode: "",
     pincode: 0,
-    address: "karnwal house",
-    contactNumber: "9058004056",
+    address: "",
+    contactNumber: "",
     emailAddress: "",
     hostName: "",
     marketingContact: "",
@@ -21,37 +22,43 @@ const Hostel: FC = () => {
     amenities: [],
   });
   const history = useHistory();
-
+  const [show, setShow] = useState(false);
   const fileUpload = (type: string, event: any) => {
     const files = event.target.files[0];
     let reader = new FileReader();
     reader.readAsDataURL(files);
-    console.log(files.name.split(".").pop());
     getBase64(files).then((result: any) => {
       imageUploadApi({
-        file: JSON.stringify(result).split(",")[1].split("=")[0],
+        file: JSON.stringify(result).split(",")[1].split("=")[0].split('"')[0],
         type: type,
         fileName: files.name,
         fileType: files.name.split(".").pop(),
       });
     });
   };
+
   const submit = async () => {
     try {
       const response = await registration(detail);
       response.status === 201 && history.push("/submitted");
     } catch (error: any) {
-      console.log(error);
+      error.response.status === 400 && setShow(true);
     }
   };
   return (
-    <RegistrationForm
-      detail={detail}
-      stayType={"HOSTEL"}
-      setDetailHandler={(detail: RegistrationDetailDto) => setDetail(detail)}
-      submit={() => submit()}
-      fileUpload={fileUpload}
-    />
+    <>
+      <RegistrationForm
+        detail={detail}
+        stayType={"HOSTEL"}
+        setDetailHandler={(detail: RegistrationDetailDto) => setDetail(detail)}
+        submit={() => submit()}
+        fileUpload={fileUpload}
+      />
+      <ErrorMessage
+        show={show}
+        onClick={() => setShow(false)}
+      />
+    </>
   );
 };
 

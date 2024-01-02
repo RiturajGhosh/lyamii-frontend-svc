@@ -37,7 +37,7 @@ const Hotel: FC = () => {
       const response = await registration(detail);
       response.status === 201 && history.push("/submitted");
     } catch (error: any) {
-      console.log(error);
+      console.log(error.message);
     }
   };
   return (

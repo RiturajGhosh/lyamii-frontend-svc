@@ -17,8 +17,8 @@ const Footer: FC = () => {
                   <>
                     {communities.map((community: HeaderList, index: number) => {
                       return (
-                        <ul className="p-0 my-0">
-                          <li className="social-icons py-0">
+                        <ul key={index} className="p-0 my-0">
+                          <li key={index} className="social-icons py-0">
                             <Link
                               key={index}
                               to={community.path}
@@ -37,8 +37,8 @@ const Footer: FC = () => {
                   <>
                     {mustReads.map((reads: HeaderList, index: number) => {
                       return (
-                        <ul className="p-0 my-0">
-                          <li className="social-icons py-0">
+                        <ul key={index} className="p-0 my-0">
+                          <li key={index} className="social-icons py-0">
                             <Link
                               key={index}
                               to={reads.path}
@@ -57,8 +57,8 @@ const Footer: FC = () => {
                   <>
                     {supports.map((support: HeaderList, index: number) => {
                       return (
-                        <ul className="p-0 my-0">
-                          <li className="social-icons py-0">
+                        <ul key={index} className="p-0 my-0">
+                          <li key={index} className="social-icons py-0">
                             <Link
                               key={index}
                               to={support.path}

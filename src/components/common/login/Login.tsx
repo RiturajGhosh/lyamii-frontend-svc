@@ -2,10 +2,7 @@ import React, { FC, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Button, Card, Col, Dropdown, Form, Modal, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectLoginData,
-  selectOtpVerification,
-} from "../../../state/selectors/selectLoginData";
+import { selectOtpVerification } from "../../../state/selectors/selectLoginData";
 import {
   OTP_VERIFICATION,
   SET_LOGIN_DATA,
@@ -24,12 +21,9 @@ export type SideNavList = {
   path: string;
 };
 const Login: FC = () => {
-  const userData = useSelector(selectLoginData);
   const verificationStatus = useSelector(selectOtpVerification);
   const [otpVerify, setOtpVerify] = useState(verificationStatus.status);
   const [otpSent, setOtpSent] = useState(false);
-  const [show, setShow] = useState(true);
-  const [otp, setOtp] = useState("");
   const [detail, setDetail] = useState({
     email: "",
     password: "",
@@ -67,7 +61,7 @@ const Login: FC = () => {
         history.push("/profile");
       }
     } catch (error: any) {
-      console.log(error);
+      console.log(error.message);
     }
   };
   const signUp = async (values: any) => {
@@ -76,7 +70,7 @@ const Login: FC = () => {
       const response: any = await signUpApi(values);
       response.status === 200 && history.push("/login");
     } catch (error: any) {
-      console.log(error);
+      console.log(error.message);
     }
   };
   const verify = async (values: any) => {
@@ -89,7 +83,7 @@ const Login: FC = () => {
       });
       setOtpSent(false);
     } catch (error: any) {
-      console.log(error);
+      console.log(error.message);
     }
   };
   return (
@@ -97,7 +91,7 @@ const Login: FC = () => {
       <Modal
         show={true}
         fullscreen={"false"}
-        onHide={() => setShow(false)}
+        // onHide={() => setShow(false)}
         centered
       >
         <Modal.Body className="p-5 gap-5 d-flex flex-column">
@@ -115,7 +109,6 @@ const Login: FC = () => {
               touched,
               errors,
             }: any) => {
-              console.log(errors, touched);
               return (
                 <>
                   <Form onSubmit={handleSubmit}>

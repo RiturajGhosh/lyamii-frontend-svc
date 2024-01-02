@@ -9,6 +9,8 @@ import { FaUpload } from "react-icons/fa6";
 import { RegistrationDetailDto } from "../../../state/actions/types/registrationType";
 import Checkbox from "../../common/checkbox/Checkbox";
 import { getBase64 } from "../../../utils/getBase64";
+import { countries } from "../../common/enum/countryCode";
+import Select from "react-select";
 
 type RegistrationFormType = {
   detail: RegistrationDetailDto;
@@ -63,7 +65,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
         className="min-vh-100 justify-content-center align-items-center d-flex"
       >
         <Col className="gap-2 lh-1 d-flex flex-column">
-          <Col className="p-0 m-0">
+          <Col className="p-2 m-0">
             <Row className="d-flex justify-content-start fit-content gap-2">
               <Col
                 className="justify-content-start gap-3 round-edges px-4 m-0 d-flex"
@@ -113,14 +115,14 @@ const RegistrationForm: FC<RegistrationFormType> = ({
               </Col>
             </Row>
           </Col>
-          <hr className="border-2 border border-dark"></hr>
+          <hr className="border-2 border p-0 m-0 border-dark"></hr>
           <Row className="d-flex">
             <Col
               md={8}
               xs={8}
               sx={8}
               lg={8}
-              className="justify-content-center d-flex col-12 flex-column"
+              className="justify-content-center mb-4 mb-md-0 d-flex col-12 flex-column"
             >
               <Col className="lh-lg">
                 {stayType.includes("HOTEL") ? (
@@ -163,18 +165,31 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                     Country:
                   </Col>
                   <div className="p-0 m-0 border-bottom border-dark border-2 d-flex align-items-center w-100">
-                    <input
-                      className="px-3 w-100 p justify-content-start p-0 text-dark  m-0  border-0"
-                      type="text"
-                      value={detail.countryDisplayCode}
-                      style={{ background: "none" }}
-                      onChange={(e: any) =>
+                    <Select
+                      className="px-3 w-100 p justify-content-start p-0 text-dark m-0 border-0"
+                      styles={{
+                        control: (baseStyles, state) => ({
+                          ...baseStyles,
+                          borderWidth: "0",
+                          background: "none",
+                          borderColor: "none",
+                          borderRadius: "0",
+                          boxShadow: "none",
+                        }),
+                        indicatorsContainer: (baseStyles, state) => ({
+                          ...baseStyles,
+                          display: "none",
+                        }),
+                      }}
+                      placeholder=""
+                      onChange={(e) =>
                         setState({
                           ...state,
-                          countryDisplayCode: e.target.value,
+                          countryDisplayCode: e?.value || "",
                         })
                       }
-                    />
+                      options={countries}
+                    ></Select>
                   </div>
                 </Col>
                 <Col className="justify-content-start d-flex">
@@ -218,59 +233,59 @@ const RegistrationForm: FC<RegistrationFormType> = ({
               >
                 <Row className="p-0 m-0 w-100">
                   <Col className="p-0 col-7 m-0">
-                    {amenities?.map((amenity: any, index: number) => (
-                      <Row className="p-0 m-0">
-                        <Col className="fs-6 p-0 m-0 align-items-center justify-content-end d-flex">
-                          {amenity.label}
-                        </Col>
-                        <Col className="p-0 m-0 col-1 px-2">
-                          <Checkbox
+                    {amenities?.map((amenity: any, index: number) => {
+                      return (
+                        <Row className="p-0 m-0">
+                          <Col
                             key={index}
-                            label={false}
-                            option={amenity}
-                            onClick={(label: string) => {
-                              handler(label);
-                            }}
-                            type={"checkbox"}
-                          />
-                        </Col>
-                      </Row>
-                    ))}
+                            className="fs-6 p-0 m-0 align-items-center text-end justify-content-end d-flex"
+                          >
+                            {amenity.label}
+                          </Col>
+                          <Col className="p-0 m-0 col-1 px-2">
+                            <Checkbox
+                              key={index}
+                              label={false}
+                              option={amenity}
+                              onClick={(label: string) => {
+                                handler(label);
+                              }}
+                              type={"checkbox"}
+                            />
+                          </Col>
+                        </Row>
+                      );
+                    })}
                   </Col>
-                  <Col className="p-0 m-0 col-5 justify-content-center align-items-center d-flex">
-                    <Col
-                      className="p-0 m-0 fit-content h-30 w-50 col-6 rounded-circle"
+                  <Col className="p-0 m-0 col-5 justify-content-center align-self-center d-flex flex-column">
+                    <label
+                      htmlFor="file-upload"
+                      className="p-0 m-0 fit-content align-self-center h-30 w-50 col-6 rounded-circle"
                       style={{ background: "#b5f4c5" }}
                     >
+                      <input
+                        className="w-10 position-absolute"
+                        id="file-upload"
+                        accept=".jpg,.gif,.png"
+                        style={{ visibility: "hidden" }}
+                        placeholder=""
+                        onChange={(event: any) => {
+                          if (event.target.files?.length > 0) {
+                            getBase64(event.target.files[0]).then((result) => {
+                              setPreview({ ...preview, budget: `${result}` });
+                              fileUpload("PROPERTY", event);
+                            });
+                          }
+                        }}
+                        type="file"
+                      />
                       <RiUploadCloud2Line
                         className={"w-100 h-100 p-1 text-dark"}
                         width={"100px"}
                         height={"100px"}
-                      >
-                        <input
-                          className="w-10 position-absolute"
-                          id="file-upload"
-                          accept=".jpg,.gif,.png"
-                          style={{ visibility: "hidden" }}
-                          placeholder=""
-                          onChange={(event: any) => {
-                            if (event.target.files?.length > 0) {
-                              getBase64(event.target.files[0]).then(
-                                (result) => {
-                                  setPreview({
-                                    ...preview,
-                                    property: `${result}`,
-                                  });
-                                  fileUpload("PROPERTY", event);
-                                }
-                              );
-                            }
-                          }}
-                          type="file"
-                        />
-                      </RiUploadCloud2Line>
-                      <Col>(Property Pictures)</Col>
-                    </Col>
+                      />
+                    </label>
+                    <Col className="text-center">(Property Pictures)</Col>
                   </Col>
                 </Row>
               </Card>
@@ -329,7 +344,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                   />
                 </Col>
                 <Col
-                  className="display-6 w-100 text-white p-0 m-0 justify-content-center d-flex round-edges py-2 mt-2"
+                  className="fs-16 w-100 text-white p-0 m-0 justify-content-center d-flex round-edges py-2 mt-2"
                   style={{ background: "#4a915b" }}
                 >
                   PRIME
@@ -394,7 +409,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                   />
                 </Col>
                 <Col
-                  className="display-6 w-100 text-white justify-content-center d-flex p-0 m-0 round-edges py-2 mt-2"
+                  className="fs-16 w-100 text-white justify-content-center d-flex p-0 m-0 round-edges py-2 mt-2"
                   style={{ background: "#4a915b" }}
                 >
                   MID RANGE
@@ -459,7 +474,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                   />
                 </Col>
                 <Col
-                  className="display-6 w-100 text-white min-vh-0 justify-content-center d-flex p-0 round-edges py-2 m-0 mt-2"
+                  className="fs-16 w-100 text-white min-vh-0 justify-content-center d-flex p-0 round-edges py-2 m-0 mt-2"
                   style={{ background: "#4a915b" }}
                 >
                   <span className="p-0 m-0">BUDGET</span>
@@ -527,7 +542,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                   />
                 </Col>
                 <Col
-                  className="display-6 w-100 text-white p-0 m-0 justify-content-center d-flex round-edges py-2 mt-2"
+                  className="fs-16 w-100 text-white p-0 m-0 justify-content-center d-flex round-edges p-2 mt-2"
                   style={{ background: "#4a915b" }}
                 >
                   DORMITORY 1
@@ -592,7 +607,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                   />
                 </Col>
                 <Col
-                  className="h2 w-100 text-white justify-content-center d-flex p-0 m-0 round-edges py-2 mt-2"
+                  className="fs-16 w-100 text-white justify-content-center d-flex p-0 m-0 round-edges p-2 mt-2"
                   style={{ background: "#4a915b" }}
                 >
                   DORMITORY 2
@@ -657,7 +672,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                   />
                 </Col>
                 <Col
-                  className="h2 w-100 text-white min-vh-0 justify-content-center d-flex p-0 round-edges py-2 m-0 mt-2"
+                  className="fs-16 w-100 text-white min-vh-0 justify-content-center d-flex p-0 round-edges p-2 m-0 mt-2"
                   style={{ background: "#4a915b" }}
                 >
                   <span className="p-0 m-0">SINGLE ROOM</span>

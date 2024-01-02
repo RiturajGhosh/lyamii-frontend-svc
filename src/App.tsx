@@ -44,10 +44,9 @@ const App: FC = () => {
     window.addEventListener("resize", handleResize);
   });
   useEffect(() => {
-    const user = getCookie("user");
-    JSON.stringify(user).length > 2
-      ? refreshApi(user)
-      : setCookie("user", { email: "", token: "" });
+    const cookie = getCookie("user");
+    const user = cookie && JSON.parse(cookie);
+    user.token && refreshApi(user);
   }, []);
   return (
     <HashRouter>
