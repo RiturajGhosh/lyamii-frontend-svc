@@ -35,9 +35,9 @@ const BeyoundObvious: FC = () => {
     <Container className="position-relative w-100">
       <Row>
         <Col
-          md={12}
+          md={8}
           lg={8}
-          className="card-body position-absolute green top-0 end-0 m-auto"
+          className="card-body position-absolute align-self-end d-inline-flex align-items-end green top-0 end-0 m-auto"
         >
           <span
             className="display-3 text-outline fw-bold"
@@ -129,8 +129,8 @@ const BeyoundObvious: FC = () => {
           </Col>
         )}
         {screenSize.isMobile && (
-          <Row>
-            <div className="product-list" onScroll={(e) => handleScroll(e)}>
+          <Row className="mt-3">
+            <div className="product-list mt-5" onScroll={(e) => handleScroll(e)}>
               {internationalTours.map((option, idx) => (
                 <Col
                   onClick={() => history.push("/tour-detail")}

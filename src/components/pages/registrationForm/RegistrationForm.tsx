@@ -62,7 +62,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
     >
       <Col
         lg={10}
-        className="min-vh-100 justify-content-center align-items-center d-flex"
+        className="min-vh-100 justify-content-center my-2 align-items-center d-flex"
       >
         <Col className="gap-2 lh-1 d-flex flex-column">
           <Col className="p-2 m-0">
@@ -115,7 +115,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
               </Col>
             </Row>
           </Col>
-          <hr className="border-2 border p-0 m-0 border-dark"></hr>
+          <hr className="border-2 border border-dark"></hr>
           <Row className="d-flex">
             <Col
               md={8}
@@ -315,7 +315,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                       margin: "0px !important",
                       background: `url(${preview.prime})`,
                     }}
-                    // src={require("../../../Assets/accomodation.png")}
+                    src={require("../../../Assets/accomodation.png")}
                   />
                   <label
                     htmlFor="file-upload"
@@ -349,15 +349,6 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                 >
                   PRIME
                 </Col>
-                <Col className="p-0 m-0 border-bottom border-dark border-2 w-100">
-                  <input
-                    className=" p justify-content-start p-0 text-dark  m-0 border-0"
-                    type="text"
-                    value={""}
-                    style={{ background: "none" }}
-                    onChange={(e: any) => {}}
-                  />
-                </Col>
               </Col>
               <Col
                 md={3}
@@ -380,7 +371,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                       margin: "0px !important",
                       background: `url(${preview.midRange})`,
                     }}
-                    // src={require("../../../Assets/accomodation.png")}
+                    src={require("../../../Assets/accomodation.png")}
                   />
                   <label
                     htmlFor="file-upload"
@@ -413,15 +404,6 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                   style={{ background: "#4a915b" }}
                 >
                   MID RANGE
-                </Col>
-                <Col className="p-0 m-0 border-bottom border-dark border-2 w-100">
-                  <input
-                    className=" p justify-content-start p-0 text-dark  m-0 border-0"
-                    type="text"
-                    value={""}
-                    style={{ background: "none" }}
-                    onChange={(e: any) => {}}
-                  />
                 </Col>
               </Col>
               <Col
@@ -479,19 +461,10 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                 >
                   <span className="p-0 m-0">BUDGET</span>
                 </Col>
-                <Col className="p-0 m-0 border-bottom border-dark border-2 w-100">
-                  <input
-                    className="px-3 p justify-content-start p-0 text-dark  m-0 border-0"
-                    type="text"
-                    value={""}
-                    style={{ background: "none" }}
-                    onChange={(e: any) => {}}
-                  />
-                </Col>
               </Col>
             </Row>
           ) : (
-            <Row className="gap-5 my-3 justify-content-around position-relative">
+            <Row className="gap-5 gap-3 my-3 justify-content-around position-relative">
               <Col
                 md={3}
                 xs={3}
@@ -513,7 +486,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                       margin: "0px !important",
                       background: `url(${preview.dorm1})`,
                     }}
-                    // src={require("../../../Assets/accomodation.png")}
+                    src={require("../../../Assets/accomodation.png")}
                   />
                   <label
                     htmlFor="file-upload"
@@ -547,15 +520,6 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                 >
                   DORMITORY 1
                 </Col>
-                <Col className="p-0 m-0 border-bottom border-dark border-2  w-100">
-                  <input
-                    className=" p justify-content-start p-0 text-dark  m-0 border-0"
-                    type="text"
-                    value={""}
-                    style={{ background: "none" }}
-                    onChange={(e: any) => {}}
-                  />
-                </Col>
               </Col>
               <Col
                 md={3}
@@ -578,7 +542,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                       margin: "0px !important",
                       background: `url(${preview.dorm2})`,
                     }}
-                    // src={require("../../../Assets/accomodation.png")}
+                    src={require("../../../Assets/accomodation.png")}
                   />
                   <label
                     htmlFor="file-upload"
@@ -612,15 +576,6 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                 >
                   DORMITORY 2
                 </Col>
-                <Col className="p-0 m-0 border-bottom border-dark border-2  w-100">
-                  <input
-                    className="px-3 p justify-content-start p-0 text-dark  m-0 border-0"
-                    type="text"
-                    value={""}
-                    style={{ background: "none" }}
-                    onChange={(e: any) => {}}
-                  />
-                </Col>
               </Col>
               <Col
                 md={3}
@@ -643,7 +598,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                       margin: "0px !important",
                       background: `url(${preview.single})`,
                     }}
-                    // src={require("../../../Assets/accomodation.png")}
+                    src={require("../../../Assets/accomodation.png")}
                   />
                   <label
                     htmlFor="file-upload"
@@ -676,15 +631,6 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                   style={{ background: "#4a915b" }}
                 >
                   <span className="p-0 m-0">SINGLE ROOM</span>
-                </Col>
-                <Col className="p-0 m-0 border-bottom border-dark border-2 w-100">
-                  <input
-                    className="px-3 p justify-content-start p-0 text-dark  m-0 border-0"
-                    type="text"
-                    value={""}
-                    style={{ background: "none" }}
-                    onChange={(e: any) => {}}
-                  />
                 </Col>
               </Col>
             </Row>
@@ -759,7 +705,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                   </Col>
                   <div className="p-0 m-0 border-bottom border-dark border-2 d-flex align-items-center w-100">
                     <input
-                      className="px-3 w-100 p justify-content-start p-0 text-dark  m-0 border-0"
+                      className="px-3 w-100 p justify-content-start p-0 text-dark m-0 border-0"
                       type="text"
                       value={detail.marketingContact}
                       style={{ background: "none" }}
@@ -778,7 +724,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                   </Col>
                   <div className="p-0 m-0 border-bottom border-dark border-2 d-flex align-items-center w-100">
                     <input
-                      className="px-3 w-100 p justify-content-start p-0 text-dark  m-0 border-0"
+                      className="px-3 w-100 p justify-content-start p-0 text-dark m-0 border-0"
                       type="text"
                       value={detail.opsContact}
                       style={{ background: "none" }}
@@ -790,12 +736,18 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                 </Col>
               )}
             </Col>
-            <Col className="col-3 align-self-center justify-content-center d-flex">
+            <Col
+              md={3}
+              xs={3}
+              sx={3}
+              lg={3}
+              className="col-12 gy-3 align-self-center justify-content-center d-flex"
+            >
               <Button
                 className="align-items-center bg-primary justify-content-center d-flex"
                 onClick={() => submit()}
               >
-                <span className="display-6">Submit</span>
+                <span className="fs-16">Submit</span>
               </Button>
             </Col>
           </Row>

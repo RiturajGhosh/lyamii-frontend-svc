@@ -52,8 +52,8 @@ const LifetimeJourney: FC = () => {
           <Row className="w-100 m-0 p-0 d-flex justify-content-center">
             <Col
               md={4}
-              sm={4}
-              xs={4}
+              sm={8}
+              xs={8}
               lg={4}
               xl={4}
               xxl={4}
@@ -85,7 +85,7 @@ const LifetimeJourney: FC = () => {
             </Col>
             <Col
               md={8}
-              sm={8}
+              sm={4}
               lg={8}
               xs={4}
               xl={8}
@@ -140,7 +140,7 @@ const LifetimeJourney: FC = () => {
                   </Card.Body>
                 </Card>
                 <Button className="align-items-center mt-2 w-100 bg-dark-green justify-content-center d-flex">
-                  <h1 className="bold fs-16 p-2 m-0 fw-bold">
+                <h1 className="bold p fs-16 p-2 m-0 fw-bold">
                     {journeyOptions[2].name}
                   </h1>
                   <LuChevronRightCircle size={"30px"} />
