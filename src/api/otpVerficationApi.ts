@@ -1,10 +1,9 @@
-import { restClient } from "./restClient";
-import { axiosType } from "../components/common/enum/enum";
+import { otpVerification } from "./otpVerfication";
 
-export async function otpVerification(emailId: string, otp: string) {
-  return restClient({
-    type: axiosType.post,
-    url: "/v1/authenticate/verify/otp",
-    params: { emailId, otp: parseInt(otp) },
-  });
+export async function otpVerificationApi(emailId: string, otp: string) {
+  try {
+    return await otpVerification(emailId, otp);
+  } catch (error: any) {
+    return error;
+  }
 }

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { axiosType } from "../components/common/enum/enum";
+import { getCookie } from "../components/common/enum/functions";
 
 export const restClient = async ({
   url,
@@ -13,10 +14,14 @@ export const restClient = async ({
     params,
     // responseType,
   };
+  const token = JSON.parse(getCookie("user")).token;
+  const headers = token
+    ? { Authorization: `Bearer ${token}`, "Content-Type": "application/json" }
+    : { "Content-Type": "application/json" };
   const axiosInstance = axios.create({
     timeout: 40000,
     baseURL: "http://localhost:8081",
-    headers: { "Content-Type": "application/json" },
+    headers: headers,
   });
 
   axiosInstance.interceptors.response.use(

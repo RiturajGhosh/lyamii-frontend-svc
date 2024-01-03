@@ -14,6 +14,7 @@ type InputFormProps = {
   minLength: number;
   maxLength: number;
   style: CSSProperties;
+  onclick?: Function;
 };
 
 const InputForm: FC<InputFormProps> = ({
@@ -28,6 +29,7 @@ const InputForm: FC<InputFormProps> = ({
   placeholder,
   minLength,
   maxLength,
+  onclick,
   style,
 }) => {
   return (
@@ -43,6 +45,7 @@ const InputForm: FC<InputFormProps> = ({
         maxLength={maxLength}
         style={style}
         touched={touched}
+        onClick={()=>onclick && onclick()}
         errors={errors}
         required={required}
         name={name}

@@ -49,7 +49,13 @@ export const facilities = [
   require("../../../Assets/food.png"),
   require("../../../Assets/police.png"),
 ];
-export const paths = ["/login", "/addHotel", "/addHostel", "/profile"];
+export const paths = [
+  "/signup",
+  "/login",
+  "/addHotel",
+  "/addHostel",
+  "/profile",
+];
 export const reviews = [
   {
     name: "Sarah M",
@@ -69,7 +75,7 @@ export const reviews = [
 ];
 
 export const communities: HeaderList[] = [
-  { name: "About us", path: "/about" },
+  { name: "About us", path: "/aboutus" },
   { name: "Our Mission", path: "/mission" },
   { name: "Join us", path: "/joinus" },
   { name: "Reviews", path: "/reviews" },
@@ -107,22 +113,22 @@ export const internationalTours = [
   {
     from: "IND",
     to: "ITALY",
-    path: "https://cdn.pixabay.com/photo/2016/04/15/13/30/fassa-valley-1331004_12jpg",
+    path: "",
   },
   {
     from: "IND",
     to: "FRANCE",
-    path: "https://cdn.pixabay.com/photo/2014/11/13/23/34/palace-530055_12jpg",
+    path: "",
   },
   {
     from: "IND",
     to: "GERMANY",
-    path: "https://cdn.pixabay.com/photo/2015/03/31/23/08/neuschwanstein-701732_12jpg",
+    path: "",
   },
   {
     from: "IND",
     to: "SWITZERLAND",
-    path: "https://cdn.pixabay.com/photo/2016/08/22/10/20/city-1611657_12jpg",
+    path: "",
   },
 ];
 
@@ -134,7 +140,7 @@ export const bharatTours = [
     priceInUSD: "12,000 USD",
     priceInEUR: "11,500 EUR",
     priceInAED: "45,000 AED",
-    img: "https://cdn.pixabay.com/photo/2016/04/15/13/30/fassa-valley-1331004_12jpg",
+    img: "",
     places: [
       "Kolkatal",
       "Kolkata",
@@ -162,7 +168,7 @@ export const bharatTours = [
     priceInUSD: "15,000 USD",
     priceInEUR: "14,500 EUR",
     priceInAED: "55,000 AED",
-    img: "https://cdn.pixabay.com/photo/2016/04/15/13/30/fassa-valley-1331004_12jpg",
+    img: "",
     places: [
       "Kolkata",
       "Andaman Nicobar",
@@ -197,7 +203,7 @@ export const bharatTours = [
     priceInUSD: "18,000 USD",
     priceInEUR: "16,000 EUR",
     priceInAED: "65,000 AED",
-    img: "https://cdn.pixabay.com/photo/2016/04/15/13/30/fassa-valley-1331004_12jpg",
+    img: "",
     places: [
       "Kolkata",
       "Andaman Nicobar",
@@ -242,7 +248,7 @@ export const bharatTours = [
     priceInUSD: "22,000 USD",
     priceInEUR: "20,500 EUR",
     priceInAED: "80,000 AED",
-    img: "https://cdn.pixabay.com/photo/2016/04/15/13/30/fassa-valley-1331004_12jpg",
+    img: "",
     places: [
       "Kolkata",
       "Kolkata",
@@ -307,7 +313,7 @@ export const backpackersTours = [
     priceInUSD: "1,70,000 USD",
     priceInEUR: "1,50,000 EUR",
     priceInAED: "",
-    img: "https://cdn.pixabay.com/photo/2016/04/15/13/30/fassa-valley-1331004_12jpg",
+    img: "",
     places: [
       "Kolkata",
       "Kolkata",
@@ -351,7 +357,7 @@ export const backpackersTours = [
     priceInEUR: "",
     tourType: "Vagabond's Wishlist",
     priceInAED: "",
-    img: "https://cdn.pixabay.com/photo/2016/04/15/13/30/fassa-valley-1331004_12jpg",
+    img: "",
     places: [
       "Kolkata",
       "Kolkata",
@@ -427,7 +433,7 @@ export const backpackersTours = [
     priceInUSD: "18,000 USD",
     priceInEUR: "16,000 EUR",
     priceInAED: "65,000 AED",
-    img: "https://cdn.pixabay.com/photo/2016/04/15/13/30/fassa-valley-1331004_12jpg",
+    img: "",
     places: [
       "Delhi",
       "Delhi",
@@ -521,7 +527,7 @@ export const backpackersTours = [
     priceInUSD: "22,000 USD",
     priceInEUR: "20,500 EUR",
     priceInAED: "80,000 AED",
-    img: "https://cdn.pixabay.com/photo/2016/04/15/13/30/fassa-valley-1331004_12jpg",
+    img: "",
     places: [
       "Auroville",
       "Pondicherry",
@@ -543,7 +549,7 @@ export const backpackersTours = [
     priceInUSD: "22,000 USD",
     priceInEUR: "20,500 EUR",
     priceInAED: "80,000 AED",
-    img: "https://cdn.pixabay.com/photo/2016/04/15/13/30/fassa-valley-1331004_12jpg",
+    img: "",
     places: [
       "Auroville",
       "Pondicherry",
@@ -565,7 +571,7 @@ export const backpackersTours = [
     priceInUSD: "22,000 USD",
     priceInEUR: "20,500 EUR",
     priceInAED: "80,000 AED",
-    img: "https://cdn.pixabay.com/photo/2016/04/15/13/30/fassa-valley-1331004_12jpg",
+    img: "",
     places: [
       "Auroville",
       "Pondicherry",
@@ -587,7 +593,7 @@ export const backpackersTours = [
     priceInUSD: "22,000 USD",
     priceInEUR: "20,500 EUR",
     priceInAED: "80,000 AED",
-    img: "https://cdn.pixabay.com/photo/2016/04/15/13/30/fassa-valley-1331004_12jpg",
+    img: "",
     places: [
       "Auroville",
       "Pondicherry",
@@ -609,7 +615,7 @@ export const backpackersTours = [
     priceInUSD: "22,000 USD",
     priceInEUR: "20,500 EUR",
     priceInAED: "80,000 AED",
-    img: "https://cdn.pixabay.com/photo/2016/04/15/13/30/fassa-valley-1331004_12jpg",
+    img: "",
     places: [
       "Ganga Dussehra",
       "Hornbill Festival",
@@ -643,7 +649,7 @@ export const backpackersTours = [
     priceInUSD: "22,000 USD",
     priceInEUR: "20,500 EUR",
     priceInAED: "80,000 AED",
-    img: "https://cdn.pixabay.com/photo/2016/04/15/13/30/fassa-valley-1331004_12jpg",
+    img: "",
     places: [
       "Tigers",
       "The Royal Bengal Tiger",
@@ -671,7 +677,7 @@ export const backpackersTours = [
     priceInUSD: "22,000 USD",
     priceInEUR: "20,500 EUR",
     priceInAED: "80,000 AED",
-    img: "https://cdn.pixabay.com/photo/2016/04/15/13/30/fassa-valley-1331004_12jpg",
+    img: "",
     places: [
       "Mumbai",
       "Mumbai",
@@ -714,7 +720,7 @@ export const backpackersTours = [
     priceInUSD: "22,000 USD",
     priceInEUR: "20,500 EUR",
     priceInAED: "80,000 AED",
-    img: "https://cdn.pixabay.com/photo/2016/04/15/13/30/fassa-valley-1331004_12jpg",
+    img: "",
     places: [
       "Guwahati",
       "Tawang",

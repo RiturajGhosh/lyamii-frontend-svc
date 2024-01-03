@@ -13,12 +13,10 @@ const Hostel: FC = () => {
     stayType: "HOSTEL",
     countryDisplayCode: "",
     pincode: 0,
-    address: "",
     contactNumber: "",
     emailAddress: "",
+    address: "",
     hostName: "",
-    marketingContact: "",
-    opsContact: "",
     amenities: [],
   });
   const history = useHistory();
@@ -54,10 +52,7 @@ const Hostel: FC = () => {
         submit={() => submit()}
         fileUpload={fileUpload}
       />
-      <ErrorMessage
-        show={show}
-        onClick={() => setShow(false)}
-      />
+      <ErrorMessage show={show} onClick={() => setShow(false)} />
     </>
   );
 };

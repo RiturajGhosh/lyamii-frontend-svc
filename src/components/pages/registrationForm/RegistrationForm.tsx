@@ -216,10 +216,10 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                     <input
                       className="px-3 w-100 p justify-content-start p-0 text-dark  m-0 border-0"
                       type="text"
-                      value={detail.hostName}
+                      value={detail.address}
                       style={{ background: "none" }}
                       onChange={(e: any) =>
-                        setState({ ...state, hostName: e.target.value })
+                        setState({ ...state, address: e.target.value })
                       }
                     />
                   </div>
@@ -637,7 +637,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
           )}
           <Row className="d-flex">
             <Col className="justify-content-center d-flex lh-lg flex-column">
-              {stayType.includes("HOTEL") && (
+              {!stayType.includes("HOTEL") && (
                 <Col className="justify-content-start d-flex">
                   <Col className="p text-nowrap w-30 text-dark p-0 system-ui d-flex align-items-center">
                     Host Name:
@@ -659,7 +659,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                   </div>
                 </Col>
               )}
-              {stayType.includes("HOTEL") && (
+              {!stayType.includes("HOTEL") && (
                 <Col className="justify-content-start d-flex">
                   <Col className="p text-nowrap w-30 text-dark p-0 system-ui d-flex align-items-center">
                     Contact Number:
@@ -698,7 +698,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                 </div>
               </Col>
 
-              {!stayType.includes("HOTEL") && (
+              {stayType.includes("HOTEL") && (
                 <Col className="justify-content-start d-flex">
                   <Col className="p text-nowrap w-40 text-dark p-0 system-ui d-flex align-items-center">
                     Marketing team Contact:
@@ -717,7 +717,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                 </Col>
               )}
 
-              {!stayType.includes("HOTEL") && (
+              {stayType.includes("HOTEL") && (
                 <Col className="justify-content-start d-flex">
                   <Col className="p text-nowrap w-40 text-dark p-0 system-ui d-flex align-items-center">
                     Operations Team Contact:

@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { Button, Card, Col, Dropdown, Form, Modal, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { selectOtpVerification } from "../../../state/selectors/selectLoginData";
@@ -15,6 +15,7 @@ import { getOtpApi } from "../../../api/otpApi";
 import { Formik } from "formik";
 import { validate } from "../../../utils/validationForm";
 import InputForm from "../inputForm/InputForm";
+import { okErrorCode } from "../enum/errorCode";
 
 export type SideNavList = {
   name: string;
@@ -24,7 +25,8 @@ const Login: FC = () => {
   const verificationStatus = useSelector(selectOtpVerification);
   const [otpVerify, setOtpVerify] = useState(verificationStatus.status);
   const [otpSent, setOtpSent] = useState(false);
-  const [detail, setDetail] = useState({
+  const [usedEmailMessage, setUsedEmailMessage] = useState("");
+  const [detail] = useState({
     email: "",
     password: "",
     userName: "",
@@ -34,14 +36,18 @@ const Login: FC = () => {
   const [have, setHave] = useState(true);
   const dispatch = useDispatch();
   const history = useHistory();
+  const location = useLocation();
 
   useEffect(() => {
     setOtpVerify(verificationStatus.status);
   }, [verificationStatus]);
 
+  useEffect(() => {
+    setHave(location.pathname.includes("/login"));
+  }, [location]);
+
   const signIN = async (values: any) => {
     try {
-      setDetail(values);
       const response: any = await signInApi(values);
       setCookie("user", {
         email: response?.data.email,
@@ -55,7 +61,7 @@ const Login: FC = () => {
         history.push("/addHostel");
       }
       if (response.data.roles[0] === "ROLE_HOTEL") {
-        history.push("/addHOtel");
+        history.push("/addHotel");
       }
       if (response.data.roles[0] === "ROLE_USER") {
         history.push("/profile");
@@ -66,16 +72,14 @@ const Login: FC = () => {
   };
   const signUp = async (values: any) => {
     try {
-      setDetail(values);
       const response: any = await signUpApi(values);
-      response.status === 200 && history.push("/login");
+      okErrorCode.includes(response.status) && history.push("/login");
     } catch (error: any) {
       console.log(error.message);
     }
   };
   const verify = async (values: any) => {
     try {
-      setDetail(values);
       const data = await otpVerification(values.email, values.otp);
       dispatch({
         type: OTP_VERIFICATION,
@@ -83,6 +87,7 @@ const Login: FC = () => {
       });
       setOtpSent(false);
     } catch (error: any) {
+      setOtpSent(true);
       console.log(error.message);
     }
   };
@@ -153,6 +158,7 @@ const Login: FC = () => {
                             values={values}
                             minLength={0}
                             maxLength={50}
+                            onclick={()=>setUsedEmailMessage('')}
                             style={{
                               background: "#19bca1",
                               borderColor:
@@ -167,21 +173,41 @@ const Login: FC = () => {
                             name={"email"}
                           />
                         </Col>
-                        {(!have || verificationStatus.status) && (
+                        {!have && (
                           <Col className="col-4 align-self-center p-0 m-0">
                             <Button
                               className="round-edges h2 py-1 m-0"
                               style={{ minHeight: "0%", background: "#4a915b" }}
                               onClick={(e: any) => {
                                 if (!Object.keys(errors).includes("email")) {
-                                  setOtpSent(true);
-                                  getOtpApi(values.email);
+                                  setUsedEmailMessage("");
+                                  getOtpApi(values.email).then(
+                                    (response: any) => {
+                                      if (response.status === 204) {
+                                        setOtpSent(true);
+                                        setOtpVerify(false);
+                                      } else {
+                                        setUsedEmailMessage(
+                                          response.response.data.errors[0]
+                                            .errorMessage
+                                        );
+                                        setOtpSent(false);
+                                        setOtpVerify(false);
+                                      }
+                                    }
+                                  );
                                 }
                               }}
                             >
                               <span className="h6 p-0 m-0">Send OTP</span>
                             </Button>
                           </Col>
+                        )}
+
+                        {usedEmailMessage?.length > 0 && (
+                          <span className="text-danger">
+                            {usedEmailMessage}
+                          </span>
                         )}
                       </Row>
                       {otpSent && (
@@ -228,7 +254,7 @@ const Login: FC = () => {
                           </Col>
                         </Row>
                       )}
-                      {(have || otpVerify) && (
+                      {(have || (!have && otpVerify)) && (
                         <Row>
                           <Col className="px-1 m-0">
                             <InputForm
@@ -253,7 +279,7 @@ const Login: FC = () => {
                               name={"password"}
                             />
                           </Col>
-                          {(verificationStatus.status || !have) && (
+                          {!have && verificationStatus.status && (
                             <Col className="col-4 p-0 m-0">
                               <Dropdown
                                 onSelect={(eventKey: any) =>
@@ -272,13 +298,22 @@ const Login: FC = () => {
                                 </Dropdown.Toggle>
 
                                 <Dropdown.Menu>
-                                  <Dropdown.Item eventKey={"user"}>
+                                  <Dropdown.Item
+                                    className={"text-dark text-decoration-none"}
+                                    eventKey={"user"}
+                                  >
                                     User
                                   </Dropdown.Item>
-                                  <Dropdown.Item eventKey={"Hotel"}>
+                                  <Dropdown.Item
+                                    className={"text-dark text-decoration-none"}
+                                    eventKey={"Hotel"}
+                                  >
                                     Hotel
                                   </Dropdown.Item>
-                                  <Dropdown.Item eventKey={"Hostel"}>
+                                  <Dropdown.Item
+                                    className={"text-dark text-decoration-none"}
+                                    eventKey={"Hostel"}
+                                  >
                                     Hostel
                                   </Dropdown.Item>
                                 </Dropdown.Menu>
@@ -346,6 +381,7 @@ const Login: FC = () => {
                           setOtpSent(false);
                           setTouched({});
                           setHave(false);
+                          history.push("/signup");
                         }}
                       >
                         Create New Profile
@@ -359,6 +395,7 @@ const Login: FC = () => {
                           setOtpSent(false);
                           setTouched({});
                           setHave(true);
+                          history.push("/login");
                         }}
                       >
                         Login

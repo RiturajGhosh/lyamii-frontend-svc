@@ -1,3 +1,5 @@
+import AboutUs from "../components/common/aboutUS/AboutUs";
+import Community from "../components/common/community/Community";
 import ContainerSection from "../components/common/container/Container";
 import Login from "../components/common/login/Login";
 import TourDetailCard from "../components/common/tourDetailCard/TourDetailCard";
@@ -34,8 +36,8 @@ export const commonSiteMap: UserRouteConfig[] = [
   },
   {
     exact: true,
-    path: "/about",
-    Component: ContainerSection,
+    path: "/aboutus",
+    Component: Community,
     access: AccessType.YES,
   },
   {
@@ -59,7 +61,7 @@ export const commonSiteMap: UserRouteConfig[] = [
   {
     exact: true,
     path: "/mission",
-    Component: ContainerSection,
+    Component: Community,
     access: AccessType.YES,
   },
   {
@@ -71,7 +73,7 @@ export const commonSiteMap: UserRouteConfig[] = [
   {
     exact: true,
     path: "/reviews",
-    Component: CustomerReviews,
+    Component: Community,
     access: AccessType.YES,
   },
   {
@@ -136,6 +138,11 @@ export const commonSiteMap: UserRouteConfig[] = [
   {
     exact: true,
     path: "/login",
+    Component: Login,
+    access: AccessType.YES,
+  },{
+    exact: true,
+    path: "/signup",
     Component: Login,
     access: AccessType.YES,
   },{

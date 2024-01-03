@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Container, Row } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import Destinations from "../destinations/Destinations";
 import style from "./Home.module.scss";
 import CustomerReviews from "../customerReview/CustomerReview";
@@ -14,12 +14,12 @@ const Home: FC = () => {
   const history = useHistory();
   return (
     <section>
-      <Container
+      <Col
         fluid
-        className={`home-section position-relative p-0 ${style.imageSection}`}
+        className={`px-2 home-section position-relative p-0 ${style.imageSection}`}
         id="home"
       >
-        <Container className="home-content position-relative zi-2 d-grid justify-content-center">
+        <Col className="home-content position-relative zi-2 d-grid justify-content-center">
           <h1 className="text-center text-shadow-light">Each Day Counts</h1>
           <p className="text-center">
             Explore stunning destinations, from exotic tropical paradises to
@@ -38,11 +38,11 @@ const Home: FC = () => {
           >
             Get your Passport
           </button>
-        </Container>
+        </Col>
         <div
           className={`flex-grow-1 w-100 bottom-0 position-absolute travel-image position-bottom`}
         ></div>
-      </Container>
+      </Col>
       <Destinations></Destinations>
       <MapAndEscape />
       <LifetimeJourney />

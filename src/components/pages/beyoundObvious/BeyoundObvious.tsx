@@ -35,9 +35,9 @@ const BeyoundObvious: FC = () => {
     <Container className="position-relative w-100">
       <Row>
         <Col
-          md={8}
+          md={12}
           lg={8}
-          className="card-body position-absolute align-self-end d-inline-flex align-items-end green top-0 end-0 m-auto"
+          className="card-body position-absolute green top-0 end-0 m-auto"
         >
           <span
             className="display-3 text-outline fw-bold"
@@ -56,13 +56,12 @@ const BeyoundObvious: FC = () => {
                 padding: "0px !important",
                 margin: "0px !important",
               }}
+              alt={""}
               src={require("../../../Assets/indianflag.png")}
             />
           </span>
         </Col>
-        <Col
-          className="card-body w-10 float-left position-absolute mt-5 green top-0 start-100 m-auto translate-middle-x"
-        >
+        <Col className="card-body w-10 float-left position-absolute mt-5 green top-0 start-100 m-auto translate-middle-x">
           <span
             className="display-5 d-inline-flex justify-content-start mt-5 text-outline fw-bold"
             style={{ color: "#4b7b57" }}
@@ -73,6 +72,7 @@ const BeyoundObvious: FC = () => {
                 padding: "0px !important",
                 margin: "0px !important",
               }}
+              alt={""}
               src={require("../../../Assets/compass.png")}
             />
           </span>
@@ -102,7 +102,9 @@ const BeyoundObvious: FC = () => {
                           {"10 D"}
                         </Card.Text> */}
                         <Card.Text className="bold col-3 p p-2 text-white position-absolute text-shadow-dark fw-bold bottom-0 end-0">
-                          <Col className="col-12 h-100 border border-1 bg-success">1000$</Col>
+                          <Col className="col-12 h-100 border border-1 bg-success">
+                            1000$
+                          </Col>
                         </Card.Text>
                         <Card.Text className="bold p text-white position-absolute justify-content-center zi-0 text-shadow-dark fw-bold bottom-0 start-0">
                           <CommentIcon
@@ -129,8 +131,8 @@ const BeyoundObvious: FC = () => {
           </Col>
         )}
         {screenSize.isMobile && (
-          <Row className="mt-3">
-            <div className="product-list mt-5" onScroll={(e) => handleScroll(e)}>
+          <Row>
+            <div className="product-list" onScroll={(e) => handleScroll(e)}>
               {internationalTours.map((option, idx) => (
                 <Col
                   onClick={() => history.push("/tour-detail")}
