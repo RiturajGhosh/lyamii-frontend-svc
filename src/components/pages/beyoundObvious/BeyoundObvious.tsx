@@ -160,7 +160,7 @@ const BeyoundObvious: FC = () => {
                         </Card.Text>
                         <Card.Text className="bold p p-2 text-white d-flex flex-nowrap position-absolute fw-bold top-50 translate-middle start-50">
                           {option.from}
-                          <FaPlane className="mx-2 my-1" />
+                          <span><FaPlane className="mx-2 my-1" /></span>
                           {option.to}
                         </Card.Text>
                       </Card.Body>

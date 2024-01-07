@@ -15,7 +15,7 @@ import {
   SET_SCREENSIZE,
 } from "./state/actions/types/screenSizeType";
 import { useDispatch } from "react-redux";
-import { getCookie, setCookie } from "./components/common/enum/functions";
+import { getCookie } from "./components/common/enum/functions";
 import { refreshApi } from "./api/refreshApi";
 
 const App: FC = () => {

@@ -14,13 +14,16 @@ export const restClient = async ({
     params,
     // responseType,
   };
-  const token = JSON.parse(getCookie("user")).token;
-  const headers = token
-    ? { Authorization: `Bearer ${token}`, "Content-Type": "application/json" }
-    : { "Content-Type": "application/json" };
+
+  const cookie = getCookie("user");
+  const token = (cookie && JSON.parse(cookie)?.token) || "";
+  const headers =
+    JSON.stringify(token).length > 0
+      ? { Authorization: `Bearer ${token}`, "Content-Type": "application/json" }
+      : { "Content-Type": "application/json" };
   const axiosInstance = axios.create({
     timeout: 40000,
-    baseURL: "http://localhost:8081",
+    baseURL: "http://ec2-54-242-7-98.compute-1.amazonaws.com:8081",
     headers: headers,
   });
 
