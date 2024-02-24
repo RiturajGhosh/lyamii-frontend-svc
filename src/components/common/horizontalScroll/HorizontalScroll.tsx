@@ -98,7 +98,7 @@ const HorizontalScroll: FC<HorizontalScrollType> = ({
       {title && (
         <div
           className="h2 rounded-4 fit-content text-shadow-dark p-2"
-          style={{ color: "#dfe047", background: "#7ac68e" }}
+          style={{ color: "#0752a1", background: "#c4cdfe" }}
         >
           {title}
         </div>

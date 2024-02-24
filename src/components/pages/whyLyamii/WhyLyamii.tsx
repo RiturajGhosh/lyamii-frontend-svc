@@ -1,32 +1,39 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { reasons } from "../../common/enum/enum";
 import style from "./WhyLamii.module.scss";
 
 const WhyLyamii: FC = () => {
-  const [flipped, setFliped] = useState(false);
-  const flip = () => {
-    setFliped(!flipped);
-  };
+  // const [flipped, setFliped] = useState(false);
+  // const flip = () => {
+  //   setFliped(!flipped);
+  // };
   return (
     <>
-      <div className={`${style.downImage} position-absolute`}></div>
-      <Container
-        className="home-about-section sectionContainer py-42 px-0"
-        fluid
+      <Col
+        className="home-about-section sectionContainer d-flex justify-content-center py-42 px-0"
         id="about"
       >
-        <Container className="w-100">
+        <Col lg={11} md={11} sx={11} xs={11}>
           <Col>
             <Col md={12} lg={5} className="card-body">
               <Col>
-                <p className="card-text text-white fw-bold heading position-absolute px-5 text-shadow-dark">
+                <p
+                  className="text-white fw-bold heading position-absolute px-5 text-shadow-dark"
+                  style={{
+                    color: "black",
+                    fontFamily: "OldStandardbold",
+                  }}
+                >
                   Why
                 </p>
                 <Row className="">
                   <span
                     className="fw-bold display-1 w-100 py-4 d-flex text-shadow-light"
-                    style={{ color: "#b64746" }}
+                    style={{
+                      color: "black",
+                      fontFamily: "OldStandard",
+                    }}
                   >
                     Lyamii
                     <Card.Img
@@ -41,7 +48,7 @@ const WhyLyamii: FC = () => {
                 </Row>
               </Col>
             </Col>
-            <Col md={12} lg={12} className="justify-content-between p-0 d-flex">
+            <Col lg={12} className="justify-content-between p-0 d-flex">
               <Row className="justify-content-center flex-wrap g-2 flex-row scrolling-wrapper-flexbox">
                 {reasons.map((reason, idx) => (
                   <Col
@@ -95,13 +102,13 @@ const WhyLyamii: FC = () => {
                           />
                         </Card.Body>
                         <section className="bg-danger align-items-center m-0 d-flex h-100 p-2 w-100 back">
-                          <Card.Body className="p-0 d-flex flex-column align-items-center align-self-center">
-                            <Card.Title className="bold p fw-bold">
+                          <Card.Body className="p-2 d-flex h-100 flex-column justify-content-center align-items-center align-self-center">
+                            <span className="bold fs-16 fw-bold">
                               {reason.title}
-                            </Card.Title>
-                            <Card.Text className="text-center small d-flex">
+                            </span>
+                            <span className="text-center small d-flex" style={{fontFamily:"Sanchez"}}>
                               {reason.description}
-                            </Card.Text>
+                            </span>
                           </Card.Body>
                         </section>
                       </div>
@@ -111,8 +118,8 @@ const WhyLyamii: FC = () => {
               </Row>
             </Col>
           </Col>
-        </Container>
-      </Container>
+        </Col>
+      </Col>
     </>
   );
 };

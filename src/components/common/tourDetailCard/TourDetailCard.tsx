@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Col, Row, Card, Button, Form, InputGroup } from "react-bootstrap";
 import style from "./TourDetailCard.module.scss";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
@@ -6,66 +6,84 @@ import { BsShare } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import markers from "../globe/markers";
 import { selectTourData } from "../../../state/selectors/selectTourData";
-import { backpackersTours, facilities, tourReviews } from "../enum/enum";
+import { facilities, isoCountries } from "../enum/enum";
 import { FaIndianRupeeSign } from "react-icons/fa6";
 import CustomCoursel from "../../pages/coursel/CustomCoursel";
 import MainContainer from "../container/MainContainer";
 import Tick from "../icon/tick";
-import { selectedTourDataDto } from "../../../state/actions/types/tourDataActionType";
+import { countries } from "../enum/countryCode";
+import { useHistory } from "react-router-dom";
 
 const TourDetailCard: FC = () => {
-  const [data, setData] = useState<any[]>(markers.slice(0, 10));
-  const selectedtourData: selectedTourDataDto = useSelector(selectTourData);
+  const selectedtourData: any = useSelector(selectTourData);
   const [count, setCount] = useState(0);
+  const history = useHistory();
+  const [countryCode, setCountryCode] = useState("");
+  useEffect(() => {
+    flag();
+  }, []);
 
-  // const flag = (id: any) => {
-  //   isoCountries?.length > 0 && isoCountries?.filter((country) => country?.id?.includes(id));
-  // };
+  const flag = () => {
+    const id =
+      isoCountries?.find(
+        (country: any) =>
+          country?.text?.includes(selectedtourData.tourName) && country
+      )?.id || "";
+    console.log(id);
+    setCountryCode(id);
+  };
   return (
     <MainContainer>
-      <CustomCoursel data={data} page={0} />
+      <Card.Img
+        className={`p-0 m-0 justify-content-center
+ ${style.img}`}
+        style={{
+          // width: "100%",
+          padding: "0px !important",
+          margin: "0px !important",
+        }}
+        onClick={() => history.push("/tour-detail")}
+        src={require("../../../Assets/header.jpg")}
+      />
       <Col
         className="gap-4 pt-5 d-flex text-dark flex-column"
         style={{ background: "#8ca0bd" }}
       >
         <Col className="position-relative d-flex">
           <Row className={`${style.card} p-0`} style={{ minHeight: "100%" }}>
-            <Col md={4} lg={4} sm={4} className="p-0 gap-4 m-0">
+            <Col md={4} lg={4} sm={4} className={"p-0 gap-4 m-0"}>
               <Col className="position-relative">
                 <Card
                   style={{ height: window.innerWidth / 6 }}
-                  className="bg-dark display-1 text-center justify-content-center text-white position-relative p-0 m-0 pb-2"
+                  className={`bg-dark display-1 text-start w-100 px-4 justify-content-center text-white position-relative p-0 m-0 pb-2 ${style.tourNameHeight}`}
                 >
-                  {selectedtourData.basicPropertyData.location.city.toUpperCase()}
+                  {selectedtourData.tourName}
                   <Col
-                    className={`
-                    flag:${selectedtourData.basicPropertyData.location.countryCode.toUpperCase()} position-absolute top-0 end-0 border-1 text-black bg-white w-30 h-20`}
-                    id="flag"
-                  ></Col>
+                    className={`position-absolute top-0 end-0 border-1 text-black w-30`}
+                  >
+                    <img
+                      className="w-100 m-0 p-0"
+                      src={`https://flagsapi.com/${countryCode}/flat/64.png`}
+                    />
+                  </Col>
                 </Card>
               </Col>{" "}
             </Col>
-            <Col md={8} sm={8} lg={8} className="col-6 p-0 m-0">
+            <Col md={8} sm={8} lg={8} className="col-12 p-0 m-0">
               <Col className="position-relative p-0">
-                <Card.Body className="p-0 px-4 gap-3 d-flex h-100 align-items-center d-flex flex-column m-0">
+                <Card.Body className="p-0 px-4 gap-3 m-0 d-flex h-100 align-items-center d-flex flex-column m-0">
                   {/* <Card.Title className="p text-wrap">
                       {selectedtourData?.displayName?.text &&
                         selectedtourData?.displayName?.text}
                     </Card.Title> */}
 
-                  <Card.Text className="display-6">
-                    Collection O Hotel La Veera features air-conditioned rooms
-                    with cable TV in the Navarangpura district of Ahmedabad.
-                    This 3-star hotel offers a shared kitchen and free WiFi.
-                    Gandhi Ashram is 4.1 km from the hotel and IIM is 6.1 km
-                    away. A continental breakfast is available each morning at
-                    the hotel. Sardar Patel Stadium is 9 km from Collection O
-                    Hotel La Veera, while NBSO Ahmedabad is 600 metres from the
-                    property. The nearest airport is Sardar Vallabhbhai Patel
-                    International Airport, 8 km from the accommodation. Hotel
-                    chain/brand: OYO Rooms Distance in property description is
-                    calculated using © OpenStreetMap
-                  </Card.Text>
+                  <span className="fs-16 p-0 m-0">
+                    {selectedtourData?.description
+                      ?.slice(0, selectedtourData.description.length / 2)
+                      ?.map((desc: string) => (
+                        <p>{desc}</p>
+                      ))}
+                  </span>
                 </Card.Body>
               </Col>
             </Col>
@@ -73,23 +91,28 @@ const TourDetailCard: FC = () => {
         </Col>
         <Col>
           <Row className={`${style.card} p-0`} style={{ minHeight: "100%" }}>
-            <Col md={6} sm={6} lg={6} className="col-6 p-0 m-0 gap-4 d-grid">
-              <Row className="d-flex justify-content-between">
-                <Col className="p-2 mx-4 display-5 col-2 align-self-center text-white text-center bg-dark">
-                  {"5D"}
+            <Col
+              xs={6}
+              md={6}
+              lg={6}
+              className="col-12 px-4 py-4 m-0 gap-4 d-grid"
+            >
+              <Row className="d-flex mb-2 justify-content-between">
+                <Col className="p-2 fs-auto col-2 align-items-center d-flex justify-content-center h-100 text-white text-center bg-dark">
+                  {selectedtourData.tourDays}D
                 </Col>{" "}
                 <Col className="col-8 px-1 align-self-center text-white position-relative p-0 m-0">
                   <Card
-                    className="fw-bold align-items-center shadow-sm text-white flex-nowrap py-3 justify-content-center flex-row d-flex m-0 p-0 position-relative"
+                    className="fw-bold align-items-center shadow-sm text-white flex-nowrap py-3 justify-content-start px-5 flex-row d-flex m-0 p-0 position-relative"
                     style={{ background: "#50809d" }}
                   >
-                    <span className="p-0 m-0 display-5 text-center fit-content">
-                      {"CZ22***05***"}
+                    <span className="p-0 m-0 fs-auto text-start fit-content">
+                      {selectedtourData.tourId}
                     </span>
                   </Card>
                   <Col className="position-relative w-100 p-0 border-1 text-center mx-42 justify-content-end text-white">
                     <span
-                      className="align-middle justify-self-center p-1 h3 rounded-3 position-absolute top-100 mx-42 start-50 translate-middle"
+                      className="align-middle justify-self-center p-1 fs-20 rounded-3 position-absolute top-100 mx-42 start-50 translate-middle"
                       style={{
                         background: "#024774",
                         color: "white",
@@ -108,23 +131,27 @@ const TourDetailCard: FC = () => {
               >
                 <Col className="p-0 col-12 m-0">
                   <Col>
-                    <Card className="text-white scroll position-relative p-0 m-0 p-2">
+                    <Card
+                      className="text-white scroll position-relative p-0 m-0 p-2"
+                      style={{ background: "#8ca0bd" }}
+                    >
                       <section
                         className={`overflow-auto ${style.routeTimeline}`}
                       >
-                        {backpackersTours[0]?.places?.map(
-                          (place: string, idx: number) => (
+                        {selectedtourData?.timeline?.map(
+                          (place: any, idx: number) => (
                             <Col className="py-2">
                               <Row>
-                                <Col className="p-0 display-6 m-0 col-2 text-white align-self-center p-2 text-center bg-dark">
+                                <Col className="p-0 fs-24 m-0 col-2 text-white align-self-center p-2 text-center bg-dark">
                                   {idx < 9 ? "0" + (idx + 1) : idx + 1}
                                 </Col>
                                 <Col>
-                                  <div className="pl-2 h2 p-0 m-0 text-dark ">
-                                    {place}
+                                  <div className="pl-2 fs-auto lh-sm p-0 m-0 text-dark ">
+                                    {place?.destination}
                                   </div>
-                                  <div className="p-2 h5 p-0 m-0 text-dark">
-                                    {"sub-title"}
+                                  <div className="p-2 fs-16 p-0 lh-sm m-0 text-dark">
+                                    <li>{place.description[0]}</li>
+                                    <li>{place.description[1]}</li>
                                   </div>
                                 </Col>
                               </Row>
@@ -138,15 +165,19 @@ const TourDetailCard: FC = () => {
               </Row>
               <Row className="align-items-center d-flex justify-content-between">
                 <Card
-                  className="text-white shadow-sm p-2 col-6 bold h3"
+                  className="text-white shadow-sm p-2 col-6 bold fs-20"
                   style={{ background: "#a8c0f0" }}
                 >
                   Departure Date :
                 </Card>
-                <Col className="position-relative col-2 align-items-end d-flex bg-white  p-0 m-0 border-0 text-center justify-content-end">
+                <Col
+                  md={2}
+                  lg={2}
+                  className="position-relative col-2 fs-16 align-items-end d-flex bg-white p-0 m-0 border-0 text-center justify-content-end"
+                >
                   <InputGroup className="">
                     <Button
-                      className="border-0"
+                      className="border-0 fs-16 p-2 m-0"
                       variant="outline-secondary"
                       id="button-addon1"
                       onClick={() => setCount(count - 1)}
@@ -158,10 +189,10 @@ const TourDetailCard: FC = () => {
                       onChange={(e) => setCount(parseInt(e.target.value))}
                       aria-label="Example text with button addon"
                       aria-describedby="basic-addon1"
-                      className="w-10 border-bottom-0 border-top-0"
+                      className="w-10 p-2 m-0 fs-16 border-bottom-0 border-top-0"
                     />
                     <Button
-                      className="border-0"
+                      className="border-0 fs-16 p-2 m-0"
                       variant="outline-secondary"
                       id="button-addon1"
                       onClick={() => setCount(count + 1)}
@@ -172,11 +203,11 @@ const TourDetailCard: FC = () => {
                 </Col>
               </Row>
               <Card
-                className="fw-bold align-items-center shadow-sm text-white flex-nowrap py-3 mx-4 justify-content-center flex-row d-flex m-0 p-0 position-relative"
+                className="fw-bold align-items-center shadow-sm text-white flex-nowrap py-3 justify-content-center flex-row d-flex m-0 p-0 position-relative"
                 style={{ background: "#50809d" }}
               >
-                <span className="p-0 m-0 display-5 text-center fit-content">
-                  {facilities.map((facility: any) => {
+                <span className="p-0 m-0 fs-auto text-center fit-content">
+                  {facilities?.map((facility: any) => {
                     return (
                       <Card.Img
                         className={`p-0 m-0 justify-content-center`}
@@ -192,7 +223,7 @@ const TourDetailCard: FC = () => {
                 </span>
               </Card>
             </Col>
-            <Col md={6} sm={6} lg={6} className="col-6 p-0 m-0">
+            <Col xs={6} md={6} lg={6} className="col-12 p-0 m-0">
               <Col className="position-relative h-100 d-flex align-items-center p-0">
                 <Card.Body className="p-0 px-4 gap-3 d-flex flex-column m-0">
                   <Card
@@ -200,7 +231,7 @@ const TourDetailCard: FC = () => {
                     className="text-white align-items-center d-flex h-100 bg-dark position-relative p-2 m-0"
                   >
                     <Col className="pt-4">
-                      {tourReviews?.map((review: string) => (
+                      {selectedtourData?.highlights?.map((review: string) => (
                         <Row className="p-2">
                           <Button
                             style={{ background: "#5a8ffd" }}
@@ -208,7 +239,7 @@ const TourDetailCard: FC = () => {
                           >
                             <Tick width="50" height="50" />
                           </Button>
-                          <Col className="fs-5 align-items-center pr-0 d-flex">
+                          <Col className="fs-16 align-items-center pr-0 d-flex">
                             {review}
                           </Col>
                         </Row>
@@ -222,8 +253,8 @@ const TourDetailCard: FC = () => {
                           {selectedtourData &&
                             [
                               ...Array(
-                                selectedtourData?.basicPropertyData?.starRating
-                                  ?.value
+                                selectedtourData?.basicTourData?.starRating
+                                  ?.value || 0
                               ),
                             ]?.map((index: number) => {
                               return (
@@ -245,8 +276,8 @@ const TourDetailCard: FC = () => {
                             [
                               ...Array(
                                 5 -
-                                  selectedtourData?.basicPropertyData
-                                    ?.starRating?.value
+                                  selectedtourData?.basicTourData?.starRating
+                                    ?.value || 0
                               ),
                             ]?.map((index: number) => {
                               return (
@@ -275,9 +306,12 @@ const TourDetailCard: FC = () => {
                         className="fw-bold align-items-center text-white shadow-sm flex-nowrap py-3 justify-content-center flex-row d-flex m-0 p-0 position-relative"
                         style={{ background: "#50809d" }}
                       >
-                        <Card.Text className="p-0 m-0 text-center fit-content">
-                          {"30,000"}
-                        </Card.Text>
+                        <span className="p-0 fs-24 m-0 text-center fit-content">
+                          {
+                            selectedtourData?.priceInfo?.priceBeforeDiscount
+                              ?.amount
+                          }
+                        </span>
                         <FaIndianRupeeSign
                           className="fit-content p-0 m-0"
                           size={"30px"}
@@ -285,13 +319,13 @@ const TourDetailCard: FC = () => {
                       </Card>
                       <Col className="position-relative w-100 p-0 border-1 text-center mx-3 justify-content-end text-white">
                         <span
-                          className="align-middle justify-self-center p-1 rounded-3 position-absolute top-100 ml-42 start-50 translate-middle"
+                          className="align-middle fs-16 justify-self-center p-1 rounded-3 position-absolute top-100 ml-42 start-50 translate-middle"
                           style={{
                             background: "#024774",
                             color: "white",
                             width: "max-content",
                           }}
-                          onClick={() => {}}
+                          onClick={() => history.push("/checkout")}
                         >
                           Book Now
                         </span>
@@ -302,9 +336,12 @@ const TourDetailCard: FC = () => {
                         className="fw-bold align-items-center text-white shadow-sm flex-nowrap py-3 justify-content-center flex-row d-flex m-0 p-0 position-relative"
                         style={{ background: "#50809d" }}
                       >
-                        <Card.Text className="p-0 m-0 text-center fit-content">
-                          {"30,000"}
-                        </Card.Text>
+                        <span className="p-0 m-0 fs-24 text-center fit-content">
+                          {
+                            selectedtourData?.priceInfo?.priceBeforeDiscount
+                              ?.amount
+                          }
+                        </span>
                         <FaIndianRupeeSign
                           className="fit-content p-0 m-0"
                           size={"30px"}
@@ -312,19 +349,19 @@ const TourDetailCard: FC = () => {
                       </Card>
                       <Col className="position-relative w-100 p-0 border-1 text-center mx-3 justify-content-end text-white">
                         <span
-                          className="align-middle justify-self-center p-1 shadow-sm border-0 rounded-3 position-absolute top-100 ml-42 start-50 translate-middle"
+                          className="align-middle fs-16 justify-self-center p-1 shadow-sm border-0 rounded-3 position-absolute top-100 ml-42 start-50 translate-middle"
                           style={{
                             background: "#024774",
                             color: "white",
                             width: "max-content",
                           }}
-                          onClick={() => {}}
+                          onClick={() => history.push("/checkout")}
                         >
                           Buy Now
                         </span>
                       </Col>
                     </Col>
-                    <Button className="align-items-center bg-white justify-content-center  col-2 btn btn-circle btn-xl display-6 d-flex">
+                    <Button className="align-items-center bg-white justify-content-center  col-2 btn btn-circle btn-xl fs-16 d-flex">
                       <BsShare
                         className="h-75 w-100 text-dark"
                         onClick={() => {}}
@@ -338,17 +375,12 @@ const TourDetailCard: FC = () => {
         </Col>
         <Col className="position-relative p-0">
           <Card.Body className="p-0 px-4 gap-3 d-flex flex-column m-0">
-            <Card.Text className="display-6 min-vh-25">
-              Praque is a city that celebrates love in all its forms, from its
-              breathtaking architecture to its poetic ambiance, The blend of
-              history, culture, and beauty creates an imesistible allure,
-              inviting you to create your own love story amidst its romantic
-              landscapes. Whether you're strolling through its picturesque
-              streets, savoring delicious Czech cuisine, or simply admiring the
-              breathtaking views from Prague Castle, the city's undeniable charm
-              will ignite the flames of passion and create memories to last a
-              lifetime, in Prague, love is in the air, and every moment spent
-              together becomes a chapter in your own personal fairytale,
+            <Card.Text className="fs-16 min-vh-25">
+              {selectedtourData.description
+                ?.slice(selectedtourData.description.length / 2)
+                ?.map((desc: string) => (
+                  <p>{desc}</p>
+                ))}
             </Card.Text>
           </Card.Body>
         </Col>

@@ -1,102 +1,143 @@
 import React, { FC } from "react";
 import { Card, Col, Container, Image, Row } from "react-bootstrap";
+import { IoMdMail } from "react-icons/io";
+import { BiSolidPhoneCall } from "react-icons/bi";
+import { CgFileDocument } from "react-icons/cg";
+import Checkbox from "../../common/checkbox/Checkbox";
 
 const Contact: FC = () => {
   return (
-    <Container
-      className="home-about-section sectionContainer m-0 px-0 pt-42"
-      fluid
+    <Col
+      className="home-about-section d-flex justify-content-center sectionContainer pt-42"
       id="about"
     >
-      <Container className="p-0 w-100">
-        <Card className="m-0 p-0" style={{ background: "#f2e7cf" }}>
-          <Card.Body>
-            <Row className="justify-content-between">
-              <Col md={4}>
-                <span className="display-5" style={{ color: "#266d59" }}>
-                  Any Quarries !!
-                </span>
-                <p
-                  className="w-100 border-bottom border-2 border-danger"
-                  style={{ borderColor: "#c6877c" }}
-                ></p>
-                <span
-                  className="display-6 d-flex justify-content-center"
-                  style={{ color: "#c6877c" }}
+      <Col lg={11} md={11} sx={11} xs={11}>
+        <Card.Body className="p-0 m-0">
+          <Row className="justify-content-between d-flex p-0 m-0">
+            <Col
+              className="col-5 position-relative mt-5 pt-3 p-0 m-0"
+              style={{
+                color: "#218a43",
+                textShadow: "#218a43",
+              }}
+            >
+              <div className="w-100 position-relative">
+                <Col
+                  className="p-4 col-11 bold display-6 round-edges text-end w-100"
+                  style={{
+                    background: "#889dfe",
+                    color: "white",
+                    textShadow: "#218a43",
+                    fontFamily: "bantayog",
+                  }}
                 >
-                  We are just one
-                </span>{" "}
-                <span
-                  className="display-6 d-flex justify-content-center"
-                  style={{ color: "#c6877c" }}
-                >
-                  click awaY.
-                </span>
-              </Col>
-              <Col
-                md={4}
-                className="justify-content-center d-flex align-items-center flex-column"
-              >
-                <Row className="p-0 m-0 w-100 flex-row d-flex">
-                  <Col className="rounded-circle green w-50 h-100 d-grid">
-                    <Image
-                      className={`flex-grow-1 p-0 img-fluid w-100 h-75 p-2 m-2 d-flex align-self-center justify-self-center`}
-                      src={require("../../../Assets/gmail.png")}
+                  <span
+                    className="fs-24 d-flex justify-content-center text-center text-shadow-dark bold text-white"
+                    style={{ fontFamily: "Archivo Black" }}
+                  >
+                    Any Quarries !
+                  </span>
+                  <span
+                    className="fs-16 d-flex justify-content-center"
+                    style={{ color: "#0752a1", fontFamily: "Futura (Bold)" }}
+                  >
+                    WE ARE JUST ONE CLICK AWAY.
+                  </span>
+                </Col>
+                <Col className="position-absolute w-25 h-100 justify-content-center d-flex top-50 start-100 translate-middle pt-1">
+                  <Col
+                    className="position-absolute rounded-circle w-100 h-75 justify-content-center d-flex start-0 "
+                    style={{ background: "#e2bb2c" }}
+                  >
+                    <IoMdMail
+                      size={"calc(0.5*100vw"}
+                      fill={"black"}
+                      href="mailto:lyamii.com"
+                      className="w-50 h-100 d-grid"
                     />
                   </Col>
-                  <Col className="rounded-circle green w-50 d-grid">
-                    <Image
-                      className={`flex-grow-1 p-0 img-fluid w-100 h-75 p-2 m-2 d-flex align-self-center justify-self-center`}
-                      src={require("../../../Assets/telephone.png")}
+                </Col>
+              </div>
+              <span
+                className="fs-20 d-flex bold justify-content-end"
+                style={{ color: "#0752a1", fontFamily: "Georgia (bold)" }}
+              >
+                Connect.CRM@Lyamii.com
+              </span>
+              <span
+                className="fs-20 d-flex bold justify-content-end"
+                style={{ color: "#0752a1", fontFamily: "Georgia (bold)" }}
+              >
+                Connect.Business@Lyamii.com
+              </span>
+              <span
+                className="fs-20 d-flex bold justify-content-end"
+                style={{ color: "#0752a1", fontFamily: "Georgia (bold)" }}
+              >
+                Drop.Feedback@Lyamii.com
+              </span>
+            </Col>
+            <Col
+              className="col-5 position-relative p-0 m-0"
+              style={{
+                color: "#218a43",
+                textShadow: "#218a43",
+              }}
+            >
+              <div className="w-100 position-relative">
+                <Col className="position-absolute w-25 h-100 justify-content-center d-flex top-50 start-0 translate-middle pt-4">
+                  <Col
+                    className="position-absolute green rounded-circle w-100 h-75 justify-content-center d-flex start-0 "
+                    style={{ background: "#3bb348" }}
+                  >
+                    <BiSolidPhoneCall
+                      href="tel:+1800229933"
+                      size={"calc(0.5*100vw"}
+                      fill={"white"}
+                      className="w-50 h-100 d-grid"
                     />
                   </Col>
-                </Row>
-              </Col>
-              <Col
-                md={4}
-                className="d-flex align-self-center flex-column position-relative"
-              >
-                <Row>
-                  <Col className="p-0 m-0 col-10">
-                    <span
-                      className="h2 p-0 mx-4 m-0 d-flex lh-1 justify-content-end"
-                      style={{ color: "#266d59" }}
-                    >
-                      schedule
-                    </span>
-                    <span
-                      className="display-4 p-0 m-0 d-flex lh-1 justify-content-end"
-                      style={{ color: "#c6877c" }}
-                    >
-                      callback
-                    </span>{" "}
-                    <p
-                      className="w-100 border-bottom border-2 border-danger"
-                      style={{ borderColor: "#266d59" }}
-                    ></p>
-                  </Col>
-                </Row>
-              </Col>
-              <Col className="p-3 m-0 position-absolute top-0 end-0 w-10 h-20">
-                <p
-                  className="w-100 circle-core h-100"
-                  style={{ background: "#8dc498" }}
+                </Col>
+                <Col
+                  className="p-4 col-11 p-0 bold display-6 round-edges text-start w-100"
+                  style={{
+                    background: "#889dfe",
+                    color: "white",
+                    textShadow: "#218a43",
+                    fontFamily: "bantayog",
+                  }}
                 >
-                  <Card.Img
-                    className={`m-0 p-0 justify-content-center`}
-                    style={{
-                      padding: "0px !important",
-                      margin: "0px !important",
-                    }}
-                    src={require("../../../Assets/A.png")}
-                  />
-                </p>
-              </Col>
-            </Row>
-          </Card.Body>
-        </Card>
-      </Container>
-    </Container>
+                  <span
+                    style={{ fontFamily: "Archivo Black" }}
+                    className="fs-24 d-flex justify-content-center text-center text-shadow-dark bold text-white"
+                  >
+                    Require Briefing!
+                  </span>
+                  <span
+                    className="fs-16 d-flex justify-content-center"
+                    style={{ color: "#0752a1", fontFamily: "Futura (Bold)" }}
+                  >
+                    VERIFIED USERS ONLY*
+                  </span>
+                </Col>
+              </div>
+              <span
+                className="fs-20 d-flex bold align-items-center justify-content-end"
+                style={{ color: "#0752a1", fontFamily: "BANGERS" }}
+              >
+                Schedule a callback
+                <CgFileDocument
+                  size={"calc(0.05*100vw"}
+                  fill={"black"}
+                  href="mailto:lyamii.com"
+                  className="w-10 h-25 d-grid"
+                />
+              </span>
+            </Col>
+          </Row>
+        </Card.Body>
+      </Col>
+    </Col>
   );
 };
 

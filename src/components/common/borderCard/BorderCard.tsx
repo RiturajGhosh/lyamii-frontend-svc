@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Button, Image, Col } from "react-bootstrap";
+import { Image, Col } from "react-bootstrap";
 import style from "./BorderCard.module.scss";
 import { FaArrowRightLong } from "react-icons/fa6";
 

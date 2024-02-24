@@ -13,9 +13,9 @@ const MainContainer: FC<ContainerSectionType> = ({
 }) => {
   return (
     <section className="d-contents p-0 m-0">
-      <Container fluid className={`bg-dark pt-5 px-0`}>
-        <Container className="pt-3" />
-      </Container>
+      <Col className={`bg-dark pt-5 px-0`}>
+        <Col fluid="lg" className="pt-3" />
+      </Col>
       <Col
         className={`p-0 m-0 ${className}`}
         style={{ background: `${background && background}` }}

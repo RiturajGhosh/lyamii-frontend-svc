@@ -6,11 +6,13 @@ import TourDetailCard from "../components/common/tourDetailCard/TourDetailCard";
 import Home from "../components/pages/Home/Home";
 import BackpackersTours from "../components/pages/backpackersTours/BackpackersTours";
 import BharatTours from "../components/pages/bharatTours/BharatTours";
+import CheckOut from "../components/pages/checkout/CheckOut";
 import ComboTours from "../components/pages/comboTours/ComboTours";
 import Contact from "../components/pages/contact/Contact";
 import CustomerReviews from "../components/pages/customerReview/CustomerReview";
 import Dashboard from "../components/pages/dashboard/Dashboard";
 import ExploreDestination from "../components/pages/exploreDestination/ExploreDestination";
+import FAQ from "../components/pages/faq/FAQ";
 import Hostel from "../components/pages/hostel/Hostel";
 import Hotel from "../components/pages/hotel/Hotel";
 import PassportRegistrationForm from "../components/pages/passportRegistrationForm/PassportRegistrationForm";
@@ -49,7 +51,7 @@ export const commonSiteMap: UserRouteConfig[] = [
   {
     exact: true,
     path: "/faqs",
-    Component: ContainerSection,
+    Component: FAQ,
     access: AccessType.YES,
   },
   {
@@ -159,6 +161,11 @@ export const commonSiteMap: UserRouteConfig[] = [
     exact: true,
     path: "/submitted",
     Component: SubmitPage,
+    access: AccessType.YES,
+  },{
+    exact: true,
+    path: "/checkout",
+    Component: CheckOut,
     access: AccessType.YES,
   },
 ];

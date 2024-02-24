@@ -1,0 +1,12 @@
+.reasonCard {
+  min-height: 0.15 * 100vw !important;
+  max-height: 0.15 * 100vw !important;
+  max-width: 0.15 * 100vw !important;
+  padding: 20px 5px !important;
+
+  @media only screen and (max-width: 767px) {
+    min-height:0.3 * 100vw !important;
+    max-height:0.3 * 100vw !important;
+    max-width: 0.3 * 100vw !important;
+  }
+}

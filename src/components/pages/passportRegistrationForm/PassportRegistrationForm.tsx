@@ -23,10 +23,11 @@ const PassportRegistrationForm: FC = () => {
     <div
       className={`bg-white align-content-start flex-wrap p-5 min-vh-100 min-vw-100 mw-100 w-100 align-items-center justify-content-end d-flex m-0`}
     >
-      <Row className="py-42">
+      <Row className="py-42 g-5 flex-lg-row flex-column-reverse">
         <Col
-          className="col-6 position-relative align-items-center d-flex flex-column align-self-start justify-content-start"
-          style={{ top: "90px" }}
+          lg={6}
+          className="col-12 position-relative align-items-center d-flex flex-column align-self-start justify-content-start"
+          // style={{ top: "90px" }}
         >
           <Col className="p-0 m-0 text-align-start flex-column d-flex">
             <h6>
@@ -37,7 +38,7 @@ const PassportRegistrationForm: FC = () => {
               style={{ border: "#14a8e3" }}
             ></div>
 
-            <p>Create your passport in just 3 steps!</p>
+            <p>Generate your passport in just 3 steps!</p>
 
             <h6 className="small">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
@@ -53,93 +54,44 @@ const PassportRegistrationForm: FC = () => {
           </Col>
         </Col>
         <Col
-          className="col-6 align-self-start position-relative"
-          style={{ top: "90px" }}
+          lg={6}
+          className="col-12 align-self-start position-relative"
+          // style={{ top: "90px" }}
         >
           <Form className="gap-4 d-flex flex-column">
-            <Col className="justify-content-center d-flex w-100">
-              <Row className="position-relative align-items-center justify-content-center p-0 m-0 d-flex w-100">
+            <Col className="justify-content-center d-flex">
+              <Row className="position-relative align-items-center p-0 my-3 m-0 justify-content-center d-flex w-100">
                 <Col className="col-1 d-flex position-relative p-0 m-0">
                   <RoundButton
-                    className="circle-core"
+                    className="border-5 border circle-core"
+                    bordercolor="#0e3c30"
                     size={"calc(0.10*100vw"}
                     fill={"#8dc498"}
                   />
                 </Col>
-                <Col className="col-1 active small text-nowrap">Step 1</Col>
-                <Col className="col-2 border-2 border p-0 mx-2 m-0"></Col>
-                <Col className="col-1 position-relative d-flex p-0 m-0">
+                <Col className="col-1 active text-center p-0 m-0 w-10">{"step 1"}</Col>
+                <Col className="col-1 border-2 border p-0 m-0 w-10 timeline-line"></Col>
+                <Col className="col-1 d-flex position-relative p-0 m-0">
                   <RoundButton
-                    className="circle-core"
+                    className="border-5 border circle-core"
+                    bordercolor="#0e3c30"
                     size={"calc(0.10*100vw"}
                     fill={"#8dc498"}
                   />
                 </Col>
-                <Col className="col-1 active small text-nowrap">Step 2</Col>
-                <Col className="col-2 border-2 border p-0 mx-2 m-0"></Col>
-
-                <Col className="col-1 position-relative d-flex p-0 m-0">
+                <Col className="col-1 active text-center p-0 m-0 w-10">{"step 2"}</Col>
+                <Col className="col-1 border-2 border p-0 m-0 w-10 timeline-line"></Col>
+                <Col className="col-1 d-flex position-relative p-0 m-0">
                   <RoundButton
-                    className="circle-core"
+                    className="border-5 border circle-core"
+                    bordercolor="#0e3c30"
                     size={"calc(0.10*100vw"}
                     fill={"#8dc498"}
                   />
                 </Col>
-                <Col className="col-1 active small text-nowrap">Step 3</Col>
+                <Col className="col-1 active text-center p-0 m-0 w-10">{"step 3"}</Col>
               </Row>
             </Col>
-            {/* <Row className="position-relative align-items-center p-0 mt-3 m-0 justify-content-between d-flex w-100"> */}
-            {/* <Col className="col-1 d-contents p-0 m-0">
-                <FaCircle className="" size={"20px"} />
-                <div className="active small text-nowrap">Step 1</div>
-              </Col>
-              <Col className="col-1 border-top-1 border p-0 m-0 w-30 timeline-line"></Col>
-              <Col className="col-1  d-contents p-0 m-0">
-                <FaCircle className="" size={"20px"} />
-                <div className="active small text-nowrap">Step 2</div>
-              </Col>
-              <Col className="col-1 border-top-1 border p-0 m-0 w-30 timeline-line"></Col>
-
-              <Col className="col-1  d-contents p-0 m-0">
-                <FaCircle className="" size={"20px"} />
-                <div className="active small text-nowrap">Step 3</div>
-              </Col>
-            </Row>
-            <Col className="justify-content-center d-flex"> */}
-            {/* <Row className="position-relative align-items-center p-0 my-3 m-0 justify-content-center d-flex w-100"> */}
-
-            {/* </Row> */}
-            {/* <input
-                        className="rounded-circle display-1 p-5 w-50"
-                        type="text"
-                        value={""}
-                        style={{ background: "#19bca1" }}
-                        onChange={(e: any) => {
-                          {
-                          }
-                        }}
-                      />
-                      <input
-                        className="rounded-circle display-1 p-5 w-50"
-                        type="text"
-                        value={""}
-                        style={{ background: "#19bca1" }}
-                        onChange={(e: any) => {
-                          {
-                          }
-                        }}
-                      />{" "}
-                      <input
-                        className="rounded-circle display-1 p-5 w-50"
-                        type="text"
-                        value={""}
-                        style={{ background: "#19bca1" }}
-                        onChange={(e: any) => {
-                          {
-                          }
-                        }}
-                      /> */}
-            {/* </Col> */}
             {step === 1 && (
               <Col className="gap-5 d-flex flex-column">
                 <FormInput

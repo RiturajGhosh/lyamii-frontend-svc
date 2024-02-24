@@ -15,13 +15,12 @@ const Home: FC = () => {
   return (
     <section>
       <Col
-        fluid
-        className={`px-2 home-section position-relative p-0 ${style.imageSection}`}
+        className={`home-section position-relative p-0 ${style.imageSection}`}
         id="home"
       >
         <Col className="home-content position-relative zi-2 d-grid justify-content-center">
           <h1 className="text-center text-shadow-light">Each Day Counts</h1>
-          <p className="text-center">
+          <p className="text-center px-2">
             Explore stunning destinations, from exotic tropical paradises to
             historic landmarks and vibrant cityscapes with Lyamii. Get insider
             insights into must see attractions, local cuisine, cultural
@@ -36,11 +35,11 @@ const Home: FC = () => {
               history.push("/passportRegistration");
             }}
           >
-            Get your Passport
+            Passport
           </button>
         </Col>
         <div
-          className={`flex-grow-1 w-100 bottom-0 position-absolute travel-image position-bottom`}
+          className={`flex-grow-1 w-100 bottom-0 position-absolute bg-contain travel-image position-bottom`}
         ></div>
       </Col>
       <Destinations></Destinations>
@@ -63,7 +62,7 @@ const Home: FC = () => {
           ></div>
         </Row>
         <div
-          className={`flex-grow-1 footer w-100 top-0 rotate-180 p-0 m-0 travel-image position-bottom p-0 m-0`}
+          className={`flex-grow-1 footer w-100 top-0 rotate-180 p-0 m-0 bg-cover travel-image position-bottom p-0 m-0`}
           style={{ minHeight: "150px" }}
         ></div>
       </div>

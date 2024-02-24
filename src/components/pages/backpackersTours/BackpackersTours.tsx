@@ -1,6 +1,6 @@
 import React, { FC, useState } from "react";
 import style from "./BackpackersTours.module.scss";
-import { Card, Col, Row } from "react-bootstrap";
+import { Card, Col, Container, Row } from "react-bootstrap";
 import MainContainer from "../../common/container/MainContainer";
 import Coursel from "../coursel/Coursel";
 import TourCard from "../../common/tourCard/TourCard";
@@ -12,6 +12,9 @@ import { SET_SELECTED_TOUR_DATA } from "../../../state/actions/types/tourDataAct
 import InfiniteScroll from "react-infinite-scroll-component";
 import markers from "../../common/globe/markers";
 import { stateType } from "../exploreDestination/ExploreDestination";
+import TourOverviewCard from "../../common/tourOverviewCard/TourOverviewCard";
+import CardWithShadow from "../../common/cardWithoutBorder/CardWithShadow";
+import { backpackersTours } from "../../common/enum/enum";
 
 const BackpackersTours: FC = () => {
   const [show, setShow] = useState(false);
@@ -65,61 +68,62 @@ const BackpackersTours: FC = () => {
     "Once you step in, Backpacking across India becomes a journey inward, a reflection of the external landscape mirroring the terrain of your own thoughts and emotions. It is a spiritual quest to discover the depths of your own being. This Edition is a reminder that sometimes the path to self discovery lies not in reaching a destination, but in the act of journeying itself. Includes all top rated hostel stays, domestic flights, local tours, day to day assistance.";
 
   return (
-    // <TourOverviewCard
-    //   tours={backpackersTours}
-    //   title="Backpackers Edition"
-    //   titleStyling={style.tourSection}
-    // >
-    //   <Container className={`py-5 p-0 d-grid justify-content-center`}>
-    //     <Row className="p-0">
-    //       <Col className="text-dark align-self-center">
-    //         <p className="text-start small text-wrap">{description} </p>
-    //       </Col>
-    //     </Row>
-    //   </Container>
-    // </TourOverviewCard>
+    <>
+      <TourOverviewCard
+        tours={backpackersTours}
+        title="Backpackers Edition"
+        titleStyling={style.tourSection}
+      >
+        <Col className={`py-5 p-0 d-grid justify-content-center`}>
+          <Row className="p-0">
+            <Col className="text-dark align-self-center">
+              <span className="text-start fs-16 text-wrap">{description} </span>
+            </Col>
+          </Row>
+        </Col>
+      </TourOverviewCard>
 
-    <MainContainer background="#84f18f">
-      <Coursel />
+      {/* <MainContainer background="#84f18f"> */}
+        {/* <Coursel /> */}
 
-      <Col className={"p-0"}>
-        {/* <Row className="p-0 m-0 w-100 d-flex justify-content-between">
-          <Col className="p-0">
-            <Row className="p-0 w-100">
-              {tourlist.map((tour, idx) => (
-                <Col
-                  onClick={() => {}}
-                  key={idx}
-                  lg={3}
-                  md={3}
-                  sm={12}
-                  xs={12}
-                  className="p-0"
-                >
-                  <CardWithShadow>
-                    <TourCard
-                      coordinates={[]}
-                      className={"small"}
-                      imageStyling={``}
-                      imageRatio={150}
-                      titleStyling="small"
-                      tour={tour}
-                      tourname={tour?.displayName}
-                      mealPaln={tour?.mealPlanIncluded}
-                      recommendedDate={tour?.recommendedDate}
-                      location={tour?.location}
-                      acceptsWalletCredit={tour?.acceptsWalletCredit}
-                      unitConfigurations={tour?.matchingUnitConfigurations}
-                      price={tour?.priceDisplayInfoIrene}
-                      propertyData={tour?.basicPropertyData}
-                    />
-                  </CardWithShadow>
-                </Col>
-              ))}
-            </Row>
-          </Col>
-        </Row> */}
-        <Row>
+        {/* <Col className={"p-0"}> */}
+          {/* <Row className="p-0 m-0 w-100 d-flex justify-content-between">
+            <Col className="p-0">
+              <Row className="p-0 w-100">
+                {tourlist.map((tour, idx) => (
+                  <Col
+                    onClick={() => {}}
+                    key={idx}
+                    lg={3}
+                    md={3}
+                    sm={12}
+                    xs={12}
+                    className="p-0"
+                  >
+                    <CardWithShadow>
+                      <TourCard
+                        coordinates={[]}
+                        className={"small"}
+                        imageStyling={``}
+                        imageRatio={150}
+                        titleStyling="small"
+                        tour={tour}
+                        tourname={tour?.displayName}
+                        mealPaln={tour?.mealPlanIncluded}
+                        recommendedDate={tour?.recommendedDate}
+                        location={tour?.location}
+                        acceptsWalletCredit={tour?.acceptsWalletCredit}
+                        unitConfigurations={tour?.matchingUnitConfigurations}
+                        price={tour?.priceDisplayInfoIrene}
+                        propertyData={tour?.basicPropertyData}
+                      />
+                    </CardWithShadow>
+                  </Col>
+                ))}
+              </Row>
+            </Col>
+          </Row> */}
+          {/* <Row>
           <Col
             className={"col-4 overflow-auto"}
             id="scrollableDiv"
@@ -297,9 +301,10 @@ const BackpackersTours: FC = () => {
             </InfiniteScroll>
           </Col>
         </Row>
-        <RecommandedTours />
-      </Col>
-    </MainContainer>
+        <RecommandedTours /> */}
+        {/* </Col> */}
+      {/* </MainContainer> */}
+    </>
   );
 };
 

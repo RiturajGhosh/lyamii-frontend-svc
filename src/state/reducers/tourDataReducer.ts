@@ -12,177 +12,8 @@ export interface tourDataState {
   selectedTourLocation: TourDataDto;
   tourData: selectedTourDataDto[];
 }
-const initialState: tourDataState = {
-  selectedtourData: {
-    displayName: {
-      text: "",
-    },
-    showGeniusLoginMessage: false,
-    mealPlanIncluded: {
-      text: "",
-      mealPlanType: "",
-    },
-    recommendedDatesLabel: null,
-    isNewlyOpened: false,
-    relocationMode: null,
-    recommendedDate: {
-      checkout: "",
-      lengthOfStay: 0,
-      checkin: "",
-    },
-    bookerExperienceContentUIComponentProps: [],
-    topPhotos: [],
-    location: {
-      displayLocation: "",
-      publicTransportDistanceDescription: null,
-      beachDistance: null,
-      skiLiftDistance: null,
-      beachWalkingTime: null,
-      geoDistanceMeters: null,
-      nearbyBeachNames: [],
-      mainDistance: null,
-    },
-    acceptsWalletCredit: false,
-    matchingUnitConfigurations: {
-      unitConfigurations: [
-        {
-          AllBeds: 0,
-          Bathrooms: 0,
-          Livingrooms: 0,
-          Bedrooms: 0,
-          Kitchens: 0,
-          Units: 0,
-          name: "",
-          bedConfigurations: [
-            {
-              AllBeds: 0,
-              beds: [
-                {
-                  type: 0,
-                  count: 0,
-                },
-              ],
-            },
-          ],
-          unitId: 0,
-        },
-      ],
-      commonConfiguration: {
-        localizedArea: null,
-        bedConfigurations: [
-          {
-            beds: [
-              {
-                count: 0,
-                type: 0,
-              },
-            ],
-            AllBeds: 0,
-          },
-        ],
-        unitId: 0,
-        unitTypeNames: [],
-        Units: 0,
-        Kitchens: 0,
-        name: null,
-        Bedrooms: 0,
-        Bathrooms: 0,
-        Livingrooms: 0,
-        AllBeds: 0,
-      },
-    },
-    priceDisplayInfoIrene: {
-      priceBeforeDiscount: {
-        amountPerStay: {
-          currency: "INR",
-          amountRounded: "₹0",
-        },
-      },
-      taxExceptions: [],
-      discounts: [
-        {
-          itemType: "",
-          description: {
-            translation: "",
-          },
-          name: "",
-          productId: "",
-          amount: {
-            amount: "₹0",
-            currency: "",
-          },
-        },
-      ],
-      chargesInfo: {
-        translation: "",
-      },
-      badges: [
-        {
-          identifier: "",
-          tooltip: {
-            translation: "",
-          },
-        },
-      ],
-    },
-    basicPropertyData: {
-      id: 0,
-      photos: {
-        main: {
-          lowResJpegUrl: {
-            relativeUrl: "",
-          },
-          highResUrl: {
-            relativeUrl: "",
-          },
-          highResJpegUrl: {
-            relativeUrl: "",
-          },
-          lowResUrl: {
-            relativeUrl: "",
-          },
-        },
-      },
-      location: {
-        address: "",
-        city: "",
-        countryCode: "",
-      },
-      alternativeExternalReviewsScore: null,
-      pageName: "",
-      isClosed: false,
-      starRating: {
-        showAdditionalInfoIcon: false,
-        caption: {
-          translation: "",
-        },
-        value: 0,
-        symbol: "",
-      },
-      paymentConfig: null,
-      reviewScore: {
-        score: 0,
-        totalScoreTextTag: {
-          translation: "",
-        },
-        showSecondaryScore: false,
-        secondaryScore: 0,
-        showScore: true,
-        reviewCount: 0,
-        secondaryTextTag: {
-          translation: null,
-        },
-      },
-      externalReviewScore: null,
-      ufi: -2104807,
-    },
-    policies: {
-      showNoPrepayment: false,
-      enableJapaneseUsersSpecialCase: null,
-      showFreeCancellation: false,
-    },
-    description: null,
-  },
+const initialState: any = {
+  selectedtourData: {},
   selectedTourLocation: {
     id: "",
     city: "string",
@@ -192,174 +23,52 @@ const initialState: tourDataState = {
   },
   tourData: [
     {
-      displayName: {
-        text: "",
-      },
-      showGeniusLoginMessage: false,
-      mealPlanIncluded: {
-        text: "",
-        mealPlanType: "",
-      },
-      recommendedDatesLabel: null,
-      isNewlyOpened: false,
-      relocationMode: null,
+      tourName: "",
+      highlights: [],
+      timeline: [],
+      tourPrice: "",
+      tourId: "",
+      tourDays: "",
       recommendedDate: {
         checkout: "",
         lengthOfStay: 0,
         checkin: "",
       },
-      bookerExperienceContentUIComponentProps: [],
       topPhotos: [],
-      location: {
-        displayLocation: "",
-        publicTransportDistanceDescription: null,
-        beachDistance: null,
-        skiLiftDistance: null,
-        beachWalkingTime: null,
-        geoDistanceMeters: null,
-        nearbyBeachNames: [],
-        mainDistance: null,
-      },
       acceptsWalletCredit: false,
-      matchingUnitConfigurations: {
-        unitConfigurations: [
-          {
-            AllBeds: 0,
-            Bathrooms: 0,
-            Livingrooms: 0,
-            Bedrooms: 0,
-            Kitchens: 0,
-            Units: 0,
-            name: "",
-            bedConfigurations: [
-              {
-                AllBeds: 0,
-                beds: [
-                  {
-                    type: 0,
-                    count: 0,
-                  },
-                ],
-              },
-            ],
-            unitId: 0,
-          },
-        ],
-        commonConfiguration: {
-          localizedArea: null,
-          bedConfigurations: [
-            {
-              beds: [
-                {
-                  count: 0,
-                  type: 0,
-                },
-              ],
-              AllBeds: 0,
-            },
-          ],
-          unitId: 0,
-          unitTypeNames: [],
-          Units: 0,
-          Kitchens: 0,
-          name: null,
-          Bedrooms: 0,
-          Bathrooms: 0,
-          Livingrooms: 0,
-          AllBeds: 0,
-        },
-      },
-      priceDisplayInfoIrene: {
+      priceInfo: {
         priceBeforeDiscount: {
-          amountPerStay: {
-            currency: "INR",
-            amountRounded: "₹0",
-          },
+          currency: "INR",
+          amountRounded: "",
         },
-        taxExceptions: [],
         discounts: [
           {
             itemType: "",
-            description: {
-              translation: "",
-            },
+            description: "",
             name: "",
             productId: "",
-            amount: {
-              amount: "₹0",
-              currency: "",
-            },
-          },
-        ],
-        chargesInfo: {
-          translation: "",
-        },
-        badges: [
-          {
-            identifier: "",
-            tooltip: {
-              translation: "",
-            },
+            amount: "₹0",
+            currency: "",
           },
         ],
       },
-      basicPropertyData: {
+      basicTourData: {
         id: 0,
         photos: {
           main: {
-            lowResJpegUrl: {
-              relativeUrl: "",
-            },
-            highResUrl: {
-              relativeUrl: "",
-            },
-            highResJpegUrl: {
-              relativeUrl: "",
-            },
-            lowResUrl: {
-              relativeUrl: "",
-            },
+            relativeUrl: "",
           },
         },
         location: {
           address: "",
           city: "",
-          countryCode: "",
+          countryCode: "91",
         },
-        alternativeExternalReviewsScore: null,
-        pageName: "",
-        isClosed: false,
         starRating: {
-          showAdditionalInfoIcon: false,
-          caption: {
-            translation: "",
-          },
           value: 0,
-          symbol: "",
         },
-        paymentConfig: null,
-        reviewScore: {
-          score: 0,
-          totalScoreTextTag: {
-            translation: "",
-          },
-          showSecondaryScore: false,
-          secondaryScore: 0,
-          showScore: true,
-          reviewCount: 0,
-          secondaryTextTag: {
-            translation: null,
-          },
-        },
-        externalReviewScore: null,
-        ufi: -2104807,
       },
-      policies: {
-        showNoPrepayment: false,
-        enableJapaneseUsersSpecialCase: null,
-        showFreeCancellation: false,
-      },
-      description: null,
+      description: [],
     },
   ],
 };

@@ -55,6 +55,7 @@ export const paths = [
   "/addHotel",
   "/addHostel",
   "/profile",
+  "/faqs"
 ];
 export const reviews = [
   {
@@ -84,8 +85,8 @@ export const communities: HeaderList[] = [
 export const mustReads: HeaderList[] = [
   { name: "Terms and conditions", path: "/termconditions" },
   { name: "Privacy policy", path: "/privacypolicy" },
-  { name: "Cancellation ploicy", path: "/cancellationpolicy" },
-  { name: "Refund ploicy", path: "/refundpolicy" },
+  { name: "Cancellation policy", path: "/cancellationpolicy" },
+  { name: "Refund policy", path: "/refundpolicy" },
   { name: "FAQ", path: "/" },
 ];
 export const supports: HeaderList[] = [
@@ -112,22 +113,127 @@ export const journeyOptions = [
 export const internationalTours = [
   {
     from: "IND",
-    to: "ITALY",
+    to: "Egypt",
     path: "",
   },
   {
     from: "IND",
-    to: "FRANCE",
+    to: "Japan",
     path: "",
   },
   {
     from: "IND",
-    to: "GERMANY",
+    to: "Turkey",
     path: "",
   },
   {
     from: "IND",
-    to: "SWITZERLAND",
+    to: "Cambodia",
+    path: "",
+  },
+  {
+    from: "IND",
+    to: "United Kingdom",
+    path: "",
+  },
+  {
+    from: "IND",
+    to: "Iceland",
+    path: "",
+  },
+  {
+    from: "IND",
+    to: "Norway",
+    path: "",
+  },
+  {
+    from: "IND",
+    to: "Hungary",
+    path: "",
+  },
+  {
+    from: "IND",
+    to: "Montenegro",
+    path: "",
+  },
+  {
+    from: "IND",
+    to: "Albania",
+    path: "",
+  },
+  {
+    from: "IND",
+    to: "Romania",
+    path: "",
+  },
+  {
+    from: "IND",
+    to: "South Korea",
+    path: "",
+  },
+  {
+    from: "IND",
+    to: "Cyprus ",
+    path: "",
+  },
+  {
+    from: "IND",
+    to: "Malta",
+    path: "",
+  },
+  {
+    from: "IND",
+    to: "Belgium",
+    path: "",
+  },
+  {
+    from: "IND",
+    to: "Croatia",
+    path: "",
+  },
+  {
+    from: "IND",
+    to: "Uzbekistan",
+    path: "",
+  },
+  {
+    from: "IND",
+    to: "Russia",
+    path: "",
+  },
+  {
+    from: "IND",
+    to: "Bolivia",
+    path: "",
+  },
+  {
+    from: "IND",
+    to: "Ireland",
+    path: "",
+  },
+  {
+    from: "IND",
+    to: "Baltic States",
+    path: "",
+  },
+  {
+    from: "IND",
+    to: "Sri Lanka",
+    path: "",
+  },
+  {
+    from: "IND",
+    to: "Vietnam",
+    path: "",
+  },
+  {
+    from: "IND",
+    to: "Thailand",
+    path: "",
+  },
+  {
+    from: "IND",
+    to: "Indonesia ",
     path: "",
   },
 ];

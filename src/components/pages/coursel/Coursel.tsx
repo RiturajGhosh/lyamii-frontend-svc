@@ -50,18 +50,18 @@ const Coursel: FC = () => {
 
             <div className="triangle-reverse-4 w-10 position-absolute top-50 start-90 translate-x-20 translate-y-10"></div>
 
-            <Col className="m-3 position-absolute top-0 text-white">
+            <Col className="m-0 mt-3 position-absolute top-0 text-center translate-y-20 text-white">
               <Row>
-                <Col className="display-1 bold p-0 m-0 text-end">BALI</Col>
+                <Col className="fs-48 fit-content bold p-0 m-0 text-end">BALI</Col>
                 <Col className="p-0 align-self-center m-0 fit-content">
-                  <Col className="h2 bold p-0 text-start m-0">HOLIDAY</Col>
-                  <Col className="h2 bold p-0 text-start m-0">PACKAGE</Col>
+                  <Col className="fs-auto lh-sm bold p-0 text-start m-0">HOLIDAY</Col>
+                  <Col className="fs-auto lh-sm bold p-0 text-start m-0">PACKAGE</Col>
                 </Col>
               </Row>
-              <Col className="display-6 bold text-center text-dark p-0 m-0">
+              <Col className="fs-auto bold text-center text-dark p-0 m-0">
                 SAVE UPTO
               </Col>
-              <Col className="display-6 bold text-center text-dark p-0 m-0">5000/-</Col>
+              <Col className="fs-auto bold text-center text-dark p-0 m-0">5000/-</Col>
             </Col>
           </Card.Body>
           {/* <Card.Body className="py-0">

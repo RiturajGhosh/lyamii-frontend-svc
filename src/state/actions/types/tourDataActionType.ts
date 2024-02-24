@@ -14,53 +14,43 @@ interface SetTourLocation {
   payload: TourDataDto;
 }
 export interface selectedTourDataDto {
-  displayName: DisplayName;
-  showGeniusLoginMessage: boolean;
-  mealPlanIncluded: MealPlanIncluded;
-  recommendedDatesLabel: null;
-  isNewlyOpened: boolean;
-  relocationMode: null;
+  tourName: string;
+  highlights: string[];
+  timeline: TimeLine[];
+  tourPrice: string;
+  tourId: string;
+  tourDays: string;
   recommendedDate: RecommendedDate;
-  bookerExperienceContentUIComponentProps: any[];
   topPhotos: any[];
-  location: Location;
   acceptsWalletCredit: boolean;
-  matchingUnitConfigurations: MatchingUnitConfigurations;
-  priceDisplayInfoIrene: PriceDisplayInfoIrene;
-  basicPropertyData: BasicPropertyData;
-  policies: Policies;
-  description: null;
+  priceInfo: PriceDisplayInfo;
+  basicTourData: BasicTourData;
+  description: string[];
 }
-
-export interface BasicPropertyData {
+export interface TimeLine {
+  destination: "";
+  description: string[];
+}
+export interface RecommendedDate {
+  checkout: string;
+  lengthOfStay: number;
+  checkin: string;
+}
+export interface BasicTourData {
   id: number;
   photos: Photos;
-  location: BasicPropertyDataLocation;
-  alternativeExternalReviewsScore: null;
-  pageName: string;
-  isClosed: boolean;
+  location: BasicTourLocation;
   starRating: StarRating;
-  paymentConfig: null;
-  reviewScore: ReviewScore;
-  externalReviewScore: null;
-  ufi: number;
 }
 
-export interface BasicPropertyDataLocation {
+export interface BasicTourLocation {
   address: string;
   city: string;
   countryCode: string;
 }
 
 export interface Photos {
-  main: Main;
-}
-
-export interface Main {
-  lowResJpegUrl: URL;
-  highResUrl: URL;
-  highResJpegUrl: URL;
-  lowResUrl: URL;
+  main: URL;
 }
 
 export interface URL {
@@ -82,100 +72,28 @@ export interface ChargesInfo {
 }
 
 export interface StarRating {
-  showAdditionalInfoIcon: boolean;
-  caption: ChargesInfo;
   value: number;
-  symbol: string;
 }
-
-export interface DisplayName {
-  text: string;
+export interface PriceBeforeDiscount {
+  currency: string;
+  amount: string;
 }
-
-export interface Location {
-  displayLocation: string;
-  publicTransportDistanceDescription: null;
-  beachDistance: null;
-  skiLiftDistance: null;
-  beachWalkingTime: null;
-  geoDistanceMeters: null;
-  nearbyBeachNames: any[];
-  mainDistance: null;
+export interface PriceDiscount {
+  itemType: string;
+  description: string;
+  name: string;
+  productId: string;
+  amount: string;
+  currency: string;
 }
-
-export interface MatchingUnitConfigurations {
-  unitConfigurations: Configuration[];
-  commonConfiguration: Configuration;
-}
-
-export interface Configuration {
-  localizedArea?: null;
-  bedConfigurations: BedConfiguration[];
-  unitId: number;
-  unitTypeNames?: any[];
-  Units: number;
-  Kitchens: number;
-  name: null | string;
-  Bedrooms: number;
-  Bathrooms: number;
-  Livingrooms: number;
-  AllBeds: number;
-}
-
-export interface BedConfiguration {
-  AllBeds: number;
-  beds: Bed[];
-}
-
-export interface Bed {
-  type: number;
-  count: number;
-}
-
-export interface MealPlanIncluded {
-  text: string;
-  mealPlanType: string;
-}
-
-export interface Policies {
-  showNoPrepayment: boolean;
-  enableJapaneseUsersSpecialCase: null;
-  showFreeCancellation: boolean;
-}
-
-export interface PriceDisplayInfoIrene {
+export interface PriceDisplayInfo {
   priceBeforeDiscount: PriceBeforeDiscount;
-  taxExceptions: any[];
-  discounts: Discount[];
-  chargesInfo: ChargesInfo;
-  badges: Badge[];
+  discounts: PriceDiscount[];
 }
 
 export interface Badge {
   identifier: string;
   tooltip: ChargesInfo;
-}
-
-export interface Discount {
-  itemType: string;
-  description: ChargesInfo;
-  name: string;
-  productId: string;
-  amount: Amount;
-}
-
-export interface Amount {
-  amount: string;
-  currency: string;
-}
-
-export interface PriceBeforeDiscount {
-  amountPerStay: AmountPerStay;
-}
-
-export interface AmountPerStay {
-  currency: string;
-  amountRounded: string;
 }
 
 export interface RecommendedDate {

@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Card, Col, Image } from "react-bootstrap";
+import { Card, Col } from "react-bootstrap";
 
 type CardWithShadowType = {
   col?: number;

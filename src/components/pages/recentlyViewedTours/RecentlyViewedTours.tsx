@@ -3,12 +3,18 @@ import { Card, Col } from "react-bootstrap";
 import HorizontalScroll from "../../common/horizontalScroll/HorizontalScroll";
 import TourCard from "../../common/tourCard/TourCard";
 import { tours } from "../mockData/destinations";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { SET_SELECTED_TOUR_DATA } from "../../../state/actions/types/tourDataActionType";
 
 const RecentlyViewedTours: FC = () => {
   const [loading, setLoading] = useState(false);
   // const [tourlist, settourList] = useState<any[]>(tours);
   const [data] = useState<any[]>(tours.slice(0, 4));
   const [page, setPage] = useState(0);
+  const history = useHistory();
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     // getData(page).then((res) => setData([...data, ...res]));
@@ -36,16 +42,26 @@ const RecentlyViewedTours: FC = () => {
               imageStyling={`img-fluid`}
               imageRatio={150}
               titleStyling="small"
-              tourname={tour?.displayName}
-              mealPaln={tour?.mealPlanIncluded}
-              recommendedDate={tour?.recommendedDate}
-              location={tour?.location}
-              acceptsWalletCredit={tour?.acceptsWalletCredit}
-              unitConfigurations={tour?.matchingUnitConfigurations}
-              price={tour?.priceDisplayInfoIrene}
-              propertyData={tour?.basicPropertyData}
+              tourData={tour}
             />
           </Card>
+          <Card.Text
+            className="position-absolute top-0 bold mt-5 start-90 translate-middle fit-content my-4"
+            style={{
+              background: "#c4cdfe",
+              color: "#0752a1",
+              fontFamily: "NORWESTER",
+            }}
+            onClick={() => {
+              dispatch({
+                type: SET_SELECTED_TOUR_DATA,
+                payload: tour,
+              });
+              history.push("/tour-detail");
+            }}
+          >
+            {tour?.tourName && tour?.tourName}
+          </Card.Text>
         </Col>
       ))}
       {loading && (

@@ -7,7 +7,7 @@ import { communities, mustReads, supports } from "../enum/enum";
 const Footer: FC = () => {
   return (
     <footer>
-      <Container fluid className="footer float-right p-0 m-0 w-100">
+      <Col className="footer float-right p-0 m-0 w-100">
         <Col className="m-0 p-0 w-100">
           <Col className="mt-5 row d-flex justify-content-between m-5">
             <Col md={7} lg={7}>
@@ -75,12 +75,12 @@ const Footer: FC = () => {
               </Row>
             </Col>
             <Col md={5} lg={5} className="mt-2">
-              <h1>Lyamii.com</h1>
+              <span className="display-3">Lyamii.com</span>
               <p>Inspiring a new generation of wanderers</p>
             </Col>
           </Col>
         </Col>
-      </Container>
+      </Col>
     </footer>
   );
 };

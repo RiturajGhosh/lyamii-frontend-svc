@@ -2,6 +2,7 @@ import React, { FC, useEffect } from "react";
 import { HashRouter, Switch, Route } from "react-router-dom";
 import Home from "./components/pages/Home/Home";
 import "./App.css";
+import "./styles/index.scss";
 import "country-flag-icons/3x2/flags.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css";
@@ -9,6 +10,8 @@ import { commonSiteMap } from "./layout/Routes";
 import PrivateRoute, {
   UserRouteConfig,
 } from "./components/routing/PrivateRoute";
+import { Global, css } from "@emotion/react";
+import { fonts } from "@workday/canvas-kit-react-fonts";
 import {
   SET_IS_DESKTOP,
   SET_IS_MOBILE,
@@ -38,11 +41,24 @@ const App: FC = () => {
       type: SET_SCREENSIZE,
       payload: window.innerWidth,
     });
+    let elements: any = document.getElementsByClassName("resize");
+    if (elements.length < 0) {
+      return;
+    }
+    let len = elements.length;
+    for (let i = 0; i < len; i++) {
+      let el: HTMLElement = elements[i];
+      el.style.fontSize = "100%";
+      for (var size = 100; el.scrollHeight > el.clientHeight; size -= 10) {
+        el.style.fontSize = size + "%";
+      }
+    }
   };
-  // create an event listener
+
   useEffect(() => {
     window.addEventListener("resize", handleResize);
   });
+
   useEffect(() => {
     const cookie = getCookie("user");
     const user = cookie && JSON.parse(cookie);

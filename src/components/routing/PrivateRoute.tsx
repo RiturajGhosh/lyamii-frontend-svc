@@ -56,7 +56,7 @@ const PrivateRoute: FC<PrivateRouteProps> = ({
 
     return (
       <div className={styles.mainContainer}>
-        {!paths.includes(path) && <Header />}
+        {!paths.includes(path) && !path.includes("profile") && <Header />}
         {path.includes("profile") && (
           <Row>
             <Col
@@ -85,7 +85,7 @@ const PrivateRoute: FC<PrivateRouteProps> = ({
         {!path.includes("profile") && !path.includes("login") && (
           <Route path={path} render={(props) => <Component {...props} />} />
         )}
-        {!paths.includes(path) && <Footer />}
+        {!paths.includes(path) && !path.includes("profile") && <Footer />}
       </div>
     );
   };

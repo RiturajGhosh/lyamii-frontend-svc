@@ -1,637 +1,765 @@
 export const tours = [
   {
-    displayName: {
-      text: "Treebo Trend",
-    },
-    features: [
-      "Entire apartment",
-      "16 m² size",
-      "Free parking",
-      "Private bathroom",
-      "Pets allowed",
-      "View",
-      "Free WiFi",
-      "Shower",
-      "Kitchenette",
-      "Non-smoking rooms",
+    tourName: "Egypt",
+    highlights: [
+      "Explore the legendary pyramids and Sphinx of Giza.",
+      "Cruise along the iconic Nile River.",
+      "Dive into the bluish underwater world of the Red Sea.",
+      "Unearth the mysteries of Luxor's ruins.",
+      "Relax and rejuvenate in the tranquil oasis of the Western Desert.",
+      "Witness the timeless beauty of Aswan's Philae Temple.",
+      "Roam through the bustling bazaars of Cairo, indulging in the vibrant colours, scents, and flavours of Egyptian culture.",
     ],
-    showGeniusLoginMessage: false,
-    mealPlanIncluded: {
-      text: "Breakfast included",
-      mealPlanType: "MEAL_PLAN",
-    },
-    recommendedDatesLabel: null,
-    isNewlyOpened: false,
-    relocationMode: null,
+    timeline: [
+      {
+        destination: "Cairo",
+        description: ["The Museum of Egyptian Antiquities", "The Nile Cruise"],
+      },
+
+      {
+        destination: "Cairo",
+        description: [
+          "Coptic Cairo",
+          "Islamic Cairo",
+          "Cairo Citadel",
+          "The Hanging Church",
+          "Mosque of Muhammad Ali ",
+          "Al Azhan Mosque",
+        ],
+      },
+
+      {
+        destination: "Alexandria ",
+        description: [" Montaza Palace", "Citadel of Qaitbay"],
+      },
+
+      {
+        destination: "Giza",
+        description: [
+          "The Great Pyramid",
+          "The Pyramid of Khafre",
+          "The Pyramid of Menkaure",
+          "The Great Sphinx",
+          "Memphis ",
+          "Saqqara",
+        ],
+      },
+
+      {
+        destination: "Hurghada ",
+        description: ["Scuba Diving", "Dolphin show", "Submarine visit"],
+      },
+
+      {
+        destination: "Sharm El Sheikh ",
+        description: [
+          "Tent Stay",
+          "Cultural Show",
+          "Dinner in Desert",
+          "Coloured Canyons ",
+        ],
+      },
+
+      {
+        destination: "Luxor ",
+        description: [
+          "Valley of the Kings",
+          "Valley of the Queens ",
+          "Karnak",
+          "Temple of Khnum",
+          "Dendera Temple ",
+          "Mummification Museum ",
+        ],
+      },
+
+      {
+        destination: "Luxor ",
+        description: [
+          "Luxor Temple ",
+          "Ramesseum",
+          "Tomb of Nefertari",
+          "Hypostyle Hall",
+          "KV2 Ramses IV",
+          "Precinct of Amun Re",
+          "Medinet Habu",
+        ],
+      },
+
+      {
+        destination: "Aswan",
+        description: ["Nubian Village", "Egyptian Botanical Garden "],
+      },
+
+      {
+        destination: "Cairo",
+        description: ["Khan el Khalili", "Local Cuisine"],
+      },
+    ],
+    tourPrice: "30000",
+    tourId: "CZ22***05***",
+    tourDays: "5",
     recommendedDate: {
       checkout: "",
       lengthOfStay: 0,
       checkin: "",
     },
-    bookerExperienceContentUIComponentProps: [],
     topPhotos: [],
-    location: {
-      displayLocation: "Morjim",
-      publicTransportDistanceDescription: null,
-      beachDistance: null,
-      skiLiftDistance: null,
-      beachWalkingTime: null,
-      geoDistanceMeters: null,
-      nearbyBeachNames: [],
-      mainDistance: null,
-    },
     acceptsWalletCredit: false,
-    matchingUnitConfigurations: {
-      unitConfigurations: [
-        {
-          AllBeds: 1,
-          Bathrooms: 0,
-          Livingrooms: 0,
-          Bedrooms: 0,
-          Kitchens: 0,
-          Units: 1,
-          name: "[Sanitized] Standard Double Room",
-          bedConfigurations: [
-            {
-              AllBeds: 1,
-              beds: [
-                {
-                  type: 6,
-                  count: 1,
-                },
-              ],
-            },
-          ],
-          unitId: 597002401,
-        },
-      ],
-      commonConfiguration: {
-        localizedArea: null,
-        bedConfigurations: [
-          {
-            beds: [
-              {
-                count: 1,
-                type: 6,
-              },
-            ],
-            AllBeds: 1,
-          },
-        ],
-        unitId: 0,
-        unitTypeNames: [],
-        Units: 1,
-        Kitchens: 0,
-        name: null,
-        Bedrooms: 0,
-        Bathrooms: 0,
-        Livingrooms: 0,
-        AllBeds: 1,
-      },
-    },
-    priceDisplayInfoIrene: {
+    priceInfo: {
       priceBeforeDiscount: {
-        amountPerStay: {
-          currency: "INR",
-          amountRounded: "₹10,701",
-        },
+        currency: "INR",
+        amount: "30000",
       },
-      taxExceptions: [],
       discounts: [
         {
-          itemType: "rate",
+          itemType: "",
           description: {
-            translation:
-              "You're getting a discount because, for a limited time, this property is offering reduced rates on some rooms that match your search.",
+            translation: "",
           },
-          name: "Limited-time Deal",
-          productId: "limited-time-deal",
-          amount: {
-            amount: "₹6,741.38",
-            currency: "INR",
-          },
+          name: "",
+          productId: "",
+          amount: "₹0",
+          currency: "",
         },
       ],
-      chargesInfo: "+₹475 taxes and charges",
-      badges: {
-        identifier: "Limited Time Deal",
-        tooltip:
-          "You’re getting a reduced rate because this property has a limited-time deal running. These deals only last up to 48 hours.",
-      },
     },
-    basicPropertyData: {
-      id: 5970024,
+    basicTourData: {
+      id: 0,
       photos: {
-        relativeUrl:
-          "//cdn.pixabay.com/photo/2020/10/18/09/16/bedroom-5664221_1280.jpg",
+        main: {
+          relativeUrl: require("../../../Assets/1000135215-01.jpeg"),
+        },
       },
       location: {
-        address: "1090/B and 1090/C, Madhilawada Morjim Pernem",
-        city: "Goa",
-        countryCode: "in",
+        address: "",
+        city: "",
+        countryCode: "91",
       },
-      alternativeExternalReviewsScore: null,
-      pageName: "treebo-trend-morjim-banyan-resort",
-      isClosed: false,
       starRating: {
-        showAdditionalInfoIcon: false,
-        caption: {
-          translation:
-            "This star rating is provided to Booking.com by the property, and is usually determined by an official hotel rating organisation or another third party. ",
-        },
-        value: 3,
-        symbol: "STARS",
+        value: 4,
       },
-      paymentConfig: null,
-      reviewScore: {
-        score: 7.2,
-        totalScoreText: "Good",
-        showSecondaryScore: false,
-        secondaryScore: 0,
-        showScore: true,
-        reviewCount: 154,
-        secondaryTextTag: {
-          translation: null,
-        },
-      },
-      externalReviewScore: null,
-      ufi: -2104807,
     },
-    policies: {
-      showNoPrepayment: false,
-      enableJapaneseUsersSpecialCase: null,
-      showFreeCancellation: false,
-    },
-    description: null,
+    description: [
+      "Egypt, a country steeped in history and mystique, offers travellers an extraordinary journey through time. From the magnificent pyramids of Giza to the vibrant marine life of the Red Sea, Egypt is a treasure trove of captivating experiences.",
+      "Dive into a world of technicolor coral gardens, encounter graceful sea turtles and playful dolphins, and marvel at the kaleidoscope of tropical fish in Red Sea. If you prefer relaxation, the Red Sea's idyllic beaches offer a tranquil escape.",
+      "Egypt's rich cultural heritage is evident in its bustling markets, traditional music, and vibrant festivals. Lose yourself in the labyrinthine streets of Cairo's Khan El Khalili Bazaar, where the aromas of exotic spices fill the air and colourful souvenirs beckon. Experience the lively folklore performances, including mesmerising belly dance and traditional music, which showcase the country's rich artistic traditions.",
+      "Immerse yourself in Egypt's rich cultural heritage, explore the wonders of the Nile River, and delve into the depths of the Red Sea's underwater paradise.",
+    ],
   },
   {
-    displayName: {
-      text: "Treebo Trend",
-    },
-    showGeniusLoginMessage: false,
-    mealPlanIncluded: {
-      text: "Breakfast included",
-      mealPlanType: "MEAL_PLAN",
-    },
-    recommendedDatesLabel: null,
-    isNewlyOpened: false,
-    relocationMode: null,
-    recommendedDate: {
-      checkout: "",
-      lengthOfStay: 0,
-      checkin: "",
-    },
-    bookerExperienceContentUIComponentProps: [],
-    topPhotos: [],
-    location: {
-      displayLocation: "Morjim",
-      publicTransportDistanceDescription: null,
-      beachDistance: null,
-      skiLiftDistance: null,
-      beachWalkingTime: null,
-      geoDistanceMeters: null,
-      nearbyBeachNames: [],
-      mainDistance: null,
-    },
-    acceptsWalletCredit: false,
-    matchingUnitConfigurations: {
-      unitConfigurations: [
-        {
-          AllBeds: 1,
-          Bathrooms: 0,
-          Livingrooms: 0,
-          Bedrooms: 0,
-          Kitchens: 0,
-          Units: 1,
-          name: "[Sanitized] Standard Double Room",
-          bedConfigurations: [
-            {
-              AllBeds: 1,
-              beds: [
-                {
-                  type: 6,
-                  count: 1,
-                },
-              ],
-            },
-          ],
-          unitId: 597002401,
-        },
-      ],
-      commonConfiguration: {
-        localizedArea: null,
-        bedConfigurations: [
-          {
-            beds: [
-              {
-                count: 1,
-                type: 6,
-              },
-            ],
-            AllBeds: 1,
-          },
-        ],
-        unitId: 0,
-        unitTypeNames: [],
-        Units: 1,
-        Kitchens: 0,
-        name: null,
-        Bedrooms: 0,
-        Bathrooms: 0,
-        Livingrooms: 0,
-        AllBeds: 1,
-      },
-    },
-    priceDisplayInfoIrene: {
-      priceBeforeDiscount: {
-        amountPerStay: {
-          currency: "INR",
-          amountRounded: "₹10,701",
-        },
-      },
-      taxExceptions: [],
-      discounts: [
-        {
-          itemType: "rate",
-          description: {
-            translation:
-              "You're getting a discount because, for a limited time, this property is offering reduced rates on some rooms that match your search.",
-          },
-          name: "Limited-time Deal",
-          productId: "limited-time-deal",
-          amount: {
-            amount: "₹6,741.38",
-            currency: "INR",
-          },
-        },
-      ],
-      chargesInfo: "+₹475 taxes and charges",
-      badges: {
-        identifier: "Limited Time Deal",
-        tooltip:
-          "You’re getting a reduced rate because this property has a limited-time deal running. These deals only last up to 48 hours.",
-      },
-    },
-    basicPropertyData: {
-      id: 5970024,
-      photos: {
-        relativeUrl:
-          "//cdn.pixabay.com/photo/2020/10/18/09/16/bedroom-5664221_1280.jpg",
-      },
-      location: {
-        address: "1090/B and 1090/C, Madhilawada Morjim Pernem",
-        city: "Goa",
-        countryCode: "in",
-      },
-      alternativeExternalReviewsScore: null,
-      pageName: "treebo-trend-morjim-banyan-resort",
-      isClosed: false,
-      starRating: {
-        showAdditionalInfoIcon: false,
-        caption: {
-          translation:
-            "This star rating is provided to Booking.com by the property, and is usually determined by an official hotel rating organisation or another third party. ",
-        },
-        value: 3,
-        symbol: "STARS",
-      },
-      paymentConfig: null,
-      reviewScore: {
-        score: 7.2,
-        totalScoreText: "Good",
-        showSecondaryScore: false,
-        secondaryScore: 0,
-        showScore: true,
-        reviewCount: 154,
-        secondaryTextTag: {
-          translation: null,
-        },
-      },
-      externalReviewScore: null,
-      ufi: -2104807,
-    },
-    policies: {
-      showNoPrepayment: false,
-      enableJapaneseUsersSpecialCase: null,
-      showFreeCancellation: false,
-    },
-    description: null,
-  },{
-    displayName: {
-      text: "Treebo Trend",
-    },
-    features: [
-      "Entire apartment",
-      "16 m² size",
-      "Free parking",
-      "Private bathroom",
-      "Pets allowed",
-      "View",
-      "Free WiFi",
-      "Shower",
-      "Kitchenette",
-      "Non-smoking rooms",
+    tourName: "Egypt",
+    highlights: [
+      "Explore the legendary pyramids and Sphinx of Giza.",
+      "Cruise along the iconic Nile River.",
+      "Dive into the bluish underwater world of the Red Sea.",
+      "Unearth the mysteries of Luxor's ruins.",
+      "Relax and rejuvenate in the tranquil oasis of the Western Desert.",
+      "Witness the timeless beauty of Aswan's Philae Temple.",
+      "Roam through the bustling bazaars of Cairo, indulging in the vibrant colours, scents, and flavours of Egyptian culture.",
     ],
-    showGeniusLoginMessage: false,
-    mealPlanIncluded: {
-      text: "Breakfast included",
-      mealPlanType: "MEAL_PLAN",
-    },
-    recommendedDatesLabel: null,
-    isNewlyOpened: false,
-    relocationMode: null,
+    timeline: [
+      {
+        destination: "Cairo",
+        description: ["The Museum of Egyptian Antiquities", "The Nile Cruise"],
+      },
+
+      {
+        destination: "Cairo",
+        description: [
+          "Coptic Cairo",
+          "Islamic Cairo",
+          "Cairo Citadel",
+          "The Hanging Church",
+          "Mosque of Muhammad Ali ",
+          "Al Azhan Mosque",
+        ],
+      },
+
+      {
+        destination: "Alexandria ",
+        description: [" Montaza Palace", "Citadel of Qaitbay"],
+      },
+
+      {
+        destination: "Giza",
+        description: [
+          "The Great Pyramid",
+          "The Pyramid of Khafre",
+          "The Pyramid of Menkaure",
+          "The Great Sphinx",
+          "Memphis ",
+          "Saqqara",
+        ],
+      },
+
+      {
+        destination: "Hurghada ",
+        description: ["Scuba Diving", "Dolphin show", "Submarine visit"],
+      },
+
+      {
+        destination: "Sharm El Sheikh ",
+        description: [
+          "Tent Stay",
+          "Cultural Show",
+          "Dinner in Desert",
+          "Coloured Canyons ",
+        ],
+      },
+
+      {
+        destination: "Luxor ",
+        description: [
+          "Valley of the Kings",
+          "Valley of the Queens ",
+          "Karnak",
+          "Temple of Khnum",
+          "Dendera Temple ",
+          "Mummification Museum ",
+        ],
+      },
+
+      {
+        destination: "Luxor ",
+        description: [
+          "Luxor Temple ",
+          "Ramesseum",
+          "Tomb of Nefertari",
+          "Hypostyle Hall",
+          "KV2 Ramses IV",
+          "Precinct of Amun Re",
+          "Medinet Habu",
+        ],
+      },
+
+      {
+        destination: "Aswan",
+        description: ["Nubian Village", "Egyptian Botanical Garden "],
+      },
+
+      {
+        destination: "Cairo",
+        description: ["Khan el Khalili", "Local Cuisine"],
+      },
+    ],
+    tourPrice: "30000",
+    tourId: "CZ22***05***",
+    tourDays: "5",
     recommendedDate: {
       checkout: "",
       lengthOfStay: 0,
       checkin: "",
     },
-    bookerExperienceContentUIComponentProps: [],
     topPhotos: [],
-    location: {
-      displayLocation: "Morjim",
-      publicTransportDistanceDescription: null,
-      beachDistance: null,
-      skiLiftDistance: null,
-      beachWalkingTime: null,
-      geoDistanceMeters: null,
-      nearbyBeachNames: [],
-      mainDistance: null,
-    },
     acceptsWalletCredit: false,
-    matchingUnitConfigurations: {
-      unitConfigurations: [
-        {
-          AllBeds: 1,
-          Bathrooms: 0,
-          Livingrooms: 0,
-          Bedrooms: 0,
-          Kitchens: 0,
-          Units: 1,
-          name: "[Sanitized] Standard Double Room",
-          bedConfigurations: [
-            {
-              AllBeds: 1,
-              beds: [
-                {
-                  type: 6,
-                  count: 1,
-                },
-              ],
-            },
-          ],
-          unitId: 597002401,
-        },
-      ],
-      commonConfiguration: {
-        localizedArea: null,
-        bedConfigurations: [
-          {
-            beds: [
-              {
-                count: 1,
-                type: 6,
-              },
-            ],
-            AllBeds: 1,
-          },
-        ],
-        unitId: 0,
-        unitTypeNames: [],
-        Units: 1,
-        Kitchens: 0,
-        name: null,
-        Bedrooms: 0,
-        Bathrooms: 0,
-        Livingrooms: 0,
-        AllBeds: 1,
-      },
-    },
-    priceDisplayInfoIrene: {
+    priceInfo: {
       priceBeforeDiscount: {
         amountPerStay: {
           currency: "INR",
-          amountRounded: "₹10,701",
+          amountRounded: "30000",
         },
       },
-      taxExceptions: [],
       discounts: [
         {
-          itemType: "rate",
+          itemType: "",
           description: {
-            translation:
-              "You're getting a discount because, for a limited time, this property is offering reduced rates on some rooms that match your search.",
+            translation: "",
           },
-          name: "Limited-time Deal",
-          productId: "limited-time-deal",
+          name: "",
+          productId: "",
           amount: {
-            amount: "₹6,741.38",
-            currency: "INR",
+            amount: "₹0",
+            currency: "",
           },
         },
       ],
-      chargesInfo: "+₹475 taxes and charges",
-      badges: {
-        identifier: "Limited Time Deal",
-        tooltip:
-          "You’re getting a reduced rate because this property has a limited-time deal running. These deals only last up to 48 hours.",
-      },
     },
-    basicPropertyData: {
-      id: 5970024,
+    basicTourData: {
+      id: 0,
       photos: {
-        relativeUrl:
-          "//cdn.pixabay.com/photo/2020/10/18/09/16/bedroom-5664221_1280.jpg",
+        main: {
+          relativeUrl: require("../../../Assets/1000135215-01.jpeg"),
+        },
       },
       location: {
-        address: "1090/B and 1090/C, Madhilawada Morjim Pernem",
-        city: "Goa",
-        countryCode: "in",
+        address: "",
+        city: "",
+        countryCode: "91",
       },
-      alternativeExternalReviewsScore: null,
-      pageName: "treebo-trend-morjim-banyan-resort",
-      isClosed: false,
       starRating: {
-        showAdditionalInfoIcon: false,
-        caption: {
-          translation:
-            "This star rating is provided to Booking.com by the property, and is usually determined by an official hotel rating organisation or another third party. ",
-        },
-        value: 3,
-        symbol: "STARS",
+        value: 4,
       },
-      paymentConfig: null,
-      reviewScore: {
-        score: 7.2,
-        totalScoreText: "Good",
-        showSecondaryScore: false,
-        secondaryScore: 0,
-        showScore: true,
-        reviewCount: 154,
-        secondaryTextTag: {
-          translation: null,
-        },
-      },
-      externalReviewScore: null,
-      ufi: -2104807,
     },
-    policies: {
-      showNoPrepayment: false,
-      enableJapaneseUsersSpecialCase: null,
-      showFreeCancellation: false,
-    },
-    description: null,
+    description: [
+      "Egypt, a country steeped in history and mystique, offers travellers an extraordinary journey through time. From the magnificent pyramids of Giza to the vibrant marine life of the Red Sea, Egypt is a treasure trove of captivating experiences.",
+
+      "Dive into a world of technicolor coral gardens, encounter graceful sea turtles and playful dolphins, and marvel at the kaleidoscope of tropical fish in Red Sea. If you prefer relaxation, the Red Sea's idyllic beaches offer a tranquil escape.",
+
+      "Egypt's rich cultural heritage is evident in its bustling markets, traditional music, and vibrant festivals. Lose yourself in the labyrinthine streets of Cairo's Khan El Khalili Bazaar, where the aromas of exotic spices fill the air and colourful souvenirs beckon. Experience the lively folklore performances, including mesmerising belly dance and traditional music, which showcase the country's rich artistic traditions.",
+
+      "Immerse yourself in Egypt's rich cultural heritage, explore the wonders of the Nile River, and delve into the depths of the Red Sea's underwater paradise.",
+    ],
   },
   {
-    displayName: {
-      text: "Treebo Trend Morjim Banyan Resort Morjim",
-    },
-    showGeniusLoginMessage: false,
-    mealPlanIncluded: {
-      text: "Breakfast included",
-      mealPlanType: "MEAL_PLAN",
-    },
-    recommendedDatesLabel: null,
-    isNewlyOpened: false,
-    relocationMode: null,
+    tourName: "Egypt",
+    highlights: [
+      "Explore the legendary pyramids and Sphinx of Giza.",
+      "Cruise along the iconic Nile River.",
+      "Dive into the bluish underwater world of the Red Sea.",
+      "Unearth the mysteries of Luxor's ruins.",
+      "Relax and rejuvenate in the tranquil oasis of the Western Desert.",
+      "Witness the timeless beauty of Aswan's Philae Temple.",
+      "Roam through the bustling bazaars of Cairo, indulging in the vibrant colours, scents, and flavours of Egyptian culture.",
+    ],
+    timeline: [
+      {
+        destination: "Cairo",
+        description: ["The Museum of Egyptian Antiquities", "The Nile Cruise"],
+      },
+
+      {
+        destination: "Cairo",
+        description: [
+          "Coptic Cairo",
+          "Islamic Cairo",
+          "Cairo Citadel",
+          "The Hanging Church",
+          "Mosque of Muhammad Ali ",
+          "Al Azhan Mosque",
+        ],
+      },
+
+      {
+        destination: "Alexandria ",
+        description: [" Montaza Palace", "Citadel of Qaitbay"],
+      },
+
+      {
+        destination: "Giza",
+        description: [
+          "The Great Pyramid",
+          "The Pyramid of Khafre",
+          "The Pyramid of Menkaure",
+          "The Great Sphinx",
+          "Memphis ",
+          "Saqqara",
+        ],
+      },
+
+      {
+        destination: "Hurghada ",
+        description: ["Scuba Diving", "Dolphin show", "Submarine visit"],
+      },
+
+      {
+        destination: "Sharm El Sheikh ",
+        description: [
+          "Tent Stay",
+          "Cultural Show",
+          "Dinner in Desert",
+          "Coloured Canyons ",
+        ],
+      },
+
+      {
+        destination: "Luxor ",
+        description: [
+          "Valley of the Kings",
+          "Valley of the Queens ",
+          "Karnak",
+          "Temple of Khnum",
+          "Dendera Temple ",
+          "Mummification Museum ",
+        ],
+      },
+
+      {
+        destination: "Luxor ",
+        description: [
+          "Luxor Temple ",
+          "Ramesseum",
+          "Tomb of Nefertari",
+          "Hypostyle Hall",
+          "KV2 Ramses IV",
+          "Precinct of Amun Re",
+          "Medinet Habu",
+        ],
+      },
+
+      {
+        destination: "Aswan",
+        description: ["Nubian Village", "Egyptian Botanical Garden "],
+      },
+
+      {
+        destination: "Cairo",
+        description: ["Khan el Khalili", "Local Cuisine"],
+      },
+    ],
+    tourPrice: "30000",
+    tourId: "CZ22***05***",
+    tourDays: "5",
     recommendedDate: {
       checkout: "",
       lengthOfStay: 0,
       checkin: "",
     },
-    bookerExperienceContentUIComponentProps: [],
     topPhotos: [],
-    location: {
-      displayLocation: "Morjim",
-      publicTransportDistanceDescription: null,
-      beachDistance: null,
-      skiLiftDistance: null,
-      beachWalkingTime: null,
-      geoDistanceMeters: null,
-      nearbyBeachNames: [],
-      mainDistance: null,
-    },
     acceptsWalletCredit: false,
-    matchingUnitConfigurations: {
-      unitConfigurations: [
-        {
-          AllBeds: 1,
-          Bathrooms: 0,
-          Livingrooms: 0,
-          Bedrooms: 0,
-          Kitchens: 0,
-          Units: 1,
-          name: "[Sanitized] Standard Double Room",
-          bedConfigurations: [
-            {
-              AllBeds: 1,
-              beds: [
-                {
-                  type: 6,
-                  count: 1,
-                },
-              ],
-            },
-          ],
-          unitId: 597002401,
-        },
-      ],
-      commonConfiguration: {
-        localizedArea: null,
-        bedConfigurations: [
-          {
-            beds: [
-              {
-                count: 1,
-                type: 6,
-              },
-            ],
-            AllBeds: 1,
-          },
-        ],
-        unitId: 0,
-        unitTypeNames: [],
-        Units: 1,
-        Kitchens: 0,
-        name: null,
-        Bedrooms: 0,
-        Bathrooms: 0,
-        Livingrooms: 0,
-        AllBeds: 1,
-      },
-    },
-    priceDisplayInfoIrene: {
+    priceInfo: {
       priceBeforeDiscount: {
         amountPerStay: {
           currency: "INR",
-          amountRounded: "₹10,701",
+          amountRounded: "30000",
         },
       },
-      taxExceptions: [],
       discounts: [
         {
-          itemType: "rate",
+          itemType: "",
           description: {
-            translation:
-              "You're getting a discount because, for a limited time, this property is offering reduced rates on some rooms that match your search.",
+            translation: "",
           },
-          name: "Limited-time Deal",
-          productId: "limited-time-deal",
+          name: "",
+          productId: "",
           amount: {
-            amount: "₹6,741.38",
-            currency: "INR",
+            amount: "₹0",
+            currency: "",
           },
         },
       ],
-      chargesInfo: "+₹475 taxes and charges",
-      badges: {
-        identifier: "Limited Time Deal",
-        tooltip:
-          "You’re getting a reduced rate because this property has a limited-time deal running. These deals only last up to 48 hours.",
-      },
     },
-    basicPropertyData: {
-      id: 5970024,
+    basicTourData: {
+      id: 0,
       photos: {
-        relativeUrl:
-          "//cdn.pixabay.com/photo/2020/10/18/09/16/bedroom-5664221_1280.jpg",
+        main: {
+          relativeUrl: require("../../../Assets/1000135215-01.jpeg"),
+        },
       },
       location: {
-        address: "1090/B and 1090/C, Madhilawada Morjim Pernem",
-        city: "Goa",
-        countryCode: "in",
+        address: "",
+        city: "",
+        countryCode: "91",
       },
-      alternativeExternalReviewsScore: null,
-      pageName: "treebo-trend-morjim-banyan-resort",
-      isClosed: false,
       starRating: {
-        showAdditionalInfoIcon: false,
-        caption: {
-          translation:
-            "This star rating is provided to Booking.com by the property, and is usually determined by an official hotel rating organisation or another third party. ",
-        },
-        value: 3,
-        symbol: "STARS",
+        value: 4,
       },
-      paymentConfig: null,
-      reviewScore: {
-        score: 7.2,
-        totalScoreText: "Good",
-        showSecondaryScore: false,
-        secondaryScore: 0,
-        showScore: true,
-        reviewCount: 154,
-        secondaryTextTag: {
-          translation: null,
+    },
+    description: [
+      "Egypt, a country steeped in history and mystique, offers travellers an extraordinary journey through time. From the magnificent pyramids of Giza to the vibrant marine life of the Red Sea, Egypt is a treasure trove of captivating experiences.",
+
+      "Dive into a world of technicolor coral gardens, encounter graceful sea turtles and playful dolphins, and marvel at the kaleidoscope of tropical fish in Red Sea. If you prefer relaxation, the Red Sea's idyllic beaches offer a tranquil escape.",
+
+      "Egypt's rich cultural heritage is evident in its bustling markets, traditional music, and vibrant festivals. Lose yourself in the labyrinthine streets of Cairo's Khan El Khalili Bazaar, where the aromas of exotic spices fill the air and colourful souvenirs beckon. Experience the lively folklore performances, including mesmerising belly dance and traditional music, which showcase the country's rich artistic traditions.",
+
+      "Immerse yourself in Egypt's rich cultural heritage, explore the wonders of the Nile River, and delve into the depths of the Red Sea's underwater paradise.",
+    ],
+  },
+  {
+    tourName: "Egypt",
+    highlights: [
+      "Explore the legendary pyramids and Sphinx of Giza.",
+      "Cruise along the iconic Nile River.",
+      "Dive into the bluish underwater world of the Red Sea.",
+      "Unearth the mysteries of Luxor's ruins.",
+      "Relax and rejuvenate in the tranquil oasis of the Western Desert.",
+      "Witness the timeless beauty of Aswan's Philae Temple.",
+      "Roam through the bustling bazaars of Cairo, indulging in the vibrant colours, scents, and flavours of Egyptian culture.",
+    ],
+    timeline: [
+      {
+        destination: "Cairo",
+        description: ["The Museum of Egyptian Antiquities", "The Nile Cruise"],
+      },
+
+      {
+        destination: "Cairo",
+        description: [
+          "Coptic Cairo",
+          "Islamic Cairo",
+          "Cairo Citadel",
+          "The Hanging Church",
+          "Mosque of Muhammad Ali ",
+          "Al Azhan Mosque",
+        ],
+      },
+
+      {
+        destination: "Alexandria ",
+        description: [" Montaza Palace", "Citadel of Qaitbay"],
+      },
+
+      {
+        destination: "Giza",
+        description: [
+          "The Great Pyramid",
+          "The Pyramid of Khafre",
+          "The Pyramid of Menkaure",
+          "The Great Sphinx",
+          "Memphis ",
+          "Saqqara",
+        ],
+      },
+
+      {
+        destination: "Hurghada ",
+        description: ["Scuba Diving", "Dolphin show", "Submarine visit"],
+      },
+
+      {
+        destination: "Sharm El Sheikh ",
+        description: [
+          "Tent Stay",
+          "Cultural Show",
+          "Dinner in Desert",
+          "Coloured Canyons ",
+        ],
+      },
+
+      {
+        destination: "Luxor ",
+        description: [
+          "Valley of the Kings",
+          "Valley of the Queens ",
+          "Karnak",
+          "Temple of Khnum",
+          "Dendera Temple ",
+          "Mummification Museum ",
+        ],
+      },
+
+      {
+        destination: "Luxor ",
+        description: [
+          "Luxor Temple ",
+          "Ramesseum",
+          "Tomb of Nefertari",
+          "Hypostyle Hall",
+          "KV2 Ramses IV",
+          "Precinct of Amun Re",
+          "Medinet Habu",
+        ],
+      },
+
+      {
+        destination: "Aswan",
+        description: ["Nubian Village", "Egyptian Botanical Garden "],
+      },
+
+      {
+        destination: "Cairo",
+        description: ["Khan el Khalili", "Local Cuisine"],
+      },
+    ],
+    tourPrice: "30000",
+    tourId: "CZ22***05***",
+    tourDays: "5",
+    recommendedDate: {
+      checkout: "",
+      lengthOfStay: 0,
+      checkin: "",
+    },
+    topPhotos: [],
+    acceptsWalletCredit: false,
+    priceInfo: {
+      priceBeforeDiscount: {
+        amountPerStay: {
+          currency: "INR",
+          amountRounded: "30000",
         },
       },
-      externalReviewScore: null,
-      ufi: -2104807,
+      discounts: [
+        {
+          itemType: "",
+          description: {
+            translation: "",
+          },
+          name: "",
+          productId: "",
+          amount: {
+            amount: "₹0",
+            currency: "",
+          },
+        },
+      ],
     },
-    policies: {
-      showNoPrepayment: false,
-      enableJapaneseUsersSpecialCase: null,
-      showFreeCancellation: false,
+    basicTourData: {
+      id: 0,
+      photos: {
+        main: {
+          relativeUrl: require("../../../Assets/1000135215-01.jpeg"),
+        },
+      },
+      location: {
+        address: "",
+        city: "",
+        countryCode: "91",
+      },
+      starRating: {
+        value: 4,
+      },
     },
-    description: null,
+    description: [
+      "Egypt, a country steeped in history and mystique, offers travellers an extraordinary journey through time. From the magnificent pyramids of Giza to the vibrant marine life of the Red Sea, Egypt is a treasure trove of captivating experiences.",
+
+      "Dive into a world of technicolor coral gardens, encounter graceful sea turtles and playful dolphins, and marvel at the kaleidoscope of tropical fish in Red Sea. If you prefer relaxation, the Red Sea's idyllic beaches offer a tranquil escape.",
+
+      "Egypt's rich cultural heritage is evident in its bustling markets, traditional music, and vibrant festivals. Lose yourself in the labyrinthine streets of Cairo's Khan El Khalili Bazaar, where the aromas of exotic spices fill the air and colourful souvenirs beckon. Experience the lively folklore performances, including mesmerising belly dance and traditional music, which showcase the country's rich artistic traditions.",
+
+      "Immerse yourself in Egypt's rich cultural heritage, explore the wonders of the Nile River, and delve into the depths of the Red Sea's underwater paradise.",
+    ],
+  },
+  {
+    tourName: "Egypt",
+    highlights: [
+      "Explore the legendary pyramids and Sphinx of Giza.",
+      "Cruise along the iconic Nile River.",
+      "Dive into the bluish underwater world of the Red Sea.",
+      "Unearth the mysteries of Luxor's ruins.",
+      "Relax and rejuvenate in the tranquil oasis of the Western Desert.",
+      "Witness the timeless beauty of Aswan's Philae Temple.",
+      "Roam through the bustling bazaars of Cairo, indulging in the vibrant colours, scents, and flavours of Egyptian culture.",
+    ],
+    timeline: [
+      {
+        destination: "Cairo",
+        description: ["The Museum of Egyptian Antiquities", "The Nile Cruise"],
+      },
+
+      {
+        destination: "Cairo",
+        description: [
+          "Coptic Cairo",
+          "Islamic Cairo",
+          "Cairo Citadel",
+          "The Hanging Church",
+          "Mosque of Muhammad Ali ",
+          "Al Azhan Mosque",
+        ],
+      },
+
+      {
+        destination: "Alexandria ",
+        description: [" Montaza Palace", "Citadel of Qaitbay"],
+      },
+
+      {
+        destination: "Giza",
+        description: [
+          "The Great Pyramid",
+          "The Pyramid of Khafre",
+          "The Pyramid of Menkaure",
+          "The Great Sphinx",
+          "Memphis ",
+          "Saqqara",
+        ],
+      },
+
+      {
+        destination: "Hurghada ",
+        description: ["Scuba Diving", "Dolphin show", "Submarine visit"],
+      },
+
+      {
+        destination: "Sharm El Sheikh ",
+        description: [
+          "Tent Stay",
+          "Cultural Show",
+          "Dinner in Desert",
+          "Coloured Canyons ",
+        ],
+      },
+
+      {
+        destination: "Luxor ",
+        description: [
+          "Valley of the Kings",
+          "Valley of the Queens ",
+          "Karnak",
+          "Temple of Khnum",
+          "Dendera Temple ",
+          "Mummification Museum ",
+        ],
+      },
+
+      {
+        destination: "Luxor ",
+        description: [
+          "Luxor Temple ",
+          "Ramesseum",
+          "Tomb of Nefertari",
+          "Hypostyle Hall",
+          "KV2 Ramses IV",
+          "Precinct of Amun Re",
+          "Medinet Habu",
+        ],
+      },
+
+      {
+        destination: "Aswan",
+        description: ["Nubian Village", "Egyptian Botanical Garden "],
+      },
+
+      {
+        destination: "Cairo",
+        description: ["Khan el Khalili", "Local Cuisine"],
+      },
+    ],
+    tourPrice: "30000",
+    tourId: "CZ22***05***",
+    tourDays: "5",
+    recommendedDate: {
+      checkout: "",
+      lengthOfStay: 0,
+      checkin: "",
+    },
+    topPhotos: [],
+    acceptsWalletCredit: false,
+    priceInfo: {
+      priceBeforeDiscount: {
+        amountPerStay: {
+          currency: "INR",
+          amountRounded: "30000",
+        },
+      },
+      discounts: [
+        {
+          itemType: "",
+          description: {
+            translation: "",
+          },
+          name: "",
+          productId: "",
+          amount: {
+            amount: "₹0",
+            currency: "",
+          },
+        },
+      ],
+    },
+    basicTourData: {
+      id: 0,
+      photos: {
+        main: {
+          relativeUrl: require("../../../Assets/1000135215-01.jpeg"),
+        },
+      },
+      location: {
+        address: "",
+        city: "",
+        countryCode: "91",
+      },
+      starRating: {
+        value: 4,
+      },
+    },
+    description: [
+      "Egypt, a country steeped in history and mystique, offers travellers an extraordinary journey through time. From the magnificent pyramids of Giza to the vibrant marine life of the Red Sea, Egypt is a treasure trove of captivating experiences.",
+
+      "Dive into a world of technicolor coral gardens, encounter graceful sea turtles and playful dolphins, and marvel at the kaleidoscope of tropical fish in Red Sea. If you prefer relaxation, the Red Sea's idyllic beaches offer a tranquil escape.",
+
+      "Egypt's rich cultural heritage is evident in its bustling markets, traditional music, and vibrant festivals. Lose yourself in the labyrinthine streets of Cairo's Khan El Khalili Bazaar, where the aromas of exotic spices fill the air and colourful souvenirs beckon. Experience the lively folklore performances, including mesmerising belly dance and traditional music, which showcase the country's rich artistic traditions.",
+
+      "Immerse yourself in Egypt's rich cultural heritage, explore the wonders of the Nile River, and delve into the depths of the Red Sea's underwater paradise.",
+    ],
   },
 ];

@@ -7,62 +7,81 @@ import RoundButton from "../../common/roundButton/RoundButton";
 
 const MapAndEscape: FC = () => {
   return (
-    <Container
-      className="home-about-section sectionContainer py-42"
-      fluid
+    <Col
+      className="home-about-section sectionContainer d-flex justify-content-center py-42 px-0"
       id="about"
     >
-      <Container className="w-100 p-0">
+      <Col lg={11} md={11} sx={11} xs={11}>
         <Row className="g-4 p-0">
-          <Col md={6} className="">
+          <Col md={6} className="align-self-center">
             <div
               className={`border-5 pt-32 border-white justify-content-start d-table p-0 border-3 ${style.card}`}
               style={{ minHeight: "100%" }}
             >
               <div className="card-body flex-wrap d-flex">
-                <h1
-                  className={`text-shadow-dark fw-bold heading`}
-                  style={{ color: "#266d59" }}
+                <span
+                  className={`text-shadow-light fw-bold fs-7 justify-content-center d-flex w-100 text-center`}
+                  style={{ color: "#213D66", fontFamily: "Aprila" }}
                 >
                   Home among the Stars
-                </h1>
+                </span>
                 {mapDescription && (
-                  <p className={`text-dark-green card-text`}>
+                  <p
+                    className={`text-center card-text`}
+                    style={{ color: "#354775", fontFamily: "AsapCondensed" }}
+                  >
                     {mapDescription}
                   </p>
                 )}
-                <p className="text-white col-4 bg-dark-green p-2 rounded-3 justify-content-center d-flex card-text">
-                  75+ Countries
-                </p>
-                <p className="text-white p-2 bg-dark-green col-3 rounded-3 mx-2 justify-content-center d-flex card-text">
-                  800+ Stays
-                </p>
-                <p className="text-white p-2 bg-dark-green col-5 rounded-3 justify-content-center d-flex card-text">
-                  3500+ Volunteers
-                </p>
+                <Row className="d-flex flex-row w-100 gap-2">
+                  <p
+                    className="text-white col-4 py-2 rounded-4 justify-content-center d-flex"
+                    style={{ background: "#0752a1", fontFamily: "Archive" }}
+                  >
+                    75+ Countries
+                  </p>
+                  <p
+                    className="text-white py-2 col-3 rounded-4 justify-content-center d-flex"
+                    style={{ background: "#0752a1", fontFamily: "Archive" }}
+                  >
+                    800+ Stays
+                  </p>
+                  <p
+                    className="text-white py-2 col rounded-4 justify-content-center d-flex"
+                    style={{ background: "#0752a1", fontFamily: "Archive" }}
+                  >
+                    3500+ Volunteers
+                  </p>
+                </Row>
               </div>
             </div>
           </Col>
 
-          <Col md={6} className="">
+          <Col
+            md={6}
+            className="align-self-center justify-content-center d-flex"
+          >
             <div style={{ width: "50%", height: "50%", paddingLeft: "10px" }}>
               <Globe />
             </div>
           </Col>
-          <Col className="card-12 w-100 p-0 m-0">
+          <Col className="card-12 pt-42 w-100 px-0 m-0">
             <div
               className={`border-5 pt-32 w-100 border-white justify-content-start d-table  p-0 m-0 border-3 ${style.card}`}
               style={{ minHeight: "100%" }}
             >
               <div className=" flex-wrap d-flex">
-                <h1
-                  className={`text-green text-shadow-light fw-bold heading`}
-                  style={{ color: "#266d59" }}
+                <span
+                  className={`text-shadow-light fw-bold fs-7`}
+                  style={{ color: "#0752a0", fontFamily: "Aprila" }}
                 >
                   The Escape Plan
-                </h1>
+                </span>
 
-                <div className="card w-100 border border-5 p-0 m-0 border-dark">
+                <div
+                  className="card w-100 border-5 p-0 m-0"
+                  style={{ borderColor: "#0752a1 !important" }}
+                >
                   <div className="card-header h-100">
                     <Col className="justify-content-center d-flex">
                       <Row className="position-relative align-items-center p-0 my-3 m-0 justify-content-center d-flex w-100">
@@ -71,7 +90,7 @@ const MapAndEscape: FC = () => {
                             className="border-5 border circle-core"
                             bordercolor="#0e3c30"
                             size={"calc(0.12*100vw"}
-                            fill={"#8dc498"}
+                            fill={"#c4cdfe"}
                             text={"step 1"}
                           />
                         </Col>
@@ -81,7 +100,7 @@ const MapAndEscape: FC = () => {
                             className="border-5 border circle-core"
                             size={"calc(0.12*100vw"}
                             bordercolor="#0e3c30"
-                            fill={"#8dc498"}
+                            fill={"#c4cdfe"}
                             text={"step 2"}
                           />
                         </Col>
@@ -92,7 +111,7 @@ const MapAndEscape: FC = () => {
                             className="border-5 border circle-core"
                             bordercolor="#0e3c30"
                             size={"calc(0.12*100vw"}
-                            fill={"#8dc498"}
+                            fill={"#c4cdfe"}
                             text={"step 3"}
                           />
                         </Col>
@@ -103,7 +122,7 @@ const MapAndEscape: FC = () => {
                             className="border-5 border circle-core"
                             size={"calc(0.12*100vw"}
                             bordercolor="#0e3c30"
-                            fill={"#8dc498"}
+                            fill={"#c4cdfe"}
                             text={"step 4"}
                           />
                         </Col>
@@ -145,8 +164,8 @@ const MapAndEscape: FC = () => {
             </div>
           </Col>
         </Row>
-      </Container>
-    </Container>
+      </Col>
+    </Col>
   );
 };
 

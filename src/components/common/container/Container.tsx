@@ -11,11 +11,10 @@ const ContainerSection: FC<ContainerSectionType> = ({
 }) => {
   return (
     <section>
-      <Container
-        fluid
+      <Container fluid="lg"
         className={`home-about-section sectionContainer py-42 ${className}`}
       >
-        <Container>
+        <Container fluid="lg">
           {children}
         </Container>
       </Container>

@@ -11,6 +11,7 @@ type RoundButtonType = {
   img?: string;
   bordercolor?: string;
   background?: string;
+  children?: any;
 };
 const RoundButton: FC<RoundButtonType> = ({
   className,
@@ -21,6 +22,7 @@ const RoundButton: FC<RoundButtonType> = ({
   bordercolor,
   img,
   background,
+  children,
 }) => {
   return (
     <Col className="position-relative p-0 m-0 h-100">
@@ -39,6 +41,13 @@ const RoundButton: FC<RoundButtonType> = ({
           }}
           src={img}
         />
+      )}
+      {children && (
+        <Col
+          className={`fs-20 col-6 text-white position-absolute top-0 start-0 text-center justify-content-center`}
+        >
+          {children}
+        </Col>
       )}
       {/* <Col className="align-items-center position-absolute p-0 m-0 top-50"> */}
       <FaCircle

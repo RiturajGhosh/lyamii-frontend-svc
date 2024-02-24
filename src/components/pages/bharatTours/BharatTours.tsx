@@ -14,11 +14,11 @@ const BharatTours: FC = () => {
       title="Royal India Edition"
       titleStyling={style.tourSection}
     >
-      <Container className={`py-5 p-0 d-grid justify-content-center`}>
+      <Col className={`py-5 p-0 d-grid justify-content-center`}>
         <Row className="p-0">
           <Col className="text-dark align-self-center">
-            <p className="text-start small text-wrap">{description} </p>
-            <ul className="p-3 small">
+            <span className="text-start fs-16 text-wrap">{description} </span>
+            <ul className="p-3 fs-16">
               <li>Luxury Tours.</li>
               <li>Ranges from 12,000usd to 22,000usd.</li>
               <li>
@@ -29,7 +29,7 @@ const BharatTours: FC = () => {
             </ul>
           </Col>
         </Row>
-      </Container>
+      </Col>
     </TourOverviewCard>
   );
 };

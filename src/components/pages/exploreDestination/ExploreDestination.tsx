@@ -108,16 +108,16 @@ const ExploreDestination: FC = () => {
   }, [screenSize]);
 
   return (
-    <MainContainer background="#84f18f">
+    <MainContainer>
       <Coursel />
-      <Row className="p-0 m-0 fit-content py-5 justify-content-between align-items-center d-flex">
-        <Col className="p-0 col-9 m-0">
-          <Row className="d-flex">
-            <Col className="col-6 pr-5 align-self-center pl-0">
+      <Row className="flex-lg-row flex-column-reverse p-0 m-0 fit-content py-5 justify-content-between align-items-center d-flex">
+        <Col lg={9} className="p-0 col-12 m-0">
+          <Row className="d-flex g-5">
+            <Col lg={6} md={6} className="col-12 pr-5 align-self-center pl-0">
               <Row className="p-0 m-0">
                 <Col
                   className={"col-1"}
-                  style={{ background: "#0a99d7" }}
+                  style={{ background: "#0752a1" }}
                 ></Col>
                 <Col
                   className="bg-dark position-relative p-0 m-0"
@@ -129,11 +129,12 @@ const ExploreDestination: FC = () => {
                 >
                   <div className="w-100 position-relative">
                     <Col
-                      className="py-2 px-4 col-11 p-0 display-6 text-end w-100"
+                      className="py-2 px-4 col-11 p-0 bold display-6 text-end w-100"
                       style={{
-                        background: "#cdface",
-                        color: "#218a43",
+                        background: "#889dfe",
+                        color: "white",
                         textShadow: "#218a43",
+                        fontFamily: "bantayog",
                       }}
                     >
                       {"Indian Passport Holders"}
@@ -152,11 +153,12 @@ const ExploreDestination: FC = () => {
                   </div>
                   <div className="position-relative">
                     <Col
-                      className="py-2 px-4 p-0 display-6 text-end w-100"
+                      className="py-2 px-4 p-0 bold display-6 text-end w-100"
                       style={{
-                        background: "#cdface",
-                        color: "#218a43",
+                        background: "#889dfe",
+                        color: "white",
                         textShadow: "#218a43",
+                        fontFamily: "bantayog",
                       }}
                     >
                       {"Others"}
@@ -176,7 +178,7 @@ const ExploreDestination: FC = () => {
                   <Col className="position-relative p-0 border-1 text-center mx-42 justify-content-end text-white">
                     <Button
                       className="align-middle justify-self-center position-absolute top-100 mx-42 start-0 translate-middle btn-secondary"
-                      style={{ background: "#0a99d7" }}
+                      style={{ background: "#0752a1" }}
                       onClick={() => setShow(!show)}
                     >
                       Filter
@@ -185,14 +187,18 @@ const ExploreDestination: FC = () => {
                 </Col>
               </Row>
             </Col>
-            <Col className="align-self-center col-6 justify-content-center p-0">
+            <Col
+              lg={6}
+              md={6}
+              className="col-12 align-self-center justify-content-center p-0"
+            >
               <Col className="justify-content-center d-flex">
                 <input
-                  className="form__input w-100 bg-white h2 justify-content-center p-1 px-2 text-dark text-center m-0 border-0"
+                  className="form__input w-100 bg-white h2 font-norwester justify-content-center p-1 px-2 text-dark text-center m-0 border-0"
                   type="text"
-                  placeholder="USER ID"
+                  placeholder="DESTINATION"
                   value={tourDetail.city}
-                  style={{ background: "#19bca1" }}
+                  style={{ background: "#19bca1", fontFamily: "NORWESTER" }}
                   onChange={(e: any) =>
                     setTourDetail({ ...tourDetail, city: e.target.value })
                   }
@@ -200,12 +206,12 @@ const ExploreDestination: FC = () => {
               </Col>
               <Row className="pt-2 gap-2">
                 <Col className="justify-content-center d-flex form__input w-60 bg-white p-0 h2">
-                  <label className="">from:</label>
+                  <label className="pl-4 fs-16">Starting Date:</label>
                   <input
                     className="form__input w-60 bg-white justify-content-center h2 p-1 px-2 text-dark text-center m-0 border-0"
                     type="text"
-                    value={tourDetail.endDate}
-                    style={{ background: "#19bca1" }}
+                    value={tourDetail.startDate}
+                    style={{ background: "#19bca1", fontFamily: "NORWESTER" }}
                     onChange={(e: any) =>
                       setTourDetail({
                         ...tourDetail,
@@ -215,12 +221,12 @@ const ExploreDestination: FC = () => {
                   />
                 </Col>
                 <Col className="justify-content-center d-flex form__input w-60 bg-white p-0 h2">
-                  <label className="">to:</label>
+                  <label className="fs-16 pl-4">End Date:</label>
                   <input
                     className="form__input w-60 bg-white justify-content-center h2 p-1 px-2 text-dark text-center m-0 border-0"
                     type="text"
                     value={tourDetail.endDate}
-                    style={{ background: "#19bca1" }}
+                    style={{ background: "#19bca1", fontFamily: "NORWESTER" }}
                     onChange={(e: any) =>
                       setTourDetail({ ...tourDetail, endDate: e.target.value })
                     }
@@ -262,13 +268,13 @@ const ExploreDestination: FC = () => {
             </Col>
           </Row>
         </Col>
-        <Col className="p-0 m-0 col-3 d-flex justify-content-center">
-          <Col className="col-7 d-flex position-relative p-0 m-0">
+        <Col lg={3} className="p-0 m-0 col-12 d-flex justify-content-center">
+          <Col lg={7} className="col-4 d-flex position-relative p-0 m-0">
             <RoundButton
               className="border-5 border circle-core"
               bordercolor="#0e3c30"
               size={"calc(12*100vw"}
-              fill={"#8dc498"}
+              fill={"#c4cdfe"}
               img={require("../../../Assets/avatar.png")}
             />
           </Col>
@@ -291,7 +297,7 @@ const ExploreDestination: FC = () => {
         </Col>
       </Row>
 
-      <Col className={"p-5"}>
+      <Col className={"mx-2 px-5 pb-5"}>
         {/* <Row className="p-0 m-0 w-100 d-flex justify-content-between">
           <Col className="p-0">
             <Row className="p-0 w-100">
@@ -328,7 +334,7 @@ const ExploreDestination: FC = () => {
             </Row>
           </Col>
         </Row> */}
-        <Col>
+        <Col className="my-5 p-0 m-0">
           <HorizontalScroll
             title={""}
             // className={""}
@@ -350,19 +356,16 @@ const ExploreDestination: FC = () => {
                     imageStyling={`img-fluid`}
                     imageRatio={150}
                     titleStyling="small"
-                    tourname={tour?.displayName}
-                    mealPaln={tour?.mealPlanIncluded}
-                    recommendedDate={tour?.recommendedDate}
-                    location={tour?.location}
-                    acceptsWalletCredit={tour?.acceptsWalletCredit}
-                    unitConfigurations={tour?.matchingUnitConfigurations}
-                    price={tour?.priceDisplayInfoIrene}
-                    propertyData={tour?.basicPropertyData}
+                    tourData={tour}
                   />
                 </Card>
                 <Card.Text
-                  className="position-absolute top-0 mt-5 start-90 translate-middle fit-content text-white border-5 my-4 border"
-                  style={{ background: "#79c78d", borderColor: "#9e9e9e " }}
+                  className="position-absolute top-0 bold mt-5 start-90 translate-middle fit-content my-4"
+                  style={{
+                    background: "#c4cdfe",
+                    color: "#0752a1",
+                    fontFamily: "NORWESTER",
+                  }}
                   onClick={() => {
                     dispatch({
                       type: SET_SELECTED_TOUR_DATA,
@@ -371,7 +374,7 @@ const ExploreDestination: FC = () => {
                     history.push("/tour-detail");
                   }}
                 >
-                  {tour?.displayName?.text && tour?.displayName?.text}
+                  {tour?.tourName && tour?.tourName}
                 </Card.Text>
               </Col>
             ))}
@@ -386,8 +389,12 @@ const ExploreDestination: FC = () => {
             )}
           </HorizontalScroll>
         </Col>
-        <RecommandedTours />
-        <RecentlyViewedTours />
+        <Col className="my-5 p-0 m-0">
+          <RecommandedTours />
+        </Col>
+        <Col className="my-5 p-0 m-0">
+          <RecentlyViewedTours />
+        </Col>
         <Modal show={show} fullscreen={"false"} onHide={() => setShow(false)}>
           <Modal.Header closeButton>
             <Modal.Title>Filter</Modal.Title>

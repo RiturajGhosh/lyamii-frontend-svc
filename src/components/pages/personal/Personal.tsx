@@ -26,7 +26,7 @@ const Personal: FC = () => {
     <div
       className={`bg-violet-blue px-4 min-vh-100 mw-100 w-100 align-items-center justify-content-end d-flex m-0`}
     >
-      <Container className="p-0 m-0 min-vh-100 justify-content-end d-flex flex-column w-100">
+      <Container fluid="lg" className="p-0 m-0 min-vh-100 justify-content-end d-flex flex-column w-100">
         <Row className="p-0 m-0 min-vh-100 align-items-center justify-content-end d-flex">
           <Col className="col-12 py-4 m-0 gap-4 align-items-center d-grid p-0">
             <div className="form__input-group shadow pb-0 pt-4 px-lg-2 px-sm-1 px-md-2 px-sx-1 rounded-3 bg-white">

@@ -6,79 +6,68 @@ import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
 import { useDispatch, useSelector } from "react-redux";
 import { LuChevronRightCircle } from "react-icons/lu";
 import { useHistory } from "react-router-dom";
-import { SET_SELECTED_TOUR_DATA } from "../../../state/actions/types/tourDataActionType";
-import { backpackersTours, facilities } from "../enum/enum";
+import {
+  SET_SELECTED_TOUR_DATA,
+  selectedTourDataDto,
+} from "../../../state/actions/types/tourDataActionType";
 import { GoDotFill } from "react-icons/go";
 
 type TourCardType = {
   key?: number;
-  tourname?: any;
-  mealPaln?: any;
-  recommendedDate?: any;
-  location?: any;
-  acceptsWalletCredit?: any;
-  unitConfigurations?: any;
   imageRatio?: number;
-  price?: any;
-  propertyData?: any;
+  tourData: selectedTourDataDto;
   imageStyling?: string;
   titleStyling?: string;
   className?: string;
   minHeight?: string;
   coordinates?: number[];
-  tour?: any;
+  tour?: selectedTourDataDto;
 };
 const TourCard: FC<TourCardType> = ({
-  tourname,
   key,
-  mealPaln,
-  recommendedDate,
-  location,
   imageRatio,
-  acceptsWalletCredit,
-  unitConfigurations,
-  minHeight,
-  price,
   className,
+  tourData,
+  minHeight,
   coordinates,
-  propertyData,
   imageStyling,
   tour,
   titleStyling,
 }) => {
-  const screenSize = useSelector(selectScreenSize);
-  const [IsWishlisted, setToWishList] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
+
   return (
     <Row
       className={`${className} ${style.card} p-0`}
-      style={{ minHeight: "100%", background: "#cdface" }}
+      style={{ minHeight: "100%", background: "#c4cdfe" }}
     >
       <Col md={6} lg={6} sm={6} className="p-0 col-6 m-0">
         <Col>
           <Col className="text-white position-relative p-2 m-0 pb-2">
-            {propertyData?.photos?.relativeUrl && (
+            {tourData?.basicTourData?.photos?.main?.relativeUrl && (
               <Ratio aspectRatio={imageRatio}>
                 <>
                   <Image
                     className={`p-0 rounded-3 position-absolute ${imageStyling}`}
-                    src={propertyData?.photos?.relativeUrl}
+                    src={tourData?.basicTourData?.photos?.main?.relativeUrl}
                     onClick={() => {
                       dispatch({
                         type: SET_SELECTED_TOUR_DATA,
-                        payload: tour,
+                        payload: tourData,
                       });
                       history.push("/tour-detail");
                     }}
                   />
-                  <Col className="position-relative p-0 border-1 text-center justify-content-end text-white">
+                  <Col className="position-relative p-0 border-1 pb-2 mb-5 text-center justify-content-end text-white">
                     <Button
                       className="align-middle justify-self-center position-absolute top-100 start-50 translate-middle-y mb-1 btn-secondary"
-                      style={{ background: "#0a99d7" }}
+                      style={{
+                        background: "#0752a1"
+                      }}
                       onClick={() => {}}
                     >
-                      {"42000"}
+                      {tourData?.tourPrice}
                       {"$"}
                     </Button>
                   </Col>
@@ -89,7 +78,7 @@ const TourCard: FC<TourCardType> = ({
         </Col>
         <div className="fw-bold align-items-center text-white flex-nowrap py-3 mx-4 justify-content-center flex-row d-flex m-0 p-0 position-relative">
           <span className="p-0 m-0 display-5 d-flex flex-wrap w-90 text-center fit-content">
-            {facilities.map((facility: any) => {
+            {/* {facilities.map((facility: any) => {
               return (
                 <img
                   className={`p-0 m-0 justify-content-center`}
@@ -101,7 +90,7 @@ const TourCard: FC<TourCardType> = ({
                   src={facility}
                 />
               );
-            })}
+            })} */}
           </span>
         </div>
       </Col>
@@ -118,34 +107,30 @@ const TourCard: FC<TourCardType> = ({
             <Col className="p-0 gap-3 d-flex flex-column m-0">
               <Col
                 className="text-white flex-column d-flex h-100 position-relative m-0"
-                style={{
-                  background: "#9e9e9e ",
-                }}
+                style={{ background: "#889dfe" }}
               >
                 <Col
                   className={`overflow-hidden hidden-scroll ${style.routeTimeline}`}
                 >
-                  {backpackersTours[0]?.places?.map(
-                    (place: string, idx: number) => (
-                      <Col className="py-2 d-inline fit-content">
-                        <Row className="d-flex gx-0">
-                          <Col>
-                            <div
-                              className="pl-2 float-right h6 p-0 m-0"
-                              style={{
-                                color: "#f7de26 ",
-                              }}
-                            >
-                              {place}
-                            </div>
-                          </Col>
-                          <Col className="col-2">
-                            <GoDotFill fill="#f7de26" />
-                          </Col>
-                        </Row>
-                      </Col>
-                    )
-                  )}
+                  {tourData?.timeline.map((place: any, idx: number) => (
+                    <Col className="py-2 d-inline fit-content">
+                      <Row className="d-flex gx-0">
+                        <Col>
+                          <div
+                            className="pl-2 float-right h6 p-0 m-0"
+                            style={{
+                              color: "#f7de26 ",
+                            }}
+                          >
+                            {place?.destination}
+                          </div>
+                        </Col>
+                        <Col className="col-2">
+                          <GoDotFill fill="#f7de26" />
+                        </Col>
+                      </Row>
+                    </Col>
+                  ))}
                 </Col>
                 <Row>
                   <Col lg={8} xs={8} className="col-8 py-2 align-self-end">
@@ -156,15 +141,18 @@ const TourCard: FC<TourCardType> = ({
                         <Col
                           className="display-6 justify-content-center"
                           style={{
-                            color: "#f7de26",
+                            color: "white",
                           }}
                         >
-                          5D
+                          {tourData?.tourDays}D
                         </Col>
                         <Row className="w-100 justify-content-center">
-                          {[...Array(3)]?.map((index: number) => {
+                          {[
+                            ...Array(tourData?.basicTourData.starRating?.value),
+                          ]?.map((index: number) => {
                             return (
                               <AiFillStar
+                                key={index}
                                 size={15}
                                 style={{
                                   color: "#f7de26",
@@ -177,9 +165,14 @@ const TourCard: FC<TourCardType> = ({
                               />
                             );
                           })}
-                          {[...Array(2)]?.map((index: number) => {
+                          {[
+                            ...Array(
+                              5 - tourData?.basicTourData.starRating?.value
+                            ),
+                          ]?.map((index: number) => {
                             return (
                               <AiOutlineStar
+                                key={index}
                                 size={15}
                                 style={{
                                   color: "f7de26",
@@ -203,7 +196,7 @@ const TourCard: FC<TourCardType> = ({
                       onClick={() => {
                         dispatch({
                           type: SET_SELECTED_TOUR_DATA,
-                          payload: tour,
+                          payload: tourData,
                         });
                         history.push("/tour-detail");
                       }}

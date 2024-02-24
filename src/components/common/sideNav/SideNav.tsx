@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { Col, Nav, Navbar } from "react-bootstrap";
 import { AiTwotoneHome } from "react-icons/ai";
@@ -6,8 +6,7 @@ import { BsArrowRightCircle, BsFillPersonFill } from "react-icons/bs";
 import { MdOutlineLocationOn } from "react-icons/md";
 import { HiShoppingCart } from "react-icons/hi";
 import { SET_LOGIN_DATA } from "../../../state/actions/types/loginDataActionType";
-import { useDispatch, useSelector } from "react-redux";
-import { selectLoginData } from "../../../state/selectors/selectLoginData";
+import { useDispatch } from "react-redux";
 import { setCookie } from "../enum/functions";
 
 export type SideNavList = {
