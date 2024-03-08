@@ -8,6 +8,7 @@ type RoundButtonType = {
   onClick?: Function;
   size?: string;
   text?: string;
+  style?: any;
   img?: string;
   bordercolor?: string;
   background?: string;
@@ -18,6 +19,7 @@ const RoundButton: FC<RoundButtonType> = ({
   size = "70px",
   fill,
   onClick,
+  style,
   text,
   bordercolor,
   img,
@@ -54,9 +56,14 @@ const RoundButton: FC<RoundButtonType> = ({
         onClick={() => onClick && onClick()}
         fill={fill}
         size={size}
-        style={{
-          borderColor: `${bordercolor ? bordercolor : "border border-0"}`,
-        }}
+        style={
+          style
+            ? style
+            : {
+                borderColor: `${bordercolor ? bordercolor : "border border-0"}`,
+                background: "none",
+              }
+        }
         className={className}
       />
 

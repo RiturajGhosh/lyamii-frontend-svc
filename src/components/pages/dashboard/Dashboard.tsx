@@ -24,7 +24,7 @@ const Dashboard: FC = () => {
                 style={{ alignSelf: "normal" }}
               >
                 <SubCard
-                  titleStyling="small text-dark shadow bg-blue"
+                  titleClassName="small text-dark shadow bg-blue"
                   className="h-100"
                   cardColor="#f0f4ff"
                 >
@@ -180,7 +180,7 @@ const Dashboard: FC = () => {
                   </Col>
                 </Row>
                 <SubCard
-                  titleStyling="small bg-secondary shadow"
+                  titleClassName="small bg-secondary shadow"
                   className="m-0 p-0"
                   cardColor="#ccd5ff"
                 >
@@ -207,7 +207,7 @@ const Dashboard: FC = () => {
                   </Row>
                 </SubCard>
                 <SubCard
-                  titleStyling="small bg-secondary  shadow"
+                  titleClassName="small bg-secondary  shadow"
                   className="h-75 m-0 mt-2 p-0 align-self-normal justify-self-normal"
                   cardColor="#e9eefe"
                 >
@@ -235,7 +235,7 @@ const Dashboard: FC = () => {
             <Row className="p-0 min-vh-35 mt-2 m-0 h-100 position-relative gap-2 align-items-end">
               <Col className="align-self-stretch p-0 m-0">
                 <SubCard
-                  titleStyling="small text-dark shadow bg-blue"
+                  titleClassName="small text-dark shadow bg-blue"
                   className="h-100"
                   cardColor="#e9eefe"
                 >
@@ -275,7 +275,7 @@ const Dashboard: FC = () => {
 
               <Col className="align-self-stretch d-flex p-0 m-0">
                 <SubCard
-                  titleStyling="small d-flex shadow bg-blue"
+                  titleClassName="small d-flex shadow bg-blue"
                   className="h-100 d-flex"
                   cardColor="#e4e9ff"
                 >
@@ -296,7 +296,7 @@ const Dashboard: FC = () => {
               </Col>
               <Col className="align-self-stretch p-0 min-vh-30 col-2 h-100 m-0">
                 <SubCard
-                  titleStyling="small text-white shadow bg-blue"
+                  titleClassName="small text-white shadow bg-blue"
                   className="h-100"
                   cardColor="#879cff"
                 >

@@ -4,13 +4,15 @@ import screenSizeReducer from "./screenSizeReducer";
 import tourDataReducer from "./tourDataReducer";
 import routeLocationReducer from "./routeLocationReducer";
 import loginDataReducer from "./loginDataReducer";
+import userProfileDataReducer from "./userProfileDataReducer";
 
 const reducers = combineReducers({
   globeData: globeDataReducer,
   screenSize: screenSizeReducer,
   tourData: tourDataReducer,
   routeLocation: routeLocationReducer,
-  loginData: loginDataReducer
+  loginData: loginDataReducer,
+  userData: userProfileDataReducer
 });
 
 const rootReducer = (state:any, action:any)=>{

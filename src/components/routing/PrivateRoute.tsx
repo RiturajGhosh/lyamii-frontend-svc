@@ -72,7 +72,7 @@ const PrivateRoute: FC<PrivateRouteProps> = ({
               </span> */}
               <SideNav />
             </Col>
-            <Col id="main" className="p-0" style={{ marginLeft: "270px" }}>
+            <Col id="main" className="p-0" style={{ marginLeft: "267px" }}>
               <Route path={path} render={(props) => <Component {...props} />} />
             </Col>
           </Row>

@@ -20,6 +20,8 @@ import {
 import { useDispatch } from "react-redux";
 import { getCookie } from "./components/common/enum/functions";
 import { refreshApi } from "./api/refreshApi";
+import { getUserProfileDataApi } from "./api/getUserProfileDataApi";
+import { SET_USER_DATA } from "./state/actions/types/userDataActionType";
 
 const App: FC = () => {
   let routesToBeMapped: UserRouteConfig[] = [...commonSiteMap];
@@ -63,6 +65,17 @@ const App: FC = () => {
     const cookie = getCookie("user");
     const user = cookie && JSON.parse(cookie);
     user.token && refreshApi(user);
+    if (user.token) {
+      try {
+        const response = getUserProfileDataApi(user?.email);
+        dispatch({
+          type: SET_USER_DATA,
+          payload: response,
+        });
+      } catch (error: any) {
+        console.log(error.message);
+      }
+    }
   }, []);
   return (
     <HashRouter>

@@ -19,6 +19,7 @@ import PassportRegistrationForm from "../components/pages/passportRegistrationFo
 import Personal from "../components/pages/personal/Personal";
 import Profile from "../components/pages/profile/Profile";
 import SubmitPage from "../components/pages/submitPage/SubmitPage";
+import Trips from "../components/pages/trips/Trips";
 import { UserRouteConfig } from "../components/routing/PrivateRoute";
 import { AccessType } from "./accessType";
 
@@ -119,7 +120,8 @@ export const commonSiteMap: UserRouteConfig[] = [
     path: "/tour-detail",
     Component: TourDetailCard,
     access: AccessType.YES,
-  }, {
+  },
+  {
     exact: true,
     path: "/profile",
     Component: Profile,
@@ -133,6 +135,12 @@ export const commonSiteMap: UserRouteConfig[] = [
   },
   {
     exact: true,
+    path: "/profile/trips",
+    Component: Trips,
+    access: AccessType.YES,
+  },
+  {
+    exact: true,
     path: "/profile/dashboard",
     Component: Dashboard,
     access: AccessType.YES,
@@ -142,27 +150,32 @@ export const commonSiteMap: UserRouteConfig[] = [
     path: "/login",
     Component: Login,
     access: AccessType.YES,
-  },{
+  },
+  {
     exact: true,
     path: "/signup",
     Component: Login,
     access: AccessType.YES,
-  },{
+  },
+  {
     exact: true,
     path: "/addHotel",
     Component: Hotel,
     access: AccessType.YES,
-  },{
+  },
+  {
     exact: true,
     path: "/addHostel",
     Component: Hostel,
     access: AccessType.YES,
-  },{
+  },
+  {
     exact: true,
     path: "/submitted",
     Component: SubmitPage,
     access: AccessType.YES,
-  },{
+  },
+  {
     exact: true,
     path: "/checkout",
     Component: CheckOut,

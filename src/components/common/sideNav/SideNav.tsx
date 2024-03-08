@@ -8,6 +8,7 @@ import { HiShoppingCart } from "react-icons/hi";
 import { SET_LOGIN_DATA } from "../../../state/actions/types/loginDataActionType";
 import { useDispatch } from "react-redux";
 import { setCookie } from "../enum/functions";
+import Icon from "../icon/Icon";
 
 export type SideNavList = {
   name: string;
@@ -87,7 +88,7 @@ const SideNav: FC = () => {
                 className="text-start  align-items-center flex-row d-flex p p-0 m-0 text-white text-decoration-none"
               >
                 <Col
-                  className="p-0 col-2 m-0 w-15 border align-items-center border-1 text-center img-round"
+                  className="p-0 col-2 m-0 w-20 h-20 border align-items-center border-1 text-center img-round"
                   style={{ background: "white" }}
                 >
                   <AiTwotoneHome
@@ -104,7 +105,7 @@ const SideNav: FC = () => {
                 className="text-start  align-items-center flex-row d-flex p p-0 m-0 text-white text-decoration-none"
               >
                 <Col
-                  className="p-0 col-2 m-0 w-15 border align-items-center border-1 text-center img-round"
+                  className="p-0 col-2 m-0 w-20 border align-items-center border-1 text-center img-round"
                   style={{ background: "white" }}
                 >
                   <BsFillPersonFill
@@ -120,16 +121,16 @@ const SideNav: FC = () => {
                 onClick={() => history.push("/profile/trips")}
                 className="text-start  align-items-center flex-row d-flex p p-0 m-0 text-white text-decoration-none"
               >
-                <Col
-                  className="p-0 col-2 m-0 w-15 border align-items-center border-1 text-center img-round"
-                  style={{ background: "white" }}
-                >
-                  <MdOutlineLocationOn
-                    fill="#c7ccff"
-                    className="d-inline mt-1"
-                    size={"20px"}
-                  />
-                </Col>
+                <Icon
+                  fill="#c7ccff"
+                  className={`w-20 h-50 p-1 mr-1 rounded-circle`}
+                  style={{
+                    background: "white",
+                    padding: "0px !important",
+                    margin: "0px !important",
+                  }}
+                  name={"MdOutlineLocationOn"}
+                />
                 <Col className="pl-1">Trips</Col>
               </Nav.Link>
               <Nav.Link
@@ -137,16 +138,16 @@ const SideNav: FC = () => {
                 onClick={() => history.push("/profile/order")}
                 className="text-start  align-items-center flex-row d-flex p p-0 m-0 text-white text-decoration-none"
               >
-                <Col
-                  className="p-0 col-2 m-0 w-15 border align-items-center border-1 text-center img-round"
-                  style={{ background: "white" }}
-                >
-                  <HiShoppingCart
-                    fill="#c7ccff"
-                    className="d-inline mt-1"
-                    size={"20px"}
-                  />
-                </Col>
+                <Icon
+                  fill="#c7ccff"
+                  className={`w-20 h-50 p-1 mr-1 rounded-circle`}
+                  style={{
+                    background: "white",
+                    padding: "0px !important",
+                    margin: "0px !important",
+                  }}
+                  name={"HiShoppingCart"}
+                />
                 <Col className="pl-1">Orders</Col>
               </Nav.Link>
             </Nav.Item>

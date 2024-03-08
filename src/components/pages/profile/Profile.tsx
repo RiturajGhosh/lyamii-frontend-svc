@@ -66,7 +66,7 @@ const Profile: FC = () => {
                 return (
                   <Col md={6} sm={6} lg={6} xs={6} sx={6}>
                     <SubCard
-                      titleStyling="small text-dark shadow bg-blue"
+                      titleClassName="small text-dark shadow bg-blue"
                       className="my-3"
                       cardColor="#e4e9ff "
                     >
