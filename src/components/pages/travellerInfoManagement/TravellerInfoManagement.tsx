@@ -1,9 +1,7 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 import { Col, Row, Card, Container, Form, Button } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
 import SubCard from "../../common/subCard/SubCard";
 import FormInput from "../../common/formInput/FormInput";
-import RoundButton from "../../common/roundButton/RoundButton";
 import Icon from "../../common/icon/Icon";
 
 export type TravellersDetailsDto = {
@@ -12,7 +10,6 @@ export type TravellersDetailsDto = {
   passport?: string;
 };
 const TravellerInfoManagement: FC = () => {
-  const history = useHistory();
   const [travellersDetails, setTravellersDetails] = useState<
     TravellersDetailsDto[]
   >([]);

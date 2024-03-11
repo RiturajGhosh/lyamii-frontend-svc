@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import style from "./MapAndEscape.module.scss";
 import Globe from "../../common/globe/Globe";
 import { mapDescription } from "../../common/enum/enum";
@@ -83,7 +83,7 @@ const MapAndEscape: FC = () => {
                   style={{ borderColor: "#0752a1 !important" }}
                 >
                   <div className="card-header h-100">
-                    <Col className="justify-content-center d-flex">
+                    <Col className="justify-content-center align-items-center d-flex">
                       <Row className="position-relative align-items-center p-0 my-3 m-0 justify-content-center d-flex w-100">
                         <Col className="col-2 d-flex position-relative p-0 m-0">
                           <RoundButton
@@ -127,6 +127,7 @@ const MapAndEscape: FC = () => {
                           />
                         </Col>
                       </Row>
+                      <Col className="position-absolute bg-transparent d-flex h-100 align-items-center fw-bold" style={{fontSize:"7dvi"}}>Coming Soon</Col>
                       {/* <input
                         className="rounded-circle display-1 p-5 w-50"
                         type="text"

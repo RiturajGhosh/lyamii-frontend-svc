@@ -1,5 +1,5 @@
-import React, { FC, useState } from "react";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import React, { FC } from "react";
+import { Button, Card, Col, Row } from "react-bootstrap";
 import { journeyOptions } from "../../common/enum/enum";
 import style from "./LifetimeJourney.module.scss";
 import { useHistory } from "react-router-dom";
@@ -35,7 +35,7 @@ const LifetimeJourney: FC = () => {
                   </span>{" "}
                   <span
                     className="mt-3 position-absolute d-inline-flex pl-3 align-items-center"
-                    style={{ color: "#168709", fontFamily:"DellaRespira" }}
+                    style={{ color: "#168709", fontFamily: "DellaRespira" }}
                   >
                     Lif
                     <strong className="pagdi-icon">e</strong>
@@ -84,11 +84,18 @@ const LifetimeJourney: FC = () => {
                   </Card.Body>
                 </Card>
                 <Button className="align-items-center mh-15 mt-2 mx-1 w-100 bg-dark-green justify-content-center d-flex">
-                  <span className="bold fs-auto p-2 d-inline-flex m-0 fw-bold" style={{fontFamily:"OldStandard"}}>
+                  <span
+                    onClick={() => history.push("/bharat-tours")}
+                    className="bold fs-auto p-2 d-inline-flex m-0 fw-bold"
+                    style={{ fontFamily: "OldStandard" }}
+                  >
                     {journeyOptions[0].name}
                   </span>
                   <span className="text-nowrap">
-                    <LuChevronRightCircle size={"30px"} />
+                    <LuChevronRightCircle
+                      size={"30px"}
+                      onClick={() => history.push("/bharat-tours")}
+                    />
                   </span>
                 </Button>
               </Col>
@@ -122,11 +129,18 @@ const LifetimeJourney: FC = () => {
                     </Card.Body>
                   </Card>
                   <Button className="align-items-center mt-2 w-100 bg-dark-green justify-content-center d-flex">
-                    <span className="bold p-2 fs-auto m-0 fw-bold"  style={{fontFamily:"Bellota"}}>
+                    <span
+                      onClick={() => history.push("/backpackers")}
+                      className="bold p-2 fs-auto m-0 fw-bold"
+                      style={{ fontFamily: "Bellota" }}
+                    >
                       {journeyOptions[1].name}
                     </span>
                     <span className="text-nowrap">
-                      <LuChevronRightCircle size={"30px"} />
+                      <LuChevronRightCircle
+                        onClick={() => history.push("/backpackers")}
+                        size={"30px"}
+                      />
                     </span>
                   </Button>
                 </Col>
@@ -151,11 +165,17 @@ const LifetimeJourney: FC = () => {
                     </Card.Body>
                   </Card>
                   <Button className="align-items-center mt-2 w-100 bg-dark-green justify-content-center d-flex">
-                    <span className="bold p-2 fs-auto m-0 fw-bold">
+                    <span
+                      className="bold p-2 fs-auto m-0 fw-bold"
+                      onClick={() => history.push("/combo")}
+                    >
                       {journeyOptions[2].name}
                     </span>
                     <span className="text-nowrap">
-                      <LuChevronRightCircle size={"30px"} />
+                      <LuChevronRightCircle
+                        onClick={() => history.push("/combo")}
+                        size={"30px"}
+                      />
                     </span>
                   </Button>
                 </Col>

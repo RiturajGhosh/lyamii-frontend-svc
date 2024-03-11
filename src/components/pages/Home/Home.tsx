@@ -50,17 +50,7 @@ const Home: FC = () => {
       <CustomerReviews />
       <Contact />
       <div className="position-relative p-0 m-0 w-100">
-        <Row className="p-0 m-0 w-100 flex-row d-flex position-absolute justify-content-around">
-          <div
-            className="piller float-left left-0"
-            style={{ zIndex: "1" }}
-          ></div>
-          <div className="col-4"></div>
-          <div
-            className="piller float-left right-0"
-            style={{ zIndex: "1" }}
-          ></div>
-        </Row>
+        <Row className="p-0 m-0 w-100 flex-row d-flex position-absolute justify-content-around"></Row>
         <div
           className={`flex-grow-1 footer w-100 top-0 rotate-180 p-0 m-0 bg-cover travel-image position-bottom p-0 m-0`}
           style={{ minHeight: "150px" }}

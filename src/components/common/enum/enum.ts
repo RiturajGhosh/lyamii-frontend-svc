@@ -52,10 +52,13 @@ export const facilities = [
 export const paths = [
   "/signup",
   "/login",
+  "/joinus",
   "/addHotel",
   "/addHostel",
   "/profile",
   "/faqs",
+  "/cancellationpolicy",
+  "/refundpolicy",
 ];
 export const reviews = [
   {
@@ -78,8 +81,8 @@ export const reviews = [
 export const communities: HeaderList[] = [
   { name: "About us", path: "/aboutus" },
   { name: "Our Mission", path: "/mission" },
-  { name: "Join us", path: "/login" },
-  { name: "Reviews", path: "/reviews" },
+  { name: "Join us", path: "/joinus" },
+  { name: "Reviews", path: "/review" },
 ];
 
 export const mustReads: HeaderList[] = [
@@ -246,7 +249,7 @@ export const bharatTours = [
     priceInUSD: "12,000 USD",
     priceInEUR: "11,500 EUR",
     priceInAED: "45,000 AED",
-    img: "",
+    img: require("../../../Assets/header.jpeg"),
     places: [
       "Kolkatal",
       "Kolkata",
@@ -274,7 +277,7 @@ export const bharatTours = [
     priceInUSD: "15,000 USD",
     priceInEUR: "14,500 EUR",
     priceInAED: "55,000 AED",
-    img: "",
+    img: require("../../../Assets/header2.jpeg"),
     places: [
       "Kolkata",
       "Andaman Nicobar",
@@ -309,7 +312,7 @@ export const bharatTours = [
     priceInUSD: "18,000 USD",
     priceInEUR: "16,000 EUR",
     priceInAED: "65,000 AED",
-    img: "",
+    img: require("../../../Assets/header1.jpeg"),
     places: [
       "Kolkata",
       "Andaman Nicobar",
@@ -354,7 +357,7 @@ export const bharatTours = [
     priceInUSD: "22,000 USD",
     priceInEUR: "20,500 EUR",
     priceInAED: "80,000 AED",
-    img: "",
+    img: require("../../../Assets/header.jpg"),
     places: [
       "Kolkata",
       "Kolkata",
@@ -419,7 +422,7 @@ export const backpackersTours = [
     priceInUSD: "1,70,000 USD",
     priceInEUR: "1,50,000 EUR",
     priceInAED: "",
-    img: "",
+    img: require("../../../Assets/header.jpeg"),
     places: [
       "Kolkata",
       "Kolkata",
@@ -463,7 +466,7 @@ export const backpackersTours = [
     priceInEUR: "",
     tourType: "Vagabond's Wishlist",
     priceInAED: "",
-    img: "",
+    img: require("../../../Assets/header.jpeg"),
     places: [
       "Kolkata",
       "Kolkata",
@@ -539,7 +542,7 @@ export const backpackersTours = [
     priceInUSD: "18,000 USD",
     priceInEUR: "16,000 EUR",
     priceInAED: "65,000 AED",
-    img: "",
+    img: require("../../../Assets/header.jpeg"),
     places: [
       "Delhi",
       "Delhi",
@@ -633,7 +636,7 @@ export const backpackersTours = [
     priceInUSD: "22,000 USD",
     priceInEUR: "20,500 EUR",
     priceInAED: "80,000 AED",
-    img: "",
+    img: require("../../../Assets/header.jpeg"),
     places: [
       "Auroville",
       "Pondicherry",
@@ -655,7 +658,7 @@ export const backpackersTours = [
     priceInUSD: "22,000 USD",
     priceInEUR: "20,500 EUR",
     priceInAED: "80,000 AED",
-    img: "",
+    img: require("../../../Assets/header.jpeg"),
     places: [
       "Auroville",
       "Pondicherry",
@@ -677,7 +680,7 @@ export const backpackersTours = [
     priceInUSD: "22,000 USD",
     priceInEUR: "20,500 EUR",
     priceInAED: "80,000 AED",
-    img: "",
+    img: require("../../../Assets/header.jpeg"),
     places: [
       "Auroville",
       "Pondicherry",
@@ -699,7 +702,7 @@ export const backpackersTours = [
     priceInUSD: "22,000 USD",
     priceInEUR: "20,500 EUR",
     priceInAED: "80,000 AED",
-    img: "",
+    img: require("../../../Assets/header.jpeg"),
     places: [
       "Auroville",
       "Pondicherry",
@@ -721,7 +724,7 @@ export const backpackersTours = [
     priceInUSD: "22,000 USD",
     priceInEUR: "20,500 EUR",
     priceInAED: "80,000 AED",
-    img: "",
+    img: require("../../../Assets/header.jpeg"),
     places: [
       "Ganga Dussehra",
       "Hornbill Festival",
@@ -755,7 +758,7 @@ export const backpackersTours = [
     priceInUSD: "22,000 USD",
     priceInEUR: "20,500 EUR",
     priceInAED: "80,000 AED",
-    img: "",
+    img: require("../../../Assets/header.jpeg"),
     places: [
       "Tigers",
       "The Royal Bengal Tiger",
@@ -783,7 +786,7 @@ export const backpackersTours = [
     priceInUSD: "22,000 USD",
     priceInEUR: "20,500 EUR",
     priceInAED: "80,000 AED",
-    img: "",
+    img: require("../../../Assets/header.jpeg"),
     places: [
       "Mumbai",
       "Mumbai",
@@ -791,7 +794,6 @@ export const backpackersTours = [
       "Goa",
       "Goa",
       "Kerala",
-
       "Kerala",
       "Lakshadweep",
       "Lakshadweep",
@@ -826,7 +828,7 @@ export const backpackersTours = [
     priceInUSD: "22,000 USD",
     priceInEUR: "20,500 EUR",
     priceInAED: "80,000 AED",
-    img: "",
+    img: require("../../../Assets/header.jpeg"),
     places: [
       "Guwahati",
       "Tawang",

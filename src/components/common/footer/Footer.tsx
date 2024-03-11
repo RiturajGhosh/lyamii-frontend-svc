@@ -1,10 +1,11 @@
 import React, { FC } from "react";
-import { Container, Col, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { HeaderList } from "../header/Header";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { communities, mustReads, supports } from "../enum/enum";
 
 const Footer: FC = () => {
+  const history = useHistory();
   return (
     <footer>
       <Col className="footer float-right p-0 m-0 w-100">
@@ -75,7 +76,7 @@ const Footer: FC = () => {
               </Row>
             </Col>
             <Col md={5} lg={5} className="mt-2">
-              <span className="display-3">Lyamii.com</span>
+              <span className="display-3" onClick={()=>history.push("/")}>Lyamii.com</span>
               <p>Inspiring a new generation of wanderers</p>
             </Col>
           </Col>

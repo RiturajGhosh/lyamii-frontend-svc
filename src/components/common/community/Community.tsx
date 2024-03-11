@@ -3,6 +3,7 @@ import AboutUs from "../aboutUS/AboutUs";
 import Mission from "../mission/Mission";
 import { useLocation } from "react-router-dom";
 import MainContainer from "../container/MainContainer";
+import Review from "../review/Review";
 
 const Community: FC = () => {
   const location = useLocation();
@@ -26,6 +27,7 @@ const Community: FC = () => {
       <MainContainer background="white">
         <AboutUs />
         <Mission />
+        <Review />
       </MainContainer>
     </section>
   );

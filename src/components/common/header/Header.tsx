@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import style from "./Header.module.scss";
-import { Col, Nav, Navbar } from "react-bootstrap";
+import { Card, Col, Nav, Navbar } from "react-bootstrap";
 import { getCookie } from "../enum/functions";
 
 export type HeaderList = {
@@ -67,6 +67,15 @@ const Header: FC = () => {
           <Navbar.Brand href="/" className="align-self-center">
             <div className={`d-flex align-items-center ${style.currentPage}`}>
               <h3 className="text-white">
+                <img
+                  className={`p-0 m-0 justify-content-center`}
+                  style={{
+                    width:"40px",
+                    padding: "0px !important",
+                    margin: "0px !important",
+                  }}
+                  src={require("../../../Assets/logo.png")}
+                />
                 Lyam<span className={style.dot}>ii</span>
                 <span style={{ color: "#12856e" }}>.</span>com
               </h3>

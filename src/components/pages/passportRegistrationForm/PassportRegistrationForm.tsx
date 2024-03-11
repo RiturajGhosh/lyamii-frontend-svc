@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useState } from "react";
 import { Button, Col, Row, Form, Card } from "react-bootstrap";
 import FormInput from "../../common/formInput/FormInput";
 import PhoneInput from "react-phone-number-input";
@@ -31,16 +31,21 @@ const PassportRegistrationForm: FC = () => {
         >
           <Col className="p-0 m-0 text-align-start flex-column d-flex">
             <h6>
-              Already have a Passport? <a>Upload here</a><input
-                      className="form-control bg-white p-0 m-0 border-0"
-                      type="file"
-                      value={detail.Adhaar}
-                      style={{ background: "#19bca1" }}
-                      onChange={(e: any) =>
-                        setDetail({ ...detail, Adhaar: e.target.value })
-                      }
-                      id="formFile"
-                    />
+              Already have a Passport?{" "} 
+              <label
+                htmlFor="file-upload"
+                style={{
+                  cursor: "pointer"
+                }}
+              >
+                Upload here
+                <input
+                  id="file-upload"
+                  type="file"
+                  style={{ display: "none" }}
+                  onChange={(e: any) => e.target.files[0]}
+                />
+              </label>
             </h6>
             <div
               className="border-2 border my-2"
@@ -78,7 +83,9 @@ const PassportRegistrationForm: FC = () => {
                     fill={"#8dc498"}
                   />
                 </Col>
-                <Col className="col-1 active text-center p-0 m-0 w-10">{"step 1"}</Col>
+                <Col className="col-1 active text-center p-0 m-0 w-10">
+                  {"step 1"}
+                </Col>
                 <Col className="col-1 border-2 border p-0 m-0 w-10 timeline-line"></Col>
                 <Col className="col-1 d-flex position-relative p-0 m-0">
                   <RoundButton
@@ -88,7 +95,9 @@ const PassportRegistrationForm: FC = () => {
                     fill={"#8dc498"}
                   />
                 </Col>
-                <Col className="col-1 active text-center p-0 m-0 w-10">{"step 2"}</Col>
+                <Col className="col-1 active text-center p-0 m-0 w-10">
+                  {"step 2"}
+                </Col>
                 <Col className="col-1 border-2 border p-0 m-0 w-10 timeline-line"></Col>
                 <Col className="col-1 d-flex position-relative p-0 m-0">
                   <RoundButton
@@ -98,7 +107,9 @@ const PassportRegistrationForm: FC = () => {
                     fill={"#8dc498"}
                   />
                 </Col>
-                <Col className="col-1 active text-center p-0 m-0 w-10">{"step 3"}</Col>
+                <Col className="col-1 active text-center p-0 m-0 w-10">
+                  {"step 3"}
+                </Col>
               </Row>
             </Col>
             {step === 1 && (

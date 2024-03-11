@@ -1,18 +1,12 @@
-import React, { FC, useCallback, useRef, useState } from "react";
-import {
-  Accordion,
-  AccordionProps,
-  Card,
-  Col,
-  Row,
-  useAccordionButton,
-} from "react-bootstrap";
-import MainContainer from "../../common/container/MainContainer";
+import React, { FC, useState } from "react";
+import { Accordion, Card, Col, Row, useAccordionButton } from "react-bootstrap";
 import { faqs } from "../../common/enum/faq";
-import { MdOutlineArrowDropDown } from "react-icons/md";
-import { IoMdArrowDropright } from "react-icons/io";
+import { MdOutlineArrowDropDown, MdOutlineArrowRight } from "react-icons/md";
+import Icon from "../../common/icon/Icon";
+import { useHistory } from "react-router-dom";
 
 const FAQ: FC = () => {
+  const history = useHistory();
   function CustomToggle({
     children,
     eventKey,
@@ -36,10 +30,18 @@ const FAQ: FC = () => {
           {children}
         </button>
         {isExpanded ? (
-          <i className="bi bi-caret-right-fill"></i>
-          // <IoMdArrowDropright className="col-2" size={"calc(0.05*100vw"} />
+          <MdOutlineArrowRight
+            onClick={() => decoratedOnClick(eventKey)}
+            className="col-2 pointer"
+            size={"calc(0.05*100vw"}
+          />
         ) : (
-          <MdOutlineArrowDropDown className="col-2" size={"calc(0.05*100vw"} />
+          // <IoMdArrowDropright className="col-2" size={"calc(0.05*100vw"} />
+          <MdOutlineArrowDropDown
+            onClick={() => decoratedOnClick(eventKey)}
+            className="col-2 pointer"
+            size={"calc(0.05*100vw"}
+          />
         )}
       </Row>
     );
@@ -47,6 +49,15 @@ const FAQ: FC = () => {
   return (
     <section className="bg-white">
       <Col className="justify-content-center align-self-center d-flex">
+        <Row
+          onClick={() => history.goBack()}
+          className={
+            "position-absolute top-0 start-0 col-4 m-0 justify-content-start align-items-center p-0"
+          }
+        >
+          <Icon name="back" className="m-0 justify-content-start p-0 w-10" />
+          Back
+        </Row>
         <span className="fs-1 my-5 pl-4 text-decoration-underline col-10 text-dark fw-bold">
           FREQUENTLY ASKED QUESTIONS:
         </span>

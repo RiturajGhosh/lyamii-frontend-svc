@@ -1,16 +1,16 @@
-import AboutUs from "../components/common/aboutUS/AboutUs";
 import BlankPage from "../components/common/blankPage/BlankPage";
 import Community from "../components/common/community/Community";
 import ContainerSection from "../components/common/container/Container";
+import JoinUs from "../components/common/login/JoinUs";
 import Login from "../components/common/login/Login";
 import TourDetailCard from "../components/common/tourDetailCard/TourDetailCard";
 import Home from "../components/pages/Home/Home";
 import BackpackersTours from "../components/pages/backpackersTours/BackpackersTours";
 import BharatTours from "../components/pages/bharatTours/BharatTours";
+import CancellationRefundPolicy from "../components/pages/cancellationRefundPolicy/CancellationRefundPolicy";
 import CheckOut from "../components/pages/checkout/CheckOut";
 import ComboTours from "../components/pages/comboTours/ComboTours";
 import Contact from "../components/pages/contact/Contact";
-import CustomerReviews from "../components/pages/customerReview/CustomerReview";
 import Dashboard from "../components/pages/dashboard/Dashboard";
 import ExploreDestination from "../components/pages/exploreDestination/ExploreDestination";
 import FAQ from "../components/pages/faq/FAQ";
@@ -48,7 +48,7 @@ export const commonSiteMap: UserRouteConfig[] = [
   {
     exact: true,
     path: "/joinus",
-    Component: ContainerSection,
+    Component: JoinUs,
     access: AccessType.YES,
   },
   {
@@ -77,7 +77,7 @@ export const commonSiteMap: UserRouteConfig[] = [
   },
   {
     exact: true,
-    path: "/reviews",
+    path: "/review",
     Component: Community,
     access: AccessType.YES,
   },
@@ -97,6 +97,18 @@ export const commonSiteMap: UserRouteConfig[] = [
     exact: true,
     path: "/privacypolicy",
     Component: ContainerSection,
+    access: AccessType.YES,
+  },
+  {
+    exact: true,
+    path: "/cancellationpolicy",
+    Component: CancellationRefundPolicy,
+    access: AccessType.YES,
+  },
+  {
+    exact: true,
+    path: "/refundpolicy",
+    Component: CancellationRefundPolicy,
     access: AccessType.YES,
   },
   {

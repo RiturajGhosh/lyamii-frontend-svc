@@ -13,9 +13,10 @@ import MainContainer from "../container/MainContainer";
 import Tick from "../icon/tick";
 import { countries } from "../enum/countryCode";
 import { useHistory } from "react-router-dom";
+import { tours } from "../../pages/mockData/destinations";
 
 const TourDetailCard: FC = () => {
-  const selectedtourData: any = useSelector(selectTourData);
+  const selectedtourData = tours[0];
   const [count, setCount] = useState(0);
   const history = useHistory();
   const [countryCode, setCountryCode] = useState("");
@@ -34,7 +35,7 @@ const TourDetailCard: FC = () => {
   return (
     <MainContainer>
       <Card.Img
-        className={`p-0 m-0 justify-content-center
+        className={`p-0 m-0 h-50 justify-content-center
  ${style.img}`}
         style={{
           // width: "100%",

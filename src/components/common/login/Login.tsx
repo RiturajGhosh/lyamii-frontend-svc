@@ -158,7 +158,7 @@ const Login: FC = () => {
                             values={values}
                             minLength={0}
                             maxLength={50}
-                            onclick={()=>setUsedEmailMessage('')}
+                            onclick={() => setUsedEmailMessage("")}
                             style={{
                               background: "#19bca1",
                               borderColor:
