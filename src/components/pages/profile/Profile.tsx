@@ -1,10 +1,16 @@
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { Col, Row, Card, Container } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import SubCard from "../../common/subCard/SubCard";
+import { getCookie } from "../../common/enum/functions";
+import { getUserProfileDataApi } from "../../../api/getUserProfileDataApi";
+import { SET_USER_DATA } from "../../../state/actions/types/userDataActionType";
+import { useDispatch } from "react-redux";
 
 const Profile: FC = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
+
   const menus = [
     {
       title: "Personal Data",
@@ -14,34 +20,70 @@ const Profile: FC = () => {
     {
       title: "Prefences",
       subTitle: "Change your preference in your way",
-      path: "/profile/personalData",
+      path: "/profile/prefences",
     },
     {
       title: "Privacy & Security",
       subTitle: "Your Privacy Your Choice",
-      path: "/profile-personalData",
+      path: "/profile/privacy&security",
     },
     {
       title: "Payments",
       subTitle: "Manage your payment methods",
-      path: "/profile/personalData",
+      path: "/profile/payments",
     },
     {
       title: "Documentations",
       subTitle: "Stay updated with Digital Documents",
-      path: "/profile/personalData",
+      path: "/profile/documentations",
     },
     {
       title: "Account Information",
       subTitle: "Edit Personal Details",
-      path: "/profile-personalData",
+      path: "/profile/personalData/edit",
     },
     {
       title: "Manage Travellers",
       subTitle: "Add members to Lyamii.",
-      path: "/profile/personalData",
+      path: "/profile/manageTravellers",
     },
   ];
+
+  useEffect(() => {
+    const cookie = getCookie("user");
+    const user = cookie && JSON.parse(cookie);
+    // if (user.token) {
+    try {
+      getUserProfileDataApi(user?.email).then((response: any) => {
+        if (response.status === 200) {
+          dispatch({
+            type: SET_USER_DATA,
+            payload: {
+              address: {
+                houseNumber:
+                  response.data.userProfileAddressResponse.houseNumber,
+                street: response.data.userProfileAddressResponse.street,
+                city: response.data.userProfileAddressResponse.city,
+                state: response.data.userProfileAddressResponse.state,
+                pincode: response.data.userProfileAddressResponse.pincode,
+              },
+              email: response.data.email,
+              phoneNumber: response.data.phoneNumber,
+              userFirstName: response.data.userFirstName,
+              userLastName: response.data.userLastName,
+              birthDate: response.data.birthDate,
+              gender: response.data.gender,
+              bloodGroup: response.data.bloodGroup,
+              country: response.data.country,
+            },
+          });
+        }
+      });
+    } catch (error: any) {
+      console.log(error.message);
+    }
+    // }
+  }, []);
 
   return (
     <div
@@ -64,16 +106,21 @@ const Profile: FC = () => {
             <Row>
               {menus.map((menu) => {
                 return (
-                  <Col md={6} sm={6} lg={6} xs={6} sx={6}>
+                  <Col md={6} sm={12} lg={6} xs={6} sx={12}>
                     <SubCard
                       titleClassName="small text-dark shadow bg-blue"
                       className="my-3"
                       cardColor="#e4e9ff "
                     >
-                      <Card.Title onClick={() => history.push(menu.path)}>
+                      <Card.Title
+                        className="px-2"
+                        onClick={() => history.push(menu.path)}
+                      >
                         {menu.title}
                       </Card.Title>
-                      <Card.Subtitle>{menu.subTitle}</Card.Subtitle>
+                      <Card.Subtitle className="px-2">
+                        {menu.subTitle}
+                      </Card.Subtitle>
                     </SubCard>
                   </Col>
                 );

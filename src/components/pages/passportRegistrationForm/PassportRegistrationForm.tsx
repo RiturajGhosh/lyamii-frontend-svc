@@ -31,7 +31,16 @@ const PassportRegistrationForm: FC = () => {
         >
           <Col className="p-0 m-0 text-align-start flex-column d-flex">
             <h6>
-              Already have a Passport? <a>Upload here</a>
+              Already have a Passport? <a>Upload here</a><input
+                      className="form-control bg-white p-0 m-0 border-0"
+                      type="file"
+                      value={detail.Adhaar}
+                      style={{ background: "#19bca1" }}
+                      onChange={(e: any) =>
+                        setDetail({ ...detail, Adhaar: e.target.value })
+                      }
+                      id="formFile"
+                    />
             </h6>
             <div
               className="border-2 border my-2"

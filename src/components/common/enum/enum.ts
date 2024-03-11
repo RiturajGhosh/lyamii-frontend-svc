@@ -55,7 +55,7 @@ export const paths = [
   "/addHotel",
   "/addHostel",
   "/profile",
-  "/faqs"
+  "/faqs",
 ];
 export const reviews = [
   {
@@ -78,7 +78,7 @@ export const reviews = [
 export const communities: HeaderList[] = [
   { name: "About us", path: "/aboutus" },
   { name: "Our Mission", path: "/mission" },
-  { name: "Join us", path: "/joinus" },
+  { name: "Join us", path: "/login" },
   { name: "Reviews", path: "/reviews" },
 ];
 
@@ -87,10 +87,10 @@ export const mustReads: HeaderList[] = [
   { name: "Privacy policy", path: "/privacypolicy" },
   { name: "Cancellation policy", path: "/cancellationpolicy" },
   { name: "Refund policy", path: "/refundpolicy" },
-  { name: "FAQ", path: "/" },
+  { name: "FAQ", path: "/faqs" },
 ];
 export const supports: HeaderList[] = [
-  { name: "My Profile", path: "/login" },
+  { name: "My Profile", path: "/profile" },
   { name: "Helpdesk", path: "/helpdesk" },
   { name: "Feedback", path: "/feedback" },
 ];

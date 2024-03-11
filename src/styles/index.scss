@@ -7,6 +7,7 @@
 @import "bootstrap/scss/_utilities";
 @import "_variables";
 @import "./fonts.scss";
+// @import "./payment.scss";
 @import "./toggleSwitches.scss";
 // @import "../libraries/tempusdomius-bootstrap/src/sass/tempusdomius-bootstrap-build.scss";
 @font-face {
@@ -927,7 +928,7 @@ p > strong {
 }
 .fs-auto {
   // font-size: 3vi;
-  font-size: 2dvi;
+  font-size: 1.5dvi;
   @media only screen and (max-width: 400px) {
     font-size: 3dvi !important;
   }
@@ -1722,4 +1723,15 @@ input[type="file"]::file-selector-button {
 input[type="file"]::file-selector-button:hover {
   background-color: #81ecec;
   border: 2px solid #00cec9;
+}
+
+
+
+// payment
+
+.payment-title {
+  text-align: left;
+  padding: 10px 0px 30px 30px;
+  font-weight: 500;
+  color: #5e6977;
 }

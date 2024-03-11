@@ -1,4 +1,5 @@
 import AboutUs from "../components/common/aboutUS/AboutUs";
+import BlankPage from "../components/common/blankPage/BlankPage";
 import Community from "../components/common/community/Community";
 import ContainerSection from "../components/common/container/Container";
 import Login from "../components/common/login/Login";
@@ -19,6 +20,7 @@ import PassportRegistrationForm from "../components/pages/passportRegistrationFo
 import Personal from "../components/pages/personal/Personal";
 import Profile from "../components/pages/profile/Profile";
 import SubmitPage from "../components/pages/submitPage/SubmitPage";
+import TravellerInfoManagement from "../components/pages/travellerInfoManagement/TravellerInfoManagement";
 import Trips from "../components/pages/trips/Trips";
 import { UserRouteConfig } from "../components/routing/PrivateRoute";
 import { AccessType } from "./accessType";
@@ -135,6 +137,12 @@ export const commonSiteMap: UserRouteConfig[] = [
   },
   {
     exact: true,
+    path: "/profile/personalData/edit",
+    Component: Personal,
+    access: AccessType.YES,
+  },
+  {
+    exact: true,
     path: "/profile/trips",
     Component: Trips,
     access: AccessType.YES,
@@ -179,6 +187,48 @@ export const commonSiteMap: UserRouteConfig[] = [
     exact: true,
     path: "/checkout",
     Component: CheckOut,
+    access: AccessType.YES,
+  },
+  {
+    exact: true,
+    path: "/comingSoon",
+    Component: BlankPage,
+    access: AccessType.YES,
+  },
+  {
+    exact: true,
+    path: "/profile/prefences",
+    Component: BlankPage,
+    access: AccessType.YES,
+  },
+  {
+    exact: true,
+    path: "/profile/privacy&security",
+    Component: BlankPage,
+    access: AccessType.YES,
+  },
+  {
+    exact: true,
+    path: "/profile/payments",
+    Component: BlankPage,
+    access: AccessType.YES,
+  },
+  {
+    exact: true,
+    path: "/profile/documentations",
+    Component: BlankPage,
+    access: AccessType.YES,
+  },
+  {
+    exact: true,
+    path: "/profile/manageTravellers",
+    Component: TravellerInfoManagement,
+    access: AccessType.YES,
+  },
+  {
+    exact: true,
+    path: "/profile/order",
+    Component: BlankPage,
     access: AccessType.YES,
   },
 ];

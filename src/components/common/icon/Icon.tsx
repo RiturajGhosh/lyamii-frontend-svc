@@ -1,7 +1,12 @@
 import { CSSProperties } from "react";
 import { FaPhone } from "react-icons/fa6";
 import { GoHomeFill } from "react-icons/go";
-import { MdEmail, MdOutlineLocationOn } from "react-icons/md";
+import {
+  MdAddCircleOutline,
+  MdEmail,
+  MdOutlineKeyboardBackspace,
+  MdOutlineLocationOn,
+} from "react-icons/md";
 import { CiCalendar } from "react-icons/ci";
 import { TbDropletFilled } from "react-icons/tb";
 import { HiShoppingCart } from "react-icons/hi";
@@ -17,9 +22,18 @@ type IconProps = {
   fill?: string;
   width?: string;
   height?: string;
+  onClick?: Function;
 };
 
-const Icon = ({ name, fill, className, style, width, height }: IconProps) => {
+const Icon = ({
+  name,
+  fill,
+  className,
+  style,
+  width,
+  height,
+  onClick,
+}: IconProps) => {
   switch (name) {
     case "FaPhone": {
       return <FaPhone fill={fill} className={className} style={style} />;
@@ -60,6 +74,25 @@ const Icon = ({ name, fill, className, style, width, height }: IconProps) => {
     }
     case "flight": {
       return <Flight width={width} height={height} />;
+    }
+    case "back": {
+      return (
+        <MdOutlineKeyboardBackspace
+          fill={fill}
+          className={className}
+          style={style}
+        />
+      );
+    }
+    case "addRoundButton": {
+      return (
+        <MdAddCircleOutline
+          fill={fill}
+          className={className}
+          onClick={() => onClick && onClick()}
+          style={style}
+        />
+      );
     }
     default:
       return <></>;

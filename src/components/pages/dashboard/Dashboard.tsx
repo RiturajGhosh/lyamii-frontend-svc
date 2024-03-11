@@ -9,13 +9,18 @@ import { MdWhatsapp } from "react-icons/md";
 import { HiThumbUp, HiThumbDown } from "react-icons/hi";
 import { IoIosPaperPlane } from "react-icons/io";
 import ArrowButton from "../../common/arrowButton/ArrowButton";
+import { useHistory } from "react-router-dom";
 
 const Dashboard: FC = () => {
+  const history = useHistory();
   return (
     <div
       className={`bg-white px-4 min-vh-100 mw-100 w-100 align-items-center justify-content-end d-flex m-0`}
     >
-      <Container fluid="lg" className="p-0 m-0 min-vh-100 justify-content-end d-flex flex-column w-100">
+      <Container
+        fluid="lg"
+        className="p-0 m-0 min-vh-100 justify-content-end d-flex flex-column w-100"
+      >
         <Row className="p-0 m-0 min-vh-100 align-items-center justify-content-end d-flex">
           <Col className="col-12 py-4 m-0 gap-4 align-items-center d-grid p-0">
             <Row className="h-100 gap-4 position-relative min-vh-45 align-items-start p-0 m-0">
@@ -227,7 +232,7 @@ const Dashboard: FC = () => {
                   <ArrowButton
                     fill="#97a9ff"
                     className={"position-absolute bottom-0 p-2 end-0"}
-                    onClick={() => {}}
+                    onClick={() => history.push("/comingSoon")}
                   />
                 </SubCard>
               </Col>
@@ -249,7 +254,7 @@ const Dashboard: FC = () => {
                           padding: "0px !important",
                           margin: "0px !important",
                         }}
-                        onClick={() => {}}
+                        onClick={() => history.push("/profile/trips")}
                         src={require("../../../Assets/spring.jpg")}
                       />
                       {/* </Card> */}
@@ -266,7 +271,7 @@ const Dashboard: FC = () => {
                         className={
                           "position-absolute bottom-0 bold p p-2 text-white position-absolute fw-bold bottom-0 end-0"
                         }
-                        onClick={() => {}}
+                        onClick={() => history.push("/profile/trips")}
                       />
                     </Col>
                   </Row>
@@ -289,7 +294,7 @@ const Dashboard: FC = () => {
                     <ArrowButton
                       fill="#97a9ff"
                       className={"position-absolute bottom-0 p-2 end-0"}
-                      onClick={() => {}}
+                      onClick={() => history.push("/comingSoon")}
                     />
                   </Col>
                 </SubCard>
@@ -309,7 +314,7 @@ const Dashboard: FC = () => {
                         padding: "0px !important",
                         margin: "0px !important",
                       }}
-                      onClick={() => {}}
+                      onClick={() => history.push("/comingSoon")}
                       src={require("../../../Assets/memory.png")}
                     />
                   </h1>{" "}

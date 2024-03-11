@@ -29,7 +29,6 @@ const TourDetailCard: FC = () => {
         (country: any) =>
           country?.text?.includes(selectedtourData.tourName) && country
       )?.id || "";
-    console.log(id);
     setCountryCode(id);
   };
   return (

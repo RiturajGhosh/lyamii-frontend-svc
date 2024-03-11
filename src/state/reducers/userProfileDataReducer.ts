@@ -15,17 +15,17 @@ const initialState: userDataState = {
       city: "",
       state: "",
       pincode: "",
-      policeStation:"",
-      postOffice:""
+      // policeStation:"",
+      // postOffice:""
     },
     email: "",
     phoneNumber: "",
     userFirstName: "",
     userLastName: "",
-    dateOfBirth:"",
+    birthDate: "",
     gender: "",
     bloodGroup: "",
-    country: "",
+    country: "1",
   },
 };
 

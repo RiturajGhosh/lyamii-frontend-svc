@@ -50,7 +50,7 @@ const Coursel: FC = () => {
 
             <div className="triangle-reverse-4 w-10 position-absolute top-50 start-90 translate-x-20 translate-y-10"></div>
 
-            <Col className="m-0 mt-3 position-absolute top-0 text-center translate-y-20 text-white">
+            <Col className="m-0 mt-3 position-absolute top-0 text-center translate-y-20 text-white" style={{left:"4%"}}>
               <Row>
                 <Col className="fs-48 fit-content bold p-0 m-0 text-end">BALI</Col>
                 <Col className="p-0 align-self-center m-0 fit-content">

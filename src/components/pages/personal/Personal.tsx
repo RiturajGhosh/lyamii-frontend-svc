@@ -11,23 +11,45 @@ import { userRegistrationApi } from "../../../api/userRegistrationApi";
 import { getCookie } from "../../common/enum/functions";
 import { getUserProfileDataApi } from "../../../api/getUserProfileDataApi";
 import { selectUserData } from "../../../state/selectors/selectUserData";
+import { useLocation } from "react-router-dom";
 
 const Personal: FC = () => {
   const cookie = getCookie("user");
   const user = cookie && JSON.parse(cookie);
-  const [edit, setEdit] = useState(false);
+  const location = useLocation();
+  const [edit, setEdit] = useState(location?.pathname?.includes("edit"));
   const userData = useSelector(selectUserData);
   const [detail, setDetail] = useState<UserDataDto>(userData?.userData);
   const dispatch = useDispatch();
   const setUserData = async (values: any) => {
     try {
-      const res: any = await userRegistrationApi(values);
-
-      const response = user.token && getUserProfileDataApi(user?.email);
-      dispatch({
-        type: SET_USER_DATA,
-        payload: response,
-      });
+      const res = await userRegistrationApi(values);
+      res.response.status === 201 &&
+        (await getUserProfileDataApi(user?.email).then((response: any) => {
+          if (response.status === 200) {
+            dispatch({
+              type: SET_USER_DATA,
+              payload: {
+                address: {
+                  houseNumber:
+                    response.data.userProfileAddressResponse.houseNumber,
+                  street: response.data.userProfileAddressResponse.street,
+                  city: response.data.userProfileAddressResponse.city,
+                  state: response.data.userProfileAddressResponse.state,
+                  pincode: response.data.userProfileAddressResponse.pincode,
+                },
+                email: response.data.email,
+                phoneNumber: response.data.phoneNumber,
+                userFirstName: response.data.userFirstName,
+                userLastName: response.data.userLastName,
+                birthDate: response.data.birthDate,
+                gender: response.data.gender,
+                bloodGroup: response.data.bloodGroup,
+                country: response.data.country,
+              },
+            });
+          }
+        }));
     } catch (error: any) {
       console.log(error.message);
     }
@@ -52,11 +74,11 @@ const Personal: FC = () => {
                 Personal Data
               </div>
               <Form className="form__input">
-                <Row className="p-0 m-0">
+                <Row className="p-0 m-0 justify-content-between d-flex">
                   <Col
-                    md={5}
+                    md={12}
                     sm={12}
-                    lg={4}
+                    lg={6}
                     xs={4}
                     sx={12}
                     className="col-12 gap-1 d-grid"
@@ -67,7 +89,8 @@ const Personal: FC = () => {
                       titleStyling={{
                         width: `${7 * 14}px`,
                       }}
-                      titleClassName="small bold p-1 text-dark shadow bg-blue"
+                      style={{ fontSize: "10px" }}
+                      titleClassName="bold p-1 text-dark shadow bg-blue"
                       className="my-1 mt-3"
                     >
                       <Row className="mt-2 gap-1">
@@ -76,14 +99,17 @@ const Personal: FC = () => {
                             className="d-grid"
                             controlId="exampleForm.ControlInput1"
                           >
-                            <Form.Label className="small p-0 m-0 px-2 font-weight-normal">
+                            <Form.Label
+                              style={{ fontSize: "10px" }}
+                              className="p-0 m-0 px-2 font-weight-normal"
+                            >
                               First Name
                             </Form.Label>
                             {edit ? (
                               <Form.Control
                                 className=""
                                 type="text"
-                                placeholder=""
+                                placeholder={detail?.userFirstName}
                                 onChange={(e: any) =>
                                   setDetail({
                                     ...detail,
@@ -92,7 +118,7 @@ const Personal: FC = () => {
                                 }
                               />
                             ) : (
-                              <div className="h4 text-dark p-0 px-2 m-0 font-weight-normal">
+                              <div className="h5 text-dark p-0 px-2 m-0 font-weight-normal">
                                 {detail?.userFirstName}
                               </div>
                             )}
@@ -103,14 +129,17 @@ const Personal: FC = () => {
                             className="d-grid"
                             controlId="exampleForm.ControlInput1"
                           >
-                            <Form.Label className="small p-0 m-0 px-2 font-weight-normal">
+                            <Form.Label
+                              style={{ fontSize: "10px" }}
+                              className="p-0 m-0 px-2 font-weight-normal"
+                            >
                               Last Name
                             </Form.Label>
                             {edit ? (
                               <Form.Control
                                 className=""
                                 type="text"
-                                placeholder=""
+                                placeholder={detail?.userLastName}
                                 onChange={(e: any) =>
                                   setDetail({
                                     ...detail,
@@ -119,7 +148,7 @@ const Personal: FC = () => {
                                 }
                               />
                             ) : (
-                              <div className="h4 text-dark p-0 px-2 m-0 font-weight-normal">
+                              <div className="h5 text-dark p-0 px-2 m-0 font-weight-normal">
                                 {detail?.userLastName}
                               </div>
                             )}
@@ -140,8 +169,9 @@ const Personal: FC = () => {
                       titleStyling={{
                         width: `${7 * 14}px`,
                       }}
-                      titleClassName="small bold p-1 text-dark shadow bg-blue"
-                      className="my-4"
+                      style={{ fontSize: "10px" }}
+                      titleClassName="bold p-1 text-dark shadow bg-blue"
+                      className="mt-4 mb-3"
                     >
                       <Row>
                         <Col className="p-0 m-0">
@@ -153,7 +183,7 @@ const Personal: FC = () => {
                               <Form.Control
                                 className=""
                                 type="email"
-                                placeholder=""
+                                placeholder={detail?.email}
                                 onChange={(e: any) =>
                                   setDetail({
                                     ...detail,
@@ -183,7 +213,8 @@ const Personal: FC = () => {
                       titleStyling={{
                         width: `${12 * 14}px`,
                       }}
-                      titleClassName="small bold p-1 text-dark shadow bg-blue"
+                      style={{ fontSize: "10px" }}
+                      titleClassName="bold p-1 text-dark shadow bg-blue"
                       className="my-2"
                     >
                       <Row>
@@ -196,7 +227,7 @@ const Personal: FC = () => {
                               <Form.Control
                                 className=""
                                 type="text"
-                                placeholder=""
+                                placeholder={detail?.phoneNumber}
                                 onChange={(e: any) =>
                                   setDetail({
                                     ...detail,
@@ -226,8 +257,9 @@ const Personal: FC = () => {
                       titleStyling={{
                         width: `${11 * 14}px`,
                       }}
-                      titleClassName="small bold p-1 text-dark shadow bg-blue"
-                      className="my-4"
+                      style={{ fontSize: "10px" }}
+                      titleClassName="bold p-1 text-dark shadow bg-blue"
+                      className="mt-4 mb-3"
                     >
                       <Row>
                         <Col className="p-0 m-0">
@@ -239,17 +271,17 @@ const Personal: FC = () => {
                               <Form.Control
                                 className=""
                                 type="date"
-                                placeholder=""
+                                placeholder={detail?.birthDate}
                                 onChange={(e: any) =>
                                   setDetail({
                                     ...detail,
-                                    dateOfBirth: e.target.value,
+                                    birthDate: "",
                                   })
                                 }
                               />
                             ) : (
                               <div className="h5 text-dark px-2">
-                                {detail?.dateOfBirth}
+                                {detail?.birthDate}
                               </div>
                             )}
                           </Form.Group>
@@ -257,7 +289,14 @@ const Personal: FC = () => {
                       </Row>
                     </SubCard>
                   </Col>
-                  <Col md={7} sm={12} lg={8} xs={8} sx={12} className="col-12">
+                  <Col
+                    md={12}
+                    sm={12}
+                    lg={6}
+                    xs={8}
+                    sx={12}
+                    className="col-12 gap-3 d-grid"
+                  >
                     <SubCard
                       icon={"GoHomeFill"}
                       fill="white"
@@ -271,8 +310,9 @@ const Personal: FC = () => {
                       titleStyling={{
                         width: `${8 * 14}px`,
                       }}
-                      titleClassName="small p-1 bold text-dark shadow bg-blue"
-                      className="my-3"
+                      style={{ fontSize: "10px" }}
+                      titleClassName="p-1 bold text-dark shadow bg-blue"
+                      className="mt-3"
                     >
                       <Col className="m-0 py-12">
                         <Row className="mt-3">
@@ -281,14 +321,17 @@ const Personal: FC = () => {
                               className="d-grid"
                               controlId="exampleForm.ControlInput1"
                             >
-                              <Form.Label className="small p-0 m-0 px-2 font-weight-normal">
+                              <Form.Label
+                                style={{ fontSize: "10px" }}
+                                className="p-0 m-0 px-2 font-weight-normal"
+                              >
                                 House Number
                               </Form.Label>
                               {edit ? (
                                 <Form.Control
                                   className=""
                                   type="text"
-                                  placeholder=""
+                                  placeholder={detail?.address?.houseNumber}
                                   onChange={(e: any) =>
                                     setDetail({
                                       ...detail,
@@ -298,9 +341,9 @@ const Personal: FC = () => {
                                         city: detail?.address?.city,
                                         state: detail?.address?.state,
                                         pincode: detail?.address?.pincode,
-                                        policeStation:
-                                          detail?.address?.policeStation,
-                                        postOffice: detail?.address?.postOffice,
+                                        // policeStation:
+                                        //   detail?.address?.policeStation,
+                                        // postOffice: detail?.address?.postOffice,
                                       },
                                     })
                                   }
@@ -322,14 +365,17 @@ const Personal: FC = () => {
                               className="d-grid"
                               controlId="exampleForm.ControlInput1"
                             >
-                              <Form.Label className="small p-0 m-0 px-2 font-weight-normal">
+                              <Form.Label
+                                style={{ fontSize: "10px" }}
+                                className="p-0 m-0 px-2 font-weight-normal"
+                              >
                                 Street
                               </Form.Label>
                               {edit ? (
                                 <Form.Control
                                   className=""
                                   type="text"
-                                  placeholder=""
+                                  placeholder={detail?.address?.street}
                                   onChange={(e: any) =>
                                     setDetail({
                                       ...detail,
@@ -340,9 +386,9 @@ const Personal: FC = () => {
                                         city: detail?.address?.city,
                                         state: detail?.address?.state,
                                         pincode: detail?.address?.pincode,
-                                        policeStation:
-                                          detail?.address?.policeStation,
-                                        postOffice: detail?.address?.postOffice,
+                                        // policeStation:
+                                        //   detail?.address?.policeStation,
+                                        // postOffice: detail?.address?.postOffice,
                                       },
                                     })
                                   }
@@ -364,14 +410,17 @@ const Personal: FC = () => {
                               className="d-grid"
                               controlId="exampleForm.ControlInput1"
                             >
-                              <Form.Label className="small p-0 m-0 px-2 font-weight-normal">
+                              <Form.Label
+                                style={{ fontSize: "10px" }}
+                                className="p-0 m-0 px-2 font-weight-normal"
+                              >
                                 City
                               </Form.Label>
                               {edit ? (
                                 <Form.Control
                                   className=""
                                   type="text"
-                                  placeholder=""
+                                  placeholder={detail?.address?.city}
                                   onChange={(e: any) =>
                                     setDetail({
                                       ...detail,
@@ -382,9 +431,9 @@ const Personal: FC = () => {
                                           detail?.address?.houseNumber,
                                         state: detail?.address?.state,
                                         pincode: detail?.address?.pincode,
-                                        policeStation:
-                                          detail?.address?.policeStation,
-                                        postOffice: detail?.address?.postOffice,
+                                        // policeStation:
+                                        //   detail?.address?.policeStation,
+                                        // postOffice: detail?.address?.postOffice,
                                       },
                                     })
                                   }
@@ -401,14 +450,17 @@ const Personal: FC = () => {
                               className="d-grid"
                               controlId="exampleForm.ControlInput1"
                             >
-                              <Form.Label className="small p-0 m-0 px-2 font-weight-normal">
+                              <Form.Label
+                                style={{ fontSize: "10px" }}
+                                className="p-0 m-0 px-2 font-weight-normal"
+                              >
                                 State
                               </Form.Label>
                               {edit ? (
                                 <Form.Control
                                   className=""
                                   type="text"
-                                  placeholder=""
+                                  placeholder={detail?.address?.state}
                                   onChange={(e: any) =>
                                     setDetail({
                                       ...detail,
@@ -419,9 +471,9 @@ const Personal: FC = () => {
                                           detail?.address?.houseNumber,
                                         city: detail?.address?.city,
                                         pincode: detail?.address?.pincode,
-                                        policeStation:
-                                          detail?.address?.policeStation,
-                                        postOffice: detail?.address?.postOffice,
+                                        // policeStation:
+                                        //   detail?.address?.policeStation,
+                                        // postOffice: detail?.address?.postOffice,
                                       },
                                     })
                                   }
@@ -442,8 +494,8 @@ const Personal: FC = () => {
                               controlId="exampleForm.ControlInput1"
                             >
                               <Form.Label
-                                className="small p-0 m-0 px-2 font-weight-normal"
-                                style={{ minHeight: "29px" }}
+                                className="p-0 m-0 px-2 font-weight-normal"
+                                style={{ fontSize: "10px" }}
                               >
                                 Pincode
                               </Form.Label>
@@ -451,7 +503,7 @@ const Personal: FC = () => {
                                 <Form.Control
                                   className=""
                                   type="number"
-                                  placeholder=""
+                                  placeholder={detail?.address?.pincode}
                                   onChange={(e: any) =>
                                     setDetail({
                                       ...detail,
@@ -462,9 +514,9 @@ const Personal: FC = () => {
                                           detail?.address?.houseNumber,
                                         city: detail?.address?.city,
                                         state: detail?.address?.state,
-                                        policeStation:
-                                          detail?.address?.policeStation,
-                                        postOffice: detail?.address?.postOffice,
+                                        // policeStation:
+                                        //   detail?.address?.policeStation,
+                                        // postOffice: detail?.address?.postOffice,
                                       },
                                     })
                                   }
@@ -494,8 +546,8 @@ const Personal: FC = () => {
                               controlId="exampleForm.ControlInput1"
                             >
                               <Form.Label
-                                className="small p-0 m-0 px-2 font-weight-normal"
-                                style={{ minHeight: "29px" }}
+                                className="p-0 m-0 px-2 font-weight-normal"
+                                style={{ fontSize: "10px" }}
                               >
                                 Post-Office
                               </Form.Label>
@@ -514,9 +566,9 @@ const Personal: FC = () => {
                                           detail?.address?.houseNumber,
                                         city: detail?.address?.city,
                                         state: detail?.address?.state,
-                                        policeStation:
-                                          detail?.address?.policeStation,
-                                        postOffice: e.target.value,
+                                        // policeStation:
+                                        //   detail?.address?.policeStation,
+                                        // postOffice: e.target.value,
                                       },
                                     })
                                   }
@@ -526,7 +578,7 @@ const Personal: FC = () => {
                                   className="h5 p-0 m-0 text-dark px-2 font-weight-normal"
                                   style={{ minHeight: "29px" }}
                                 >
-                                  {detail?.address?.postOffice}
+                                  {/* {detail?.address?.postOffice} */}
                                 </div>
                               )}
                             </Form.Group>
@@ -543,7 +595,10 @@ const Personal: FC = () => {
                               className="d-grid"
                               controlId="exampleForm.ControlInput1"
                             >
-                              <Form.Label className="small p-0 m-0 px-2 font-weight-normal">
+                              <Form.Label
+                                style={{ fontSize: "10px" }}
+                                className="p-0 m-0 px-2 font-weight-normal"
+                              >
                                 Police Station
                               </Form.Label>
                               {edit ? (
@@ -561,15 +616,15 @@ const Personal: FC = () => {
                                           detail?.address?.houseNumber,
                                         city: detail?.address?.city,
                                         state: detail?.address?.state,
-                                        policeStation: e.target.value,
-                                        postOffice: detail?.address?.postOffice,
+                                        // policeStation: e.target.value,
+                                        // postOffice: detail?.address?.postOffice,
                                       },
                                     })
                                   }
                                 />
                               ) : (
                                 <div className="h5 text-dark p-0 m-0 px-2 font-weight-normal">
-                                  {detail?.address?.policeStation}
+                                  {/* {detail?.address?.policeStation} */}
                                 </div>
                               )}
                             </Form.Group>
@@ -592,8 +647,9 @@ const Personal: FC = () => {
                           titleStyling={{
                             width: `${8 * 14}px`,
                           }}
-                          titleClassName="small p-1 bold text-dark shadow bg-blue"
-                          className="my-4"
+                          style={{ fontSize: "10px" }}
+                          titleClassName="p-1 bold text-dark shadow bg-blue"
+                          className="mt-3"
                         >
                           <Form.Group
                             className="my-3"
@@ -603,11 +659,13 @@ const Personal: FC = () => {
                               <Form.Control
                                 className=""
                                 type="text"
-                                placeholder=""
+                                placeholder={detail?.gender}
                                 onChange={(e: any) =>
                                   setDetail({
                                     ...detail,
-                                    gender: e.target.value,
+                                    gender: String(
+                                      e.target.value
+                                    ).toUpperCase(),
                                   })
                                 }
                               />
@@ -623,7 +681,7 @@ const Personal: FC = () => {
                         <SubCard
                           icon="TbDropletFilled"
                           fill="white"
-                          iconClassName={`w-15 h-25 rounded-circle`}
+                          iconClassName={`w-20 h-30 p-1 rounded-circle`}
                           iconStyling={{
                             color: "#53bcf8",
                             padding: "0px !important",
@@ -633,8 +691,9 @@ const Personal: FC = () => {
                           titleStyling={{
                             width: `${9.5 * 14}px`,
                           }}
-                          titleClassName="small bold p-1 text-dark shadow bg-blue"
-                          className="my-4"
+                          style={{ fontSize: "10px" }}
+                          titleClassName="bold p-1 text-dark shadow bg-blue"
+                          className="mt-3"
                         >
                           <Form.Group
                             className="my-3"
@@ -644,7 +703,7 @@ const Personal: FC = () => {
                               <Form.Control
                                 className=""
                                 type="text"
-                                placeholder=""
+                                placeholder={detail?.bloodGroup}
                                 onChange={(e: any) =>
                                   setDetail({
                                     ...detail,

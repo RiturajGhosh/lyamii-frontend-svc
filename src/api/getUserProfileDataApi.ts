@@ -1,8 +1,8 @@
 import { getUserProfileData } from "./getUserProfileData";
 
-export async function getUserProfileDataApi(email: string) {
+export async function getUserProfileDataApi(emailId: string) {
   try {
-    return await getUserProfileData(email);
+    return await getUserProfileData(emailId);
   } catch (error: any) {
     return error;
   }

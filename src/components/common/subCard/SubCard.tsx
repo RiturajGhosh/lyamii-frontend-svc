@@ -10,6 +10,7 @@ type subCardType = {
   iconStyling?: CSSProperties;
   cardColor?: string;
   titleClassName?: string;
+  style?:CSSProperties;
   children?: React.ReactNode;
   icon?: string;
   fill?: string;
@@ -20,6 +21,7 @@ const SubCard: FC<subCardType> = ({
   children,
   fill,
   iconStyling,
+  style,
   titleClassName,
   iconClassName,
   icon,

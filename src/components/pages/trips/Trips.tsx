@@ -24,6 +24,7 @@ const Trips: FC = () => {
                 id="switchOngoing"
                 name="switchPlan"
                 value="Ongoing"
+                checked={true}
               />
               <input
                 type="radio"
@@ -136,7 +137,12 @@ const Trips: FC = () => {
             </Row>
           </section>
         ) : (
-          ""
+          <Col
+            className="col-12 min-vh-50 m-0 justify-content-center d-flex align-items-center p-0"
+            style={{ fontSize: "3dvi" }}
+          >
+            No Tour Booked...
+          </Col>
         )}
       </Container>
     </div>
