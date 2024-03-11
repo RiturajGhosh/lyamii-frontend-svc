@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import { Card, Col, Container, Row } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 import { internationalTours } from "../../common/enum/enum";
 import style from "./BeyoundObvious.module.scss";
 import { FaPlane } from "react-icons/fa6";

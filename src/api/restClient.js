@@ -23,9 +23,7 @@ export const restClient = async ({
       : { "Content-Type": "application/json" };
   const axiosInstance = axios.create({
     timeout: 40000,
-    baseURL:
-      //  "http://ec2-54-242-7-98.compute-1.amazonaws.com:8081",
-      "http://localhost:8081",
+    baseURL: "http://ec2-54-242-7-98.compute-1.amazonaws.com:8081",
     headers: headers,
   });
 

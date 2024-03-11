@@ -3,7 +3,6 @@ import { Button, Card, Col, Form, Row } from "react-bootstrap";
 import MainContainer from "../../common/container/MainContainer";
 import SubCard from "../../common/subCard/SubCard";
 import { TravellersDetailsDto } from "../travellerInfoManagement/TravellerInfoManagement";
-import FormInput from "../../common/formInput/FormInput";
 import { useSelector } from "react-redux";
 import { selectUserData } from "../../../state/selectors/selectUserData";
 import { UserDataDto } from "../../../state/actions/types/userDataActionType";

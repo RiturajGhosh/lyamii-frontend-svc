@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { bharatTours } from "../../common/enum/enum";
 import style from "./BharatTours.module.scss";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import TourOverviewCard from "../../common/tourOverviewCard/TourOverviewCard";
 
 const BharatTours: FC = () => {

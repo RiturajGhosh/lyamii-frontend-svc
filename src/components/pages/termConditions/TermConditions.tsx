@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import { Card, Col, Row } from "react-bootstrap";
-import { policies } from "../../common/enum/policies";
 import Icon from "../../common/icon/Icon";
 import { useHistory } from "react-router-dom";
 import { termConditions } from "../../common/enum/termConditions";

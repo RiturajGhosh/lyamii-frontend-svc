@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import Destinations from "../destinations/Destinations";
 import style from "./Home.module.scss";
 import CustomerReviews from "../customerReview/CustomerReview";

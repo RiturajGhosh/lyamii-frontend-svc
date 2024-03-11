@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Card, Col, Container, Row } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 import { reasons } from "../../common/enum/enum";
 import style from "./WhyLamii.module.scss";
 

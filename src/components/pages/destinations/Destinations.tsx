@@ -1,10 +1,8 @@
 import React, { FC } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import style from "./Destinations.module.scss";
 import { useHistory } from "react-router-dom";
-import RoundButton from "../../common/roundButton/RoundButton";
-import { FaArrowRightLong, FaCircleArrowRight } from "react-icons/fa6";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FaCircleArrowRight } from "react-icons/fa6";
 
 const Destinations: FC = () => {
   const history = useHistory();
