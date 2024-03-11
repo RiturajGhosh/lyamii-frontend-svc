@@ -66,18 +66,19 @@ const Header: FC = () => {
         <Col className="d-flex align-items-center justify-content-between">
           <Navbar.Brand href="/" className="align-self-center">
             <div className={`d-flex align-items-center ${style.currentPage}`}>
-              <h3 className="text-white">
+              <h3 className="text-white  align-items-start">
                 <img
-                  className={`p-0 m-0 justify-content-center`}
+                  className={`p-0 m-0 pb-1 justify-content-center`}
                   style={{
-                    width:"40px",
+                    width: "25px",
                     padding: "0px !important",
                     margin: "0px !important",
+                    fontFamily: "DellaRespira",
                   }}
                   src={require("../../../Assets/logo.png")}
                 />
                 Lyam<span className={style.dot}>ii</span>
-                <span style={{ color: "#12856e" }}>.</span>com
+                <span style={{ color: "#12856e" }}></span>
               </h3>
             </div>
           </Navbar.Brand>

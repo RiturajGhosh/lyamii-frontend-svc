@@ -341,9 +341,9 @@ const Personal: FC = () => {
                                         city: detail?.address?.city,
                                         state: detail?.address?.state,
                                         pincode: detail?.address?.pincode,
-                                        // policeStation:
-                                        //   detail?.address?.policeStation,
-                                        // postOffice: detail?.address?.postOffice,
+                                        policeStation:
+                                          detail?.address?.policeStation,
+                                        postOffice: detail?.address?.postOffice,
                                       },
                                     })
                                   }
@@ -386,9 +386,9 @@ const Personal: FC = () => {
                                         city: detail?.address?.city,
                                         state: detail?.address?.state,
                                         pincode: detail?.address?.pincode,
-                                        // policeStation:
-                                        //   detail?.address?.policeStation,
-                                        // postOffice: detail?.address?.postOffice,
+                                        policeStation:
+                                          detail?.address?.policeStation,
+                                        postOffice: detail?.address?.postOffice,
                                       },
                                     })
                                   }
@@ -431,9 +431,9 @@ const Personal: FC = () => {
                                           detail?.address?.houseNumber,
                                         state: detail?.address?.state,
                                         pincode: detail?.address?.pincode,
-                                        // policeStation:
-                                        //   detail?.address?.policeStation,
-                                        // postOffice: detail?.address?.postOffice,
+                                        policeStation:
+                                          detail?.address?.policeStation,
+                                        postOffice: detail?.address?.postOffice,
                                       },
                                     })
                                   }
@@ -471,9 +471,9 @@ const Personal: FC = () => {
                                           detail?.address?.houseNumber,
                                         city: detail?.address?.city,
                                         pincode: detail?.address?.pincode,
-                                        // policeStation:
-                                        //   detail?.address?.policeStation,
-                                        // postOffice: detail?.address?.postOffice,
+                                        policeStation:
+                                          detail?.address?.policeStation,
+                                        postOffice: detail?.address?.postOffice,
                                       },
                                     })
                                   }
@@ -514,9 +514,9 @@ const Personal: FC = () => {
                                           detail?.address?.houseNumber,
                                         city: detail?.address?.city,
                                         state: detail?.address?.state,
-                                        // policeStation:
-                                        //   detail?.address?.policeStation,
-                                        // postOffice: detail?.address?.postOffice,
+                                        policeStation:
+                                          detail?.address?.policeStation,
+                                        postOffice: detail?.address?.postOffice,
                                       },
                                     })
                                   }
@@ -566,9 +566,9 @@ const Personal: FC = () => {
                                           detail?.address?.houseNumber,
                                         city: detail?.address?.city,
                                         state: detail?.address?.state,
-                                        // policeStation:
-                                        //   detail?.address?.policeStation,
-                                        // postOffice: e.target.value,
+                                        policeStation:
+                                          detail?.address?.policeStation,
+                                        postOffice: e.target.value,
                                       },
                                     })
                                   }
@@ -578,7 +578,7 @@ const Personal: FC = () => {
                                   className="h5 p-0 m-0 text-dark px-2 font-weight-normal"
                                   style={{ minHeight: "29px" }}
                                 >
-                                  {/* {detail?.address?.postOffice} */}
+                                  {detail?.address?.postOffice}
                                 </div>
                               )}
                             </Form.Group>
@@ -616,8 +616,8 @@ const Personal: FC = () => {
                                           detail?.address?.houseNumber,
                                         city: detail?.address?.city,
                                         state: detail?.address?.state,
-                                        // policeStation: e.target.value,
-                                        // postOffice: detail?.address?.postOffice,
+                                        policeStation: e.target.value,
+                                        postOffice: detail?.address?.postOffice,
                                       },
                                     })
                                   }

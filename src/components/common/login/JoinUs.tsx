@@ -429,6 +429,7 @@ const JoinUs: FC = () => {
                 <Button
                   className="align-middle justify-self-center position-absolute top-100 translate-middle btn-secondary"
                   style={{ background: "#0752a1" }}
+                  onClick={()=>history.push("/addHotel")}
                 >
                   Accomadation
                 </Button>

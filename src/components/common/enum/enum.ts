@@ -57,7 +57,7 @@ export const paths = [
   "/addHostel",
   "/profile",
   "/faqs",
-  "/cancellationpolicy",
+  "/cancellationandRefundpolicy",
   "/refundpolicy",
   "/termconditions",
 ];
@@ -89,8 +89,8 @@ export const communities: HeaderList[] = [
 export const mustReads: HeaderList[] = [
   { name: "Terms and conditions", path: "/termconditions" },
   { name: "Privacy policy", path: "/privacypolicy" },
-  { name: "Cancellation policy", path: "/cancellationpolicy" },
-  { name: "Refund policy", path: "/refundpolicy" },
+  { name: "Cancellation and Refund policy", path: "/cancellationandRefundpolicy" },
+  { name: "User Manual", path: "/userManual" },
   { name: "FAQ", path: "/faqs" },
 ];
 export const supports: HeaderList[] = [

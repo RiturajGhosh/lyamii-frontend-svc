@@ -19,8 +19,17 @@ const CancellationRefundPolicy: FC = () => {
           Back
         </Row>
         <span className="fs-1 my-5 pl-4 text-decoration-underline col-12 text-dark fw-bold">
-          Cancellation and Refund Policy:
+          Cancellation and Refund Policy
         </span>
+      </Col>
+
+      <Col className="col-10 d-flex flex-column pb-4">
+        {" "}
+        <Card.Text className="">
+          <div className={"pb-2"} style={{ fontSize: "1.5dvi" }}>
+            {policies.description}
+          </div>
+        </Card.Text>
       </Col>
       <Col className="col-10 d-flex flex-column">
         {policies.policies.map((policy: any, index: number) => {

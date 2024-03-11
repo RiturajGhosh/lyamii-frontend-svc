@@ -240,8 +240,22 @@ $custom-spacers: 10px;
 .float-right {
   float: right;
 }
+.yText {
+  background:-webkit-radial-gradient( #009f2f,#eee, #009f2f,#009f2f,#eee,#eee, #eee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dot {
+  background: -webkit-linear-gradient( #009f2f , #009f2f,#eee, #eee,#eee, #eee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .bg-dark-green {
   background-color: #063b2d !important;
+}
+.bg-dark-blue {
+  background-color: #0a52a1 !important;
 }
 .text-dark-green {
   color: #063b2d !important;
@@ -1724,8 +1738,6 @@ input[type="file"]::file-selector-button:hover {
   background-color: #81ecec;
   border: 2px solid #00cec9;
 }
-
-
 
 // payment
 

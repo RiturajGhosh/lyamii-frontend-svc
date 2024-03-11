@@ -45,14 +45,14 @@ const BeyoundObvious: FC = () => {
             style={{ background: "#c4cdfe" }}
           >
             <span
-              className="display-3 text-outline fw-bold"
-              style={{ color: "#efeacf",fontFamily:"BOBBYJONES" }}
+              className="display-3 text-outline text-shadow-light"
+              style={{ color: "#0c519f",fontFamily:"Blueberry" }}
             >
               BEYOUND
             </span>
             <span
-              className="display-5 d-inline-flex text-outline fw-bold"
-              style={{ color: "#4b7b57",fontFamily:"Blueberry" }}
+              className="display-3 d-inline-flex text-outline text-shadow-light"
+              style={{ color: "black",fontFamily:"Blueberry", textTransform: "lowercase" }}
             >
               Obvious{" "}
               <img

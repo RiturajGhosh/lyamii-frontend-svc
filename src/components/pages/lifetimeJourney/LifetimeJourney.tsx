@@ -28,7 +28,7 @@ const LifetimeJourney: FC = () => {
                 >
                   Journey{" "}
                   <span
-                    className="heading text-white"
+                    className="heading text-white text-outline"
                     style={{ fontFamily: "Robotic" }}
                   >
                     {"OF A  "}
@@ -83,7 +83,7 @@ const LifetimeJourney: FC = () => {
                     />
                   </Card.Body>
                 </Card>
-                <Button className="align-items-center mh-15 mt-2 mx-1 w-100 bg-dark-green justify-content-center d-flex">
+                <Button className="align-items-center mh-15 mt-2 mx-1 w-100 bg-dark-blue justify-content-center d-flex">
                   <span
                     onClick={() => history.push("/bharat-tours")}
                     className="bold fs-auto p-2 d-inline-flex m-0 fw-bold"
@@ -128,7 +128,7 @@ const LifetimeJourney: FC = () => {
                       />
                     </Card.Body>
                   </Card>
-                  <Button className="align-items-center mt-2 w-100 bg-dark-green justify-content-center d-flex">
+                  <Button className="align-items-center mt-2 w-100 bg-dark-blue justify-content-center d-flex">
                     <span
                       onClick={() => history.push("/backpackers")}
                       className="bold p-2 fs-auto m-0 fw-bold"
@@ -164,7 +164,7 @@ const LifetimeJourney: FC = () => {
                       />
                     </Card.Body>
                   </Card>
-                  <Button className="align-items-center mt-2 w-100 bg-dark-green justify-content-center d-flex">
+                  <Button className="align-items-center mt-2 w-100 bg-dark-blue justify-content-center d-flex">
                     <span
                       className="bold p-2 fs-auto m-0 fw-bold"
                       onClick={() => history.push("/combo")}

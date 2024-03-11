@@ -24,7 +24,7 @@ export interface UserResponseDataDto {
 }
 interface SetUserDataI {
   type: typeof SET_USER_DATA;
-  payload: UserDataDto ;
+  payload: UserDataDto;
 }
 interface AddressDataDto {
   houseNumber: string;
@@ -32,7 +32,7 @@ interface AddressDataDto {
   city: string;
   state: string;
   pincode: string;
-  // policeStation: string;
-  // postOffice: string;
+  policeStation: string;
+  postOffice: string;
 }
 export type userDataActionType = SetUserDataI;

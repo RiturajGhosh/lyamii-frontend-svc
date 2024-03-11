@@ -27,7 +27,12 @@
   text-decoration: none;
 }
 .dot {
-  background: -webkit-linear-gradient( #12856e, #12856e,#eee,#eee, #eee);
+  background:-webkit-radial-gradient( #009f2f, #009f2f,#eee,#eee, #eee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.yText {
+  background:-webkit-radial-gradient( #009f2f, #009f2f,#eee,#eee, #eee);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

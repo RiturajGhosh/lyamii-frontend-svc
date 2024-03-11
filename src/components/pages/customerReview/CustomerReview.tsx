@@ -16,7 +16,7 @@ const CustomerReviews: FC = () => {
           <div className="card-body w-25">
             {
               <span
-                className="display-2 float-right text-white fw-bold"
+                className="display-2 text-shadow-dark float-right text-white fw-bold"
                 style={{ fontFamily: "LeagueGothic" }}
               >
                 Reviews

@@ -76,7 +76,23 @@ const Footer: FC = () => {
               </Row>
             </Col>
             <Col md={5} lg={5} className="mt-2">
-              <span className="display-3" onClick={()=>history.push("/")}>Lyamii.com</span>
+              <span
+                className="display-1 text-white"
+                onClick={() => history.push("/")}
+              >
+                L<span>y</span>am
+                <span className={"dot"}>ii</span>
+                <img
+                  className={`p-0 m-0 pb-3 justify-content-center`}
+                  style={{
+                    width: "15%",
+                    padding: "0px !important",
+                    margin: "0px !important",
+                    fontFamily: "DellaRespira",
+                  }}
+                  src={require("../../../Assets/logo.png")}
+                />
+              </span>
               <p>Inspiring a new generation of wanderers</p>
             </Col>
           </Col>

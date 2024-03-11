@@ -15,8 +15,8 @@ const initialState: userDataState = {
       city: "",
       state: "",
       pincode: "",
-      // policeStation:"",
-      // postOffice:""
+      policeStation: "",
+      postOffice: "",
     },
     email: "",
     phoneNumber: "",

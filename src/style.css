@@ -390,10 +390,10 @@ html {
   z-index: 2;
   height: fit-content;
   /* background-image: var(--image-gradient), url(./Assets/remote.jpg); */
-  background-image: var(--image-gradient), url(./Assets/header.jpg);
+  background-image: var(--image-gradient), url(./Assets/header2.jpeg);
   background-position: top center, bottom;
   background-repeat: no-repeat;
-  background-size: auto;
+  background-size: cover;
   padding-top: 30px !important;
 }
 .explore-section {

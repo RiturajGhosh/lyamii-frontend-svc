@@ -102,14 +102,14 @@ export const commonSiteMap: UserRouteConfig[] = [
   },
   {
     exact: true,
-    path: "/cancellationpolicy",
+    path: "/cancellationandRefundpolicy",
     Component: CancellationRefundPolicy,
     access: AccessType.YES,
   },
   {
     exact: true,
-    path: "/refundpolicy",
-    Component: CancellationRefundPolicy,
+    path: "/userManual",
+    Component: BlankPage,
     access: AccessType.YES,
   },
   {
