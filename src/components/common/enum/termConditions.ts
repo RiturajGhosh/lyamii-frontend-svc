@@ -1,0 +1,103 @@
+export const termConditions = {
+  topic: "Term and Conditions",
+  terms: [
+    {
+      term: "OVERVIEW",
+      text: [
+        "Welcome to the Lyamii websites and mobile properties located at www.Lyamii.com and applicable country top level domains (including sub-domains associated with them), related software applications (sometimes referred to as “apps”), data, SMS, APIs, email, chat and telephone correspondence, buttons, widgets and ads (collectively, all ofthese items shall be referred to herein as the “Services”; more generally, the Lyamii websites and mobile properties shall hereinafter be referred to herein as “websites”). ",
+        "The Services are offered to you conditioned upon your acceptance of the terms, conditions and notices set forth below (collectively, this “Agreement”). By accessing or using the Services, you agree to be bound by this Agreement and represent that you have read and understood its terms. Please read this Agreement carefully, as it contains information concerning your legal rights and limitations on theuse rights, as well as a section regarding applicable law and jurisdiction of disputes. If you do not accept all of these terms and conditions, you are not authorized to use the Services. If you have a Lyamii account and wish to terminate this Agreement, you can do so at any time by closing your account and no longer accessing or using the Services (a description of how to do so is available here).",
+        "Any information, text, links, graphics, photos, audio, videos, data, code or other materials or arrangements of materials that you can view on, access or otherwise interact with through the Services shall be referred to as “Content”. The terms “we”, “us”, “our” and “Lyamii” refer to Lyamii PVT LTD. “Services” as defined above refers to those provided by Lyamii or our corporate affiliates (Lyamii and such entities, when one or more are referred to, shall be collectively defined as the “Lyamii Companies”). For the avoidance of doubt, the websites are all owned and controlled by Lyamii. As part of our Services, we may send you notifications about special offers, products, or additional services available from us, our affiliates, or our partners, that may be of interest to you. Such notifications will typically be sent through newsletters and marketing communications and represent efforts to get to know you and your preferences better across our Services and those of our affiliates. In turn, this enables customisation of the services in line with those preferences.",
+        "The term “you” refers to the individual, company, business organization or other legal entity using the Services and/or contributing Content to them. The Content that you contribute, submit, transmit and/or post to or through the Services shall be referred to variously as “your Content”, “Content of yours” and/or “Content you submit.”",
+        "The Services are provided solely to:",
+        "Assist customers in gathering travel information, posting Content and searching for and booking travel services and reservations; and",
+        "Assist travel, tourism and hospitality businesses in engaging with customers and potential customers, by way of free and/or paid-for services offered by or through the Lyamii Companies.",
+        "We may change or otherwise modify this Agreement in the future in accordance with the terms and conditions herein, and you understand and agree that your continued access or use of the Services after such change signifies your acceptance of the updated or modified Agreement. We will note the date that revisions were last made to this Agreement at the bottom of this Agreement, and any revisions will take effect upon posting. We will notify registered users of our Services (such registered users to be referred to as “Account Holders”) of material changes to these terms and conditions by either sending a notice to the email address associated with the Account Holder’s profile or by placing a notice on our websites. Be sure to return to this page periodically to review the most current version of this Agreement.",
+        "",
+      ],
+    },
+    {
+      term: "ELIGIBILITY",
+      text: [
+        "User must be at least 18 years of age and must possess the legal authority to enter into an agreement so as become a User and use the services of Lyamii. If you are below the age of 18 years, you shall not register as a User of the Website and shall not transact on or use the Website on your own.",
+        "As a minor if you wish to use or transact on the Website, such use or transaction shall only be made by a person of legal contracting age (legal guardian or parents). We reserve the right to terminate your membership and/or block access to the Website if it is discovered that you are a minor or incompetent to contract according to the law or any information pertaining to your age entered at the time of creation of account is false.",
+        "There are a number of proprietary logos, service marks and trademarks displayed on the Website and through other Sales Channels of Lyamii, as may be applicable. Lyamii does not grant the User a license, right or authority to utilize such proprietary logos, service marks, or trademarks in any manner. Any unauthorized use of the Content, will be in violation of the applicable law.",
+        "All rights and liabilities of the User and Lyamii with respect to any services or product facilitated by Lyamii shall be restricted to the scope of this User Agreement.",
+        "",
+      ],
+    },
+    {
+      term: "USER ACCOUNT",
+      text: [
+        "In order to access certain features of the Services, you will need to become a profile holder by creating an account. When you create an account, you must provide complete and accurate information. You are solely responsible for the activity that occurs on your account, including your interaction and communication with others, and you must safeguard your account. Towards this end, if you are an Account Holder, you agree to keep your contact information up to date.  ",
+        "As a condition of your use of the Services, you warrant that all information supplied by via the Services to the Lyamii Companies is true, accurate, current and complete, if you are an Account Holder, you will safeguard your account information and will supervise and be completely responsible for any use of your account by anyone other than you, you are 18 years of age or older (in some jurisdictions, local laws may have an older age requirement) in order to register for an account, use the Services and contribute to our websites, and you possess the legal authority to enter into this Agreement and to use the Services, including our websites in accordance with all terms and conditions herein. The Lyamii Companies do not knowingly collect the information of anyone under the age of 18. We retain the right at our sole discretion to deny anyone access to the Services, at any time and for any reason, including, but not limited to, for violation of this Agreement. By using the Services, including any products or services that facilitate the sharing of Content to or from third party sites, you understand that you are solely responsible for any information that you share with the Lyamii Companies. You may access the Services solely as intended through the provided functionality of the Services and as permitted under this Agreement.",
+        "Copying, transmission, reproduction, replication, posting or redistribution of (a) Content or any portion thereof and/or (b) the Services more generally is strictly prohibited without the prior written permission of the Lyamii Companies.",
+        "If you are creating a Lyamii account for commercial purposes and are accepting this Agreement on behalf of a company, organisation or other legal entity, you represent and warrant that you are authorised to do so and have the authority to bind such entity to this Agreement, in which case the words “you” and “your” as used in this Agreement shall refer to such entity and the individual acting on behalf of the company shall be referred to as a “Business Representative”.",
+        "Some Content you see or otherwise access on or through the Services is used for commercial purposes. You agree and understand that the Lyamii Companies may place advertising and promotions on the Services alongside, near, adjacent or otherwise in close proximity to your Content (including, for video or other dynamic content, before, during or after its presentation), as well as the Content of others.",
+      ],
+    },
+    {
+      term: "PROHIBITED ACTIVITIES",
+      text: [
+        "The content and information available on and through the Services (including, but not limited to, messages, data, information, text, music, sound, photos, graphics, video, maps, icons, software, code or other material), as well as the infrastructure used to provide such Content and information, is proprietary to the Lyamii Companies. For all Content other than your Content, you agree not to otherwise modify, copy, distribute, transmit, display, perform, reproduce, publish, license, create derivative works from, transfer or sell or re-sell any information, software, products or services obtained from or through the Services. Additionally, you agree",
+        "not to host, display, upload, publish, transmit or share any information on Lyamii’s website which belongs to another person and to which the User does not have any right.",
+        "not to share obscene, pornographic, paedophilic, invasive of another’s privacy including bodily privacy, insulting or harassing on the basis of gender, racially or ethnically objectionable, not child friendly, relating or encouraging money laundering or gambling, or promoting enmity between different groups on the grounds of religion or caste with the intent to incite violence.",
+        "not to infringes any patent, trademark, copyright or other proprietary rights.",
+        "not to promote anything that threatens the unity, integrity, defence, security or sovereignty of India, friendly relations with foreign States, or public order, or causes incitement to the commission of any cognisable offence, or prevents investigation of any offence, or is insulting other nation.",
+        "not to contain software virus or any other computer code, file or program designed to interrupt or limit the functionality of Lyamii’s platform.",
+        "not to violate the restrictions in any robot exclusion headers on the Services or bypass or circumvent other measures employed to prevent or limit access to the Services.",
+        "not to 'deep link', 'frame', 'mirror' or otherwise incorporate any part of the Services into any other websites or service without our prior written authorisation.",
+        "not to download any Content unless it’s expressly made available for download by the Lyamii Companies.",
+        "User(s) shall not host, display, upload, publish, transmit or share any information on Lyamii’s website which deceives or misleads the addressee about the origin of the message or knowingly and intentionally communicates any misinformation or information which is patently false and untrue or misleading in nature.",
+        "",
+      ],
+    },
+    {
+      term: "REPORT",
+      text: [
+        "User(s) can report any content on the Website which is deemed to be unlawful, objectionable, libelous, defamatory, obscene, harassing, invasive to privacy, abusive, fraudulent, against any religious beliefs, spam, or is violative of any applicable law.",
+        "If the individual is of the view that any content on or listings on Lyamii contains any objectionable or infringing content, User(s) may fill out and submit the at @Lyamii.com. Lyamii shall endeavor to review all complete and valid complaints within the prescribed timeframe under applicable law.",
+        "The information shared as part of the complaint shall a) clearly identify the violations b) Location of the material on the Website, including but not limited to the link of the infringing material c) In case of any IP violations, proof of ownership of such IP and d) contact information",
+        "Complainant consents that Lyamii shall share the contents of any complaint with necessary third parties including without limitation the accused parties involved to determine the respective rights and liabilities against any allegedly illegal content.",
+        "Lyamii shall make commercially reasonable efforts to resolve all content related complaints within the time period prescribed under applicable law provided that:",
+        "Complainant shall provide all relevant information and supporting documentation requested by Lyamii to enable Lyamii to evaluate the complaint; and,",
+        "Lyamii acts in good faith in the determination of any complaint and shall not be liable, in any manner whatsoever, for any act or omission of Lyamii pursuant to such complaint, and no such act or omission shall be construed to be an admission of any liability. All of Lyamii’s rights in such matters are fully reserved. Lyamii does not provide any guarantee or warranty in respect of the outcome of any.",
+        "",
+      ],
+    },
+    {
+      term: "RESPONSIBILITY",
+      text: [
+        "Users are advised to check the description of the services and products carefully before making a booking. User(s) agree to be bound by all the conditions as contained in booking confirmation or as laid out in the confirmed booking voucher. These conditions are also to be read in consonance with the User Agreement.",
+        "If a User intends to make a booking on behalf of another person, it shall be the responsibility of the User to inform such person about the terms of this Agreement, including all rules and restrictions applicable thereto.",
+        "The User undertakes to abide by all procedures and guidelines, as modified from time to time, in connection with the use of the services available through Lyamii. The User further undertakes to comply with all applicable laws, regulations, orders, directions etc. issued by either the Central Government, State Government, District Authorities or any other statutory body empowered to do so w.r.t use of services or for each transaction.",
+        "The services are provided on an 'as is' and 'as available' basis. Lyamii may change the features or functionality of the services being provided at any time, in its sole discretion, without any prior notice. Lyamii expressly disclaims all warranties of any kind, whether express or implied, including, but not limited to the implied warranties of merchantability, reasonably fit for all purposes. No advice or information, whether oral or written, which the User obtains from Lyamii or through the services opted shall create any warranty not expressly made herein or in the terms and conditions of the services.",
+        "User also authorizes Lyamii's representative to contact the user over phone, message and email. This consent shall supersede any preferences set by such User through national customer preference register (NCPR) or any other similar preferences.",
+        "When you book international trips using the Services, you are responsible for ensuring that you meet all foreign entry requirements and that your travel documents, including passports and visas, are in order.",
+        "The passport and visa requirements may change at any time, be sure to check for up-to-date information before booking and departure. The Lyamii Companies accept no liability for travellers who are refused entry onto a flight or into any country because of the traveller’s failure to carry the travel documents required by any airline, authority or country, including countries the traveller may just be passing through en route to his or her destination.",
+        "It is also your responsibility to consult your physician for current recommendations on inoculations before you travel internationally, and to ensure that you meet all health entry requirements and follow all medical guidance related to your trip.",
+        "",
+      ],
+    },
+    {
+      term: "TCS COMPLIANCE",
+      text: [
+        "Overseas tour package' means any tour package which offers a visit to a country or countries or territory or territories outside India and includes expenses for travel or hotel stay or boarding or lodging or any other expenditure of similar nature or in relation thereto.",
+        "‘Specified Person’ means a person defined as per provisions of Section 206CCA(3) of Income Tax Act, 1961.",
+        "The User is liable to pay Tax collected at source (TCS) on booking of an ‘Overseas tour package’ at an appropriate rate over and above the price charged for such package in compliance with the provisions of Section 206C (1G)(b) of the Income Tax Act, 1961. Lyamii will deposit the TCS amount so collected with the Government and issue appropriate document/certificate to the User in compliance with aforesaid provision.",
+        "The Indian User is required to provide a valid PAN of User/Traveler(s) at the time of booking an overseas tour package with Lyamii. The User understands and agrees that Lyamii, at the time of booking or at a later stage, will validate the PAN provided by the User to check compliance of provisions of Section 206CC of Income Tax Act. The User agrees that in case the PAN is found to be invalid, or it does not belong to User/traveler(s), Lyamii has an obligation to cancel the booking in compliance with the law and process the refund as per the cancellation policy applicable to said booking.",
+        "The User further understand and agrees that Lyamii would also, at the time of booking or at a later stage, validate User/traveler(s) PAN as per the provisions of Section 206 CCA of Income Tax Act and if on validation the User qualifies as a ‘Specified person’, the User agrees to pay TCS to Lyamii at such higher rate as may be applicable under section 206CCA. The User agrees to pay the additional TCS amount to Lyamii where, as a result of validation under section 206CCA, the TCS collected at the time of booking falls short of the applicable rate of TCS. If User fails or disagrees to pay the additional TCS, Lyamii has the right to cancel the booking and process appropriate refund as per the cancellation policy applicable to such booking.",
+        "",
+      ],
+    },
+    {
+      term: "LRS COMPLIANCE",
+      text: [
+        "The RBI mandates collection of PAN details for all transactions made under the Liberalized Remittance Scheme (LRS)which include any international booking made on the Website or through Sales Channels. The User warrants and confirms that PAN details of the User/traveler will be shared by the User on or before the cut-off date prescribed by Lyamii either at the time of booking or after the booking is made. In case the traveler is a minor, Lyamii will require PAN details of the parent/guardian of such minor. The User further confirms that non-compliance of this requirement may result in cancellation of the booking.",
+        "The User warrants and confirms that the total amount of foreign exchange purchased or remitted during the current financial year, through all sources in India (including the current transaction) falls within the permissible limit prescribed by the RBI. In case the limit gets breached before the actual remittance request is approved by the AD Bank, Lyamii has an obligation to cancel the booking in compliance with the law and process refund as per cancellation policy applicable to said booking. The User further confirms that foreign exchange, if any, purchased by User for the purpose of international travel under the current booking will be utilized for the purpose indicated above.",
+        "The User authorizes Lyamii to retrieve User’s/ traveler’s (in case booking on someone’s behalf) PAN details from Users profile, previous bookings or share User/traveler’s data with third party(ies) for collecting or verifying PAN details solely for the purposes mentioned in this Agreement.",
+        "The User understands Lyamii does not collect User’s PAN details without consent. If the User wishes to opt of providing the same or wishes to delete it if already provided, the User may do so by accessing the profile information through the Desktop.",
+        "The User authorizes Lyamii to share User/traveler data with third party(ies) for collecting or verifying PAN details of User/traveler.",
+      ],
+    },
+  ],
+};

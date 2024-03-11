@@ -20,6 +20,7 @@ import PassportRegistrationForm from "../components/pages/passportRegistrationFo
 import Personal from "../components/pages/personal/Personal";
 import Profile from "../components/pages/profile/Profile";
 import SubmitPage from "../components/pages/submitPage/SubmitPage";
+import TermConditions from "../components/pages/termConditions/TermConditions";
 import TravellerInfoManagement from "../components/pages/travellerInfoManagement/TravellerInfoManagement";
 import Trips from "../components/pages/trips/Trips";
 import { UserRouteConfig } from "../components/routing/PrivateRoute";
@@ -72,7 +73,7 @@ export const commonSiteMap: UserRouteConfig[] = [
   {
     exact: true,
     path: "/termconditions",
-    Component: ContainerSection,
+    Component: TermConditions,
     access: AccessType.YES,
   },
   {

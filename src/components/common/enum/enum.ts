@@ -59,6 +59,7 @@ export const paths = [
   "/faqs",
   "/cancellationpolicy",
   "/refundpolicy",
+  "/termconditions",
 ];
 export const reviews = [
   {
