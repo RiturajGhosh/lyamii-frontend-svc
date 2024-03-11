@@ -8,9 +8,13 @@ import { selectUserData } from "../../../state/selectors/selectUserData";
 import { UserDataDto } from "../../../state/actions/types/userDataActionType";
 
 const CheckOut: FC = () => {
-  const [number, SetNumber] = useState("");
-  const [name, SetName] = useState("");
-  const [date, SetDate] = useState("");
+  const [accountDetail, setAccountDetail] = useState({
+    accountNumber: 0,
+    cvv: "",
+    accountHolderName: "",
+    phoneNo: "",
+    expiryDate: "",
+  });
   const userData = useSelector(selectUserData);
   const [userDetail, setUserDetail] = useState<UserDataDto>(userData?.userData);
   const [travellersDetails, setTravellersDetails] = useState<
@@ -22,7 +26,6 @@ const CheckOut: FC = () => {
     passport: "",
   });
   const [edit, setEdit] = useState({ row: 1, index: "" });
-  const [cvc, SetCvc] = useState("");
   const [step, setStep] = useState(1);
   const [paymentMethod, setPaymentMethod] = useState(0);
 
@@ -320,19 +323,20 @@ const CheckOut: FC = () => {
                       </div>
                     </div>
                     {paymentMethod === 2 && (
-                      <div className="d-table w-100 text-start pb-5 pl-5">
+                      <div className="d-table w-100 text-start p-5">
                         <div className="d-table w-100 pb-1">
-                          <div className="pr-5 d-table-cell">
+                          <div className="d-table-cell">
                             <div className="small pb-1">Credit Card Number</div>
                             <Row className="justify-content-between d-flex">
                               <Col className="p-0 m-0">
-                                <div className="input-group">
+                                <div className="input-group align-items-center">
                                   {" "}
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 48 48"
-                                    width="24px"
-                                    height="24px"
+                                    width="32px"
+                                    height="38px"
+                                    className="px-1 border-1 border"
                                   >
                                     <path
                                       fill="#ff9800"
@@ -348,9 +352,15 @@ const CheckOut: FC = () => {
                                     />
                                   </svg>
                                   <input
-                                    type="tel"
+                                    type="number"
                                     className="form-control border-secondary"
                                     name="cardNumber"
+                                    onChange={(e) =>
+                                      setAccountDetail({
+                                        ...accountDetail,
+                                        accountNumber: parseInt(e.target.value),
+                                      })
+                                    }
                                     placeholder="Valid Card Number"
                                   />
                                 </div>
@@ -363,7 +373,7 @@ const CheckOut: FC = () => {
                           </div>
                         </div>
                         <div className="d-table w-100 pb-1">
-                          <div className="pr-5 d-table-cell">
+                          <div className="d-table-cell">
                             <div className="small pb-1">Expiry Date</div>
                             <Row>
                               <select
@@ -427,7 +437,7 @@ const CheckOut: FC = () => {
                               </select>
                             </Row>
                           </div>
-                          <div className="pr-5 d-table-cell">
+                          <div className="pl-1 d-table-cell">
                             <div className="small pb-1">
                               CVV Code<span className="numberCircle">?</span>
                             </div>
@@ -437,6 +447,12 @@ const CheckOut: FC = () => {
                                 id="cvc"
                                 placeholder="Card CVV"
                                 maxLength={3}
+                                onChange={(e) =>
+                                  setAccountDetail({
+                                    ...accountDetail,
+                                    cvv: e.target.value,
+                                  })
+                                }
                                 type="password"
                               />
                               <i
@@ -448,7 +464,7 @@ const CheckOut: FC = () => {
                           </div>
                         </div>
                         <div className="d-table w-100 pb-1">
-                          <div className="pr-5 d-table-cell">
+                          <div className="col-6 d-table-cell">
                             <div className="small pb-1">Name on Card</div>
                             <Col className="p-0 m-0">
                               <Col className="justify-content-end align-items-center d-flex ">
@@ -458,14 +474,20 @@ const CheckOut: FC = () => {
                                   data-bound="name_mock"
                                   data-def="Mr. Cardholder"
                                   type="text"
-                                  placeholder="CARDHOLDER NAME"
+                                  onChange={(e) =>
+                                    setAccountDetail({
+                                      ...accountDetail,
+                                      accountHolderName: e.target.value,
+                                    })
+                                  }
+                                  placeholder="Cardholder Name"
                                 />
                                 <i className="ai-person"></i>
                               </Col>
                             </Col>{" "}
                           </div>
-                          <div className="pr-5 d-table-cell">
-                            <div className="small pb-1">Phone No</div>
+                          <div className="col-5 pl-1 d-table-cell">
+                            <div className="small pb-1">Phone Number</div>
                             <Col className="p-0 m-0">
                               <Col className="justify-content-end align-items-center d-flex ">
                                 <input
@@ -474,7 +496,13 @@ const CheckOut: FC = () => {
                                   data-bound="name_mock"
                                   data-def="Mr. Cardholder"
                                   type="text"
-                                  placeholder="CARDHOLDER NAME"
+                                  onChange={(e) =>
+                                    setAccountDetail({
+                                      ...accountDetail,
+                                      phoneNo: e.target.value,
+                                    })
+                                  }
+                                  placeholder="Phone Number"
                                 />
                                 <i className="ai-person"></i>
                               </Col>
@@ -528,13 +556,16 @@ const CheckOut: FC = () => {
                                 id="name_mock"
                                 className="size-md pb-sm uppercase ellipsis"
                               >
-                                Mr. Cardholder
+                                Mr.{" "}
+                                {accountDetail.accountHolderName ||
+                                  "Cardholder"}
                               </Col>
                             </strong>
                             <Col className="size-md pb-md">
                               <strong>
                                 <span id="carddigits_mock">
-                                  0000 0000 0000 0000
+                                  {accountDetail.accountNumber ||
+                                    "0000 0000 0000 0000"}
                                 </span>
                               </strong>
                             </Col>

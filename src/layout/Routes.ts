@@ -11,6 +11,7 @@ import CancellationRefundPolicy from "../components/pages/cancellationRefundPoli
 import CheckOut from "../components/pages/checkout/CheckOut";
 import ComboTours from "../components/pages/comboTours/ComboTours";
 import Contact from "../components/pages/contact/Contact";
+import ContactDetail from "../components/pages/contact/ContactDetail";
 import Dashboard from "../components/pages/dashboard/Dashboard";
 import ExploreDestination from "../components/pages/exploreDestination/ExploreDestination";
 import FAQ from "../components/pages/faq/FAQ";
@@ -61,7 +62,7 @@ export const commonSiteMap: UserRouteConfig[] = [
   {
     exact: true,
     path: "/contact",
-    Component: Contact,
+    Component: ContactDetail,
     access: AccessType.YES,
   },
   {
@@ -91,7 +92,7 @@ export const commonSiteMap: UserRouteConfig[] = [
   {
     exact: true,
     path: "/feedback",
-    Component: ContainerSection,
+    Component: BlankPage,
     access: AccessType.YES,
   },
   {
