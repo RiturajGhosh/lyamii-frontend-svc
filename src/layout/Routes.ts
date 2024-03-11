@@ -10,7 +10,6 @@ import BharatTours from "../components/pages/bharatTours/BharatTours";
 import CancellationRefundPolicy from "../components/pages/cancellationRefundPolicy/CancellationRefundPolicy";
 import CheckOut from "../components/pages/checkout/CheckOut";
 import ComboTours from "../components/pages/comboTours/ComboTours";
-import Contact from "../components/pages/contact/Contact";
 import ContactDetail from "../components/pages/contact/ContactDetail";
 import Dashboard from "../components/pages/dashboard/Dashboard";
 import ExploreDestination from "../components/pages/exploreDestination/ExploreDestination";

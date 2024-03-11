@@ -42,6 +42,7 @@ const CustomerReviews: FC = () => {
                               width: "calc(0.1* 100vh)",
                               height: "calc(0.1* 100vh)",
                             }}
+                            alt=""
                             src={avatar}
                           />
                         </Col>

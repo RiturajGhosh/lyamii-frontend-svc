@@ -1,8 +1,5 @@
 import React, { FC } from "react";
 import { Card, Col, Row } from "react-bootstrap";
-import { IoMdMail } from "react-icons/io";
-import { BiSolidPhoneCall } from "react-icons/bi";
-import { CgFileDocument } from "react-icons/cg";
 
 const ContactDetail: FC = () => {
   return (
