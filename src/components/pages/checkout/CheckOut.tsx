@@ -205,35 +205,34 @@ const CheckOut: FC = () => {
                 </Row>
                 <h3>Customer Information</h3>
 
-                <Row>
-                  {Object.keys(userData.userData).map((key: any) => {
-                    return (
-                      userData.userData.birthDate === "" ? (
-                        <Col className="p-0 m-0">
-                          <Form.Group
-                            className="my-3"
-                            controlId="exampleForm.ControlInput1"
+                <Row className="justify-content-between gap-1">
+                  {Object.entries(userData.userData).map(([key, value]) => {
+                    return value === "" || value === null ? (
+                      <Col className="col-3 p-0 m-0">
+                        <Form.Group
+                          className="my-3"
+                          controlId="exampleForm.ControlInput1"
+                        >
+                          <Form.Label
+                            style={{ fontSize: "10px" }}
+                            className="p-0 m-0 px-2 font-weight-normal"
                           >
-                            {" "}
-                            <Form.Label
-                              style={{ fontSize: "10px" }}
-                              className="p-0 m-0 px-2 font-weight-normal"
-                            >
-                              {key}
-                            </Form.Label>
-                            {edit ? (
-                              <Form.Control
-                                className=""
-                                type="text"
-                                placeholder={""}
-                                onChange={(e: any) => {}}
-                              />
-                            ) : (
-                              <div className="h5 text-dark px-2">{}</div>
-                            )}
-                          </Form.Group>
-                        </Col>
-                      ) : ""
+                            {String(key).toUpperCase()}
+                          </Form.Label>
+                          {edit ? (
+                            <Form.Control
+                              className=""
+                              type="text"
+                              placeholder={""}
+                              onChange={(e: any) => {}}
+                            />
+                          ) : (
+                            <div className="h5 text-dark px-2">{}</div>
+                          )}
+                        </Form.Group>
+                      </Col>
+                    ) : (
+                      ""
                     );
                   })}
                 </Row>
