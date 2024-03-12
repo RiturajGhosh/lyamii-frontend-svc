@@ -33,13 +33,13 @@ const CheckOut: FC = () => {
     console.log(userData);
   }, [userData]);
   return (
-    <MainContainer className="p-5" background="white">
-      <Card className="p-5 shadow">
+    <MainContainer className="p-3 py-5" background="white">
+      <Card className="py-5 shadow">
         <Col className="row">
           <h3 className="justify-content-center d-flex">Checkout Page</h3>
           <div className="tab_container">
             <Row className="position-relative align-items-center p-0 my-3 m-0 justify-content-center d-flex w-100">
-              <Col className="col-1 active text-center p-0 m-0 w-10">
+              <Col className="active text-center p-0 m-0 w-10">
                 <label onClick={() => setStep(1)}>
                   {/* <span className="numberCircle">2</span> */}
                   <span>Customer Information</span>
@@ -48,7 +48,7 @@ const CheckOut: FC = () => {
               <Col className="col-1 border-2 border p-0 m-0 w-10 timeline-line"></Col>
               <Col className="col-1 border-2 border p-0 m-0 w-10 timeline-line"></Col>
 
-              <Col className="col-1 active text-center p-0 m-0 w-10">
+              <Col className="active text-center p-0 m-0 w-10">
                 <label onClick={() => setStep(2)}>
                   {/* <span className="numberCircle">4</span> */}
                   <span>Payment</span>
@@ -218,7 +218,7 @@ const CheckOut: FC = () => {
                         >
                           <Form.Label
                             style={{ fontSize: "10px" }}
-                            className="p-0 m-0 px-2 font-weight-normal"
+                            className="p-0 m-0 font-weight-normal"
                           >
                             {String(key).toUpperCase()}
                           </Form.Label>
@@ -255,7 +255,7 @@ const CheckOut: FC = () => {
                   >
                     <div className="pymt-radio">
                       <Row
-                        className="m-0 py-3 text-start align-items-center d-table w-100 px-5"
+                        className="m-0 py-3 text-start align-items-center d-table w-100 px-md-5"
                         style={{
                           backgroundColor: "#f5f6fa",
                         }}
@@ -271,8 +271,8 @@ const CheckOut: FC = () => {
                           <label htmlFor="radio1"></label>
                         </Col>
                         <Col className="col-9 d-table-cell align-middle align-start pl-4 small">
-                          <p className="pymt-type-name">Phonepe</p>
-                          <p className="pymt-type-desc">
+                          <p className="fs-medium">Phonepe</p>
+                          <p className="fs-small">
                             Safe payment online. Credit card needed. PayPal
                             account is not necessary.
                           </p>
@@ -287,7 +287,7 @@ const CheckOut: FC = () => {
                       </Row>
                     </div>
                     <div className="pymt-radio">
-                      <div className="m-0 py-3 text-start align-items-center d-table w-100 px-5">
+                      <div className="m-0 py-3 text-start align-items-center d-table w-100 px-md-5">
                         <Col className="col-1 p-2 text-start align-top d-table-cell">
                           <input
                             type="radio"
@@ -299,8 +299,8 @@ const CheckOut: FC = () => {
                           <label htmlFor="radio2"></label>
                         </Col>
                         <Col className="col-9 d-table-cell align-middle align-start pl-4 small">
-                          <p className="pymt-type-name">Credit Card</p>
-                          <p className="pymt-type-desc">
+                          <p className="fs-medium">Credit Card</p>
+                          <p className="fs-small">
                             Safe money transfer using your bank account. Safe
                             payment online. Credit card needed. Visa, Maestro,
                             Discover, American Express
@@ -554,7 +554,7 @@ const CheckOut: FC = () => {
                             <strong>
                               <Col
                                 id="name_mock"
-                                className="size-md pb-sm uppercase ellipsis"
+                                className="size-md fs-small pb-sm uppercase ellipsis"
                               >
                                 Mr.{" "}
                                 {accountDetail.accountHolderName ||
@@ -563,13 +563,13 @@ const CheckOut: FC = () => {
                             </strong>
                             <Col className="size-md pb-md">
                               <strong>
-                                <span id="carddigits_mock">
+                                <span id="fs-small carddigits_mock">
                                   {accountDetail.accountNumber ||
                                     "0000 0000 0000 0000"}
                                 </span>
                               </strong>
                             </Col>
-                            <Row className="w-100 justify-content-stretch align-items-center d-flex p-0 m-0 flex-vertical-center">
+                            <Row className="w-100 fs-small justify-content-stretch align-items-center d-flex p-0 m-0 flex-vertical-center">
                               <Col className="p-0 m-0">
                                 <span>Expiry Date : </span>
                                 <span id="mm_mock">00</span> /{" "}
@@ -600,7 +600,7 @@ const CheckOut: FC = () => {
                           </Col>
                         </Col>
 
-                        <ul className="purchase-props">
+                        <ul className="fs-small purchase-props">
                           <li className="flex-between">
                             <span>Tour Name</span> <strong>Goa</strong>
                           </li>
@@ -611,7 +611,7 @@ const CheckOut: FC = () => {
                       </Col>
                       <Col className="separation-line"></Col>
                       <Col className="total-section flex-between flex-vertical-center">
-                        <Col className="flex-fill flex-vertical">
+                        <Col className="fs-small flex-fill flex-vertical">
                           <Col className="total-label f-secondary-color">
                             You have to Pay
                           </Col>

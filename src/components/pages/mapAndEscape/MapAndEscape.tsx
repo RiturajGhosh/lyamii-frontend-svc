@@ -33,21 +33,21 @@ const MapAndEscape: FC = () => {
                     {mapDescription}
                   </p>
                 )}
-                <Row className="d-flex flex-row w-100 gap-2">
+                <Row className="d-flex flex-row w-100 gap-2 flex-wrap">
                   <p
-                    className="text-white col-4 py-2 rounded-4 justify-content-center d-flex"
+                    className="text-white col py-2 px-3 fit-content rounded-4 align-items-center justify-content-center d-flex"
                     style={{ background: "#0752a1", fontFamily: "Archive" }}
                   >
                     75+ Countries
                   </p>
                   <p
-                    className="text-white py-2 col-3 rounded-4 justify-content-center d-flex"
+                    className="text-white py-2 px-3 col fit-content rounded-4 align-items-center justify-content-center d-flex"
                     style={{ background: "#0752a1", fontFamily: "Archive" }}
                   >
                     800+ Stays
                   </p>
                   <p
-                    className="text-white py-2 col rounded-4 justify-content-center d-flex"
+                    className="text-white py-2 col rounded-4 justify-content-center align-items-center d-flex"
                     style={{ background: "#0752a1", fontFamily: "Archive" }}
                   >
                     3500+ Volunteers

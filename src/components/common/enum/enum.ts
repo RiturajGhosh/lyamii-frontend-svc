@@ -118,27 +118,27 @@ export const internationalTours = [
   {
     from: "IND",
     to: "Egypt",
-    path: "",
+    path: require("../../../Assets/header.jpg"),
   },
   {
     from: "IND",
     to: "Japan",
-    path: "",
+    path: require("../../../Assets/header1.jpeg"),
   },
   {
     from: "IND",
     to: "Turkey",
-    path: "",
+    path: require("../../../Assets/header2.jpeg"),
   },
   {
     from: "IND",
     to: "Cambodia",
-    path: "",
+    path: require("../../../Assets/header.jpg"),
   },
   {
     from: "IND",
     to: "United Kingdom",
-    path: "",
+    path: require("../../../Assets/header2.jpeg"),
   },
   {
     from: "IND",

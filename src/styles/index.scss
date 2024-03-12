@@ -241,13 +241,21 @@ $custom-spacers: 10px;
   float: right;
 }
 .yText {
-  background:-webkit-radial-gradient( #009f2f,#eee, #009f2f,#009f2f,#eee,#eee, #eee);
+  background: -webkit-radial-gradient(
+    #009f2f,
+    #eee,
+    #009f2f,
+    #009f2f,
+    #eee,
+    #eee,
+    #eee
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .dot {
-  background: -webkit-linear-gradient( #009f2f , #009f2f,#eee, #eee,#eee, #eee);
+  background: -webkit-linear-gradient(#009f2f, #009f2f, #eee, #eee, #eee, #eee);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -940,6 +948,11 @@ p > strong {
 .fs-7 {
   font-size: calc(2rem + 1.5vw) !important;
 }
+.fs-8 {
+  @media only screen and (max-width: 500px) {
+    font-size: 9px !important;
+  }
+}
 .fs-auto {
   // font-size: 3vi;
   font-size: 1.5dvi;
@@ -966,6 +979,12 @@ p > strong {
 }
 .fs-medium {
   font-size: medium !important;
+}
+.fs-small {
+  font-size: small !important;
+  @media only screen and (min-width: 400px) {
+    font-size: smaller !important;
+  }
 }
 .fs-16 {
   font-size: 24px !important;

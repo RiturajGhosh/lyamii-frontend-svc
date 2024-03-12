@@ -102,13 +102,13 @@ const WhyLyamii: FC = () => {
                           />
                         </Card.Body>
                         <section className="bg-danger align-items-center m-0 d-flex h-100 p-2 w-100 back">
-                          <Card.Body className="p-2 d-flex h-100 flex-column justify-content-center align-items-center align-self-center">
-                            <span className="bold fs-16 fw-bold">
+                          <Card.Body className="p-2 d-flex h-100 flex-column p-2 justify-content-center align-items-center align-self-center">
+                            <span className="bold fs-medium fw-bold">
                               {reason.title}
                             </span>
-                            <span className="text-center small d-flex" style={{fontFamily:"Sanchez"}}>
+                            <Card.Subtitle className="text-center fs-8 d-flex" style={{fontFamily:"Sanchez"}}>
                               {reason.description}
-                            </span>
+                            </Card.Subtitle>
                           </Card.Body>
                         </section>
                       </div>

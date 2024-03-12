@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from "react";
-import { HashRouter, Switch, Route } from "react-router-dom";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 import Home from "./components/pages/Home/Home";
 import "./App.css";
 import "./styles/index.scss";
@@ -10,6 +10,7 @@ import { commonSiteMap } from "./layout/Routes";
 import PrivateRoute, {
   UserRouteConfig,
 } from "./components/routing/PrivateRoute";
+
 import {
   SET_IS_DESKTOP,
   SET_IS_MOBILE,
@@ -63,28 +64,30 @@ const App: FC = () => {
     user.token && refreshApi(user);
   }, []);
   return (
-    <HashRouter>
-      {/* {!isOnProfile && <Header />}
-       {isOnProfile && <SideNav />} */}
-      <HashRouter>
-        <Switch>
-          {routesToBeMapped.map(({ exact, path, Component, access }) => {
-            return (
-              <PrivateRoute
-                path={path}
-                exact={exact}
-                component={Component}
-                key={JSON.stringify(path)}
-                access={access}
-              />
-            );
-          })}
-          <Route path="/login" component={Home} />
-        </Switch>
-      </HashRouter>
+    // <HashRouter>
+    //    {!isOnProfile && <Header />}
+    //     {isOnProfile && <SideNav />}
+    //    <HashRouter>
 
-      {/* {!isOnProfile && <Footer />} */}
-    </HashRouter>
+    <BrowserRouter>
+      <Switch>
+        {routesToBeMapped.map(({ exact, path, Component, access }) => {
+          return (
+            <PrivateRoute
+              path={path}
+              exact={exact}
+              component={Component}
+              key={JSON.stringify(path)}
+              access={access}
+            />
+          );
+        })}
+        <Route path="/login" component={Home} />
+      </Switch>
+    </BrowserRouter>
+    //  </HashRouter>
+    //   {!isOnProfile && <Footer />}
+    //  </HashRouter> */}
   );
 };
 
