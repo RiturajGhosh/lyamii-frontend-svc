@@ -63,10 +63,14 @@ const Header: FC = () => {
             : "navbar"
         }
       >
-        <Col className="d-flex align-items-center justify-content-between">
+        <Col
+          className={`${
+            expand && "flex-column"
+          } d-flex align-items-center justify-content-between`}
+        >
           <Navbar.Brand href="/" className="align-self-center">
             <div className={`d-flex align-items-center ${style.currentPage}`}>
-              <h3 className="text-white  align-items-start">
+              <h3 className="text-white align-items-start">
                 <img
                   className={`p-0 m-0 pb-1 justify-content-center`}
                   style={{

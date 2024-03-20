@@ -39,8 +39,8 @@ const CustomerReviews: FC = () => {
                           <img
                             className="mb-3"
                             style={{
-                              width: "calc(0.1* 100vh)",
-                              height: "calc(0.1* 100vh)",
+                              width: "9dvi",
+                              height: "9dvi",
                             }}
                             alt=""
                             src={avatar}
@@ -53,7 +53,7 @@ const CustomerReviews: FC = () => {
                       </Row>
                       <Col className="">
                         <div
-                          className={`${style.review} fs-medium overflow-hidden font-italic overflow-hidden`}
+                          className={`${style.review} small overflow-hidden font-italic overflow-hidden`}
                           style={{
                             color: "black",
                           }}

@@ -6,8 +6,11 @@ import { TravellersDetailsDto } from "../travellerInfoManagement/TravellerInfoMa
 import { useSelector } from "react-redux";
 import { selectUserData } from "../../../state/selectors/selectUserData";
 import { UserDataDto } from "../../../state/actions/types/userDataActionType";
+import { newPayment } from "../../../utils/payment";
+import { pay } from "../../../api/pay";
 
 const CheckOut: FC = () => {
+  const upiPattern = /^[0-9A-Za-z.-]{2,256}@[A-Za-z]{2,64}$/;
   const [accountDetail, setAccountDetail] = useState({
     accountNumber: 0,
     cvv: "",
@@ -28,10 +31,22 @@ const CheckOut: FC = () => {
   const [edit, setEdit] = useState({ row: 1, index: "" });
   const [step, setStep] = useState(1);
   const [paymentMethod, setPaymentMethod] = useState(0);
+  const [upiId, setUpiID] = useState({
+    value: "",
+    error: false,
+  });
 
-  useEffect(() => {
-    console.log(userData);
-  }, [userData]);
+  const data = {
+    name: "Waleed",
+    price: 1,
+    email: "7498608775",
+    buyer_id: "MUID" + Date.now(),
+  };
+
+  const payment = () => {
+    pay(data);
+  };
+
   return (
     <MainContainer className="p-3 py-5" background="white">
       <Card className="py-5 shadow">
@@ -286,6 +301,52 @@ const CheckOut: FC = () => {
                         </Col>
                       </Row>
                     </div>
+                    {paymentMethod === 1 && (
+                      <Row className="p-0 m-0 justify-content-center align-items-start p-5">
+                        <Col className="p-0 m-0 col-6 gap-2 justify-content-center align-items-start flex-column d-flex">
+                          <Col>
+                            <input
+                              className="form-control border border-1"
+                              id="upiid"
+                              placeholder="UPI ID"
+                              value={upiId?.value}
+                              style={{
+                                borderColor: upiId?.error ? "red" : "#4a915b",
+                              }}
+                              onChange={(e) =>
+                                setUpiID({ ...upiId, value: e.target.value })
+                              }
+                              type="text"
+                            />
+                          </Col>
+                          {upiId?.error && (
+                            <Col
+                              style={{
+                                color: upiId?.error ? "red" : "#4a915b",
+                              }}
+                            >
+                              Invalid UPI ID
+                            </Col>
+                          )}
+                        </Col>
+                        <Col className="col-2 h-100 align-self-start p-0 m-0 d-flex">
+                          <Button
+                            className="round-edges h2 py-1 m-0"
+                            style={{ minHeight: "0%" }}
+                            onClick={(e: any) => {
+                              setUpiID({
+                                ...upiId,
+                                error:
+                                  !upiPattern.test(e.target.value) || false,
+                              });
+                              console.log(upiId);
+                            }}
+                          >
+                            <span className="h6 p-0 m-0">check</span>
+                          </Button>
+                        </Col>
+                      </Row>
+                    )}
                     <div className="pymt-radio">
                       <div className="m-0 py-3 text-start align-items-center d-table w-100 px-md-5">
                         <Col className="col-1 p-2 text-start align-top d-table-cell">

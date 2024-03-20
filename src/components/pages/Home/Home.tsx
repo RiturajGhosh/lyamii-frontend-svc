@@ -9,6 +9,7 @@ import Contact from "../contact/Contact";
 import { useHistory } from "react-router-dom";
 import LifetimeJourney from "../lifetimeJourney/LifetimeJourney";
 import BeyoundObvious from "../beyoundObvious/BeyoundObvious";
+import BusinessClients from "../businessClients/BusinessClients";
 
 const Home: FC = () => {
   const history = useHistory();
@@ -49,13 +50,7 @@ const Home: FC = () => {
       <WhyLyamii />
       <CustomerReviews />
       <Contact />
-      <div className="position-relative p-0 m-0 w-100">
-        <Row className="p-0 m-0 w-100 flex-row d-flex position-absolute justify-content-around"></Row>
-        <div
-          className={`flex-grow-1 footer w-100 top-0 rotate-180 p-0 m-0 bg-cover travel-image position-bottom p-0 m-0`}
-          style={{ minHeight: "150px" }}
-        ></div>
-      </div>
+      <BusinessClients />
     </section>
   );
 };

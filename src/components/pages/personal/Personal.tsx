@@ -12,12 +12,16 @@ import { getCookie } from "../../common/enum/functions";
 import { getUserProfileDataApi } from "../../../api/getUserProfileDataApi";
 import { selectUserData } from "../../../state/selectors/selectUserData";
 import { useLocation } from "react-router-dom";
+import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
 
 const Personal: FC = () => {
   const cookie = getCookie("user");
   const user = cookie && JSON.parse(cookie);
   const location = useLocation();
-  const [edit, setEdit] = useState(location?.pathname?.includes("edit"));
+  const screenSize = useSelector(selectScreenSize);
+  const [edit, setEdit] = useState(
+    location?.pathname?.includes("edit") || false
+  );
   const userData = useSelector(selectUserData);
   const [detail, setDetail] = useState<UserDataDto>(userData?.userData);
   const dispatch = useDispatch();
@@ -56,10 +60,10 @@ const Personal: FC = () => {
   };
   return (
     <div
-      className={`bg-violet-blue px-5 min-vh-100 mw-100 w-100 align-items-center justify-content-end d-flex m-0`}
+      className={`bg-violet-blue px-sx-5 px-3 py-5 min-vh-100 mw-100 w-100 align-items-center justify-content-end d-flex m-0`}
     >
-      <Container
-        fluid="lg"
+    <Container
+      fluid="lg"
         className="p-0 m-0 min-vh-100 justify-content-end d-flex flex-column w-100"
       >
         <Row className="p-0 m-0 min-vh-100 align-items-center justify-content-end d-flex">
@@ -87,10 +91,10 @@ const Personal: FC = () => {
                       img={require("./../../../Assets/id.png")}
                       title="Name"
                       titleStyling={{
-                        width: `${7 * 14}px`,
+                        width: screenSize.screenSize > 500 ? "10vh": `7vh`,
                       }}
                       style={{ fontSize: "10px" }}
-                      titleClassName="bold p-1 text-dark shadow bg-blue"
+                      titleClassName="bold p-1 fs-8 text-dark shadow bg-blue"
                       className="my-1 mt-3"
                     >
                       <Row className="mt-2 gap-1">
@@ -107,7 +111,7 @@ const Personal: FC = () => {
                             </Form.Label>
                             {edit ? (
                               <Form.Control
-                                className=""
+                                className="border-secondary"
                                 type="text"
                                 placeholder={detail?.userFirstName}
                                 onChange={(e: any) =>
@@ -118,7 +122,7 @@ const Personal: FC = () => {
                                 }
                               />
                             ) : (
-                              <div className="h5 text-dark p-0 px-2 m-0 font-weight-normal">
+                              <div className="fs-small text-dark p-0 px-2 m-0 font-weight-normal">
                                 {detail?.userFirstName}
                               </div>
                             )}
@@ -137,7 +141,7 @@ const Personal: FC = () => {
                             </Form.Label>
                             {edit ? (
                               <Form.Control
-                                className=""
+                                className="border-secondary"
                                 type="text"
                                 placeholder={detail?.userLastName}
                                 onChange={(e: any) =>
@@ -148,7 +152,7 @@ const Personal: FC = () => {
                                 }
                               />
                             ) : (
-                              <div className="h5 text-dark p-0 px-2 m-0 font-weight-normal">
+                              <div className="fs-small text-dark p-0 px-2 m-0 font-weight-normal">
                                 {detail?.userLastName}
                               </div>
                             )}
@@ -167,10 +171,10 @@ const Personal: FC = () => {
                       }}
                       title="Email"
                       titleStyling={{
-                        width: `${7 * 14}px`,
+                        width: screenSize.screenSize > 500 ? "10vh": `7vh`,
                       }}
                       style={{ fontSize: "10px" }}
-                      titleClassName="bold p-1 text-dark shadow bg-blue"
+                      titleClassName="bold p-1 fs-8 text-dark shadow bg-blue"
                       className="mt-4 mb-3"
                     >
                       <Row>
@@ -181,7 +185,7 @@ const Personal: FC = () => {
                           >
                             {edit ? (
                               <Form.Control
-                                className=""
+                                className="border-secondary"
                                 type="email"
                                 placeholder={detail?.email}
                                 onChange={(e: any) =>
@@ -192,7 +196,7 @@ const Personal: FC = () => {
                                 }
                               />
                             ) : (
-                              <div className="h5 text-dark px-2">
+                              <div className="fs-small text-dark px-2">
                                 {detail?.email}
                               </div>
                             )}
@@ -211,10 +215,10 @@ const Personal: FC = () => {
                       }}
                       title="Phone Number"
                       titleStyling={{
-                        width: `${12 * 14}px`,
+                        width: screenSize.screenSize > 500 ? "17vh": `12vh`,
                       }}
                       style={{ fontSize: "10px" }}
-                      titleClassName="bold p-1 text-dark shadow bg-blue"
+                      titleClassName="bold p-1 fs-8 text-dark shadow bg-blue"
                       className="my-2"
                     >
                       <Row>
@@ -225,7 +229,7 @@ const Personal: FC = () => {
                           >
                             {edit ? (
                               <Form.Control
-                                className=""
+                                className="border-secondary"
                                 type="text"
                                 placeholder={detail?.phoneNumber}
                                 onChange={(e: any) =>
@@ -236,7 +240,7 @@ const Personal: FC = () => {
                                 }
                               />
                             ) : (
-                              <div className="h5 text-dark px-2">
+                              <div className="fs-small text-dark px-2">
                                 {detail?.phoneNumber}
                               </div>
                             )}
@@ -255,10 +259,10 @@ const Personal: FC = () => {
                       }}
                       title="Date of Birth"
                       titleStyling={{
-                        width: `${11 * 14}px`,
+                        width: screenSize.screenSize > 500 ? "16vh": `11vh`,
                       }}
                       style={{ fontSize: "10px" }}
-                      titleClassName="bold p-1 text-dark shadow bg-blue"
+                      titleClassName="bold p-1 fs-8 text-dark shadow bg-blue"
                       className="mt-4 mb-3"
                     >
                       <Row>
@@ -269,7 +273,7 @@ const Personal: FC = () => {
                           >
                             {edit ? (
                               <Form.Control
-                                className=""
+                                className="border-secondary"
                                 type="date"
                                 placeholder={detail?.birthDate}
                                 onChange={(e: any) =>
@@ -280,7 +284,7 @@ const Personal: FC = () => {
                                 }
                               />
                             ) : (
-                              <div className="h5 text-dark px-2">
+                              <div className="fs-small text-dark px-2">
                                 {detail?.birthDate}
                               </div>
                             )}
@@ -308,10 +312,10 @@ const Personal: FC = () => {
                       }}
                       title="Address"
                       titleStyling={{
-                        width: `${8 * 14}px`,
+                        width: screenSize.screenSize > 500 ? "12vh": `8vh`,
                       }}
                       style={{ fontSize: "10px" }}
-                      titleClassName="p-1 bold text-dark shadow bg-blue"
+                      titleClassName="p-1 bold fs-8 text-dark shadow bg-blue"
                       className="mt-3"
                     >
                       <Col className="m-0 py-12">
@@ -329,7 +333,7 @@ const Personal: FC = () => {
                               </Form.Label>
                               {edit ? (
                                 <Form.Control
-                                  className=""
+                                  className="border-secondary"
                                   type="text"
                                   placeholder={detail?.address?.houseNumber}
                                   onChange={(e: any) =>
@@ -350,7 +354,7 @@ const Personal: FC = () => {
                                 />
                               ) : (
                                 <div
-                                  className="h5 pt-0 p-2 text-dark font-weight-normal"
+                                  className="fs-small pt-0 p-2 text-dark font-weight-normal"
                                   style={{ minHeight: "29px" }}
                                 >
                                   {detail?.address?.houseNumber}
@@ -373,7 +377,7 @@ const Personal: FC = () => {
                               </Form.Label>
                               {edit ? (
                                 <Form.Control
-                                  className=""
+                                  className="border-secondary"
                                   type="text"
                                   placeholder={detail?.address?.street}
                                   onChange={(e: any) =>
@@ -395,7 +399,7 @@ const Personal: FC = () => {
                                 />
                               ) : (
                                 <div
-                                  className="h5 pt-0 p-2 text-dark m-0 font-weight-normal"
+                                  className="fs-small pt-0 p-2 text-dark m-0 font-weight-normal"
                                   style={{ minHeight: "29px" }}
                                 >
                                   {detail?.address?.street}
@@ -418,7 +422,7 @@ const Personal: FC = () => {
                               </Form.Label>
                               {edit ? (
                                 <Form.Control
-                                  className=""
+                                  className="border-secondary"
                                   type="text"
                                   placeholder={detail?.address?.city}
                                   onChange={(e: any) =>
@@ -439,7 +443,7 @@ const Personal: FC = () => {
                                   }
                                 />
                               ) : (
-                                <div className="h5 pt-0 text-dark p-2 m-0 font-weight-normal">
+                                <div className="fs-small pt-0 text-dark p-2 m-0 font-weight-normal">
                                   {detail?.address?.city}
                                 </div>
                               )}
@@ -458,7 +462,7 @@ const Personal: FC = () => {
                               </Form.Label>
                               {edit ? (
                                 <Form.Control
-                                  className=""
+                                  className="border-secondary"
                                   type="text"
                                   placeholder={detail?.address?.state}
                                   onChange={(e: any) =>
@@ -480,7 +484,7 @@ const Personal: FC = () => {
                                 />
                               ) : (
                                 <div
-                                  className="h5 pt-0 text-dark p-2 m-0 font-weight-normal"
+                                  className="fs-small pt-0 text-dark p-2 m-0 font-weight-normal"
                                   style={{ minHeight: "29px" }}
                                 >
                                   {detail?.address?.state}
@@ -501,7 +505,7 @@ const Personal: FC = () => {
                               </Form.Label>
                               {edit ? (
                                 <Form.Control
-                                  className=""
+                                  className="border-secondary"
                                   type="number"
                                   placeholder={detail?.address?.pincode}
                                   onChange={(e: any) =>
@@ -523,7 +527,7 @@ const Personal: FC = () => {
                                 />
                               ) : (
                                 <div
-                                  className="h5 pt-0 text-dark p-2 m-0 font-weight-normal"
+                                  className="fs-small pt-0 text-dark p-2 m-0 font-weight-normal"
                                   style={{ minHeight: "29px" }}
                                 >
                                   {detail?.address?.pincode}
@@ -553,7 +557,7 @@ const Personal: FC = () => {
                               </Form.Label>
                               {edit ? (
                                 <Form.Control
-                                  className=""
+                                  className="border-secondary"
                                   type="text"
                                   placeholder=""
                                   onChange={(e: any) =>
@@ -575,7 +579,7 @@ const Personal: FC = () => {
                                 />
                               ) : (
                                 <div
-                                  className="h5 p-0 m-0 text-dark px-2 font-weight-normal"
+                                  className="fs-small p-0 m-0 text-dark px-2 font-weight-normal"
                                   style={{ minHeight: "29px" }}
                                 >
                                   {detail?.address?.postOffice}
@@ -603,7 +607,7 @@ const Personal: FC = () => {
                               </Form.Label>
                               {edit ? (
                                 <Form.Control
-                                  className=""
+                                  className="border-secondary"
                                   type="text"
                                   placeholder=""
                                   onChange={(e: any) =>
@@ -623,7 +627,7 @@ const Personal: FC = () => {
                                   }
                                 />
                               ) : (
-                                <div className="h5 text-dark p-0 m-0 px-2 font-weight-normal">
+                                <div className="fs-small text-dark p-0 m-0 px-2 font-weight-normal">
                                   {/* {detail?.address?.policeStation} */}
                                 </div>
                               )}
@@ -634,10 +638,10 @@ const Personal: FC = () => {
                     </SubCard>
                     <Row className="p-0 m-0">
                       <Col
-                        md={4}
-                        sm={4}
+                        md={6}
+                        sm={6}
                         lg={4}
-                        xs={4}
+                        xs={6}
                         sx={4}
                         className="p-0 m-0"
                       >
@@ -645,10 +649,10 @@ const Personal: FC = () => {
                           img={require("../../../Assets/gender.png")}
                           title="Gender"
                           titleStyling={{
-                            width: `${8 * 14}px`,
+                            width: screenSize.screenSize > 500 ? "12vh": `10vh`,
                           }}
                           style={{ fontSize: "10px" }}
-                          titleClassName="p-1 bold text-dark shadow bg-blue"
+                          titleClassName="p-1 fs-8 bold text-dark shadow bg-blue"
                           className="mt-3"
                         >
                           <Form.Group
@@ -657,7 +661,7 @@ const Personal: FC = () => {
                           >
                             {edit ? (
                               <Form.Control
-                                className=""
+                                className="border-secondary"
                                 type="text"
                                 placeholder={detail?.gender}
                                 onChange={(e: any) =>
@@ -670,14 +674,14 @@ const Personal: FC = () => {
                                 }
                               />
                             ) : (
-                              <div className="h5 text-dark px-2">
+                              <div className="fs-small text-dark px-2">
                                 {detail?.gender}
                               </div>
                             )}
                           </Form.Group>
                         </SubCard>
                       </Col>
-                      <Col md={4} sm={4} lg={4} xs={4} sx={4}>
+                      <Col md={6} sm={6} lg={4} xs={6} sx={4} className="pe-0">
                         <SubCard
                           icon="TbDropletFilled"
                           fill="white"
@@ -689,10 +693,10 @@ const Personal: FC = () => {
                           }}
                           title="Blood Group"
                           titleStyling={{
-                            width: `${9.5 * 14}px`,
+                            width: screenSize.screenSize > 500 ? "14vh": `10vh`,
                           }}
                           style={{ fontSize: "10px" }}
-                          titleClassName="bold p-1 text-dark shadow bg-blue"
+                          titleClassName="bold fs-8 p-1 text-dark shadow bg-blue"
                           className="mt-3"
                         >
                           <Form.Group
@@ -701,7 +705,7 @@ const Personal: FC = () => {
                           >
                             {edit ? (
                               <Form.Control
-                                className=""
+                                className="border-secondary"
                                 type="text"
                                 placeholder={detail?.bloodGroup}
                                 onChange={(e: any) =>
@@ -712,7 +716,7 @@ const Personal: FC = () => {
                                 }
                               />
                             ) : (
-                              <div className="h5 text-dark px-2">
+                              <div className="fs-small bg-muted w-100 text-dark p-2" style={{height:"30px"}}>
                                 {detail?.bloodGroup}
                               </div>
                             )}
@@ -745,7 +749,7 @@ const Personal: FC = () => {
                     <RoundButton
                       className="border-5 border circle-core"
                       bordercolor="#0e3c30"
-                      size={"calc(3*1vw"}
+                      size={"calc(5vh"}
                       fill={"#c4cdfe"}
                       img={require("../../../Assets/editUser.png")}
                     ></RoundButton>

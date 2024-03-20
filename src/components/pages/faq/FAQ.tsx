@@ -20,29 +20,33 @@ const FAQ: FC = () => {
     });
 
     return (
-      <Row className="d-flex">
-        <button
-          type="button"
-          className="border-0 col-10 bold text-start p-2"
-          style={{ background: "#c4cdfe" }}
-          onClick={() => decoratedOnClick(eventKey)}
-        >
-          {children}
-        </button>
-        {isExpanded ? (
-          <MdOutlineArrowRight
+      <Row className="d-flex align-items-center ">
+        <Col className="col-10 align-items-center p-2">
+          <button
+            type="button"
+            className="border-0 bold text-start m-0 p-0"
+            style={{ background: "#c4cdfe" }}
             onClick={() => decoratedOnClick(eventKey)}
-            className="col-2 pointer"
-            size={"calc(0.05*100vw"}
-          />
-        ) : (
-          // <IoMdArrowDropright className="col-2" size={"calc(0.05*100vw"} />
-          <MdOutlineArrowDropDown
-            onClick={() => decoratedOnClick(eventKey)}
-            className="col-2 pointer"
-            size={"calc(0.05*100vw"}
-          />
-        )}
+          >
+            {children}
+          </button>
+        </Col>
+        <Col className="col-2 p-0 m-0 justify-content-end d-flex">
+          {isExpanded ? (
+            <MdOutlineArrowRight
+              onClick={() => decoratedOnClick(eventKey)}
+              className="pointer"
+              size={"50%"}
+            />
+          ) : (
+            // <IoMdArrowDropright className="col-2" size={"calc(0.05*100vw"} />
+            <MdOutlineArrowDropDown
+              onClick={() => decoratedOnClick(eventKey)}
+              className="pointer"
+              size={"50%"}
+            />
+          )}
+        </Col>
       </Row>
     );
   }
@@ -66,8 +70,8 @@ const FAQ: FC = () => {
         <Row className="col-10">
           {faqs.slice(0, faqs.length).map((faq: any, index: number) => {
             return (
-              <li className="w-50 d-table">
-                <Card className="shadow-none">
+              <Col md={6} lg={6} sm={12} xs={12} className="d-table">
+                <Card className="shadow-none mx-0">
                   <Card.Header
                     className="fs-16 p-2"
                     style={{ background: "#c4cdfe", color: "#2a3d66" }}
@@ -78,13 +82,14 @@ const FAQ: FC = () => {
                   </Card.Header>
                   <Accordion.Collapse eventKey={index.toString()}>
                     <Card.Body
+                      className="fs-16 p-2"
                       style={{ color: "#6b7488", background: "#e6e6e6" }}
                     >
                       {faq.ans}
                     </Card.Body>
                   </Accordion.Collapse>
                 </Card>
-              </li>
+              </Col>
             );
           })}
         </Row>

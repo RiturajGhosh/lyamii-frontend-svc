@@ -11,9 +11,16 @@ import { CiCalendar } from "react-icons/ci";
 import { TbDropletFilled } from "react-icons/tb";
 import { HiShoppingCart } from "react-icons/hi";
 import { AiTwotoneHome } from "react-icons/ai";
+import { PiSunHorizonFill } from "react-icons/pi";
+import { BsStars } from "react-icons/bs";
 import { HiMapPin } from "react-icons/hi2";
-import { BsFillPersonFill } from "react-icons/bs";
+import {
+  BsFillMoonFill,
+  BsFillPersonFill,
+  BsFillSunFill,
+} from "react-icons/bs";
 import Flight from "./flight";
+import { BiSolidMessageMinus } from "react-icons/bi";
 
 type IconProps = {
   name: string;
@@ -22,6 +29,7 @@ type IconProps = {
   fill?: string;
   width?: string;
   height?: string;
+  href?:string;
   onClick?: Function;
 };
 
@@ -32,11 +40,12 @@ const Icon = ({
   style,
   width,
   height,
+  href,
   onClick,
 }: IconProps) => {
   switch (name) {
     case "FaPhone": {
-      return <FaPhone fill={fill} className={className} style={style} />;
+      return <FaPhone fill={fill} className={className} href={href} style={style} />;
     }
     case "TbDropletFilled": {
       return (
@@ -44,7 +53,7 @@ const Icon = ({
       );
     }
     case "MdEmail": {
-      return <MdEmail fill={fill} className={className} style={style} />;
+      return <MdEmail fill={fill} href={href} className={className} style={style} />;
     }
     case "GoHomeFill": {
       return <GoHomeFill fill={fill} className={className} style={style} />;
@@ -84,6 +93,26 @@ const Icon = ({
         />
       );
     }
+    case "message": {
+      return (
+        <BiSolidMessageMinus fill={fill} className={className} style={style} />
+      );
+    }
+    case "evening": {
+      return <BsFillMoonFill fill={fill} className={className} style={style} />;
+    }
+    case "morning": {
+      return (
+        <PiSunHorizonFill fill={fill} className={className} style={style} />
+      );
+    }
+    case "night": {
+      return <BsStars fill={fill} className={className} style={style} />;
+    }
+    case "afternoon": {
+      return <BsFillSunFill fill={fill} className={className} style={style} />;
+    }
+
     case "addRoundButton": {
       return (
         <MdAddCircleOutline

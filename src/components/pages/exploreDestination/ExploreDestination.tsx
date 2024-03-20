@@ -129,7 +129,7 @@ const ExploreDestination: FC = () => {
                 >
                   <div className="w-100 position-relative">
                     <Col
-                      className="py-2 px-4 col-11 p-0 bold display-6 text-end w-100"
+                      className="py-2 px-4 col-11 p-0 bold fs-2 text-end w-100"
                       style={{
                         background: "#889dfe",
                         color: "white",
@@ -206,9 +206,9 @@ const ExploreDestination: FC = () => {
               </Col>
               <Row className="pt-2 gap-2">
                 <Col className="justify-content-center d-flex form__input w-60 bg-white p-0 h2">
-                  <label className="pl-4 fs-16">Starting Date:</label>
+                  <label className="pl-4 fs-medium">Starting Date:</label>
                   <input
-                    className="form__input w-60 bg-white justify-content-center h2 p-1 px-2 text-dark text-center m-0 border-0"
+                    className="form__input w-60 bg-white justify-content-center fs-medium p-1 px-2 text-dark text-center m-0 border-0"
                     type="text"
                     value={tourDetail.startDate}
                     style={{ background: "#19bca1", fontFamily: "NORWESTER" }}
@@ -221,9 +221,9 @@ const ExploreDestination: FC = () => {
                   />
                 </Col>
                 <Col className="justify-content-center d-flex form__input w-60 bg-white p-0 h2">
-                  <label className="fs-16 pl-4">End Date:</label>
+                  <label className="fs-medium pl-4">End Date:</label>
                   <input
-                    className="form__input w-60 bg-white justify-content-center h2 p-1 px-2 text-dark text-center m-0 border-0"
+                    className="form__input w-60 bg-white justify-content-center fs-medium p-1 px-2 text-dark text-center m-0 border-0"
                     type="text"
                     value={tourDetail.endDate}
                     style={{ background: "#19bca1", fontFamily: "NORWESTER" }}
@@ -297,7 +297,7 @@ const ExploreDestination: FC = () => {
         </Col>
       </Row>
 
-      <Col className={"mx-2 px-5 pb-5"}>
+      <Col className={"mx-2 px-sm-2 px-md-5 pb-5"}>
         {/* <Row className="p-0 m-0 w-100 d-flex justify-content-between">
           <Col className="p-0">
             <Row className="p-0 w-100">
@@ -347,7 +347,7 @@ const ExploreDestination: FC = () => {
                 lg={4}
                 sx={12}
                 sm={8}
-                className="mx-3 col-12 d-inline-block position-relative"
+                className="mx-md-3 col-12 d-inline-block position-relative"
               >
                 <Card key={index} className={`p-0 `}>
                   <TourCard

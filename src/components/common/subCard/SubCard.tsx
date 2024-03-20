@@ -10,11 +10,12 @@ type subCardType = {
   iconStyling?: CSSProperties;
   cardColor?: string;
   titleClassName?: string;
-  style?:CSSProperties;
+  style?: CSSProperties;
   children?: React.ReactNode;
   icon?: string;
   fill?: string;
   img?: string;
+  fontSize?: string;
 };
 const SubCard: FC<subCardType> = ({
   title,
@@ -29,11 +30,12 @@ const SubCard: FC<subCardType> = ({
   cardColor = "bg-light-grey",
   className,
   titleStyling,
+  fontSize,
 }) => {
   return (
-    <Col className={`${className ? className : "my-3"}`}>
+    <Col className={`${className ? className : "my-3"}`} style={style}>
       <div
-        className="form__input-group border-1 border m-0 h-100 p-0"
+        className={`form__input-group border-1 border m-0 h-100 p-0`}
         style={{ background: cardColor }}
       >
         <div

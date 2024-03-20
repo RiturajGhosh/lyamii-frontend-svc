@@ -11,15 +11,18 @@ const Footer: FC = () => {
       <Col className="footer float-right p-0 m-0 w-100">
         <Col className="m-0 p-0 w-100">
           <Col className="mt-5 row d-flex justify-content-between m-5">
-            <Col md={7} lg={7}>
+            <Col md={12} lg={7}>
               <Row>
-                <Col className="p-0">
+                <Col md={4} lg={4} sm={12} className="p-0">
                   <h2 className="ft-24 mt-2 fw-bold">Community</h2>
                   <>
                     {communities.map((community: HeaderList, index: number) => {
                       return (
                         <ul key={index} className="p-0 my-0">
-                          <li key={index} className="social-icons py-0">
+                          <li
+                            key={index}
+                            className="list-unstyled social-icons py-0"
+                          >
                             <Link
                               key={index}
                               to={community.path}
@@ -33,13 +36,16 @@ const Footer: FC = () => {
                     })}
                   </>
                 </Col>
-                <Col className="p-0">
+                <Col md={5} lg={4} sm={12} className="p-0">
                   <h2 className="ft-24 mt-2 fw-bold">Must Reads</h2>
                   <>
                     {mustReads.map((reads: HeaderList, index: number) => {
                       return (
                         <ul key={index} className="p-0 my-0">
-                          <li key={index} className="social-icons py-0">
+                          <li
+                            key={index}
+                            className="list-unstyled social-icons py-0"
+                          >
                             <Link
                               key={index}
                               to={reads.path}
@@ -53,13 +59,16 @@ const Footer: FC = () => {
                     })}
                   </>
                 </Col>
-                <Col className="p-0 col-5 d-flex flex-column">
-                  <h2 className="ft-24 mt-2 fw-bold">Support</h2>
+                <Col md={3} lg={4} sm={12} className="p-0 d-flex flex-column">
+                  <h2 className="ft-24 mt-2 justify-content-md-center d-flex fw-bold">Support</h2>
                   <>
                     {supports.map((support: HeaderList, index: number) => {
                       return (
-                        <ul key={index} className="p-0 my-0">
-                          <li key={index} className="social-icons py-0">
+                        <ul key={index} className="p-0 my-0 justify-content-md-center d-flex">
+                          <li
+                            key={index}
+                            className="list-unstyled social-icons py-0"
+                          >
                             <Link
                               key={index}
                               to={support.path}
@@ -75,7 +84,7 @@ const Footer: FC = () => {
                 </Col>
               </Row>
             </Col>
-            <Col md={5} lg={5} className="mt-2">
+            <Col md={12} lg={5} className="mt-2">
               <span
                 className="display-1 text-white"
                 onClick={() => history.push("/")}

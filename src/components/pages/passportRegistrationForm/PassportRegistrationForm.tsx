@@ -21,7 +21,7 @@ const PassportRegistrationForm: FC = () => {
 
   return (
     <div
-      className={`bg-white align-content-start flex-wrap p-5 min-vh-100 min-vw-100 mw-100 w-100 align-items-center justify-content-end d-flex m-0`}
+      className={`bg-white align-content-start flex-wrap p-sm-5 min-vh-100 min-vw-100 mw-100 w-100 align-items-center justify-content-end d-flex m-0`}
     >
       <Row className="py-42 g-5 flex-lg-row flex-column-reverse">
         <Col
@@ -75,7 +75,7 @@ const PassportRegistrationForm: FC = () => {
           <Form className="gap-4 d-flex flex-column">
             <Col className="justify-content-center d-flex">
               <Row className="position-relative align-items-center p-0 my-3 m-0 justify-content-center d-flex w-100">
-                <Col className="col-1 d-flex position-relative p-0 m-0">
+                <Col className="col-1 d-flex position-relative p-0 mx-1 m-0">
                   <RoundButton
                     className="border-5 border circle-core"
                     bordercolor="#0e3c30"
@@ -83,11 +83,11 @@ const PassportRegistrationForm: FC = () => {
                     fill={"#8dc498"}
                   />
                 </Col>
-                <Col className="col-1 active text-center p-0 m-0 w-10">
+                <Col className="col-1 d-contents active text-center p-0 m-0 w-10">
                   {"step 1"}
                 </Col>
                 <Col className="col-1 border-2 border p-0 m-0 w-10 timeline-line"></Col>
-                <Col className="col-1 d-flex position-relative p-0 m-0">
+                <Col className="col-1 d-flex position-relative p-0 mx-1 m-0">
                   <RoundButton
                     className="border-5 border circle-core"
                     bordercolor="#0e3c30"
@@ -95,11 +95,11 @@ const PassportRegistrationForm: FC = () => {
                     fill={"#8dc498"}
                   />
                 </Col>
-                <Col className="col-1 active text-center p-0 m-0 w-10">
+                <Col className="col-1 d-contents active text-center p-0 m-0 w-10">
                   {"step 2"}
                 </Col>
                 <Col className="col-1 border-2 border p-0 m-0 w-10 timeline-line"></Col>
-                <Col className="col-1 d-flex position-relative p-0 m-0">
+                <Col className="col-1 d-flex position-relative p-0 mx-1 m-0">
                   <RoundButton
                     className="border-5 border circle-core"
                     bordercolor="#0e3c30"
@@ -107,7 +107,7 @@ const PassportRegistrationForm: FC = () => {
                     fill={"#8dc498"}
                   />
                 </Col>
-                <Col className="col-1 active text-center p-0 m-0 w-10">
+                <Col className="col-1 d-contents px-2 active text-center p-0 m-0 w-10">
                   {"step 3"}
                 </Col>
               </Row>

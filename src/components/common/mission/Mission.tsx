@@ -1,16 +1,22 @@
 import React, { FC } from "react";
 import { Col, Row, Card } from "react-bootstrap";
 import { internationalTours } from "../enum/enum";
+import { useSelector } from "react-redux";
+import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
 
 const Mission: FC = () => {
+  const screenSize = useSelector(selectScreenSize);
   return (
-    <Col className="justify-content-end d-flex">
-      <Col md={11} lg={11} className="position-relative">
-        <Row className="mt-3" id="#mission">
-          <Col className="mt-5 justify-content-start align-self-end d-flex align-items-end">
-            <span className="display-3 text-dark fw-bold">Mission</span>
+    <Row md={12} lg={12} className="position-relative">
+      {screenSize.screenSize > 767 && <Col className="col-1"></Col>}
+      <Col md={11} lg={11} className="col-12 p-0 m-0">
+        <Col className="mt-3" id="#mission">
+          <Col className="mt-5 mx-4 justify-content-start align-self-end d-flex">
+            <span className="display-3 text-dark text-start fw-bold">
+              Mission
+            </span>
           </Col>
-          <div className="product-list" onScroll={(e) => {}}>
+          <Col className="product-list" onScroll={(e) => {}}>
             {internationalTours.map((option, idx) => (
               <Col onClick={() => {}} key={idx} sm={12} xs={12}>
                 <Card className={`my-2 mx-1`} style={{ background: "#d9b246" }}>
@@ -36,10 +42,10 @@ const Mission: FC = () => {
                 </Card>
               </Col>
             ))}
-          </div>
-        </Row>
+          </Col>
+        </Col>
       </Col>
-    </Col>
+    </Row>
   );
 };
 

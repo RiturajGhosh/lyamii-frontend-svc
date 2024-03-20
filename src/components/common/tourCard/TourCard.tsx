@@ -117,7 +117,7 @@ const TourCard: FC<TourCardType> = ({
                       <Row className="d-flex gx-0">
                         <Col>
                           <div
-                            className="pl-2 float-right h6 p-0 m-0"
+                            className="pl-2 float-right fs-medium p-0 m-0"
                             style={{
                               color: "#f7de26 ",
                             }}

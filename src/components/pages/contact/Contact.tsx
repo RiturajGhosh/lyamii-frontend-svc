@@ -7,7 +7,7 @@ import { CgFileDocument } from "react-icons/cg";
 const Contact: FC = () => {
   return (
     <Col
-      className="home-about-section d-flex justify-content-center sectionContainer pt-42"
+      className="home-about-section d-flex justify-content-center sectionContainer py-42"
       id="about"
     >
       <Col lg={11} md={11} sx={11} xs={11}>

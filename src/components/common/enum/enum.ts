@@ -49,6 +49,14 @@ export const facilities = [
   require("../../../Assets/food.png"),
   require("../../../Assets/police.png"),
 ];
+export const bussinessClints = [
+  require("../../../Assets/indigo.png"),
+  require("../../../Assets/tata.png"),
+  require("../../../Assets/taj.png"),
+  require("../../../Assets/nestle.png"),
+  require("../../../Assets/marriott.png"),
+  require("../../../Assets/hdfc.png"),
+];
 export const paths = [
   "/signup",
   "/login",
@@ -60,7 +68,23 @@ export const paths = [
   "/cancellationandRefundpolicy",
   "/refundpolicy",
   "/termconditions",
+  "/crm"
 ];
+export const months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "June",
+  "July",
+  "Aug",
+  "Sept",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+export const teamRating = [5, 4, 5, 4];
 export const reviews = [
   {
     name: "Sarah M",
@@ -89,7 +113,10 @@ export const communities: HeaderList[] = [
 export const mustReads: HeaderList[] = [
   { name: "Terms and conditions", path: "/termconditions" },
   { name: "Privacy policy", path: "/privacypolicy" },
-  { name: "Cancellation and Refund policy", path: "/cancellationandRefundpolicy" },
+  {
+    name: "Cancellation and Refund policy",
+    path: "/cancellationandRefundpolicy",
+  },
   { name: "User Manual", path: "/userManual" },
   { name: "FAQ", path: "/faqs" },
 ];
@@ -102,15 +129,18 @@ export const supports: HeaderList[] = [
 export const journeyOptions = [
   {
     name: "ROYAL BHARAT EDITION",
-    path: require("../../../Assets/bharat.png"),
+    imgPath: require("../../../Assets/bharat.png"),
+    path: "/bharat-tours",
   },
   {
     name: "BACKPACKERS EDITION",
-    path: require("../../../Assets/backpackers.jpeg"),
+    imgPath: require("../../../Assets/backpackers.jpeg"),
+    path: "/backpackers",
   },
   {
     name: "COMBOS",
-    path: require("../../../Assets/combo.jpeg"),
+    imgPath: require("../../../Assets/combo.jpeg"),
+    path: "/combo",
   },
 ];
 
@@ -1964,5 +1994,78 @@ export const isoCountries = [
   {
     id: "ZW",
     text: "Zimbabwe",
+  },
+];
+
+export const tourScheduleDetail = [
+  {
+    shift: "Morning",
+    schedule: [
+      {
+        event: "Breakfast",
+        eventDescription:
+          "Start your day with a delicious Goan breakfast. You can try Poi (Goan bread) with Prawn Balchão or Goan Sausage, along with a refreshing glass of Feni (a local liquor made from cashews or coconuts).",
+      },
+      {
+        event: "Carnival",
+        eventDescription:
+          "Panaji, the capital of Goa. It's the central location for most carnival events.",
+      },
+      {
+        event: "Shantadurga Temple",
+        eventDescription:
+          "Before the carnival festivities kick off, take a moment to visit the Shantadurga Temple in Kavlem, just a short distance from Panaji. This beautiful temple is an excellent way to experience Goa's spiritual side.",
+      },
+    ],
+  },
+  {
+    shift: "Afternoon",
+    schedule: [
+      {
+        event: "Enjoy Street Food",
+        eventDescription:
+          "Grab a quick lunch at one of the many street food stalls in Panaji or nearby areas. You can try some Goan favorites like Goan Fish Curry, Bebinca (traditional Goan dessert), or Vada Pav (a popular Indian street food).",
+      },
+      {
+        event: " Explore the Carnival",
+        eventDescription:
+          "Head back to Panaji to immerse yourself in the vibrant carnival celebrations. The streets will be filled with music, dancing, colorful floats, and enthusiastic locals dressed in vibrant costumes.",
+      },
+      {
+        event: " Carnival Parade",
+        eventDescription:
+          "Don't miss the main Carnival Parade that usually starts in the afternoon. It's a grand procession with floats, dancers, live bands, and lots of cheer. Follow the parade route and enjoy the lively atmosphere.",
+      },
+    ],
+  },
+  {
+    shift: "Evening",
+    schedule: [
+      {
+        event: "Sunset at Miramar Beach",
+        eventDescription:
+          "After the parade, make your way to Miramar Beach to witness a breathtaking Goan sunset. Relax by the sea, feel the cool breeze, and take in the serene ambiance.",
+      },
+      {
+        event: "Dinner at a Beach Shack",
+        eventDescription:
+          "For dinner, head to one of the beach shacks or waterfront restaurants to enjoy some fresh seafood and other Goan delicacies. Calangute, Baga, or Anjuna beaches are popular areas with a wide range of dining options.",
+      },
+    ],
+  },
+  {
+    shift: "Night",
+    schedule: [
+      {
+        event: "Party at a Carnival Event",
+        eventDescription:
+          "Since it's carnival time, several parties and events will be happening across the city. Choose one of the Carnival-themed events, dance the night away, and enjoy the lively atmosphere with locals and other tourists.",
+      },
+      {
+        event: "Return to your Accommodation",
+        eventDescription:
+          "After a fun-filled day, travel back to your accommodation. You can use a taxi or rideshare service to ensure a safe trip back.",
+      },
+    ],
   },
 ];

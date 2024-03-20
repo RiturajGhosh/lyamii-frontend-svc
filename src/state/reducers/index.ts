@@ -5,6 +5,7 @@ import tourDataReducer from "./tourDataReducer";
 import routeLocationReducer from "./routeLocationReducer";
 import loginDataReducer from "./loginDataReducer";
 import userProfileDataReducer from "./userProfileDataReducer";
+import sideNavReducer from "./sideNavReducer";
 
 const reducers = combineReducers({
   globeData: globeDataReducer,
@@ -12,7 +13,8 @@ const reducers = combineReducers({
   tourData: tourDataReducer,
   routeLocation: routeLocationReducer,
   loginData: loginDataReducer,
-  userData: userProfileDataReducer
+  userData: userProfileDataReducer,
+  sideNav:sideNavReducer
 });
 
 const rootReducer = (state:any, action:any)=>{

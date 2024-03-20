@@ -95,7 +95,10 @@ const JoinUs: FC = () => {
     }
   };
   return (
-    <Col className="min-vh-100 flex-column align-items-center justify-content-center d-flex">
+    <Col
+      className="min-vh-100 flex-column align-items-center justify-content-center d-flex"
+      style={{ background: "#b4f5c5" }}
+    >
       <Col className="col-12">
         <Formik
           initialValues={detail}
@@ -126,7 +129,7 @@ const JoinUs: FC = () => {
                         <Col className="px-1 m-0">
                           <InputForm
                             label={""}
-                            className="w-100 bg-white h5 justify-content-center p-2 px-2 text-dark text-center m-0 border-2 border-top-0 border-end-0 border-start-0"
+                            className="w-100 bg-white round-edges h5 justify-content-center p-2 px-2 text-dark text-center m-0 border-2 border-top-0 border-end-0 border-start-0"
                             type="text"
                             placeholder="USER NAME"
                             values={values}
@@ -405,13 +408,14 @@ const JoinUs: FC = () => {
           }}
         </Formik>
         <Col className="align-items-end d-flex p-5">
-          <Row className="d-flex justify-content-around flex-wrap">
+          <Row className="gap-2 g-3 w-100">
             <Col
-              className="col-2 position-relative h-100 align-self-end p-0 m-0"
+              className=""
               style={{
                 background: "#7ed994",
                 color: "#218a43",
                 textShadow: "#218a43",
+                flex: "0.2654",
               }}
             >
               <Col className="w-100 position-relative">
@@ -427,9 +431,9 @@ const JoinUs: FC = () => {
               </Col>
               <Col className="position-relative p-0 border-1 text-center mx-42 justify-content-end text-white">
                 <Button
-                  className="align-middle justify-self-center position-absolute top-100 translate-middle btn-secondary"
+                  className="align-middle fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary"
                   style={{ background: "#0752a1" }}
-                  onClick={()=>history.push("/addHotel")}
+                  onClick={() => history.push("/addHotel")}
                 >
                   Accomadation
                 </Button>
@@ -437,11 +441,12 @@ const JoinUs: FC = () => {
             </Col>
 
             <Col
-              className="col-2 h-100 position-relative align-self-end p-0 m-0"
+              className=""
               style={{
                 background: "#7ed994",
                 color: "#218a43",
                 textShadow: "#218a43",
+                flex: "0.3344",
               }}
             >
               <Col className="w-100 h-100 position-relative">
@@ -457,19 +462,20 @@ const JoinUs: FC = () => {
               </Col>
               <Col className="position-relative p-0 border-1 text-center mx-42 justify-content-end text-white">
                 <Button
-                  className="align-middle w-100 justify-self-center position-absolute top-100 translate-middle btn-secondary"
-                  style={{ background: "#0752a1" }}
+                  className="align-middle fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary"
+                  style={{ background: "#0752a1",whiteSpace:"nowrap" }}
                 >
                   Tour Guide
                 </Button>
               </Col>
             </Col>
             <Col
-              className="col-2 h-100 position-relative align-self-end p-0 m-0"
+              className=""
               style={{
                 background: "#7ed994",
                 color: "#218a43",
                 textShadow: "#218a43",
+                flex: "0.3204",
               }}
             >
               <Col className="w-100 h-100 position-relative">
@@ -485,7 +491,7 @@ const JoinUs: FC = () => {
               </Col>
               <Col className="position-relative p-0 border-1 text-center mx-42 justify-content-end text-white">
                 <Button
-                  className="align-middle justify-self-center position-absolute top-100 translate-middle btn-secondary"
+                  className="align-middle fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary"
                   style={{ background: "#0752a1" }}
                 >
                   Transfers
@@ -493,11 +499,12 @@ const JoinUs: FC = () => {
               </Col>
             </Col>
             <Col
-              className="col-2 position-relative h-100 align-self-end p-0 m-0"
+              className=""
               style={{
                 background: "#7ed994",
                 color: "#218a43",
                 textShadow: "#218a43",
+                flex: "0.3314",
               }}
             >
               <Col className="w-100 position-relative">
@@ -513,7 +520,7 @@ const JoinUs: FC = () => {
               </Col>
               <Col className="position-relative p-0 border-1 text-center mx-42 justify-content-end text-white">
                 <Button
-                  className="align-middle justify-self-center position-absolute top-100 translate-middle btn-secondary"
+                  className="align-middle fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary"
                   style={{ background: "#0752a1" }}
                 >
                   Volunteer

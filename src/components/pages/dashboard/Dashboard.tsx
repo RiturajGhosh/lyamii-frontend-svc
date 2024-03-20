@@ -1,7 +1,11 @@
 import React, { FC } from "react";
 import { Col, Row, Card, Container, Nav } from "react-bootstrap";
 import { IoLogoFacebook } from "react-icons/io";
-import { AiFillTwitterCircle, AiOutlineInstagram } from "react-icons/ai";
+import {
+  AiFillStar,
+  AiFillTwitterCircle,
+  AiOutlineInstagram,
+} from "react-icons/ai";
 import SubCard from "../../common/subCard/SubCard";
 import { FaHeart } from "react-icons/fa6";
 import { FaMapMarkerAlt } from "react-icons/fa";
@@ -10,12 +14,20 @@ import { HiThumbUp, HiThumbDown } from "react-icons/hi";
 import { IoIosPaperPlane } from "react-icons/io";
 import ArrowButton from "../../common/arrowButton/ArrowButton";
 import { useHistory } from "react-router-dom";
+import RoundButton from "../../common/roundButton/RoundButton";
+import { months, teamRating } from "../../common/enum/enum";
+import Frame from "../../common/frame/Frame";
+import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
+import { useSelector } from "react-redux";
 
 const Dashboard: FC = () => {
+  const date = new Date();
+  console.log(date);
   const history = useHistory();
+  const screenSize = useSelector(selectScreenSize);
   return (
     <div
-      className={`bg-white px-4 min-vh-100 mw-100 w-100 align-items-center justify-content-end d-flex m-0`}
+      className={`overflow-auto bg-white px-4 min-vh-100 mw-100 w-100 align-items-center justify-content-center d-flex m-0`}
     >
       <Container
         fluid="lg"
@@ -121,7 +133,13 @@ const Dashboard: FC = () => {
                   </Col>
                 </SubCard>
               </Col>
-              <Col className="p-0 col-4 m-0 gap-4 d-flex flex-column align-items-start">
+              <Col
+                sm={12}
+                md={4}
+                lg={4}
+                xs={12}
+                className="p-0 col-4 m-0 gap-4 d-flex flex-column align-items-start"
+              >
                 <Row className="align-self-start gap-4 d-flex">
                   <Col className="align-items-center p-0 m-0 h-0 fit-content flex-wrap justify-content-center d-flex">
                     <FaMapMarkerAlt size={"25px"} />
@@ -149,7 +167,7 @@ const Dashboard: FC = () => {
                           className="p-0 m-0 border border-1 text-center small rounded-3"
                           style={{ background: "#879cff" }}
                         >
-                          21
+                          {date.getHours()}
                         </Col>
                         <Col
                           className="p-0 m-0 col-1 border border-1 text-center small rounded-3"
@@ -161,7 +179,7 @@ const Dashboard: FC = () => {
                           className="p-0 m-0 border border-1 text-center small rounded-3"
                           style={{ background: "#879cff" }}
                         >
-                          20
+                          {date.getMinutes()}
                         </Col>
                       </Row>
                     </Col>
@@ -174,70 +192,83 @@ const Dashboard: FC = () => {
                       className="fw-bold rounded-3 p-1 align-items-center d-flex"
                       style={{ minHeight: "0", color: "#97a9ff" }}
                     >
-                      15
+                      {date.getDate()}
                       <div
                         className="text-white fw-bold rounded-3 px-2 mx-2 align-items-center d-flex p-0 m-0"
                         style={{ minHeight: "0", background: "#97a9ff" }}
                       >
-                        Auguest
+                        {months[date.getUTCMonth() - 1]}
                       </div>
                     </div>
                   </Col>
                 </Row>
-                <SubCard
-                  titleClassName="small bg-secondary shadow"
-                  className="m-0 p-0"
-                  cardColor="#ccd5ff"
-                >
-                  <h1 className="p-0 px-2 m-0 normal text-dark text-center font-weight-normal">
-                    So how's today's trip?
-                  </h1>
-                  <Row className="my-4">
-                    <Col className="col-6">
-                      <Col
-                        className="bg-white form__input align-items-center d-flex w-100 flex-column text-decoration-none  p-2 px-4 m-0"
-                        style={{ minHeight: "0" }}
+
+                <Row className="p-0 d-flex flex-md-column mt-2 m-0 h-100 w-100 position-relative gap-4 align-items-end">
+                  <Col className="align-self-stretch p-0 m-0">
+                    <SubCard
+                      titleClassName="small text-dark shadow bg-blue"
+                      className="h-100"
+                      cardColor="#ccd5ff"
+                    >
+                      <h1 className="p-0 px-2 m-0 normal text-dark text-center font-weight-normal">
+                        So how's today's trip?
+                      </h1>
+                      <Row className="my-4">
+                        <Col className="col-6">
+                          <Col
+                            className="bg-white form__input align-items-center d-flex w-100 flex-column text-decoration-none  p-2 px-4 m-0"
+                            style={{ minHeight: "0" }}
+                          >
+                            <HiThumbUp size={"3vh"} fill="#879cff" />
+                          </Col>
+                        </Col>
+                        <Col className="col-6">
+                          <Col
+                            className="bg-white form__input align-items-center d-flex w-100 flex-column text-decoration-none  p-2 px-4 m-0"
+                            style={{ minHeight: "0" }}
+                          >
+                            <HiThumbDown size={"3vh"} fill="#879cff" />
+                          </Col>
+                        </Col>
+                      </Row>
+                    </SubCard>
+                  </Col>
+
+                  <Col className="align-self-stretch p-0 m-0">
+                    <SubCard
+                      titleClassName="small text-dark shadow bg-blue"
+                      className="h-100 align-items-center"
+                      cardColor="#e9eefe"
+                    >
+                      <Row
+                        style={{ minHeight: "27vh" }}
+                        className="align-self-stretch flex-wrap d-flex p-0 m-0 h-100"
                       >
-                        <HiThumbUp size={"50%"} fill="#879cff" />
-                      </Col>
-                    </Col>
-                    <Col className="col-6">
-                      <Col
-                        className="bg-white form__input align-items-center d-flex w-100 flex-column text-decoration-none  p-2 px-4 m-0"
-                        style={{ minHeight: "0" }}
-                      >
-                        <HiThumbDown size={"50%"} fill="#879cff" />
-                      </Col>
-                    </Col>
-                  </Row>
-                </SubCard>
-                <SubCard
-                  titleClassName="small bg-secondary  shadow"
-                  className="h-75 m-0 mt-2 p-0 align-self-normal justify-self-normal"
-                  cardColor="#e9eefe"
-                >
-                  <Row className="mt-2 h-100 align-items-start align-self-normal justify-self-normal p-0 m-0">
-                    <Col className="normal p-2 m-0 col-7">
-                      Make Your Dreams Come True!
-                    </Col>
-                    <Col className="col-5 p-2 h-75 w-30 bg-danger circle-core justify-content-center align-items-end d-flex">
-                      <FaHeart
-                        size={"70%"}
-                        fill="white"
-                        className="mt-4 align-items-center d-flex"
-                      />
-                    </Col>
-                  </Row>
-                  <span className="small p-0 px-2 m-0">Check Wishlist Now</span>
-                  <ArrowButton
-                    fill="#97a9ff"
-                    className={"position-absolute bottom-0 p-2 end-0"}
-                    onClick={() => history.push("/comingSoon")}
-                  />
-                </SubCard>
+                        <span className=" position-relative d-flex flex-row p-0 px-2 m-0">
+                          {teamRating.map((index: number) => (
+                            <Frame />
+                          ))}
+                        </span>{" "}
+                        <Row className="mt-2 align-items-end align-self-normal justify-self-normal p-0 m-0">
+                          <Col className="fs-3 p-2 m-0 bold col-10">
+                            Journal
+                          </Col>
+                        </Row>
+                        <ArrowButton
+                          // size="6vh"
+                          fill="#97a9ff"
+                          className={
+                            "position-absolute bottom-0 p-2 end-0 w-30"
+                          }
+                          onClick={() => history.push("/comingSoon")}
+                        />
+                      </Row>
+                    </SubCard>
+                  </Col>
+                </Row>
               </Col>
             </Row>
-            <Row className="p-0 min-vh-35 mt-2 m-0 h-100 position-relative gap-2 align-items-end">
+            <Col className="p-0 d-flex flex-md-row flex-sm-column flex-column  mt-2 m-0 h-100 w-100 position-relative gap-4 align-items-end">
               <Col className="align-self-stretch p-0 m-0">
                 <SubCard
                   titleClassName="small text-dark shadow bg-blue"
@@ -260,8 +291,22 @@ const Dashboard: FC = () => {
                       {/* </Card> */}
                     </Col>{" "}
                     <Col className="align-items-start flex-column small p-2 flex-wrap m-0 fit-content justify-content-start d-flex">
-                      <div className="p-0 m-0">Day 2</div>{" "}
-                      <div className="p fw-bold">Goa Carnival</div>{" "}
+                      <div
+                        onClick={() =>
+                          history.push("/profile/trips/tour-detail")
+                        }
+                        className="p-0 m-0"
+                      >
+                        Day 2
+                      </div>{" "}
+                      <div
+                        onClick={() =>
+                          history.push("/profile/trips/tour-detail")
+                        }
+                        className="p fw-bold"
+                      >
+                        Goa Carnival
+                      </div>{" "}
                       <div>
                         Goa is a paradise of sun and land, where carnival brings
                         joy and color to the land.
@@ -271,72 +316,123 @@ const Dashboard: FC = () => {
                         className={
                           "position-absolute bottom-0 bold p p-2 text-white position-absolute fw-bold bottom-0 end-0"
                         }
-                        onClick={() => history.push("/profile/trips")}
+                        onClick={() =>
+                          history.push("/profile/trips/tour-detail")
+                        }
                       />
                     </Col>
                   </Row>
                 </SubCard>
               </Col>
 
-              <Col className="align-self-stretch d-flex p-0 m-0">
+              <Col className="align-self-stretch p-0 m-0">
                 <SubCard
-                  titleClassName="small d-flex shadow bg-blue"
-                  className="h-100 d-flex"
-                  cardColor="#e4e9ff"
+                  titleClassName="small text-dark shadow bg-blue"
+                  className="h-100 align-items-center"
+                  cardColor="#e9eefe"
                 >
-                  <Col>
-                    <h1 className="small p-0 pt-4 px-4 m-0 d-flex font-weight-normal">
-                      Note down your first Day Experience
-                    </h1>{" "}
-                    <h1 className="title p-0 px-4 m-0 d-flex fw-bold font-weight-normal">
-                      Start your Journal
+                  <Row
+                    style={{ minHeight: "27vh" }}
+                    className="align-self-stretch flex-wrap d-flex p-0 m-0 h-100"
+                  >
+                    <h1 className="p-0 px-2 m-0 normal text-dark text-start font-weight-normal">
+                      Team Lyamii
                     </h1>
-                    <ArrowButton
-                      fill="#97a9ff"
-                      className={"position-absolute bottom-0 p-2 end-0"}
-                      onClick={() => history.push("/comingSoon")}
-                    />
-                  </Col>
+                    <Row>
+                      {teamRating.map((num: number) => {
+                        return (
+                          <Col
+                            lg={3}
+                            className="p-0 m-0 col-12 d-flex justify-content-center"
+                          >
+                            <Col
+                              lg={7}
+                              className="col-4 flex-column d-flex position-relative p-0 m-0"
+                            >
+                              <RoundButton
+                                className="border-5 border circle-core"
+                                bordercolor="#0e3c30"
+                                size={"calc(12*100vw"}
+                                fill={"#c4cdfe"}
+                                img={require("../../../Assets/avatar.png")}
+                              />
+                              <Row className="my-4 justify-content-center">
+                                {[...Array(num)]?.map((index: number) => {
+                                  return (
+                                    <AiFillStar
+                                      fill="orange"
+                                      key={index}
+                                      size={10}
+                                      style={{
+                                        color: "orange",
+                                        width: "fit-content",
+                                        paddingLeft: "0px",
+                                        paddingRight: "0px",
+                                        marginTop: "0px",
+                                      }}
+                                      className="d-flex"
+                                    />
+                                  );
+                                })}
+                              </Row>
+                            </Col>
+                          </Col>
+                        );
+                      })}
+                    </Row>
+                  </Row>
                 </SubCard>
               </Col>
-              <Col className="align-self-stretch p-0 min-vh-30 col-2 h-100 m-0">
+
+              <Col
+                sm={12}
+                xs={12}
+                lg={2}
+                md={2}
+                className="align-self-stretch p-0 m-0"
+              >
                 <SubCard
-                  titleClassName="small text-white shadow bg-blue"
-                  className="h-100"
+                  titleClassName="small text-dark shadow bg-blue"
+                  className="h-100 align-items-center"
                   cardColor="#879cff"
                 >
-                  <h1 className="p flex-column p-0 px-2 m-0 text-white align-self-start d-flex font-weight-normal">
-                    <Col className="py-2">Post Today's</Col>
-                    <Card.Img
-                      className={`w-100 h-100 p-0 m-0 min-wh-100 justify-content-center`}
-                      style={{
-                        // width: "100%",
-                        padding: "0px !important",
-                        margin: "0px !important",
-                      }}
-                      onClick={() => history.push("/comingSoon")}
-                      src={require("../../../Assets/memory.png")}
-                    />
-                  </h1>{" "}
-                  <Col className="col-8 align-self-end d-flex">
-                    <Row className="p p-0 px-2 m-0 text-white font-weight-normal">
-                      <Col className="p-0 m-0">
-                        <IoLogoFacebook />
-                      </Col>
-                      <Col className="p-0 m-0">
-                        <AiOutlineInstagram />
-                      </Col>
-                      <Col className="p-0 m-0">
-                        <MdWhatsapp />
-                      </Col>
-                      <Col className="p-0 m-0">
-                        <AiFillTwitterCircle />
-                      </Col>
-                    </Row>
-                  </Col>
+                  <Row
+                    style={{ minHeight: "27vh" }}
+                    className="align-self-stretch flex-wrap d-flex p-0 m-0 h-100"
+                  >
+                    <h1 className="p flex-column p-0 px-2 m-0 text-white align-self-start d-flex font-weight-normal">
+                      <Col className="py-2">Post Today's</Col>
+                      <Card.Img
+                        className={`w-100 p-0 m-0 min-wh-100 justify-content-center`}
+                        style={{
+                          // width: "100%",
+                          padding: "0px !important",
+                          margin: "0px !important",
+                        }}
+                        onClick={() => history.push("/comingSoon")}
+                        src={require("../../../Assets/memory.png")}
+                      />
+                    </h1>{" "}
+                    <Col className="col-8 align-self-end d-flex">
+                      <Row className="p p-0 px-2 m-0 text-white font-weight-normal">
+                        <Col className="p-0 m-0">
+                          <IoLogoFacebook />
+                        </Col>
+                        <Col className="p-0 m-0">
+                          <AiOutlineInstagram />
+                        </Col>
+                        <Col className="p-0 m-0">
+                          <MdWhatsapp />
+                        </Col>
+                        <Col className="p-0 m-0">
+                          <AiFillTwitterCircle />
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
                 </SubCard>
               </Col>
-            </Row>
+            </Col>
           </Col>
         </Row>
       </Container>

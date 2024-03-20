@@ -54,14 +54,14 @@ const Coursel: FC = () => {
               <Row>
                 <Col className="fs-48 fit-content bold p-0 m-0 text-end">BALI</Col>
                 <Col className="p-0 align-self-center m-0 fit-content">
-                  <Col className="fs-auto lh-sm bold p-0 text-start m-0">HOLIDAY</Col>
-                  <Col className="fs-auto lh-sm bold p-0 text-start m-0">PACKAGE</Col>
+                  <Col className="fs-medium-auto lh-sm bold p-0 text-start m-0">HOLIDAY</Col>
+                  <Col className="fs-medium-auto lh-sm bold p-0 text-start m-0">PACKAGE</Col>
                 </Col>
               </Row>
-              <Col className="fs-auto bold text-center text-dark p-0 m-0">
+              <Col className="fs-medium-auto bold text-center text-dark p-0 m-0">
                 SAVE UPTO
               </Col>
-              <Col className="fs-auto bold text-center text-dark p-0 m-0">5000/-</Col>
+              <Col className="fs-medium-auto bold text-center text-dark p-0 m-0">5000/-</Col>
             </Col>
           </Card.Body>
           {/* <Card.Body className="py-0">

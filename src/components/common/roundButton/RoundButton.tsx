@@ -1,6 +1,7 @@
-import React, { FC } from "react";
+import React, { CSSProperties, FC } from "react";
 import { Card, Col } from "react-bootstrap";
 import { FaCircle } from "react-icons/fa6";
+import Icon from "../icon/Icon";
 
 type RoundButtonType = {
   className?: string;
@@ -8,11 +9,14 @@ type RoundButtonType = {
   onClick?: Function;
   size?: string;
   text?: string;
-  style?: any;
+  style?: CSSProperties;
   img?: string;
   bordercolor?: string;
   background?: string;
   children?: any;
+  icon?: string;
+  iconStyling?: CSSProperties;
+  iconClassName?: string;
 };
 const RoundButton: FC<RoundButtonType> = ({
   className,
@@ -23,8 +27,11 @@ const RoundButton: FC<RoundButtonType> = ({
   text,
   bordercolor,
   img,
+  icon,
   background,
   children,
+  iconClassName,
+  iconStyling,
 }) => {
   return (
     <Col className="position-relative p-0 m-0 h-100">
@@ -32,6 +39,14 @@ const RoundButton: FC<RoundButtonType> = ({
         <div className="active small text-dark position-absolute top-50 start-0 text-center w-100">
           {text}
         </div>
+      )}
+      {icon && (
+        <Icon
+          className={iconClassName ? iconClassName : ""}
+          fill={fill && fill}
+          style={iconStyling ? iconStyling : {}}
+          name={icon}
+        />
       )}
       {img && (
         <Card.Img

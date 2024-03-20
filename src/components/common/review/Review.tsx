@@ -1,18 +1,18 @@
 import React, { FC } from "react";
-import { Col, Row, Card } from "react-bootstrap";
+import { Col, Row, Card, Image } from "react-bootstrap";
 import { review } from "../enum/reviews";
 import { useHistory } from "react-router-dom";
 const Review: FC = () => {
   const history = useHistory();
   return (
     <Col md={12} lg={12} className="position-relative">
-      <Col className="py-5" id="#review">
-        <Row className="my-5" onScroll={(e) => {}}>
+      <Col className="" id="#review">
+        <Row className="justify-content-center" onScroll={(e) => {}}>
           {review.map((option, idx) => (
-            <Col className={"mx-5"} onClick={() => {}} key={idx} sm={3} xs={3}>
-              <Card.Body className="p-0 px-5 align-items-center justify-content-center">
+            <Col xs={12} sm={6} md={6} lg={4} className={""} onClick={() => {}} key={idx}>
+              <Col className="p-0 align-items-center justify-content-center">
                 <Row className="flex-nowrap">
-                  <img
+                  <Image
                     className={`p-0 m-0 h-50 justify-content-center`}
                     style={{
                       width: "40px",
@@ -21,8 +21,8 @@ const Review: FC = () => {
                     }}
                     src={require("../../../Assets/invertedComma.png")}
                   />
-                  <p className="w-100 text-dark text-center">{option.review}</p>
-                  <img
+                  <p style={{flex:"auto"}} className="justify-content-center small text-dark d-flex text-center">{option.review}</p>
+                  <Image
                     className={`p-0 m-0 h-50 justify-content-center`}
                     style={{
                       width: "40px",
@@ -32,8 +32,10 @@ const Review: FC = () => {
                     src={require("../../../Assets/invertedComma.png")}
                   />
                 </Row>
+              </Col>
+              <Col>
                 <p className="text-wrap text-dark text-center">{option.name}</p>
-              </Card.Body>
+              </Col>
             </Col>
           ))}
           <nav aria-label="Page navigation example">

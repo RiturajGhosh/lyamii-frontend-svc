@@ -5,7 +5,7 @@ import "./App.css";
 import "./styles/index.scss";
 import "country-flag-icons/3x2/flags.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./style.css";
+// import "./style.css";
 import { commonSiteMap } from "./layout/Routes";
 import PrivateRoute, {
   UserRouteConfig,

@@ -1,14 +1,17 @@
 import React, { FC, useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import { Col, Nav, Navbar } from "react-bootstrap";
+import { Col, Nav, Navbar, Row } from "react-bootstrap";
 import { AiTwotoneHome } from "react-icons/ai";
 import { BsArrowRightCircle, BsFillPersonFill } from "react-icons/bs";
 import { MdOutlineLocationOn } from "react-icons/md";
 import { HiShoppingCart } from "react-icons/hi";
 import { SET_LOGIN_DATA } from "../../../state/actions/types/loginDataActionType";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setCookie } from "../enum/functions";
 import Icon from "../icon/Icon";
+import { FaGripLinesVertical } from "react-icons/fa6";
+import { SET_NAV_HIDDEN } from "../../../state/actions/types/sideNavType";
+import { selectSideNav } from "../../../state/selectors/selectSideNav";
 
 export type SideNavList = {
   name: string;
@@ -16,6 +19,8 @@ export type SideNavList = {
 };
 const SideNav: FC = () => {
   const dispatch = useDispatch();
+  const sideNav = useSelector(selectSideNav);
+  const [hidden, setHide] = useState(sideNav.hidden || false);
   const sidebarNavItems = [
     {
       display: "Dashboard",
@@ -56,6 +61,13 @@ const SideNav: FC = () => {
     history.push("/");
   }
   useEffect(() => {
+    dispatch({
+      type: SET_NAV_HIDDEN,
+      payload: hidden,
+    });
+  }, [hidden]);
+
+  useEffect(() => {
     const curPath = window.location.pathname.split("/")[1];
     const activeItem = sidebarNavItems.findIndex(
       (item) => item.section === curPath
@@ -65,13 +77,15 @@ const SideNav: FC = () => {
   const history = useHistory();
   return (
     <Col className="fit-content p-0 m-0 bg-violet-blue position-absolute">
-      <nav
-        className="sidenav justify-content-center flex-column d-flex h-100 p-3 flex-wrap min-vh-100 mw-100 w-100 align-content-between justify-content-start d-flex m-0"
-        id="sidenav"
-      >
-        <Col className="align-content-between flex-column w-100 gap-4 d-flex flex-nowrap">
-          <Col className="justify-content-center align-items-center d-flex ">
-            <Navbar.Brand className="justify-content-center align-items-center d-flex  p-0 m-0">
+      <nav className="sidenav justify-content-center flex-column d-flex h-100 p-3 flex-wrap min-vh-100 mw-100 w-100 align-content-between justify-content-start d-flex m-0">
+        <Col
+          id="sidenav"
+          className={`${
+            hidden ? "d-none" : "d-flex"
+          } align-content-between flex-column w-100 gap-4 flex-nowrap`}
+        >
+          <Col className="justify-content-center align-items-center d-flex">
+            <Navbar.Brand className="justify-content-center align-items-center d-flex p-0 m-0">
               <h2
                 className="subtitle title-medium text-center p-0 m-0"
                 onClick={() => history.push("/")}
@@ -180,6 +194,12 @@ const SideNav: FC = () => {
             </Nav.Link>
           </Col>
         </Col>
+        <FaGripLinesVertical
+          className={`${hidden ? "w-20" : "w-10"} h-20 p-0 ${
+            !hidden ? "start-90" : "start-50"
+          } m-0 position-absolute`}
+          onClick={() => setHide(!hidden)}
+        />
       </nav>
     </Col>
   );

@@ -32,7 +32,7 @@ const RecommandedTours: FC = () => {
           lg={4}
           sx={12}
           sm={8}
-          className="mx-3 col-12 d-inline-block position-relative"
+          className="mx-md-3 col-12 d-inline-block position-relative"
         >
           <Card key={index} className={`p-0`}>
             <TourCard

@@ -12,15 +12,15 @@ const AboutUs: FC = () => {
           {internationalTours.map((option, idx) => (
             <Col onClick={() => {}} key={idx} sm={12} xs={12}>
               <Card className={`my-2 mx-1`} style={{ background: "#d9b246" }}>
-                <Card.Body className="p-0 w-75 justify-content-end">
-                  <p className="text-wrap text-white px-3">
+                <Card.Body className="p-0 w-md-75 justify-content-end">
+                  <p className="text-wrap text-white p-3">
                     Driven by a shared belief that travel has the power to
                     broaden lifes, and is the key to self exploration, a group
                     of passionate travel enthusiasts set out to develop Lyamii,
                     a platform to present every corner of our planet on your
                     screen.
                   </p>
-                  <p className="text-wrap text-dark px-3">
+                  <p className="text-wrap text-dark p-3 pt-0">
                     Throughout history, our ancestors traversed vast terrains,
                     crossing continents in search of sustenance, shelter, and
                     new opportunities. The spirit of exploration flows within

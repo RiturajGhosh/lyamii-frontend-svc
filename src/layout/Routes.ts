@@ -11,6 +11,7 @@ import CancellationRefundPolicy from "../components/pages/cancellationRefundPoli
 import CheckOut from "../components/pages/checkout/CheckOut";
 import ComboTours from "../components/pages/comboTours/ComboTours";
 import ContactDetail from "../components/pages/contact/ContactDetail";
+import CrmDashBoard from "../components/pages/crmDashBoard/CrmDashBoard";
 import Dashboard from "../components/pages/dashboard/Dashboard";
 import ExploreDestination from "../components/pages/exploreDestination/ExploreDestination";
 import FAQ from "../components/pages/faq/FAQ";
@@ -22,6 +23,7 @@ import Profile from "../components/pages/profile/Profile";
 import SubmitPage from "../components/pages/submitPage/SubmitPage";
 import TermConditions from "../components/pages/termConditions/TermConditions";
 import TravellerInfoManagement from "../components/pages/travellerInfoManagement/TravellerInfoManagement";
+import OnGoingTours from "../components/pages/trips/OnGoingTours";
 import Trips from "../components/pages/trips/Trips";
 import { UserRouteConfig } from "../components/routing/PrivateRoute";
 import { AccessType } from "./accessType";
@@ -242,6 +244,19 @@ export const commonSiteMap: UserRouteConfig[] = [
     exact: true,
     path: "/profile/order",
     Component: BlankPage,
+    access: AccessType.YES,
+  },
+  {
+    exact: true,
+    path: "/profile/trips/tour-detail",
+    Component: OnGoingTours,
+    access: AccessType.YES,
+  },
+
+  {
+    exact: true,
+    path: "/crm",
+    Component: CrmDashBoard,
     access: AccessType.YES,
   },
 ];

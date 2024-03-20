@@ -3,9 +3,11 @@ import { Col, Row, Container } from "react-bootstrap";
 import Icon from "../../common/icon/Icon";
 import { useSelector } from "react-redux";
 import { selectTourData } from "../../../state/selectors/selectTourData";
+import { useHistory } from "react-router-dom";
 
 const Trips: FC = () => {
   const [toggle, setToggle] = useState("Ongoing");
+  const history = useHistory();
   const selectedtourData: any = useSelector(selectTourData);
 
   return (
@@ -57,92 +59,164 @@ const Trips: FC = () => {
         </Row>
         {toggle === "Upcoming" ? (
           <section className={`overflow-auto min-vh-100`}>
-            {selectedtourData?.timeline?.map((place: any, idx: number) => (
-              <Col className="py-2">
+            <div className="pl-5 one-side-timeline m-0 w-100">
+              <Col className="col-2">
+                <div
+                  className="timeline-middle w-50"
+                  style={{ background: "red" }}
+                >
+                  <div
+                    className="timeline-circle"
+                    style={{ background: "red" }}
+                  ></div>
+                </div>
+              </Col>
+              <Col className={`col-12 small align-self-center text-start`}>
                 <Row>
-                  <Col className="p-0 fs-24 m-0 col-2 text-white align-self-center p-2 text-center bg-dark">
-                    {idx < 9 ? "0" + (idx + 1) : idx + 1}
-                  </Col>
-                  <Col>
-                    <div className="pl-2 fs-auto lh-sm p-0 m-0 text-dark ">
-                      {place?.destination}
+                  <Icon
+                    name="HiMapPin"
+                    fill="#fd636b"
+                    className={`w-10 h-30 p-1 m-1 rounded-circle`}
+                    style={{
+                      padding: "0px !important",
+                      margin: "0px !important",
+                    }}
+                  />
+                  <Col
+                    onClick={() => history.push("/profile/trips/tour-detail")}
+                  >
+                    <div
+                      className="text-dark bold fst-italic display-2"
+                      style={{ fontFamily: "Bellota" }}
+                    >
+                      Kashmir
                     </div>
-                    <div className="p-2 fs-16 p-0 lh-sm m-0 text-dark">
-                      <li>{place.description[0]}</li>
-                      <li>{place.description[1]}</li>
+                    <span className="text-uppercase text-dark p">
+                      where paradise awaits
+                    </span>
+
+                    <div className="position-relative d-flex fit-content align-items-center mt-2 border-dark border-1 border m-0 p-0">
+                      <div
+                        className={`form__input-label text-dark d-flex align-items-center justify-content-center`}
+                        style={{ left: "4px", background: "#c7ccff" }}
+                      >
+                        {"SCHEDULE ON"}
+                      </div>
+                      <img
+                        className="px-3 py-2"
+                        style={{
+                          width: "4rem",
+                          height: "2.5rem",
+                          padding: "0px !important",
+                          margin: "0px !important",
+                        }}
+                        alt={""}
+                        src={require("../../../Assets/telephone.png")}
+                      />
+                      <Row className="pr-3">
+                        <Col className="p-0 m-0 text-dark h3">|</Col>
+                        <Col className="p-0 px-1 m-0 text-dark h3">10</Col>
+                        <Col className="p-0 px-1 m-0 text-dark align-self-center">
+                          <div
+                            className="d-flex text-dark lh-1 p-0 m-0"
+                            style={{ fontSize: "12px" }}
+                          >
+                            OCT
+                          </div>
+                          <span
+                            className="d-flex text-dark lh-1 p-0 m-0 text-uppercase"
+                            style={{ fontSize: "12px" }}
+                          >
+                            2024
+                          </span>
+                        </Col>
+                      </Row>
                     </div>
                   </Col>
                 </Row>
               </Col>
-            ))}
-            <Row>
-              <Icon
-                name="HiMapPin"
-                fill="#fd636b"
-                className={`w-10 h-30 p-1 m-1 rounded-circle`}
-                style={{
-                  padding: "0px !important",
-                  margin: "0px !important",
-                }}
-              />
-              <Col>
+            </div>
+          </section>
+        ) : (
+          <section className={`overflow-auto min-vh-100`}>
+            <div className="pl-5 one-side-timeline m-0 w-100">
+              <Col className="col-2">
                 <div
-                  className="text-dark bold fst-italic display-2"
-                  style={{ fontFamily: "Bellota" }}
+                  className="timeline-middle w-50"
+                  style={{ background: "red" }}
                 >
-                  Kashmir
-                </div>
-                <span className="text-uppercase text-dark p">
-                  where paradise awaits
-                </span>
-
-                <div className="position-relative d-flex fit-content align-items-center mt-2 border-dark border-1 border m-0 p-0">
                   <div
-                    className={`form__input-label text-dark d-flex align-items-center justify-content-center`}
-                    style={{ left: "4px", background: "#c7ccff" }}
-                  >
-                    {"SCHEDULE ON"}
-                  </div>
-                  <img
-                    className="px-3 py-2"
+                    className="timeline-circle"
+                    style={{ background: "red" }}
+                  ></div>
+                </div>
+              </Col>
+              <Col className={`col-12 small align-self-center text-start`}>
+                <Row>
+                  <Icon
+                    name="HiMapPin"
+                    fill="#fd636b"
+                    className={`w-10 h-30 p-1 m-1 rounded-circle`}
                     style={{
-                      width: "4rem",
-                      height: "2.5rem",
                       padding: "0px !important",
                       margin: "0px !important",
                     }}
-                    alt={""}
-                    src={require("../../../Assets/telephone.png")}
                   />
-                  <Row className="pr-3">
-                    <Col className="p-0 m-0 text-dark h3">|</Col>
-                    <Col className="p-0 px-1 m-0 text-dark h3">10</Col>
-                    <Col className="p-0 px-1 m-0 text-dark align-self-center">
+                  <Col
+                    onClick={() => history.push("/profile/trips/tour-detail")}
+                  >
+                    <div
+                      className="text-dark bold fst-italic display-2"
+                      style={{ fontFamily: "Bellota" }}
+                    >
+                      Kashmir
+                    </div>
+                    <span className="text-uppercase text-dark p">
+                      where paradise awaits
+                    </span>
+
+                    <div className="position-relative d-flex fit-content align-items-center mt-2 border-dark border-1 border m-0 p-0">
                       <div
-                        className="d-flex text-dark lh-1 p-0 m-0"
-                        style={{ fontSize: "12px" }}
+                        className={`form__input-label text-dark d-flex align-items-center justify-content-center`}
+                        style={{ left: "4px", background: "#c7ccff" }}
                       >
-                        OCT
+                        {"SCHEDULE ON"}
                       </div>
-                      <span
-                        className="d-flex text-dark lh-1 p-0 m-0 text-uppercase"
-                        style={{ fontSize: "12px" }}
-                      >
-                        2024
-                      </span>
-                    </Col>
-                  </Row>
-                </div>
+                      <img
+                        className="px-3 py-2"
+                        style={{
+                          width: "4rem",
+                          height: "2.5rem",
+                          padding: "0px !important",
+                          margin: "0px !important",
+                        }}
+                        alt={""}
+                        src={require("../../../Assets/telephone.png")}
+                      />
+                      <Row className="pr-3">
+                        <Col className="p-0 m-0 text-dark h3">|</Col>
+                        <Col className="p-0 px-1 m-0 text-dark h3">10</Col>
+                        <Col className="p-0 px-1 m-0 text-dark align-self-center">
+                          <div
+                            className="d-flex text-dark lh-1 p-0 m-0"
+                            style={{ fontSize: "12px" }}
+                          >
+                            OCT
+                          </div>
+                          <span
+                            className="d-flex text-dark lh-1 p-0 m-0 text-uppercase"
+                            style={{ fontSize: "12px" }}
+                          >
+                            2024
+                          </span>
+                        </Col>
+                      </Row>
+                    </div>
+                  </Col>
+                </Row>
               </Col>
-            </Row>
+            </div>
           </section>
-        ) : (
-          <Col
-            className="col-12 min-vh-50 m-0 justify-content-center d-flex align-items-center p-0"
-            style={{ fontSize: "3dvi" }}
-          >
-            No Tour Booked...
-          </Col>
         )}
       </Container>
     </div>

@@ -97,7 +97,7 @@ const Profile: FC = () => {
           <Col className="col-12 py-4 m-0 gap-4 align-items-center d-grid p-0">
             <Col>
               <div
-                className="py-5 text-dark title font-weight-normal pl-2"
+                className="py-md-5 py-sm-3 text-dark fs-1 font-weight-normal pl-2"
                 style={{ textShadow: "2px 2px #000000 !important" }}
               >
                 Profile Managements
@@ -106,7 +106,7 @@ const Profile: FC = () => {
             <Row>
               {menus.map((menu) => {
                 return (
-                  <Col md={6} sm={12} lg={6} xs={6} sx={12}>
+                  <Col md={6} sm={12} lg={6} xs={12} sx={6}>
                     <SubCard
                       titleClassName="small text-dark shadow bg-blue"
                       className="my-3"

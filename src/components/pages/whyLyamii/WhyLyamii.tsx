@@ -53,7 +53,7 @@ const WhyLyamii: FC = () => {
                 {reasons.map((reason, idx) => (
                   <Col
                     key={idx}
-                    md={3}
+                    md={6}
                     lg={3}
                     className={`d-flex mb-4 p-0 m-0 col-6`}
                   >
