@@ -37,7 +37,7 @@ const WhyLyamii: FC = () => {
                   >
                     Lyamii
                     <Card.Img
-                      className={`w-15 h-100 p-2 m-0 justify-content-center`}
+                      className={`w-10 h-100 p-2 m-0 justify-content-center`}
                       style={{
                         padding: "0px !important",
                         margin: "0px !important",
@@ -88,10 +88,10 @@ const WhyLyamii: FC = () => {
                       </section>
                     </Card> */}
                     <div
-                      className={`bg-white form__input my-2 mx-1 flipcard shadow position-relative h-100 overflow-hidden p-0 m-0`}
+                      className={`bg-transparent form__input my-2 mx-1 flipcard position-relative h-100 overflow-hidden p-0 m-0`}
                     >
-                      <div className="content position-relative p-0 m-0 h-100">
-                        <Card.Body className="position-relative p-0 m-0 h-100 front">
+                      <div className="bg-transparent content position-relative p-0 m-0 h-100">
+                        <Card.Body className="bg-transparent position-relative p-0 m-0 h-100 front">
                           <Card.Img
                             className={`m-0 justify-content-center ${style.reasonCard}`}
                             style={{
@@ -101,12 +101,18 @@ const WhyLyamii: FC = () => {
                             src={reason.img}
                           />
                         </Card.Body>
-                        <section className="bg-danger align-items-center m-0 d-flex h-100 p-2 w-100 back">
+                        <section
+                          className="align-items-center m-0 d-flex h-100 p-2 w-100 back"
+                          style={{ background: "#0752a1" }}
+                        >
                           <Card.Body className="p-2 d-flex h-100 flex-column p-2 justify-content-center align-items-center align-self-center">
                             <span className="bold fs-medium fw-bold">
                               {reason.title}
                             </span>
-                            <Card.Subtitle className="text-center fs-8 d-flex" style={{fontFamily:"Sanchez"}}>
+                            <Card.Subtitle
+                              className="text-center fs-8 d-flex"
+                              style={{ fontFamily: "Sanchez" }}
+                            >
                               {reason.description}
                             </Card.Subtitle>
                           </Card.Body>

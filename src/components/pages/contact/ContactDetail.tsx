@@ -33,7 +33,7 @@ const ContactDetail: FC = () => {
               <Col className="w-100 position-relative">
                 <span
                   className="fs-24 d-flex justify-content-center text-start align-self-start text-shadow-dark bold text-white"
-                  style={{ fontFamily: "System-ui" }}
+                  style={{ fontFamily: "fangsong" }}
                 >
                   GET IN TOUCH
                 </span>

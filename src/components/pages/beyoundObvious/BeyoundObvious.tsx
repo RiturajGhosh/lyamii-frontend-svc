@@ -39,7 +39,7 @@ const BeyoundObvious: FC = () => {
       <Col lg={11} md={11} sx={11} xs={11}>
         <Row>
           <Col
-            md={9}
+            md={10}
             lg={8}
             className="card-body pos-lg-abs pos-md-abs pos-sm-rel pos-xs-rel top-0 end-0 m-auto"
             style={{ background: "#c4cdfe" }}
@@ -62,7 +62,7 @@ const BeyoundObvious: FC = () => {
                   margin: "0px !important",
                 }}
                 alt={""}
-                src={require("../../../Assets/indianflag.png")}
+                src={require("../../../Assets/obvious.png")}
               />
             </span>
           </Col>

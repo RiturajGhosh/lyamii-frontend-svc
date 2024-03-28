@@ -401,7 +401,6 @@ const Dashboard: FC = () => {
                     className="align-self-stretch flex-wrap d-flex p-0 m-0 h-100"
                   >
                     <h1 className="p flex-column p-0 px-2 m-0 text-white align-self-start d-flex font-weight-normal">
-                      <Col className="py-2">Post Today's</Col>
                       <Card.Img
                         className={`w-100 p-0 m-0 min-wh-100 justify-content-center`}
                         style={{
@@ -410,24 +409,11 @@ const Dashboard: FC = () => {
                           margin: "0px !important",
                         }}
                         onClick={() => history.push("/comingSoon")}
-                        src={require("../../../Assets/memory.png")}
+                        src={require("../../../Assets/food.png")}
                       />
                     </h1>{" "}
-                    <Col className="col-8 align-self-end d-flex">
-                      <Row className="p p-0 px-2 m-0 text-white font-weight-normal">
-                        <Col className="p-0 m-0">
-                          <IoLogoFacebook />
-                        </Col>
-                        <Col className="p-0 m-0">
-                          <AiOutlineInstagram />
-                        </Col>
-                        <Col className="p-0 m-0">
-                          <MdWhatsapp />
-                        </Col>
-                        <Col className="p-0 m-0">
-                          <AiFillTwitterCircle />
-                        </Col>
-                      </Row>
+                    <Col className="col-12 align-self-center bold text-white fs-auto justify-content-center d-flex">
+                      20$
                     </Col>
                   </Row>
                 </SubCard>

@@ -12,6 +12,7 @@ import CheckOut from "../components/pages/checkout/CheckOut";
 import ComboTours from "../components/pages/comboTours/ComboTours";
 import ContactDetail from "../components/pages/contact/ContactDetail";
 import CrmDashBoard from "../components/pages/crmDashBoard/CrmDashBoard";
+import CustomerReviews from "../components/pages/customerReview/CustomerReview";
 import Dashboard from "../components/pages/dashboard/Dashboard";
 import ExploreDestination from "../components/pages/exploreDestination/ExploreDestination";
 import FAQ from "../components/pages/faq/FAQ";
@@ -252,11 +253,16 @@ export const commonSiteMap: UserRouteConfig[] = [
     Component: OnGoingTours,
     access: AccessType.YES,
   },
-
   {
     exact: true,
     path: "/crm",
     Component: CrmDashBoard,
+    access: AccessType.YES,
+  },
+  {
+    exact: true,
+    path: "/customerReviews",
+    Component: CustomerReviews,
     access: AccessType.YES,
   },
 ];

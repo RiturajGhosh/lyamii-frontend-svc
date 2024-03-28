@@ -14,6 +14,8 @@ import Icon from "../../common/icon/Icon";
 import { FaCircleChevronLeft } from "react-icons/fa6";
 import image from "../../../Assets/header1.jpeg";
 import { useHistory } from "react-router-dom";
+import RoundButton from "../../common/roundButton/RoundButton";
+import ArrowButton from "../../common/arrowButton/ArrowButton";
 const OnGoingTours: FC = () => {
   const history = useHistory();
   const [toggle, setToggle] = useState("Ongoing");
@@ -41,6 +43,7 @@ const OnGoingTours: FC = () => {
         fluid="lg"
         className="p-0 min-vh-100 m-0 h-100 position-relative justify-content-start d-flex flex-column w-100"
       >
+        {" "}
         <Row className="p-0 m-0 justify-content-end d-flex">
           <Col
             md={12}
@@ -51,7 +54,7 @@ const OnGoingTours: FC = () => {
             className="col-12 gap-3 d-grid"
           >
             <Col className="d-grid">
-              <Col className="gap-2 d-grid flex-column">
+              <Col className="gap-5 d-grid flex-column">
                 <FaCircleChevronLeft
                   size={40}
                   fill={"orange"}
@@ -66,7 +69,7 @@ const OnGoingTours: FC = () => {
                   }}
                   style={{ fontSize: "10px" }}
                   titleClassName="p-1 bold text-dark shadow bg-blue"
-                  className="bg-violet-blue rounded-4 opacity-100 mt-3"
+                  className="rounded-4 mt-3"
                 >
                   <Col className="m-0 py-12">
                     <Row className="mt-3">
@@ -82,8 +85,8 @@ const OnGoingTours: FC = () => {
                             Day 2
                           </div>
                           <div
-                            className="fs-1 bold text-white px-5 text-shadow-dark pt-0 p-2 text-dark font-weight-normal"
-                            style={{ minHeight: "29px" }}
+                            className="fs-1 bold px-5 text-shadow-dark pt-0 p-2 font-weight-normal"
+                            style={{ minHeight: "29px", color: "orange" }}
                           >
                             Goa Carnival
                           </div>
@@ -197,6 +200,7 @@ const OnGoingTours: FC = () => {
                               >
                                 <div className="fs-medium text-shadow-dark w-100 bold">
                                   {event?.event}
+                                  {event?.navigator && <img style={{width:"3vh"}} className="ps-2" src={require("../../../Assets/navigator.png")}></img>}
                                 </div>
                                 <span className="fs-small text-shadow-dark w-100">
                                   {event?.eventDescription}

@@ -41,9 +41,9 @@ const Coursel: FC = () => {
 
             <div className="triangle-5 w-30 position-absolute top-0 start-0 text-white translate-x-20"></div>
 
-            <div className="triangle-3 mt-3 w-30 position-absolute top-0 start-0 translate-x-20 translate-y-20"></div>
+            <div className="triangle-3 mt-md-3 mt-2 w-30 position-absolute top-0 start-0 translate-x-20 translate-y-20"></div>
             <div
-              className="triangle-4 mt-3 w-30 position-absolute top-0 start-0 translate-x-20 translate-y-20"
+              className="triangle-4 mt-md-3 mt-2 w-30 position-absolute top-0 start-0 translate-x-20 translate-y-20"
               style={{ width: "33% !important" }}
             ></div>
             <div className="triangle-reverse-5 w-10 position-absolute top-50 start-90 text-white translate-x-20"></div>

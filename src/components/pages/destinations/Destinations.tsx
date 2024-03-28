@@ -31,7 +31,7 @@ const Destinations: FC = () => {
                 </span>
                 <Col className="col-1 d-flex text-shadow-dark align-self-center position-relative p-0 m-0">
                   <FaCircleArrowRight
-                    size={"calc(0.025*100vw"}
+                    size={"4vh"}
                     fill={"#0752a0"}
                     onClick={() => {
                       history.push("/explore");

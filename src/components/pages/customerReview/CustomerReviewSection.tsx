@@ -3,28 +3,35 @@ import { Card, Col, Row } from "react-bootstrap";
 import { US } from "country-flag-icons/react/3x2";
 import style from "./CustomerReview.module.scss";
 import avatar from "../../../Assets/avatar.png";
-import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import { selectCustomerReview } from "../../../state/selectors/selectCustomerReview";
+import { useSelector } from "react-redux";
 
-const CustomerReviews: FC = () => {
+const CustomerReviewSection: FC = () => {
+  const history = useHistory();
   const reviews = useSelector(selectCustomerReview);
   return (
-    <Col className="flex-column home-about-section align-self-start d-flex min-vh-100 justify-content-center sectionContainer pt-42">
-      <Col lg={12} md={12} sx={12} xs={12} className="align-self-start d-flex">
-        <Card.Body className="p-0 m-0 justify-content-center">
-          <Row className="justify-content-between d-flex p-0 m-0 px-sm-5">
-            <div className="card-body w-25">
-              {
-                <span
-                  className="display-2 text-shadow-dark float-left text-white fw-bold"
-                  style={{ fontFamily: "LeagueGothic" }}
-                >
-                  Reviews
-                </span>
-              }
-            </div>
-            <Row className="g-5 pb-5">
-              {reviews.customerReviews.map((review: any, idx: number) => (
+    <Col
+      className="home-about-section sectionContainer d-flex justify-content-center py-42"
+      id="about"
+    >
+      <Col lg={11} md={11} sx={11} xs={11}>
+        <Row className="d-flex justify-content-center">
+          <div className="card-body w-25">
+            {
+              <span
+                className="display-2 text-shadow-dark float-right text-white fw-bold"
+                style={{ fontFamily: "LeagueGothic" }}
+                onClick={() => history.push("/customerReviews")}
+              >
+                Reviews
+              </span>
+            }
+          </div>
+          <Row className="g-5">
+            {reviews.customerReviews
+              .slice(0, 3)
+              .map((review: any, idx: number) => (
                 <Col
                   md={6}
                   lg={4}
@@ -72,9 +79,8 @@ const CustomerReviews: FC = () => {
                   </Col>
                 </Col>
               ))}
-            </Row>
           </Row>
-        </Card.Body>
+        </Row>
       </Col>
     </Col>
   );
@@ -119,4 +125,4 @@ const CustomerReviews: FC = () => {
 //     </Col>
 //   </Col>
 // ))}
-export default CustomerReviews;
+export default CustomerReviewSection;

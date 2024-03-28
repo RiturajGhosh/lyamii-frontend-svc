@@ -20,7 +20,7 @@ import {
   BsFillSunFill,
 } from "react-icons/bs";
 import Flight from "./flight";
-import { BiSolidMessageMinus } from "react-icons/bi";
+import { BiSolidLock, BiSolidMessageMinus } from "react-icons/bi";
 
 type IconProps = {
   name: string;
@@ -29,7 +29,8 @@ type IconProps = {
   fill?: string;
   width?: string;
   height?: string;
-  href?:string;
+  href?: string;
+  size?: string;
   onClick?: Function;
 };
 
@@ -39,13 +40,16 @@ const Icon = ({
   className,
   style,
   width,
+  size,
   height,
   href,
   onClick,
 }: IconProps) => {
   switch (name) {
     case "FaPhone": {
-      return <FaPhone fill={fill} className={className} href={href} style={style} />;
+      return (
+        <FaPhone fill={fill} className={className} href={href} style={style} />
+      );
     }
     case "TbDropletFilled": {
       return (
@@ -53,7 +57,9 @@ const Icon = ({
       );
     }
     case "MdEmail": {
-      return <MdEmail fill={fill} href={href} className={className} style={style} />;
+      return (
+        <MdEmail fill={fill} href={href} className={className} style={style} />
+      );
     }
     case "GoHomeFill": {
       return <GoHomeFill fill={fill} className={className} style={style} />;
@@ -112,10 +118,39 @@ const Icon = ({
     case "afternoon": {
       return <BsFillSunFill fill={fill} className={className} style={style} />;
     }
-
+    case "home": {
+      return (
+        <AiTwotoneHome
+          fill={fill}
+          size={size}
+          className={className}
+          style={style}
+        />
+      );
+    }
+    case "person": {
+      return (
+        <BsFillPersonFill
+          fill={fill}
+          className={className}
+          size={size}
+          style={style}
+        />
+      );
+    }
     case "addRoundButton": {
       return (
         <MdAddCircleOutline
+          fill={fill}
+          className={className}
+          onClick={() => onClick && onClick()}
+          style={style}
+        />
+      );
+    }
+    case "lock": {
+      return (
+        <BiSolidLock
           fill={fill}
           className={className}
           onClick={() => onClick && onClick()}

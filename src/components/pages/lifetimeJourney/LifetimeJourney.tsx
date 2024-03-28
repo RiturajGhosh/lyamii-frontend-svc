@@ -23,11 +23,11 @@ const LifetimeJourney: FC = () => {
             {
               <>
                 <span
-                  className="text-outline fw-bold flex-row position-relative"
+                  className="display-3 text-outline fw-bold flex-row position-relative"
                   style={{
                     color: "#EA8A04",
                     fontFamily: "DISTILLERYSTRONG",
-                    fontSize: screenSize.screenSize < 786 ? "7.5dvi" : "6dvi",
+                    // fontSize: screenSize.screenSize < 786 ? "5.5dvi" : "6dvi",
                   }}
                 >
                   Journey{" "}
@@ -38,20 +38,20 @@ const LifetimeJourney: FC = () => {
                     {"OF A  "}
                   </span>{" "}
                   <span
-                    className="mt-3 position-absolute d-inline-flex pl-3 align-items-center"
+                    className="display-3 position-absolute d-inline-flex pl-3 align-items-start"
                     style={{ color: "#168709", fontFamily: "DellaRespira" }}
                   >
                     Lif
-                    <strong className="pagdi-icon">e</strong>
+                    <strong className="">e</strong>
                     time
                     <img
                       alt=""
-                      className={`inline-flex w-30 h-10`}
+                      className={`inline-flex w-25 h-10`}
                       style={{
                         padding: "0px !important",
                         margin: "0px !important",
                       }}
-                      src={require("../../../Assets/indianflag.png")}
+                      src={require("../../../Assets/journey.png")}
                     />
                   </span>
                 </span>

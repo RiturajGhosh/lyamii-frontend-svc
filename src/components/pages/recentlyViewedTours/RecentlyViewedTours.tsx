@@ -45,23 +45,6 @@ const RecentlyViewedTours: FC = () => {
               tourData={tour}
             />
           </Card>
-          <Card.Text
-            className="position-absolute top-0 bold mt-5 start-90 translate-middle fit-content my-4"
-            style={{
-              background: "#c4cdfe",
-              color: "#0752a1",
-              fontFamily: "NORWESTER",
-            }}
-            onClick={() => {
-              dispatch({
-                type: SET_SELECTED_TOUR_DATA,
-                payload: tour,
-              });
-              history.push("/tour-detail");
-            }}
-          >
-            {tour?.tourName && tour?.tourName}
-          </Card.Text>
         </Col>
       ))}
       {loading && (

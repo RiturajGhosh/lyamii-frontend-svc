@@ -24,32 +24,34 @@ const SideNav: FC = () => {
   const sidebarNavItems = [
     {
       display: "Dashboard",
-      icon: <i className="bx bx-home"></i>,
-      to: "/profile-dashboard",
-      section: "",
+      height: "65px",
+      icon: "home",
+      className: "d-inline mt-1",
+      to: "/profile/dashboard",
+      section: "dashboard",
     },
     {
-      display: "Getting Started",
-      icon: <i className="bx bx-star"></i>,
-      to: "/started",
-      section: "started",
+      display: "My Profile",
+      height: "60px",
+      className: "d-inline mt-1",
+      icon: "person",
+      to: "/profile/personalData",
+      section: "personalData",
     },
     {
-      display: "Calendar",
-      icon: <i className="bx bx-calendar"></i>,
-      to: "/calendar",
-      section: "calendar",
-    },
-    {
-      display: "User",
-      icon: <i className="bx bx-user"></i>,
-      to: "/user",
-      section: "user",
+      display: "Trips",
+      height: "60px",
+      icon: "MdOutlineLocationOn",
+      className: `w-20 h-50 p-1 mr-1 rounded-circle`,
+      to: "/profile/trips",
+      section: "trips",
     },
     {
       display: "Orders",
-      icon: <i className="bx bx-receipt"></i>,
-      to: "/order",
+      className: `w-20 h-50 p-1 mr-1 rounded-circle`,
+      height: "60px",
+      icon: "HiShoppingCart",
+      to: "/profile/order",
       section: "order",
     },
   ];
@@ -96,74 +98,30 @@ const SideNav: FC = () => {
           </Col>
           <Col>
             <Nav.Item className="navmenu align-items-flex-start mx-5 justify-content-center d-flex flex-column text-start p-0 m-0">
-              <Nav.Link
-                style={{ height: "65px" }}
-                onClick={() => history.push("/profile/dashboard")}
-                className="text-start  align-items-center flex-row d-flex p p-0 m-0 text-white text-decoration-none"
-              >
-                <Col
-                  className="p-0 col-2 m-0 w-20 h-20 border align-items-center border-1 text-center img-round"
-                  style={{ background: "white" }}
-                >
-                  <AiTwotoneHome
-                    fill="#c7ccff"
-                    className="d-inline mt-1"
-                    size={"20px"}
-                  />
-                </Col>
-                <Col className="pl-1">Dashboard</Col>
-              </Nav.Link>
-              <Nav.Link
-                style={{ height: "60px" }}
-                onClick={() => history.push("/profile/personalData")}
-                className="text-start  align-items-center flex-row d-flex p p-0 m-0 text-white text-decoration-none"
-              >
-                <Col
-                  className="p-0 col-2 m-0 w-20 border align-items-center border-1 text-center img-round"
-                  style={{ background: "white" }}
-                >
-                  <BsFillPersonFill
-                    fill="#c7ccff"
-                    className="d-inline mt-1"
-                    size={"20px"}
-                  />
-                </Col>
-                <Col className="pl-1">My Profile</Col>
-              </Nav.Link>
-              <Nav.Link
-                style={{ height: "60px" }}
-                onClick={() => history.push("/profile/trips")}
-                className="text-start  align-items-center flex-row d-flex p p-0 m-0 text-white text-decoration-none"
-              >
-                <Icon
-                  fill="#c7ccff"
-                  className={`w-20 h-50 p-1 mr-1 rounded-circle`}
-                  style={{
-                    background: "white",
-                    padding: "0px !important",
-                    margin: "0px !important",
-                  }}
-                  name={"MdOutlineLocationOn"}
-                />
-                <Col className="pl-1">Trips</Col>
-              </Nav.Link>
-              <Nav.Link
-                style={{ height: "60px" }}
-                onClick={() => history.push("/profile/order")}
-                className="text-start  align-items-center flex-row d-flex p p-0 m-0 text-white text-decoration-none"
-              >
-                <Icon
-                  fill="#c7ccff"
-                  className={`w-20 h-50 p-1 mr-1 rounded-circle`}
-                  style={{
-                    background: "white",
-                    padding: "0px !important",
-                    margin: "0px !important",
-                  }}
-                  name={"HiShoppingCart"}
-                />
-                <Col className="pl-1">Orders</Col>
-              </Nav.Link>
+              {sidebarNavItems.map((items) => {
+                return (
+                  <>
+                    <Nav.Link
+                      style={{ height: items.height, width: "max-content" }}
+                      onClick={() => history.push(items.to)}
+                      className="text-start align-items-center flex-row d-flex p p-0 m-0 text-white text-decoration-none"
+                    >
+                      <Icon
+                        fill="#c7ccff"
+                        className={`p-1 mr-1 rounded-circle`}
+                        style={{
+                          // width: "max-content",
+                          background: "white",
+                          padding: "0px !important",
+                          margin: "0px !important",
+                        }}
+                        name={items.icon}
+                      />
+                      <Col className="pl-1">{items.display}</Col>
+                    </Nav.Link>
+                  </>
+                );
+              })}
             </Nav.Item>
           </Col>
           <Col className="align-items-center p-0 m-0 justify-content-center d-flex">

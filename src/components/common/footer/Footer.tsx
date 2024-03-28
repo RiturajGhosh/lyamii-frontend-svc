@@ -28,7 +28,7 @@ const Footer: FC = () => {
                               to={community.path}
                               className="py-0 text-decoration-none icon-colour"
                             >
-                              <p className="p fw-bold">{community.name}</p>
+                              <p className="text-white p fw-bold">{community.name}</p>
                             </Link>
                           </li>
                         </ul>
@@ -51,7 +51,7 @@ const Footer: FC = () => {
                               to={reads.path}
                               className="py-0 text-decoration-none icon-colour"
                             >
-                              <p className="p fw-bold">{reads.name}</p>
+                              <p className="text-white p fw-bold">{reads.name}</p>
                             </Link>
                           </li>
                         </ul>
@@ -74,7 +74,7 @@ const Footer: FC = () => {
                               to={support.path}
                               className="py-0 text-decoration-none icon-colour"
                             >
-                              <p className="p fw-bold">{support.name}</p>
+                              <p className="text-white p fw-bold">{support.name}</p>
                             </Link>
                           </li>
                         </ul>
@@ -99,6 +99,7 @@ const Footer: FC = () => {
                     margin: "0px !important",
                     fontFamily: "DellaRespira",
                   }}
+                  // src="https://drive.google.com/thumbnail?id=15g5EvDhBSNxSSEgZ_sryNZhqic0EB5lm" alt="drive image"
                   src={require("../../../Assets/logo.png")}
                 />
               </span>

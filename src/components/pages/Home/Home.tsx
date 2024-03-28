@@ -2,7 +2,6 @@ import React, { FC } from "react";
 import { Col, Row } from "react-bootstrap";
 import Destinations from "../destinations/Destinations";
 import style from "./Home.module.scss";
-import CustomerReviews from "../customerReview/CustomerReview";
 import WhyLyamii from "../whyLyamii/WhyLyamii";
 import MapAndEscape from "../mapAndEscape/MapAndEscape";
 import Contact from "../contact/Contact";
@@ -10,6 +9,7 @@ import { useHistory } from "react-router-dom";
 import LifetimeJourney from "../lifetimeJourney/LifetimeJourney";
 import BeyoundObvious from "../beyoundObvious/BeyoundObvious";
 import BusinessClients from "../businessClients/BusinessClients";
+import CustomerReviewSection from "../customerReview/CustomerReviewSection";
 
 const Home: FC = () => {
   const history = useHistory();
@@ -20,18 +20,18 @@ const Home: FC = () => {
         id="home"
       >
         <Col className="home-content position-relative zi-2 d-grid justify-content-center">
-          <h1 className="text-center text-shadow-light">Each Day Counts</h1>
-          <p className="text-center px-2">
-            Explore stunning destinations, from exotic tropical paradises to
-            historic landmarks and vibrant cityscapes with Lyamii. Get insider
-            insights into must see attractions, local cuisine, cultural
-            experiences, and hidden gems. we Lyamii, a tour and travel company
-            based in India. We have a selection of tours that showcase the best
-            of worlds culture, nature and history. Lyamii will provide you with
-            excellent service and support throughout your journey.
+          <h1 className="text-center text-shadow-light">
+            Dream. Discover. Live.
+          </h1>
+          <p className="text-center px-md-5 mx-md-5">
+            Lyamii is a global community of tech heads, travel enthusiasts,
+            hosts and volunteers. Together we simplify world tourism and operate
+            preloaded vacation chains in 35+ countries. On the platform we cater
+            Indian tours to our foreign guests in the Journey of a Lifetime
+            segment and foreign tours to Indian travellers' in Beyond Obvious.
           </p>
           <button
-            className="align-middle justify-self-center"
+            className="mt-5 align-middle btn rounded-4 border-1 border btn-outline-light py-0 px-3 my-0 justify-self-center"
             onClick={() => {
               history.push("/passportRegistration");
             }}
@@ -48,7 +48,7 @@ const Home: FC = () => {
       <LifetimeJourney />
       <BeyoundObvious />
       <WhyLyamii />
-      <CustomerReviews />
+      <CustomerReviewSection />
       <Contact />
       <BusinessClients />
     </section>

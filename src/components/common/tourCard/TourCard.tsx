@@ -36,6 +36,7 @@ const TourCard: FC<TourCardType> = ({
 }) => {
   const history = useHistory();
   const dispatch = useDispatch();
+  console.log(tour)
 
   return (
     <Row
@@ -63,7 +64,7 @@ const TourCard: FC<TourCardType> = ({
                     <Button
                       className="align-middle justify-self-center position-absolute top-100 start-50 translate-middle-y mb-1 btn-secondary"
                       style={{
-                        background: "#0752a1"
+                        background: "#0752a1",
                       }}
                       onClick={() => {}}
                     >
@@ -106,15 +107,32 @@ const TourCard: FC<TourCardType> = ({
           <Col className="position-relative m-0 d-flex p-0">
             <Col className="p-0 gap-3 d-flex flex-column m-0">
               <Col
+                className="position-relative justify-content-end d-flex w-100 pe-2 top-0 bold fs-3 fit-content my-4"
+                style={{
+                  background: "#c4cdfe",
+                  color: "#0752a1",
+                  fontFamily: "NORWESTER",
+                }}
+                onClick={() => {
+                  dispatch({
+                    type: SET_SELECTED_TOUR_DATA,
+                    payload: tour,
+                  });
+                  history.push("/tour-detail");
+                }}
+              >
+                {tourData?.tourName && tourData?.tourName}
+              </Col>
+              <Col
                 className="text-white flex-column d-flex h-100 position-relative m-0"
                 style={{ background: "#889dfe" }}
               >
                 <Col
-                  className={`overflow-hidden hidden-scroll ${style.routeTimeline}`}
+                  className={`overflow-hidden mt-2 hidden-scroll ${style.routeTimeline}`}
                 >
                   {tourData?.timeline.map((place: any, idx: number) => (
                     <Col className="py-2 d-inline fit-content">
-                      <Row className="d-flex gx-0">
+                      <Row className="d-flex gx-0 align-items-center">
                         <Col>
                           <div
                             className="pl-2 float-right fs-medium p-0 m-0"
@@ -125,7 +143,7 @@ const TourCard: FC<TourCardType> = ({
                             {place?.destination}
                           </div>
                         </Col>
-                        <Col className="col-2">
+                        <Col className="col-2 align-items-center d-flex">
                           <GoDotFill fill="#f7de26" />
                         </Col>
                       </Row>

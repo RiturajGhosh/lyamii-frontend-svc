@@ -1,5 +1,13 @@
-import React, { FC } from "react";
-import { Col, Row, Container, Button } from "react-bootstrap";
+import React, { FC, useState } from "react";
+import {
+  Col,
+  Row,
+  Container,
+  Button,
+  Form,
+  Card,
+  Modal,
+} from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import SubCard from "../../common/subCard/SubCard";
 import RoundButton from "../../common/roundButton/RoundButton";
@@ -7,145 +15,62 @@ import Icon from "../../common/icon/Icon";
 import { IoMdMail } from "react-icons/io";
 import { MdThumbDown, MdThumbUp } from "react-icons/md";
 import { FaArrowAltCircleUp } from "react-icons/fa";
-import { RiLock2Fill } from "react-icons/ri";
+import { tasks } from "../../common/enum/tasks";
+import { IoMdAdd } from "react-icons/io";
+import Notepad from "../../common/notepad/Notepad";
 
 const CrmDashBoard: FC = () => {
   const date = new Date();
-  console.log(date);
   const history = useHistory();
+  const [show, setShow] = useState(false);
   return (
     <div
-      className={`overflow-auto pe-4 min-vh-100 mw-100 w-100 align-items-center justify-content-center d-flex m-0`}
+      className={`overflow-auto min-vh-100 mw-100 w-100 align-items-center justify-content-center d-flex m-0`}
     >
       <Container
         fluid="lg"
-        className="p-0 m-0 mw-100 min-vh-100 justify-content-end d-flex flex-column w-100"
+        className="p-0 m-0 mw-100 me-4 min-vh-100 justify-content-end d-flex flex-column w-100"
       >
         <Row className="p-0 m-0 min-vh-100 align-items-center justify-content-end d-flex">
-          <Col className="col-12 py-4 m-0 gap-4 align-items-center d-grid p-0">
-            <Row className="d-flex flex-column flex-md-row">
-              <Col className="p-0 me-4 mt-2 m-0 h-100 d-flex flex-column justify-content-center position-relative gap-4 align-items-center">
-                <Col
-                  lg={7}
-                  className="d-flex position-relative d-flex justify-content-center p-0 m-0"
-                >
-                  <RoundButton
-                    className="border-5 border circle-core d-flex justify-content-center"
-                    bordercolor="white"
-                    size={"calc(12*100vw"}
-                    fill={"white"}
-                    img={require("../../../Assets/avatar.png")}
-                  />
-                </Col>
-
-                <Col
-                  className="col-12 gap-2 flex-column d-flex justify-content-center align-items-start"
-                  style={{ minHeight: "42vh" }}
-                >
-                  <Col className="col-9 justify-content-center d-flex">
-                    <Col className="col-12 p-0 m-0">
-                      <Button
-                        className="w-100 fs-3 bold text-white p-2 font-norwester justify-content-center p-1 px-2 text-dark text-center m-0 border-0"
-                        style={{ background: "#0752a1" }}
-                        onChange={(e: any) => {}}
-                      >
-                        Support
-                      </Button>
-                    </Col>
-                  </Col>
-                  <Col className="col-5 justify-content-center d-flex p-0 m-0">
-                    <Col className="col-12 p-0 m-0">
-                      <Button
-                        className="rounded-4 w-100 fs-3 font-norwester justify-content-center p-1 px-2 text-dark text-center m-0 border-0"
-                        style={{ background: "#0752a1" }}
-                        onChange={(e: any) => {}}
-                      ></Button>
-                    </Col>
-                  </Col>
-                  <Col className="col-5 justify-content-center d-flex">
-                    <Col className="col-12 p-0 m-0">
-                      <Button
-                        className="rounded-4 w-100 fs-3 font-norwester justify-content-center p-1 px-2 text-dark text-center m-0 border-0"
-                        style={{ background: "#0752a1" }}
-                        onChange={(e: any) => {}}
-                      ></Button>
-                    </Col>
-                  </Col>
-                  <Col className="col-5 justify-content-center d-flex p-0 m-0">
-                    <Col className="col-12 p-0 m-0">
-                      <Button
-                        className="rounded-4 w-100 fs-3 font-norwester justify-content-center p-1 px-2 text-dark text-center m-0 border-0"
-                        style={{ background: "#0752a1" }}
-                        onChange={(e: any) => {}}
-                      ></Button>
-                    </Col>
-                  </Col>
-                  <Col className="col-9 justify-content-center d-flex">
-                    <Col className="col-12 p-0 m-0">
-                      <Button
-                        className="w-100 fs-3 text-white p-2 align-items-center flex-wrap d-flex bold font-norwester justify-content-center p-1 px-2 text-dark text-center m-0 border-0"
-                        style={{ background: "#0752a1" }}
-                        onChange={(e: any) => {}}
-                      >
-                        <Col className="col-9">Sales</Col>
-                        <Col
-                          className="col-3 rounded-circle h-100 p-1 w-20 justify-content-center d-flex"
-                          style={{ background: "white" }}
-                        >
-                          <RiLock2Fill fill="#0752a1"/>
-                        </Col>
-                      </Button>
-                    </Col>
-                  </Col>
-                </Col>
-                <Col
-                  className="gap-2 flex-column d-flex justify-content-center align-items-center"
-                  style={{ minHeight: "30vh" }}
-                >
-                  <Row className="justify-content-center d-flex">
-                    <Col className="col-9 p-0 m-0">
-                      <input
-                        className="rounded-4 w-100 h2 font-norwester justify-content-center p-1 px-2 text-dark text-center m-0 border-0"
-                        type="text"
-                        value={""}
-                        style={{
-                          background: "#889dfe",
-                          fontFamily: "NORWESTER",
-                        }}
-                        onChange={(e: any) => {}}
-                      />
-                    </Col>
-                  </Row>
-                  <Row className="justify-content-center d-flex p-0 m-0">
-                    <Col className="col-9 p-0 m-0">
-                      <input
-                        className="rounded-4 w-100 h2 font-norwester justify-content-center p-1 px-2 text-dark text-center m-0 border-0"
-                        type="text"
-                        value={""}
-                        style={{
-                          background: "#889dfe",
-                          fontFamily: "NORWESTER",
-                        }}
-                        onChange={(e: any) => {}}
-                      />
-                    </Col>
-                  </Row>
-                </Col>
-              </Col>
-              <Col className="p-0 d-flex me-4 flex-column mt-2 m-0 h-100 position-relative gap-4 align-items-end">
+          <Col className="col-12 py-4 m-0 align-items-center d-grid p-0">
+            <Row className="d-flex gap-4 flex-column flex-md-row">
+              <Col className="p-0 d-flex ps-4 ps-md-0 flex-column mt-2 m-0 h-100 position-relative gap-4 align-items-end">
                 <Col className=" align-self-stretch p-0 m-0">
                   <SubCard
                     titleClassName="small text-dark shadow bg-blue"
                     className="h-100"
                     cardColor="#889dfe"
                   >
-                    <Row
-                      style={{ minHeight: "30vh" }}
-                      className="align-self-stretch flex-wrap d-flex p-0 m-0 h-100"
-                    >
-                      <Col className="p-0 m-0 col-6 h-100"></Col>{" "}
-                      <Col className="align-items-start flex-column small p-2 flex-wrap m-0 fit-content justify-content-start d-flex"></Col>
-                    </Row>
+                    <Col className="align-self-stretch py-2 d-grid p-0 m-0">
+                      <div
+                        className="overflow-auto column hidden-scroll flex-row flex-nowrap p-0 m-0"
+                        style={{ height: "23vh" }}
+                      >
+                        <Col className="text-start">
+                          <Col className="d-flex align-items-center justify-content-center">
+                            <Col className="col-10 text-white overflow-hidden">
+                              {"Notes"}
+                            </Col>
+                            <Col className="col-1">
+                              <IoMdAdd fill="white" className="p-0 m-0" onClick={() => setShow(true)} />
+                            </Col>
+                          </Col>
+                        </Col>
+                        {tasks.map((task) => {
+                          return (
+                            <Card className="text-center shadow-none">
+                              <Card.Body className="text-muted">
+                                <Col className="d-flex align-items-center">
+                                  <Col className="col-11 overflow-hidden">
+                                    {task.title}
+                                  </Col>
+                                </Col>
+                              </Card.Body>
+                            </Card>
+                          );
+                        })}
+                      </div>
+                    </Col>
                   </SubCard>
                 </Col>
 
@@ -155,13 +80,33 @@ const CrmDashBoard: FC = () => {
                     className="h-100"
                     cardColor="#889dfe"
                   >
-                    <Row
-                      style={{ minHeight: "25vh" }}
-                      className="align-self-stretch flex-wrap d-flex p-0 m-0 h-100"
-                    >
-                      <Col className="p-0 m-0 col-6 h-100"></Col>{" "}
-                      <Col className="align-items-start flex-column small p-2 flex-wrap m-0 fit-content justify-content-start d-flex"></Col>
-                    </Row>
+                    <Col className="align-self-stretch py-2 d-grid p-0 m-0">
+                      <div
+                        className="overflow-auto column hidden-scroll flex-row flex-nowrap p-0 m-0"
+                        style={{ height: "30vh" }}
+                      >
+                        {tasks.map((task) => {
+                          const date =
+                            new Date(task.dueDate).toDateString().slice(4, -4) +
+                            " " +
+                            new Date(task.dueDate)
+                              .toLocaleTimeString()
+                              .slice(0, -3);
+                          return (
+                            <Card className="text-center shadow-none">
+                              <Card.Body className="text-start">
+                                <Col className="d-flex align-items-center bold">
+                                  {date}
+                                </Col>{" "}
+                                <Col className="d-flex align-items-center">
+                                  {task.title}
+                                </Col>
+                              </Card.Body>
+                            </Card>
+                          );
+                        })}
+                      </div>
+                    </Col>
                   </SubCard>
                 </Col>
                 <Col className=" align-self-stretch p-0 m-0">
@@ -170,13 +115,33 @@ const CrmDashBoard: FC = () => {
                     className="h-100"
                     cardColor="#0752a1"
                   >
-                    <Row
-                      style={{ minHeight: "10vh" }}
-                      className="align-self-stretch flex-wrap d-flex p-0 m-0 h-100"
-                    >
-                      <Col className="p-0 m-0 col-6 h-100"></Col>{" "}
-                      <Col className="align-items-start flex-column small p-2 flex-wrap m-0 fit-content justify-content-start d-flex"></Col>
-                    </Row>
+                    <Col className="align-self-stretch py-2 d-grid p-0 m-0">
+                      <div
+                        className="overflow-auto column hidden-scroll flex-row flex-nowrap p-0 m-0"
+                        style={{ height: "10vh" }}
+                      >
+                        {tasks.map((task) => {
+                          const date =
+                            new Date(task.dueDate).toDateString().slice(4, -4) +
+                            " " +
+                            new Date(task.dueDate)
+                              .toLocaleTimeString()
+                              .slice(0, -3);
+                          return (
+                            <Card className="text-center shadow-none">
+                              <Card.Body className="text-start">
+                                <Col className="d-flex align-items-center bold">
+                                  {date}
+                                </Col>{" "}
+                                <Col className="d-flex align-items-center">
+                                  {task.title}
+                                </Col>
+                              </Card.Body>
+                            </Card>
+                          );
+                        })}
+                      </div>
+                    </Col>
                   </SubCard>
                 </Col>
                 <Col className=" align-self-stretch p-0 m-0">
@@ -236,10 +201,10 @@ const CrmDashBoard: FC = () => {
                   </Row>
                 </Col>
               </Col>
-              <Col className="p-0 d-flex flex-column mt-2 m-0 h-100 position-relative gap-4 align-items-end">
+              <Col className="p-0 d-flex ps-4 ps-md-0 flex-column mt-2 m-0 h-100 position-relative gap-4 align-items-end">
                 <Col className="align-self-stretch p-0 m-0">
                   <SubCard
-                    titleClassName="fs-auto text-white shadow bg-blue"
+                    titleClassName="fs-4 text-white shadow bg-blue"
                     className="h-100"
                     title="Tour ID"
                     cardColor="white"
@@ -257,7 +222,7 @@ const CrmDashBoard: FC = () => {
                     </Row>
                   </SubCard>
                 </Col>{" "}
-                <Col className="gap-2 d-grid">
+                <Col className="gap-2 col-12 d-grid">
                   <Row className="justify-content-between d-flex">
                     <Col className="col-9 p-0 m-0">
                       <input
@@ -313,22 +278,49 @@ const CrmDashBoard: FC = () => {
                   </Row>
                 </Col>
               </Col>
-              <Col className="p-0 ms-4 d-flex flex-column mt-2 m-0 h-100 position-relative gap-4 align-items-end">
+              <Col className="p-0 d-flex ps-4 ps-md-0 flex-column mt-2 m-0 h-100 position-relative gap-4 align-items-end">
                 <Col className="align-self-stretch p-0 m-0">
                   <SubCard
-                    titleClassName="fs-auto text-white shadow bg-blue"
+                    titleClassName="fs-4 text-white shadow bg-blue"
                     className="h-100"
                     title="Traveller ID"
                     cardColor="white"
                     titleStyling={{ background: "#0752a1" }}
                   >
-                    <Row
+                    <Col
                       style={{ minHeight: "25vh" }}
                       className="align-self-stretch flex-wrap d-flex p-0 m-0 h-100"
                     >
-                      <Col className="p-0 m-0 col-6 h-100"></Col>{" "}
-                      <Col className="align-items-start flex-column small p-2 flex-wrap m-0 fit-content justify-content-start d-flex"></Col>
-                    </Row>
+                      <Form className="align-self-center d-flex flex-column">
+                        <Row className="mb-3">
+                          <Form.Group as={Col} controlId="userName">
+                            <Form.Label>Traveller Name</Form.Label>
+                            <Form.Control type="text" placeholder="User Name" />
+                          </Form.Group>
+                          <Form.Group as={Col} controlId="formGridLanguage">
+                            <Form.Label>Language</Form.Label>
+                            <Form.Control />
+                          </Form.Group>
+                        </Row>
+
+                        <Row className="mb-3">
+                          <Form.Group as={Col} controlId="formGridCountry">
+                            <Form.Label>Country</Form.Label>
+                            <Form.Control />
+                          </Form.Group>
+
+                          <Form.Group as={Col} controlId="formGridAge">
+                            <Form.Label>Age</Form.Label>
+                            <Form.Control />
+                          </Form.Group>
+
+                          <Form.Group as={Col} controlId="formGridGender">
+                            <Form.Label>Gender</Form.Label>
+                            <Form.Control />
+                          </Form.Group>
+                        </Row>
+                      </Form>
+                    </Col>
                   </SubCard>
                 </Col>
 
@@ -391,6 +383,14 @@ const CrmDashBoard: FC = () => {
             </Row>
           </Col>
         </Row>
+        <Modal
+          className="rounded-4"
+          show={show}
+          fullscreen={"false"}
+          onHide={() => setShow(false)}
+        >
+          <Notepad />
+        </Modal>
       </Container>
     </div>
   );

@@ -252,7 +252,7 @@ const PassportRegistrationForm: FC = () => {
                   </Form.Group>
                 </Row>
                 <Col>
-                  <h6 className="small p-0 m-0">Upload Birth Certificate</h6>
+                  <h6 className="small p-0 m-0">Upload DOB Proof</h6>
                   <div className="p-0  m-0">
                     {" "}
                     <input
@@ -286,7 +286,7 @@ const PassportRegistrationForm: FC = () => {
                   </Col>
                   <Col className="col-5 flex-column justify-self-end">
                     <h6 className="small p-0 m-0">
-                      Upload Education Certificate
+                      Upload Academic Certificate
                     </h6>
                     <div className="p-0 m-0">
                       {" "}

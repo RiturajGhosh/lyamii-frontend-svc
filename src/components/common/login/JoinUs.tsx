@@ -16,6 +16,7 @@ import { Formik } from "formik";
 import { validate } from "../../../utils/validationForm";
 import InputForm from "../inputForm/InputForm";
 import { okErrorCode } from "../enum/errorCode";
+import SubCard from "../subCard/SubCard";
 
 export type SideNavList = {
   name: string;
@@ -96,7 +97,7 @@ const JoinUs: FC = () => {
   };
   return (
     <Col
-      className="min-vh-100 flex-column align-items-center justify-content-center d-flex"
+      className="min-vh-100 flex-column py-5 align-items-center justify-content-center d-flex"
       style={{ background: "#b4f5c5" }}
     >
       <Col className="col-12">
@@ -115,314 +116,317 @@ const JoinUs: FC = () => {
             errors,
           }: any) => {
             return (
-              <>
-                <Form
-                  onSubmit={handleSubmit}
-                  className="justify-content-center d-flex col-4 w-100"
-                >
-                  <Form.Group
-                    className="gap-4 col-3 d-flex flex-column"
-                    controlId="exampleForm.ControlInput1"
-                  >
-                    {!have && (
-                      <Row>
-                        <Col className="px-1 m-0">
-                          <InputForm
-                            label={""}
-                            className="w-100 bg-white round-edges h5 justify-content-center p-2 px-2 text-dark text-center m-0 border-2 border-top-0 border-end-0 border-start-0"
-                            type="text"
-                            placeholder="USER NAME"
-                            values={values}
-                            minLength={3}
-                            maxLength={20}
-                            style={{
-                              background: "#19bca1",
-                              borderColor:
-                                Object.keys(touched).includes("userName") &&
-                                Object.keys(errors).includes("userName")
-                                  ? "red"
-                                  : "#4a915b",
-                            }}
-                            touched={touched}
-                            errors={errors}
-                            required={"Required"}
-                            name={"userName"}
-                          />
-                        </Col>
-                      </Row>
-                    )}
-                    <Row>
-                      <Col className="px-1 align-self-center m-0">
-                        <InputForm
-                          label={""}
-                          className="w-100 bg-white h5 justify-content-center p-2 px-2 text-dark text-center m-0 border-2 border-top-0 border-end-0 border-start-0"
-                          type="text"
-                          placeholder="USER EMAIL"
-                          values={values}
-                          minLength={0}
-                          maxLength={50}
-                          onclick={() => setUsedEmailMessage("")}
-                          style={{
-                            background: "#19bca1",
-                            borderColor:
-                              Object.keys(touched).includes("email") &&
-                              Object.keys(errors).includes("email")
-                                ? "red"
-                                : "#4a915b",
-                          }}
-                          touched={touched}
-                          errors={errors}
-                          required={"Required"}
-                          name={"email"}
-                        />
-                      </Col>
-                      {!have && (
-                        <Col className="col-4 align-self-center p-0 m-0">
-                          <Button
-                            className="round-edges h2 py-1 m-0"
-                            style={{ minHeight: "0%", background: "#4a915b" }}
-                            onClick={(e: any) => {
-                              if (!Object.keys(errors).includes("email")) {
-                                setUsedEmailMessage("");
-                                getOtpApi(values.email).then(
-                                  (response: any) => {
-                                    if (response.status === 204) {
-                                      setOtpSent(true);
-                                      setOtpVerify(false);
-                                    } else {
-                                      setUsedEmailMessage(
-                                        response.response.data.errors[0]
-                                          .errorMessage
-                                      );
-                                      setOtpSent(false);
-                                      setOtpVerify(false);
-                                    }
-                                  }
-                                );
-                              }
-                            }}
-                          >
-                            <span className="h6 p-0 m-0">Send OTP</span>
-                          </Button>
-                        </Col>
-                      )}
+              <>{have ? <div>a</div>: <div>b</div> }    </>   
+              //       <>
+              //   <Form
+              //     onSubmit={handleSubmit}
+              //     className="justify-content-center d-flex w-100"
+              //   >
+              //     <Form.Group
+              //       className="gap-4 d-flex flex-column"
+              //       controlId="exampleForm.ControlInput1"
+              //     >
+              //       {!have && (
+              //         <Row>
+              //           <Col className="px-1 m-0">
+              //             <InputForm
+              //               label={""}
+              //               className="w-100 bg-white round-edges h5 justify-content-center p-2 px-2 text-dark text-center m-0 border-2 border-top-0 border-end-0 border-start-0"
+              //               type="text"
+              //               placeholder="USER NAME"
+              //               values={values}
+              //               minLength={3}
+              //               maxLength={20}
+              //               style={{
+              //                 background: "#19bca1",
+              //                 borderColor:
+              //                   Object.keys(touched).includes("userName") &&
+              //                   Object.keys(errors).includes("userName")
+              //                     ? "red"
+              //                     : "#4a915b",
+              //               }}
+              //               touched={touched}
+              //               errors={errors}
+              //               required={"Required"}
+              //               name={"userName"}
+              //             />
+              //           </Col>
+              //         </Row>
+              //       )}
+              //       <Row>
+              //         <Col className="px-1 align-self-center m-0">
+              //           <InputForm
+              //             label={""}
+              //             className="w-100 bg-white h5 justify-content-center p-2 px-2 text-dark text-center m-0 border-2 border-top-0 border-end-0 border-start-0"
+              //             type="text"
+              //             placeholder="USER EMAIL"
+              //             values={values}
+              //             minLength={0}
+              //             maxLength={50}
+              //             onclick={() => setUsedEmailMessage("")}
+              //             style={{
+              //               background: "#19bca1",
+              //               borderColor:
+              //                 Object.keys(touched).includes("email") &&
+              //                 Object.keys(errors).includes("email")
+              //                   ? "red"
+              //                   : "#4a915b",
+              //             }}
+              //             touched={touched}
+              //             errors={errors}
+              //             required={"Required"}
+              //             name={"email"}
+              //           />
+              //         </Col>
+              //         {!have && (
+              //           <Col className="col-4 align-self-center p-0 m-0">
+              //             <Button
+              //               className="round-edges h2 py-1 m-0"
+              //               style={{ minHeight: "0%", background: "#4a915b" }}
+              //               onClick={(e: any) => {
+              //                 if (!Object.keys(errors).includes("email")) {
+              //                   setUsedEmailMessage("");
+              //                   getOtpApi(values.email).then(
+              //                     (response: any) => {
+              //                       if (response.status === 204) {
+              //                         setOtpSent(true);
+              //                         setOtpVerify(false);
+              //                       } else {
+              //                         setUsedEmailMessage(
+              //                           response.response.data.errors[0]
+              //                             .errorMessage
+              //                         );
+              //                         setOtpSent(false);
+              //                         setOtpVerify(false);
+              //                       }
+              //                     }
+              //                   );
+              //                 }
+              //               }}
+              //             >
+              //               <span className="h6 p-0 m-0">Send OTP</span>
+              //             </Button>
+              //           </Col>
+              //         )}
 
-                      {usedEmailMessage?.length > 0 && (
-                        <span className="text-danger">{usedEmailMessage}</span>
-                      )}
-                    </Row>
-                    {otpSent && (
-                      <Row>
-                        <Col className="col-8 align-self-center px-1 m-0">
-                          <InputForm
-                            label={""}
-                            className="w-100 bg-white h5 justify-content-center p-2 px-2 text-dark text-center m-0 border-2 border-top-0 border-end-0 border-start-0"
-                            type="text"
-                            placeholder=""
-                            values={values}
-                            minLength={6}
-                            maxLength={6}
-                            style={{
-                              background: "#19bca1",
-                              borderColor:
-                                Object.keys(touched).includes("otp") &&
-                                Object.keys(errors).includes("otp")
-                                  ? "red"
-                                  : "#4a915b",
-                            }}
-                            touched={touched}
-                            errors={errors}
-                            required={"Required"}
-                            name={"otp"}
-                          />
-                        </Col>
+              //         {usedEmailMessage?.length > 0 && (
+              //           <span className="text-danger">{usedEmailMessage}</span>
+              //         )}
+              //       </Row>
+              //       {otpSent && (
+              //         <Row>
+              //           <Col className="col-8 align-self-center px-1 m-0">
+              //             <InputForm
+              //               label={""}
+              //               className="w-100 bg-white h5 justify-content-center p-2 px-2 text-dark text-center m-0 border-2 border-top-0 border-end-0 border-start-0"
+              //               type="text"
+              //               placeholder=""
+              //               values={values}
+              //               minLength={6}
+              //               maxLength={6}
+              //               style={{
+              //                 background: "#19bca1",
+              //                 borderColor:
+              //                   Object.keys(touched).includes("otp") &&
+              //                   Object.keys(errors).includes("otp")
+              //                     ? "red"
+              //                     : "#4a915b",
+              //               }}
+              //               touched={touched}
+              //               errors={errors}
+              //               required={"Required"}
+              //               name={"otp"}
+              //             />
+              //           </Col>
 
-                        {!verificationStatus && (
-                          <span className="text-danger">OTP is wrong</span>
-                        )}
-                        <Col className="col-4 align-self-center p-0 m-0">
-                          <Button
-                            className="round-edges h2 py-1 m-0"
-                            style={{ minHeight: "0%", background: "#4a915b" }}
-                            onClick={(e: any) => {
-                              if (!Object.keys(errors).includes("otp")) {
-                                verify(values);
-                              }
-                            }}
-                          >
-                            <span className="h6 p-0 m-0">verify</span>
-                          </Button>
-                        </Col>
-                      </Row>
-                    )}
-                    {(have || (!have && otpVerify)) && (
-                      <Row>
-                        <Col className="px-1 m-0">
-                          <InputForm
-                            label={""}
-                            className="w-100 bg-white h5 justify-content-center p-2 px-2 text-dark text-center m-0 border-2 border-top-0 border-end-0 border-start-0"
-                            type="text"
-                            placeholder="PASSWORD"
-                            values={values}
-                            minLength={6}
-                            maxLength={40}
-                            style={{
-                              background: "#19bca1",
-                              borderColor:
-                                Object.keys(touched).includes("password") &&
-                                Object.keys(errors).includes("password")
-                                  ? "red"
-                                  : "#4a915b",
-                            }}
-                            touched={touched}
-                            errors={errors}
-                            required={"Required"}
-                            name={"password"}
-                          />
-                        </Col>
-                        {!have && verificationStatus.status && (
-                          <Col className="col-4 p-0 m-0">
-                            <Dropdown
-                              onSelect={(eventKey: any) =>
-                                setValues({
-                                  ...values,
-                                  type: [eventKey.toLowerCase()],
-                                })
-                              }
-                            >
-                              <Dropdown.Toggle
-                                className="border-0 round-edges d-inline h2 py-1 m-0"
-                                style={{ background: "#4a915b" }}
-                                id="dropdown-basic"
-                              >
-                                Type
-                              </Dropdown.Toggle>
+              //           {!verificationStatus && (
+              //             <span className="text-danger">OTP is wrong</span>
+              //           )}
+              //           <Col className="col-4 align-self-center p-0 m-0">
+              //             <Button
+              //               className="round-edges h2 py-1 m-0"
+              //               style={{ minHeight: "0%", background: "#4a915b" }}
+              //               onClick={(e: any) => {
+              //                 if (!Object.keys(errors).includes("otp")) {
+              //                   verify(values);
+              //                 }
+              //               }}
+              //             >
+              //               <span className="h6 p-0 m-0">verify</span>
+              //             </Button>
+              //           </Col>
+              //         </Row>
+              //       )}
+              //       {(have || (!have && otpVerify)) && (
+              //         <Row>
+              //           <Col className="px-1 m-0">
+              //             <InputForm
+              //               label={""}
+              //               className="w-100 bg-white h5 justify-content-center p-2 px-2 text-dark text-center m-0 border-2 border-top-0 border-end-0 border-start-0"
+              //               type="text"
+              //               placeholder="PASSWORD"
+              //               values={values}
+              //               minLength={6}
+              //               maxLength={40}
+              //               style={{
+              //                 background: "#19bca1",
+              //                 borderColor:
+              //                   Object.keys(touched).includes("password") &&
+              //                   Object.keys(errors).includes("password")
+              //                     ? "red"
+              //                     : "#4a915b",
+              //               }}
+              //               touched={touched}
+              //               errors={errors}
+              //               required={"Required"}
+              //               name={"password"}
+              //             />
+              //           </Col>
+              //           {!have && verificationStatus.status && (
+              //             <Col className="col-4 p-0 m-0">
+              //               <Dropdown
+              //                 onSelect={(eventKey: any) =>
+              //                   setValues({
+              //                     ...values,
+              //                     type: [eventKey.toLowerCase()],
+              //                   })
+              //                 }
+              //               >
+              //                 <Dropdown.Toggle
+              //                   className="border-0 round-edges d-inline h2 py-1 m-0"
+              //                   style={{ background: "#4a915b" }}
+              //                   id="dropdown-basic"
+              //                 >
+              //                   Type
+              //                 </Dropdown.Toggle>
 
-                              <Dropdown.Menu>
-                                <Dropdown.Item
-                                  className={"text-dark text-decoration-none"}
-                                  eventKey={"user"}
-                                >
-                                  User
-                                </Dropdown.Item>
-                                <Dropdown.Item
-                                  className={"text-dark text-decoration-none"}
-                                  eventKey={"Hotel"}
-                                >
-                                  Hotel
-                                </Dropdown.Item>
-                                <Dropdown.Item
-                                  className={"text-dark text-decoration-none"}
-                                  eventKey={"Hostel"}
-                                >
-                                  Hostel
-                                </Dropdown.Item>
-                              </Dropdown.Menu>
-                            </Dropdown>
-                          </Col>
-                        )}
-                      </Row>
-                    )}
-                    {have ? (
-                      <Button
-                        className="round-edges h2 h-100 py-1"
-                        style={{ minHeight: "0%", background: "#4a915b" }}
-                        onClick={(e: any) => {
-                          if (
-                            !Object.keys(errors).includes("email") &&
-                            !Object.keys(errors).includes("password")
-                          ) {
-                            signIN(values);
-                          }
-                        }}
-                      >
-                        <span className="h5 p-0 m-0">Log In</span>
-                      </Button>
-                    ) : (
-                      <>
-                        {otpVerify && (
-                          <Button
-                            className="round-edges h2 h-100 py-1"
-                            style={{ minHeight: "0%", background: "#4a915b" }}
-                            onClick={(e: any) => {
-                              if (Object.keys(errors).length === 0) {
-                                signUp(values);
-                              }
-                            }}
-                          >
-                            <span className="h5 p-0 m-0">Sign Up</span>
-                          </Button>
-                        )}
-                      </>
-                    )}
-                  </Form.Group>
-                </Form>
-                <Col className="d-flex flex-column justify-content-center w-100">
-                  <span
-                    className="d-flex align-self-center fit-content h4"
-                    style={{ color: "#4a915b" }}
-                  >
-                    Forget Password?
-                  </span>
-                  <Col className="position-relative d-flex align-items-center justify-content-center p-0 m-0">
-                    <hr
-                      className="d-flex position-absolute w-100 p-0 m-0"
-                      style={{ border: "2px solid #4c905f" }}
-                    ></hr>
-                    <Card className="d-flex align-self-center shadow-none fit-content bold p-0 m-0 px-1">
-                      or
-                    </Card>
-                  </Col>
-                  {have ? (
-                    <span
-                      className="d-flex align-self-center display-6 bold fit-content"
-                      style={{ color: "#4a915b" }}
-                      onClick={() => {
-                        setValues(detail);
-                        setOtpSent(false);
-                        setTouched({});
-                        setHave(false);
-                        history.push("/signup");
-                      }}
-                    >
-                      Create New Profile
-                    </span>
-                  ) : (
-                    <span
-                      className="d-flex align-self-center display-6 bold fit-content"
-                      style={{ color: "#4a915b" }}
-                      onClick={() => {
-                        setValues(detail);
-                        setOtpSent(false);
-                        setTouched({});
-                        setHave(true);
-                        history.push("/login");
-                      }}
-                    >
-                      Login
-                    </span>
-                  )}
-                </Col>
-              </>
+              //                 <Dropdown.Menu>
+              //                   <Dropdown.Item
+              //                     className={"text-dark text-decoration-none"}
+              //                     eventKey={"user"}
+              //                   >
+              //                     User
+              //                   </Dropdown.Item>
+              //                   <Dropdown.Item
+              //                     className={"text-dark text-decoration-none"}
+              //                     eventKey={"Hotel"}
+              //                   >
+              //                     Hotel
+              //                   </Dropdown.Item>
+              //                   <Dropdown.Item
+              //                     className={"text-dark text-decoration-none"}
+              //                     eventKey={"Hostel"}
+              //                   >
+              //                     Hostel
+              //                   </Dropdown.Item>
+              //                 </Dropdown.Menu>
+              //               </Dropdown>
+              //             </Col>
+              //           )}
+              //         </Row>
+              //       )}
+              //       {have ? (
+              //         <Button
+              //           className="round-edges h2 h-100 py-1"
+              //           style={{ minHeight: "0%", background: "#4a915b" }}
+              //           onClick={(e: any) => {
+              //             if (
+              //               !Object.keys(errors).includes("email") &&
+              //               !Object.keys(errors).includes("password")
+              //             ) {
+              //               signIN(values);
+              //             }
+              //           }}
+              //         >
+              //           <span className="h5 p-0 m-0">Log In</span>
+              //         </Button>
+              //       ) : (
+              //         <>
+              //           {otpVerify && (
+              //             <Button
+              //               className="round-edges h2 h-100 py-1"
+              //               style={{ minHeight: "0%", background: "#4a915b" }}
+              //               onClick={(e: any) => {
+              //                 if (Object.keys(errors).length === 0) {
+              //                   signUp(values);
+              //                 }
+              //               }}
+              //             >
+              //               <span className="h5 p-0 m-0">Sign Up</span>
+              //             </Button>
+              //           )}
+              //         </>
+              //       )}
+              //     </Form.Group>
+              //   </Form>
+              //   <Col className="d-flex flex-column justify-content-center w-100">
+              //     <span
+              //       className="d-flex align-self-center fit-content h4"
+              //       style={{ color: "#4a915b" }}
+              //     >
+              //       Forget Password?
+              //     </span>
+              //     <Col className="position-relative d-flex align-items-center justify-content-center p-0 m-0">
+              //       <hr
+              //         className="d-flex position-absolute w-100 p-0 m-0"
+              //         style={{ border: "2px solid #4c905f" }}
+              //       ></hr>
+              //       <Card className="d-flex align-self-center shadow-none fit-content bold p-0 m-0 px-1">
+              //         or
+              //       </Card>
+              //     </Col>
+              //     {have ? (
+              //       <span
+              //         className="d-flex align-self-center display-6 bold fit-content"
+              //         style={{ color: "#4a915b" }}
+              //         onClick={() => {
+              //           setValues(detail);
+              //           setOtpSent(false);
+              //           setTouched({});
+              //           setHave(false);
+              //           history.push("/signup");
+              //         }}
+              //       >
+              //         Create New Profile
+              //       </span>
+              //     ) : (
+              //       <span
+              //         className="d-flex align-self-center display-6 bold fit-content"
+              //         style={{ color: "#4a915b" }}
+              //         onClick={() => {
+              //           setValues(detail);
+              //           setOtpSent(false);
+              //           setTouched({});
+              //           setHave(true);
+              //           history.push("/login");
+              //         }}
+              //       >
+              //         Login
+              //       </span>
+              //     )}
+              //   </Col>
+              // </>
             );
           }}
         </Formik>
-        <Col className="align-items-end d-flex p-5">
-          <Row className="gap-2 g-3 w-100">
-            <Col
-              className=""
-              style={{
-                background: "#7ed994",
-                color: "#218a43",
-                textShadow: "#218a43",
-                flex: "0.2654",
-              }}
+        <Col className="col-12 p-0 d-flex flex-md-row flex-column px-3 align-items-center justify-content-center mt-4 gap-4">
+          <Col
+            sm={12}
+            xs={12}
+            lg={2}
+            md={2}
+            className="align-self-stretch p-0 m-0"
+          >
+            <SubCard
+              titleClassName="small text-dark shadow bg-blue"
+              className="h-100 align-items-center"
+              cardColor="#7ed994"
             >
               <Col className="w-100 position-relative">
                 <Card.Img
                   className={`p-0 m-0 justify-content-center `}
                   style={{
-                    // width: "100%",
+                    height: "25vh",
                     padding: "0px !important",
                     margin: "0px !important",
                   }}
@@ -438,22 +442,25 @@ const JoinUs: FC = () => {
                   Accomadation
                 </Button>
               </Col>
-            </Col>
-
-            <Col
-              className=""
-              style={{
-                background: "#7ed994",
-                color: "#218a43",
-                textShadow: "#218a43",
-                flex: "0.3344",
-              }}
+            </SubCard>
+          </Col>
+          <Col
+            sm={12}
+            xs={12}
+            lg={2}
+            md={2}
+            className="align-self-stretch p-0 m-0"
+          >
+            <SubCard
+              titleClassName="small text-dark shadow bg-blue"
+              className="h-100"
+              cardColor="#7ed994"
             >
-              <Col className="w-100 h-100 position-relative">
+              <Col className="w-100 position-relative">
                 <Card.Img
-                  className={`p-0 m-0 h-100 justify-content-center `}
+                  className={`p-0 m-0 justify-content-center `}
                   style={{
-                    // width: "100%",
+                    height: "25vh",
                     padding: "0px !important",
                     margin: "0px !important",
                   }}
@@ -462,27 +469,33 @@ const JoinUs: FC = () => {
               </Col>
               <Col className="position-relative p-0 border-1 text-center mx-42 justify-content-end text-white">
                 <Button
-                  className="align-middle fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary"
-                  style={{ background: "#0752a1",whiteSpace:"nowrap" }}
+                  className="align-middle text-nowrap fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary"
+                  style={{ background: "#0752a1" }}
+                  onClick={() => history.push("/addHotel")}
                 >
                   Tour Guide
                 </Button>
               </Col>
-            </Col>
-            <Col
-              className=""
-              style={{
-                background: "#7ed994",
-                color: "#218a43",
-                textShadow: "#218a43",
-                flex: "0.3204",
-              }}
+            </SubCard>
+          </Col>
+
+          <Col
+            sm={12}
+            xs={12}
+            lg={2}
+            md={2}
+            className="align-self-stretch p-0 m-0"
+          >
+            <SubCard
+              titleClassName="small text-dark shadow bg-blue"
+              className="h-100 align-items-center"
+              cardColor="#7ed994"
             >
-              <Col className="w-100 h-100 position-relative">
+              <Col className="w-100 position-relative">
                 <Card.Img
                   className={`p-0 m-0 justify-content-center `}
                   style={{
-                    // width: "100%",
+                    height: "25vh",
                     padding: "0px !important",
                     margin: "0px !important",
                   }}
@@ -493,25 +506,31 @@ const JoinUs: FC = () => {
                 <Button
                   className="align-middle fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary"
                   style={{ background: "#0752a1" }}
+                  onClick={() => history.push("/")}
                 >
                   Transfers
                 </Button>
               </Col>
-            </Col>
-            <Col
-              className=""
-              style={{
-                background: "#7ed994",
-                color: "#218a43",
-                textShadow: "#218a43",
-                flex: "0.3314",
-              }}
+            </SubCard>
+          </Col>
+
+          <Col
+            sm={12}
+            xs={12}
+            lg={2}
+            md={2}
+            className="align-self-stretch p-0 m-0"
+          >
+            <SubCard
+              titleClassName="small text-dark shadow bg-blue"
+              className="h-100 align-items-center"
+              cardColor="#7ed994"
             >
               <Col className="w-100 position-relative">
                 <Card.Img
                   className={`p-0 m-0 justify-content-center `}
                   style={{
-                    // width: "100%",
+                    height: "25vh",
                     padding: "0px !important",
                     margin: "0px !important",
                   }}
@@ -522,96 +541,15 @@ const JoinUs: FC = () => {
                 <Button
                   className="align-middle fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary"
                   style={{ background: "#0752a1" }}
+                  onClick={() => history.push("/")}
                 >
                   Volunteer
                 </Button>
               </Col>
-            </Col>
-          </Row>
+            </SubCard>
+          </Col>
         </Col>
       </Col>
-      {/* <Row className="gap-5 justify-content-around position-relative">
-        <Col
-          className={`form__input align-items-center p-0 m-0 justify-content-center  position-relative d-flex `}
-          style={{ background: "#7ed994" }}
-        >
-          <Card.Img
-            className={`p-0 m-0 justify-content-center `}
-            style={{
-              // width: "100%",
-              padding: "0px !important",
-              margin: "0px !important",
-            }}
-            src={require("../../../Assets/accomodation.png")}
-          />
-          <span
-            className="h4 text-white p-2  mt-2 position-absolute top-100 start-50 translate-middle"
-            style={{ background: "#4a915b" }}
-          >
-            Accomadation
-          </span>
-        </Col>
-        <Col
-          className={`form__input align-items-center p-0 m-0 justify-content-center position-relative d-flex `}
-          style={{ background: "#7ed994" }}
-        >
-          <Card.Img
-            className={`p-0 m-0 justify-content-center `}
-            style={{
-              // width: "100%",
-              padding: "0px !important",
-              margin: "0px !important",
-            }}
-            src={require("../../../Assets/tourGuide.png")}
-          />
-          <span
-            className="h4 text-white p-2 mt-2 position-absolute top-100 start-50 translate-middle"
-            style={{ background: "#4a915b", width: "max-content" }}
-          >
-            Tour Guide
-          </span>
-        </Col>
-        <Col
-          className={`form__input align-items-center p-0 m-0 justify-content-center  position-relative d-flex `}
-          style={{ background: "#7ed994" }}
-        >
-          <Card.Img
-            className={`p-0 m-0 justify-content-center `}
-            style={{
-              // width: "100%",
-              padding: "0px !important",
-              margin: "0px !important",
-            }}
-            src={require("../../../Assets/transfers.png")}
-          />
-          <span
-            className="h4  text-white mt-2 p-2 position-absolute top-100 start-50 translate-middle"
-            style={{ background: "#4a915b" }}
-          >
-            Transfers
-          </span>
-        </Col>
-        <Col
-          className={`form__input align-items-center m-0 justify-content-center position-relative d-flex `}
-          style={{ background: "#7ed994" }}
-        >
-          <Card.Img
-            className={`p-0 m-0 justify-content-center`}
-            style={{
-              // width: "100%",
-              padding: "0px !important",
-              margin: "0px !important",
-            }}
-            src={require("../../../Assets/volunteer.png")}
-          />
-          <span
-            className="h4  text-white p-2  mt-2 position-absolute top-100 start-50 translate-middle"
-            style={{ background: "#4a915b" }}
-          >
-            Volunteer
-          </span>
-        </Col>
-      </Row> */}
     </Col>
   );
 };

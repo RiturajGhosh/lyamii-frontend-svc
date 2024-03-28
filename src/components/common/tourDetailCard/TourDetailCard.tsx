@@ -35,10 +35,11 @@ const TourDetailCard: FC = () => {
   return (
     <MainContainer>
       <Card.Img
-        className={`p-0 m-0 h-50 justify-content-center
+        className={`p-0 m-0 justify-content-center
  ${style.img}`}
         style={{
           // width: "100%",
+          height:"70vh",
           padding: "0px !important",
           margin: "0px !important",
         }}
@@ -50,26 +51,27 @@ const TourDetailCard: FC = () => {
         style={{ background: "#8ca0bd" }}
       >
         <Col className="position-relative d-flex">
-          <Row className={`${style.card} p-0`} style={{ minHeight: "100%" }}>
-            <Col md={4} lg={4} sm={4} className={"p-0 gap-4 m-0"}>
+          <Row className={`${style.card} justify-content-center d-flex p-0`} style={{ minHeight: "100%" }}>
+            <Col md={4} lg={4} sm={11} xs={11} className={"p-0 mx-md-0 gap-4 m-0"}>
               <Col className="position-relative">
                 <Card
-                  style={{ height: window.innerWidth / 6 }}
-                  className={`bg-dark display-1 text-start w-100 px-4 justify-content-center text-white position-relative p-0 m-0 pb-2 ${style.tourNameHeight}`}
+                  style={{ height: "15vw" }}
+                  className={`bg-dark fs-1 text-start w-100 px-4 justify-content-center text-white position-relative p-0 m-0 pb-2 ${style.tourNameHeight}`}
                 >
                   {selectedtourData.tourName}
                   <Col
-                    className={`position-absolute top-0 end-0 border-1 text-black w-30`}
+                    className={`position-absolute top-0 end-0 border-1 text-black justify-self-center d-flex pe-4`}
                   >
                     <img
-                      className="w-100 m-0 p-0"
+                      className="m-0 p-0"
+                      style={{height:"10vh"}}
                       src={`https://flagsapi.com/${countryCode}/flat/64.png`}
                     />
                   </Col>
                 </Card>
               </Col>{" "}
             </Col>
-            <Col md={8} sm={8} lg={8} className="col-12 p-0 m-0">
+            <Col md={8} sm={11} lg={8} className="col-12 pt-4 pt-md-0 p-0 m-0">
               <Col className="position-relative p-0">
                 <Card.Body className="p-0 px-4 gap-3 m-0 d-flex h-100 align-items-center d-flex flex-column m-0">
                   {/* <Card.Title className="p text-wrap">
@@ -212,7 +214,7 @@ const TourDetailCard: FC = () => {
                       <Card.Img
                         className={`p-0 m-0 justify-content-center`}
                         style={{
-                          width: "70px",
+                          width: "5vh",
                           padding: "0px !important",
                           margin: "0px !important",
                         }}

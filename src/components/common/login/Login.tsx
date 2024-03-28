@@ -23,8 +23,11 @@ export type SideNavList = {
 };
 const Login: FC = () => {
   const verificationStatus = useSelector(selectOtpVerification);
-  const [otpVerify, setOtpVerify] = useState(verificationStatus.status);
+  const [otpVerify, setOtpVerify] = useState(verificationStatus?.status);
+  const [show, setShow] = useState(true);
   const [otpSent, setOtpSent] = useState(false);
+  const history = useHistory();
+  const location = useLocation();
   const [usedEmailMessage, setUsedEmailMessage] = useState("");
   const [detail] = useState({
     email: "",
@@ -33,13 +36,13 @@ const Login: FC = () => {
     type: "",
     otp: "",
   });
-  const [have, setHave] = useState(true);
+  const [have, setHave] = useState(location?.pathname?.includes("/login"));
   const dispatch = useDispatch();
-  const history = useHistory();
-  const location = useLocation();
 
   useEffect(() => {
-    setOtpVerify(verificationStatus.status);
+    if (otpSent) {
+      setOtpVerify(verificationStatus?.status);
+    }
   }, [verificationStatus]);
 
   useEffect(() => {
@@ -91,10 +94,14 @@ const Login: FC = () => {
       console.log(error.message);
     }
   };
+  useEffect(() => {
+    return () => setShow(false);
+  }, []);
+
   return (
     <Col className="min-vh-100 align-items-center d-flex">
       <Modal
-        show={true}
+        show={show}
         fullscreen={"false"}
         // onHide={() => setShow(false)}
         centered
@@ -179,6 +186,7 @@ const Login: FC = () => {
                               className="round-edges h2 py-1 m-0"
                               style={{ minHeight: "0%", background: "#4a915b" }}
                               onClick={(e: any) => {
+                                e.preventDefault();
                                 if (!Object.keys(errors).includes("email")) {
                                   setUsedEmailMessage("");
                                   getOtpApi(values.email).then(
@@ -244,6 +252,7 @@ const Login: FC = () => {
                               className="round-edges h2 py-1 m-0"
                               style={{ minHeight: "0%", background: "#4a915b" }}
                               onClick={(e: any) => {
+                                e.preventDefault();
                                 if (!Object.keys(errors).includes("otp")) {
                                   verify(values);
                                 }
@@ -282,12 +291,13 @@ const Login: FC = () => {
                           {!have && verificationStatus.status && (
                             <Col className="col-4 p-0 m-0">
                               <Dropdown
-                                onSelect={(eventKey: any) =>
+                                onSelect={(eventKey: any) => {
+                                  eventKey.preventDefault();
                                   setValues({
                                     ...values,
                                     type: [eventKey.toLowerCase()],
-                                  })
-                                }
+                                  });
+                                }}
                               >
                                 <Dropdown.Toggle
                                   className="border-0 round-edges d-inline h2 py-1 m-0"
@@ -327,6 +337,7 @@ const Login: FC = () => {
                           className="round-edges h2 h-100 py-1"
                           style={{ minHeight: "0%", background: "#4a915b" }}
                           onClick={(e: any) => {
+                            e.preventDefault();
                             if (
                               !Object.keys(errors).includes("email") &&
                               !Object.keys(errors).includes("password")
@@ -344,6 +355,7 @@ const Login: FC = () => {
                               className="round-edges h2 h-100 py-1"
                               style={{ minHeight: "0%", background: "#4a915b" }}
                               onClick={(e: any) => {
+                                e.preventDefault();
                                 if (Object.keys(errors).length === 0) {
                                   signUp(values);
                                 }
@@ -376,11 +388,13 @@ const Login: FC = () => {
                       <span
                         className="d-flex align-self-center display-6 bold fit-content"
                         style={{ color: "#4a915b" }}
-                        onClick={() => {
+                        onClick={(event) => {
+                          event.preventDefault();
                           setValues(detail);
                           setOtpSent(false);
                           setTouched({});
                           setHave(false);
+                          setShow(false);
                           history.push("/signup");
                         }}
                       >
@@ -390,11 +404,13 @@ const Login: FC = () => {
                       <span
                         className="d-flex align-self-center display-6 bold fit-content"
                         style={{ color: "#4a915b" }}
-                        onClick={() => {
+                        onClick={(event) => {
+                          event.preventDefault();
                           setValues(detail);
                           setOtpSent(false);
                           setTouched({});
                           setHave(true);
+                          setShow(false);
                           history.push("/login");
                         }}
                       >

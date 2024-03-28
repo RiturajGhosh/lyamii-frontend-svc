@@ -4,8 +4,28 @@ import style from "./MapAndEscape.module.scss";
 import Globe from "../../common/globe/Globe";
 import { mapDescription } from "../../common/enum/enum";
 import RoundButton from "../../common/roundButton/RoundButton";
+import { IoIosPaperPlane } from "react-icons/io";
+import { escapeRoute } from "../../common/enum/escapePlanRoute";
+import HorizontalScroll from "../../common/horizontalScroll/HorizontalScroll";
 
 const MapAndEscape: FC = () => {
+  const data = [
+    "Domestic Flights",
+    "Lounge Access",
+    "Airport drop-pickup",
+    "Currency Exchange ",
+    "Travel Insurance",
+    "Health Insurance",
+    "UPI Wallet",
+    "Accommodations",
+    "Cuisines",
+    "Transfers",
+    "Guides",
+    "Entry Tickets ",
+    "Show Tickets",
+    "Activities",
+    "Round the clock Multilingual Support",
+  ];
   return (
     <Col
       className="home-about-section sectionContainer d-flex justify-content-center py-42 px-0"
@@ -21,24 +41,32 @@ const MapAndEscape: FC = () => {
               <div className="card-body flex-wrap d-flex">
                 <span
                   className={`text-shadow-light fw-bold fs-7 justify-content-center d-flex w-100 text-center`}
-                  style={{ color: "#213D66", fontFamily: "Aprila" }}
+                  style={{ color: "#213D66", fontFamily: "DISTILLERYSTRONG" }}
                 >
                   Home among the Stars
                 </span>
-                {mapDescription && (
+                {/* {mapDescription && (
                   <p
                     className={`text-center card-text`}
                     style={{ color: "#354775", fontFamily: "AsapCondensed" }}
                   >
                     {mapDescription}
                   </p>
-                )}
-                <Row className="d-flex flex-row w-100 gap-2 flex-wrap">
-                  <p
+                )} */}
+                <Row className="d-flex mt-3 flex-row w-100 gap-2 flex-wrap">
+                  {data.map((d) => (
+                    <p
+                      className="text-white col py-2 px-3 small fit-content rounded-4 align-items-center justify-content-center d-flex"
+                      style={{ background: "#0752a1", fontFamily: "Archive" }}
+                    >
+                      {d}
+                    </p>
+                  ))}
+                  {/* <p
                     className="text-white col py-2 px-3 fit-content rounded-4 align-items-center justify-content-center d-flex"
                     style={{ background: "#0752a1", fontFamily: "Archive" }}
                   >
-                    75+ Countries
+                    Domestic Flights
                   </p>
                   <p
                     className="text-white py-2 px-3 col fit-content rounded-4 align-items-center justify-content-center d-flex"
@@ -51,7 +79,7 @@ const MapAndEscape: FC = () => {
                     style={{ background: "#0752a1", fontFamily: "Archive" }}
                   >
                     3500+ Volunteers
-                  </p>
+                  </p> */}
                 </Row>
               </div>
             </div>
@@ -79,55 +107,80 @@ const MapAndEscape: FC = () => {
                 </span>
 
                 <div
-                  className="card w-100 border-5 p-0 m-0"
-                  style={{ borderColor: "#0752a1 !important" }}
+                // className="card bg-transparent w-100 rounded-4 border-5 p-0 m-0"
+                // style={{ borderColor: "#0752a1 !important" }}
                 >
-                  <div className="card-header h-100">
+                  <div className=" bg-transparent h-100">
                     <Col className="justify-content-center align-items-center d-flex">
-                      <Row className="position-relative align-items-center p-0 my-3 m-0 justify-content-center d-flex w-100">
-                        <Col className="col-2 d-flex position-relative p-0 m-0">
-                          <RoundButton
-                            className="border-5 border circle-core"
-                            bordercolor="#0e3c30"
-                            size={"calc(0.12*100vw"}
-                            fill={"#c4cdfe"}
-                            text={"step 1"}
-                          />
-                        </Col>
-                        <Col className="col-1 border-2 border p-0 m-0 w-10 timeline-line"></Col>
-                        <Col className="col-2 position-relative d-flex p-0 m-0">
-                          <RoundButton
-                            className="border-5 border circle-core"
-                            size={"calc(0.12*100vw"}
-                            bordercolor="#0e3c30"
-                            fill={"#c4cdfe"}
-                            text={"step 2"}
-                          />
-                        </Col>
-                        <Col className="col-1 border-2 border p-0 m-0 w-10 timeline-line"></Col>
+                      <Col className="p-0 col-12 d-flex flex-md-row flex-sm-column flex-column p-4 mt-2 m-0 h-100 w-100 position-relative gap-4 align-items-end">
+                        <Col className="align-self-stretch d-grid p-0 m-0">
+                          <div className="scrolling-wrapper row flex-row flex-nowrap p-0 m-0">
+                            {escapeRoute.map((route: any, index: number) => {
+                              return (
+                                <>
+                                  {index === 0 ? (
+                                    <Row className="position-relative align-items-center col-2 p-0 mt-3 m-0 justify-content-center d-flex">
+                                      <Col className="col-6 float-start flex-column justify-content-start d-flex p-0 m-0">
+                                        <IoIosPaperPlane className="img-round w-100 h-50 border p-0 m-0 border-5" />
+                                        <Col className="w-100 justify-content-center d-flex p-0 m-0">
+                                          <div className="active small">
+                                            {route.stage}
+                                          </div>
+                                        </Col>{" "}
+                                      </Col>
+                                    </Row>
+                                  ) : (
+                                    <Row className="position-relative align-items-center col-3 p-0 mt-3 m-0 justify-content-around d-flex">
+                                      <Col className="col-7 border-top-1 border p-0 m-0 timeline-line"></Col>
 
-                        <Col className="col-2 position-relative d-flex p-0 m-0">
-                          <RoundButton
-                            className="border-5 border circle-core"
-                            bordercolor="#0e3c30"
-                            size={"calc(0.12*100vw"}
-                            fill={"#c4cdfe"}
-                            text={"step 3"}
-                          />
-                        </Col>
-                        <Col className="col-1 border-2 border p-0 m-0 w-10"></Col>
+                                      <Col className="col-4 float-end flex-column justify-content-end d-flex p-0 m-0">
+                                        <IoIosPaperPlane className="img-round w-100 h-50 border p-0 m-0  border-5" />
+                                        <Col className="w-100 justify-content-center d-flex p-0 m-0">
+                                          <div className="active small">
+                                            {route.stage}
+                                          </div>
+                                        </Col>{" "}
+                                      </Col>
+                                    </Row>
+                                  )}
+                                </>
+                              );
+                            })}
+                          </div>
+                          {/* {escapeRoute.map((route: any, index: number) => {
+                                return (
+                                  <Col className="mx-md-3 overflowX-auto w-100 d-inline-block position-relative">
+                                    {index === 0 ? (
+                                      <Col className="col-2 flex-column justify-content-start d-flex p-0 m-0">
+                                        <IoIosPaperPlane className="img-round w-75 h-50 border p-0 m-0  border-5" />
+                                        <div className="active small">Sign In</div>
+                                        <Col className="w-75 justify-content-center d-flex p-0 m-0">
+                                          <div className="active small">
+                                            {route.stage}
+                                          </div>
+                                        </Col>{" "}
+                                      </Col>
+                                    ) : (
+                                      <Col className="col-2 flex-column justify-content-center d-flex p-0 m-0">
+                                        <IoIosPaperPlane className="img-round w-75 h-50 border p-0 m-0  border-5" />
+                                        <div className="active small">Sign In</div>
+                                        <Col className="w-75 justify-content-center d-flex p-0 m-0">
+                                          <div className="active small">
+                                            {route.stage}
+                                          </div>
+                                        </Col>{" "}
+                                      </Col>
+                                    )}
 
-                        <Col className="col-2 position-relative d-flex p-0 m-0">
-                          <RoundButton
-                            className="border-5 border circle-core"
-                            size={"calc(0.12*100vw"}
-                            bordercolor="#0e3c30"
-                            fill={"#c4cdfe"}
-                            text={"step 4"}
-                          />
+                                    <Col className="col-2 border-top-1 border p-0 m-0 timeline-line"></Col>
+                                  </Col>
+                                );
+                              })}
+                            </Row> */}
                         </Col>
-                      </Row>
-                      <Col className="position-absolute bg-transparent d-flex h-100 align-items-center fw-bold" style={{fontSize:"7dvi"}}>Coming Soon</Col>
+                      </Col>
+
+                      {/* <Col className="position-absolute bg-transparent d-flex h-100 align-items-center text-dark fw-bold text-shadow-light" style={{fontSize:"7dvi"}}>Show After Login</Col> */}
                       {/* <input
                         className="rounded-circle display-1 p-5 w-50"
                         type="text"

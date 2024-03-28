@@ -34,7 +34,7 @@ export const reasons = [
   },
   {
     title: "Has something for Everyone",
-    img: require("../../../Assets/giftbox.png"),
+    img: require("../../../Assets/gift1.png"),
     description:
       "Lyamii presents vacations for everyone, to everywhere. Do not hesitate to dive into the exploration of yourself. Scroll through snow, ocean, wildlife, alleys and select your journey. You have us to handle the rest.",
   },
@@ -68,7 +68,7 @@ export const paths = [
   "/cancellationandRefundpolicy",
   "/refundpolicy",
   "/termconditions",
-  "/crm"
+  "/crm",
 ];
 export const months = [
   "Jan",
@@ -86,6 +86,21 @@ export const months = [
 ];
 export const teamRating = [5, 4, 5, 4];
 export const reviews = [
+  {
+    name: "Sarah M",
+    review:
+      "I had an amazing experience booking my vacation through this website. The user-friendly interface made it super easy to browse through various destinations and find the perfect package for my family. The customer support team was incredibly helpful in answering all my questions and providing recommendations. Our trip went off without a hitch, and I can't wait to use this website again for my next adventure!",
+  },
+  {
+    name: "John D",
+    review:
+      "Overall, a great travel booking website! I found some fantastic deals and discounts on flights and hotels for my recent solo trip. The search filters were handy for narrowing down my options, and the booking process was smooth. The only reason I'm not giving it 5 stars is that I encountered a minor issue with my hotel reservation, but the customer support team promptly resolved it. I'd definitely use this website again for my next getaway.",
+  },
+  {
+    name: "Lisa T",
+    review:
+      "This website has a wide range of travel options, but my experience was a bit mixed. I found a great deal on a tour package to a beautiful destination, but the booking process felt a bit clunky, and I had some trouble with payment processing. Eventually, I managed to secure my reservation with the help of customer support, but it was a bit frustrating. On the positive side, the tour itself was fantastic, and the local guides were knowledgeable and friendly.",
+  },
   {
     name: "Sarah M",
     review:
@@ -990,16 +1005,6 @@ export const filterList = [
         checked: false,
         label: "more than 75",
       },
-    ],
-  },
-  {
-    filterName: "Price Range",
-    subFilter: [
-      { checked: false, label: "less than 2000" },
-      { checked: false, label: "2000 - 5000" },
-      { checked: false, label: "5000 - 10000" },
-      { checked: false, label: "10000 - 25000" },
-      { checked: false, label: "more than 25000" },
     ],
   },
 ];
@@ -2013,6 +2018,7 @@ export const tourScheduleDetail = [
       },
       {
         event: "Shantadurga Temple",
+        navigator: "/",
         eventDescription:
           "Before the carnival festivities kick off, take a moment to visit the Shantadurga Temple in Kavlem, just a short distance from Panaji. This beautiful temple is an excellent way to experience Goa's spiritual side.",
       },
@@ -2043,11 +2049,13 @@ export const tourScheduleDetail = [
     schedule: [
       {
         event: "Sunset at Miramar Beach",
+        navigator: "/",
         eventDescription:
           "After the parade, make your way to Miramar Beach to witness a breathtaking Goan sunset. Relax by the sea, feel the cool breeze, and take in the serene ambiance.",
       },
       {
         event: "Dinner at a Beach Shack",
+        navigator: "/",
         eventDescription:
           "For dinner, head to one of the beach shacks or waterfront restaurants to enjoy some fresh seafood and other Goan delicacies. Calangute, Baga, or Anjuna beaches are popular areas with a wide range of dining options.",
       },
@@ -2058,11 +2066,13 @@ export const tourScheduleDetail = [
     schedule: [
       {
         event: "Party at a Carnival Event",
+        navigator: "/",
         eventDescription:
           "Since it's carnival time, several parties and events will be happening across the city. Choose one of the Carnival-themed events, dance the night away, and enjoy the lively atmosphere with locals and other tourists.",
       },
       {
         event: "Return to your Accommodation",
+        navigator: "/",
         eventDescription:
           "After a fun-filled day, travel back to your accommodation. You can use a taxi or rideshare service to ensure a safe trip back.",
       },

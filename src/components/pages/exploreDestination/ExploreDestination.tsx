@@ -16,6 +16,10 @@ import HorizontalScroll from "../../common/horizontalScroll/HorizontalScroll";
 import { SET_SELECTED_TOUR_DATA } from "../../../state/actions/types/tourDataActionType";
 import { useHistory } from "react-router-dom";
 import RoundButton from "../../common/roundButton/RoundButton";
+import { getTours } from "../../../state/actions/getTours";
+import CardWithShadow from "../../common/cardWithoutBorder/CardWithShadow";
+import { SET_SELECTED_LOCATION } from "../../../state/actions/types/globeDataActionType";
+import { LuCalendarDays } from "react-icons/lu";
 
 export type stateType = {
   data: any[];
@@ -31,7 +35,8 @@ const ExploreDestination: FC = () => {
   const [tourlist, settourList] = useState<any[]>(tours);
   const [showFilter, setShowFilter] = useState(true);
   const [filters, setFilters] = useState(filterList);
-
+  const [priceRange, setPriceRange] = useState({ min: 0, max: 120000 });
+  const [type, setType] = useState("text");
   const [products, setProducts] = useState(
     Array.from({ length: 10 }, (_, i) => `Product ${i + 1}`)
   ); // Initial set of products
@@ -46,7 +51,7 @@ const ExploreDestination: FC = () => {
     // Simulate an API call to get more data
     // Replace this with your actual API call
     const newData = markers;
-    // await getTours(''); /* Your API call here */
+    await getTours(filters); /* Your API call here */
 
     if (newData?.length === 0) {
       setState({ data: state.data, hasMore: false });
@@ -57,23 +62,23 @@ const ExploreDestination: FC = () => {
       }));
     }
   };
-  // function handleScroll(e: any) {
-  //   const element = e.target;
-  //   if (element.scrollLeft + element.clientWidth >= element.scrollWidth) {
-  //     loadMoreProducts();
-  //   }
-  // }
+  function handleScroll(e: any) {
+    const element = e.target;
+    if (element.scrollLeft + element.clientWidth >= element.scrollWidth) {
+      loadMoreProducts();
+    }
+  }
   // Function to load more products
-  // const loadMoreProducts = () => {
-  //   // Simulate fetching more products (you would typically make an API call here)
-  //   setTimeout(() => {
-  //     const newProducts = Array.from(
-  //       { length: 10 },
-  //       (_, i) => `Product ${products.length + i + 1}`
-  //     );
-  //     setProducts([...products, ...newProducts]);
-  //   }, 1000);
-  // };
+  const loadMoreProducts = () => {
+    // Simulate fetching more products (you would typically make an API call here)
+    setTimeout(() => {
+      const newProducts = Array.from(
+        { length: 10 },
+        (_, i) => `Product ${products.length + i + 1}`
+      );
+      setProducts([...products, ...newProducts]);
+    }, 1000);
+  };
 
   const [tourDetail, setTourDetail] = useState({
     city: destination.city,
@@ -107,6 +112,37 @@ const ExploreDestination: FC = () => {
     }
   }, [screenSize]);
 
+  const fetchTours = async () => {
+    const filterData = markers.filter(
+      (marker: any) =>
+        marker.city.toLowerCase().includes(tourDetail.city) && marker
+    );
+    dispatch({
+      type: SET_SELECTED_LOCATION,
+      payload: filterData[0],
+    });
+    let payload = {
+      ...filterData[0],
+      startDate: destination.startDate,
+      endDate: destination.endDate,
+    };
+    const range = [
+      {
+        priceRange: {
+          min: "0",
+          max: priceRange,
+        },
+      },
+    ];
+    if (filters) {
+      payload = { ...payload, ...filters, ...range };
+    }
+    settourList(tours);
+    await getTours(payload);
+  };
+  useEffect(() => {
+    fetchTours();
+  }, [priceRange, filters]);
   return (
     <MainContainer>
       <Coursel />
@@ -192,7 +228,7 @@ const ExploreDestination: FC = () => {
               md={6}
               className="col-12 align-self-center justify-content-center p-0"
             >
-              <Col className="justify-content-center d-flex">
+              <Col className="justify-content-center mx-4 d-flex">
                 <input
                   className="form__input w-100 bg-white h2 font-norwester justify-content-center p-1 px-2 text-dark text-center m-0 border-0"
                   type="text"
@@ -205,11 +241,14 @@ const ExploreDestination: FC = () => {
                 />
               </Col>
               <Row className="pt-2 gap-2">
-                <Col className="justify-content-center d-flex form__input w-60 bg-white p-0 h2">
-                  <label className="pl-4 fs-medium">Starting Date:</label>
+                <Col className="justify-content-center flex-column ms-4 d-flex rounded-4 p-3 w-60 bg-white p-0 h2">
+                  <label className="fs-medium pb-1">Starting Date:</label>
                   <input
-                    className="form__input w-60 bg-white justify-content-center fs-medium p-1 px-2 text-dark text-center m-0 border-0"
-                    type="text"
+                    className="rounded-4 w-100 bg-white justify-content-center fs-medium p-1 px-2 text-dark text-start m-0 border-0"
+                    type={type}
+                    id="startDate"
+                    onFocus={() => setType("date")}
+                    onBlur={() => setType("text")}
                     value={tourDetail.startDate}
                     style={{ background: "#19bca1", fontFamily: "NORWESTER" }}
                     onChange={(e: any) =>
@@ -220,12 +259,15 @@ const ExploreDestination: FC = () => {
                     }
                   />
                 </Col>
-                <Col className="justify-content-center d-flex form__input w-60 bg-white p-0 h2">
-                  <label className="fs-medium pl-4">End Date:</label>
+                <Col className="justify-content-center flex-column me-4 d-flex rounded-4 p-3 w-60 bg-white p-0 h2">
+                  <label className="fs-medium pb-1">End Date:</label>
                   <input
-                    className="form__input w-60 bg-white justify-content-center fs-medium p-1 px-2 text-dark text-center m-0 border-0"
-                    type="text"
+                    className="rounded-4 w-100 bg-white justify-content-center fs-medium p-1 px-2 text-dark text-start m-0 border-0"
+                    type={type}
+                    id="endDate"
                     value={tourDetail.endDate}
+                    onFocus={() => setType("date")}
+                    onBlur={() => setType("text")}
                     style={{ background: "#19bca1", fontFamily: "NORWESTER" }}
                     onChange={(e: any) =>
                       setTourDetail({ ...tourDetail, endDate: e.target.value })
@@ -235,36 +277,35 @@ const ExploreDestination: FC = () => {
               </Row>
 
               {/* <Button
-                      onClick={async () => {
-                        const filterData = markers.filter(
-                          (marker: any) =>
-                            marker.city
-                              .toLowerCase()
-                              .includes(tourDetail.city) && marker
-                        );
-                        dispatch({
-                          type: SET_SELECTED_LOCATION,
-                          payload: filterData[0],
-                        });
-                        let payload = {
-                          ...filterData[0],
-                          startDate: destination.startDate,
-                          endDate: destination.endDate,
-                        };
-                        if (filters) {
-                          payload = { ...payload, ...filters };
-                        }
-                        settourList(tours);
-                        // await gettours(payload));
-                      }}
-                      style={{ width: "fit-content" }}
-                      variant="secondary"
-                      className={`${
-                        screenSize.isMobile ? "row-2" : "col-1"
-                      } btn-secondary px-2 p-0 m-0 text-nowrap`}
-                    >
-                      Submit
-                    </Button> */}
+                onClick={async () => {
+                  const filterData = markers.filter(
+                    (marker: any) =>
+                      marker.city.toLowerCase().includes(tourDetail.city) &&
+                      marker
+                  );
+                  dispatch({
+                    type: SET_SELECTED_LOCATION,
+                    payload: filterData[0],
+                  });
+                  let payload = {
+                    ...filterData[0],
+                    startDate: destination.startDate,
+                    endDate: destination.endDate,
+                  };
+                  if (filters) {
+                    payload = { ...payload, ...filters };
+                  }
+                  settourList(tours);
+                  await getTours(payload);
+                }}
+                style={{ width: "fit-content" }}
+                variant="secondary"
+                className={`${
+                  screenSize.isMobile ? "row-2" : "col-1"
+                } btn-secondary px-2 p-0 m-0 text-nowrap`}
+              >
+                Submit
+              </Button> */}
             </Col>
           </Row>
         </Col>
@@ -298,42 +339,6 @@ const ExploreDestination: FC = () => {
       </Row>
 
       <Col className={"mx-2 px-sm-2 px-md-5 pb-5"}>
-        {/* <Row className="p-0 m-0 w-100 d-flex justify-content-between">
-          <Col className="p-0">
-            <Row className="p-0 w-100">
-              {tourlist.map((tour, idx) => (
-                <Col
-                  onClick={() => {}}
-                  key={idx}
-                  lg={3}
-                  md={3}
-                  sm={12}
-                  xs={12}
-                  className="p-0"
-                >
-                  <CardWithShadow>
-                    <TourCard
-                      coordinates={[]}
-                      className={"small"}
-                      imageStyling={``}
-                      imageRatio={150}
-                      titleStyling="small"
-                      tour={tour}
-                      tourname={tour?.displayName}
-                      mealPaln={tour?.mealPlanIncluded}
-                      recommendedDate={tour?.recommendedDate}
-                      location={tour?.location}
-                      acceptsWalletCredit={tour?.acceptsWalletCredit}
-                      unitConfigurations={tour?.matchingUnitConfigurations}
-                      price={tour?.priceDisplayInfoIrene}
-                      propertyData={tour?.basicPropertyData}
-                    />
-                  </CardWithShadow>
-                </Col>
-              ))}
-            </Row>
-          </Col>
-        </Row> */}
         <Col className="my-5 p-0 m-0">
           <HorizontalScroll
             title={""}
@@ -359,23 +364,6 @@ const ExploreDestination: FC = () => {
                     tourData={tour}
                   />
                 </Card>
-                <Card.Text
-                  className="position-absolute top-0 bold mt-5 start-90 translate-middle fit-content my-4"
-                  style={{
-                    background: "#c4cdfe",
-                    color: "#0752a1",
-                    fontFamily: "NORWESTER",
-                  }}
-                  onClick={() => {
-                    dispatch({
-                      type: SET_SELECTED_TOUR_DATA,
-                      payload: tour,
-                    });
-                    history.push("/tour-detail");
-                  }}
-                >
-                  {tour?.tourName && tour?.tourName}
-                </Card.Text>
               </Col>
             ))}
             {loading && (
@@ -400,11 +388,11 @@ const ExploreDestination: FC = () => {
             <Modal.Title>Filter</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {filters.map((field) => {
+            {filters.slice(0, 3).map((field) => {
               return (
                 <>
                   <h3 className="p-2">{field?.filterName}</h3>
-                  {field?.subFilter.map((sub, index: number) => {
+                  {field?.subFilter?.map((sub, index: number) => {
                     return (
                       <Checkbox
                         key={index}
@@ -420,6 +408,55 @@ const ExploreDestination: FC = () => {
                 </>
               );
             })}
+            <div>
+              <h3 className="p-2">Price Range</h3>
+              <div className="range-slider pt-3">
+                <input
+                  value={priceRange.min}
+                  min="0"
+                  max="120000"
+                  step="500"
+                  type="range"
+                  onChange={(e) => {
+                    e.preventDefault();
+                    console.log(e);
+                    parseFloat(e.target.value) < priceRange.max
+                      ? setPriceRange({
+                          ...priceRange,
+                          min: parseInt(e.target.value),
+                        })
+                      : setPriceRange({ ...priceRange });
+                  }}
+                />
+                <input
+                  value={priceRange.max}
+                  min="0"
+                  max="120000"
+                  step="500"
+                  type="range"
+                  onChange={(e) => {
+                    e.preventDefault();
+                    parseFloat(e.target.value) > priceRange.min
+                      ? setPriceRange({
+                          ...priceRange,
+                          max: parseInt(e.target.value),
+                        })
+                      : setPriceRange({ ...priceRange });
+                  }}
+                />
+              </div>
+              
+              <Row className="pt-3 d-flex justify-content-between">
+                  <Col>
+                    <label>Min : </label>
+                    <span>{priceRange.min}</span>
+                  </Col>
+                  <Col className="text-end">
+                    <label>Max : </label>
+                    <span>{priceRange.max}</span>
+                  </Col>
+                </Row>
+            </div>
           </Modal.Body>
         </Modal>
       </Col>

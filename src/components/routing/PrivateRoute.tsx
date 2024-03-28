@@ -12,6 +12,7 @@ import Login from "../common/login/Login";
 import { paths } from "../common/enum/enum";
 import { selectSideNav } from "../../state/selectors/selectSideNav";
 import { selectScreenSize } from "../../state/selectors/selectScreenSize";
+import SideCrmNav from "../common/sideNav/SideCrmNav";
 
 type ComponentProps =
   | React.ComponentType<RouteComponentProps<any>>
@@ -90,14 +91,47 @@ const PrivateRoute: FC<PrivateRouteProps> = ({
             </Col>
           </Row>
         )}
+        {path.includes("crm") && (
+          <Row>
+            <Col
+              // id="sidenav"
+              className="p-0 m-0 position-fixed"
+              style={{
+                zIndex: "1",
+                maxWidth: "0px",
+              }}
+            >
+              {/* <span
+                style={{ fontSize: "30px", cursor: "pointer" }}
+                onClick={() => openNav()}
+              >
+                open
+              </span> */}
+              <SideCrmNav />
+            </Col>
+            <Col
+              id="main"
+              className="p-0"
+              style={{
+                zIndex: "0",
+                marginLeft:
+                  !sideNav.hidden && screenSize.isDesktop ? "260px" : "40px",
+              }}
+            >
+              <Route path={path} render={(props) => <Component {...props} />} />
+            </Col>
+          </Row>
+        )}
         {(path.includes("login") || path.includes("signup")) && (
           <Col style={{ background: "#b4f5c5" }}>
             <Login />
           </Col>
         )}
-        {!path.includes("profile") && !path.includes("login") && (
-          <Route path={path} render={(props) => <Component {...props} />} />
-        )}
+        {!path.includes("profile") &&
+          !path.includes("login") &&
+          !path.includes("crm") && (
+            <Route path={path} render={(props) => <Component {...props} />} />
+          )}
         {!paths.includes(path) && !path.includes("profile") && <Footer />}
       </div>
     );
