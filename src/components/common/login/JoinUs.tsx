@@ -287,7 +287,6 @@ const JoinUs: FC = () => {
                           <Col className="col-4 p-0 m-0">
                             <Dropdown
                               onSelect={(eventKey: any) => {
-                                eventKey.preventDefault();
                                 setValues({
                                   ...values,
                                   type: [eventKey.toLowerCase()],
