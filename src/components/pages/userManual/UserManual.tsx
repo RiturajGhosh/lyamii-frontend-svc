@@ -1,13 +1,10 @@
 import React, { FC } from "react";
-import { Button, Card, Col, Row } from "react-bootstrap";
+import { Button, Col } from "react-bootstrap";
 import { journeyOptions } from "../../common/enum/enum";
-import { useHistory } from "react-router-dom";
 import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
 import { useSelector } from "react-redux";
-import { LuChevronRightCircle } from "react-icons/lu";
 import { MdDownloadForOffline } from "react-icons/md";
 const UserManual: FC = () => {
-  const history = useHistory();
   const screenSize = useSelector(selectScreenSize);
 
   return (

@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import style from "./Header.module.scss";
-import { Card, Col, Nav, Navbar } from "react-bootstrap";
+import { Col, Nav, Navbar } from "react-bootstrap";
 import { getCookie } from "../enum/functions";
 import { FaCartShopping } from "react-icons/fa6";
 
@@ -80,6 +80,7 @@ const Header: FC = () => {
                     margin: "0px !important",
                     fontFamily: "DellaRespira",
                   }}
+                  alt=""
                   src={require("../../../Assets/logo.png")}
                 />
                 Lyam<span className={style.dot}>ii</span>

@@ -1,5 +1,10 @@
 import { FC, LazyExoticComponent, useEffect } from "react";
-import { Redirect, Route, RouteComponentProps } from "react-router-dom";
+import {
+  Redirect,
+  Route,
+  RouteComponentProps,
+  useLocation,
+} from "react-router-dom";
 import { AccessType } from "../../layout/accessType";
 import styles from "./PrivateRoute.module.scss";
 import { SET_LOCATION } from "../../state/actions/types/locationType";
@@ -39,14 +44,15 @@ const PrivateRoute: FC<PrivateRouteProps> = ({
   ...rest
 }) => {
   const dispatch = useDispatch();
+  const pathName = useLocation();
   const screenSize = useSelector(selectScreenSize);
   const sideNav = useSelector(selectSideNav);
   useEffect(() => {
     dispatch({
       type: SET_LOCATION,
-      payload: path || window.location,
+      payload: path || pathName,
     });
-  }, [window.location, path]);
+  }, [pathName, path]);
   const loginError = false; //will use selector
   // const openNav = () => {
   //   const ele = (document?.getElementById("sidenav") as HTMLElement).className.includes("d-flex");

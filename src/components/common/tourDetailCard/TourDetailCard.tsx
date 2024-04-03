@@ -11,17 +11,12 @@ import {
   OverlayTrigger,
 } from "react-bootstrap";
 import style from "./TourDetailCard.module.scss";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { BsShare } from "react-icons/bs";
-import { useSelector } from "react-redux";
-import markers from "../globe/markers";
-import { selectTourData } from "../../../state/selectors/selectTourData";
 import { facilities, isoCountries } from "../enum/enum";
 import { FaIndianRupeeSign } from "react-icons/fa6";
-import CustomCoursel from "../../pages/coursel/CustomCoursel";
 import MainContainer from "../container/MainContainer";
 import Tick from "../icon/tick";
-import { countries } from "../enum/countryCode";
+// import { countries } from "../enum/countryCode";
 import { useHistory } from "react-router-dom";
 import { tours } from "../../pages/mockData/destinations";
 
@@ -32,7 +27,7 @@ const TourDetailCard: FC = () => {
   const [countryCode, setCountryCode] = useState("");
   useEffect(() => {
     flag();
-  }, []);
+  });
 
   const flag = () => {
     const id =
@@ -93,7 +88,11 @@ const TourDetailCard: FC = () => {
             >
               <Col className="position-relative">
                 <Card
-                  style={{ height: "15vw", fontSize: "5.5dvi",fontFamily:"initial" }}
+                  style={{
+                    height: "15vw",
+                    fontSize: "5.5dvi",
+                    fontFamily: "initial",
+                  }}
                   className={`bg-dark text-start w-100 px-4 justify-content-center text-white position-relative p-0 m-0 pb-2 ${style.tourNameHeight}`}
                 >
                   {selectedtourData.tourName}
@@ -101,6 +100,7 @@ const TourDetailCard: FC = () => {
                     className={`position-absolute top-0 end-0 border-1 text-black justify-self-center d-flex pe-4`}
                   >
                     <img
+                      alt=""
                       className="m-0 p-0"
                       style={{ height: "10vh" }}
                       src={`https://flagsapi.com/${countryCode}/flat/64.png`}
@@ -271,7 +271,9 @@ const TourDetailCard: FC = () => {
                 <Card.Body className="p-0 px-4 gap-3 d-flex flex-column m-0">
                   <Card
                     style={{ height: window.innerWidth / 3 }}
-                    className={"text-white align-items-center d-flex h-100 bg-dark position-relative p-2 m-0"}
+                    className={
+                      "text-white align-items-center d-flex h-100 bg-dark position-relative p-2 m-0"
+                    }
                   >
                     <section
                       className={`pt-4 overflow-auto ${style.rivewCard}`}

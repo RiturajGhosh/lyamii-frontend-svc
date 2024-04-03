@@ -117,6 +117,7 @@ const Footer: FC = () => {
                     margin: "0px !important",
                     fontFamily: "DellaRespira",
                   }}
+                  alt=""
                   // src="https://drive.google.com/thumbnail?id=15g5EvDhBSNxSSEgZ_sryNZhqic0EB5lm" alt="drive image"
                   src={require("../../../Assets/logo.png")}
                 />

@@ -1,19 +1,20 @@
 import React, { FC, useState } from "react";
-import { Col, Row, Container, Form, Button } from "react-bootstrap";
+import { Col, Row, Container, Button } from "react-bootstrap";
 import Icon from "../../common/icon/Icon";
-import { useSelector } from "react-redux";
-import { selectTourData } from "../../../state/selectors/selectTourData";
 import { useHistory } from "react-router-dom";
 import image from "../../../Assets/header1.jpeg";
 import SubCard from "../../common/subCard/SubCard";
 import ArrowButton from "../../common/arrowButton/ArrowButton";
-import { FaCircleArrowRight, FaCircleChevronRight } from "react-icons/fa6";
+import { FaCircleArrowRight } from "react-icons/fa6";
+import Toggler from "../../common/toggler/Toggler";
 
 const Trips: FC = () => {
-  const [toggle, setToggle] = useState("Ongoing");
+  const [toggle, setToggle] = useState(true);
   const history = useHistory();
-  const selectedtourData: any = useSelector(selectTourData);
 
+  const handleToggle = () => {
+    setToggle(!toggle);
+  };
   return (
     <div
       className={`px-5 min-vh-100 mw-100 w-100 align-items-center justify-content-end d-flex m-0`}
@@ -33,48 +34,22 @@ const Trips: FC = () => {
     >
       <Container
         fluid="lg"
-        className="p-0 absolute m-0 min-vh-100 justify-content-start d-flex flex-column w-100"
+        className="p-0 gap-5 absolute m-0 min-vh-100 justify-content-start d-flex flex-column w-100"
       >
         <Row className="p-0 m-0 py-4 justify-content-end d-flex">
           <Col className="col-12 py-4 m-0 gap-4 align-items-start justify-content-start d-grid p-0">
-            <div className="switches-container">
-              <input
-                type="radio"
-                id="switchOngoing"
-                name="switchPlan"
-                value="Ongoing"
-                checked={true}
+            <div className="switches-container bg-white p-2 ">
+              <Toggler
+                name="myToggle1"
+                checked={toggle}
+                inline={true}
+                labels={["Ongoing", "Upcoming"]}
+                handleChange={() => handleToggle()}
               />
-              <input
-                type="radio"
-                id="switchUpcoming"
-                name="switchPlan"
-                value="Upcoming"
-              />
-              <label
-                htmlFor="switchOngoing"
-                onClick={() => setToggle("Ongoing")}
-                style={{ color: "#99c9e8" }}
-              >
-                Ongoing
-              </label>
-              <label
-                htmlFor="switchUpcoming"
-                onClick={() => setToggle("Upcoming")}
-                style={{ color: "#99c9e8" }}
-              >
-                Upcoming
-              </label>
-              <div className="switch-wrapper">
-                <div className="switch" style={{ background: "#99c9e8" }}>
-                  <div style={{ color: "white" }}>Ongoing</div>
-                  <div style={{ color: "white" }}>Upcoming</div>
-                </div>
-              </div>
             </div>
           </Col>
         </Row>
-        {toggle === "Upcoming" ? (
+        {!toggle ? (
           <section className={`overflow-auto min-vh-100`}>
             <div className="pl-5 one-side-timeline m-0 w-100">
               <Col className="col-2">
@@ -100,11 +75,12 @@ const Trips: FC = () => {
                     }}
                   />
                   <Col
+                    className=""
                     onClick={() => history.push("/profile/trips/tour-detail")}
                   >
                     <div
                       className="bold fst-italic display-2"
-                      style={{ fontFamily: "Bellota",color:"orange" }}
+                      style={{ fontFamily: "Bellota", color: "orange" }}
                     >
                       Kashmir
                     </div>
@@ -112,7 +88,7 @@ const Trips: FC = () => {
                       where paradise awaits
                     </span>
 
-                    <div className="position-relative d-flex fit-content align-items-center mt-2 border-light border-1 border m-0 p-0">
+                    <div className="position-relative p-2 d-flex fit-content align-items-center mt-2 border-light border-1 border m-0 p-0">
                       <div
                         className={`form__input-label d-flex align-items-center justify-content-center`}
                         style={{ left: "4px", background: "#c7ccff" }}
@@ -120,19 +96,23 @@ const Trips: FC = () => {
                         {"SCHEDULE ON"}
                       </div>
                       <img
-                        className="px-3 text-white"
+                        className="px-3 py-2 text-white"
                         style={{
                           width: "4rem",
-                          height: "4rem",
-                          color:"white",
+                          height: "3rem",
+                          color: "white",
+                          filter: "brightness(0) invert(1)",
                           padding: "0px !important",
                           margin: "0px !important",
                         }}
                         alt={""}
                         src={require("../../../Assets/telephone.png")}
                       />
-                      <Row className="pr-3">
-                        <Col className="p-0 m-0 h3 text-white" style={{ color: "orange" }}>
+                      <Row className="pr-3 align-items-center">
+                        <Col
+                          className="p-0 m-0 h3 text-white"
+                          style={{ color: "orange" }}
+                        >
                           |
                         </Col>
                         <Col
@@ -176,10 +156,10 @@ const Trips: FC = () => {
                       margin: "0px !important",
                     }}
                   />
-                  <Col>
+                  <Col className="align-items-center d-flex">
                     <div
                       className="bold fst-italic display-2"
-                      style={{ fontFamily: "Bellota" }}
+                      style={{ fontFamily: "Bellota", color: "orange" }}
                     >
                       Kashmir
                     </div>
@@ -198,7 +178,9 @@ const Trips: FC = () => {
                     className="rounded-4 border-0 border mt-4 d-flex"
                     style={{ background: "#c5e9ff" }}
                   >
-                    <span className="px-4 ">Explore </span>
+                    <span className="px-4 text-dark text-shadow-light">
+                      Explore{" "}
+                    </span>
                     <span className="col-12 d-flex text-shadow-dark align-self-center position-relative p-0 m-0">
                       <FaCircleArrowRight
                         fill={"#55bcf9"}
@@ -230,9 +212,9 @@ const Trips: FC = () => {
                     {[...Array(6)]?.map((data, index: number) => {
                       return (
                         <Col
-                          md={4}
-                          lg={3}
-                          sx={12}
+                          md={6}
+                          lg={4}
+                          sx={6}
                           sm={6}
                           className="expand col-12 d-inline-block position-relative"
                         >

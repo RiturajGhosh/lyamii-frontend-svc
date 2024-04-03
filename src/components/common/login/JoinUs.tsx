@@ -25,7 +25,6 @@ export type SideNavList = {
 const JoinUs: FC = () => {
   const verificationStatus = useSelector(selectOtpVerification);
   const [otpVerify, setOtpVerify] = useState(verificationStatus?.status);
-  const [show, setShow] = useState(true);
   const [otpSent, setOtpSent] = useState(false);
   const history = useHistory();
   const location = useLocation();
@@ -96,10 +95,6 @@ const JoinUs: FC = () => {
       console.log(error.message);
     }
   };
-  useEffect(() => {
-    return () => setShow(false);
-  }, []);
-
   return (
     <Col
       className="min-vh-100 align-items-center d-flex"
@@ -393,7 +388,6 @@ const JoinUs: FC = () => {
                         setValues(detail);
                         setOtpSent(false);
                         setTouched({});
-                        setShow(false);
                         setHave(false);
                         history.push("/signup");
                       }}
@@ -409,7 +403,6 @@ const JoinUs: FC = () => {
                         setValues(detail);
                         setOtpSent(false);
                         setTouched({});
-                        setShow(false);
                         setHave(true);
                         history.push("/login");
                       }}

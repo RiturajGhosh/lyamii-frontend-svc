@@ -13,13 +13,10 @@ import Coursel from "../coursel/Coursel";
 import RecentlyViewedTours from "../recentlyViewedTours/RecentlyViewedTours";
 import MainContainer from "../../common/container/MainContainer";
 import HorizontalScroll from "../../common/horizontalScroll/HorizontalScroll";
-import { SET_SELECTED_TOUR_DATA } from "../../../state/actions/types/tourDataActionType";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import RoundButton from "../../common/roundButton/RoundButton";
 import { getTours } from "../../../state/actions/getTours";
-import CardWithShadow from "../../common/cardWithoutBorder/CardWithShadow";
 import { SET_SELECTED_LOCATION } from "../../../state/actions/types/globeDataActionType";
-import { LuCalendarDays } from "react-icons/lu";
 import { FaSearch } from "react-icons/fa";
 
 export type stateType = {
@@ -32,7 +29,7 @@ const ExploreDestination: FC = () => {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
   const [update, setUpdate] = useState(true);
-  const history = useHistory();
+  // const history = useHistory();
   const [tourlist, settourList] = useState<any[]>(tours);
   const [showFilter, setShowFilter] = useState(true);
   const [filters, setFilters] = useState(filterList);
@@ -48,27 +45,27 @@ const ExploreDestination: FC = () => {
     hasMore: true,
   });
 
-  const fetchData = async () => {
-    // Simulate an API call to get more data
-    // Replace this with your actual API call
-    const newData = markers;
-    await getTours(filters); /* Your API call here */
+  // const fetchData = async () => {
+  //   // Simulate an API call to get more data
+  //   // Replace this with your actual API call
+  //   const newData = markers;
+  //   await getTours(filters); /* Your API call here */
 
-    if (newData?.length === 0) {
-      setState({ data: state.data, hasMore: false });
-    } else {
-      setState((prevState) => ({
-        data: [...prevState.data, ...newData],
-        hasMore: true,
-      }));
-    }
-  };
-  function handleScroll(e: any) {
-    const element = e.target;
-    if (element.scrollLeft + element.clientWidth >= element.scrollWidth) {
-      loadMoreProducts();
-    }
-  }
+  //   if (newData?.length === 0) {
+  //     setState({ data: state.data, hasMore: false });
+  //   } else {
+  //     setState((prevState) => ({
+  //       data: [...prevState.data, ...newData],
+  //       hasMore: true,
+  //     }));
+  //   }
+  // };
+  // function handleScroll(e: any) {
+  //   const element = e.target;
+  //   if (element.scrollLeft + element.clientWidth >= element.scrollWidth) {
+  //     loadMoreProducts();
+  //   }
+  // }
   // Function to load more products
   const loadMoreProducts = () => {
     // Simulate fetching more products (you would typically make an API call here)

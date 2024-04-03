@@ -1,10 +1,7 @@
 import React, { FC, useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import { Col, Nav, Navbar, Row } from "react-bootstrap";
-import { AiTwotoneHome } from "react-icons/ai";
-import { BsArrowRightCircle, BsFillPersonFill } from "react-icons/bs";
-import { MdOutlineLocationOn } from "react-icons/md";
-import { HiShoppingCart } from "react-icons/hi";
+import { Col, Nav, Navbar } from "react-bootstrap";
+import { BsArrowRightCircle } from "react-icons/bs";
 import { SET_LOGIN_DATA } from "../../../state/actions/types/loginDataActionType";
 import { useDispatch, useSelector } from "react-redux";
 import { setCookie } from "../enum/functions";

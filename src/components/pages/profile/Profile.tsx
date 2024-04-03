@@ -78,7 +78,7 @@ const Profile: FC = () => {
       console.log(error.message);
     }
     // }
-  }, []);
+  });
 
   return (
     <div

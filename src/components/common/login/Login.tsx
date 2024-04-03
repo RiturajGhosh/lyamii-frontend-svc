@@ -25,7 +25,6 @@ export type SideNavList = {
 const Login: FC = () => {
   const verificationStatus = useSelector(selectOtpVerification);
   const [otpVerify, setOtpVerify] = useState(verificationStatus?.status);
-  const [show, setShow] = useState(true);
   const [otpSent, setOtpSent] = useState(false);
   const history = useHistory();
   const location = useLocation();
@@ -98,10 +97,6 @@ const Login: FC = () => {
       console.log(error.message);
     }
   };
-  useEffect(() => {
-    return () => setShow(false);
-  }, []);
-
   return (
     <Col
       className="min-vh-100 align-items-center d-flex"
@@ -395,7 +390,6 @@ const Login: FC = () => {
                         setValues(detail);
                         setOtpSent(false);
                         setTouched({});
-                        setShow(false);
                         setHave(false);
                         history.push("/signup");
                       }}
@@ -411,7 +405,6 @@ const Login: FC = () => {
                         setValues(detail);
                         setOtpSent(false);
                         setTouched({});
-                        setShow(false);
                         setHave(true);
                         history.push("/login");
                       }}

@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 import { Col, Row } from "react-bootstrap";
-import style from "./Destinations.module.scss";
 import { useHistory } from "react-router-dom";
 import { FaCircleArrowRight } from "react-icons/fa6";
 
@@ -12,10 +11,6 @@ const Destinations: FC = () => {
         className="home-about-section sectionContainer d-flex justify-content-center py-42 px-0"
         id="about"
       >
-        {/* <div
-          className={`${style.bgImage} zi-2 w-30 end-0 top-50 translate-middle-y position-absolute`}
-        ></div> */}
-
         <Col lg={11} md={11} sx={11} xs={11} className="">
           <Row className="bg-white p-3 m-0 form__input">
             <Col className="home-about-description pl-20">
