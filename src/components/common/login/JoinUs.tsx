@@ -298,13 +298,15 @@ const JoinUs: FC = () => {
                                 style={{ background: "#4a915b" }}
                                 id="dropdown-basic"
                               >
-                                Type
+                                 {values?.type?.length > 0
+                                  ? String(values?.type).toUpperCase()
+                                  : "Type"}
                               </Dropdown.Toggle>
 
                               <Dropdown.Menu>
                                 <Dropdown.Item
                                   className={"text-dark text-decoration-none"}
-                                  eventKey={"user"}
+                                  eventKey={"User"}
                                 >
                                   User
                                 </Dropdown.Item>

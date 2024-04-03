@@ -115,19 +115,21 @@ const Header: FC = () => {
                   </Nav.Item>
                 );
               })}
-              <Nav.Item key={5}>
-                <Nav.Link
-                  as={Link}
-                  key={5}
-                  className="text-decoration-none"
-                  to={"/cart"}
-                  onClick={() => updateExpanded(false)}
-                >
-                  <h6 className="body fw-bold h6 m-0">
-                    <FaCartShopping size={"2.5vh"}/>
-                  </h6>
-                </Nav.Link>
-              </Nav.Item>
+              {token && (
+                <Nav.Item key={5}>
+                  <Nav.Link
+                    as={Link}
+                    key={5}
+                    className="text-decoration-none"
+                    to={"/cart"}
+                    onClick={() => updateExpanded(false)}
+                  >
+                    <h6 className="body fw-bold h6 m-0">
+                      <FaCartShopping size={"2.5vh"} />
+                    </h6>
+                  </Nav.Link>
+                </Nav.Item>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Col>
