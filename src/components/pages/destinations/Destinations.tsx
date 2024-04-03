@@ -12,9 +12,9 @@ const Destinations: FC = () => {
         className="home-about-section sectionContainer d-flex justify-content-center py-42 px-0"
         id="about"
       >
-        <div
+        {/* <div
           className={`${style.bgImage} zi-2 w-30 end-0 top-50 translate-middle-y position-absolute`}
-        ></div>
+        ></div> */}
 
         <Col lg={11} md={11} sx={11} xs={11} className="">
           <Row className="bg-white p-3 m-0 form__input">

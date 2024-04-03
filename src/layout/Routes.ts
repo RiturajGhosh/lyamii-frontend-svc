@@ -26,6 +26,7 @@ import TermConditions from "../components/pages/termConditions/TermConditions";
 import TravellerInfoManagement from "../components/pages/travellerInfoManagement/TravellerInfoManagement";
 import OnGoingTours from "../components/pages/trips/OnGoingTours";
 import Trips from "../components/pages/trips/Trips";
+import UserManual from "../components/pages/userManual/UserManual";
 import { UserRouteConfig } from "../components/routing/PrivateRoute";
 import { AccessType } from "./accessType";
 
@@ -87,6 +88,12 @@ export const commonSiteMap: UserRouteConfig[] = [
   },
   {
     exact: true,
+    path: "/cart",
+    Component: ContainerSection,
+    access: AccessType.YES,
+  },
+  {
+    exact: true,
     path: "/helpdesk",
     Component: ContainerSection,
     access: AccessType.YES,
@@ -112,7 +119,7 @@ export const commonSiteMap: UserRouteConfig[] = [
   {
     exact: true,
     path: "/userManual",
-    Component: BlankPage,
+    Component: UserManual,
     access: AccessType.YES,
   },
   {

@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import style from "./Header.module.scss";
 import { Card, Col, Nav, Navbar } from "react-bootstrap";
 import { getCookie } from "../enum/functions";
+import { FaCartShopping } from "react-icons/fa6";
 
 export type HeaderList = {
   name: string;
@@ -113,6 +114,19 @@ const Header: FC = () => {
                   </Nav.Item>
                 );
               })}
+              <Nav.Item key={5}>
+                <Nav.Link
+                  as={Link}
+                  key={5}
+                  className="text-decoration-none"
+                  to={"/cart"}
+                  onClick={() => updateExpanded(false)}
+                >
+                  <h6 className="body fw-bold h6 m-0">
+                    <FaCartShopping size={"2.5vh"}/>
+                  </h6>
+                </Nav.Link>
+              </Nav.Item>
             </Nav>
           </Navbar.Collapse>
         </Col>

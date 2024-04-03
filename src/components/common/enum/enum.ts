@@ -41,13 +41,27 @@ export const reasons = [
 ];
 
 export const facilities = [
-  require("../../../Assets/bell.png"),
-  require("../../../Assets/car.png"),
-  require("../../../Assets/house.png"),
-  require("../../../Assets/boat.png"),
-  require("../../../Assets/notepad.png"),
-  require("../../../Assets/food.png"),
-  require("../../../Assets/police.png"),
+  // require("../../../Assets/bell.png"),
+  // require("../../../Assets/car.png"),
+  // require("../../../Assets/house.png"),
+  // require("../../../Assets/boat.png"),
+  // require("../../../Assets/notepad.png"),
+  // require("../../../Assets/food.png"),
+  // require("../../../Assets/police.png"),
+  "Domestic Flights",
+  "Lounge Access",
+  "Airport drop-pickup",
+  "Currency Exchange ",
+  "Travel Insurance",
+  "Health Insurance",
+  "UPI Wallet",
+  "Luxury Accommodations",
+  "Cuisines",
+  "SUV Transfers",
+  "Personal Guide",
+  "Entry Tickets ",
+  "Show Tickets",
+  "Activities",
 ];
 export const bussinessClints = [
   require("../../../Assets/indigo.png"),
@@ -136,7 +150,7 @@ export const mustReads: HeaderList[] = [
   { name: "FAQ", path: "/faqs" },
 ];
 export const supports: HeaderList[] = [
-  { name: "My Profile", path: "/profile" },
+  { name: "My Profile", path: "/login" },
   { name: "Helpdesk", path: "/helpdesk" },
   { name: "Feedback", path: "/feedback" },
 ];
@@ -956,28 +970,28 @@ export const amenities = [
   { checked: false, label: "Gym", value: "GYM" },
 ];
 export const filterList = [
-  {
-    filterName: "Type",
-    subFilter: [
-      { checked: false, label: "Deluxe" },
-      { checked: false, label: "Backpacker" },
-      { checked: false, label: "Standard" },
-      { checked: false, label: "Indian Passport Holders" },
-      { checked: false, label: "India Tours" },
-    ],
-  },
-  {
-    filterName: "Continents",
-    subFilter: [
-      { checked: false, label: "Asia" },
-      { checked: false, label: " Africa" },
-      { checked: false, label: " North America" },
-      { checked: false, label: " South America" },
-      { checked: false, label: " Antarctica" },
-      { checked: false, label: " Europe" },
-      { checked: false, label: " Australia" },
-    ],
-  },
+  // {
+  //   filterName: "Type",
+  //   subFilter: [
+  //     { checked: false, label: "Deluxe" },
+  //     { checked: false, label: "Backpacker" },
+  //     { checked: false, label: "Standard" },
+  //     { checked: false, label: "Indian Passport Holders" },
+  //     { checked: false, label: "India Tours" },
+  //   ],
+  // },
+  // {
+  //   filterName: "Continents",
+  //   subFilter: [
+  //     { checked: false, label: "Asia" },
+  //     { checked: false, label: " Africa" },
+  //     { checked: false, label: " North America" },
+  //     { checked: false, label: " South America" },
+  //     { checked: false, label: " Antarctica" },
+  //     { checked: false, label: " Europe" },
+  //     { checked: false, label: " Australia" },
+  //   ],
+  // },
   {
     filterName: "Days",
     subFilter: [

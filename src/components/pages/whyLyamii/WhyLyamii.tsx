@@ -88,7 +88,7 @@ const WhyLyamii: FC = () => {
                       </section>
                     </Card> */}
                     <div
-                      className={`bg-transparent form__input my-2 mx-1 flipcard position-relative h-100 overflow-hidden p-0 m-0`}
+                      className={`bg-transparent form__input my-2 mx-1 flipcard shadow position-relative h-100 overflow-hidden p-0 m-0`}
                     >
                       <div className="bg-transparent content position-relative p-0 m-0 h-100">
                         <Card.Body className="bg-transparent position-relative p-0 m-0 h-100 front">

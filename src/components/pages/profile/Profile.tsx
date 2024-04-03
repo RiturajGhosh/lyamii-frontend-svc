@@ -38,11 +38,6 @@ const Profile: FC = () => {
       path: "/profile/documentations",
     },
     {
-      title: "Account Information",
-      subTitle: "Edit Personal Details",
-      path: "/profile/personalData/edit",
-    },
-    {
       title: "Manage Travellers",
       subTitle: "Add members to Lyamii.",
       path: "/profile/manageTravellers",

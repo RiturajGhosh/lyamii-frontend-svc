@@ -90,9 +90,9 @@ const BeyoundObvious: FC = () => {
               <Col
                 md={12}
                 lg={12}
-                className="border-5 border border-dark p-5 my-2 justify-content-between p-0 d-flex overflow-auto"
+                className="border-5 border border-dark p-5 my-2 flex-column justify-content-between p-0 d-flex overflow-auto"
               >
-                <Row className="w-100 justify-content-center scrolling-wrapper-flexbox">
+                <Row className="col-12 w-100 justify-content-center scrolling-wrapper-flexbox">
                   {internationalTours.slice(0, 4).map((option, idx) => (
                     <Col key={idx} md={6} lg={6} className="py-2">
                       <Card
@@ -140,6 +140,7 @@ const BeyoundObvious: FC = () => {
                     </Col>
                   ))}
                 </Row>
+                <Col onClick={()=>history.push("/explore")} className="col-12 justify-content-end d-flex px-3 text-shadow-dark" style={{color:"#0c519f"}}>See more</Col>
               </Col>
             </>
           )}

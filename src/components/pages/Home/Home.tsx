@@ -1,5 +1,5 @@
-import React, { FC } from "react";
-import { Col, Row } from "react-bootstrap";
+import React, { FC, useEffect } from "react";
+import { Col } from "react-bootstrap";
 import Destinations from "../destinations/Destinations";
 import style from "./Home.module.scss";
 import WhyLyamii from "../whyLyamii/WhyLyamii";
@@ -10,8 +10,17 @@ import LifetimeJourney from "../lifetimeJourney/LifetimeJourney";
 import BeyoundObvious from "../beyoundObvious/BeyoundObvious";
 import BusinessClients from "../businessClients/BusinessClients";
 import CustomerReviewSection from "../customerReview/CustomerReviewSection";
+import { getPackageDetailsByPackageIdApi } from "../../../api/getPackageDetailsByPackageIdApi";
+import { getPackageDetailsByCountryApi } from "../../../api/getPackageDetailsByCountryApi";
+import { getPackageDetailsByEditionApi } from "../../../api/getPackageDetailsByEditionApi";
 
 const Home: FC = () => {
+  useEffect(() => {
+    getPackageDetailsByPackageIdApi();
+    getPackageDetailsByCountryApi();
+    getPackageDetailsByEditionApi();
+  }, []);
+
   const history = useHistory();
   return (
     <section>

@@ -5,7 +5,12 @@ type CommentIconType = {
   height?: string;
   fill?: string;
 };
-const CommentIcon: FC<CommentIconType> = ({ className,height='16',width='16',fill="black" }) => {
+const CommentIcon: FC<CommentIconType> = ({
+  className,
+  height = "16",
+  width = "16",
+  fill = "black",
+}) => {
   return (
     <span
       className={`${className} curve-container b400 bundle-bb-curve-container`}

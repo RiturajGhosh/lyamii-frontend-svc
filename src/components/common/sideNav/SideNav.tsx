@@ -12,6 +12,7 @@ import Icon from "../icon/Icon";
 import { FaGripLinesVertical } from "react-icons/fa6";
 import { SET_NAV_HIDDEN } from "../../../state/actions/types/sideNavType";
 import { selectSideNav } from "../../../state/selectors/selectSideNav";
+import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
 
 export type SideNavList = {
   name: string;
@@ -20,16 +21,11 @@ export type SideNavList = {
 const SideNav: FC = () => {
   const dispatch = useDispatch();
   const sideNav = useSelector(selectSideNav);
-  const [hidden, setHide] = useState(sideNav.hidden || false);
+  const screenSize = useSelector(selectScreenSize);
+  const [hidden, setHide] = useState(
+    sideNav.hidden || screenSize.screenSize < 768
+  );
   const sidebarNavItems = [
-    {
-      display: "Dashboard",
-      height: "65px",
-      icon: "home",
-      className: "d-inline mt-1",
-      to: "/profile/dashboard",
-      section: "dashboard",
-    },
     {
       display: "My Profile",
       height: "60px",
@@ -37,6 +33,14 @@ const SideNav: FC = () => {
       icon: "person",
       to: "/profile/personalData",
       section: "personalData",
+    },
+    {
+      display: "Dashboard",
+      height: "65px",
+      icon: "home",
+      className: "d-inline mt-1",
+      to: "/profile/dashboard",
+      section: "dashboard",
     },
     {
       display: "Trips",

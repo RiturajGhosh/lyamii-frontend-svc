@@ -3,9 +3,12 @@ import { Col, Row } from "react-bootstrap";
 import { HeaderList } from "../header/Header";
 import { Link, useHistory } from "react-router-dom";
 import { communities, mustReads, supports } from "../enum/enum";
+import { getCookie } from "../enum/functions";
 
 const Footer: FC = () => {
   const history = useHistory();
+  const cookie = getCookie("user");
+  const user = cookie && JSON.parse(cookie);
   return (
     <footer>
       <Col className="footer float-right p-0 m-0 w-100">
@@ -28,7 +31,9 @@ const Footer: FC = () => {
                               to={community.path}
                               className="py-0 text-decoration-none icon-colour"
                             >
-                              <p className="text-white p fw-bold">{community.name}</p>
+                              <p className="text-white p fw-bold">
+                                {community.name}
+                              </p>
                             </Link>
                           </li>
                         </ul>
@@ -51,7 +56,9 @@ const Footer: FC = () => {
                               to={reads.path}
                               className="py-0 text-decoration-none icon-colour"
                             >
-                              <p className="text-white p fw-bold">{reads.name}</p>
+                              <p className="text-white p fw-bold">
+                                {reads.name}
+                              </p>
                             </Link>
                           </li>
                         </ul>
@@ -60,21 +67,32 @@ const Footer: FC = () => {
                   </>
                 </Col>
                 <Col md={3} lg={4} sm={12} className="p-0 d-flex flex-column">
-                  <h2 className="ft-24 mt-2 justify-content-md-center d-flex fw-bold">Support</h2>
+                  <h2 className="ft-24 mt-2 justify-content-md-center d-flex fw-bold">
+                    Support
+                  </h2>
                   <>
                     {supports.map((support: HeaderList, index: number) => {
                       return (
-                        <ul key={index} className="p-0 my-0 justify-content-md-center d-flex">
+                        <ul
+                          key={index}
+                          className="p-0 my-0 justify-content-md-center d-flex"
+                        >
                           <li
                             key={index}
                             className="list-unstyled social-icons py-0"
                           >
                             <Link
                               key={index}
-                              to={support.path}
+                              to={
+                                support.name === "My Profile" && user?.token
+                                  ? "/profile"
+                                  : support.path
+                              }
                               className="py-0 text-decoration-none icon-colour"
                             >
-                              <p className="text-white p fw-bold">{support.name}</p>
+                              <p className="text-white p fw-bold">
+                                {support.name}
+                              </p>
                             </Link>
                           </li>
                         </ul>

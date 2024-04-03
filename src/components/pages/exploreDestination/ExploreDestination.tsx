@@ -20,6 +20,7 @@ import { getTours } from "../../../state/actions/getTours";
 import CardWithShadow from "../../common/cardWithoutBorder/CardWithShadow";
 import { SET_SELECTED_LOCATION } from "../../../state/actions/types/globeDataActionType";
 import { LuCalendarDays } from "react-icons/lu";
+import { FaSearch } from "react-icons/fa";
 
 export type stateType = {
   data: any[];
@@ -241,8 +242,8 @@ const ExploreDestination: FC = () => {
                 />
               </Col>
               <Row className="pt-2 gap-2">
-                <Col className="justify-content-center flex-column ms-4 d-flex rounded-4 p-3 w-60 bg-white p-0 h2">
-                  <label className="fs-medium pb-1">Starting Date:</label>
+                <Col className="justify-content-center align-items-center flex-row ms-4 d-flex rounded-4 p-3 w-60 bg-white p-0 h2">
+                  <label className="w-100 fs-medium">Starting Date:</label>
                   <input
                     className="rounded-4 w-100 bg-white justify-content-center fs-medium p-1 px-2 text-dark text-start m-0 border-0"
                     type={type}
@@ -259,21 +260,9 @@ const ExploreDestination: FC = () => {
                     }
                   />
                 </Col>
-                <Col className="justify-content-center flex-column me-4 d-flex rounded-4 p-3 w-60 bg-white p-0 h2">
-                  <label className="fs-medium pb-1">End Date:</label>
-                  <input
-                    className="rounded-4 w-100 bg-white justify-content-center fs-medium p-1 px-2 text-dark text-start m-0 border-0"
-                    type={type}
-                    id="endDate"
-                    value={tourDetail.endDate}
-                    onFocus={() => setType("date")}
-                    onBlur={() => setType("text")}
-                    style={{ background: "#19bca1", fontFamily: "NORWESTER" }}
-                    onChange={(e: any) =>
-                      setTourDetail({ ...tourDetail, endDate: e.target.value })
-                    }
-                  />
-                </Col>
+                <Button className="flex-row justify-content-center text-center flex-column me-4 d-flex rounded-4 p-3 w-25 p-0 h2">
+                 <span className="w-100 justify-content-between d-flex align-items-center"><span className="flex-wrap d-flex align-items-center">Search</span><FaSearch /></span>
+                </Button>
               </Row>
 
               {/* <Button

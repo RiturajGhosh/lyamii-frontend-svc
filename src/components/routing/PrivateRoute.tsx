@@ -129,6 +129,7 @@ const PrivateRoute: FC<PrivateRouteProps> = ({
         )}
         {!path.includes("profile") &&
           !path.includes("login") &&
+          !path.includes("signup") &&
           !path.includes("crm") && (
             <Route path={path} render={(props) => <Component {...props} />} />
           )}

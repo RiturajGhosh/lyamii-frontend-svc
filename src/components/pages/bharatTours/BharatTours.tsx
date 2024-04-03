@@ -18,15 +18,6 @@ const BharatTours: FC = () => {
         <Row className="p-0">
           <Col className="text-dark align-self-center">
             <span className="text-start fs-16 text-wrap">{description} </span>
-            <ul className="p-3 fs-16">
-              <li>Luxury Tours.</li>
-              <li>Ranges from 12,000usd to 22,000usd.</li>
-              <li>
-                Luxury Stays, Business class / Domestic air tickets, individual
-                tour guide, SUV local transports, Cuisines, Activities, Cultural
-                Shows.
-              </li>
-            </ul>
           </Col>
         </Row>
       </Col>

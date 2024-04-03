@@ -21,8 +21,11 @@ const Trips: FC = () => {
         position: "relative",
         zIndex: "2",
         height: "fit-content",
-        opacity: "0.8",
-        backgroundImage: `url(${image})`,
+        backgroundImage: `linear-gradient(
+          to bottom left,
+          rgba(17, 16, 16, 0.678),
+          rgba(12, 10, 22, 0.863)
+        ),url(${image})`,
         backgroundPosition: "top center, bottom",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
@@ -100,27 +103,28 @@ const Trips: FC = () => {
                     onClick={() => history.push("/profile/trips/tour-detail")}
                   >
                     <div
-                      className="text-dark bold fst-italic display-2"
-                      style={{ fontFamily: "Bellota" }}
+                      className="bold fst-italic display-2"
+                      style={{ fontFamily: "Bellota",color:"orange" }}
                     >
                       Kashmir
                     </div>
-                    <span className="text-uppercase text-dark p">
+                    <span className="text-uppercase p">
                       where paradise awaits
                     </span>
 
-                    <div className="position-relative d-flex fit-content align-items-center mt-2 border-dark border-1 border m-0 p-0">
+                    <div className="position-relative d-flex fit-content align-items-center mt-2 border-light border-1 border m-0 p-0">
                       <div
-                        className={`form__input-label text-dark d-flex align-items-center justify-content-center`}
+                        className={`form__input-label d-flex align-items-center justify-content-center`}
                         style={{ left: "4px", background: "#c7ccff" }}
                       >
                         {"SCHEDULE ON"}
                       </div>
                       <img
-                        className="px-3 py-2"
+                        className="px-3 text-white"
                         style={{
                           width: "4rem",
-                          height: "2.5rem",
+                          height: "4rem",
+                          color:"white",
                           padding: "0px !important",
                           margin: "0px !important",
                         }}
@@ -128,18 +132,25 @@ const Trips: FC = () => {
                         src={require("../../../Assets/telephone.png")}
                       />
                       <Row className="pr-3">
-                        <Col className="p-0 m-0 text-dark h3">|</Col>
-                        <Col className="p-0 px-1 m-0 text-dark h3">10</Col>
-                        <Col className="p-0 px-1 m-0 text-dark align-self-center">
+                        <Col className="p-0 m-0 h3 text-white" style={{ color: "orange" }}>
+                          |
+                        </Col>
+                        <Col
+                          className="p-0 px-1 m-0 h3 text-white"
+                          style={{ color: "orange" }}
+                        >
+                          10
+                        </Col>
+                        <Col className="p-0 px-1 m-0 align-elf-center">
                           <div
-                            className="d-flex text-dark lh-1 p-0 m-0"
-                            style={{ fontSize: "12px" }}
+                            className="d-flex lh-1 p-0 m-0 text-white"
+                            style={{ fontSize: "12px", color: "orange" }}
                           >
                             OCT
                           </div>
                           <span
-                            className="d-flex text-dark lh-1 p-0 m-0 text-uppercase"
-                            style={{ fontSize: "12px" }}
+                            className="d-flex lh-1 p-0 m-0 text-uppercase text-white"
+                            style={{ fontSize: "12px", color: "orange" }}
                           >
                             2024
                           </span>
@@ -153,7 +164,7 @@ const Trips: FC = () => {
           </section>
         ) : (
           <section className={`overflow-auto min-vh-100 `}>
-            <Col className="gap-4 d-grid m-0 w-100">
+            <Col className="gap-5 d-grid m-0 w-100">
               <Col className={`col-12 fs-small align-self-center text-start`}>
                 <Row className="">
                   <Icon
@@ -167,7 +178,7 @@ const Trips: FC = () => {
                   />
                   <Col>
                     <div
-                      className="text-dark bold fst-italic display-2"
+                      className="bold fst-italic display-2"
                       style={{ fontFamily: "Bellota" }}
                     >
                       Kashmir
@@ -175,19 +186,19 @@ const Trips: FC = () => {
                   </Col>
                 </Row>
                 <Col className="pl-4">
-                  <div className="text-dark col-6 fs-medium">
-                    Goa is a state where East meets West, where Indian culture
+                  <div className="col-6 fs-medium">
+                    {/* Goa is a state where East meets West, where Indian culture
                     intertwines with Portuguese influences left over from a
                     500-year occupation. It is known for its phenomenal beaches,
                     its diverse temples and churches, and its vibrant nightlife.
                     Goa is the pearl of the Orient, the best-placed state in
-                    India, and the ultimate destination for sun, sand and sea.
+                    India, and the ultimate destination for sun, sand and sea. */}
                   </div>
                   <Button
                     className="rounded-4 border-0 border mt-4 d-flex"
                     style={{ background: "#c5e9ff" }}
                   >
-                    <span className="px-4 text-dark ">Explore </span>
+                    <span className="px-4 ">Explore </span>
                     <span className="col-12 d-flex text-shadow-dark align-self-center position-relative p-0 m-0">
                       <FaCircleArrowRight
                         fill={"#55bcf9"}
@@ -202,7 +213,7 @@ const Trips: FC = () => {
               </Col>{" "}
               <Col className="fs-2 ms-2 text-dark">
                 <Col className="d-flex">
-                  <Col className="">Trip Timeline</Col>
+                  <Col className="text-white">Trip Timeline</Col>
                   <Col className="col-9 text-shadow-dark align-self-center position-relative p-0 m-0">
                     <FaCircleArrowRight
                       fill={"transparent"}
@@ -227,13 +238,13 @@ const Trips: FC = () => {
                         >
                           <SubCard
                             fill="#55bcf9"
-                            title="TOMORROW"
+                            title={"Day " + index}
                             titleStyling={{
                               width: `${8 * 14}px`,
                               borderColor: "#55bcf9",
                               background: "#55bcf9",
                             }}
-                            style={{ fontSize: "10px", background: "#c5e9ff" }}
+                            style={{ fontSize: "14px", background: "#c5e9ff" }}
                             titleClassName="p-1 bold text-white shadow"
                             className="rounded-4 mt-4 border-0 border"
                           >
@@ -242,14 +253,17 @@ const Trips: FC = () => {
                                 history.push("/profile/trips/tour-detail")
                               }
                               className="m-0 py-12 align-items-center d-flex rounded-4 p-2"
-                              style={{ minHeight: "30vh",background: "#99c9e8" }}
+                              style={{
+                                minHeight: "30vh",
+                                background: "#99c9e8",
+                              }}
                             >
                               <Row className="mt-3">
-                                <div className="fs-3 text-dark pt-0 px-3 text-dark font-weight-normal">
-                                  {"Day " + index}
+                                <div className="fs-3 pt-0 px-3 font-weight-normal">
+                                  {/* {"Day " + index} */}
                                 </div>
                                 <div
-                                  className="fs-1 bold text-dark px-3 text-shadow-dark pt-0 p-2 font-weight-normal"
+                                  className="fs-1 bold px-3 text-shadow-dark pt-0 p-2 font-weight-normal"
                                   style={{
                                     minHeight: "35px",
                                     whiteSpace: "break-spaces",

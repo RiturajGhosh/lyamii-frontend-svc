@@ -1,5 +1,15 @@
 import React, { FC, useEffect, useState } from "react";
-import { Col, Row, Card, Button, Form, InputGroup } from "react-bootstrap";
+import {
+  Col,
+  Row,
+  Card,
+  Button,
+  Form,
+  InputGroup,
+  Popover,
+  ButtonToolbar,
+  OverlayTrigger,
+} from "react-bootstrap";
 import style from "./TourDetailCard.module.scss";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { BsShare } from "react-icons/bs";
@@ -32,6 +42,25 @@ const TourDetailCard: FC = () => {
       )?.id || "";
     setCountryCode(id);
   };
+  const popoverTop = (
+    <Popover
+      id="popover-positioned-top"
+      title="Popover top"
+      className="w-100 gap-1 d-flex mw-50"
+    >
+      <Row className="d-flex mt-3 flex-row p-2 w-100 gap-2 flex-wrap">
+        {facilities.map((d) => (
+          <p
+            className="text-white col py-2 px-3 small fit-content rounded-4 align-items-center justify-content-center d-flex"
+            style={{ background: "#0752a1", fontFamily: "Archive" }}
+          >
+            {d}
+          </p>
+        ))}
+      </Row>
+    </Popover>
+  );
+
   return (
     <MainContainer>
       <Card.Img
@@ -39,7 +68,7 @@ const TourDetailCard: FC = () => {
  ${style.img}`}
         style={{
           // width: "100%",
-          height:"70vh",
+          height: "70vh",
           padding: "0px !important",
           margin: "0px !important",
         }}
@@ -51,12 +80,21 @@ const TourDetailCard: FC = () => {
         style={{ background: "#8ca0bd" }}
       >
         <Col className="position-relative d-flex">
-          <Row className={`${style.card} justify-content-center d-flex p-0`} style={{ minHeight: "100%" }}>
-            <Col md={4} lg={4} sm={11} xs={11} className={"p-0 mx-md-0 gap-4 m-0"}>
+          <Row
+            className={`${style.card} justify-content-center d-flex p-0`}
+            style={{ minHeight: "100%" }}
+          >
+            <Col
+              md={4}
+              lg={4}
+              sm={11}
+              xs={11}
+              className={"p-0 mx-md-0 gap-4 m-0"}
+            >
               <Col className="position-relative">
                 <Card
-                  style={{ height: "15vw" }}
-                  className={`bg-dark fs-1 text-start w-100 px-4 justify-content-center text-white position-relative p-0 m-0 pb-2 ${style.tourNameHeight}`}
+                  style={{ height: "15vw", fontSize: "5.5dvi",fontFamily:"initial" }}
+                  className={`bg-dark text-start w-100 px-4 justify-content-center text-white position-relative p-0 m-0 pb-2 ${style.tourNameHeight}`}
                 >
                   {selectedtourData.tourName}
                   <Col
@@ -64,7 +102,7 @@ const TourDetailCard: FC = () => {
                   >
                     <img
                       className="m-0 p-0"
-                      style={{height:"10vh"}}
+                      style={{ height: "10vh" }}
                       src={`https://flagsapi.com/${countryCode}/flat/64.png`}
                     />
                   </Col>
@@ -100,21 +138,21 @@ const TourDetailCard: FC = () => {
               className="col-12 px-4 py-4 m-0 gap-4 d-grid"
             >
               <Row className="d-flex mb-2 justify-content-between">
-                <Col className="p-2 fs-auto col-2 align-items-center d-flex justify-content-center h-100 text-white text-center bg-dark">
+                <Col className="p-2 fs-24 col-2 align-items-center d-flex justify-content-center h-100 text-white text-center bg-dark">
                   {selectedtourData.tourDays}D
                 </Col>{" "}
                 <Col className="col-8 px-1 align-self-center text-white position-relative p-0 m-0">
-                  <Card
-                    className="fw-bold align-items-center shadow-sm text-white flex-nowrap py-3 justify-content-start px-5 flex-row d-flex m-0 p-0 position-relative"
+                  <Col
+                    className="rounded-4 border-1 flex-row d-flex align-items-center p-3 border-white border text-white shadow-sm p-2 bold fs-20"
                     style={{ background: "#50809d" }}
                   >
                     <span className="p-0 m-0 fs-auto text-start fit-content">
                       {selectedtourData.tourId}
                     </span>
-                  </Card>
+                  </Col>
                   <Col className="position-relative w-100 p-0 border-1 text-center mx-42 justify-content-end text-white">
                     <span
-                      className="align-middle justify-self-center p-1 fs-20 rounded-3 position-absolute top-100 mx-42 start-50 translate-middle"
+                      className="align-middle justify-self-center p-1 fs-16 rounded-3 position-absolute mx-42 start-50 top-0 translate-middle"
                       style={{
                         background: "#024774",
                         color: "white",
@@ -148,7 +186,7 @@ const TourDetailCard: FC = () => {
                                   {idx < 9 ? "0" + (idx + 1) : idx + 1}
                                 </Col>
                                 <Col>
-                                  <div className="pl-2 fs-auto lh-sm p-0 m-0 text-dark ">
+                                  <div className="pl-2 fs-auto bold lh-sm p-0 m-0 text-dark ">
                                     {place?.destination}
                                   </div>
                                   <div className="p-2 fs-16 p-0 lh-sm m-0 text-dark">
@@ -166,12 +204,21 @@ const TourDetailCard: FC = () => {
                 </Col>
               </Row>
               <Row className="align-items-center d-flex justify-content-between">
-                <Card
-                  className="text-white shadow-sm p-2 col-6 bold fs-20"
-                  style={{ background: "#a8c0f0" }}
+                <Col
+                  className="rounded-4 border-1 border-white border text-white shadow-sm p-2 col-6 bold fs-16"
+                  // style={{ background: "#a8c0f0" }}
                 >
                   Departure Date :
-                </Card>
+                  <input
+                    type="date"
+                    className="w-100 bg-transparent border-0 border small"
+                    placeholder=" "
+                    onChange={(e: any) => {}}
+                  ></input>
+                </Col>
+                <Col className="text-white p-2 bold fs-16 justify-content-end d-flex">
+                  Add Traveller :
+                </Col>
                 <Col
                   md={2}
                   lg={2}
@@ -204,35 +251,31 @@ const TourDetailCard: FC = () => {
                   </InputGroup>
                 </Col>
               </Row>
-              <Card
-                className="fw-bold align-items-center shadow-sm text-white flex-nowrap py-3 justify-content-center flex-row d-flex m-0 p-0 position-relative"
-                style={{ background: "#50809d" }}
-              >
-                <span className="p-0 m-0 fs-auto text-center fit-content">
-                  {facilities?.map((facility: any) => {
-                    return (
-                      <Card.Img
-                        className={`p-0 m-0 justify-content-center`}
-                        style={{
-                          width: "5vh",
-                          padding: "0px !important",
-                          margin: "0px !important",
-                        }}
-                        src={facility}
-                      />
-                    );
-                  })}
-                </span>
-              </Card>
+              <ButtonToolbar className="fw-bold align-items-center w-100 text-white flex-nowrap py-3 justify-content-center flex-row d-flex m-0 p-0 position-relative">
+                <OverlayTrigger
+                  trigger={["hover", "focus"]}
+                  placement="top"
+                  overlay={popoverTop}
+                >
+                  <Button
+                    className="w-100"
+                    style={{ background: "#0752a1", fontFamily: "Archive" }}
+                  >
+                    Includes
+                  </Button>
+                </OverlayTrigger>
+              </ButtonToolbar>
             </Col>
             <Col xs={6} md={6} lg={6} className="col-12 p-0 m-0">
               <Col className="position-relative h-100 d-flex align-items-center p-0">
                 <Card.Body className="p-0 px-4 gap-3 d-flex flex-column m-0">
                   <Card
                     style={{ height: window.innerWidth / 3 }}
-                    className="text-white align-items-center d-flex h-100 bg-dark position-relative p-2 m-0"
+                    className={"text-white align-items-center d-flex h-100 bg-dark position-relative p-2 m-0"}
                   >
-                    <Col className="pt-4">
+                    <section
+                      className={`pt-4 overflow-auto ${style.rivewCard}`}
+                    >
                       {selectedtourData?.highlights?.map((review: string) => (
                         <Row className="p-2">
                           <Button
@@ -246,12 +289,12 @@ const TourDetailCard: FC = () => {
                           </Col>
                         </Row>
                       ))}
-                    </Col>
+                    </section>
                     <Col lg={3} xs={3} className="col-6 py-2 align-self-end">
                       <Col
                         className={`fw-bold align-items-center text-nowrap text-secondary`}
                       >
-                        <Row className="w-100 justify-content-center">
+                        {/* <Row className="w-100 justify-content-center">
                           {selectedtourData &&
                             [
                               ...Array(
@@ -297,15 +340,15 @@ const TourDetailCard: FC = () => {
                                 />
                               );
                             })}
-                        </Row>
+                        </Row> */}
                       </Col>
                     </Col>
                   </Card>
 
                   <Row className="position-relative justify-content-around d-flex w-100 p-0 m-0">
                     <Col className="col-4 px-1 align-self-center text-white position-relative p-0 m-0">
-                      <Card
-                        className="fw-bold align-items-center text-white shadow-sm flex-nowrap py-3 justify-content-center flex-row d-flex m-0 p-0 position-relative"
+                      <Col
+                        className="rounded-4 border-1 flex-row d-flex align-items-center p-3 border-white border text-white shadow-sm p-2 bold fs-20"
                         style={{ background: "#50809d" }}
                       >
                         <span className="p-0 fs-24 m-0 text-center fit-content">
@@ -318,7 +361,7 @@ const TourDetailCard: FC = () => {
                           className="fit-content p-0 m-0"
                           size={"30px"}
                         />
-                      </Card>
+                      </Col>
                       <Col className="position-relative w-100 p-0 border-1 text-center mx-3 justify-content-end text-white">
                         <span
                           className="align-middle fs-16 justify-self-center p-1 rounded-3 position-absolute top-100 ml-42 start-50 translate-middle"
@@ -334,8 +377,8 @@ const TourDetailCard: FC = () => {
                       </Col>
                     </Col>
                     <Col className="col-4 px-1 align-self-center text-white position-relative p-0 m-0">
-                      <Card
-                        className="fw-bold align-items-center text-white shadow-sm flex-nowrap py-3 justify-content-center flex-row d-flex m-0 p-0 position-relative"
+                      <Col
+                        className="rounded-4 border-1 flex-row d-flex align-items-center p-3 border-white border text-white shadow-sm p-2 bold fs-20"
                         style={{ background: "#50809d" }}
                       >
                         <span className="p-0 m-0 fs-24 text-center fit-content">
@@ -348,7 +391,7 @@ const TourDetailCard: FC = () => {
                           className="fit-content p-0 m-0"
                           size={"30px"}
                         />
-                      </Card>
+                      </Col>
                       <Col className="position-relative w-100 p-0 border-1 text-center mx-3 justify-content-end text-white">
                         <span
                           className="align-middle fs-16 justify-self-center p-1 shadow-sm border-0 rounded-3 position-absolute top-100 ml-42 start-50 translate-middle"
