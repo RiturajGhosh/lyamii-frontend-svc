@@ -107,8 +107,19 @@ const Footer: FC = () => {
                 className="display-1 text-white"
                 onClick={() => history.push("/")}
               >
-                L<span>y</span>am
-                <span className={"dot"}>ii</span>
+                {/* L<span>y</span>am
+                <span className={"dot"}>ii</span> */}
+                <img
+                  className={`p-0 pe-2 m-0 justify-content-center`}
+                  style={{
+                    width: "50%",
+                    padding: "0px !important",
+                    margin: "0px !important",
+                    fontFamily: "DellaRespira",
+                  }}
+                  alt=""
+                 src={require("../../../Assets/lyamii.png")}
+                />
                 <img
                   className={`p-0 m-0 pb-3 justify-content-center`}
                   style={{

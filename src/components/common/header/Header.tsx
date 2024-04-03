@@ -83,8 +83,19 @@ const Header: FC = () => {
                   alt=""
                   src={require("../../../Assets/logo.png")}
                 />
-                Lyam<span className={style.dot}>ii</span>
-                <span style={{ color: "#12856e" }}></span>
+                <img
+                  className={`px-1 p-0 m-0 justify-content-center`}
+                  style={{
+                    width: "100px",
+                    padding: "0px !important",
+                    margin: "0px !important",
+                    fontFamily: "DellaRespira",
+                  }}
+                  alt=""
+                  src={require("../../../Assets/lyamii.png")}
+                />
+                {/* Lyam<span className={style.dot}>ii</span>
+                <span style={{ color: "#12856e" }}></span> */}
               </h3>
             </div>
           </Navbar.Brand>
