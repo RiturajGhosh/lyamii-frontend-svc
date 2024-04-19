@@ -1,16 +1,36 @@
-import React, { FC } from "react";
-import { bharatTours } from "../../common/enum/enum";
+import React, { FC, useEffect, useState } from "react";
 import style from "./BharatTours.module.scss";
 import { Col, Row } from "react-bootstrap";
 import TourOverviewCard from "../../common/tourOverviewCard/TourOverviewCard";
+import { getBharatToursApi } from "../../../api/bharatTours/getBharatToursApi";
+import { useDispatch, useSelector } from "react-redux";
+import { AllBharatTours } from "../../../state/selectors/selectBharatTours";
+import { selectedTourDataDto } from "../../../state/actions/types/tourDataActionType";
+import { SET_BHARAT_TOURS } from "../../../state/actions/types/bharatToursType";
 
 const BharatTours: FC = () => {
+  const tours: any = useSelector(AllBharatTours);
   const description =
     "Royal India Edition is a luxurious experience of diverse cultures, each adding its unique hues to the nation's identity. From the resplendent palaces that dot the landscape to the tales of mighty kings and queens who shaped the nation's destiny, the legacy of royal India resonates through its architecture, traditions, and captivating stories. Includes all 5 star luxury stays, cultural cuisines, domestic flights, day to day individual assistance and transfers.";
+  const [tourList, setTourList] = useState<selectedTourDataDto[]>(tours);
+  const dispatch = useDispatch();
+  const fetchTours = async () => {
+    const response = await getBharatToursApi();
+    dispatch({
+      type: SET_BHARAT_TOURS,
+      payload: response,
+    });
+  };
+  // useEffect(() => {
+  //   fetchTours();
+  // });
 
+  // useEffect(() => {
+  //   tours?.length > 0 && setTourList(tours);
+  // }, [tours]);
   return (
     <TourOverviewCard
-      tours={bharatTours}
+      tours={tourList}
       title="Royal India Edition"
       titleStyling={style.tourSection}
     >

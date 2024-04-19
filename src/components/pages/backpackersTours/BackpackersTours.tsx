@@ -1,93 +1,61 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import style from "./BackpackersTours.module.scss";
-import { Card, Col, Container, Row } from "react-bootstrap";
-import MainContainer from "../../common/container/MainContainer";
-import Coursel from "../coursel/Coursel";
-import TourCard from "../../common/tourCard/TourCard";
-import RecommandedTours from "../recommandedTours/RecommandedTours";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { tours } from "../mockData/destinations";
-import { SET_SELECTED_TOUR_DATA } from "../../../state/actions/types/tourDataActionType";
-import InfiniteScroll from "react-infinite-scroll-component";
-import markers from "../../common/globe/markers";
-import { stateType } from "../exploreDestination/ExploreDestination";
+import { Col, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import TourOverviewCard from "../../common/tourOverviewCard/TourOverviewCard";
-import CardWithShadow from "../../common/cardWithoutBorder/CardWithShadow";
-import { backpackersTours } from "../../common/enum/enum";
+import { getBackpackerToursApi } from "../../../api/backpackerTours/getBackpackerToursApi";
+import { AllBackpackerTours } from "../../../state/selectors/selectBackpackerTours";
+import { SET_BACKPACKER_TOURS } from "../../../state/actions/types/backpackerToursType";
+import { selectedTourDataDto } from "../../../state/actions/types/tourDataActionType";
 
 const BackpackersTours: FC = () => {
-  const [show, setShow] = useState(false);
   const dispatch = useDispatch();
-  const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(true);
-  const history = useHistory();
-  const [products, setProducts] = useState(
-    Array.from({ length: 10 }, (_, i) => `Product ${i + 1}`)
+  const tours = useSelector(AllBackpackerTours);
+  const [tourList, setTourList] = useState<selectedTourDataDto[]>(
+    tours
   );
-  const [state, setState] = useState<stateType>({
-    data: tours, // Your data from the API
-    hasMore: true,
-  }); // Initial set of products
-  const [tourlist, settourList] = useState<any[]>(tours);
-  const fetchData = async () => {
-    // Simulate an API call to get more data
-    // Replace this with your actual API call
-    const newData = markers;
-
-    // await getTours(''); /* Your API call here */
-
-    if (newData?.length === 0) {
-      setState({ data: state.data, hasMore: false });
-    } else {
-      setState((prevState) => ({
-        data: [...prevState.data, ...newData],
-        hasMore: true,
-      }));
-    }
+  const fetchTours = async () => {
+    const response = await getBackpackerToursApi();
+    dispatch({
+      type: SET_BACKPACKER_TOURS,
+      payload: response,
+    });
   };
-  function handleScroll(e: any) {
-    const element = e.target;
-    if (element.scrollLeft + element.clientWidth >= element.scrollWidth) {
-      loadMoreProducts();
-    }
-  }
-  // Function to load more products
-  const loadMoreProducts = () => {
-    // Simulate fetching more products (you would typically make an API call here)
-    setTimeout(() => {
-      const newProducts = Array.from(
-        { length: 10 },
-        (_, i) => `Product ${products.length + i + 1}`
-      );
-      setProducts([...products, ...newProducts]);
-    }, 1000);
-  };
+  // useEffect(() => {
+  //   fetchTours();
+  // });
+
+  // useEffect(() => {
+  //   tours?.length > 0 && setTourList(tours);
+  // }, [tours]);
 
   const description =
     "Once you step in, Backpacking across India becomes a journey inward, a reflection of the external landscape mirroring the terrain of your own thoughts and emotions. It is a spiritual quest to discover the depths of your own being. This Edition is a reminder that sometimes the path to self discovery lies not in reaching a destination, but in the act of journeying itself. Includes all top rated hostel stays, domestic flights, local tours, day to day assistance.";
-
-  return (
+ return (
     <>
-      <TourOverviewCard
-        tours={backpackersTours}
-        title="Backpackers Edition"
-        titleStyling={style.tourSection}
-      >
-        <Col className={`py-5 p-0 d-grid justify-content-center`}>
-          <Row className="p-0">
-            <Col className="text-dark align-self-center">
-              <span className="text-start fs-16 text-wrap">{description} </span>
-            </Col>
-          </Row>
-        </Col>
-      </TourOverviewCard>
+      {tourList?.length > 0 && (
+        <TourOverviewCard
+          tours={tourList}
+          title="Backpackers Edition"
+          titleStyling={style.tourSection}
+        >
+          <Col className={`py-5 p-0 d-grid justify-content-center`}>
+            <Row className="p-0">
+              <Col className="text-dark align-self-center">
+                <span className="text-start fs-16 text-wrap">
+                  {description}
+                </span>
+              </Col>
+            </Row>
+          </Col>
+        </TourOverviewCard>
+      )}
 
       {/* <MainContainer background="#84f18f"> */}
-        {/* <Coursel /> */}
+      {/* <Coursel /> */}
 
-        {/* <Col className={"p-0"}> */}
-          {/* <Row className="p-0 m-0 w-100 d-flex justify-content-between">
+      {/* <Col className={"p-0"}> */}
+      {/* <Row className="p-0 m-0 w-100 d-flex justify-content-between">
             <Col className="p-0">
               <Row className="p-0 w-100">
                 {tourlist.map((tour, idx) => (
@@ -123,7 +91,7 @@ const BackpackersTours: FC = () => {
               </Row>
             </Col>
           </Row> */}
-          {/* <Row>
+      {/* <Row>
           <Col
             className={"col-4 overflow-auto"}
             id="scrollableDiv"
@@ -302,7 +270,7 @@ const BackpackersTours: FC = () => {
           </Col>
         </Row>
         <RecommandedTours /> */}
-        {/* </Col> */}
+      {/* </Col> */}
       {/* </MainContainer> */}
     </>
   );

@@ -12,8 +12,7 @@ import BusinessClients from "../businessClients/BusinessClients";
 import CustomerReviewSection from "../customerReview/CustomerReviewSection";
 
 const Home: FC = () => {
-  useEffect(() => {
-  }, []);
+  useEffect(() => {}, []);
 
   const history = useHistory();
   return (

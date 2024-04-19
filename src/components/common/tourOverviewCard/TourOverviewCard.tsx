@@ -91,7 +91,7 @@ const TourOverviewCard: FC<TourOverviewCardType> = ({
                       className="overflow-auto second"
                       style={{ zIndex: "1 !important" }}
                     >
-                      {option.places.map((place: string, idx: number) => (
+                      {option?.places?.map((place: string, idx: number) => (
                         <div
                           className="timeline"
                           key={idx}
