@@ -4,10 +4,10 @@ import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/scale.css";
 import { Object3D } from "three";
 import { useHistory } from "react-router-dom";
-import { SET_SELECTED_LOCATION } from "../../../state/actions/types/globeDataActionType";
 import { useDispatch, useSelector } from "react-redux";
 import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
 import defaultMarkers from "./markers";
+import { SET_SELECTED_LOCATION } from "../../../state/actions/types/globeDataActionType";
 
 function markerTooltipRenderer(marker: Marker) {
   const tooltipContent =
@@ -42,9 +42,16 @@ const Globe: FC = () => {
       markerObjectID: markerObject.uuid,
       pointerEventPosition: { x: event.clientX, y: event.clientY },
     });
+    console.log(marker);
     dispatch({
       type: SET_SELECTED_LOCATION,
-      payload: marker,
+      payload: {
+        city: marker.city,
+        id: marker.id,
+        value: marker.value,
+        coordinates: marker.coordinates,
+        color: marker.color,
+      },
     });
     window.scroll(0, 0);
     history.push("/explore");
@@ -75,10 +82,10 @@ const Globe: FC = () => {
   return (
     <div>
       <ReactGlobe
-        height={screenSize.screenSize/3}
+        height={screenSize.screenSize / 3}
         markers={defaultMarkers}
         options={options}
-        width={screenSize.screenSize/3}
+        width={screenSize.screenSize / 3}
         onDefocus={onDefocus}
         globeBackgroundTexture={null}
         onClickMarker={onClickMarker}

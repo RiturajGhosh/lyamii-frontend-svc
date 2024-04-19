@@ -24,9 +24,12 @@ const BusinessClients: FC = () => {
             }
           </div>
           <Row className="bg-white" style={{ opacity: 1 }}>
-            {bussinessClints.map((clients: any) => {
+            {bussinessClints.map((clients: any, index: number) => {
               return (
-                <Col className="position-relative align-items-center d-flex p-0 m-0">
+                <Col
+                  key={index}
+                  className="position-relative align-items-center d-flex p-0 m-0"
+                >
                   <Col className={`justify-content-end px-0 mx-0`}>
                     <Card.Body className="justify-content-end px-0 mx-0">
                       <Row className="d-flex justify-content-end col-12 flex-row flex-nowrap position-relative">

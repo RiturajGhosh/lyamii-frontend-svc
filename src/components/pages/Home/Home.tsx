@@ -10,15 +10,9 @@ import LifetimeJourney from "../lifetimeJourney/LifetimeJourney";
 import BeyoundObvious from "../beyoundObvious/BeyoundObvious";
 import BusinessClients from "../businessClients/BusinessClients";
 import CustomerReviewSection from "../customerReview/CustomerReviewSection";
-import { getPackageDetailsByPackageIdApi } from "../../../api/getPackageDetailsByPackageIdApi";
-import { getPackageDetailsByCountryApi } from "../../../api/getPackageDetailsByCountryApi";
-import { getPackageDetailsByEditionApi } from "../../../api/getPackageDetailsByEditionApi";
 
 const Home: FC = () => {
   useEffect(() => {
-    getPackageDetailsByPackageIdApi();
-    getPackageDetailsByCountryApi();
-    getPackageDetailsByEditionApi();
   }, []);
 
   const history = useHistory();

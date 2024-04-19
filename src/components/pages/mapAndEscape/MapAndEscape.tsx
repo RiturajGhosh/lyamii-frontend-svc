@@ -54,8 +54,9 @@ const MapAndEscape: FC = () => {
                   </p>
                 )} */}
                 <Row className="d-flex mt-3 flex-row w-100 gap-2 flex-wrap">
-                  {data.map((d) => (
+                  {data.map((d: string, index: number) => (
                     <p
+                      key={index}
                       className="text-white col py-2 px-3 small fit-content rounded-4 align-items-center justify-content-center d-flex"
                       style={{ background: "#0752a1", fontFamily: "Archive" }}
                     >
@@ -119,7 +120,10 @@ const MapAndEscape: FC = () => {
                               return (
                                 <>
                                   {index === 0 ? (
-                                    <Row className="position-relative align-items-center col-2 p-0 mt-3 m-0 justify-content-center d-flex">
+                                    <Row
+                                      key={index}
+                                      className="position-relative align-items-center col-2 p-0 mt-3 m-0 justify-content-center d-flex"
+                                    >
                                       <Col className="col-6 float-start flex-column justify-content-start d-flex p-0 m-0">
                                         <IoIosPaperPlane className="img-round w-100 h-50 border p-0 m-0 border-5" />
                                         <Col className="w-100 justify-content-center d-flex p-0 m-0">
@@ -130,11 +134,22 @@ const MapAndEscape: FC = () => {
                                       </Col>
                                     </Row>
                                   ) : (
-                                    <Row className="position-relative align-items-center col-3 p-0 mt-3 m-0 justify-content-around d-flex">
+                                    <Row
+                                      key={index}
+                                      className="position-relative align-items-center col-3 p-0 mt-3 m-0 justify-content-around d-flex"
+                                    >
                                       <Col className="col-7 border-top-1 border p-0 m-0 timeline-line"></Col>
 
                                       <Col className="col-4 float-end flex-column justify-content-end d-flex p-0 m-0">
                                         <IoIosPaperPlane className="img-round w-100 h-50 border p-0 m-0  border-5" />
+                                        {/* <img
+                                          className={`m-0 justify-content-center ${style.reasonCard}`}
+                                          style={{
+                                            padding: "0px !important",
+                                            margin: "0px !important",
+                                          }}
+                                          src={require("../../../Assets/tick1.png")}
+                                        /> */}
                                         <Col className="w-100 justify-content-center d-flex p-0 m-0">
                                           <div className="active small">
                                             {route.stage}

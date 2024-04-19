@@ -1,10 +1,10 @@
 import { restClient } from "./restClient";
 import { axiosType } from "../components/common/enum/enum";
 
-export async function getPackageDetailsByPackageId() {
+export async function getPackageDetailsByPackageId(packageId: string) {
   return restClient({
     type: axiosType.get,
-    url: "/v1/common/package/RIE07",
+    url: `/v1/common/package/${packageId}`,
     params: {},
   });
 }
