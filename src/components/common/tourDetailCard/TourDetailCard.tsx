@@ -12,31 +12,47 @@ import {
 } from "react-bootstrap";
 import style from "./TourDetailCard.module.scss";
 import { BsShare } from "react-icons/bs";
-import { facilities, isoCountries } from "../enum/enum";
 import { FaIndianRupeeSign } from "react-icons/fa6";
 import MainContainer from "../container/MainContainer";
 import Tick from "../icon/tick";
-// import { countries } from "../enum/countryCode";
 import { useHistory } from "react-router-dom";
-import { tours } from "../../pages/mockData/destinations";
+import { getPackageDetailsByPackageIdApi } from "../../../api/getPackageDetailsByPackageIdApi";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectTourData,
+  selectTourPackageId,
+} from "../../../state/selectors/selectTourData";
+import {
+  SET_SELECTED_TOUR_DATA,
+  selectedTourDataDto,
+} from "../../../state/actions/types/tourDataActionType";
 
 const TourDetailCard: FC = () => {
-  const selectedtourData = tours[0];
+  const packageID = useSelector(selectTourPackageId);
+  const tourData = useSelector(selectTourData);
+  const [tour, setTour] = useState<selectedTourDataDto>(tourData);
   const [count, setCount] = useState(0);
   const history = useHistory();
-  const [countryCode, setCountryCode] = useState("");
-  useEffect(() => {
-    flag();
-  });
+  const dispatch = useDispatch();
 
-  const flag = () => {
-    const id =
-      isoCountries?.find(
-        (country: any) =>
-          country?.text?.includes(selectedtourData.tourName) && country
-      )?.id || "";
-    setCountryCode(id);
+  useEffect(() => {
+    getPackageDetailsByPackageIdApi(packageID);
+  });
+  const fetchTours = async () => {
+    const response = await getPackageDetailsByPackageIdApi(packageID);
+    dispatch({
+      type: SET_SELECTED_TOUR_DATA,
+      payload: response,
+    });
   };
+  // useEffect(() => {
+  //   fetchTours();
+  // });
+
+  useEffect(() => {
+    tourData && setTour(tourData);
+  }, [tourData]);
+
   const popoverTop = (
     <Popover
       id="popover-positioned-top"
@@ -44,7 +60,7 @@ const TourDetailCard: FC = () => {
       className="w-100 gap-1 d-flex mw-50"
     >
       <Row className="d-flex mt-3 flex-row p-2 w-100 gap-2 flex-wrap">
-        {facilities.map((d) => (
+        {tour.includes.map((d) => (
           <p
             className="text-white col py-2 px-3 small fit-content rounded-4 align-items-center justify-content-center d-flex"
             style={{ background: "#0752a1", fontFamily: "Archive" }}
@@ -95,7 +111,7 @@ const TourDetailCard: FC = () => {
                   }}
                   className={`bg-dark text-start w-100 px-4 justify-content-center text-white position-relative p-0 m-0 pb-2 ${style.tourNameHeight}`}
                 >
-                  {selectedtourData.tourName}
+                  {tour?.packageName}
                   <Col
                     className={`position-absolute top-0 end-0 border-1 text-black justify-self-center d-flex pe-4`}
                   >
@@ -103,7 +119,7 @@ const TourDetailCard: FC = () => {
                       alt=""
                       className="m-0 p-0"
                       style={{ height: "10vh" }}
-                      src={`https://flagsapi.com/${countryCode}/flat/64.png`}
+                      src={`https://flagsapi.com/${tour.flagCode}/flat/64.png`}
                     />
                   </Col>
                 </Card>
@@ -113,16 +129,12 @@ const TourDetailCard: FC = () => {
               <Col className="position-relative p-0">
                 <Card.Body className="p-0 px-4 gap-3 m-0 d-flex h-100 align-items-center d-flex flex-column m-0">
                   {/* <Card.Title className="p text-wrap">
-                      {selectedtourData?.displayName?.text &&
-                        selectedtourData?.displayName?.text}
+                      {tour?.displayName?.text &&
+                        tour?.displayName?.text}
                     </Card.Title> */}
 
                   <span className="fs-16 p-0 m-0">
-                    {selectedtourData?.description
-                      ?.slice(0, selectedtourData.description.length / 2)
-                      ?.map((desc: string) => (
-                        <p>{desc}</p>
-                      ))}
+                    <p>{tour?.description}</p>
                   </span>
                 </Card.Body>
               </Col>
@@ -139,7 +151,7 @@ const TourDetailCard: FC = () => {
             >
               <Row className="d-flex mb-2 justify-content-between">
                 <Col className="p-2 fs-24 col-2 align-items-center d-flex justify-content-center h-100 text-white text-center bg-dark">
-                  {selectedtourData.tourDays}D
+                  {tour.noOfDays}D
                 </Col>{" "}
                 <Col className="col-8 px-1 align-self-center text-white position-relative p-0 m-0">
                   <Col
@@ -147,7 +159,7 @@ const TourDetailCard: FC = () => {
                     style={{ background: "#50809d" }}
                   >
                     <span className="p-0 m-0 fs-auto text-start fit-content">
-                      {selectedtourData.tourId}
+                      {tour.packageId}
                     </span>
                   </Col>
                   <Col className="position-relative w-100 p-0 border-1 text-center mx-42 justify-content-end text-white">
@@ -178,26 +190,24 @@ const TourDetailCard: FC = () => {
                       <section
                         className={`overflow-auto ${style.routeTimeline}`}
                       >
-                        {selectedtourData?.timeline?.map(
-                          (place: any, idx: number) => (
-                            <Col className="py-2">
-                              <Row>
-                                <Col className="p-0 fs-24 m-0 col-2 text-white align-self-center p-2 text-center bg-dark">
-                                  {idx < 9 ? "0" + (idx + 1) : idx + 1}
-                                </Col>
-                                <Col>
-                                  <div className="pl-2 fs-auto bold lh-sm p-0 m-0 text-dark ">
-                                    {place?.destination}
-                                  </div>
-                                  <div className="p-2 fs-16 p-0 lh-sm m-0 text-dark">
-                                    <li>{place.description[0]}</li>
-                                    <li>{place.description[1]}</li>
-                                  </div>
-                                </Col>
-                              </Row>
-                            </Col>
-                          )
-                        )}
+                        {tour?.destinations?.map((place: any, idx: number) => (
+                          <Col className="py-2">
+                            <Row>
+                              <Col className="p-0 fs-24 m-0 col-2 text-white align-self-center p-2 text-center bg-dark">
+                                {idx < 9 ? "0" + (idx + 1) : idx + 1}
+                              </Col>
+                              <Col>
+                                <div className="pl-2 fs-auto bold lh-sm p-0 m-0 text-dark ">
+                                  {place?.destination}
+                                </div>
+                                <div className="p-2 fs-16 p-0 lh-sm m-0 text-dark">
+                                  <li>{place.description[0]}</li>
+                                  <li>{place.description[1]}</li>
+                                </div>
+                              </Col>
+                            </Row>
+                          </Col>
+                        ))}
                       </section>
                     </Card>
                   </Col>
@@ -278,7 +288,7 @@ const TourDetailCard: FC = () => {
                     <section
                       className={`pt-4 overflow-auto ${style.rivewCard}`}
                     >
-                      {selectedtourData?.highlights?.map((review: string) => (
+                      {tour?.highlights?.map((review: string) => (
                         <Row className="p-2">
                           <Button
                             style={{ background: "#5a8ffd" }}
@@ -297,10 +307,10 @@ const TourDetailCard: FC = () => {
                         className={`fw-bold align-items-center text-nowrap text-secondary`}
                       >
                         {/* <Row className="w-100 justify-content-center">
-                          {selectedtourData &&
+                          {tour &&
                             [
                               ...Array(
-                                selectedtourData?.basicTourData?.starRating
+                                tour?.basicTourData?.starRating
                                   ?.value || 0
                               ),
                             ]?.map((index: number) => {
@@ -319,11 +329,11 @@ const TourDetailCard: FC = () => {
                                 />
                               );
                             })}
-                          {selectedtourData &&
+                          {tour &&
                             [
                               ...Array(
                                 5 -
-                                  selectedtourData?.basicTourData?.starRating
+                                  tour?.basicTourData?.starRating
                                     ?.value || 0
                               ),
                             ]?.map((index: number) => {
@@ -354,10 +364,18 @@ const TourDetailCard: FC = () => {
                         style={{ background: "#50809d" }}
                       >
                         <span className="p-0 fs-24 m-0 text-center fit-content">
-                          {
-                            selectedtourData?.priceInfo?.priceBeforeDiscount
-                              ?.amount
-                          }
+                          <select
+                            className="form-select"
+                            aria-label="Default select example"
+                          >
+                            {tour?.packagePrice.map(
+                              (price: string, index: number) => (
+                                <option key={index} value={price}>
+                                  {price}
+                                </option>
+                              )
+                            )}
+                          </select>
                         </span>
                         <FaIndianRupeeSign
                           className="fit-content p-0 m-0"
@@ -384,10 +402,18 @@ const TourDetailCard: FC = () => {
                         style={{ background: "#50809d" }}
                       >
                         <span className="p-0 m-0 fs-24 text-center fit-content">
-                          {
-                            selectedtourData?.priceInfo?.priceBeforeDiscount
-                              ?.amount
-                          }
+                          <select
+                            className="form-select"
+                            aria-label="Default select example"
+                          >
+                            {tour?.packagePrice.map(
+                              (price: string, index: number) => (
+                                <option key={index} value={price}>
+                                  {price}
+                                </option>
+                              )
+                            )}
+                          </select>
                         </span>
                         <FaIndianRupeeSign
                           className="fit-content p-0 m-0"
@@ -423,11 +449,7 @@ const TourDetailCard: FC = () => {
         <Col className="position-relative p-0">
           <Card.Body className="p-0 px-4 gap-3 d-flex flex-column m-0">
             <Card.Text className="fs-16 min-vh-25">
-              {selectedtourData.description
-                ?.slice(selectedtourData.description.length / 2)
-                ?.map((desc: string) => (
-                  <p>{desc}</p>
-                ))}
+              <p>{tour.description}</p>
             </Card.Text>
           </Card.Body>
         </Col>

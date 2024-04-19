@@ -1,12 +1,17 @@
 import React, { FC } from "react";
-import { Card, Col, Container, Row } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 import style from "./TourOverviewCard.module.scss";
 import { FaPlane } from "react-icons/fa6";
 import { useHistory } from "react-router-dom";
+import {
+  SET_TOUR_PACKAGE_ID,
+  selectedTourDataDto,
+} from "../../../state/actions/types/tourDataActionType";
+import { useDispatch } from "react-redux";
 
 export type TourOverviewCardType = {
   title?: string;
-  tours: any[];
+  tours: selectedTourDataDto[];
   children?: React.ReactNode;
   titleStyling?: string;
 };
@@ -17,6 +22,7 @@ const TourOverviewCard: FC<TourOverviewCardType> = ({
   children,
 }) => {
   const history = useHistory();
+  const dispatch = useDispatch();
   return (
     <section>
       {title && (
@@ -47,9 +53,9 @@ const TourOverviewCard: FC<TourOverviewCardType> = ({
             className="justify-content-between p-0 d-flex overflow-auto"
           >
             <Row className="w-100 justify-content-center scrolling-wrapper-flexbox">
-              {tours.map((option, idx) => (
+              {tours?.map((option: selectedTourDataDto, index: number) => (
                 <Col
-                  key={idx}
+                  key={index}
                   md={6}
                   lg={6}
                   className={`d-flex ${style.reasonCard} p-0 m-0`}
@@ -60,29 +66,37 @@ const TourOverviewCard: FC<TourOverviewCardType> = ({
                       style={{ zIndex: "1 !important" }}
                     >
                       <Card.Img
-                        className={`p-0 m-0 justify-content-center ${style.reasonCard}`}
+                        className={`w-100 p-0 m-0 justify-content-center ${style.reasonCard}`}
                         style={{
                           // width: "100%",
                           padding: "0px !important",
                           margin: "0px !important",
                         }}
-                        src={option.img}
+                        src={`https://drive.google.com/thumbnail?id=${option.imageUri[0]}`}
+                        alt="image"
+                        onClick={() => {
+                          dispatch({
+                            type: SET_TOUR_PACKAGE_ID,
+                            payload: option.packageId,
+                          });
+                          history.push("/tour-detail");
+                        }}
                       />
                       <Card.Body className="py-0">
                         <Card.Text className="bold h1 p-2 text-white position-absolute text-shadow-dark fw-bold top-0 start-0">
-                          {option.days}
+                          {option?.noOfDays}
                           {"D"}
                         </Card.Text>
 
-                        {option.tourType ? (
+                        {option.tripType ? (
                           <Card.Text className="bold w-100 justify-content-center p p-2 text-white d-flex flex-nowrap text-shadow-dark position-absolute fw-bold top-50 translate-middle start-50">
-                            {option.tourType}
+                            {option?.tripType}
                           </Card.Text>
                         ) : (
                           <Card.Text className="bold p p-2 text-white d-flex flex-nowrap text-shadow-dark position-absolute fw-bold top-50 translate-middle start-50">
-                            {option.from}
+                            {option?.packageName}
                             <FaPlane className="mx-2 my-1 box-shadow-lg" />
-                            {option.to}
+                            {/* {option.to} */}
                           </Card.Text>
                         )}
                       </Card.Body>
@@ -91,40 +105,40 @@ const TourOverviewCard: FC<TourOverviewCardType> = ({
                       className="overflow-auto second"
                       style={{ zIndex: "1 !important" }}
                     >
-                      {option?.places?.map((place: string, idx: number) => (
-                        <div
-                          className="timeline"
-                          key={idx}
-                          onClick={() => history.push("/tour-detail")}
-                        >
-                          {idx % 2 === 0 && (
-                            <>
-                              <div className="timeline-empty"></div>
-
-                              <div className="timeline-middle">
-                                <div className="timeline-circle"></div>
-                              </div>
-                            </>
-                          )}
+                      {option?.destinations?.map(
+                        (place: string, idx: number) => (
                           <div
-                            className={`timeline-component small align-self-center timeline-content ${
-                              idx % 2 === 0
-                                ? "text-start"
-                                : "text-end"
-                            }`}
+                            className="timeline"
+                            key={idx}
+                            onClick={() => history.push("/tour-detail")}
                           >
-                            {place}
+                            {idx % 2 === 0 && (
+                              <>
+                                <div className="timeline-empty"></div>
+
+                                <div className="timeline-middle">
+                                  <div className="timeline-circle"></div>
+                                </div>
+                              </>
+                            )}
+                            <div
+                              className={`timeline-component small align-self-center timeline-content ${
+                                idx % 2 === 0 ? "text-start" : "text-end"
+                              }`}
+                            >
+                              {place}
+                            </div>
+                            {idx % 2 !== 0 && (
+                              <>
+                                <div className="timeline-middle">
+                                  <div className="timeline-circle"></div>
+                                </div>
+                                <div className="timeline-empty"></div>
+                              </>
+                            )}
                           </div>
-                          {idx % 2 !== 0 && (
-                            <>
-                              <div className="timeline-middle">
-                                <div className="timeline-circle"></div>
-                              </div>
-                              <div className="timeline-empty"></div>
-                            </>
-                          )}
-                        </div>
-                      ))}
+                        )
+                      )}
                     </section>
                     <Card.Text
                       style={{ zIndex: "100 !important" }}
@@ -134,10 +148,13 @@ const TourOverviewCard: FC<TourOverviewCardType> = ({
                         className="form-select"
                         aria-label="Default select example"
                       >
-                        <option selected>{option.priceInUSD}</option>
-                        <option value="1">{option.priceInUSD}</option>
-                        <option value="2">{option.priceInEUR}</option>
-                        <option value="3">{option.priceInAED}</option>
+                        {option?.packagePrice?.map(
+                          (price: string, index: number) => (
+                            <option key={index} value={price}>
+                              {price}
+                            </option>
+                          )
+                        )}
                       </select>
                     </Card.Text>
                   </Card>

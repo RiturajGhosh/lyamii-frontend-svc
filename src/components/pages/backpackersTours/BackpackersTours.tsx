@@ -12,7 +12,7 @@ const BackpackersTours: FC = () => {
   const dispatch = useDispatch();
   const tours = useSelector(AllBackpackerTours);
   const [tourList, setTourList] = useState<selectedTourDataDto[]>(
-    tours
+    tours 
   );
   const fetchTours = async () => {
     const response = await getBackpackerToursApi();
@@ -25,9 +25,9 @@ const BackpackersTours: FC = () => {
   //   fetchTours();
   // });
 
-  // useEffect(() => {
-  //   tours?.length > 0 && setTourList(tours);
-  // }, [tours]);
+  useEffect(() => {
+    tours?.length > 0 && setTourList(tours);
+  }, [tours]);
 
   const description =
     "Once you step in, Backpacking across India becomes a journey inward, a reflection of the external landscape mirroring the terrain of your own thoughts and emotions. It is a spiritual quest to discover the depths of your own being. This Edition is a reminder that sometimes the path to self discovery lies not in reaching a destination, but in the act of journeying itself. Includes all top rated hostel stays, domestic flights, local tours, day to day assistance.";

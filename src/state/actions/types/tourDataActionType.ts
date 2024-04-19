@@ -1,6 +1,8 @@
 export const SET_SELECTED_TOUR_DATA = "SET_SELECTED_TOUR_DATA";
 export const SET_TOUR_DATA = "SET_TOUR_DATA";
+export const SET_TOUR_PACKAGE_ID = "SET_TOUR_PACKAGE_ID";
 export const SET_TOUR_LOCATION = "SET_TOUR_LOCATION";
+export const SET_POPULAR_PACKAGE = "SET_POPULAR_PACKAGE";
 
 export interface TourDataDto {
   id: string;
@@ -14,94 +16,37 @@ interface SetTourLocation {
   payload: TourDataDto;
 }
 export interface selectedTourDataDto {
-  tourName: string;
-  highlights: string[];
-  timeline: TimeLine[];
-  tourPrice: string;
-  tourId: string;
-  tourDays: string;
-  recommendedDate: RecommendedDate;
-  topPhotos: any[];
-  acceptsWalletCredit: boolean;
-  priceInfo: PriceDisplayInfo;
-  basicTourData: BasicTourData;
-  description: string[];
-}
-export interface TimeLine {
-  destination: "";
-  description: string[];
-}
-export interface RecommendedDate {
-  checkout: string;
-  lengthOfStay: number;
-  checkin: string;
-}
-export interface BasicTourData {
-  id: number;
-  photos: Photos;
-  location: BasicTourLocation;
-  starRating: StarRating;
-}
-
-export interface BasicTourLocation {
-  address: string;
-  city: string;
-  countryCode: string;
-}
-
-export interface Photos {
-  main: URL;
-}
-
-export interface URL {
-  relativeUrl: string;
-}
-
-export interface ReviewScore {
-  score: number;
-  totalScoreTextTag: ChargesInfo;
-  showSecondaryScore: boolean;
-  secondaryScore: number;
-  showScore: boolean;
-  reviewCount: number;
-  secondaryTextTag: ChargesInfo;
-}
-
-export interface ChargesInfo {
-  translation: null | string;
-}
-
-export interface StarRating {
-  value: number;
-}
-export interface PriceBeforeDiscount {
-  currency: string;
-  amount: string;
-}
-export interface PriceDiscount {
-  itemType: string;
+  packageId: string;
+  packageName: string;
+  title: string;
+  flagCode: string;
   description: string;
-  name: string;
-  productId: string;
-  amount: string;
-  currency: string;
+  overview: string;
+  highlights: string[];
+  noOfDays: number;
+  itinerary: Itinerary;
+  includes: string[];
+  destinations: string[];
+  packagePrice: string[];
+  rating: number;
+  currencyLabel: string;
+  tripType: string;
+  country: string;
+  imageUri: string[];
 }
-export interface PriceDisplayInfo {
-  priceBeforeDiscount: PriceBeforeDiscount;
-  discounts: PriceDiscount[];
+// export interface TimeLine {
+//   Day1: string[];
+//   Day2: string[];
+//   Day3: string[];
+//   Day4: string[];
+//   Day5: string[];
+//   Day6: string[];
+//   Day7: string[];
+// }
+export interface Itinerary {
+  "0": string;
+  "1": string[];
 }
-
-export interface Badge {
-  identifier: string;
-  tooltip: ChargesInfo;
-}
-
-export interface RecommendedDate {
-  checkout: string;
-  lengthOfStay: number;
-  checkin: string;
-}
-
 interface SetSelectedTourData {
   type: typeof SET_SELECTED_TOUR_DATA;
   payload: selectedTourDataDto;
@@ -110,7 +55,17 @@ interface SetTourData {
   type: typeof SET_TOUR_DATA;
   payload: selectedTourDataDto[];
 }
+interface SetPopularPackageI {
+  type: typeof SET_POPULAR_PACKAGE;
+  payload: selectedTourDataDto[];
+}
+interface SetTourPackageId {
+  type: typeof SET_TOUR_PACKAGE_ID;
+  payload: string;
+}
 export type tourDataActionType =
   | SetTourData
   | SetSelectedTourData
+  | SetPopularPackageI
+  | SetTourPackageId
   | SetTourLocation;

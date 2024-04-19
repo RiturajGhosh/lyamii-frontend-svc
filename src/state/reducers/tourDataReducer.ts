@@ -1,7 +1,9 @@
 import {
+  SET_POPULAR_PACKAGE,
   SET_SELECTED_TOUR_DATA,
   SET_TOUR_DATA,
   SET_TOUR_LOCATION,
+  SET_TOUR_PACKAGE_ID,
   TourDataDto,
   selectedTourDataDto,
   tourDataActionType,
@@ -10,67 +12,22 @@ import {
 export interface tourDataState {
   selectedtourData: selectedTourDataDto;
   selectedTourLocation: TourDataDto;
-  tourData: selectedTourDataDto[];
+  selectTourPackageId: "";
+  tours: selectedTourDataDto[];
+  popularTour: selectedTourDataDto[];
 }
 const initialState: any = {
   selectedtourData: {},
+  selectTourPackageId: "",
   selectedTourLocation: {
     id: "",
-    city: "string",
-    color: "string",
+    city: "",
+    color: "",
     coordinates: [],
     value: 0,
   },
-  tourData: [
-    {
-      tourName: "",
-      highlights: [],
-      timeline: [],
-      tourPrice: "",
-      tourId: "",
-      tourDays: "",
-      recommendedDate: {
-        checkout: "",
-        lengthOfStay: 0,
-        checkin: "",
-      },
-      topPhotos: [],
-      acceptsWalletCredit: false,
-      priceInfo: {
-        priceBeforeDiscount: {
-          currency: "INR",
-          amountRounded: "",
-        },
-        discounts: [
-          {
-            itemType: "",
-            description: "",
-            name: "",
-            productId: "",
-            amount: "₹0",
-            currency: "",
-          },
-        ],
-      },
-      basicTourData: {
-        id: 0,
-        photos: {
-          main: {
-            relativeUrl: "",
-          },
-        },
-        location: {
-          address: "",
-          city: "",
-          countryCode: "91",
-        },
-        starRating: {
-          value: 0,
-        },
-      },
-      description: [],
-    },
-  ],
+  tours: [],
+  popularTour: [],
 };
 
 export default function tourDataReducer(
@@ -86,8 +43,19 @@ export default function tourDataReducer(
     case SET_TOUR_DATA:
       return {
         ...state,
-        tourData: { ...action.payload },
+        tours: [...action.payload],
       };
+    case SET_TOUR_PACKAGE_ID:
+      return {
+        ...state,
+        selectTourPackageId: action.payload,
+      };
+    case SET_POPULAR_PACKAGE:
+      return {
+        ...state,
+        popularTour: [...action.payload],
+      };
+
     case SET_TOUR_LOCATION:
       return {
         ...state,

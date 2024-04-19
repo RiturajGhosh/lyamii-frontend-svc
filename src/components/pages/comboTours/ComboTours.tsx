@@ -22,9 +22,9 @@ const ComboTours: FC = () => {
   //   fetchTours();
   // });
 
-  // useEffect(() => {
-  //   tours?.length > 0 && setTourList(tours);
-  // }, [tours]);
+  useEffect(() => {
+    tours?.length > 0 && setTourList(tours);
+  }, [tours]);
   return (
     <TourOverviewCard
       tours={tourList}

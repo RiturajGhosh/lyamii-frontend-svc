@@ -1,13 +1,12 @@
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { Image, Col, Row, Ratio, Button } from "react-bootstrap";
 import style from "./TourCard.module.scss";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
-import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { LuChevronRightCircle } from "react-icons/lu";
 import { useHistory } from "react-router-dom";
 import {
-  SET_SELECTED_TOUR_DATA,
+  SET_TOUR_PACKAGE_ID,
   selectedTourDataDto,
 } from "../../../state/actions/types/tourDataActionType";
 import { GoDotFill } from "react-icons/go";
@@ -36,7 +35,6 @@ const TourCard: FC<TourCardType> = ({
 }) => {
   const history = useHistory();
   const dispatch = useDispatch();
-  console.log(tour)
 
   return (
     <Row
@@ -46,16 +44,17 @@ const TourCard: FC<TourCardType> = ({
       <Col md={6} lg={6} sm={6} className="p-0 col-6 m-0">
         <Col>
           <Col className="text-white position-relative p-2 m-0 pb-2">
-            {tourData?.basicTourData?.photos?.main?.relativeUrl && (
+            {tourData?.imageUri && (
               <Ratio aspectRatio={imageRatio}>
                 <>
                   <Image
                     className={`p-0 rounded-3 position-absolute ${imageStyling}`}
-                    src={tourData?.basicTourData?.photos?.main?.relativeUrl}
+                    src={`https://drive.google.com/thumbnail?id=${tourData?.imageUri[0]}`}
+                    alt="drive image"
                     onClick={() => {
                       dispatch({
-                        type: SET_SELECTED_TOUR_DATA,
-                        payload: tourData,
+                        type: SET_TOUR_PACKAGE_ID,
+                        payload: tourData.packageId,
                       });
                       history.push("/tour-detail");
                     }}
@@ -68,8 +67,7 @@ const TourCard: FC<TourCardType> = ({
                       }}
                       onClick={() => {}}
                     >
-                      {tourData?.tourPrice}
-                      {"$"}
+                      {tourData?.packagePrice}
                     </Button>
                   </Col>
                 </>
@@ -78,21 +76,7 @@ const TourCard: FC<TourCardType> = ({
           </Col>
         </Col>
         <div className="fw-bold align-items-center text-white flex-nowrap py-3 mx-4 justify-content-center flex-row d-flex m-0 p-0 position-relative">
-          <span className="p-0 m-0 display-5 d-flex flex-wrap w-90 text-center fit-content">
-            {/* {facilities.map((facility: any) => {
-              return (
-                <img
-                  className={`p-0 m-0 justify-content-center`}
-                  style={{
-                    width: "25px",
-                    padding: "0px !important",
-                    margin: "0px !important",
-                  }}
-                  src={facility}
-                />
-              );
-            })} */}
-          </span>
+          <span className="p-0 m-0 display-5 d-flex flex-wrap w-90 text-center fit-content"></span>
         </div>
       </Col>
       <Col
@@ -115,13 +99,13 @@ const TourCard: FC<TourCardType> = ({
                 }}
                 onClick={() => {
                   dispatch({
-                    type: SET_SELECTED_TOUR_DATA,
-                    payload: tour,
+                    type: SET_TOUR_PACKAGE_ID,
+                    payload: tourData.packageId,
                   });
                   history.push("/tour-detail");
                 }}
               >
-                {tourData?.tourName && tourData?.tourName}
+                {tourData?.packageName && tourData?.packageName}
               </Col>
               <Col
                 className="text-white flex-column d-flex h-100 position-relative m-0"
@@ -130,8 +114,8 @@ const TourCard: FC<TourCardType> = ({
                 <Col
                   className={`overflow-hidden mt-2 hidden-scroll ${style.routeTimeline}`}
                 >
-                  {tourData?.timeline.map((place: any, idx: number) => (
-                    <Col className="py-2 d-inline fit-content">
+                  {tourData?.destinations.map((place: any, index: number) => (
+                    <Col key={index} className="py-2 d-inline fit-content">
                       <Row className="d-flex gx-0 align-items-center">
                         <Col>
                           <div
@@ -140,7 +124,7 @@ const TourCard: FC<TourCardType> = ({
                               color: "#f7de26 ",
                             }}
                           >
-                            {place?.destination}
+                            {place}
                           </div>
                         </Col>
                         <Col className="col-2 align-items-center d-flex">
@@ -162,47 +146,45 @@ const TourCard: FC<TourCardType> = ({
                             color: "white",
                           }}
                         >
-                          {tourData?.tourDays}D
+                          {tourData?.noOfDays}D
                         </Col>
                         <Row className="w-100 justify-content-center">
-                          {[
-                            ...Array(tourData?.basicTourData.starRating?.value),
-                          ]?.map((index: number) => {
-                            return (
-                              <AiFillStar
-                                key={index}
-                                size={15}
-                                style={{
-                                  color: "#f7de26",
-                                  width: "fit-content",
-                                  paddingLeft: "0px",
-                                  paddingRight: "0px",
-                                  marginTop: "0px",
-                                }}
-                                className="d-flex"
-                              />
-                            );
-                          })}
-                          {[
-                            ...Array(
-                              5 - tourData?.basicTourData.starRating?.value
-                            ),
-                          ]?.map((index: number) => {
-                            return (
-                              <AiOutlineStar
-                                key={index}
-                                size={15}
-                                style={{
-                                  color: "f7de26",
-                                  width: "fit-content",
-                                  paddingLeft: "0px",
-                                  paddingRight: "0px",
-                                  marginTop: "0px",
-                                }}
-                                className="d-flex"
-                              />
-                            );
-                          })}
+                          {[...Array(tourData?.rating)]?.map(
+                            (index: number) => {
+                              return (
+                                <AiFillStar
+                                  key={index}
+                                  size={15}
+                                  style={{
+                                    color: "#f7de26",
+                                    width: "fit-content",
+                                    paddingLeft: "0px",
+                                    paddingRight: "0px",
+                                    marginTop: "0px",
+                                  }}
+                                  className="d-flex"
+                                />
+                              );
+                            }
+                          )}
+                          {[...Array(5 - tourData?.rating)]?.map(
+                            (index: number) => {
+                              return (
+                                <AiOutlineStar
+                                  key={index}
+                                  size={15}
+                                  style={{
+                                    color: "f7de26",
+                                    width: "fit-content",
+                                    paddingLeft: "0px",
+                                    paddingRight: "0px",
+                                    marginTop: "0px",
+                                  }}
+                                  className="d-flex"
+                                />
+                              );
+                            }
+                          )}
                         </Row>
                       </Col>
                     </Col>
@@ -213,8 +195,8 @@ const TourCard: FC<TourCardType> = ({
                       size={"40px"}
                       onClick={() => {
                         dispatch({
-                          type: SET_SELECTED_TOUR_DATA,
-                          payload: tourData,
+                          type: SET_TOUR_PACKAGE_ID,
+                          payload: tourData.packageId,
                         });
                         history.push("/tour-detail");
                       }}
