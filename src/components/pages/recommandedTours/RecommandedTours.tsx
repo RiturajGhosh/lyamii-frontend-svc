@@ -1,37 +1,33 @@
 import React, { FC, useEffect, useState } from "react";
 import { Card, Col } from "react-bootstrap";
 import HorizontalScroll from "../../common/horizontalScroll/HorizontalScroll";
-import { useHistory } from "react-router-dom";
 import TourCard from "../../common/tourCard/TourCard";
-import { tours } from "../mockData/destinations";
-import { useDispatch } from "react-redux";
-import { SET_SELECTED_TOUR_DATA } from "../../../state/actions/types/tourDataActionType";
+import { useSelector } from "react-redux";
+import { selectPopularPackage } from "../../../state/selectors/selectTourData";
+import { selectedTourDataDto } from "../../../state/actions/types/tourDataActionType";
 
 const RecommandedTours: FC = () => {
-  const [loading, setLoading] = useState(false);
-  // const [tourlist, settourList] = useState<any[]>(tours);
-  const [data] = useState<any[]>(tours.slice(0, 4));
+  const [loading, ] = useState(false);
+  const popularTours = useSelector(selectPopularPackage);
+  const [tourlist, setTourList] = useState<selectedTourDataDto[]>(popularTours);
   const [page, setPage] = useState(0);
-  const history = useHistory();
 
-  const dispatch = useDispatch();
   useEffect(() => {
-    // getData(page).then((res) => setData([...data, ...res]));
-    setLoading(false);
-  }, [page]);
-
+    popularTours?.length > 0 && setTourList(popularTours);
+  }, [popularTours]);
   return (
     <HorizontalScroll
       title={"Most Popular"}
       setPage={(e: any) => setPage(e)}
       page={page}
     >
-      {data.map((tour, index) => (
+      {tourlist?.map((tour, index) => (
         <Col
           md={6}
           lg={4}
           sx={12}
           sm={8}
+          key={index}
           className="mx-md-3 col-12 d-inline-block position-relative"
         >
           <Card key={index} className={`p-0`}>

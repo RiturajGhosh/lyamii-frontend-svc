@@ -75,11 +75,15 @@ const TourOverviewCard: FC<TourOverviewCardType> = ({
                         src={`https://drive.google.com/thumbnail?id=${option.imageUri[0]}`}
                         alt="image"
                         onClick={() => {
-                          dispatch({
-                            type: SET_TOUR_PACKAGE_ID,
-                            payload: option.packageId,
+                          const setPackageId = async () => {
+                            await dispatch({
+                              type: SET_TOUR_PACKAGE_ID,
+                              payload: option?.packageId,
+                            });
+                          };
+                          setPackageId().then(() => {
+                            history.push("/tour-detail");
                           });
-                          history.push("/tour-detail");
                         }}
                       />
                       <Card.Body className="py-0">

@@ -2,11 +2,8 @@ import React, { FC } from "react";
 import { Col, Row } from "react-bootstrap";
 import style from "./MapAndEscape.module.scss";
 import Globe from "../../common/globe/Globe";
-import { mapDescription } from "../../common/enum/enum";
-import RoundButton from "../../common/roundButton/RoundButton";
 import { IoIosPaperPlane } from "react-icons/io";
 import { escapeRoute } from "../../common/enum/escapePlanRoute";
-import HorizontalScroll from "../../common/horizontalScroll/HorizontalScroll";
 
 const MapAndEscape: FC = () => {
   const data = [

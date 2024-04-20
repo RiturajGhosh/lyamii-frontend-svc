@@ -21,9 +21,9 @@ const BharatTours: FC = () => {
       payload: response,
     });
   };
-  // useEffect(() => {
-  //   fetchTours();
-  // });
+  useEffect(() => {
+    fetchTours();
+  },[]);
 
   useEffect(() => {
     tours?.length > 0 && setTourList(tours);

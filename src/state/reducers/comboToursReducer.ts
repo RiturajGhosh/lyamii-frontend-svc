@@ -18,7 +18,7 @@ export default function comboToursReducer(
     case SET_COMBO_TOURS:
       return {
         ...state,
-        tours: { ...action.payload },
+        tours: [ ...action.payload ],
       };
 
     default:

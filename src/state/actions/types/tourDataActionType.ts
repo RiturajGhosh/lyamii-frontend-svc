@@ -24,7 +24,7 @@ export interface selectedTourDataDto {
   overview: string;
   highlights: string[];
   noOfDays: number;
-  itinerary: Itinerary;
+  itinerary: Itinerary[];
   includes: string[];
   destinations: string[];
   packagePrice: string[];

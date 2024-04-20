@@ -18,6 +18,12 @@ import RoundButton from "../../common/roundButton/RoundButton";
 import { getTours } from "../../../state/actions/getTours";
 import { SET_SELECTED_LOCATION } from "../../../state/actions/types/globeDataActionType";
 import { FaSearch } from "react-icons/fa";
+import { getPopularPackageApi } from "../../../api/popularPackage/getPopularPackageApi";
+import {
+  SET_POPULAR_PACKAGE,
+  SET_TOUR_DATA,
+} from "../../../state/actions/types/tourDataActionType";
+import { getPackageByDestinationApi } from "../../../api/packageByDestination/getPackageByDestinationApi";
 
 export type stateType = {
   data: any[];
@@ -98,8 +104,21 @@ const ExploreDestination: FC = () => {
     setUpdate(true);
   }
 
-  useEffect(() => {
+  const fetchTourData = async () => {
     window.scrollTo(0, 0);
+    const response = await getPopularPackageApi();
+    dispatch({
+      type: SET_POPULAR_PACKAGE,
+      payload: response,
+    });
+    const res = await getPackageByDestinationApi(destination.city);
+    dispatch({
+      type: SET_TOUR_DATA,
+      payload: res,
+    });
+  };
+  useEffect(() => {
+    fetchTourData();
   }, []);
 
   useEffect(() => {
@@ -258,7 +277,12 @@ const ExploreDestination: FC = () => {
                   />
                 </Col>
                 <Button className="flex-row justify-content-center text-center flex-column me-4 d-flex rounded-4 p-3 w-25 p-0 h2">
-                 <span className="w-100 justify-content-between d-flex align-items-center"><span className="flex-wrap d-flex align-items-center">Search</span><FaSearch /></span>
+                  <span className="w-100 justify-content-between d-flex align-items-center">
+                    <span className="flex-wrap d-flex align-items-center">
+                      Search
+                    </span>
+                    <FaSearch />
+                  </span>
                 </Button>
               </Row>
 
@@ -431,17 +455,17 @@ const ExploreDestination: FC = () => {
                   }}
                 />
               </div>
-              
+
               <Row className="pt-3 d-flex justify-content-between">
-                  <Col>
-                    <label>Min : </label>
-                    <span>{priceRange.min}</span>
-                  </Col>
-                  <Col className="text-end">
-                    <label>Max : </label>
-                    <span>{priceRange.max}</span>
-                  </Col>
-                </Row>
+                <Col>
+                  <label>Min : </label>
+                  <span>{priceRange.min}</span>
+                </Col>
+                <Col className="text-end">
+                  <label>Max : </label>
+                  <span>{priceRange.max}</span>
+                </Col>
+              </Row>
             </div>
           </Modal.Body>
         </Modal>

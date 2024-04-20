@@ -23,6 +23,7 @@ import {
   selectTourPackageId,
 } from "../../../state/selectors/selectTourData";
 import {
+  Itinerary,
   SET_SELECTED_TOUR_DATA,
   selectedTourDataDto,
 } from "../../../state/actions/types/tourDataActionType";
@@ -35,9 +36,6 @@ const TourDetailCard: FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    getPackageDetailsByPackageIdApi(packageID);
-  });
   const fetchTours = async () => {
     const response = await getPackageDetailsByPackageIdApi(packageID);
     dispatch({
@@ -45,9 +43,9 @@ const TourDetailCard: FC = () => {
       payload: response,
     });
   };
-  // useEffect(() => {
-  //   fetchTours();
-  // });
+  useEffect(() => {
+    fetchTours();
+  }, []);
 
   useEffect(() => {
     tourData && setTour(tourData);
@@ -60,7 +58,7 @@ const TourDetailCard: FC = () => {
       className="w-100 gap-1 d-flex mw-50"
     >
       <Row className="d-flex mt-3 flex-row p-2 w-100 gap-2 flex-wrap">
-        {tour.includes.map((d) => (
+        {tour?.includes?.map((d) => (
           <p
             className="text-white col py-2 px-3 small fit-content rounded-4 align-items-center justify-content-center d-flex"
             style={{ background: "#0752a1", fontFamily: "Archive" }}
@@ -188,26 +186,31 @@ const TourDetailCard: FC = () => {
                       style={{ background: "#8ca0bd" }}
                     >
                       <section
-                        className={`overflow-auto ${style.routeTimeline}`}
+                        className={`overflow-auto ${style?.routeTimeline}`}
                       >
-                        {tour?.destinations?.map((place: any, idx: number) => (
-                          <Col className="py-2">
-                            <Row>
-                              <Col className="p-0 fs-24 m-0 col-2 text-white align-self-center p-2 text-center bg-dark">
-                                {idx < 9 ? "0" + (idx + 1) : idx + 1}
-                              </Col>
-                              <Col>
-                                <div className="pl-2 fs-auto bold lh-sm p-0 m-0 text-dark ">
-                                  {place?.destination}
-                                </div>
-                                <div className="p-2 fs-16 p-0 lh-sm m-0 text-dark">
-                                  <li>{place.description[0]}</li>
-                                  <li>{place.description[1]}</li>
-                                </div>
-                              </Col>
-                            </Row>
-                          </Col>
-                        ))}
+                        {tour?.itinerary?.map(
+                          (place: Itinerary, idx: number) => (
+                            <Col className="py-2">
+                              <Row>
+                                <Col className="p-0 fs-24 m-0 col-2 text-white align-self-center p-2 text-center bg-dark">
+                                  {idx < 9 ? "0" + (idx + 1) : idx + 1}
+                                </Col>
+                                <Col>
+                                  <div className="pl-2 fs-auto bold lh-sm p-0 m-0 text-dark ">
+                                    {place[0]}
+                                  </div>
+                                  <div className="p-2 fs-auto p-0 lh-sm m-0 text-dark">
+                                    {/* {place &&
+                                      place[1][0]?.map((desc: string) => ( */}
+                                        <li>{place[1][0]}</li>
+                                        <li>{place[1][1]}</li>
+                                      {/* ))} */}
+                                  </div>
+                                </Col>
+                              </Row>
+                            </Col>
+                          )
+                        )}
                       </section>
                     </Card>
                   </Col>
@@ -368,7 +371,7 @@ const TourDetailCard: FC = () => {
                             className="form-select"
                             aria-label="Default select example"
                           >
-                            {tour?.packagePrice.map(
+                            {tour?.packagePrice?.map(
                               (price: string, index: number) => (
                                 <option key={index} value={price}>
                                   {price}
@@ -406,7 +409,7 @@ const TourDetailCard: FC = () => {
                             className="form-select"
                             aria-label="Default select example"
                           >
-                            {tour?.packagePrice.map(
+                            {tour?.packagePrice?.map(
                               (price: string, index: number) => (
                                 <option key={index} value={price}>
                                   {price}

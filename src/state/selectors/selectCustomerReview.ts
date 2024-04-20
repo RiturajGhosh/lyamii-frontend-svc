@@ -1,4 +1,3 @@
-import { $CombinedState } from "redux";
 import { RootStore } from "../store";
 import { customerReviewState } from "../reducers/customerReviewsReducer";
 

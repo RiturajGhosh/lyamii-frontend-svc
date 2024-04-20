@@ -8,8 +8,8 @@ import { SET_COMBO_TOURS } from "../../../state/actions/types/comboToursType";
 import { selectedTourDataDto } from "../../../state/actions/types/tourDataActionType";
 
 const ComboTours: FC = () => {
-  const tours: any = useSelector(AllComboTours);
-  const [tourList, setTourList] = useState<selectedTourDataDto[]>(tours);
+  const tours = useSelector(AllComboTours);
+  const [tourList, setTourList] = useState<selectedTourDataDto[]>(tours.tours);
   const dispatch = useDispatch();
   const fetchTours = async () => {
     const response = await getComboToursApi();
@@ -18,11 +18,12 @@ const ComboTours: FC = () => {
       payload: response,
     });
   };
-  // useEffect(() => {
-  //   fetchTours();
-  // });
+  useEffect(() => {
+    fetchTours();
+  }, []);
 
   useEffect(() => {
+    console.log(tours)
     tours?.length > 0 && setTourList(tours);
   }, [tours]);
   return (

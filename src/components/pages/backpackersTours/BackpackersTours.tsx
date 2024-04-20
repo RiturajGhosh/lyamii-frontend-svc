@@ -21,9 +21,9 @@ const BackpackersTours: FC = () => {
       payload: response,
     });
   };
-  // useEffect(() => {
-  //   fetchTours();
-  // });
+  useEffect(() => {
+    fetchTours();
+  },[]);
 
   useEffect(() => {
     tours?.length > 0 && setTourList(tours);
@@ -43,7 +43,7 @@ const BackpackersTours: FC = () => {
             <Row className="p-0">
               <Col className="text-dark align-self-center">
                 <span className="text-start fs-16 text-wrap">
-                  {description}
+                  {description}{" "}
                 </span>
               </Col>
             </Row>
