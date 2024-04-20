@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectedLocation } from "../../../state/selectors/selectGlobeData";
 import markers from "../../common/globe/markers";
 import Checkbox from "../../common/checkbox/Checkbox";
-import { tours } from "../mockData/destinations";
 import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
 import TourCard from "../../common/tourCard/TourCard";
 import RecommandedTours from "../recommandedTours/RecommandedTours";
@@ -13,17 +12,17 @@ import Coursel from "../coursel/Coursel";
 import RecentlyViewedTours from "../recentlyViewedTours/RecentlyViewedTours";
 import MainContainer from "../../common/container/MainContainer";
 import HorizontalScroll from "../../common/horizontalScroll/HorizontalScroll";
-// import { useHistory } from "react-router-dom";
 import RoundButton from "../../common/roundButton/RoundButton";
-import { getTours } from "../../../state/actions/getTours";
 import { SET_SELECTED_LOCATION } from "../../../state/actions/types/globeDataActionType";
 import { FaSearch } from "react-icons/fa";
 import { getPopularPackageApi } from "../../../api/popularPackage/getPopularPackageApi";
+import { getPackageByDestinationApi } from "../../../api/packageByDestination/getPackageByDestinationApi";
+import { tours } from "../../../state/selectors/selectTourData";
 import {
   SET_POPULAR_PACKAGE,
   SET_TOUR_DATA,
 } from "../../../state/actions/types/tourDataActionType";
-import { getPackageByDestinationApi } from "../../../api/packageByDestination/getPackageByDestinationApi";
+import { getPackageDetailsByCountryAndDaysApi } from "../../../api/getPackageDetailsByCountryAndDaysApi";
 
 export type stateType = {
   data: any[];
@@ -33,76 +32,41 @@ const ExploreDestination: FC = () => {
   const destination = useSelector(selectedLocation);
   const screenSize = useSelector(selectScreenSize);
   const [show, setShow] = useState(false);
+  const tourData = useSelector(tours);
   const dispatch = useDispatch();
   const [update, setUpdate] = useState(true);
-  // const history = useHistory();
-  const [tourlist, settourList] = useState<any[]>(tours);
   const [showFilter, setShowFilter] = useState(true);
-  const [filters, setFilters] = useState(filterList);
-  const [priceRange, setPriceRange] = useState({ min: 0, max: 120000 });
+  const [filter, setFilter] = useState({
+    minPrice: 0,
+    maxPrice: 120000,
+    noOfDays: 0,
+  });
   const [type, setType] = useState("text");
-  const [products, setProducts] = useState(
-    Array.from({ length: 10 }, (_, i) => `Product ${i + 1}`)
-  ); // Initial set of products
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [state, setState] = useState<stateType>({
-    data: tours, // Your data from the API
+    data: tourData, // Your data from the API
     hasMore: true,
   });
-
-  // const fetchData = async () => {
-  //   // Simulate an API call to get more data
-  //   // Replace this with your actual API call
-  //   const newData = markers;
-  //   await getTours(filters); /* Your API call here */
-
-  //   if (newData?.length === 0) {
-  //     setState({ data: state.data, hasMore: false });
-  //   } else {
-  //     setState((prevState) => ({
-  //       data: [...prevState.data, ...newData],
-  //       hasMore: true,
-  //     }));
-  //   }
-  // };
-  // function handleScroll(e: any) {
-  //   const element = e.target;
-  //   if (element.scrollLeft + element.clientWidth >= element.scrollWidth) {
-  //     loadMoreProducts();
-  //   }
-  // }
-  // Function to load more products
-  const loadMoreProducts = () => {
-    // Simulate fetching more products (you would typically make an API call here)
-    setTimeout(() => {
-      const newProducts = Array.from(
-        { length: 10 },
-        (_, i) => `Product ${products.length + i + 1}`
-      );
-      setProducts([...products, ...newProducts]);
-    }, 1000);
-  };
 
   const [tourDetail, setTourDetail] = useState({
     city: destination.city,
     startDate: "",
-    endDate: "",
   });
-  async function handleFilters(filterName: string, label: string) {
-    let updateFilters = filters;
-    updateFilters.forEach((filter) => {
-      if (filter.filterName === filterName) {
-        return filter.subFilter.forEach((sub: any) => {
-          if (sub.label === label) {
-            sub.checked = !sub.checked;
-          }
-        });
-      }
-    });
-    await setFilters(updateFilters);
-    setUpdate(true);
-  }
+  // async function handleFilters(filterName: string, label: string) {
+  //   let updateFilters = filters;
+  //   updateFilters.forEach((filter) => {
+  //     if (filter.filterName === filterName) {
+  //       return filter.subFilter.forEach((sub: any) => {
+  //         if (sub.label === label) {
+  //           sub.checked = !sub.checked;
+  //         }
+  //       });
+  //     }
+  //   });
+  //   await setFilters(updateFilters);
+  //   setUpdate(true);
+  // }
 
   const fetchTourData = async () => {
     window.scrollTo(0, 0);
@@ -130,36 +94,35 @@ const ExploreDestination: FC = () => {
   }, [screenSize]);
 
   const fetchTours = async () => {
-    const filterData = markers.filter(
-      (marker: any) =>
-        marker.city.toLowerCase().includes(tourDetail.city) && marker
+    const countryId = markers.filter((marker: any) => {
+      if (marker.city.toLowerCase().includes(destination.city.toLowerCase()))
+        return marker;
+    })[0].id;
+    // const range = [
+    //   {
+    //     priceRange: {
+    //       min: "0",
+    //       max: priceRange,
+    //     },
+    //   },
+    // ];
+    const response = await getPackageDetailsByCountryAndDaysApi(
+      filter.noOfDays,
+      parseInt(countryId)
     );
-    dispatch({
-      type: SET_SELECTED_LOCATION,
-      payload: filterData[0],
-    });
-    let payload = {
-      ...filterData[0],
-      startDate: destination.startDate,
-      endDate: destination.endDate,
-    };
-    const range = [
-      {
-        priceRange: {
-          min: "0",
-          max: priceRange,
-        },
-      },
-    ];
-    if (filters) {
-      payload = { ...payload, ...filters, ...range };
+    if (response?.length === 0) {
+      setState({ data: state.data, hasMore: false });
+    } else {
+      setState((prevState) => ({
+        data: [...prevState.data, ...response],
+        hasMore: true,
+      }));
     }
-    settourList(tours);
-    await getTours(payload);
   };
+  console.log(page);
   useEffect(() => {
     fetchTours();
-  }, [priceRange, filters]);
+  }, [filter, page]);
   return (
     <MainContainer>
       <Coursel />
@@ -197,7 +160,7 @@ const ExploreDestination: FC = () => {
                         option={filterList[0].subFilter[3]}
                         onClick={(label: string) => {
                           setUpdate(false);
-                          handleFilters("Type", "Others");
+                          // handleFilters("Type", "Others");
                         }}
                         label={false}
                         type={"checkbox"}
@@ -221,7 +184,7 @@ const ExploreDestination: FC = () => {
                         option={filterList[0].subFilter[3]}
                         onClick={(label: string) => {
                           setUpdate(false);
-                          handleFilters("Type", "Indian Passport Holders");
+                          // handleFilters("Type", "Indian Passport Holders");
                         }}
                         label={false}
                         type={"checkbox"}
@@ -252,13 +215,22 @@ const ExploreDestination: FC = () => {
                   placeholder="DESTINATION"
                   value={tourDetail.city}
                   style={{ background: "#19bca1", fontFamily: "NORWESTER" }}
-                  onChange={(e: any) =>
-                    setTourDetail({ ...tourDetail, city: e.target.value })
-                  }
+                  onChange={(e: any) => {
+                    setTourDetail({ ...tourDetail, city: e.target.value });
+                    const filterData = markers.filter(
+                      (marker: any) =>
+                        marker.city.toLowerCase().includes(e.target.value) &&
+                        marker
+                    );
+                    dispatch({
+                      type: SET_SELECTED_LOCATION,
+                      payload: filterData[0],
+                    });
+                  }}
                 />
               </Col>
-              <Row className="pt-2 gap-2">
-                <Col className="justify-content-center align-items-center flex-row ms-4 d-flex rounded-4 p-3 w-60 bg-white p-0 h2">
+              <Row className="pt-2 gap-2 mx-4">
+                {/* <Col className="justify-content-center align-items-center flex-row ms-4 d-flex rounded-4 p-3 w-60 bg-white p-0 h2">
                   <label className="w-100 fs-medium">Starting Date:</label>
                   <input
                     className="rounded-4 w-100 bg-white justify-content-center fs-medium p-1 px-2 text-dark text-start m-0 border-0"
@@ -275,47 +247,21 @@ const ExploreDestination: FC = () => {
                       })
                     }
                   />
-                </Col>
-                <Button className="flex-row justify-content-center text-center flex-column me-4 d-flex rounded-4 p-3 w-25 p-0 h2">
+                </Col> */}
+                <Button
+                  onClick={() => {
+                    fetchTours();
+                  }}
+                  className="flex-row justify-content-center text-center flex-column me-4 d-flex rounded-4 p-3 w-100 p-0 h2"
+                >
                   <span className="w-100 justify-content-between d-flex align-items-center">
                     <span className="flex-wrap d-flex align-items-center">
                       Search
                     </span>
-                    <FaSearch />
+                    <FaSearch size={"15px"} className="ms-3" />
                   </span>
                 </Button>
               </Row>
-
-              {/* <Button
-                onClick={async () => {
-                  const filterData = markers.filter(
-                    (marker: any) =>
-                      marker.city.toLowerCase().includes(tourDetail.city) &&
-                      marker
-                  );
-                  dispatch({
-                    type: SET_SELECTED_LOCATION,
-                    payload: filterData[0],
-                  });
-                  let payload = {
-                    ...filterData[0],
-                    startDate: destination.startDate,
-                    endDate: destination.endDate,
-                  };
-                  if (filters) {
-                    payload = { ...payload, ...filters };
-                  }
-                  settourList(tours);
-                  await getTours(payload);
-                }}
-                style={{ width: "fit-content" }}
-                variant="secondary"
-                className={`${
-                  screenSize.isMobile ? "row-2" : "col-1"
-                } btn-secondary px-2 p-0 m-0 text-nowrap`}
-              >
-                Submit
-              </Button> */}
             </Col>
           </Row>
         </Col>
@@ -356,12 +302,13 @@ const ExploreDestination: FC = () => {
             setPage={(e: any) => setPage(e)}
             page={page}
           >
-            {tourlist.map((tour, index) => (
+            {state?.data?.map((tour, index) => (
               <Col
                 md={6}
                 lg={4}
                 sx={12}
                 sm={8}
+                key={index}
                 className="mx-md-3 col-12 d-inline-block position-relative"
               >
                 <Card key={index} className={`p-0 `}>
@@ -398,31 +345,37 @@ const ExploreDestination: FC = () => {
             <Modal.Title>Filter</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {filters.slice(0, 3).map((field) => {
-              return (
-                <>
-                  <h3 className="p-2">{field?.filterName}</h3>
-                  {field?.subFilter?.map((sub, index: number) => {
-                    return (
-                      <Checkbox
-                        key={index}
-                        option={sub}
-                        onClick={(label: string) => {
-                          setUpdate(false);
-                          handleFilters(field?.filterName, label);
-                        }}
-                        type={"checkbox"}
-                      />
-                    );
-                  })}
-                </>
-              );
-            })}
+            <div>
+              <h3 className="p-2">No Of Days</h3>
+              <div className="range-slider pt-3">
+                <input
+                  value={filter.noOfDays}
+                  min="0"
+                  max="100"
+                  type="range"
+                  onChange={(e) => {
+                    e.preventDefault();
+                    console.log(e);
+                    setFilter({
+                      ...filter,
+                      noOfDays: parseInt(e.target.value),
+                    });
+                  }}
+                />
+              </div>
+
+              <Row className="pt-3 d-flex justify-content-between">
+                <Col>
+                  <label>Days : </label>
+                  <span>{filter.noOfDays}</span>
+                </Col>
+              </Row>
+            </div>
             <div>
               <h3 className="p-2">Price Range</h3>
               <div className="range-slider pt-3">
                 <input
-                  value={priceRange.min}
+                  value={filter.minPrice}
                   min="0"
                   max="120000"
                   step="500"
@@ -430,28 +383,28 @@ const ExploreDestination: FC = () => {
                   onChange={(e) => {
                     e.preventDefault();
                     console.log(e);
-                    parseFloat(e.target.value) < priceRange.max
-                      ? setPriceRange({
-                          ...priceRange,
-                          min: parseInt(e.target.value),
+                    parseFloat(e.target.value) < filter.maxPrice
+                      ? setFilter({
+                          ...filter,
+                          minPrice: parseInt(e.target.value),
                         })
-                      : setPriceRange({ ...priceRange });
+                      : setFilter({ ...filter });
                   }}
                 />
                 <input
-                  value={priceRange.max}
+                  value={filter.maxPrice}
                   min="0"
                   max="120000"
                   step="500"
                   type="range"
                   onChange={(e) => {
                     e.preventDefault();
-                    parseFloat(e.target.value) > priceRange.min
-                      ? setPriceRange({
-                          ...priceRange,
-                          max: parseInt(e.target.value),
+                    parseFloat(e.target.value) > filter.minPrice
+                      ? setFilter({
+                          ...filter,
+                          maxPrice: parseInt(e.target.value),
                         })
-                      : setPriceRange({ ...priceRange });
+                      : setFilter({ ...filter });
                   }}
                 />
               </div>
@@ -459,11 +412,11 @@ const ExploreDestination: FC = () => {
               <Row className="pt-3 d-flex justify-content-between">
                 <Col>
                   <label>Min : </label>
-                  <span>{priceRange.min}</span>
+                  <span>{filter.minPrice}</span>
                 </Col>
                 <Col className="text-end">
                   <label>Max : </label>
-                  <span>{priceRange.max}</span>
+                  <span>{filter.maxPrice}</span>
                 </Col>
               </Row>
             </div>
