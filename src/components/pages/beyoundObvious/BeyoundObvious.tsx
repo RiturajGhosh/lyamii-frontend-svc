@@ -1,36 +1,47 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Card, Col, Row } from "react-bootstrap";
-import { internationalTours } from "../../common/enum/enum";
 import style from "./BeyoundObvious.module.scss";
 import { FaPlane } from "react-icons/fa6";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
 import { useHistory } from "react-router-dom";
 import CommentIcon from "../../common/icon/commentIcon";
+import {
+  SET_NON_INDIAN_TOURS,
+  selectedTourDataDto,
+} from "../../../state/actions/types/tourDataActionType";
+import { selectNonIndianTours } from "../../../state/selectors/selectTourData";
+import { getNonIndianToursApi } from "../../../api/nonIndianTours/getNonIndianToursApi";
+import { parseTourDataArray } from "../../../utils/parseTourData";
 
 const BeyoundObvious: FC = () => {
   const screenSize = useSelector(selectScreenSize);
   const history = useHistory();
-  const [products, setProducts] = useState(
-    Array.from({ length: 10 }, (_, i) => `Product ${i + 1}`)
-  ); // Initial set of products
   function handleScroll(e: any) {
     const element = e.target;
     if (element.scrollLeft + element.clientWidth >= element.scrollWidth) {
-      loadMoreProducts();
+      fetchTours();
     }
   }
-  // Function to load more products
-  const loadMoreProducts = () => {
-    // Simulate fetching more products (you would typically make an API call here)
-    setTimeout(() => {
-      const newProducts = Array.from(
-        { length: 10 },
-        (_, i) => `Product ${products.length + i + 1}`
-      );
-      setProducts([...products, ...newProducts]);
-    }, 1000);
+  const tours: any = useSelector(selectNonIndianTours);
+  const [tourList, setTourList] = useState<selectedTourDataDto[]>(tours);
+  const dispatch = useDispatch();
+  const fetchTours = async () => {
+    const response = await getNonIndianToursApi();
+    if (response.status === 200) {
+      dispatch({
+        type: SET_NON_INDIAN_TOURS,
+        payload: parseTourDataArray(response.data),
+      });
+    }
   };
+  useEffect(() => {
+    fetchTours();
+  }, []);
+
+  useEffect(() => {
+    tours?.length > 0 && setTourList(tours);
+  }, [tours]);
   return (
     <Col
       className="home-about-section sectionContainer d-flex justify-content-center py-42 px-0"
@@ -46,13 +57,17 @@ const BeyoundObvious: FC = () => {
           >
             <span
               className="display-3 text-outline text-shadow-light"
-              style={{ color: "#0c519f",fontFamily:"Blueberry" }}
+              style={{ color: "#0c519f", fontFamily: "Blueberry" }}
             >
               BEYOUND
             </span>
             <span
               className="display-3 d-inline-flex text-outline text-shadow-light"
-              style={{ color: "black",fontFamily:"Blueberry", textTransform: "lowercase" }}
+              style={{
+                color: "black",
+                fontFamily: "Blueberry",
+                textTransform: "lowercase",
+              }}
             >
               Obvious{" "}
               <img
@@ -93,30 +108,38 @@ const BeyoundObvious: FC = () => {
                 className="border-5 border border-dark p-5 my-2 flex-column justify-content-between p-0 d-flex overflow-auto"
               >
                 <Row className="col-12 w-100 justify-content-center scrolling-wrapper-flexbox">
-                  {internationalTours.slice(0, 4).map((option, idx) => (
+                  {tourList.slice(0, 4).map((list, idx) => (
                     <Col key={idx} md={6} lg={6} className="py-2">
-                      <Card
-                        className={`my-2 mx-1`}
-                        onClick={() => history.push("/tour-detail")}
-                      >
+                      <Card className={`my-2 mx-1`}>
                         <Card.Body className="p-0">
                           <Card.Img
                             className={`p-0 m-0 justify-content-center ${style.reasonCard}`}
+                            onClick={() => history.push("/tour-detail")}
                             style={{
                               // width: "100%",
                               padding: "0px !important",
                               margin: "0px !important",
                             }}
-                            src={require("../../../Assets/backpacker.png")}
+                            src={`https://drive.google.com/thumbnail?id=${list.imageUri[0]}`}
                           />
                           <Card.Body className="py-0">
-                            {/* <Card.Text className="bold p p-2 text-white position-absolute text-shadow-dark fw-bold top-0 start-0">
-                          {"10 D"}
-                        </Card.Text> */}
                             <Card.Text className="bold col-3 p p-2 text-white position-absolute text-shadow-dark fw-bold bottom-0 end-0">
-                              <span className="col-12 h-100 border border-1 bg-success">
-                                1000$
+                              {/* <span className="col-12 h-100 border border-1 bg-success"> */}
+                              <span className="p-0 fs-24 m-0 text-center fit-content">
+                                <select
+                                  className="form-select"
+                                  aria-label="Default select example"
+                                >
+                                  {list?.packagePrice?.map(
+                                    (price: string, index: number) => (
+                                      <option key={index} value={price}>
+                                        {price}
+                                      </option>
+                                    )
+                                  )}
+                                </select>
                               </span>
+                              {/* </span> */}
                             </Card.Text>
                             <Card.Text className="bold p text-white position-absolute justify-content-center zi-0 text-shadow-dark fw-bold bottom-0 start-0">
                               <CommentIcon
@@ -126,21 +149,25 @@ const BeyoundObvious: FC = () => {
                                 fill="#5394ec"
                               />
                               <span className="bold p text-white justify-content-center  position-absolute zi-2 h-100 text-center align-items-center d-flex w-100 text-shadow-dark fw-bold bottom-0 start-0">
-                                10D
+                                {list.noOfDays}D
                               </span>
                             </Card.Text>
-                            {/* <Card.Text className="bold p p-2 text-white d-flex flex-nowrap text-shadow-dark position-absolute fw-bold top-50 translate-middle start-50">
-                          {option.from}
-                          <FaPlane className="mx-2 my-1 box-shadow-lg" />
-                          {option.to}
-                        </Card.Text> */}
+                            <Card.Text className="bold p p-2 text-white d-flex flex-nowrap text-shadow-dark position-absolute fw-bold top-50 translate-middle start-50">
+                              {list.country}
+                            </Card.Text>
                           </Card.Body>
                         </Card.Body>
                       </Card>
                     </Col>
                   ))}
                 </Row>
-                <Col onClick={()=>history.push("/explore")} className="col-12 justify-content-end d-flex px-3 text-shadow-dark" style={{color:"#0c519f"}}>See more</Col>
+                <Col
+                  onClick={() => history.push("/explore")}
+                  className="col-12 justify-content-end d-flex px-3 text-shadow-dark"
+                  style={{ color: "#0c519f" }}
+                >
+                  See more
+                </Col>
               </Col>
             </>
           )}
@@ -152,13 +179,8 @@ const BeyoundObvious: FC = () => {
             >
               <Row className="w-100 justify-content-center">
                 <div className="product-list" onScroll={(e) => handleScroll(e)}>
-                  {internationalTours.map((option, idx) => (
-                    <Col
-                      onClick={() => history.push("/tour-detail")}
-                      key={idx}
-                      sm={12}
-                      xs={12}
-                    >
+                  {tourList.map((list, idx) => (
+                    <Col key={idx} sm={12} xs={12}>
                       <Card className={`my-2 mx-1`}>
                         <Card.Body className="p-0">
                           <Card.Img
@@ -168,21 +190,35 @@ const BeyoundObvious: FC = () => {
                               padding: "0px !important",
                               margin: "0px !important",
                             }}
-                            src={option.path}
+                            onClick={() => history.push("/tour-detail")}
+                            src={`https://drive.google.com/thumbnail?id=${list.imageUri[0]}`}
                           />
                           <Card.Body className="py-0">
                             <Card.Text className="bold p p-2 text-white position-absolute fw-bold top-0 start-0">
-                              {"10 D"}
+                              {list.noOfDays}D
                             </Card.Text>
                             <Card.Text className="bold p p-2 text-white position-absolute fw-bold top-0 end-0">
-                              {"1.5L"}
+                              <span className="p-0 fs-24 m-0 text-center fit-content">
+                                <select
+                                  className="form-select"
+                                  aria-label="Default select example"
+                                >
+                                  {list?.packagePrice?.map(
+                                    (price: string, index: number) => (
+                                      <option key={index} value={price}>
+                                        {price}
+                                      </option>
+                                    )
+                                  )}
+                                </select>
+                              </span>
                             </Card.Text>
                             <Card.Text className="bold p p-2 text-white d-flex flex-nowrap position-absolute fw-bold top-50 translate-middle start-50">
-                              {option.from}
+                              India
                               <span>
                                 <FaPlane className="mx-2 my-1" />
                               </span>
-                              {option.to}
+                              {list.country}
                             </Card.Text>
                           </Card.Body>
                         </Card.Body>

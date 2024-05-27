@@ -20,6 +20,7 @@ import Hostel from "../components/pages/hostel/Hostel";
 import Hotel from "../components/pages/hotel/Hotel";
 import PassportRegistrationForm from "../components/pages/passportRegistrationForm/PassportRegistrationForm";
 import Personal from "../components/pages/personal/Personal";
+import PrivacyPolicies from "../components/pages/privacyPolicy/PrivacyPolicies";
 import Profile from "../components/pages/profile/Profile";
 import SubmitPage from "../components/pages/submitPage/SubmitPage";
 import TermConditions from "../components/pages/termConditions/TermConditions";
@@ -107,7 +108,7 @@ export const commonSiteMap: UserRouteConfig[] = [
   {
     exact: true,
     path: "/privacypolicy",
-    Component: ContainerSection,
+    Component: PrivacyPolicies,
     access: AccessType.YES,
   },
   {

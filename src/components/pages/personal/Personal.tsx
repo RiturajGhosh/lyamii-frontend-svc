@@ -7,12 +7,13 @@ import {
   SET_USER_DATA,
   UserDataDto,
 } from "../../../state/actions/types/userDataActionType";
-import { userRegistrationApi } from "../../../api/userRegistrationApi";
+import { userRegistrationApi } from "../../../api/userProfileData/userRegistrationApi";
 import { getCookie } from "../../common/enum/functions";
-import { getUserProfileDataApi } from "../../../api/getUserProfileDataApi";
+import { getUserProfileDataApi } from "../../../api/userProfileData/getUserProfileDataApi";
 import { selectUserData } from "../../../state/selectors/selectUserData";
 import { useLocation } from "react-router-dom";
 import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
+import { updateUserDetailsApi } from "../../../api/userProfileData/updateUserDetailsApi";
 
 const Personal: FC = () => {
   const cookie = getCookie("user");
@@ -27,33 +28,105 @@ const Personal: FC = () => {
   const dispatch = useDispatch();
   const setUserData = async (values: any) => {
     try {
-      const res = await userRegistrationApi(values);
-      res.response.status === 201 &&
-        (await getUserProfileDataApi(user?.email).then((response: any) => {
-          if (response.status === 200) {
-            dispatch({
-              type: SET_USER_DATA,
-              payload: {
-                address: {
-                  houseNumber:
-                    response.data.userProfileAddressResponse.houseNumber,
-                  street: response.data.userProfileAddressResponse.street,
-                  city: response.data.userProfileAddressResponse.city,
-                  state: response.data.userProfileAddressResponse.state,
-                  pincode: response.data.userProfileAddressResponse.pincode,
-                },
-                email: response.data.email,
-                phoneNumber: response.data.phoneNumber,
-                userFirstName: response.data.userFirstName,
-                userLastName: response.data.userLastName,
-                birthDate: response.data.birthDate,
-                gender: response.data.gender,
-                bloodGroup: response.data.bloodGroup,
-                country: response.data.country,
-              },
-            });
+      if (userData.userData.email) {
+        const obj: any = {};
+        if (userData.userData.birthDate !== values.birthDate) {
+          obj.birthDate = values.birthDate;
+        }
+        if (userData.userData.phoneNumber !== values.phoneNumber) {
+          obj.phoneNumber = values.phoneNumber;
+        }
+        if (userData.userData.userFirstName !== values.userFirstName) {
+          obj.userFirstName = values.userFirstName;
+        }
+        if (userData.userData.userLastName !== values.userLastName) {
+          obj.userLastName = values.userLastName;
+        }
+        if (userData.userData.email !== values.email) {
+          obj.email = values.email;
+        }
+        if (userData.userData.gender !== values.gender) {
+          obj.gender = values.gender;
+        }
+        if (userData.userData.bloodGroup !== values.bloodGroup) {
+          obj.bloodGroup = values.bloodGroup;
+        }
+        if (
+          JSON.stringify(userData.userData) !== JSON.stringify(values.birthDate)
+        ) {
+          obj.address = {};
+          if (
+            userData.userData.address.houseNumber !== values.address.houseNumber
+          ) {
+            obj.address.houseNumber = values.address.houseNumber;
           }
-        }));
+          if (userData.userData.address.street !== values.address.street) {
+            obj.address.street = values.address.street;
+          }
+          if (userData.userData.address.state !== values.address.state) {
+            obj.address.state = values.address.state;
+          }
+          if (userData.userData.address.pincode !== values.address.pincode) {
+            obj.address.pincode = values.address.pincode;
+          }
+          if (userData.userData.address.city !== values.address.city) {
+            obj.address.city = values.address.city;
+          }
+        }
+        const res = await updateUserDetailsApi(obj);
+        res.response.status === 201 &&
+          (await getUserProfileDataApi(user?.email).then((response: any) => {
+            if (response.status === 200) {
+              dispatch({
+                type: SET_USER_DATA,
+                payload: {
+                  address: {
+                    houseNumber:
+                      response.data.userProfileAddressResponse.houseNumber,
+                    street: response.data.userProfileAddressResponse.street,
+                    city: response.data.userProfileAddressResponse.city,
+                    state: response.data.userProfileAddressResponse.state,
+                    pincode: response.data.userProfileAddressResponse.pincode,
+                  },
+                  email: response.data.email,
+                  phoneNumber: response.data.phoneNumber,
+                  userFirstName: response.data.userFirstName,
+                  userLastName: response.data.userLastName,
+                  birthDate: response.data.birthDate,
+                  gender: response.data.gender,
+                  bloodGroup: response.data.bloodGroup,
+                },
+              });
+            }
+          }));
+      } else {
+        const res = await userRegistrationApi(values);
+        res.response.status === 201 &&
+          (await getUserProfileDataApi(user?.email).then((response: any) => {
+            if (response.status === 200) {
+              dispatch({
+                type: SET_USER_DATA,
+                payload: {
+                  address: {
+                    houseNumber:
+                      response.data.userProfileAddressResponse.houseNumber,
+                    street: response.data.userProfileAddressResponse.street,
+                    city: response.data.userProfileAddressResponse.city,
+                    state: response.data.userProfileAddressResponse.state,
+                    pincode: response.data.userProfileAddressResponse.pincode,
+                  },
+                  email: response.data.email,
+                  phoneNumber: response.data.phoneNumber,
+                  userFirstName: response.data.userFirstName,
+                  userLastName: response.data.userLastName,
+                  birthDate: response.data.birthDate,
+                  gender: response.data.gender,
+                  bloodGroup: response.data.bloodGroup,
+                },
+              });
+            }
+          }));
+      }
     } catch (error: any) {
       console.log(error.message);
     }
@@ -62,8 +135,8 @@ const Personal: FC = () => {
     <div
       className={`bg-violet-blue px-sx-5 px-3 py-5 min-vh-100 mw-100 w-100 align-items-center justify-content-end d-flex m-0`}
     >
-    <Container
-      fluid="lg"
+      <Container
+        fluid="lg"
         className="p-0 m-0 min-vh-100 justify-content-end d-flex flex-column w-100"
       >
         <Row className="p-0 m-0 min-vh-100 align-items-center justify-content-end d-flex">
@@ -91,7 +164,7 @@ const Personal: FC = () => {
                       img={require("./../../../Assets/id.png")}
                       title="Name"
                       titleStyling={{
-                        width: screenSize.screenSize > 500 ? "10vh": `7vh`,
+                        width: screenSize.screenSize > 500 ? "10vh" : `7vh`,
                       }}
                       style={{ fontSize: "10px" }}
                       titleClassName="bold p-1 fs-8 text-dark shadow bg-blue"
@@ -171,7 +244,7 @@ const Personal: FC = () => {
                       }}
                       title="Email"
                       titleStyling={{
-                        width: screenSize.screenSize > 500 ? "10vh": `7vh`,
+                        width: screenSize.screenSize > 500 ? "10vh" : `7vh`,
                       }}
                       style={{ fontSize: "10px" }}
                       titleClassName="bold p-1 fs-8 text-dark shadow bg-blue"
@@ -215,7 +288,7 @@ const Personal: FC = () => {
                       }}
                       title="Phone Number"
                       titleStyling={{
-                        width: screenSize.screenSize > 500 ? "17vh": `12vh`,
+                        width: screenSize.screenSize > 500 ? "17vh" : `12vh`,
                       }}
                       style={{ fontSize: "10px" }}
                       titleClassName="bold p-1 fs-8 text-dark shadow bg-blue"
@@ -259,7 +332,7 @@ const Personal: FC = () => {
                       }}
                       title="Date of Birth"
                       titleStyling={{
-                        width: screenSize.screenSize > 500 ? "16vh": `11vh`,
+                        width: screenSize.screenSize > 500 ? "16vh" : `11vh`,
                       }}
                       style={{ fontSize: "10px" }}
                       titleClassName="bold p-1 fs-8 text-dark shadow bg-blue"
@@ -312,7 +385,7 @@ const Personal: FC = () => {
                       }}
                       title="Address"
                       titleStyling={{
-                        width: screenSize.screenSize > 500 ? "12vh": `8vh`,
+                        width: screenSize.screenSize > 500 ? "12vh" : `8vh`,
                       }}
                       style={{ fontSize: "10px" }}
                       titleClassName="p-1 bold fs-8 text-dark shadow bg-blue"
@@ -649,7 +722,8 @@ const Personal: FC = () => {
                           img={require("../../../Assets/gender.png")}
                           title="Gender"
                           titleStyling={{
-                            width: screenSize.screenSize > 500 ? "12vh": `10vh`,
+                            width:
+                              screenSize.screenSize > 500 ? "12vh" : `10vh`,
                           }}
                           style={{ fontSize: "10px" }}
                           titleClassName="p-1 fs-8 bold text-dark shadow bg-blue"
@@ -693,7 +767,8 @@ const Personal: FC = () => {
                           }}
                           title="Blood Group"
                           titleStyling={{
-                            width: screenSize.screenSize > 500 ? "14vh": `10vh`,
+                            width:
+                              screenSize.screenSize > 500 ? "14vh" : `10vh`,
                           }}
                           style={{ fontSize: "10px" }}
                           titleClassName="bold fs-8 p-1 text-dark shadow bg-blue"
@@ -716,7 +791,10 @@ const Personal: FC = () => {
                                 }
                               />
                             ) : (
-                              <div className="fs-small bg-muted w-100 text-dark p-2" style={{height:"30px"}}>
+                              <div
+                                className="fs-small bg-muted w-100 text-dark p-2"
+                                style={{ height: "30px" }}
+                              >
                                 {detail?.bloodGroup}
                               </div>
                             )}

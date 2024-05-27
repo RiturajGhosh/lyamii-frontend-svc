@@ -27,3 +27,8 @@ export const selectPopularPackage = createSelector(
   tourData,
   (statuses): selectedTourDataDto[] => statuses.popularTour
 );
+
+export const selectNonIndianTours = createSelector(
+  tourData,
+  (statuses): selectedTourDataDto[] => statuses.nonIndian
+);

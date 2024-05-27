@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Col, Row, Container, Button } from "react-bootstrap";
 import Icon from "../../common/icon/Icon";
 import { useHistory } from "react-router-dom";
@@ -7,14 +7,44 @@ import SubCard from "../../common/subCard/SubCard";
 import ArrowButton from "../../common/arrowButton/ArrowButton";
 import { FaCircleArrowRight } from "react-icons/fa6";
 import Toggler from "../../common/toggler/Toggler";
+import { getCookie } from "../../common/enum/functions";
+import { useDispatch, useSelector } from "react-redux";
+import { getOngoingToursBriefDetailsApi } from "../../../api/ongoingToursBriefDetails/getOngoingToursBriefDetailsApi";
+import { DailyTourOverviewDto } from "../../../state/actions/types/dailyTourDetailDataType";
+import { selectOngoingTourDayBriefDetail } from "../../../state/selectors/selectOngoingTourDayDetail";
 
 const Trips: FC = () => {
   const [toggle, setToggle] = useState(true);
   const history = useHistory();
+  const cookie = getCookie("user");
+  const user = cookie && JSON.parse(cookie);
+  // const screenSize = useSelector(selectScreenSize);
+  const tourDetails = useSelector(selectOngoingTourDayBriefDetail);
+  // const description =
+  //   "Royal India Edition is a luxurious experience of diverse cultures, each adding its unique hues to the nation's identity. From the resplendent palaces that dot the landscape to the tales of mighty kings and queens who shaped the nation's destiny, the legacy of royal India resonates through its architecture, traditions, and captivating stories. Includes all 5 star luxury stays, cultural cuisines, domestic flights, day to day individual assistance and transfers.";
+  const [tourDetail, setTourDetail] =
+    useState<DailyTourOverviewDto[]>(tourDetails);
+  const dispatch = useDispatch();
+  const fetchTours = async () => {
+    const response = await getOngoingToursBriefDetailsApi(user?.email);
+    if (response.status === 200) {
+      dispatch({
+        type: Set,
+        payload: response,
+      });
+    }
+  };
+  useEffect(() => {
+    fetchTours();
+  }, []);
 
+  useEffect(() => {
+    tourDetails && setTourDetail(tourDetails);
+  }, [tourDetail]);
   const handleToggle = () => {
     setToggle(!toggle);
   };
+
   return (
     <div
       className={`px-5 min-vh-100 mw-100 w-100 align-items-center justify-content-end d-flex m-0`}
@@ -209,7 +239,7 @@ const Trips: FC = () => {
               <Col className="p-0 col-12 d-flex flex-md-row flex-sm-column flex-column  mt-2 m-0 h-100 w-100 position-relative gap-4 align-items-end">
                 <Col className="align-self-stretch d-grid p-0 m-0">
                   <div className="scrolling-wrapper row flex-row flex-nowrap">
-                    {[...Array(6)]?.map((data, index: number) => {
+                    {tourDetail?.map((data, index: number) => {
                       return (
                         <Col
                           md={6}
@@ -242,7 +272,7 @@ const Trips: FC = () => {
                             >
                               <Row className="mt-3">
                                 <div className="fs-3 pt-0 px-3 font-weight-normal">
-                                  {/* {"Day " + index} */}
+                                  Day {data?.dayNo}
                                 </div>
                                 <div
                                   className="fs-1 bold px-3 text-shadow-dark pt-0 p-2 font-weight-normal"
@@ -251,7 +281,7 @@ const Trips: FC = () => {
                                     whiteSpace: "break-spaces",
                                   }}
                                 >
-                                  Goa Carnival
+                                  {data?.heading}
                                 </div>
                               </Row>
                               <ArrowButton

@@ -3,6 +3,7 @@ export const SET_TOUR_DATA = "SET_TOUR_DATA";
 export const SET_TOUR_PACKAGE_ID = "SET_TOUR_PACKAGE_ID";
 export const SET_TOUR_LOCATION = "SET_TOUR_LOCATION";
 export const SET_POPULAR_PACKAGE = "SET_POPULAR_PACKAGE";
+export const SET_NON_INDIAN_TOURS = "SET_NON_INDIAN_TOURS";
 
 export interface TourDataDto {
   id: string;
@@ -19,7 +20,7 @@ export interface selectedTourDataDto {
   packageId: string;
   packageName: string;
   title: string;
-  flagCode: string;
+  flagCode?: string;
   description: string;
   overview: string;
   highlights: string[];
@@ -63,9 +64,14 @@ interface SetTourPackageId {
   type: typeof SET_TOUR_PACKAGE_ID;
   payload: string;
 }
+interface SetNonIndianTours {
+  type: typeof SET_NON_INDIAN_TOURS;
+  payload: selectedTourDataDto[];
+}
 export type tourDataActionType =
   | SetTourData
   | SetSelectedTourData
   | SetPopularPackageI
   | SetTourPackageId
-  | SetTourLocation;
+  | SetTourLocation
+  | SetNonIndianTours;

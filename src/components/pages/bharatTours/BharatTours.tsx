@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AllBharatTours } from "../../../state/selectors/selectBharatTours";
 import { selectedTourDataDto } from "../../../state/actions/types/tourDataActionType";
 import { SET_BHARAT_TOURS } from "../../../state/actions/types/bharatToursType";
+import { parseTourDataArray } from "../../../utils/parseTourData";
 
 const BharatTours: FC = () => {
   const tours: any = useSelector(AllBharatTours);
@@ -16,14 +17,16 @@ const BharatTours: FC = () => {
   const dispatch = useDispatch();
   const fetchTours = async () => {
     const response = await getBharatToursApi();
-    dispatch({
-      type: SET_BHARAT_TOURS,
-      payload: response,
-    });
+    if (response.status === 200) {
+      dispatch({
+        type: SET_BHARAT_TOURS,
+        payload: parseTourDataArray(response.data),
+      });
+    }
   };
   useEffect(() => {
     fetchTours();
-  },[]);
+  }, []);
 
   useEffect(() => {
     tours?.length > 0 && setTourList(tours);

@@ -1,4 +1,5 @@
 import {
+  SET_NON_INDIAN_TOURS,
   SET_POPULAR_PACKAGE,
   SET_SELECTED_TOUR_DATA,
   SET_TOUR_DATA,
@@ -14,6 +15,7 @@ export interface tourDataState {
   selectedTourLocation: TourDataDto;
   selectTourPackageId: "";
   tours: selectedTourDataDto[];
+  nonIndian: selectedTourDataDto[];
   popularTour: selectedTourDataDto[];
 }
 const initialState: any = {
@@ -26,6 +28,7 @@ const initialState: any = {
     coordinates: [],
     value: 0,
   },
+  nonIndian: [],
   tours: [],
   popularTour: [],
 };
@@ -60,6 +63,11 @@ export default function tourDataReducer(
       return {
         ...state,
         selectedTourLocation: { ...action.payload },
+      };
+    case SET_NON_INDIAN_TOURS:
+      return {
+        ...state,
+        nonIndian: [...action.payload],
       };
     default:
       return state;

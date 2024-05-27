@@ -1,15 +1,15 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Col, Row, Card, Container, Nav } from "react-bootstrap";
-import { IoLogoFacebook } from "react-icons/io";
+// import { IoLogoFacebook } from "react-icons/io";
 import {
   AiFillStar,
-  AiFillTwitterCircle,
-  AiOutlineInstagram,
+  // AiFillTwitterCircle,
+  // AiOutlineInstagram,
 } from "react-icons/ai";
 import SubCard from "../../common/subCard/SubCard";
-import { FaHeart } from "react-icons/fa6";
+// import { FaHeart } from "react-icons/fa6";
 import { FaMapMarkerAlt } from "react-icons/fa";
-import { MdWhatsapp } from "react-icons/md";
+// import { MdWhatsapp } from "react-icons/md";
 import { HiThumbUp, HiThumbDown } from "react-icons/hi";
 import { IoIosPaperPlane } from "react-icons/io";
 import ArrowButton from "../../common/arrowButton/ArrowButton";
@@ -17,14 +17,46 @@ import { useHistory } from "react-router-dom";
 import RoundButton from "../../common/roundButton/RoundButton";
 import { months, teamRating } from "../../common/enum/enum";
 import Frame from "../../common/frame/Frame";
-import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
-import { useSelector } from "react-redux";
+// import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserDashBoardDataApi } from "../../../api/userDashboardData/getUserDashBoardDataApi";
+import {
+  SET_DASHBOARD_DATA,
+  UserDashboardDto,
+} from "../../../state/actions/types/userDashboardDataType";
+import { getCookie } from "../../common/enum/functions";
+import { selectUserDashboardData } from "../../../state/selectors/selectUserDashboardData";
 
 const Dashboard: FC = () => {
   const date = new Date();
-  console.log(date);
+  const cookie = getCookie("user");
+  const user = cookie && JSON.parse(cookie);
   const history = useHistory();
-  const screenSize = useSelector(selectScreenSize);
+  // const screenSize = useSelector(selectScreenSize);
+  const userDashboardData: UserDashboardDto = useSelector(
+    selectUserDashboardData
+  );
+  // const description =
+  //   "Royal India Edition is a luxurious experience of diverse cultures, each adding its unique hues to the nation's identity. From the resplendent palaces that dot the landscape to the tales of mighty kings and queens who shaped the nation's destiny, the legacy of royal India resonates through its architecture, traditions, and captivating stories. Includes all 5 star luxury stays, cultural cuisines, domestic flights, day to day individual assistance and transfers.";
+  const [dashboardData, setDashboardData] =
+    useState<UserDashboardDto>(userDashboardData);
+  const dispatch = useDispatch();
+  const fetchTours = async () => {
+    const response = await getUserDashBoardDataApi(user?.email);
+    if (response.status === 200) {
+      dispatch({
+        type: SET_DASHBOARD_DATA,
+        payload: response,
+      });
+    }
+  };
+  useEffect(() => {
+    fetchTours();
+  }, []);
+
+  useEffect(() => {
+    userDashboardData && setDashboardData(userDashboardData);
+  }, [userDashboardData]);
   return (
     <div
       className={`overflow-auto bg-white px-4 min-vh-100 mw-100 w-100 align-items-center justify-content-center d-flex m-0`}
@@ -70,7 +102,8 @@ const Dashboard: FC = () => {
 
                       <Col className="flex-column align-items-start d-flex mt-3 px-2">
                         <span className="h3 align-items-end">
-                          Good Evening Michle
+                          {dashboardData?.greeting}{" "}
+                          {dashboardData?.userFirstName}
                         </span>
                         <span className="small align-items-end">
                           Hope You're Enjoying!
@@ -78,14 +111,15 @@ const Dashboard: FC = () => {
                       </Col>
                     </Col>
                   </Row>
-                  <Col className="col-3">
+                  <Col sm={6} md={12} lg={4} xs={12} className="col-3 justify-content-center flex-column d-flex ">
                     <Col>
-                      <h1 className="p p-0 px-2 m-0 text-center font-weight-normal">
-                        {"Michel Richard"}
+                      <h1 className="fs-5 fit-content p-0 px-2 m-0 text-center font-weight-normal">
+                        {dashboardData?.userFirstName}{" "}
+                        {dashboardData?.userLastName}
                       </h1>
                     </Col>
                     <div>
-                      <h1 className="p p-0 px-2 m-0 text-center small font-weight-normal">
+                      <h1 className="p fit-content p-0 px-2 m-0 text-center small font-weight-normal">
                         {"User ID:#LMI-PIDI001"}
                       </h1>
                     </div>
@@ -297,7 +331,7 @@ const Dashboard: FC = () => {
                         }
                         className="p-0 m-0"
                       >
-                        Day 2
+                        Day {dashboardData?.ongoingTourSingleDayBrief?.dayNo}
                       </div>{" "}
                       <div
                         onClick={() =>
@@ -305,11 +339,10 @@ const Dashboard: FC = () => {
                         }
                         className="p fw-bold"
                       >
-                        Goa Carnival
+                        {dashboardData?.ongoingTourSingleDayBrief?.heading}
                       </div>{" "}
                       <div>
-                        Goa is a paradise of sun and land, where carnival brings
-                        joy and color to the land.
+                        {dashboardData?.ongoingTourSingleDayBrief?.shortDesc}
                       </div>{" "}
                       <ArrowButton
                         fill="#97a9ff"

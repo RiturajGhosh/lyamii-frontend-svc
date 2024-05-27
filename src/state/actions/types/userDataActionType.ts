@@ -9,7 +9,6 @@ export interface UserDataDto {
   birthDate: string;
   gender: string;
   bloodGroup: string;
-  country: string;
 }
 export interface UserResponseDataDto {
   userProfileAddressResponse: AddressDataDto;
@@ -20,7 +19,6 @@ export interface UserResponseDataDto {
   birthDate: string;
   gender: string;
   bloodGroup: string;
-  country: string;
 }
 interface SetUserDataI {
   type: typeof SET_USER_DATA;

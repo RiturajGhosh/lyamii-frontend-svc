@@ -3,7 +3,7 @@ import { Col, Row, Card, Container } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import SubCard from "../../common/subCard/SubCard";
 import { getCookie } from "../../common/enum/functions";
-import { getUserProfileDataApi } from "../../../api/getUserProfileDataApi";
+import { getUserProfileDataApi } from "../../../api/userProfileData/getUserProfileDataApi";
 import { SET_USER_DATA } from "../../../state/actions/types/userDataActionType";
 import { useDispatch } from "react-redux";
 

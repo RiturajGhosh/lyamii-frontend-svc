@@ -7,23 +7,24 @@ import { getBackpackerToursApi } from "../../../api/backpackerTours/getBackpacke
 import { AllBackpackerTours } from "../../../state/selectors/selectBackpackerTours";
 import { SET_BACKPACKER_TOURS } from "../../../state/actions/types/backpackerToursType";
 import { selectedTourDataDto } from "../../../state/actions/types/tourDataActionType";
+import { parseTourDataArray } from "../../../utils/parseTourData";
 
 const BackpackersTours: FC = () => {
   const dispatch = useDispatch();
   const tours = useSelector(AllBackpackerTours);
-  const [tourList, setTourList] = useState<selectedTourDataDto[]>(
-    tours 
-  );
+  const [tourList, setTourList] = useState<selectedTourDataDto[]>(tours);
   const fetchTours = async () => {
     const response = await getBackpackerToursApi();
-    dispatch({
-      type: SET_BACKPACKER_TOURS,
-      payload: response,
-    });
+    if (response.status === 200) {
+      dispatch({
+        type: SET_BACKPACKER_TOURS,
+        payload: parseTourDataArray(response.data),
+      });
+    }
   };
   useEffect(() => {
     fetchTours();
-  },[]);
+  }, []);
 
   useEffect(() => {
     tours?.length > 0 && setTourList(tours);
@@ -31,25 +32,21 @@ const BackpackersTours: FC = () => {
 
   const description =
     "Once you step in, Backpacking across India becomes a journey inward, a reflection of the external landscape mirroring the terrain of your own thoughts and emotions. It is a spiritual quest to discover the depths of your own being. This Edition is a reminder that sometimes the path to self discovery lies not in reaching a destination, but in the act of journeying itself. Includes all top rated hostel stays, domestic flights, local tours, day to day assistance.";
- return (
+  return (
     <>
-      {tourList?.length > 0 && (
-        <TourOverviewCard
-          tours={tourList}
-          title="Backpackers Edition"
-          titleStyling={style.tourSection}
-        >
-          <Col className={`py-5 p-0 d-grid justify-content-center`}>
-            <Row className="p-0">
-              <Col className="text-dark align-self-center">
-                <span className="text-start fs-16 text-wrap">
-                  {description}{" "}
-                </span>
-              </Col>
-            </Row>
-          </Col>
-        </TourOverviewCard>
-      )}
+      <TourOverviewCard
+        tours={tourList}
+        title="Backpackers Edition"
+        titleStyling={style.tourSection}
+      >
+        <Col className={`py-5 p-0 d-grid justify-content-center`}>
+          <Row className="p-0">
+            <Col className="text-dark align-self-center">
+              <span className="text-start fs-16 text-wrap">{description} </span>
+            </Col>
+          </Row>
+        </Col>
+      </TourOverviewCard>
 
       {/* <MainContainer background="#84f18f"> */}
       {/* <Coursel /> */}

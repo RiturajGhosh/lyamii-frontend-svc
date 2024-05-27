@@ -25,7 +25,6 @@ const initialState: userDataState = {
     birthDate: "",
     gender: "",
     bloodGroup: "",
-    country: "1",
   },
 };
 

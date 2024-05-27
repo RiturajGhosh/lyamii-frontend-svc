@@ -23,6 +23,7 @@ import {
   SET_TOUR_DATA,
 } from "../../../state/actions/types/tourDataActionType";
 import { getPackageDetailsByCountryAndDaysApi } from "../../../api/getPackageDetailsByCountryAndDaysApi";
+import { parseTourDataArray } from "../../../utils/parseTourData";
 
 export type stateType = {
   data: any[];
@@ -71,15 +72,19 @@ const ExploreDestination: FC = () => {
   const fetchTourData = async () => {
     window.scrollTo(0, 0);
     const response = await getPopularPackageApi();
-    dispatch({
-      type: SET_POPULAR_PACKAGE,
-      payload: response,
-    });
+    if (response.status === 200) {
+      dispatch({
+        type: SET_POPULAR_PACKAGE,
+        payload: parseTourDataArray(response.data),
+      });
+    }
     const res = await getPackageByDestinationApi(destination.city);
-    dispatch({
-      type: SET_TOUR_DATA,
-      payload: res,
-    });
+    if (res.status === 200) {
+      dispatch({
+        type: SET_TOUR_DATA,
+        payload: parseTourDataArray(res.data),
+      });
+    }
   };
   useEffect(() => {
     fetchTourData();
@@ -110,16 +115,18 @@ const ExploreDestination: FC = () => {
       filter.noOfDays,
       parseInt(countryId)
     );
-    if (response?.length === 0) {
-      setState({ data: state.data, hasMore: false });
-    } else {
-      setState((prevState) => ({
-        data: [...prevState.data, ...response],
-        hasMore: true,
-      }));
+    if (response.status === 200) {
+      const data = parseTourDataArray(response.data);
+      if (data?.length === 0) {
+        setState({ data: state.data, hasMore: false });
+      } else {
+        setState((prevState) => ({
+          data: [...prevState.data, ...data],
+          hasMore: true,
+        }));
+      }
     }
   };
-  console.log(page);
   useEffect(() => {
     fetchTours();
   }, [filter, page]);

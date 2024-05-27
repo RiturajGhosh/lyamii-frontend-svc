@@ -10,6 +10,9 @@ import customerReviewsReducer from "./customerReviewsReducer";
 import backpackerToursReducer from "./backpackerToursReducer";
 import bharatToursReducer from "./bharatToursReducer";
 import comboToursReducer from "./comboToursReducer";
+import upcomingToursReducer from "./upcomingToursReducer";
+import userDashboardReducer from "./userDashboardReducer";
+import ongoingTourDayDetailReducer from "./ongoingTourDayDetailReducer";
 
 const reducers = combineReducers({
   globeData: globeDataReducer,
@@ -23,6 +26,9 @@ const reducers = combineReducers({
   backpackerTours: backpackerToursReducer,
   bharatTours: bharatToursReducer,
   comboTours: comboToursReducer,
+  userDashboardData: userDashboardReducer,
+  upcomingTours: upcomingToursReducer,
+  ongoingTourDayDetail: ongoingTourDayDetailReducer,
 });
 
 const rootReducer = (state: any, action: any) => {

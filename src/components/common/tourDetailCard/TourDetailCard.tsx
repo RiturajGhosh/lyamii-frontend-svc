@@ -27,6 +27,7 @@ import {
   SET_SELECTED_TOUR_DATA,
   selectedTourDataDto,
 } from "../../../state/actions/types/tourDataActionType";
+import { parseTourData } from "../../../utils/parseTourData";
 
 const TourDetailCard: FC = () => {
   const packageID = useSelector(selectTourPackageId);
@@ -38,10 +39,12 @@ const TourDetailCard: FC = () => {
 
   const fetchTours = async () => {
     const response = await getPackageDetailsByPackageIdApi(packageID);
-    dispatch({
-      type: SET_SELECTED_TOUR_DATA,
-      payload: response,
-    });
+    if (response.status === 200) {
+      dispatch({
+        type: SET_SELECTED_TOUR_DATA,
+        payload: parseTourData(response.data),
+      });
+    }
   };
   useEffect(() => {
     fetchTours();
@@ -202,9 +205,9 @@ const TourDetailCard: FC = () => {
                                   <div className="p-2 fs-auto p-0 lh-sm m-0 text-dark">
                                     {/* {place &&
                                       place[1][0]?.map((desc: string) => ( */}
-                                        <li>{place[1][0]}</li>
-                                        <li>{place[1][1]}</li>
-                                      {/* ))} */}
+                                    <li>{place[1][0]}</li>
+                                    <li>{place[1][1]}</li>
+                                    {/* ))} */}
                                   </div>
                                 </Col>
                               </Row>
