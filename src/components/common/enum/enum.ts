@@ -83,6 +83,7 @@ export const paths = [
   "/refundpolicy",
   "/termconditions",
   "/crm",
+  "/userManual"
 ];
 export const months = [
   "Jan",
@@ -169,6 +170,33 @@ export const journeyOptions = [
   {
     name: "COMBOS",
     imgPath: require("../../../Assets/combo.jpeg"),
+    path: "/combo",
+  },
+];
+export const manuals = [
+  {
+    name: "ROYAL BHARAT EDITION",
+    imgPath: require("../../../Assets/english.png"),
+    path: "/bharat-tours",
+  },
+  {
+    name: "BACKPACKERS EDITION",
+    imgPath: require("../../../Assets/french.png"),
+    path: "/backpackers",
+  },
+  {
+    name: "COMBOS",
+    imgPath: require("../../../Assets/portugues.png"),
+    path: "/combo",
+  },
+  {
+    name: "BACKPACKERS EDITION",
+    imgPath: require("../../../Assets/arabic.png"),
+    path: "/backpackers",
+  },
+  {
+    name: "COMBOS",
+    imgPath: require("../../../Assets/russian.png"),
     path: "/combo",
   },
 ];

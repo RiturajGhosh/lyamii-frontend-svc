@@ -1,11 +1,31 @@
 import React, { FC } from "react";
 import { Button, Col } from "react-bootstrap";
-import { journeyOptions } from "../../common/enum/enum";
+import { manuals } from "../../common/enum/enum";
 import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
 import { useSelector } from "react-redux";
 import { MdDownloadForOffline } from "react-icons/md";
+import axios from "axios";
 const UserManual: FC = () => {
   const screenSize = useSelector(selectScreenSize);
+
+  const downloadFileFromGoogleDrive = async (fileId: string) => {
+    // try {
+      // const response = await axios({
+      //   url: `https://drive.google.com/uc?export=download&id=${fileId}`,
+      //   method: "GET",
+      //   responseType: "blob", // Important to specify blob response type
+      // });
+      const url = `https://drive.google.com/open&id=${fileId}`;
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "file.pdf"); // Specify the download filename
+      document.body.appendChild(link);
+      link.click();
+      link.remove(); // Clean up the link element
+    // } catch (error) {
+    //   console.error("Error downloading the file:", error);
+    // }
+  };
 
   return (
     <>
@@ -31,124 +51,70 @@ const UserManual: FC = () => {
             }
           </Col>
           {}
-          <Col md={12} lg={12} className="justify-content-between p-0 d-flex">
+          <Col className="justify-content-between p-0 d-flex">
             <div
               style={{
-                flex: "row !important",
                 width: "100%",
               }}
               className={`
-              d-flex flex-row 
+              d-flex flex-wrap
               p-0`}
             >
-              <Col
-                className={`${"my-2 mx-1"} `}
-                style={{
-                  float: "inherit",
-                  width: "30%",
-                  height: "60%",
-                  objectFit: "cover",
-                }}
-                onClick={() => {}}
-              >
-                <img
-                  src={journeyOptions[0].imgPath}
-                  alt="Paris"
-                  style={{
-                    float: "inherit",
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                  }}
-                />
-                <Button className="align-items-center mh-15 mt-2 w-100 bg-dark-blue justify-content-center d-flex">
-                  <span
-                    onClick={() => {}}
-                    className="bold fs-auto p-2 d-inline-flex m-0 fw-bold"
-                    style={{ fontFamily: "OldStandard" }}
+              {manuals.map((option: any, index: number) => {
+                return (
+                  <Col
+                    md={4}
+                    lg={4}
+                    sm={6}
+                    xs={12}
+                    key={index}
+                    className="d-flex flex-column col-4 top-0 my-3"
+                    style={{
+                      float: "inherit",
+                      objectFit: "cover",
+                    }}
+                    onClick={() =>
+                      downloadFileFromGoogleDrive(
+                        "1blVFu1qEWECFdIRprLYroSUcSnO6rvQRpLS2y5eYI2o"
+                      )
+                    }
                   >
-                    Download
-                  </span>
-                  <span className="text-nowrap">
-                    <MdDownloadForOffline
-                      size={screenSize.screenSize < 786 ? "20px" : "30px"}
-                      onClick={() => {}}
+                    <img
+                      src={option.imgPath}
+                      alt="Paris"
+                      style={{
+                        float: "inherit",
+                        width: "90%",
+                        height: "100%",
+                        objectFit: "cover",
+                      }}
                     />
-                  </span>
-                </Button>
-              </Col>
-              <Col
-                className={`${"my-2 mx-1"} `}
-                style={{
-                  float: "inherit",
-                  width: "30%",
-                  height: "60%",
-                  objectFit: "cover",
-                }}
-                onClick={() => {}}
-              >
-                <img
-                  src={journeyOptions[0].imgPath}
-                  alt="Paris"
-                  style={{
-                    float: "inherit",
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                  }}
-                />
-                <Button className="align-items-center mh-15 mt-2 w-100 bg-dark-blue justify-content-center d-flex">
-                  <span
-                    onClick={() => {}}
-                    className="bold fs-auto p-2 d-inline-flex m-0 fw-bold"
-                    style={{ fontFamily: "OldStandard" }}
-                  >
-                    Download
-                  </span>
-                  <span className="text-nowrap">
-                    <MdDownloadForOffline
-                      size={screenSize.screenSize < 786 ? "20px" : "30px"}
-                      onClick={() => {}}
-                    />
-                  </span>
-                </Button>
-              </Col>
-              <Col
-                className={`${"my-2 mx-1"} `}
-                style={{
-                  float: "inherit",
-                  width: "30%",
-                  height: "60%",
-                  objectFit: "cover",
-                }}
-                onClick={() => {}}
-              >
-                <img
-                  src={journeyOptions[0].imgPath}
-                  alt="Paris"
-                  style={{
-                    float: "inherit",
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                  }}
-                />
-                <Button className="align-items-center mh-15 mt-2 w-100 bg-dark-blue justify-content-center d-flex">
-                  <span
-                    onClick={() => {}}
-                    className="bold fs-auto p-2 d-inline-flex m-0 fw-bold"
-                    style={{ fontFamily: "OldStandard" }}
-                  >
-                    Download
-                  </span>
-                  <span className="text-nowrap">
-                    <MdDownloadForOffline
-                      size={screenSize.screenSize < 786 ? "20px" : "30px"}
-                      onClick={() => {}}
-                    />
-                  </span>
-                </Button>
-              </Col>
+                    <Button className="align-items-center position-relative mh-15 mt-2 w-90 bg-dark-blue justify-content-center d-flex">
+                      <span
+                        onClick={() =>
+                          downloadFileFromGoogleDrive(
+                            "1blVFu1qEWECFdIRprLYroSUcSnO6rvQRpLS2y5eYI2o"
+                          )
+                        }
+                        className="bold fs-auto p-2 d-inline-flex m-0 fw-bold"
+                        style={{ fontFamily: "OldStandard" }}
+                      >
+                        Download
+                      </span>
+                      <span className="text-nowrap">
+                        <MdDownloadForOffline
+                          size={screenSize.screenSize < 786 ? "20px" : "30px"}
+                          onClick={() =>
+                            downloadFileFromGoogleDrive(
+                              "1blVFu1qEWECFdIRprLYroSUcSnO6rvQRpLS2y5eYI2o"
+                            )
+                          }
+                        />
+                      </span>
+                    </Button>
+                  </Col>
+                );
+              })}
             </div>
           </Col>
         </Col>
