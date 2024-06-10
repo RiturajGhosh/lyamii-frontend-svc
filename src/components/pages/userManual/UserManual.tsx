@@ -8,20 +8,20 @@ import axios from "axios";
 const UserManual: FC = () => {
   const screenSize = useSelector(selectScreenSize);
 
-  const downloadFileFromGoogleDrive = async (fileId: string) => {
+  const downloadFileFromGoogleDrive = async (url: string) => {
     // try {
-      // const response = await axios({
-      //   url: `https://drive.google.com/uc?export=download&id=${fileId}`,
-      //   method: "GET",
-      //   responseType: "blob", // Important to specify blob response type
-      // });
-      const url = `https://drive.google.com/open&id=${fileId}`;
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", "file.pdf"); // Specify the download filename
-      document.body.appendChild(link);
-      link.click();
-      link.remove(); // Clean up the link element
+    // const response = await axios({
+    //   url: `https://drive.google.com/uc?export=download&id=${fileId}`,
+    //   method: "GET",
+    //   responseType: "blob", // Important to specify blob response type
+    // });
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "file.pdf"; // Specify the download filename
+    document.body.appendChild(link);
+    link.click();
+
+    document.body.removeChild(link); // Clean up the link element
     // } catch (error) {
     //   console.error("Error downloading the file:", error);
     // }
@@ -73,14 +73,10 @@ const UserManual: FC = () => {
                       float: "inherit",
                       objectFit: "cover",
                     }}
-                    onClick={() =>
-                      downloadFileFromGoogleDrive(
-                        "1blVFu1qEWECFdIRprLYroSUcSnO6rvQRpLS2y5eYI2o"
-                      )
-                    }
+                    onClick={() => downloadFileFromGoogleDrive(option?.path)}
                   >
                     <img
-                      src={option.imgPath}
+                      src={option?.imgPath}
                       alt="Paris"
                       style={{
                         float: "inherit",
@@ -92,22 +88,19 @@ const UserManual: FC = () => {
                     <Button className="align-items-center position-relative mh-15 mt-2 w-90 bg-dark-blue justify-content-center d-flex">
                       <span
                         onClick={() =>
-                          downloadFileFromGoogleDrive(
-                            "1blVFu1qEWECFdIRprLYroSUcSnO6rvQRpLS2y5eYI2o"
-                          )
+                          downloadFileFromGoogleDrive(option?.path)
                         }
                         className="bold fs-auto p-2 d-inline-flex m-0 fw-bold"
                         style={{ fontFamily: "OldStandard" }}
                       >
                         Download
                       </span>
+
                       <span className="text-nowrap">
                         <MdDownloadForOffline
                           size={screenSize.screenSize < 786 ? "20px" : "30px"}
                           onClick={() =>
-                            downloadFileFromGoogleDrive(
-                              "1blVFu1qEWECFdIRprLYroSUcSnO6rvQRpLS2y5eYI2o"
-                            )
+                            downloadFileFromGoogleDrive(option?.path)
                           }
                         />
                       </span>

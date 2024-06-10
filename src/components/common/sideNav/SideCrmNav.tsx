@@ -79,7 +79,7 @@ const SideCrmNav: FC = () => {
   }, [location]);
   const history = useHistory();
   return (
-    <Col className="fit-content p-0 m-0 position-absolute">
+    <Col className="fit-content p-0 m-0 position-absolute" style={{background:"#c4cdfe"}}>
       <nav className="sidenav justify-content-center flex-column d-flex h-100 p-3 flex-wrap min-vh-100 mw-100 w-100 align-content-around justify-content-start d-flex m-0">
         <Col
           id="sidenav"

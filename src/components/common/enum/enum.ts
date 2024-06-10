@@ -83,7 +83,7 @@ export const paths = [
   "/refundpolicy",
   "/termconditions",
   "/crm",
-  "/userManual"
+  "/userManual",
 ];
 export const months = [
   "Jan",
@@ -175,29 +175,29 @@ export const journeyOptions = [
 ];
 export const manuals = [
   {
-    name: "ROYAL BHARAT EDITION",
+    name: "English",
     imgPath: require("../../../Assets/english.png"),
-    path: "/bharat-tours",
+    path: "https://drive.google.com/file/d/1tIkqcnDA3Jf8I7Fns6HtchTUi6OJfauO/view?usp=drive_link",
   },
   {
-    name: "BACKPACKERS EDITION",
+    name: "French",
     imgPath: require("../../../Assets/french.png"),
-    path: "/backpackers",
+    path: "https://drive.google.com/file/d/1tKKq-Wj4SjTLkSfpUw66h-du7Ep2nUqF/view?usp=drive_link",
   },
   {
-    name: "COMBOS",
+    name: "Portugues",
     imgPath: require("../../../Assets/portugues.png"),
-    path: "/combo",
+    path: "https://drive.google.com/file/d/1tn4wVlaXJvghzxWQ9NGORx_KqS2A9RAT/view?usp=drive_link",
   },
   {
-    name: "BACKPACKERS EDITION",
+    name: "Arabic",
     imgPath: require("../../../Assets/arabic.png"),
-    path: "/backpackers",
+    path: "https://drive.google.com/file/d/1tUyIx9mEu14ASB7P88sY4jpLO_P5antT/view?usp=drive_link",
   },
   {
-    name: "COMBOS",
+    name: "Russia",
     imgPath: require("../../../Assets/russian.png"),
-    path: "/combo",
+    path: "https://drive.google.com/file/d/1tKrozZRyGIHQ7Mm2qElaTk-HiMS4qfLF/view?usp=drive_link",
   },
 ];
 
