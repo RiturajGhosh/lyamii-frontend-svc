@@ -135,7 +135,7 @@ const TourDetailCard: FC = () => {
                     </Card.Title> */}
 
                   <span className="fs-16 p-0 m-0">
-                    <p>{tour?.description}</p>
+                    <p>{tour?.description?.[0]}</p>
                   </span>
                 </Card.Body>
               </Col>
@@ -455,7 +455,7 @@ const TourDetailCard: FC = () => {
         <Col className="position-relative p-0">
           <Card.Body className="p-0 px-4 gap-3 d-flex flex-column m-0">
             <Card.Text className="fs-16 min-vh-25">
-              <p>{tour.description}</p>
+              <p>{tour?.description?.slice(1)}</p>
             </Card.Text>
           </Card.Body>
         </Col>

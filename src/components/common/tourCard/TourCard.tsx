@@ -60,15 +60,18 @@ const TourCard: FC<TourCardType> = ({
                     }}
                   />
                   <Col className="position-relative p-0 border-1 pb-2 mb-5 text-center justify-content-end text-white">
-                    <Button
-                      className="align-middle justify-self-center position-absolute top-100 start-50 translate-middle-y mb-1 btn-secondary"
-                      style={{
-                        background: "#0752a1",
-                      }}
-                      onClick={() => {}}
+                    <select
+                      className="form-select"
+                      aria-label="Default select example"
                     >
-                      {tourData?.packagePrice}
-                    </Button>
+                      {tourData?.packagePrice?.map(
+                        (price: string, index: number) => (
+                          <option key={index} value={price}>
+                            {price}
+                          </option>
+                        )
+                      )}
+                    </select>
                   </Col>
                 </>
               </Ratio>

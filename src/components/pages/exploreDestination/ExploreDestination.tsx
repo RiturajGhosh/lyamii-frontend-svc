@@ -7,7 +7,7 @@ import Checkbox from "../../common/checkbox/Checkbox";
 import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
 import TourCard from "../../common/tourCard/TourCard";
 import RecommandedTours from "../recommandedTours/RecommandedTours";
-import { filterList } from "../../common/enum/enum";
+import { filterList, isoCountries } from "../../common/enum/enum";
 import Coursel from "../coursel/Coursel";
 import RecentlyViewedTours from "../recentlyViewedTours/RecentlyViewedTours";
 import MainContainer from "../../common/container/MainContainer";
@@ -24,6 +24,7 @@ import {
 } from "../../../state/actions/types/tourDataActionType";
 import { getPackageDetailsByCountryAndDaysApi } from "../../../api/getPackageDetailsByCountryAndDaysApi";
 import { parseTourDataArray } from "../../../utils/parseTourData";
+import { Country } from "country-state-city";
 
 export type stateType = {
   data: any[];
@@ -51,7 +52,7 @@ const ExploreDestination: FC = () => {
   });
 
   const [tourDetail, setTourDetail] = useState({
-    city: destination.city,
+    destination: destination.city,
     startDate: "",
   });
   // async function handleFilters(filterName: string, label: string) {
@@ -78,7 +79,10 @@ const ExploreDestination: FC = () => {
         payload: parseTourDataArray(response.data),
       });
     }
-    const res = await getPackageByDestinationApi(destination.city);
+    getPackage();
+  };
+  const getPackage = async () => {
+    const res = await getPackageByDestinationApi(tourDetail.destination);
     if (res.status === 200) {
       dispatch({
         type: SET_TOUR_DATA,
@@ -99,31 +103,43 @@ const ExploreDestination: FC = () => {
   }, [screenSize]);
 
   const fetchTours = async () => {
-    const countryId = markers.filter((marker: any) => {
-      if (marker.city.toLowerCase().includes(destination.city.toLowerCase()))
-        return marker;
-    })[0].id;
-    // const range = [
-    //   {
-    //     priceRange: {
-    //       min: "0",
-    //       max: priceRange,
-    //     },
-    //   },
-    // ];
-    const response = await getPackageDetailsByCountryAndDaysApi(
-      filter.noOfDays,
-      parseInt(countryId)
+    const filterData = markers.filter(
+      (marker: any) =>
+        marker?.city?.toLowerCase()?.includes(tourDetail.destination) && marker
     );
-    if (response.status === 200) {
-      const data = parseTourDataArray(response.data);
-      if (data?.length === 0) {
-        setState({ data: state.data, hasMore: false });
-      } else {
-        setState((prevState) => ({
-          data: [...prevState.data, ...data],
-          hasMore: true,
-        }));
+    console.log(filterData);
+    if (filterData.length > 0) {
+      dispatch({
+        type: SET_SELECTED_LOCATION,
+        payload: filterData[0],
+      });
+      getPackage();
+    } else {
+      const countryId =
+        isoCountries.filter((country: any) => {
+          if (
+            country.text
+              .toLowerCase()
+              .includes(tourDetail.destination.toLowerCase())
+          )
+            return country;
+        })[0]?.id || "";
+      if (countryId?.length > 0) {
+        const response = await getPackageDetailsByCountryAndDaysApi(
+          filter.noOfDays,
+          parseInt(Country?.getCountryByCode(countryId)?.phonecode || "")
+        );
+        if (response.status === 200) {
+          const data = parseTourDataArray(response.data);
+          if (data?.length === 0) {
+            setState({ data: state.data, hasMore: false });
+          } else {
+            setState((prevState) => ({
+              data: [...prevState.data, ...data],
+              hasMore: true,
+            }));
+          }
+        }
       }
     }
   };
@@ -220,18 +236,12 @@ const ExploreDestination: FC = () => {
                   className="form__input w-100 bg-white h2 font-norwester justify-content-center p-1 px-2 text-dark text-center m-0 border-0"
                   type="text"
                   placeholder="DESTINATION"
-                  value={tourDetail.city}
+                  value={tourDetail.destination}
                   style={{ background: "#19bca1", fontFamily: "NORWESTER" }}
                   onChange={(e: any) => {
-                    setTourDetail({ ...tourDetail, city: e.target.value });
-                    const filterData = markers.filter(
-                      (marker: any) =>
-                        marker.city.toLowerCase().includes(e.target.value) &&
-                        marker
-                    );
-                    dispatch({
-                      type: SET_SELECTED_LOCATION,
-                      payload: filterData[0],
+                    setTourDetail({
+                      ...tourDetail,
+                      destination: e.target.value,
                     });
                   }}
                 />

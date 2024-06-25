@@ -1,5 +1,7 @@
 export const parseTourData = (response: string) => {
-  const parseRes = JSON.parse(response);
+  console.log(response);
+  const parseRes = JSON.parse(JSON.stringify(response));
+  parseRes.description = parseRes.description.split("\n");
   parseRes.destinations = parseRes.destinations.split("\n");
   parseRes.highlights = parseRes.highlights.split("\n");
   parseRes.includes = parseRes.includes.split("\n");
@@ -28,8 +30,9 @@ export const parseTourData = (response: string) => {
 };
 
 export const parseTourDataArray = (response: string) => {
-  const parseRes = JSON.parse(response);
+  const parseRes = JSON.parse(JSON.stringify(response));
   parseRes.forEach((res: any) => {
+    res.description = res.description.split("\n");
     res.destinations = res.destinations.split("\n");
     res.highlights = res.highlights.split("\n");
     res.includes = res.includes.split("\n");

@@ -4,7 +4,7 @@ import { manuals } from "../../common/enum/enum";
 import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
 import { useSelector } from "react-redux";
 import { MdDownloadForOffline } from "react-icons/md";
-import axios from "axios";
+
 const UserManual: FC = () => {
   const screenSize = useSelector(selectScreenSize);
 
