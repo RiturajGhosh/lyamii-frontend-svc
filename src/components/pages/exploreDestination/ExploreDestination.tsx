@@ -84,15 +84,27 @@ const ExploreDestination: FC = () => {
   const getPackage = async () => {
     const res = await getPackageByDestinationApi(tourDetail.destination);
     if (res.status === 200) {
-      dispatch({
-        type: SET_TOUR_DATA,
-        payload: parseTourDataArray(res.data),
-      });
+      const data = parseTourDataArray(res.data);
+      if (res.data?.length === 0) {
+        setState({ data: state.data, hasMore: false });
+      } else {
+        setState((prevState) => ({
+          data: [...prevState.data, ...data],
+          hasMore: true,
+        }));
+      }
     }
   };
   useEffect(() => {
     fetchTourData();
   }, []);
+
+  useEffect(() => {
+    dispatch({
+      type: SET_TOUR_DATA,
+      payload: state.data,
+    });
+  }, [state.data]);
 
   useEffect(() => {
     if (screenSize.screenSize >= 1000) {
@@ -125,7 +137,6 @@ const ExploreDestination: FC = () => {
           )
             return country;
         })[0]?.id || "";
-      console.log(countryId);
       if (countryId?.length > 0) {
         const response = await getPackageDetailsByCountryAndDaysApi(
           filter.noOfDays,
@@ -147,7 +158,7 @@ const ExploreDestination: FC = () => {
   };
   useEffect(() => {
     fetchTours();
-  }, [filter, page]);
+  }, [filter]);
   return (
     <MainContainer>
       <Coursel />
@@ -269,6 +280,7 @@ const ExploreDestination: FC = () => {
                 </Col> */}
                 <Button
                   onClick={() => {
+                    setState({ data: [], hasMore: false });
                     fetchTours();
                   }}
                   className="flex-row justify-content-center text-center flex-column me-4 d-flex rounded-4 p-3 w-100 p-0 h2"
