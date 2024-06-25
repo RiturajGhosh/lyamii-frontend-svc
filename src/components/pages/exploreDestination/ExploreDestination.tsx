@@ -119,7 +119,6 @@ const ExploreDestination: FC = () => {
       (marker: any) =>
         marker?.city?.toLowerCase()?.includes(tourDetail.destination) && marker
     );
-    console.log(filterData);
     if (filterData.length > 0) {
       dispatch({
         type: SET_SELECTED_LOCATION,
@@ -386,7 +385,6 @@ const ExploreDestination: FC = () => {
                   type="range"
                   onChange={(e) => {
                     e.preventDefault();
-                    console.log(e);
                     setFilter({
                       ...filter,
                       noOfDays: parseInt(e.target.value),
@@ -413,7 +411,6 @@ const ExploreDestination: FC = () => {
                   type="range"
                   onChange={(e) => {
                     e.preventDefault();
-                    console.log(e);
                     parseFloat(e.target.value) < filter.maxPrice
                       ? setFilter({
                           ...filter,

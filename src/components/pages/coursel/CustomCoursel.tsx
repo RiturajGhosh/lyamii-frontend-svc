@@ -30,7 +30,7 @@ const CustomCoursel: FC<CustomCourselType> = ({ page = 0, setPage, data }) => {
                 padding: "0px !important",
                 margin: "0px !important",
               }}
-              onClick={() => history.push("/tour-detail")}
+              onClick={() => history.push(`/tour-detail:${marker.packageId}`)}
               src={require("../../../Assets/header.jpg")}
             />{" "}
             {/* <Card.Body className="py-0">

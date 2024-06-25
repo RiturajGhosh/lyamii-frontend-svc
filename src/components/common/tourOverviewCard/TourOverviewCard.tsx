@@ -83,7 +83,7 @@ const TourOverviewCard: FC<TourOverviewCardType> = ({
                               });
                             };
                             setPackageId().then(() => {
-                              history.push("/tour-detail");
+                              history.push(`/tour-detail:${option.packageId}`);
                             });
                           }}
                         />
@@ -115,7 +115,11 @@ const TourOverviewCard: FC<TourOverviewCardType> = ({
                             <div
                               className="timeline"
                               key={idx}
-                              onClick={() => history.push("/tour-detail")}
+                              onClick={() =>
+                                history.push(
+                                  `/tour-detail:${option.packageId}`
+                                )
+                              }
                             >
                               {idx % 2 === 0 && (
                                 <>

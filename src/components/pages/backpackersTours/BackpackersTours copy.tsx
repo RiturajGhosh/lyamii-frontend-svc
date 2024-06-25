@@ -153,7 +153,8 @@ const BackpackersTours: FC = () => {
                         type: SET_SELECTED_TOUR_DATA,
                         payload: tour,
                       });
-                      history.push("/tour-detail");
+
+                      history.push(`/tour-detail:${tour.packageId}`);
                     }}
                   >
                     {tour?.displayName?.text && tour?.displayName?.text}
@@ -195,7 +196,8 @@ const BackpackersTours: FC = () => {
                         type: SET_SELECTED_TOUR_DATA,
                         payload: tour,
                       });
-                      history.push("/tour-detail");
+
+                      history.push(`/tour-detail:${tour.packageId}`);
                     }}
                   >
                     {tour?.displayName?.text && tour?.displayName?.text}

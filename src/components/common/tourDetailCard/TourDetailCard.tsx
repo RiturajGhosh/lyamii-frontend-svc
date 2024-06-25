@@ -15,12 +15,11 @@ import { BsShare } from "react-icons/bs";
 import { FaIndianRupeeSign } from "react-icons/fa6";
 import MainContainer from "../container/MainContainer";
 import Tick from "../icon/tick";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { getPackageDetailsByPackageIdApi } from "../../../api/getPackageDetailsByPackageIdApi";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectTourData,
-  selectTourPackageId,
 } from "../../../state/selectors/selectTourData";
 import {
   Itinerary,
@@ -30,7 +29,6 @@ import {
 import { parseTourData } from "../../../utils/parseTourData";
 
 const TourDetailCard: FC = () => {
-  const packageID = useSelector(selectTourPackageId);
   const tourData = useSelector(selectTourData);
   const [tour, setTour] = useState<selectedTourDataDto>(tourData);
   const [count, setCount] = useState(0);
@@ -38,7 +36,7 @@ const TourDetailCard: FC = () => {
   const dispatch = useDispatch();
 
   const fetchTours = async () => {
-    const response = await getPackageDetailsByPackageIdApi(packageID);
+    const response = await getPackageDetailsByPackageIdApi(history.location.pathname.split(":")[1]);
     if (response.status === 200) {
       dispatch({
         type: SET_SELECTED_TOUR_DATA,
@@ -84,7 +82,7 @@ const TourDetailCard: FC = () => {
           padding: "0px !important",
           margin: "0px !important",
         }}
-        onClick={() => history.push("/tour-detail")}
+        onClick={() => history.push(`/tour-detail:${tour.packageId}`)}
         src={require("../../../Assets/header.jpg")}
       />
       <Col

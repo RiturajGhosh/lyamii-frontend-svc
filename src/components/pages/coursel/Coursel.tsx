@@ -32,7 +32,7 @@ const Coursel: FC = () => {
               padding: "0px !important",
               margin: "0px !important",
             }}
-            onClick={() => history.push("/tour-detail")}
+            onClick={() => history.push(`/tour-detail:${marker.packageId}`)}
             src={require("../../../Assets/header.jpg")}
           />{" "}
           <Card.Body className="py-0">

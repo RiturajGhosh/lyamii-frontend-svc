@@ -1,5 +1,4 @@
 export const parseTourData = (response: string) => {
-  console.log(response);
   const parseRes = JSON.parse(JSON.stringify(response));
   parseRes.description = parseRes.description.split("\n");
   parseRes.destinations = parseRes.destinations.split("\n");

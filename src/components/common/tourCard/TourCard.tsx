@@ -56,7 +56,7 @@ const TourCard: FC<TourCardType> = ({
                         type: SET_TOUR_PACKAGE_ID,
                         payload: tourData.packageId,
                       });
-                      history.push("/tour-detail");
+                      history.push(`/tour-detail:${tourData.packageId}`);
                     }}
                   />
                   <Col className="position-relative p-0 border-1 pb-2 mb-5 text-center justify-content-end text-white">
@@ -105,7 +105,7 @@ const TourCard: FC<TourCardType> = ({
                     type: SET_TOUR_PACKAGE_ID,
                     payload: tourData.packageId,
                   });
-                  history.push("/tour-detail");
+                  history.push(`/tour-detail:${tourData.packageId}`);
                 }}
               >
                 {tourData?.packageName && tourData?.packageName}
@@ -201,7 +201,7 @@ const TourCard: FC<TourCardType> = ({
                           type: SET_TOUR_PACKAGE_ID,
                           payload: tourData.packageId,
                         });
-                        history.push("/tour-detail");
+                        history.push(`/tour-detail:${tourData.packageId}`);
                       }}
                     />
                   </Col>

@@ -42,7 +42,6 @@ const Globe: FC = () => {
       markerObjectID: markerObject.uuid,
       pointerEventPosition: { x: event.clientX, y: event.clientY },
     });
-    console.log(marker);
     dispatch({
       type: SET_SELECTED_LOCATION,
       payload: {

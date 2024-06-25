@@ -143,7 +143,7 @@ export const commonSiteMap: UserRouteConfig[] = [
   },
   {
     exact: true,
-    path: "/tour-detail",
+    path: "/tour-detail:id",
     Component: TourDetailCard,
     access: AccessType.YES,
   },

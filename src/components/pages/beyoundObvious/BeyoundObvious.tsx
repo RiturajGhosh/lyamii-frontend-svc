@@ -114,7 +114,9 @@ const BeyoundObvious: FC = () => {
                         <Card.Body className="p-0">
                           <Card.Img
                             className={`p-0 m-0 justify-content-center ${style.reasonCard}`}
-                            onClick={() => history.push("/tour-detail")}
+                            onClick={() =>
+                              history.push(`/tour-detail:${list.packageId}`)
+                            }
                             style={{
                               // width: "100%",
                               padding: "0px !important",
@@ -190,7 +192,9 @@ const BeyoundObvious: FC = () => {
                               padding: "0px !important",
                               margin: "0px !important",
                             }}
-                            onClick={() => history.push("/tour-detail")}
+                            onClick={() =>
+                              history.push(`/tour-detail:${list.packageId}`)
+                            }
                             src={`https://drive.google.com/thumbnail?id=${list.imageUri[0]}`}
                           />
                           <Card.Body className="py-0">
