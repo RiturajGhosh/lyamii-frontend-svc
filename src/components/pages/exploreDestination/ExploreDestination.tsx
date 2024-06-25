@@ -120,10 +120,12 @@ const ExploreDestination: FC = () => {
           if (
             country.text
               .toLowerCase()
-              .includes(tourDetail.destination.toLowerCase())
+              .includes(tourDetail.destination.toLowerCase()) &&
+            country.text.length === tourDetail.destination.length
           )
             return country;
         })[0]?.id || "";
+      console.log(countryId);
       if (countryId?.length > 0) {
         const response = await getPackageDetailsByCountryAndDaysApi(
           filter.noOfDays,
