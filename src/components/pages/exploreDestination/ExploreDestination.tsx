@@ -119,6 +119,7 @@ const ExploreDestination: FC = () => {
       (marker: any) =>
         marker?.city?.toLowerCase()?.includes(tourDetail.destination) && marker
     );
+    console.log(filterData)
     if (filterData.length > 0) {
       dispatch({
         type: SET_SELECTED_LOCATION,
@@ -129,17 +130,17 @@ const ExploreDestination: FC = () => {
       const countryId =
         isoCountries.filter((country: any) => {
           if (
-            country.text
+            country.country_name
               .toLowerCase()
               .includes(tourDetail.destination.toLowerCase()) &&
-            country.text.length === tourDetail.destination.length
+            country.country_name.length === tourDetail.destination.length
           )
             return country;
-        })[0]?.id || "";
-      if (countryId?.length > 0) {
+        })[0]?.id || 0;
+      if (countryId) {
         const response = await getPackageDetailsByCountryAndDaysApi(
           filter.noOfDays,
-          parseInt(Country?.getCountryByCode(countryId)?.phonecode || "")
+          countryId
         );
         if (response.status === 200) {
           const data = parseTourDataArray(response.data);
