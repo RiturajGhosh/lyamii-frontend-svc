@@ -67,13 +67,13 @@ const TourOverviewCard: FC<TourOverviewCardType> = ({
                         style={{ zIndex: "1 !important" }}
                       >
                         <Card.Img
-                          className={`w-100 p-0 m-0 justify-content-center ${style.reasonCard}`}
+                          className={`w-100 pointer p-0 m-0 justify-content-center ${style.reasonCard}`}
                           style={{
                             // width: "100%",
                             padding: "0px !important",
                             margin: "0px !important",
                           }}
-                          src={`https://drive.google.com/thumbnail?id=${option.imageUri[0]}`}
+                          src={require("../../../Assets/header.jpg")}
                           alt="image"
                           onClick={() => {
                             const setPackageId = async () => {
@@ -113,12 +113,10 @@ const TourOverviewCard: FC<TourOverviewCardType> = ({
                         {option?.destinations?.map(
                           (place: string, idx: number) => (
                             <div
-                              className="timeline"
+                              className="timeline pointer"
                               key={idx}
                               onClick={() =>
-                                history.push(
-                                  `/tour-detail:${option.packageId}`
-                                )
+                                history.push(`/tour-detail:${option.packageId}`)
                               }
                             >
                               {idx % 2 === 0 && (
@@ -154,13 +152,14 @@ const TourOverviewCard: FC<TourOverviewCardType> = ({
                         className="bold p p-2 z-index-3 text-white position-absolute text-shadow-dark fw-bold top-0 end-0"
                       >
                         <select
-                          className="form-select"
+                          className="form-select pointer"
                           aria-label="Default select example"
                         >
                           {option?.packagePrice?.map(
                             (price: string, index: number) => (
                               <option key={index} value={price}>
                                 {price}
+                                {option?.packagePrice.length === 1 && " INR"}
                               </option>
                             )
                           )}

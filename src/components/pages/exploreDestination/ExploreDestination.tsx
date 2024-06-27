@@ -97,6 +97,7 @@ const ExploreDestination: FC = () => {
   };
   useEffect(() => {
     fetchTourData();
+    setLoading(false);
   }, []);
 
   useEffect(() => {
@@ -119,7 +120,6 @@ const ExploreDestination: FC = () => {
       (marker: any) =>
         marker?.city?.toLowerCase()?.includes(tourDetail.destination) && marker
     );
-    console.log(filterData)
     if (filterData.length > 0) {
       dispatch({
         type: SET_SELECTED_LOCATION,
@@ -191,7 +191,7 @@ const ExploreDestination: FC = () => {
                     >
                       {"Indian Passport Holders"}
                     </Col>
-                    <div className="position-absolute top-50 start-100 h3 translate-middle">
+                    <div className="position-absolute pointer top-50 start-100 h3 translate-middle">
                       <Checkbox
                         option={filterList[0].subFilter[3]}
                         onClick={(label: string) => {
@@ -215,7 +215,7 @@ const ExploreDestination: FC = () => {
                     >
                       {"Others"}
                     </Col>
-                    <div className="position-absolute top-50 start-100 h3 translate-middle">
+                    <div className="position-absolute pointer top-50 start-100 h3 translate-middle">
                       <Checkbox
                         option={filterList[0].subFilter[3]}
                         onClick={(label: string) => {
@@ -229,7 +229,7 @@ const ExploreDestination: FC = () => {
                   </div>
                   <Col className="position-relative p-0 border-1 text-center mx-42 justify-content-end text-white">
                     <Button
-                      className="align-middle justify-self-center position-absolute top-100 mx-42 start-0 translate-middle btn-secondary"
+                      className="align-middle pointer justify-self-center position-absolute top-100 mx-42 start-0 translate-middle btn-secondary"
                       style={{ background: "#0752a1" }}
                       onClick={() => setShow(!show)}
                     >
@@ -283,7 +283,7 @@ const ExploreDestination: FC = () => {
                     setState({ data: [], hasMore: false });
                     fetchTours();
                   }}
-                  className="flex-row justify-content-center text-center flex-column me-4 d-flex rounded-4 p-3 w-100 p-0 h2"
+                  className="flex-row pointer justify-content-center text-center flex-column me-4 d-flex rounded-4 p-3 w-100 p-0 h2"
                 >
                   <span className="w-100 justify-content-between d-flex align-items-center">
                     <span className="flex-wrap d-flex align-items-center">
@@ -327,43 +327,47 @@ const ExploreDestination: FC = () => {
 
       <Col className={"mx-2 px-sm-2 px-md-5 pb-5"}>
         <Col className="my-5 p-0 m-0">
-          <HorizontalScroll
-            title={""}
-            // className={""}
-            setPage={(e: any) => setPage(e)}
-            page={page}
-          >
-            {state?.data?.map((tour, index) => (
-              <Col
-                md={6}
-                lg={4}
-                sx={12}
-                sm={8}
-                key={index}
-                className="mx-md-3 col-12 d-inline-block position-relative"
-              >
-                <Card key={index} className={`p-0 `}>
-                  <TourCard
-                    coordinates={[]}
-                    className={"small"}
-                    imageStyling={`img-fluid`}
-                    imageRatio={150}
-                    titleStyling="small"
-                    tourData={tour}
-                  />
-                </Card>
-              </Col>
-            ))}
-            {loading && (
-              <div className="spinner-box h-100 ">
-                <Col className="p-0 h-100 m-0">
-                  <div className="circle-border">
-                    <div className="circle-core"></div>
-                  </div>
+          {state?.data.length > 0 ? (
+            <HorizontalScroll
+              title={""}
+              // className={""}
+              setPage={(e: any) => setPage(e)}
+              page={page}
+            >
+              {state?.data?.map((tour, index) => (
+                <Col
+                  md={6}
+                  lg={4}
+                  sx={12}
+                  sm={8}
+                  key={index}
+                  className="mx-md-3 col-12 d-inline-block position-relative"
+                >
+                  <Card key={index} className={`p-0 `}>
+                    <TourCard
+                      coordinates={[]}
+                      className={"small"}
+                      imageStyling={`img-fluid`}
+                      imageRatio={150}
+                      titleStyling="small"
+                      tourData={tour}
+                    />
+                  </Card>
                 </Col>
-              </div>
-            )}
-          </HorizontalScroll>
+              ))}
+              {loading && (
+                <div className="spinner-box h-100 ">
+                  <Col className="p-0 h-100 m-0">
+                    <div className="circle-border">
+                      <div className="circle-core"></div>
+                    </div>
+                  </Col>
+                </div>
+              )}
+            </HorizontalScroll>
+          ) : (
+            <Col className="h3">There is no Tour for this Destination</Col>
+          )}
         </Col>
         <Col className="my-5 p-0 m-0">
           <RecommandedTours />

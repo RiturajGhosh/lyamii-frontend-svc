@@ -33,7 +33,7 @@ const Home: FC = () => {
             segment and foreign tours to Indian travellers' in Beyond Obvious.
           </p>
           <button
-            className="mt-5 align-middle btn rounded-4 border-1 border btn-outline-light py-0 px-3 my-0 justify-self-center"
+            className="mt-5 align-middle pointer btn rounded-4 border-1 border btn-outline-light py-0 px-3 my-0 justify-self-center"
             onClick={() => {
               history.push("/passportRegistration");
             }}

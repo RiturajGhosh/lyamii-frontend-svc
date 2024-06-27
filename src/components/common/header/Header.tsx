@@ -109,7 +109,7 @@ const Header: FC = () => {
             <span></span>
             <span></span>
           </Navbar.Toggle>
-          <Navbar.Collapse className={`flex-grow-0`} id="responsive-navbar-nav">
+          <Navbar.Collapse className={`flex-grow-0 pointer`} id="responsive-navbar-nav">
             <Nav className="ml-auto" defaultActiveKey="#home">
               {headers?.map((header: HeaderList, index: number) => {
                 return (

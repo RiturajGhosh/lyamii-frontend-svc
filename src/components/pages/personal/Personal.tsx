@@ -810,7 +810,7 @@ const Personal: FC = () => {
                       setUserData(detail);
                       setEdit(false);
                     }}
-                    className="d-flex float-right mx-2 px-3"
+                    className="d-flex pointer float-right mx-2 px-3"
                   >
                     Submit
                   </Button>
@@ -818,7 +818,7 @@ const Personal: FC = () => {
                 {!edit && (
                   <div
                     onClick={() => setEdit(true)}
-                    className="d-flex position-absolute top-0 end-0 p-0"
+                    className="d-flex pointer position-absolute top-0 end-0 p-0"
                     style={{
                       margin: "-12px",
                       offset: "-14px",

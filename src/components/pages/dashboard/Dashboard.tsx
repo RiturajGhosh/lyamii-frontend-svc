@@ -292,7 +292,7 @@ const Dashboard: FC = () => {
                           // size="6vh"
                           fill="#97a9ff"
                           className={
-                            "position-absolute bottom-0 p-2 end-0 w-30"
+                            "position-absolute pointer bottom-0 p-2 end-0 w-30"
                           }
                           onClick={() => history.push("/comingSoon")}
                         />
@@ -313,7 +313,7 @@ const Dashboard: FC = () => {
                     <Col className="p-0 m-0 col-6 h-100">
                       {/* <Card className="img-round w-100 h-100 p-0 m-0"> */}
                       <Card.Img
-                        className={`w-100 h-100 min-wh-100 form__input justify-content-center`}
+                        className={`w-100 pointer h-100 min-wh-100 form__input justify-content-center`}
                         style={{
                           // width: "100%",
                           padding: "0px !important",
@@ -324,7 +324,7 @@ const Dashboard: FC = () => {
                       />
                       {/* </Card> */}
                     </Col>{" "}
-                    <Col className="align-items-start flex-column small p-2 flex-wrap m-0 fit-content justify-content-start d-flex">
+                    <Col className="align-items-start pointer flex-column small p-2 flex-wrap m-0 fit-content justify-content-start d-flex">
                       <div
                         onClick={() =>
                           history.push("/profile/trips/tour-detail")
@@ -347,7 +347,7 @@ const Dashboard: FC = () => {
                       <ArrowButton
                         fill="#97a9ff"
                         className={
-                          "position-absolute bottom-0 bold p p-2 text-white position-absolute fw-bold bottom-0 end-0"
+                          "position-absolute bottom-0 pointer bold p p-2 text-white position-absolute fw-bold bottom-0 end-0"
                         }
                         onClick={() =>
                           history.push("/profile/trips/tour-detail")
@@ -435,7 +435,7 @@ const Dashboard: FC = () => {
                   >
                     <h1 className="p flex-column p-0 px-2 m-0 text-white align-self-start d-flex font-weight-normal">
                       <Card.Img
-                        className={`w-100 p-0 m-0 min-wh-100 justify-content-center`}
+                        className={`w-100 p-0 pointer m-0 min-wh-100 justify-content-center`}
                         style={{
                           // width: "100%",
                           padding: "0px !important",

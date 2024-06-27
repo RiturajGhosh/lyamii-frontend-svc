@@ -14,9 +14,9 @@ const Destinations: FC = () => {
         <Col lg={11} md={11} sx={11} xs={11} className="">
           <Row className="bg-white p-3 m-0 form__input">
             <Col className="home-about-description pl-20">
-              <div className="text-start heading row textColor">
+              <div className="text-start heading row pointer textColor">
                 <span
-                  className="fit-content text-shadow-dark fs-7 d-flex pl-0 fw-bold"
+                  className="fit-content pointer text-shadow-dark fs-7 d-flex pl-0 fw-bold"
                   style={{ color: "#0852A1", fontFamily: "ArtNuvo" }}
                   onClick={() => {
                     history.push("/explore");
@@ -24,7 +24,7 @@ const Destinations: FC = () => {
                 >
                   Check all Possible Destinations
                 </span>
-                <Col className="col-1 d-flex text-shadow-dark align-self-center position-relative p-0 m-0">
+                <Col className="col-1 pointer d-flex text-shadow-dark align-self-center position-relative p-0 m-0">
                   <FaCircleArrowRight
                     size={"4vh"}
                     fill={"#0752a0"}

@@ -52,7 +52,7 @@ const ContactDetail: FC = () => {
                   />
                 </Col>
                 <Col
-                  className="bold fs-16 col-12 text-center text-white"
+                  className="bold pointer fs-16 col-12 text-center text-white"
                   onClick={() => showInMapClicked()}
                 >
                   ADDRESS
@@ -165,7 +165,7 @@ const ContactDetail: FC = () => {
                   />{" "}
                 </Col>
                 <Col
-                  className="col-12 fs-16 bold text-center text-white"
+                  className="col-12 pointer fs-16 bold text-center text-white"
                   onClick={(e) => {
                     window.location.href = "mailto:no-reply@example.com";
                     e.preventDefault();

@@ -30,20 +30,18 @@ const LifetimeJourney: FC = () => {
                     // fontSize: screenSize.screenSize < 786 ? "5.5dvi" : "6dvi",
                   }}
                 >
-                  Journey{" "}
-                  <span
+                  INCREDIBLE{" "}
+                  {/* <span
                     className="heading h1 text-white text-outline"
                     style={{ fontFamily: "Robotic" }}
                   >
-                    {"OF A  "}
-                  </span>{" "}
+                   
+                  </span>{" "} */}
                   <span
                     className="display-3 position-absolute d-inline-flex pl-3 align-items-start"
-                    style={{ color: "#168709", fontFamily: "DellaRespira" }}
+                    style={{ color: "#168709", fontFamily: "DISTILLERYSTRONG" }}
                   >
-                    Lif
-                    <strong className="">e</strong>
-                    time
+                    INDIA     
                     <img
                       alt=""
                       className={`inline-flex w-25 h-10`}
@@ -76,7 +74,7 @@ const LifetimeJourney: FC = () => {
               <Col
                 className={`${
                   screenSize.screenSize < 786 ? "mx-1" : "my-2 mx-1"
-                } `}
+                } pointer`}
                 style={{
                   float: screenSize.screenSize < 786 ? "left" : "inherit",
                   width: screenSize.screenSize < 786 ? "50%" : "30%",
@@ -98,13 +96,14 @@ const LifetimeJourney: FC = () => {
                 <Button className="align-items-center mh-15 mt-2 w-100 bg-dark-blue justify-content-center d-flex">
                   <span
                     onClick={() => history.push(journeyOptions[0].path)}
-                    className="bold fs-auto p-2 d-inline-flex m-0 fw-bold"
+                    className="bold pointer fs-auto p-2 d-inline-flex m-0 fw-bold"
                     style={{ fontFamily: "OldStandard" }}
                   >
                     {journeyOptions[0].name}
                   </span>
                   <span className="text-nowrap">
                     <LuChevronRightCircle
+                    className=" pointer"
                       size={screenSize.screenSize < 786 ? "20px" : "30px"}
                       onClick={() => history.push(journeyOptions[0].path)}
                     />
@@ -123,7 +122,7 @@ const LifetimeJourney: FC = () => {
                 <Col
                   className={` ${
                     screenSize.screenSize < 786 ? "mx-1" : "my-2 mx-1"
-                  } `}
+                  } pointer`}
                   style={{
                     float: "right",
                     width: screenSize.screenSize < 786 ? "100%" : "100%",
@@ -145,13 +144,14 @@ const LifetimeJourney: FC = () => {
                   <Button className="align-items-center mh-15 mt-2 w-100 bg-dark-blue justify-content-center d-flex">
                     <span
                       onClick={() => history.push(journeyOptions[1].path)}
-                      className="bold fs-auto p-2 d-inline-flex m-0 fw-bold"
+                      className="bold pointer fs-auto p-2 d-inline-flex m-0 fw-bold"
                       style={{ fontFamily: "OldStandard" }}
                     >
                       {journeyOptions[1].name}
                     </span>
                     <span className="text-nowrap">
                       <LuChevronRightCircle
+                      className=" pointer"
                         size={screenSize.screenSize < 786 ? "20px" : "30px"}
                         onClick={() => history.push(journeyOptions[1].path)}
                       />
@@ -161,7 +161,7 @@ const LifetimeJourney: FC = () => {
                 <Col
                   className={` ${
                     screenSize.screenSize < 786 ? "mx-1" : "my-2 mx-1"
-                  } `}
+                  } pointer`}
                   style={{
                     float: "right",
                     width: screenSize.screenSize < 786 ? "100%" : "100%",
@@ -183,13 +183,14 @@ const LifetimeJourney: FC = () => {
                   <Button className="align-items-center mh-15 mt-2 w-100 bg-dark-blue justify-content-center d-flex">
                     <span
                       onClick={() => history.push(journeyOptions[2].path)}
-                      className="bold fs-auto p-2 d-inline-flex m-0 fw-bold"
+                      className="bold pointer fs-auto p-2 d-inline-flex m-0 fw-bold"
                       style={{ fontFamily: "OldStandard" }}
                     >
                       {journeyOptions[2].name}
                     </span>
                     <span className="text-nowrap">
                       <LuChevronRightCircle
+                      className=" pointer"
                         size={screenSize.screenSize < 786 ? "20px" : "30px"}
                         onClick={() => history.push(journeyOptions[2].path)}
                       />

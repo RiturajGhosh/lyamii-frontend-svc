@@ -12,7 +12,7 @@ const PrivacyPolicies: FC = () => {
         <Row
           onClick={() => history.goBack()}
           className={
-            "position-absolute top-0 start-0 col-4 m-0 justify-content-start align-items-center p-0"
+            "position-absolute pointer top-0 start-0 col-4 m-0 justify-content-start align-items-center p-0"
           }
         >
           <Icon name="back" className="m-0 justify-content-start p-0 w-10" />

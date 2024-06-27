@@ -146,7 +146,7 @@ const BackpackersTours: FC = () => {
                     />
                   </Card>
                   <Card.Text
-                    className="position-absolute top-0 mt-5 start-90 translate-middle fit-content text-white border-5 my-4 border"
+                    className="position-absolute pointer top-0 mt-5 start-90 translate-middle fit-content text-white border-5 my-4 border"
                     style={{ background: "#79c78d", borderColor: "#9e9e9e " }}
                     onClick={() => {
                       dispatch({
@@ -189,7 +189,7 @@ const BackpackersTours: FC = () => {
                     />
                   </Card>
                   <Card.Text
-                    className="position-absolute top-0 mt-5 start-90 translate-middle fit-content text-white border-5 my-4 border"
+                    className="position-absolute pointer top-0 mt-5 start-90 translate-middle fit-content text-white border-5 my-4 border"
                     style={{ background: "#79c78d", borderColor: "#9e9e9e " }}
                     onClick={() => {
                       dispatch({

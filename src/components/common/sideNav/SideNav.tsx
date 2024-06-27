@@ -90,7 +90,7 @@ const SideNav: FC = () => {
           <Col className="justify-content-center align-items-center d-flex">
             <Navbar.Brand className="justify-content-center align-items-center d-flex p-0 m-0">
               <h2
-                className="subtitle title-medium text-center p-0 m-0"
+                className="subtitle pointer title-medium text-center p-0 m-0"
                 onClick={() => history.push("/")}
               >
                 Lyamii.com

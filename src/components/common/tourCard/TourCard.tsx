@@ -49,7 +49,7 @@ const TourCard: FC<TourCardType> = ({
                 <>
                   <Image
                     className={`p-0 rounded-3 position-absolute ${imageStyling}`}
-                    src={`https://drive.google.com/thumbnail?id=${tourData?.imageUri[0]}`}
+                    src={require("../../../Assets/header.jpg")}
                     alt="drive image"
                     onClick={() => {
                       dispatch({
@@ -61,13 +61,14 @@ const TourCard: FC<TourCardType> = ({
                   />
                   <Col className="position-relative p-0 border-1 pb-2 mb-5 text-center justify-content-end text-white">
                     <select
-                      className="form-select"
+                      className="form-select pointer"
                       aria-label="Default select example"
                     >
                       {tourData?.packagePrice?.map(
                         (price: string, index: number) => (
                           <option key={index} value={price}>
                             {price}
+                            {tourData?.packagePrice.length === 1 && " INR"}
                           </option>
                         )
                       )}
@@ -99,6 +100,7 @@ const TourCard: FC<TourCardType> = ({
                   background: "#c4cdfe",
                   color: "#0752a1",
                   fontFamily: "NORWESTER",
+                  whiteSpace: "break-spaces",
                 }}
                 onClick={() => {
                   dispatch({

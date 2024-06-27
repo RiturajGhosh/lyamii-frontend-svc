@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import { US } from "country-flag-icons/react/3x2";
 import style from "./CustomerReview.module.scss";
@@ -8,6 +8,7 @@ import { selectCustomerReview } from "../../../state/selectors/selectCustomerRev
 
 const CustomerReviews: FC = () => {
   const reviews = useSelector(selectCustomerReview);
+  const [page, setPage] = useState(0);
   return (
     <Col className="flex-column home-about-section align-self-start d-flex min-vh-100 justify-content-center sectionContainer pt-42">
       <Col lg={12} md={12} sx={12} xs={12} className="align-self-start d-flex">
@@ -24,54 +25,68 @@ const CustomerReviews: FC = () => {
               }
             </div>
             <Row className="g-5 pb-5">
-              {reviews.customerReviews.map((review: any, idx: number) => (
-                <Col
-                  md={6}
-                  lg={4}
-                  className={"mt-4 mx-0 position-relative"}
-                  key={idx}
-                >
-                  <Col className="position-relative">
-                    <Card className={`p-0 m-0 ${style.reviewCard}`}>
-                      <Card.Body>
-                        <Row className="d-flex my-4 col-11 flex-row flex-nowrap position-relative justify-content-between">
-                          <Col className="col-5">
-                            <img
-                              className="mb-3"
-                              style={{
-                                width: "9dvi",
-                                height: "9dvi",
-                              }}
-                              alt=""
-                              src={avatar}
-                            />
-                          </Col>
+              {reviews.customerReviews
+                .slice(6 * page, 6 * (page + 1))
+                .map((review: any, idx: number) => (
+                  <Col
+                    md={6}
+                    lg={4}
+                    className={"mt-4 mx-0 position-relative"}
+                    key={idx}
+                  >
+                    <Col className="position-relative">
+                      <Card className={`p-0 m-0 ${style.reviewCard}`}>
+                        <Card.Body>
+                          <Row className="d-flex my-4 col-11 flex-row flex-nowrap position-relative justify-content-between">
+                            <Col className="col-5">
+                              <img
+                                className="mb-3"
+                                style={{
+                                  width: "9dvi",
+                                  height: "9dvi",
+                                }}
+                                alt=""
+                                src={avatar}
+                              />
+                            </Col>
 
-                          <div className="col-4 position-absolute top-0 start-90 translate-middle-x pr-3">
-                            <US title="United States" className="" />
-                          </div>
-                        </Row>
-                        <Col className="">
-                          <div
-                            className={`${style.review} small overflow-hidden font-italic overflow-hidden`}
-                            style={{
-                              color: "black",
-                            }}
-                          >
-                            {review.review}
-                          </div>
-                          <div
-                            className="text-italic h3 float-right"
-                            style={{ color: "#213D66", fontFamily: "Alice" }}
-                          >
-                            {review.name}
-                          </div>
-                        </Col>
-                      </Card.Body>
-                    </Card>
+                            <div className="col-4 position-absolute top-0 start-90 translate-middle-x pr-3">
+                              <US title="United States" className="" />
+                            </div>
+                          </Row>
+                          <Col className="">
+                            <div
+                              className={`${style.review} small overflow-hidden font-italic overflow-hidden`}
+                              style={{
+                                color: "black",
+                              }}
+                            >
+                              {review.review}
+                            </div>
+                            <div
+                              className="text-italic h3 float-right"
+                              style={{ color: "#213D66", fontFamily: "Alice" }}
+                            >
+                              {review.name}
+                            </div>
+                          </Col>
+                        </Card.Body>
+                      </Card>
+                    </Col>
                   </Col>
-                </Col>
-              ))}
+                ))}
+            </Row>
+            <Row className="g-5 pb-5">
+              {[...Array(reviews.customerReviews?.length%6)].map(
+                (review: any, idx: number) => (
+                  <Col
+                    className={"mt-4 w-10 mx-0 border border-2 position-relative"}
+                    key={idx}
+                  >
+                    {idx}
+                  </Col>
+                )
+              )}
             </Row>
           </Row>
         </Card.Body>

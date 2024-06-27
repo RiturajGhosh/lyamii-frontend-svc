@@ -18,9 +18,7 @@ import Tick from "../icon/tick";
 import { useHistory, useLocation } from "react-router-dom";
 import { getPackageDetailsByPackageIdApi } from "../../../api/getPackageDetailsByPackageIdApi";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectTourData,
-} from "../../../state/selectors/selectTourData";
+import { selectTourData } from "../../../state/selectors/selectTourData";
 import {
   Itinerary,
   SET_SELECTED_TOUR_DATA,
@@ -36,7 +34,9 @@ const TourDetailCard: FC = () => {
   const dispatch = useDispatch();
 
   const fetchTours = async () => {
-    const response = await getPackageDetailsByPackageIdApi(history.location.pathname.split(":")[1]);
+    const response = await getPackageDetailsByPackageIdApi(
+      history.location.pathname.split(":")[1]
+    );
     if (response.status === 200) {
       dispatch({
         type: SET_SELECTED_TOUR_DATA,
@@ -163,7 +163,7 @@ const TourDetailCard: FC = () => {
                   </Col>
                   <Col className="position-relative w-100 p-0 border-1 text-center mx-42 justify-content-end text-white">
                     <span
-                      className="align-middle justify-self-center p-1 fs-16 rounded-3 position-absolute mx-42 start-50 top-0 translate-middle"
+                      className="align-middle pointer justify-self-center p-1 fs-16 rounded-3 position-absolute mx-42 start-50 top-0 translate-middle"
                       style={{
                         background: "#024774",
                         color: "white",
@@ -189,29 +189,28 @@ const TourDetailCard: FC = () => {
                       <section
                         className={`overflow-auto ${style?.routeTimeline}`}
                       >
-                        {tour?.itinerary?.map(
-                          (place: Itinerary, idx: number) => (
-                            <Col className="py-2">
-                              <Row>
-                                <Col className="p-0 fs-24 m-0 col-2 text-white align-self-center p-2 text-center bg-dark">
-                                  {idx < 9 ? "0" + (idx + 1) : idx + 1}
-                                </Col>
-                                <Col>
-                                  <div className="pl-2 fs-auto bold lh-sm p-0 m-0 text-dark ">
-                                    {place[0]}
-                                  </div>
-                                  <div className="p-2 fs-auto p-0 lh-sm m-0 text-dark">
-                                    {/* {place &&
-                                      place[1][0]?.map((desc: string) => ( */}
-                                    <li>{place[1][0]}</li>
-                                    <li>{place[1][1]}</li>
-                                    {/* ))} */}
-                                  </div>
-                                </Col>
-                              </Row>
-                            </Col>
-                          )
-                        )}
+                        {tour?.itinerary?.map((place: any, idx: number) => (
+                          <Col className="py-2">
+                            <Row>
+                              <Col className="p-0 fs-24 m-0 col-2 text-white align-self-center p-2 text-center bg-dark">
+                                {idx < 9 ? "0" + (idx + 1) : idx + 1}
+                              </Col>
+                              <Col>
+                                <div className="pl-2 fs-auto bold lh-sm p-0 m-0 text-dark ">
+                                  {place[0]}
+                                </div>
+                                <div className="p-2 fs-auto p-0 lh-sm m-0 text-dark">
+                                  {place
+                                    .slice(1)
+                                    ?.map((route: any, index: number) => (
+                                      <li>{route}</li>
+                                    ))}
+                                  {/* ))} */}
+                                </div>
+                              </Col>
+                            </Row>
+                          </Col>
+                        ))}
                       </section>
                     </Card>
                   </Col>
@@ -240,7 +239,7 @@ const TourDetailCard: FC = () => {
                 >
                   <InputGroup className="">
                     <Button
-                      className="border-0 fs-16 p-2 m-0"
+                      className="border-0 pointer fs-16 p-2 m-0"
                       variant="outline-secondary"
                       id="button-addon1"
                       onClick={() => setCount(count - 1)}
@@ -255,7 +254,7 @@ const TourDetailCard: FC = () => {
                       className="w-10 p-2 m-0 fs-16 border-bottom-0 border-top-0"
                     />
                     <Button
-                      className="border-0 fs-16 p-2 m-0"
+                      className="border-0 pointer fs-16 p-2 m-0"
                       variant="outline-secondary"
                       id="button-addon1"
                       onClick={() => setCount(count + 1)}
@@ -369,10 +368,10 @@ const TourDetailCard: FC = () => {
                       >
                         <span className="p-0 fs-24 m-0 text-center fit-content">
                           <select
-                            className="form-select"
+                            className="form-select pointer"
                             aria-label="Default select example"
                           >
-                            {tour?.packagePrice?.map(
+                            {["$24", "24 USD"].map(
                               (price: string, index: number) => (
                                 <option key={index} value={price}>
                                   {price}
@@ -381,14 +380,14 @@ const TourDetailCard: FC = () => {
                             )}
                           </select>
                         </span>
-                        <FaIndianRupeeSign
+                        {/* <FaIndianRupeeSign
                           className="fit-content p-0 m-0"
                           size={"30px"}
-                        />
+                        /> */}
                       </Col>
                       <Col className="position-relative w-100 p-0 border-1 text-center mx-3 justify-content-end text-white">
                         <span
-                          className="align-middle fs-16 justify-self-center p-1 rounded-3 position-absolute top-100 ml-42 start-50 translate-middle"
+                          className="align-middle pointer fs-16 justify-self-center p-1 rounded-3 position-absolute top-100 ml-42 start-50 translate-middle"
                           style={{
                             background: "#024774",
                             color: "white",
@@ -407,26 +406,27 @@ const TourDetailCard: FC = () => {
                       >
                         <span className="p-0 m-0 fs-24 text-center fit-content">
                           <select
-                            className="form-select"
+                            className="form-select pointer"
                             aria-label="Default select example"
                           >
                             {tour?.packagePrice?.map(
                               (price: string, index: number) => (
                                 <option key={index} value={price}>
                                   {price}
+                                  {tour?.packagePrice.length === 1 && " INR"}
                                 </option>
                               )
                             )}
                           </select>
                         </span>
-                        <FaIndianRupeeSign
+                        {/* <FaIndianRupeeSign
                           className="fit-content p-0 m-0"
                           size={"30px"}
-                        />
+                        /> */}
                       </Col>
                       <Col className="position-relative w-100 p-0 border-1 text-center mx-3 justify-content-end text-white">
                         <span
-                          className="align-middle fs-16 justify-self-center p-1 shadow-sm border-0 rounded-3 position-absolute top-100 ml-42 start-50 translate-middle"
+                          className="align-middle fs-16 pointer justify-self-center p-1 shadow-sm border-0 rounded-3 position-absolute top-100 ml-42 start-50 translate-middle"
                           style={{
                             background: "#024774",
                             color: "white",

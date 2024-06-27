@@ -105,7 +105,7 @@ const Trips: FC = () => {
                     }}
                   />
                   <Col
-                    className=""
+                    className="pointer"
                     onClick={() => history.push("/profile/trips/tour-detail")}
                   >
                     <div
@@ -214,7 +214,7 @@ const Trips: FC = () => {
                     <span className="col-12 d-flex text-shadow-dark align-self-center position-relative p-0 m-0">
                       <FaCircleArrowRight
                         fill={"#55bcf9"}
-                        className="p-0 m-0"
+                        className="p-0 m-0 pointer"
                         onClick={() => {
                           history.push("/explore");
                         }}
@@ -228,6 +228,7 @@ const Trips: FC = () => {
                   <Col className="text-white">Trip Timeline</Col>
                   <Col className="col-9 text-shadow-dark align-self-center position-relative p-0 m-0">
                     <FaCircleArrowRight
+                    className="pointer"
                       fill={"transparent"}
                       onClick={() => {
                         history.push("/explore");
@@ -264,7 +265,7 @@ const Trips: FC = () => {
                               onClick={() =>
                                 history.push("/profile/trips/tour-detail")
                               }
-                              className="m-0 py-12 align-items-center d-flex rounded-4 p-2"
+                              className="m-0 pointer py-12 align-items-center d-flex rounded-4 p-2"
                               style={{
                                 minHeight: "30vh",
                                 background: "#99c9e8",
@@ -287,7 +288,7 @@ const Trips: FC = () => {
                               <ArrowButton
                                 fill="#55bcf9"
                                 className={
-                                  "position-absolute bottom-0 bold p p-2 text-white position-absolute fw-bold bottom-0 end-0"
+                                  "position-absolute pointer bottom-0 bold p p-2 text-white position-absolute fw-bold bottom-0 end-0"
                                 }
                                 onClick={() =>
                                   history.push("/profile/trips/tour-detail")

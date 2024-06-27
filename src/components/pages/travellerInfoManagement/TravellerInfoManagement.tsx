@@ -127,7 +127,7 @@ const TravellerInfoManagement: FC = () => {
 
                                   <Col className="justify-content-end d-flex">
                                     <Button
-                                      className="fit-content "
+                                      className="fit-content pointer"
                                       onClick={() => {
                                         setTravellersDetails([
                                           ...travellersDetails,
@@ -162,6 +162,7 @@ const TravellerInfoManagement: FC = () => {
                                   </Card.Header>
                                   <Card.Body>
                                     <Card.Title
+                                    className="pointer"
                                       style={{ color: "#0752a1" }}
                                       onClick={() =>
                                         setEdit({
@@ -184,7 +185,7 @@ const TravellerInfoManagement: FC = () => {
                 })}
               <Icon
                 name="addRoundButton"
-                className={`w-10 h-30`}
+                className={`w-10 h-30 pointer`}
                 onClick={() => setHaveQuantity(haveQuantity + 1)}
                 style={{
                   padding: "0px !important",
@@ -284,7 +285,7 @@ const TravellerInfoManagement: FC = () => {
 
                                   <Col className="justify-content-end d-flex">
                                     <Button
-                                      className="fit-content "
+                                      className="fit-content pointer"
                                       onClick={() => {
                                         setTravellersDetails([
                                           ...travellersDetails,
@@ -319,6 +320,7 @@ const TravellerInfoManagement: FC = () => {
                                   </Card.Header>
                                   <Card.Body>
                                     <Card.Title
+                                    className="pointer"
                                       style={{ color: "#0752a1" }}
                                       onClick={() =>
                                         setEdit({
@@ -341,7 +343,7 @@ const TravellerInfoManagement: FC = () => {
                 })}
               <Icon
                 name="addRoundButton"
-                className={`w-10 h-30`}
+                className={`w-10 h-30 pointer`}
                 onClick={() => setNotHaveQuantity(notHaveQuantity + 1)}
                 style={{
                   padding: "0px !important",

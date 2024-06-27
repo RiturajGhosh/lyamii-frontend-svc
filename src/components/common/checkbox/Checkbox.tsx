@@ -24,6 +24,7 @@ const Checkbox: FC<CheckboxType> = ({
     <>
       <Form.Check type={type} id={`check-api-${type}`}>
         <Form.Check.Input
+          className="pointer"
           checked={option && option.checked}
           onChange={() => option && onClick(option.label)}
           type={type}

@@ -18,14 +18,14 @@ const HorizontalScroll: FC<HorizontalScrollType> = ({
   const [disableScroll, setdisableScroll] = useState(false);
   const [loading, setLoading] = useState(false);
   const scrollContainerRef = useRef<HTMLInputElement>(null);
-  const [scrollWidth, setscrollWidth] = useState(scrollContainerRef.current?.clientWidth || 0);
+  const [scrollWidth, setscrollWidth] = useState(0);
   const [scrollPos, setscrollPos] = useState(1);
-  const [clonesWidth, setclonesWidth] = useState(getClonesWidth());
+  const [clonesWidth, setclonesWidth] = useState(0);
 
   function reCalc() {
     let scrollpos = scrollPos;
-    // let scrollWidth = scrollContainerRef.current?.clientWidth || 0;
-    // let clonesWidth = getClonesWidth();
+    let scrollWidth = scrollContainerRef.current?.clientWidth || 0;
+    let clonesWidth = getClonesWidth();
 
     if (scrollPos <= 0) {
       scrollpos = 1;

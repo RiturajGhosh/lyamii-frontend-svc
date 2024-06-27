@@ -108,7 +108,7 @@ const Profile: FC = () => {
                       cardColor="#e4e9ff "
                     >
                       <Card.Title
-                        className="px-2"
+                        className="px-2 pointer"
                         onClick={() => history.push(menu.path)}
                       >
                         {menu.title}

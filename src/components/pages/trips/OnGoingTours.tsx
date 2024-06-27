@@ -87,7 +87,7 @@ const OnGoingTours: FC = () => {
                   size={40}
                   fill={"orange"}
                   onClick={() => history.goBack()}
-                  className="text-white align-self-center d-flex p-0 m-0"
+                  className="text-white pointer align-self-center d-flex p-0 m-0"
                 />
                 <SubCard
                   fill="white"

@@ -113,7 +113,7 @@ const BeyoundObvious: FC = () => {
                       <Card className={`my-2 mx-1`}>
                         <Card.Body className="p-0">
                           <Card.Img
-                            className={`p-0 m-0 justify-content-center ${style.reasonCard}`}
+                            className={`p-0 m-0 pointer justify-content-center ${style.reasonCard}`}
                             onClick={() =>
                               history.push(`/tour-detail:${list.packageId}`)
                             }
@@ -122,20 +122,22 @@ const BeyoundObvious: FC = () => {
                               padding: "0px !important",
                               margin: "0px !important",
                             }}
-                            src={`https://drive.google.com/thumbnail?id=${list.imageUri[0]}`}
+                            src={require("../../../Assets/header.jpg")}
                           />
                           <Card.Body className="py-0">
                             <Card.Text className="bold col-3 p p-2 text-white position-absolute text-shadow-dark fw-bold bottom-0 end-0">
                               {/* <span className="col-12 h-100 border border-1 bg-success"> */}
                               <span className="p-0 fs-24 m-0 text-center fit-content">
                                 <select
-                                  className="form-select"
+                                  className="form-select pointer"
                                   aria-label="Default select example"
                                 >
                                   {list?.packagePrice?.map(
                                     (price: string, index: number) => (
                                       <option key={index} value={price}>
                                         {price}
+                                        {list?.packagePrice.length === 1 &&
+                                          " INR"}
                                       </option>
                                     )
                                   )}
@@ -154,7 +156,11 @@ const BeyoundObvious: FC = () => {
                                 {list.noOfDays}D
                               </span>
                             </Card.Text>
-                            <Card.Text className="bold p p-2 text-white d-flex flex-nowrap text-shadow-dark position-absolute fw-bold top-50 translate-middle start-50">
+                            <Card.Text className="bold p p-2 text-white d-flex flex-nowrap position-absolute fw-bold top-50 translate-middle start-50">
+                              India
+                              <span>
+                                <FaPlane className="mx-2 my-1" />
+                              </span>
                               {list.country}
                             </Card.Text>
                           </Card.Body>
@@ -165,7 +171,7 @@ const BeyoundObvious: FC = () => {
                 </Row>
                 <Col
                   onClick={() => history.push("/explore")}
-                  className="col-12 justify-content-end d-flex px-3 text-shadow-dark"
+                  className="col-12 pointer justify-content-end d-flex px-3 text-shadow-dark"
                   style={{ color: "#0c519f" }}
                 >
                   See more
@@ -186,7 +192,7 @@ const BeyoundObvious: FC = () => {
                       <Card className={`my-2 mx-1`}>
                         <Card.Body className="p-0">
                           <Card.Img
-                            className={`p-0 m-0 justify-content-center ${style.reasonCard}`}
+                            className={`p-0 m-0 pointer justify-content-center ${style.reasonCard}`}
                             style={{
                               // width: "100%",
                               padding: "0px !important",
@@ -195,7 +201,7 @@ const BeyoundObvious: FC = () => {
                             onClick={() =>
                               history.push(`/tour-detail:${list.packageId}`)
                             }
-                            src={`https://drive.google.com/thumbnail?id=${list.imageUri[0]}`}
+                            src={require("../../../Assets/header.jpg")}
                           />
                           <Card.Body className="py-0">
                             <Card.Text className="bold p p-2 text-white position-absolute fw-bold top-0 start-0">
@@ -204,13 +210,15 @@ const BeyoundObvious: FC = () => {
                             <Card.Text className="bold p p-2 text-white position-absolute fw-bold top-0 end-0">
                               <span className="p-0 fs-24 m-0 text-center fit-content">
                                 <select
-                                  className="form-select"
+                                  className="form-select pointer"
                                   aria-label="Default select example"
                                 >
                                   {list?.packagePrice?.map(
                                     (price: string, index: number) => (
                                       <option key={index} value={price}>
                                         {price}
+                                        {list?.packagePrice.length === 1 &&
+                                          " INR"}
                                       </option>
                                     )
                                   )}

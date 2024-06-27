@@ -177,7 +177,7 @@ const PassportRegistrationForm: FC = () => {
                 >
                   <Form.Label>Passport Seva Kendra</Form.Label>
                   <Form.Select
-                    className="border-0"
+                    className="border-0 pointer"
                     value={detail.city}
                     // onSelect={(e: any) =>
                     //   setDetail({ ...detail, city: e.target.value })
@@ -314,6 +314,7 @@ const PassportRegistrationForm: FC = () => {
                 <Form.Group className="mb-3" id="formGridCheckbox">
                   <h6 className="small p-0 m-0">Consent</h6>
                   <Form.Check
+                  className="pointer"
                     type="checkbox"
                     label="Yes, I agree with the privacy policy and terms and condition"
                     value={detail.check}
@@ -331,7 +332,7 @@ const PassportRegistrationForm: FC = () => {
                   <Col className="justify-content-start d-flex">
                     <Button
                       style={{ background: "#19bca1" }}
-                      className="fit-content "
+                      className="fit-content pointer"
                       onClick={() => setStep(step - 1)}
                       variant="primary"
                       type="submit"
@@ -340,7 +341,7 @@ const PassportRegistrationForm: FC = () => {
                     </Button>
                   </Col>
                 )}
-                <Col className="justify-content-start fit-content align-self-center d-flex">
+                <Col className="justify-content-start pointer fit-content align-self-center d-flex">
                   <Card.Text className="small" onClick={() => {}}>
                     Save as Draft
                   </Card.Text>
@@ -349,7 +350,7 @@ const PassportRegistrationForm: FC = () => {
               <Col className="justify-content-end d-flex">
                 <Button
                   style={{ background: step === 3 ? "#14a8e3" : "#19bca1" }}
-                  className="fit-content "
+                  className="fit-content pointer"
                   onClick={() => {
                     if (
                       step === 1 &&

@@ -54,7 +54,7 @@ const CheckOut: FC = () => {
           <h3 className="justify-content-center d-flex">Checkout Page</h3>
           <div className="tab_container">
             <Row className="position-relative align-items-center p-0 my-3 m-0 justify-content-center d-flex w-100">
-              <Col className="active text-center p-0 m-0 w-10">
+              <Col className="active pointer text-center p-0 m-0 w-10">
                 <label onClick={() => setStep(1)}>
                   {/* <span className="numberCircle">2</span> */}
                   <span>Customer Information</span>
@@ -63,7 +63,7 @@ const CheckOut: FC = () => {
               <Col className="col-1 border-2 border p-0 m-0 w-10 timeline-line"></Col>
               <Col className="col-1 border-2 border p-0 m-0 w-10 timeline-line"></Col>
 
-              <Col className="active text-center p-0 m-0 w-10">
+              <Col className="active pointer text-center p-0 m-0 w-10">
                 <label onClick={() => setStep(2)}>
                   {/* <span className="numberCircle">4</span> */}
                   <span>Payment</span>
@@ -165,7 +165,7 @@ const CheckOut: FC = () => {
 
                                       <Col className="justify-content-end d-flex">
                                         <Button
-                                          className="fit-content "
+                                          className="fit-content pointer"
                                           onClick={() => {
                                             setTravellersDetails([
                                               ...travellersDetails,
@@ -199,7 +199,7 @@ const CheckOut: FC = () => {
                                         {travellersDetails?.length + index + 1}
                                       </Card.Header>
                                       <Card.Body>
-                                        <Card.Title
+                                        <Card.Title className="pointer"
                                           style={{ color: "#0752a1" }}
                                           onClick={() =>
                                             setEdit({
@@ -281,6 +281,7 @@ const CheckOut: FC = () => {
                             id="radio1"
                             name="radios"
                             value="pp"
+                            className="pointer"
                             onClick={() => setPaymentMethod(1)}
                           />
                           <label htmlFor="radio1"></label>
@@ -331,7 +332,7 @@ const CheckOut: FC = () => {
                         </Col>
                         <Col className="col-2 h-100 align-self-start p-0 m-0 d-flex">
                           <Button
-                            className="round-edges h2 py-1 m-0"
+                            className="round-edges pointer h2 py-1 m-0"
                             style={{ minHeight: "0%" }}
                             onClick={(e: any) => {
                               setUpiID({
@@ -355,6 +356,7 @@ const CheckOut: FC = () => {
                             id="radio1"
                             name="radios"
                             value="pp"
+                            className="pointer"
                             onClick={() => setPaymentMethod(2)}
                           />
                           <label htmlFor="radio2"></label>
@@ -438,7 +440,7 @@ const CheckOut: FC = () => {
                             <div className="small pb-1">Expiry Date</div>
                             <Row>
                               <select
-                                className="mr-2 p-1 w-50"
+                                className="mr-2 p-1 w-50 pointer"
                                 style={{
                                   borderColor: "#f0f4f7",
                                   backgroundColor: "#f0f4f7",
@@ -458,7 +460,7 @@ const CheckOut: FC = () => {
                                 <option>12</option>
                               </select>
                               <select
-                                className="input mr-2 w-50 p-1"
+                                className="input mr-2 pointer w-50 p-1"
                                 style={{
                                   borderColor: "#f0f4f7",
                                   backgroundColor: "#f0f4f7",

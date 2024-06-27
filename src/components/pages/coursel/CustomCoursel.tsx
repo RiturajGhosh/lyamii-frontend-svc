@@ -23,7 +23,7 @@ const CustomCoursel: FC<CustomCourselType> = ({ page = 0, setPage, data }) => {
         data?.map((marker: any, index: number) => (
           <Card key={index} className={`d-inline-block m-0 mx-1`}>
             <Card.Img
-              className={`p-0 m-0 justify-content-center
+              className={`p-0 pointer m-0 justify-content-center
            ${style.img}`}
               style={{
                 // width: "100%",

@@ -110,7 +110,7 @@ const SideCrmNav: FC = () => {
                     <Nav.Link
                       style={{ width: "auto" }}
                       onClick={() => history.push(items.to)}
-                      className="text-start w-100 align-items-center flex-row d-flex p p-0 m-0 text-white text-decoration-none"
+                      className="text-start pointer w-100 align-items-center flex-row d-flex p p-0 m-0 text-white text-decoration-none"
                     >
                       <Col className="col-12 p-0 m-0">
                         <Button
@@ -181,7 +181,7 @@ const SideCrmNav: FC = () => {
         <FaGripLinesVertical
           className={`${hidden ? "w-20" : "w-10"} h-20 p-0 ${
             !hidden ? "start-90" : "start-50"
-          } m-0 position-absolute`}
+          } m-0 position-absolute pointer`}
           onClick={() => setHide(!hidden)}
         />
       </nav>

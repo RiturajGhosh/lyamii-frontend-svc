@@ -68,7 +68,7 @@ const UserManual: FC = () => {
                     sm={6}
                     xs={12}
                     key={index}
-                    className="d-flex flex-column col-4 top-0 my-3"
+                    className="d-flex pointer flex-column col-4 top-0 my-3"
                     style={{
                       float: "inherit",
                       objectFit: "cover",
@@ -90,7 +90,7 @@ const UserManual: FC = () => {
                         onClick={() =>
                           downloadFileFromGoogleDrive(option?.path)
                         }
-                        className="bold fs-auto p-2 d-inline-flex m-0 fw-bold"
+                        className="bold pointer fs-auto p-2 d-inline-flex m-0 fw-bold"
                         style={{ fontFamily: "OldStandard" }}
                       >
                         Download
@@ -98,6 +98,7 @@ const UserManual: FC = () => {
 
                       <span className="text-nowrap">
                         <MdDownloadForOffline
+                          className="pointer"
                           size={screenSize.screenSize < 786 ? "20px" : "30px"}
                           onClick={() =>
                             downloadFileFromGoogleDrive(option?.path)

@@ -42,7 +42,7 @@ const Review: FC = () => {
             <ul className="pagination justify-content-end">
               <li className="page-item">
                 <div
-                  className="page-link text-decoration-none"
+                  className="page-link pointer text-decoration-none"
                   onClick={() => history.push("/reviews")}
                   aria-label="Previous"
                 >
@@ -52,7 +52,7 @@ const Review: FC = () => {
               </li>
               <li className="page-item">
                 <div
-                  className="page-link text-decoration-none"
+                  className="page-link pointer text-decoration-none"
                   onClick={() => history.push("/reviews")}
                 >
                   1
@@ -60,7 +60,7 @@ const Review: FC = () => {
               </li>
               <li className="page-item">
                 <div
-                  className="page-link text-decoration-none"
+                  className="page-link pointer text-decoration-none"
                   onClick={() => history.push("/reviews")}
                 >
                   2
@@ -68,7 +68,7 @@ const Review: FC = () => {
               </li>
               <li className="page-item">
                 <div
-                  className="page-link text-decoration-none"
+                  className="page-link pointer text-decoration-none"
                   onClick={() => history.push("/reviews")}
                 >
                   3
@@ -76,7 +76,7 @@ const Review: FC = () => {
               </li>
               <li className="page-item">
                 <div
-                  className="page-link text-decoration-none"
+                  className="page-link pointer text-decoration-none"
                   onClick={() => history.push("/reviews")}
                   aria-label="Next"
                 >

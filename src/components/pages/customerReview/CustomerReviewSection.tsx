@@ -20,7 +20,7 @@ const CustomerReviewSection: FC = () => {
           <div className="card-body w-25">
             {
               <span
-                className="display-2 text-shadow-dark float-right text-white fw-bold"
+                className="display-2 pointer text-shadow-dark float-right text-white fw-bold"
                 style={{ fontFamily: "LeagueGothic" }}
                 onClick={() => history.push("/customerReviews")}
               >
@@ -86,43 +86,4 @@ const CustomerReviewSection: FC = () => {
   );
 };
 
-// {reviews.map((review, idx) => (
-//   <Col md={6} lg={4} className={"mt-4 mx-0"} key={idx}>
-//     <Col
-//       className={`p-0 m-0 ${style.reviewCard}`}
-//       style={{ background: "#8dc498" }}
-//     >
-//       <Card.Body>
-//         <Row className="d-flex bg-white shadow col-11 p-4 flex-row flex-nowrap position-relative justify-content-between">
-//           <Col className="col-5">
-//             <img
-//               className="mb-3"
-//               style={{
-//                 width: "calc(0.1* 100vh)",
-//                 height: "calc(0.1* 100vh)",
-//               }}
-//               src={avatar}
-//             />
-//           </Col>
-//           <div className="col-5 position-absolute top-50 start-100 h3 translate-middle">
-//             <US title="United States" className="" />
-//           </div>
-//         </Row>
-//         <Col className="col-11 p-4 bg-white">
-//           <span
-//             className={`${style.review} fs-medium overflow-hidden font-italic overflow-hidden`}
-//           >
-//             {review.review}
-//           </span>
-//           <span className="text-italic h3 float-right">
-//             {review.name}
-//           </span>
-//         </Col>
-//         {/* <Card.Text className="small">
-//           {"customer"}
-//         </Card.Text> */}
-//       </Card.Body>
-//     </Col>
-//   </Col>
-// ))}
 export default CustomerReviewSection;

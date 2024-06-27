@@ -72,7 +72,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                 style={{ minHeight: "0%", background: "#5ba16b" }}
               >
                 <Col
-                  className="fit-content py-3 border-0"
+                  className="fit-content pointer py-3 border-0"
                   onClick={(e: any) => {
                     history.push("/addHotel");
                   }}
@@ -95,7 +95,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                 style={{ minHeight: "0%", background: "#5ba16b" }}
               >
                 <Col
-                  className="fit-content py-3 border-0"
+                  className="fit-content pointer py-3 border-0"
                   onClick={(e: any) => {
                     history.push("/addHostel");
                   }}
@@ -166,7 +166,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
                   </Col>
                   <div className="p-0 m-0 border-bottom border-dark border-2 d-flex align-items-center w-100">
                     <Select
-                      className="px-3 w-100 p justify-content-start p-0 text-dark m-0 border-0"
+                      className="px-3 w-100 p pointer justify-content-start p-0 text-dark m-0 border-0"
                       styles={{
                         control: (baseStyles, state) => ({
                           ...baseStyles,
@@ -744,7 +744,7 @@ const RegistrationForm: FC<RegistrationFormType> = ({
               className="col-12 gy-3 align-self-center justify-content-center d-flex"
             >
               <Button
-                className="align-items-center bg-primary justify-content-center d-flex"
+                className="align-items-center pointer bg-primary justify-content-center d-flex"
                 onClick={() => submit()}
               >
                 <span className="fs-16">Submit</span>

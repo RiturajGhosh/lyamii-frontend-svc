@@ -156,7 +156,7 @@ const JoinUs: FC = () => {
                       <Col className="px-1 align-self-center m-0">
                         <InputForm
                           label={""}
-                          className="w-100 bg-white h5 justify-content-center p-2 px-2 text-dark text-center m-0 border-2 border-top-0 border-end-0 border-start-0"
+                          className="w-100 bg-white h5 pointer justify-content-center p-2 px-2 text-dark text-center m-0 border-2 border-top-0 border-end-0 border-start-0"
                           type="text"
                           placeholder="USER EMAIL"
                           values={values}
@@ -180,7 +180,7 @@ const JoinUs: FC = () => {
                       {!have && (
                         <Col className="col-4 align-self-center p-0 m-0">
                           <Button
-                            className="round-edges h2 py-1 m-0"
+                            className="round-edges h2 py-1 m-0 pointer"
                             style={{ minHeight: "0%", background: "#4a915b" }}
                             onClick={(e: any) => {
                               e.preventDefault();
@@ -244,7 +244,7 @@ const JoinUs: FC = () => {
                         )}
                         <Col className="col-4 align-self-center p-0 m-0">
                           <Button
-                            className="round-edges h2 py-1 m-0"
+                            className="round-edges h2 py-1 m-0 pointer"
                             style={{ minHeight: "0%", background: "#4a915b" }}
                             onClick={(e: any) => {
                               e.preventDefault();
@@ -330,7 +330,7 @@ const JoinUs: FC = () => {
                     )}
                     {have ? (
                       <Button
-                        className="round-edges h2 h-100 py-1"
+                        className="round-edges pointer h2 h-100 py-1"
                         style={{ minHeight: "0%", background: "#4a915b" }}
                         onClick={(e: any) => {
                           e.preventDefault();
@@ -348,7 +348,7 @@ const JoinUs: FC = () => {
                       <>
                         {otpVerify && (
                           <Button
-                            className="round-edges h2 h-100 py-1"
+                            className="round-edges pointer h2 h-100 py-1"
                             style={{ minHeight: "0%", background: "#4a915b" }}
                             onClick={(e: any) => {
                               e.preventDefault();
@@ -382,7 +382,7 @@ const JoinUs: FC = () => {
                   </Col>
                   {have ? (
                     <span
-                      className="d-flex align-self-center display-6 bold fit-content"
+                      className="d-flex align-self-center pointer display-6 bold fit-content"
                       style={{ color: "#4a915b" }}
                       onClick={(event) => {
                         event.preventDefault();
@@ -397,7 +397,7 @@ const JoinUs: FC = () => {
                     </span>
                   ) : (
                     <span
-                      className="d-flex align-self-center display-6 bold fit-content"
+                      className="d-flex align-self-center pointer display-6 bold fit-content"
                       style={{ color: "#4a915b" }}
                       onClick={(event) => {
                         event.preventDefault();
@@ -442,7 +442,7 @@ const JoinUs: FC = () => {
               </Col>
               <Col className="position-relative p-0 border-1 text-center mx-42 justify-content-end text-white">
                 <Button
-                  className="align-middle fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary"
+                  className="align-middle fs-auto pointer justify-self-center position-absolute top-100 translate-middle btn-secondary"
                   style={{ background: "#0752a1" }}
                   onClick={() => history.push("/addHotel")}
                 >
@@ -476,7 +476,7 @@ const JoinUs: FC = () => {
               </Col>
               <Col className="position-relative p-0 border-1 text-center mx-42 justify-content-end text-white">
                 <Button
-                  className="align-middle text-nowrap fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary"
+                  className="align-middle text-nowrap pointer fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary"
                   style={{ background: "#0752a1" }}
                   onClick={() => history.push("/addHotel")}
                 >
@@ -511,7 +511,7 @@ const JoinUs: FC = () => {
               </Col>
               <Col className="position-relative p-0 border-1 text-center mx-42 justify-content-end text-white">
                 <Button
-                  className="align-middle fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary"
+                  className="align-middle fs-auto pointer justify-self-center position-absolute top-100 translate-middle btn-secondary"
                   style={{ background: "#0752a1" }}
                   onClick={() => history.push("/")}
                 >
@@ -546,7 +546,7 @@ const JoinUs: FC = () => {
               </Col>
               <Col className="position-relative p-0 border-1 text-center mx-42 justify-content-end text-white">
                 <Button
-                  className="align-middle fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary"
+                  className="align-middle fs-auto pointer justify-self-center position-absolute top-100 translate-middle btn-secondary"
                   style={{ background: "#0752a1" }}
                   onClick={() => history.push("/")}
                 >

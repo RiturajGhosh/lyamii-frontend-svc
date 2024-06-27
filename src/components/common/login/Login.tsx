@@ -158,7 +158,7 @@ const Login: FC = () => {
                       <Col className="px-1 align-self-center m-0">
                         <InputForm
                           label={""}
-                          className="w-100 bg-white h5 justify-content-center p-2 px-2 text-dark text-center m-0 border-2 border-top-0 border-end-0 border-start-0"
+                          className="w-100 pointer bg-white h5 justify-content-center p-2 px-2 text-dark text-center m-0 border-2 border-top-0 border-end-0 border-start-0"
                           type="text"
                           placeholder="USER EMAIL"
                           values={values}
@@ -180,7 +180,7 @@ const Login: FC = () => {
                         />
                       </Col>
                       {!have && (
-                        <Col className="col-4 align-self-center p-0 m-0">
+                        <Col className="col-4 pointer align-self-center p-0 m-0">
                           <Button
                             className="round-edges h2 py-1 m-0"
                             style={{ minHeight: "0%", background: "#4a915b" }}
@@ -246,7 +246,7 @@ const Login: FC = () => {
                         )}
                         <Col className="col-4 align-self-center p-0 m-0">
                           <Button
-                            className="round-edges h2 py-1 m-0"
+                            className="round-edges pointer h2 py-1 m-0"
                             style={{ minHeight: "0%", background: "#4a915b" }}
                             onClick={(e: any) => {
                               e.preventDefault();
@@ -332,7 +332,7 @@ const Login: FC = () => {
                     )}
                     {have ? (
                       <Button
-                        className="round-edges h2 h-100 py-1"
+                        className="round-edges pointer h2 h-100 py-1"
                         style={{ minHeight: "0%", background: "#4a915b" }}
                         onClick={(e: any) => {
                           e.preventDefault();
@@ -350,7 +350,7 @@ const Login: FC = () => {
                       <>
                         {otpVerify && (
                           <Button
-                            className="round-edges h2 h-100 py-1"
+                            className="round-edges pointer h2 h-100 py-1"
                             style={{ minHeight: "0%", background: "#4a915b" }}
                             onClick={(e: any) => {
                               e.preventDefault();
@@ -384,7 +384,7 @@ const Login: FC = () => {
                   </Col>
                   {have ? (
                     <span
-                      className="d-flex align-self-center display-6 bold fit-content"
+                      className="d-flex align-self-center pointer display-6 bold fit-content"
                       style={{ color: "#4a915b" }}
                       onClick={(event) => {
                         event.preventDefault();
@@ -399,7 +399,7 @@ const Login: FC = () => {
                     </span>
                   ) : (
                     <span
-                      className="d-flex align-self-center display-6 bold fit-content"
+                      className="d-flex align-self-center pointer display-6 bold fit-content"
                       style={{ color: "#4a915b" }}
                       onClick={(event) => {
                         event.preventDefault();
@@ -444,7 +444,7 @@ const Login: FC = () => {
               </Col>
               <Col className="position-relative p-0 border-1 text-center mx-42 justify-content-end text-white">
                 <Button
-                  className="align-middle fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary"
+                  className="align-middle pointer fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary"
                   style={{ background: "#0752a1" }}
                   onClick={() => history.push("/addHotel")}
                 >
@@ -478,7 +478,7 @@ const Login: FC = () => {
               </Col>
               <Col className="position-relative p-0 border-1 text-center mx-42 justify-content-end text-white">
                 <Button
-                  className="align-middle text-nowrap fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary"
+                  className="align-middle pointer text-nowrap fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary"
                   style={{ background: "#0752a1" }}
                   onClick={() => history.push("/addHotel")}
                 >
@@ -513,7 +513,7 @@ const Login: FC = () => {
               </Col>
               <Col className="position-relative p-0 border-1 text-center mx-42 justify-content-end text-white">
                 <Button
-                  className="align-middle fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary"
+                  className="align-middle pointer fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary"
                   style={{ background: "#0752a1" }}
                   onClick={() => history.push("/")}
                 >
@@ -548,7 +548,7 @@ const Login: FC = () => {
               </Col>
               <Col className="position-relative p-0 border-1 text-center mx-42 justify-content-end text-white">
                 <Button
-                  className="align-middle fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary"
+                  className="align-middle pointer fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary"
                   style={{ background: "#0752a1" }}
                   onClick={() => history.push("/")}
                 >
