@@ -1,11 +1,15 @@
 import {
   SET_USER_DATA,
+  SET_USER_PREFENCE,
+  SET_USER_PRIVACY,
   UserDataDto,
   userDataActionType,
 } from "../actions/types/userDataActionType";
 
 export interface userDataState {
   userData: UserDataDto;
+  prefence: string[];
+  privacy: string;
 }
 const initialState: userDataState = {
   userData: {
@@ -26,6 +30,8 @@ const initialState: userDataState = {
     gender: "",
     bloodGroup: "",
   },
+  prefence: [],
+  privacy: "",
 };
 
 export default function userProfileDataReducer(
@@ -37,6 +43,16 @@ export default function userProfileDataReducer(
       return {
         ...state,
         userData: { ...action.payload },
+      };
+    case SET_USER_PREFENCE:
+      return {
+        ...state,
+        prefence: [...action.payload],
+      };
+    case SET_USER_PRIVACY:
+      return {
+        ...state,
+        privacy: action.payload,
       };
     default:
       return state;

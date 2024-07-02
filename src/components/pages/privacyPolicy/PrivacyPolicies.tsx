@@ -1,23 +1,10 @@
 import React, { FC } from "react";
-import { Card, Col, Row } from "react-bootstrap";
-import { privacyPolicies } from "../../common/enum/policies";
-import Icon from "../../common/icon/Icon";
-import { useHistory } from "react-router-dom";
+import { Card, Col } from "react-bootstrap";
 
 const PrivacyPolicies: FC = () => {
-  const history = useHistory();
   return (
     <section className="bg-white align-items-center d-flex justify-content-center flex-column">
       <Col className="justify-content-center align-self-center d-flex">
-        <Row
-          onClick={() => history.goBack()}
-          className={
-            "position-absolute pointer top-0 start-0 col-4 m-0 justify-content-start align-items-center p-0"
-          }
-        >
-          <Icon name="back" className="m-0 justify-content-start p-0 w-10" />
-          Back
-        </Row>
         <span className="fs-1 my-5 pl-4 text-decoration-underline col-12 text-dark fw-bold">
           Privacy Policy
         </span>
@@ -405,10 +392,7 @@ const PrivacyPolicies: FC = () => {
         </div>
         <div className={"pb-2"} style={{ fontSize: "1.5dvi" }}>
           In case user wishes to delete their account, they can do so using this{" "}
-          <a href="https://lyamii.com/">
-            Link
-          </a>
-          .
+          <a href="https://lyamii.com/">Link</a>.
         </div>
         <div className={"pb-2"} style={{ fontSize: "1.5dvi" }}>
           COOKIES AND SESSION DATA{" "}

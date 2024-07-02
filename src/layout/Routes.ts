@@ -14,12 +14,15 @@ import ContactDetail from "../components/pages/contact/ContactDetail";
 import CrmDashBoard from "../components/pages/crmDashBoard/CrmDashBoard";
 import CustomerReviews from "../components/pages/customerReview/CustomerReview";
 import Dashboard from "../components/pages/dashboard/Dashboard";
+import Documentation from "../components/pages/documentation/Documentation";
 import ExploreDestination from "../components/pages/exploreDestination/ExploreDestination";
 import FAQ from "../components/pages/faq/FAQ";
 import Hostel from "../components/pages/hostel/Hostel";
 import Hotel from "../components/pages/hotel/Hotel";
 import PassportRegistrationForm from "../components/pages/passportRegistrationForm/PassportRegistrationForm";
 import Personal from "../components/pages/personal/Personal";
+import Prefences from "../components/pages/prefenceUI/Prefences";
+import PrivacyAndSecurity from "../components/pages/privacyAndSecurity/PrivacyAndSecurity";
 import PrivacyPolicies from "../components/pages/privacyPolicy/PrivacyPolicies";
 import Profile from "../components/pages/profile/Profile";
 import SubmitPage from "../components/pages/submitPage/SubmitPage";
@@ -222,13 +225,13 @@ export const commonSiteMap: UserRouteConfig[] = [
   {
     exact: true,
     path: "/profile/prefences",
-    Component: BlankPage,
+    Component: Prefences,
     access: AccessType.YES,
   },
   {
     exact: true,
     path: "/profile/privacy&security",
-    Component: BlankPage,
+    Component: PrivacyAndSecurity,
     access: AccessType.YES,
   },
   {
@@ -240,7 +243,7 @@ export const commonSiteMap: UserRouteConfig[] = [
   {
     exact: true,
     path: "/profile/documentations",
-    Component: BlankPage,
+    Component: Documentation,
     access: AccessType.YES,
   },
   {

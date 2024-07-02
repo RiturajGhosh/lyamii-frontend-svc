@@ -99,28 +99,27 @@ const SideNav: FC = () => {
           </Col>
           <Col>
             <Nav.Item className="navmenu align-items-flex-start mx-5 justify-content-center d-flex flex-column text-start p-0 m-0">
-              {sidebarNavItems.map((items) => {
+              {sidebarNavItems.map((items, index) => {
                 return (
-                  <>
-                    <Nav.Link
-                      style={{ height: items.height, width: "max-content" }}
-                      onClick={() => history.push(items.to)}
-                      className="text-start align-items-center flex-row d-flex p p-0 m-0 text-white text-decoration-none"
-                    >
-                      <Icon
-                        fill="#c7ccff"
-                        className={`p-1 mr-1 rounded-circle`}
-                        style={{
-                          // width: "max-content",
-                          background: "white",
-                          padding: "0px !important",
-                          margin: "0px !important",
-                        }}
-                        name={items.icon}
-                      />
-                      <Col className="pl-1">{items.display}</Col>
-                    </Nav.Link>
-                  </>
+                  <Nav.Link
+                    key={index}
+                    style={{ height: items.height, width: "max-content" }}
+                    onClick={() => history.push(items.to)}
+                    className="text-start align-items-center flex-row d-flex p p-0 m-0 text-white text-decoration-none"
+                  >
+                    <Icon
+                      fill="#c7ccff"
+                      className={`p-1 mr-1 rounded-circle`}
+                      style={{
+                        // width: "max-content",
+                        background: "white",
+                        padding: "0px !important",
+                        margin: "0px !important",
+                      }}
+                      name={items.icon}
+                    />
+                    <Col className="pl-1">{items.display}</Col>
+                  </Nav.Link>
                 );
               })}
             </Nav.Item>

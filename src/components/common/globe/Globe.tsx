@@ -31,18 +31,18 @@ const Globe: FC = () => {
   const screenSize = useSelector(selectScreenSize);
   const dispatch = useDispatch();
   const history = useHistory();
-  function onClickMarker(
+  const onClickMarker = (
     marker: Marker,
     markerObject: Object3D,
     event: PointerEvent
-  ) {
+  ) => {
     setEvent({
       type: "CLICK",
       marker,
       markerObjectID: markerObject.uuid,
       pointerEventPosition: { x: event.clientX, y: event.clientY },
     });
-    dispatch({
+    ({
       type: SET_SELECTED_LOCATION,
       payload: {
         city: marker.city,
@@ -54,10 +54,11 @@ const Globe: FC = () => {
     });
     window.scroll(0, 0);
     history.push("/explore");
-  }
+    return;
+  };
   function onDefocus(previousFocus: Coordinates) {
     setEvent({
-      type: "DEFOCUS",
+      tydispatchpe: "DEFOCUS",
       previousFocus,
     });
     dispatch({

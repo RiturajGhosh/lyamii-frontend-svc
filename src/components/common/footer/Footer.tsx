@@ -14,7 +14,7 @@ const Footer: FC = () => {
       <Col className="footer float-right p-0 w-100">
         <Col className="m-0 p-0 w-100">
           <Col className="mt-5 row d-flex justify-content-between m-5">
-            <Col md={12} lg={7}>
+            <Col md={12} lg={8}>
               <Row>
                 <Col md={4} lg={4} sm={12} className="p-0">
                   <h2 className="ft-24 mt-2 fw-bold">Community</h2>
@@ -102,7 +102,7 @@ const Footer: FC = () => {
                 </Col>
               </Row>
             </Col>
-            <Col md={12} lg={5} className="mt-2">
+            <Col md={12} lg={4} className="mt-2">
               <span
                 className="display-1 text-white"
                 onClick={() => history.push("/")}
