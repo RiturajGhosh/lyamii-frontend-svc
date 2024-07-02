@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
-import { Button, Card, Col, Modal, Row } from "react-bootstrap";
+import { Button, Card, Carousel, Col, Form, Modal, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { selectedLocation } from "../../../state/selectors/selectGlobeData";
 import markers from "../../common/globe/markers";
@@ -25,6 +25,7 @@ import {
 import { getPackageDetailsByCountryAndDaysApi } from "../../../api/getPackageDetailsByCountryAndDaysApi";
 import { parseTourDataArray } from "../../../utils/parseTourData";
 import { Country } from "country-state-city";
+import ControlledCarousel from "../coursel/Coursel";
 
 export type stateType = {
   data: any[];
@@ -43,7 +44,8 @@ const ExploreDestination: FC = () => {
     maxPrice: 120000,
     noOfDays: 0,
   });
-  const [type, setType] = useState("text");
+
+  const [type, setType] = useState(false);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [state, setState] = useState<stateType>({
@@ -114,7 +116,20 @@ const ExploreDestination: FC = () => {
       setShowFilter(false);
     }
   }, [screenSize]);
-
+  const data = [
+    {
+      packageId: "RIE07****",
+      imageUri: require("../../../Assets/EXPLORE_1.png"),
+    },
+    {
+      packageId: "RIE10****",
+      imageUri: require("../../../Assets/EXPLORE_2.png"),
+    },
+    {
+      packageId: "RIE10****",
+      imageUri: require("../../../Assets/EXPLORE_3.png"),
+    },
+  ];
   const fetchTours = async () => {
     const filterData = markers.filter(
       (marker: any) =>
@@ -161,7 +176,8 @@ const ExploreDestination: FC = () => {
   }, [filter]);
   return (
     <MainContainer>
-      <Coursel />
+      <ControlledCarousel images={data} interval={3000} />
+
       <Row className="flex-lg-row flex-column-reverse p-0 m-0 fit-content py-5 justify-content-between align-items-center d-flex">
         <Col lg={9} className="p-0 col-12 m-0">
           <Row className="d-flex g-5">
@@ -192,15 +208,21 @@ const ExploreDestination: FC = () => {
                       {"Indian Passport Holders"}
                     </Col>
                     <div className="position-absolute pointer top-50 start-100 h3 translate-middle">
-                      <Checkbox
-                        option={filterList[0].subFilter[3]}
-                        onClick={(label: string) => {
-                          setUpdate(false);
-                          // handleFilters("Type", "Others");
-                        }}
-                        label={false}
-                        type={"checkbox"}
-                      />
+                      <Form.Check type={"checkbox"} id={`check-api-checkbox`}>
+                        <Form.Check.Input
+                          className="pointer"
+                          checked={type ? true : false}
+                          onChange={() => {
+                            setTourDetail({
+                              ...tourDetail,
+                              destination: "",
+                            });
+                            setType(true);
+                          }}
+                          type={"checkbox"}
+                          isValid
+                        />
+                      </Form.Check>
                     </div>
                   </div>
                   <div className="position-relative">
@@ -216,15 +238,21 @@ const ExploreDestination: FC = () => {
                       {"Others"}
                     </Col>
                     <div className="position-absolute pointer top-50 start-100 h3 translate-middle">
-                      <Checkbox
-                        option={filterList[0].subFilter[3]}
-                        onClick={(label: string) => {
-                          setUpdate(false);
-                          // handleFilters("Type", "Indian Passport Holders");
-                        }}
-                        label={false}
-                        type={"checkbox"}
-                      />
+                      <Form.Check type={"checkbox"} id={`check-api-checkbox`}>
+                        <Form.Check.Input
+                          className="pointer"
+                          checked={type ? false : true}
+                          onChange={() => {
+                            setTourDetail({
+                              ...tourDetail,
+                              destination: "",
+                            });
+                            setType(false);
+                          }}
+                          type={"checkbox"}
+                          isValid
+                        />
+                      </Form.Check>
                     </div>
                   </div>
                   <Col className="position-relative p-0 border-1 text-center mx-42 justify-content-end text-white">

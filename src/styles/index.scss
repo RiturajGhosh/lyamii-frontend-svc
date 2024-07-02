@@ -1164,6 +1164,7 @@ button {
   background-color: #000 !important;
   // background-image: linear-gradient(to top, #4d668ed8, #f6f7f8);
   bottom: 0 !important;
+  position: relative;
 }
 .text-shadow-dark {
   text-shadow: 1px 1px #000;
@@ -2185,7 +2186,7 @@ ul {
     transform: translatex(0px);
   }
   50% {
-    transform: translatex(-20px);
+    transform: translatex(-500px);
   }
   100% {
     transform: translatex(0px);
@@ -2194,7 +2195,7 @@ ul {
 
 .image {
   transform: translatex(0px);
-  animation: float 6s ease-in-out infinite;
+  animation: float 19s ease-in-out infinite;
 }
 
 .expand {

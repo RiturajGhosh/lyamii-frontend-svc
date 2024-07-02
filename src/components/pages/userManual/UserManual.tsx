@@ -40,8 +40,8 @@ const UserManual: FC = () => {
                 <span
                   className="display-3 text-outline fw-bold flex-row position-relative"
                   style={{
-                    color: "#EA8A04",
-                    fontFamily: "DISTILLERYSTRONG",
+                    color: "#245294",
+                    fontFamily: "emoji",
                     // fontSize: screenSize.screenSize < 786 ? "5.5dvi" : "6dvi",
                   }}
                 >

@@ -405,7 +405,7 @@ const PrivacyPolicies: FC = () => {
         </div>
         <div className={"pb-2"} style={{ fontSize: "1.5dvi" }}>
           In case user wishes to delete their account, they can do so using this{" "}
-          <a href="https://www.makemytrip.com/pwa/hlp/v3/delete/account/">
+          <a href="https://lyamii.com/">
             Link
           </a>
           .

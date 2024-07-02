@@ -58,19 +58,25 @@ const ContactDetail: FC = () => {
                   ADDRESS
                 </Col>{" "}
                 <Col>
-                  <span
+                  {/* <span
                     className="fs-auto bold d-flex  justify-content-center"
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
                   >
                     Customer Support
-                  </span>
+                  </span> */}
                   <span
                     className="fs-auto d-flex  justify-content-center"
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
                   >
-                    Connect.CRM@Lyamii.com
+                    711303, Bagnan, Howrah.
                   </span>{" "}
                   <span
+                    className="fs-auto d-flex  justify-content-center"
+                    style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
+                  >
+                    560038, Indiranagar, Bengaluru.
+                  </span>
+                  {/* <span
                     className="fs-auto bold d-flex  justify-content-center"
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
                   >
@@ -81,8 +87,8 @@ const ContactDetail: FC = () => {
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
                   >
                     Connect.Business@Lyamii.com
-                  </span>{" "}
-                  <span
+                  </span>{" "} */}
+                  {/* <span
                     className="fs-auto bold d-flex  justify-content-center"
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
                   >
@@ -93,7 +99,7 @@ const ContactDetail: FC = () => {
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
                   >
                     Drop.Feedback@Lyamii.com
-                  </span>
+                  </span> */}
                 </Col>
               </Col>
               <Col className="m-5 justify-content-center flex-column d-flex">
@@ -117,9 +123,9 @@ const ContactDetail: FC = () => {
                     className="fs-auto bold d-flex  justify-content-center"
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
                   >
-                    Customer Support
+                    (Currently under maintenance)
                   </span>
-                  <span
+                  {/* <span
                     className="fs-auto d-flex  justify-content-center"
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
                   >
@@ -130,8 +136,8 @@ const ContactDetail: FC = () => {
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
                   >
                     Business Related Support
-                  </span>
-                  <span
+                  </span> */}
+                  {/* <span
                     className="fs-auto d-flex  justify-content-center"
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
                   >
@@ -142,13 +148,13 @@ const ContactDetail: FC = () => {
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
                   >
                     FeedBack
-                  </span>
-                  <span
+                  </span> */}
+                  {/* <span
                     className="fs-auto d-flex justify-content-center"
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
                   >
                     Drop.Feedback@Lyamii.com
-                  </span>
+                  </span> */}
                 </Col>
               </Col>
               <Col className="m-5 justify-content-center flex-column d-flex">
@@ -184,31 +190,43 @@ const ContactDetail: FC = () => {
                     className="fs-auto d-flex  justify-content-center"
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
                   >
-                    Connect.CRM@Lyamii.com
+                    Connect.helpdesk@lyamii.com
                   </span>{" "}
                   <span
                     className="fs-auto bold d-flex  justify-content-center"
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
                   >
-                    Business Related Support
+                    Business Related Enquiries
                   </span>
                   <span
                     className="fs-auto d-flex  justify-content-center"
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
                   >
-                    Connect.Business@Lyamii.com
+                    Connect.business@lyamii.com
                   </span>{" "}
                   <span
                     className="fs-auto bold d-flex  justify-content-center"
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
                   >
-                    FeedBack
+                    Embassy Support
                   </span>
                   <span
                     className="fs-auto d-flex justify-content-center"
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
                   >
-                    Drop.Feedback@Lyamii.com
+                    Connect.bootcamp@lyamii.com
+                  </span>
+                  <span
+                    className="fs-auto bold d-flex  justify-content-center"
+                    style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
+                  >
+                    Reviews
+                  </span>
+                  <span
+                    className="fs-auto d-flex justify-content-center"
+                    style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
+                  >
+                    drop.feedback@lyamii.com
                   </span>
                 </Col>
               </Col>

@@ -9,7 +9,7 @@ const Review: FC = () => {
       <Col className="" id="#review">
         <Row className="justify-content-center" onScroll={(e) => {}}>
           {review.map((option, idx) => (
-            <Col xs={12} sm={6} md={6} lg={4} className={""} onClick={() => {}} key={idx}>
+            <Col xs={12} sm={6} md={6} lg={4} className={"my-4"} onClick={() => {}} key={idx}>
               <Col className="p-0 align-items-center justify-content-center">
                 <Row className="flex-nowrap">
                   <Image
@@ -34,7 +34,7 @@ const Review: FC = () => {
                 </Row>
               </Col>
               <Col>
-                <p className="text-wrap text-dark text-center">{option.name}</p>
+                {/* <p className="text-wrap text-dark text-center">{option.name}</p> */}
               </Col>
             </Col>
           ))}

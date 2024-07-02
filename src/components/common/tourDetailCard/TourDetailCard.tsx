@@ -25,6 +25,9 @@ import {
   selectedTourDataDto,
 } from "../../../state/actions/types/tourDataActionType";
 import { parseTourData } from "../../../utils/parseTourData";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { countries } from "../enum/countryCode";
+import { countryCode } from "../../../utils/countryCodes";
 
 const TourDetailCard: FC = () => {
   const tourData = useSelector(selectTourData);
@@ -32,7 +35,7 @@ const TourDetailCard: FC = () => {
   const [count, setCount] = useState(0);
   const history = useHistory();
   const dispatch = useDispatch();
-
+  const [flagCode, setFlagCode] = useState("");
   const fetchTours = async () => {
     const response = await getPackageDetailsByPackageIdApi(
       history.location.pathname.split(":")[1]
@@ -49,6 +52,13 @@ const TourDetailCard: FC = () => {
   }, []);
 
   useEffect(() => {
+    const flag = countryCode.filter(
+      (c) =>
+        c?.name?.toLowerCase().includes(tourData?.country?.toLowerCase()) &&
+        c?.name?.length === tourData?.country?.length &&
+        c
+    )[0]?.code;
+    setFlagCode(flag);
     tourData && setTour(tourData);
   }, [tourData]);
 
@@ -108,9 +118,8 @@ const TourDetailCard: FC = () => {
                     fontSize: "5.5dvi",
                     fontFamily: "initial",
                   }}
-                  className={`bg-dark text-start w-100 px-4 justify-content-center text-white position-relative p-0 m-0 pb-2 ${style.tourNameHeight}`}
+                  className={`rounded-4 bg-dark text-start w-100 px-4 justify-content-center text-white position-relative p-0 m-0 pb-2 ${style.tourNameHeight}`}
                 >
-                  {tour?.packageName}
                   <Col
                     className={`position-absolute top-0 end-0 border-1 text-black justify-self-center d-flex pe-4`}
                   >
@@ -118,9 +127,10 @@ const TourDetailCard: FC = () => {
                       alt=""
                       className="m-0 p-0"
                       style={{ height: "10vh" }}
-                      src={`https://flagsapi.com/${tour.flagCode}/flat/64.png`}
+                      src={`https://flagsapi.com/${flagCode}/flat/64.png`}
                     />
                   </Col>
+                  {tour?.packageName}
                 </Card>
               </Col>{" "}
             </Col>
@@ -306,57 +316,50 @@ const TourDetailCard: FC = () => {
                       ))}
                     </section>
                     <Col lg={3} xs={3} className="col-6 py-2 align-self-end">
-                      <Col
+                      <Row
                         className={`fw-bold align-items-center text-nowrap text-secondary`}
                       >
-                        {/* <Row className="w-100 justify-content-center">
+                        <Row className="w-100 justify-content-center">
                           {tour &&
-                            [
-                              ...Array(
-                                tour?.basicTourData?.starRating
-                                  ?.value || 0
-                              ),
-                            ]?.map((index: number) => {
-                              return (
-                                <AiFillStar
-                                  key={index}
-                                  size={25}
-                                  style={{
-                                    color: "#fed02b",
-                                    width: "fit-content",
-                                    paddingLeft: "0px",
-                                    paddingRight: "0px",
-                                    marginTop: "0px",
-                                  }}
-                                  className="d-flex"
-                                />
-                              );
-                            })}
+                            [...Array(tour?.rating || 0)]?.map(
+                              (index: number) => {
+                                return (
+                                  <AiFillStar
+                                    key={index}
+                                    size={25}
+                                    style={{
+                                      color: "#fed02b",
+                                      width: "fit-content",
+                                      paddingLeft: "0px",
+                                      paddingRight: "0px",
+                                      marginTop: "0px",
+                                    }}
+                                    className="d-flex"
+                                  />
+                                );
+                              }
+                            )}
                           {tour &&
-                            [
-                              ...Array(
-                                5 -
-                                  tour?.basicTourData?.starRating
-                                    ?.value || 0
-                              ),
-                            ]?.map((index: number) => {
-                              return (
-                                <AiOutlineStar
-                                  key={index}
-                                  size={25}
-                                  style={{
-                                    color: "white",
-                                    width: "fit-content",
-                                    paddingLeft: "0px",
-                                    paddingRight: "0px",
-                                    marginTop: "0px",
-                                  }}
-                                  className="d-flex"
-                                />
-                              );
-                            })}
-                        </Row> */}
-                      </Col>
+                            [...Array(5 - tour?.rating || 0)]?.map(
+                              (index: number) => {
+                                return (
+                                  <AiOutlineStar
+                                    key={index}
+                                    size={25}
+                                    style={{
+                                      color: "white",
+                                      width: "fit-content",
+                                      paddingLeft: "0px",
+                                      paddingRight: "0px",
+                                      marginTop: "0px",
+                                    }}
+                                    className="d-flex"
+                                  />
+                                );
+                              }
+                            )}
+                        </Row>
+                      </Row>
                     </Col>
                   </Card>
 
@@ -371,7 +374,7 @@ const TourDetailCard: FC = () => {
                             className="form-select pointer"
                             aria-label="Default select example"
                           >
-                            {["$24", "24 USD"].map(
+                            {["2000 INR", "24 USD"].map(
                               (price: string, index: number) => (
                                 <option key={index} value={price}>
                                   {price}

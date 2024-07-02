@@ -48,6 +48,7 @@ const PrivateRoute: FC<PrivateRouteProps> = ({
   const screenSize = useSelector(selectScreenSize);
   const sideNav = useSelector(selectSideNav);
   useEffect(() => {
+    window.scrollTo(0, 0);
     dispatch({
       type: SET_LOCATION,
       payload: path || pathName,

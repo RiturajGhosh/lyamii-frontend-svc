@@ -11,7 +11,7 @@ const Footer: FC = () => {
   const user = cookie && JSON.parse(cookie);
   return (
     <footer>
-      <Col className="footer float-right p-0 m-0 w-100">
+      <Col className="footer float-right p-0 w-100">
         <Col className="m-0 p-0 w-100">
           <Col className="mt-5 row d-flex justify-content-between m-5">
             <Col md={12} lg={7}>

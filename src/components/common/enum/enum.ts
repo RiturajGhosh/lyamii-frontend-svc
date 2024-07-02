@@ -27,7 +27,7 @@ export const reasons = [
     title: "Secure & Convenient",
     img: require("../../../Assets/fingerprint1.png"),
     description:
-      "Experience secure and seamless transactions. Enjoy convenience and peace of mind with our online/offline payment model. Embrace effortless currency exchange in our Journey of a Lifetime tours.",
+      "Experience secure and seamless transactions. Enjoy convenience and peace of mind with our online/offline payment model. Embrace effortless currency exchange in our Incredible India tours.",
   },
   {
     title: "Has something for Everyone",
@@ -74,10 +74,6 @@ export const paths = [
   "/addHotel",
   "/addHostel",
   "/profile",
-  "/faqs",
-  "/cancellationandRefundpolicy",
-  "/refundpolicy",
-  "/termconditions",
   "/crm",
   "/userManual",
 ];
@@ -292,8 +288,8 @@ export const mustReads: HeaderList[] = [
 ];
 export const supports: HeaderList[] = [
   { name: "My Profile", path: "/login" },
-  { name: "Helpdesk", path: "/helpdesk" },
-  { name: "Feedback", path: "/feedback" },
+  { name: "Helpdesk", path: "/contact" },
+  { name: "Feedback", path: "/customerReviews" },
 ];
 export const journeyOptions = [
   {
@@ -338,6 +334,11 @@ export const manuals = [
     imgPath: require("../../../Assets/russian.png"),
     path: "https://drive.google.com/file/d/1tKrozZRyGIHQ7Mm2qElaTk-HiMS4qfLF/view?usp=drive_link",
   },
+  {
+    name:"Spanish",
+    imgPath: require("../../../Assets/spanish.png"),
+    path:"https://drive.google.com/file/d/1tkansuyZKHrWtqTZxVrI74SP0fdf77bB/view?usp=drive_link"
+  }
 ];
 export const internationalTours = [
   {
@@ -1119,16 +1120,22 @@ export const backpackersTours = [
 //   (Kerala, Goa, Maharashtra, Gujrat)
 // ];
 export const amenities = [
-  { checked: false, label: "Local Tour", value: "LOCAL_TOUR" },
+  { checked: false, label: "Local Tour", value: "LOCAL_TOUR" }, 
+  { checked: false, label: "BreakFast Buffet", value: "BREAKFAST_BUFFET" },
+  { checked: false, label: "Wifi", value: "WIFI" },
+  { checked: false, label: "Airport Transfer", value: "AIRPORT_TRANSFER" },
+  { checked: false, label: "Dinner Buffet", value: "DINNER_BUFFET" },
+  { checked: false, label: "Pool", value: "POOL" },
+  { checked: false, label: "Gym", value: "GYM" },
+];
+export const hostelAmenities = [
+  { checked: false, label: "Local Tour", value: "LOCAL_TOUR" }, 
   { checked: false, label: "BreakFast Buffet", value: "BREAKFAST_BUFFET" },
   { checked: false, label: "Female Dorm", value: "FEMALE_DORM" },
   { checked: false, label: "Locker", value: "LOCKER" },
   { checked: false, label: "No Racism", value: "NO_RACISM" },
   { checked: false, label: "Wifi", value: "WIFI" },
   { checked: false, label: "Airport Transfer", value: "AIRPORT_TRANSFER" },
-  { checked: false, label: "Lunch Buffet", value: "LUNCH_BUFFET" },
-  { checked: false, label: "Pool", value: "POOL" },
-  { checked: false, label: "Gym", value: "GYM" },
 ];
 export const filterList = [
   // {

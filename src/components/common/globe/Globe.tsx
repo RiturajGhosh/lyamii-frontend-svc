@@ -2,12 +2,12 @@ import React, { FC, useState } from "react";
 import ReactGlobe, { Coordinates, Marker } from "react-globe";
 import "tippy.js/dist/tippy.css";
 import "tippy.js/animations/scale.css";
-import { Object3D } from "three";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
 import defaultMarkers from "./markers";
 import { SET_SELECTED_LOCATION } from "../../../state/actions/types/globeDataActionType";
+import { Object3D } from "three";
 
 function markerTooltipRenderer(marker: Marker) {
   const tooltipContent =

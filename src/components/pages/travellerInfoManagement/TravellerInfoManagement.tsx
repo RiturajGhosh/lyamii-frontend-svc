@@ -45,7 +45,7 @@ const TravellerInfoManagement: FC = () => {
                 className="h2 rounded-4 fit-content text-shadow-dark p-2"
                 style={{ color: "#0752a1" }}
               >
-                {"Have LyamiiId"}
+                {"Have Traveller's Id"}
               </div>
             </Col>
             <Row className="align-items-center">
@@ -198,7 +198,7 @@ const TravellerInfoManagement: FC = () => {
                 className="h2 rounded-4 fit-content text-shadow-dark p-2"
                 style={{ color: "#0752a1" }}
               >
-                {"Does not Have LyamiiId"}
+                {"Does not Have Traveller's Id"}
               </div>
             </Col>
             <Row className="align-items-center">

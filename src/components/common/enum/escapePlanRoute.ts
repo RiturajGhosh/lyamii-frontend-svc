@@ -3,7 +3,7 @@ export const escapeRoute = [
   { stage: "Profile Update", flag: false },
   { stage: "Verification", flag: false },
   { stage: "Travellers ID", flag: false },
-  { stage: "First Tour", flag: false },
+  { stage: "Book Now", flag: false },
   { stage: "Documentation", flag: false },
   { stage: "Tour ID", flag: false },
   { stage: "Arrival", flag: false },

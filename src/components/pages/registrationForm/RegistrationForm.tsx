@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from "react";
 import { Button, Card, Col, Row } from "react-bootstrap";
 import { RiUploadCloud2Line } from "react-icons/ri";
 import style from "./RegistrationForm.module.scss";
-import { amenities } from "../../common/enum/enum";
+import { amenities, hostelAmenities } from "../../common/enum/enum";
 import { useHistory, useLocation } from "react-router-dom";
 import Tick from "../../common/icon/tick";
 import { FaUpload } from "react-icons/fa6";
@@ -229,11 +229,14 @@ const RegistrationForm: FC<RegistrationFormType> = ({
             <Col>
               <Card
                 style={{ height: window.innerWidth / 3, background: "#338f49" }}
-                className="form__input text-white align-items-center d-flex h-100 position-relative p-2 m-0"
+                className="justify-content-center form__input text-white align-items-center d-flex h-100 position-relative p-2 m-0"
               >
                 <Row className="p-0 m-0 w-100">
                   <Col className="p-0 col-7 m-0">
-                    {amenities?.map((amenity: any, index: number) => {
+                    {(stayType.includes("HOTEL")
+                      ? amenities
+                      : hostelAmenities
+                    )?.map((amenity: any, index: number) => {
                       return (
                         <Row className="p-0 m-0">
                           <Col

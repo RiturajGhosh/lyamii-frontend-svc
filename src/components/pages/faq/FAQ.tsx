@@ -20,7 +20,7 @@ const FAQ: FC = () => {
     });
 
     return (
-      <Row className="d-flex align-items-center ">
+      <Row className="d-flex align-items-center">
         <Col className="col-10 align-items-center p-2">
           <button
             type="button"
@@ -52,7 +52,7 @@ const FAQ: FC = () => {
   }
   return (
     <section className="bg-white">
-      <Col className="justify-content-center align-self-center d-flex">
+      <Col className="mt-5 justify-content-center align-self-center d-flex">
         <Row
           onClick={() => history.goBack()}
           className={
@@ -66,7 +66,7 @@ const FAQ: FC = () => {
           FREQUENTLY ASKED QUESTIONS:
         </span>
       </Col>
-      <Accordion className="justify-content-center d-flex">
+      <Accordion className="pb-5 justify-content-center d-flex">
         <Row className="col-10">
           {faqs.slice(0, faqs.length).map((faq: any, index: number) => {
             return (

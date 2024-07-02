@@ -13,7 +13,7 @@ export const faqs = [
   },
   {
     ques: "Types of tour on Lyamii",
-    ans: "Lyamii operates tours in two formats, foreign tours covering 35+ countries to Indian audiences and 35+ Indian tours of different flavours to our foreign visitors. Indian tours for our guests come under the Journey of a Lifetime segment and foreign tours for Indian passport holders come under the Beyond Obvious segment.",
+    ans: "Lyamii operates tours in two formats, foreign tours covering 35+ countries to Indian audiences and 35+ Indian tours of different flavours to our foreign visitors. Indian tours for our guests come under the Incredible India segment and foreign tours for Indian passport holders come under the Beyond Obvious segment.",
   },
   {
     ques: "How do team Lyamii operate",
@@ -41,11 +41,11 @@ export const faqs = [
   },
   {
     ques: "What if I book a tour then cancel",
-    ans: "Beyond Obvious tours: Once you buy or book a destination you receive a confirmation call within 2 hours to make sure if it was done by mistake or on purpose, with your confirmation we'll proceed to dispatch our shipment else the whole paid amount will be reversed to its source account.Journey of a Lifetime tours: Once you buy or book a destination you receive a confirmation call within 2 hours to make sure if it was done by mistake or on purpose, with your confirmation we schedule a documentation.For more details kindly go through Lyamii's Cancellation Policy.",
+    ans: "Beyond Obvious tours: Once you buy or book a destination you receive a confirmation call within 2 hours to make sure if it was done by mistake or on purpose, with your confirmation we'll proceed to dispatch our shipment else the whole paid amount will be reversed to its source account.Incredible India tours: Once you buy or book a destination you receive a confirmation call within 2 hours to make sure if it was done by mistake or on purpose, with your confirmation we schedule a documentation.For more details kindly go through Lyamii's Cancellation Policy.",
   },
   {
     ques: "How smooth is the refund process",
-    ans: "Now 100% user satisfaction is confirmed as recently we have introduced the Pay on Arrival feature in our Journey of a Lifetime segment. This feature restricts all flaws of online transactions and all possible doubts a first time user might face. The refund process is super comfortable in the Beyond Obvious segment too. Payments are synchronised with the delivery of Lyamii boxes at your doorstep and can be paid in instalments in both online-offline formats. For more details kindly go through Lyamii's Cancellation Policy.",
+    ans: "Now 100% user satisfaction is confirmed as recently we have introduced the Pay on Arrival feature in our Incredible India segment. This feature restricts all flaws of online transactions and all possible doubts a first time user might face. The refund process is super comfortable in the Beyond Obvious segment too. Payments are synchronised with the delivery of Lyamii boxes at your doorstep and can be paid in instalments in both online-offline formats. For more details kindly go through Lyamii's Cancellation Policy.",
   },
   {
     ques: "How to overcome language barriers overseas",
@@ -94,8 +94,5 @@ export const faqs = [
   {
     ques: "How does Lyamii operate long vacations seamlessly",
     ans: "After taking feedback from several world tourists visiting India, we've understood the diverse energy our country contains is very different and powerful. Keeping the visitor's perspective and expectations in mind, the long vacations in Lyamii were crafted by connecting cities in a rhythmic way. Each day of the whole 25-75 days of vacations has a unique tune in that rhythm, and that's what makes these long vacations a pure retreat for the visitors.",
-  },
-  { ques: "What're the safest countries", ans: " " },
-  { ques: "What're the Visa free countries?" },
-  { ques: "In which countries INR gives the best return?" },
+  }
 ];

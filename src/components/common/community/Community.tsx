@@ -27,7 +27,7 @@ const Community: FC = () => {
       <MainContainer background="white">
         <AboutUs />
         <Mission />
-        <Review />
+        {/* <Review /> */}
       </MainContainer>
     </section>
   );

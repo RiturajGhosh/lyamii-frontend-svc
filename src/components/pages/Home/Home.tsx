@@ -29,7 +29,7 @@ const Home: FC = () => {
             Lyamii is a global community of tech heads, travel enthusiasts,
             hosts and volunteers. Together we simplify world tourism and operate
             preloaded vacation chains in 35+ countries. On the platform we cater
-            Indian tours to our foreign guests in the Journey of a Lifetime
+            Indian tours to our foreign guests in the Incredible India
             segment and foreign tours to Indian travellers' in Beyond Obvious.
           </p>
           <button

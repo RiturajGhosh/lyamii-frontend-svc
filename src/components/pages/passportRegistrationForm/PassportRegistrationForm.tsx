@@ -1,8 +1,10 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Button, Col, Row, Form, Card } from "react-bootstrap";
 import FormInput from "../../common/formInput/FormInput";
 import PhoneInput from "react-phone-number-input";
 import RoundButton from "../../common/roundButton/RoundButton";
+import Select from "react-select";
+import { TiTick } from "react-icons/ti";
 
 const PassportRegistrationForm: FC = () => {
   const [detail, setDetail] = useState({
@@ -16,14 +18,20 @@ const PassportRegistrationForm: FC = () => {
     station: "",
     email: "",
     check: "off",
+    certificate: "",
+    dob: "",
   });
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(1);
+
+  useEffect(() => {
+    console.log(step);
+  }, [step]);
 
   return (
     <div
       className={`bg-white align-content-start flex-wrap p-sm-5 min-vh-100 min-vw-100 mw-100 w-100 align-items-center justify-content-end d-flex m-0`}
     >
-      <Row className="py-42 g-5 flex-lg-row flex-column-reverse">
+      <Row className="py-42 g-5 flex-lg-row flex-column-reverse w-100">
         <Col
           lg={6}
           className="col-12 position-relative align-items-center d-flex flex-column align-self-start justify-content-start"
@@ -31,11 +39,11 @@ const PassportRegistrationForm: FC = () => {
         >
           <Col className="p-0 m-0 text-align-start flex-column d-flex">
             <h6>
-              Already have a Passport?{" "} 
+              Already have a Passport?{" "}
               <label
                 htmlFor="file-upload"
                 style={{
-                  cursor: "pointer"
+                  cursor: "pointer",
                 }}
               >
                 Upload here
@@ -53,11 +61,6 @@ const PassportRegistrationForm: FC = () => {
             ></div>
 
             <p>Generate your passport in just 3 steps!</p>
-
-            <h6 className="small">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-              tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo
-            </h6>
             <ul>
               <li>
                 Fill up the required details and upload your documentations.
@@ -76,24 +79,48 @@ const PassportRegistrationForm: FC = () => {
             <Col className="justify-content-center d-flex">
               <Row className="position-relative align-items-center p-0 my-3 m-0 justify-content-center d-flex w-100">
                 <Col className="col-1 d-flex position-relative p-0 mx-1 m-0">
-                  <RoundButton
-                    className="border-5 border circle-core"
-                    bordercolor="#0e3c30"
-                    size={"calc(0.10*100vw"}
-                    fill={"#8dc498"}
-                  />
+                  {step > 1 &&
+                  detail.fullName.length > 2 &&
+                  detail.phone.length > 5 &&
+                  detail.email.length > 6 &&
+                  detail.Adhaar.length > 0 ? (
+                    <RoundButton
+                      className="border-5 border circle-core"
+                      bordercolor="#0e3c30"
+                      size={"calc(0.10*100vw"}
+                      fill={"#8dc498"}
+                      img={require("../../../Assets/tick5.png")}
+                    />
+                  ) : (
+                    <RoundButton
+                      className="border-5 border circle-core"
+                      bordercolor="#0e3c30"
+                      size={"calc(0.10*100vw"}
+                      fill={"#8dc498"}
+                    />
+                  )}
                 </Col>
                 <Col className="col-1 d-contents active text-center p-0 m-0 w-10">
                   {"step 1"}
                 </Col>
                 <Col className="col-1 border-2 border p-0 m-0 w-10 timeline-line"></Col>
                 <Col className="col-1 d-flex position-relative p-0 mx-1 m-0">
-                  <RoundButton
-                    className="border-5 border circle-core"
-                    bordercolor="#0e3c30"
-                    size={"calc(0.10*100vw"}
-                    fill={"#8dc498"}
-                  />
+                  {step > 2 && detail.city.length > 2 ? (
+                    <RoundButton
+                      className="border-5 border circle-core"
+                      bordercolor="#0e3c30"
+                      size={"calc(0.10*100vw"}
+                      fill={"#8dc498"}
+                      img={require("../../../Assets/tick5.png")}
+                    />
+                  ) : (
+                    <RoundButton
+                      className="border-5 border circle-core"
+                      bordercolor="#0e3c30"
+                      size={"calc(0.10*100vw"}
+                      fill={"#8dc498"}
+                    />
+                  )}
                 </Col>
                 <Col className="col-1 d-contents active text-center p-0 m-0 w-10">
                   {"step 2"}
@@ -158,9 +185,12 @@ const PassportRegistrationForm: FC = () => {
                       type="file"
                       value={detail.Adhaar}
                       style={{ background: "#19bca1" }}
-                      onChange={(e: any) =>
-                        setDetail({ ...detail, Adhaar: e.target.value })
-                      }
+                      onChange={(e: any) => {
+                        setDetail({
+                          ...detail,
+                          Adhaar: e.target.value,
+                        });
+                      }}
                       id="formFile"
                     />
                   </div>
@@ -176,20 +206,32 @@ const PassportRegistrationForm: FC = () => {
                   controlId="formGridState"
                 >
                   <Form.Label>Passport Seva Kendra</Form.Label>
-                  <Form.Select
-                    className="border-0 pointer"
-                    value={detail.city}
-                    // onSelect={(e: any) =>
-                    //   setDetail({ ...detail, city: e.target.value })
-                    // }
-                    onClick={(e: any) =>
-                      setDetail({ ...detail, city: e.target.value })
+
+                  <Select
+                    className="px-3 w-100 p pointer justify-content-start p-0 text-dark m-0 border-0"
+                    styles={{
+                      control: (baseStyles, state) => ({
+                        ...baseStyles,
+                        borderWidth: "0",
+                        background: "none",
+                        borderColor: "none",
+                        borderRadius: "0",
+                        boxShadow: "none",
+                      }),
+                      indicatorsContainer: (baseStyles, state) => ({
+                        ...baseStyles,
+                        display: "none",
+                      }),
+                    }}
+                    placeholder=""
+                    onChange={(e) =>
+                      setDetail({ ...detail, city: e?.value || "" })
                     }
-                    defaultValue="Select Your Preferable City"
-                  >
-                    <option value="1">Select Your Preferable City</option>
-                    <option value="2">mumbai</option>
-                  </Form.Select>
+                    options={[
+                      { value: "kolkata", label: "kolkata" },
+                      { value: "mumbai", label: "mumbai" },
+                    ]}
+                  ></Select>
                 </Form.Group>
               </Col>
             )}
@@ -258,10 +300,10 @@ const PassportRegistrationForm: FC = () => {
                     <input
                       className="form-control bg-white p-0 m-0 border-0"
                       type="file"
-                      value={detail.city}
+                      value={detail.dob}
                       style={{ background: "#19bca1" }}
                       onChange={(e: any) =>
-                        setDetail({ ...detail, city: e.target.value })
+                        setDetail({ ...detail, dob: e.target.value })
                       }
                       id="formFile"
                     />
@@ -294,9 +336,9 @@ const PassportRegistrationForm: FC = () => {
                         className="form-control bg-white p-0 m-0 border-0"
                         style={{ background: "#19bca1" }}
                         type="file"
-                        value={detail.Adhaar}
+                        value={detail.certificate}
                         onChange={(e: any) =>
-                          setDetail({ ...detail, Adhaar: e.target.value })
+                          setDetail({ ...detail, certificate: e.target.value })
                         }
                         id="formFile"
                       />
@@ -314,7 +356,7 @@ const PassportRegistrationForm: FC = () => {
                 <Form.Group className="mb-3" id="formGridCheckbox">
                   <h6 className="small p-0 m-0">Consent</h6>
                   <Form.Check
-                  className="pointer"
+                    className="pointer"
                     type="checkbox"
                     label="Yes, I agree with the privacy policy and terms and condition"
                     value={detail.check}
@@ -328,12 +370,15 @@ const PassportRegistrationForm: FC = () => {
 
             <Row className="justify-content-between d-flex flex-row p-0 m-0">
               <Row className="w-50">
-                {step > 1 && (
+                {step != 1 && (
                   <Col className="justify-content-start d-flex">
                     <Button
                       style={{ background: "#19bca1" }}
                       className="fit-content pointer"
-                      onClick={() => setStep(step - 1)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setStep(step - 1);
+                      }}
                       variant="primary"
                       type="submit"
                     >
@@ -351,7 +396,8 @@ const PassportRegistrationForm: FC = () => {
                 <Button
                   style={{ background: step === 3 ? "#14a8e3" : "#19bca1" }}
                   className="fit-content pointer"
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault();
                     if (
                       step === 1 &&
                       detail.fullName.length > 2 &&

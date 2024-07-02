@@ -1,14 +1,19 @@
-import React, { FC, useState } from "react";
-import { Card, Col, Row } from "react-bootstrap";
+import React, { FC, useEffect, useState } from "react";
+import { Button, Card, Col, Row } from "react-bootstrap";
 import { US } from "country-flag-icons/react/3x2";
 import style from "./CustomerReview.module.scss";
 import avatar from "../../../Assets/avatar.png";
 import { useSelector } from "react-redux";
 import { selectCustomerReview } from "../../../state/selectors/selectCustomerReview";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const CustomerReviews: FC = () => {
   const reviews = useSelector(selectCustomerReview);
   const [page, setPage] = useState(0);
+  useEffect(() => {
+    console.log(page);
+  }, [page]);
+
   return (
     <Col className="flex-column home-about-section align-self-start d-flex min-vh-100 justify-content-center sectionContainer pt-42">
       <Col lg={12} md={12} sx={12} xs={12} className="align-self-start d-flex">
@@ -76,17 +81,42 @@ const CustomerReviews: FC = () => {
                   </Col>
                 ))}
             </Row>
-            <Row className="g-5 pb-5">
-              {[...Array(reviews.customerReviews?.length%6)].map(
+
+            <Row className="gh-5 pb-5 mt-0 justify-content-end">
+              <IoIosArrowBack
+                className={"d-flex align-items-center"}
+                size={40}
+                style={{ width: "10%" }}
+                onClick={(e) => {
+                  page > 0 && setPage(page - 1);
+                }}
+              />
+              {[...Array(reviews.customerReviews?.length % 6)].map(
                 (review: any, idx: number) => (
-                  <Col
-                    className={"mt-4 w-10 mx-0 border border-2 position-relative"}
+                  <Button
+                    style={{ width: "1%" }}
+                    className={
+                      "text-center d-flex align-items-center justify-content-center mx-0 border border-2 position-relative"
+                    }
+                    onClick={(e) => {
+                      setPage(idx);
+                    }}
                     key={idx}
                   >
                     {idx}
-                  </Col>
+                  </Button>
                 )
               )}
+
+              <IoIosArrowForward
+                size={40}
+                className={" d-flex align-items-center "}
+                style={{ width: "10%" }}
+                onClick={(e) => {
+                  page < reviews.customerReviews?.length % 6 &&
+                    setPage(page + 1);
+                }}
+              />
             </Row>
           </Row>
         </Card.Body>
