@@ -1,4 +1,5 @@
 import { FC, LazyExoticComponent, useEffect } from "react";
+import React from "react";
 import {
   Redirect,
   Route,
@@ -48,7 +49,6 @@ const PrivateRoute: FC<PrivateRouteProps> = ({
   const screenSize = useSelector(selectScreenSize);
   const sideNav = useSelector(selectSideNav);
   useEffect(() => {
-    window.scrollTo(0, 0);
     dispatch({
       type: SET_LOCATION,
       payload: path || pathName,
@@ -91,7 +91,7 @@ const PrivateRoute: FC<PrivateRouteProps> = ({
               style={{
                 zIndex: "0",
                 marginLeft:
-                  !sideNav.hidden && screenSize.isDesktop ? "260px" : "20px",
+                  !sideNav.hidden && screenSize.isDesktop ? "230px" : "20px",
               }}
             >
               <Route path={path} render={(props) => <Component {...props} />} />

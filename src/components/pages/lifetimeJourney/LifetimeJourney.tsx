@@ -1,334 +1,478 @@
-import React, { FC } from "react";
-import { Button, Card, Col, Row } from "react-bootstrap";
+import React, { FC, useEffect, useState } from "react";
+import { Card, Container, Carousel, Button } from "react-bootstrap";
 import { journeyOptions } from "../../common/enum/enum";
-import style from "./LifetimeJourney.module.scss";
 import { useHistory } from "react-router-dom";
-import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
-import { useSelector } from "react-redux";
-import { LuChevronRightCircle } from "react-icons/lu";
+import { useDispatch, useSelector } from "react-redux";
+import { selectPopularPackage } from "../../../state/selectors/selectTourData";
+import {
+  SET_TOUR_PACKAGE_ID,
+  selectedTourDataDto,
+} from "../../../state/actions/types/tourDataActionType";
 const LifetimeJourney: FC = () => {
   const history = useHistory();
-  const screenSize = useSelector(selectScreenSize);
+  const dispatch = useDispatch();
+  const popularTours = useSelector(selectPopularPackage);
+  const [tourlist, setTourList] = useState<selectedTourDataDto[]>(popularTours);
+  useEffect(() => {
+    filterData();
+    popularTours?.length > 0 && setTourList(filterData());
+  }, [popularTours]);
 
+  const filterData = () => {
+    return popularTours.filter(
+      (tour) => tour.packageName.indexOf("India") === -1
+    );
+  };
+  const tours = [
+    {
+      id: 1,
+      country: "India",
+      duration: "11N/12D",
+      cities: "• 3N Delhi • 5N Manali • 3N Shimla",
+      features: [
+        "Round Trip Flights",
+        "Intercity Car Transfers",
+        "3 Star Hotels",
+        "Airport Transfers",
+        "7 Activities",
+        "Selected Meals",
+      ],
+      price: "₹1,00,000",
+      imageUrl:
+        "https://images.unsplash.com/photo-1620403724159-40363e84a155?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG1vdW50YWluJTIwaGQlMjBpbWFnZXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    {
+      id: 2,
+      country: "South Africa",
+      duration: "10N/11D",
+      cities: "• 3N Cape Town • 4N Johannesburg • 3N Durban",
+      features: [
+        "Round Trip Flights",
+        "Intercity Car Transfers",
+        "4 Star Hotels",
+        "Airport Transfers",
+        "8 Activities",
+        "Selected Meals",
+      ],
+      price: "₹2,20,000",
+      imageUrl:
+        "https://plus.unsplash.com/premium_photo-1669131388697-fab59ba90484?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8c2VhfGVufDB8fDB8fHww",
+    },
+    {
+      id: 3,
+      country: "Brazil",
+      duration: "9N/10D",
+      cities: "• 3N Rio De Janeiro • 3N São Paulo • 3N Salvador",
+      features: [
+        "Round Trip Flights",
+        "Intercity Car Transfers",
+        "4 Star Hotels",
+        "Airport Transfers",
+        "7 Activities",
+        "Selected Meals",
+      ],
+      price: "₹1,90,000",
+      imageUrl:
+        "https://images.unsplash.com/photo-1491378630646-3440efa57c3b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHNlYXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    {
+      id: 4,
+      country: "China",
+      duration: "12N/13D",
+      cities: "• 3N Beijing • 4N Shanghai • 3N Guangzhou • 2N Hong Kong",
+      features: [
+        "Round Trip Flights",
+        "Intercity Car Transfers",
+        "5 Star Hotels",
+        "Airport Transfers",
+        "10 Activities",
+        "Selected Meals",
+      ],
+      price: "₹3,50,000",
+      imageUrl:
+        "https://images.unsplash.com/photo-1483683804023-6ccdb62f86ef?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHNlYXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    {
+      id: 5,
+      country: "Argentina",
+      duration: "8N/9D",
+      cities: "• 3N Buenos Aires • 3N Mendoza • 2N Iguazu Falls",
+      features: [
+        "Round Trip Flights",
+        "Intercity Car Transfers",
+        "4 Star Hotels",
+        "Airport Transfers",
+        "6 Activities",
+        "Selected Meals",
+      ],
+      price: "₹1,60,000",
+      imageUrl:
+        "https://images.unsplash.com/photo-1628371655947-f65194a1bd37?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGhhcHB5fGVufDB8fDB8fHww",
+    },
+    {
+      id: 6,
+      country: "New Zealand",
+      duration: "14N/15D",
+      cities: "• 3N Auckland • 4N Rotorua • 3N Wellington • 4N Queenstown",
+      features: [
+        "Round Trip Flights",
+        "Intercity Car Transfers",
+        "5 Star Hotels",
+        "Airport Transfers",
+        "12 Activities",
+        "Selected Meals",
+      ],
+      price: "₹3,80,000",
+      imageUrl:
+        "https://plus.unsplash.com/premium_photo-1669704099116-a325b4d6186f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGhhcHB5fGVufDB8fDB8fHww",
+    },
+  ];
   return (
-    <>
-      {/* <div className={`${style.bgImage} position-absolute`}></div> */}
-
-      <Col
-        className="home-about-section sectionContainer d-flex justify-content-center py-42 px-0"
-        id="about"
+    <div style={styles.lifetimeJourney}>
+      <h2
+        style={{
+          fontSize: 45,
+          fontWeight: "400",
+          marginBottom: 40,
+          color: "#686868",
+          textAlign: "center",
+          position: "relative",
+        }}
       >
-        <Col lg={11} md={11} sx={11} xs={11}>
-          <Col className="card-body w-100">
-            {
-              <>
-                <span
-                  className="display-3 text-outline fw-bold flex-row position-relative"
-                  style={{
-                    color: "#EA8A04",
-                    fontFamily: "DISTILLERYSTRONG",
-                    // fontSize: screenSize.screenSize < 786 ? "5.5dvi" : "6dvi",
-                  }}
-                >
-                  INCREDIBLE{" "}
-                  {/* <span
-                    className="heading h1 text-white text-outline"
-                    style={{ fontFamily: "Robotic" }}
-                  >
-                   
-                  </span>{" "} */}
-                  <span
-                    className="display-3 position-absolute d-inline-flex pl-3 align-items-start"
-                    style={{ color: "#168709", fontFamily: "DISTILLERYSTRONG" }}
-                  >
-                    INDIA     
-                    <img
-                      alt=""
-                      className={`inline-flex w-25 h-10`}
-                      style={{
-                        padding: "0px !important",
-                        margin: "0px !important",
-                      }}
-                      src={require("../../../Assets/journey.png")}
-                    />
-                  </span>
-                </span>
-              </>
-            }
-          </Col>
-          {}
-          <Col md={12} lg={12} className="justify-content-between p-0 d-flex">
-            <div
-              style={{
-                flex: "row !important",
-                width: "100%",
-                height: screenSize.screenSize < 786 ? "400px" : "",
-              }}
-              className={`
-              d-flex ${
-                screenSize.screenSize < 786
-                  ? ""
-                  : `flex-row ${style.leftcolumn}`
-              } p-0`}
-            >
-              <Col
-                className={`${
-                  screenSize.screenSize < 786 ? "mx-1" : "my-2 mx-1"
-                } pointer`}
-                style={{
-                  float: screenSize.screenSize < 786 ? "left" : "inherit",
-                  width: screenSize.screenSize < 786 ? "50%" : "30%",
-                  height: screenSize.screenSize < 786 ? "100%" : "60%",
-                  objectFit: "cover",
-                }}
-                onClick={() => history.push(journeyOptions[0].path)}
-              >
-                <img
-                  src={journeyOptions[0].imgPath}
-                  alt="Paris"
-                  style={{
-                    float: screenSize.screenSize < 786 ? "left" : "inherit",
-                    width: "100%",
-                    height: screenSize.screenSize < 786 ? "84%" : "100%",
-                    objectFit: "cover",
-                  }}
-                />
-                <Button className="align-items-center mh-15 mt-2 w-100 bg-dark-blue justify-content-center d-flex">
-                  <span
-                    onClick={() => history.push(journeyOptions[0].path)}
-                    className="bold pointer fs-auto p-2 d-inline-flex m-0 fw-bold"
-                    style={{ fontFamily: "OldStandard" }}
-                  >
-                    {journeyOptions[0].name}
-                  </span>
-                  <span className="text-nowrap">
-                    <LuChevronRightCircle
-                    className=" pointer"
-                      size={screenSize.screenSize < 786 ? "20px" : "30px"}
-                      onClick={() => history.push(journeyOptions[0].path)}
-                    />
-                  </span>
-                </Button>
-              </Col>
-              <div
-                style={{
-                  width: screenSize.screenSize < 786 ? "35%" : "66%",
-                }}
-                className={`
-              d-flex ${
-                screenSize.screenSize < 786 ? "flex-column" : `flex-row`
-              } p-0`}
-              >
-                <Col
-                  className={` ${
-                    screenSize.screenSize < 786 ? "mx-1" : "my-2 mx-1"
-                  } pointer`}
-                  style={{
-                    float: "right",
-                    width: screenSize.screenSize < 786 ? "100%" : "100%",
-                    height: screenSize.screenSize < 786 ? "50%" : "60%",
-                    objectFit: "cover",
-                  }}
-                  onClick={() => history.push(journeyOptions[1].path)}
-                >
-                  <img
-                    src={journeyOptions[1].imgPath}
-                    alt="Paris"
-                    style={{
-                      float: "left",
-                      width: "100%",
-                      height: screenSize.screenSize < 786 ? "75%" : "100%",
-                      objectFit: "cover",
-                    }}
+        Incredible India
+        <span
+          style={{
+            display: "block",
+            width: 150,
+            height: 6,
+            backgroundColor: "#879DFF",
+            position: "absolute",
+            bottom: -10,
+            left: "50%",
+            transform: "translateX(-50%)",
+            borderRadius: "0px 0px 5px 5px",
+            opacity: 0.7,
+          }}
+        />
+      </h2>
+      <div style={styles.cardContainer}>
+        <div style={styles.card}>
+          <img
+            src="https://plus.unsplash.com/premium_photo-1661901620454-3259e60c54ba?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGZvcnR8ZW58MHx8MHx8fDA%3D"
+            alt="Royal Bharat Edition"
+            style={styles.image}
+          />
+          <p style={styles.cardTitle}>Royal Bharat Edition</p>
+          <button
+            onClick={() => history.push(journeyOptions[0].path)}
+            style={styles.button}
+          >
+            View More
+          </button>
+        </div>
+        <div style={styles.card}>
+          <img
+            src="https://images.unsplash.com/uploads/141148589884100082977/a816dbd7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmFja3BhY2tlcnN8ZW58MHx8MHx8fDA%3D"
+            alt="Backpackers Edition"
+            style={styles.image}
+          />
+          <p style={styles.cardTitle}>Backpackers Edition</p>
+          <button
+            onClick={() => history.push(journeyOptions[1].path)}
+            style={styles.button}
+          >
+            View More
+          </button>
+        </div>
+        <div style={styles.card}>
+          <img
+            src="https://plus.unsplash.com/premium_photo-1694475008375-9644bce85c9e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bXVtYmFpJTIwbmlnaHR8ZW58MHx8MHx8fDA%3D"
+            alt="Combos"
+            style={styles.image}
+          />
+          <p style={styles.cardTitle}>Combos</p>
+          <button
+            onClick={() => history.push(journeyOptions[2].path)}
+            style={styles.button}
+          >
+            View More
+          </button>
+        </div>
+      </div>
+      {/* International packages */}
+      <h2
+        style={{
+          fontSize: 45,
+          fontWeight: "400",
+          marginBottom: 40,
+          color: "#686868",
+          textAlign: "center",
+          position: "relative",
+        }}
+      >
+        Beyond obvious
+        <span
+          style={{
+            display: "block",
+            width: 180,
+            height: 6,
+            backgroundColor: "#879DFF",
+            position: "absolute",
+            bottom: -10,
+            left: "50%",
+            transform: "translateX(-50%)",
+            borderRadius: "0px 0px 5px 5px",
+            opacity: 0.7,
+          }}
+        />
+      </h2>
+      <Carousel indicators={false} interval={null} pause={false}>
+        {[...Array(Math.ceil(tourlist.length / 3))].map((_, index) => (
+          <Carousel.Item key={index}>
+            <div className="d-flex m-1 justify-content-around">
+              {tourlist.slice(index * 3, index * 3 + 3).map((tour) => (
+                <Card key={""} style={styles.carouselCard}>
+                  <Card.Img
+                    variant="top"
+                    src={require("../../../Assets/america.png")}
+                    alt={tour.title}
+                    style={styles.cardImage}
                   />
-                  <Button className="align-items-center mh-15 mt-2 w-100 bg-dark-blue justify-content-center d-flex">
-                    <span
-                      onClick={() => history.push(journeyOptions[1].path)}
-                      className="bold pointer fs-auto p-2 d-inline-flex m-0 fw-bold"
-                      style={{ fontFamily: "OldStandard" }}
-                    >
-                      {journeyOptions[1].name}
-                    </span>
-                    <span className="text-nowrap">
-                      <LuChevronRightCircle
-                      className=" pointer"
-                        size={screenSize.screenSize < 786 ? "20px" : "30px"}
-                        onClick={() => history.push(journeyOptions[1].path)}
+                  <Card.Body
+                    className="border border-0"
+                    style={styles.cardTextOverlay}
+                  >
+                    <div className="d-flex justify-content-between align-items-center">
+                      <Card.Title
+                        style={{
+                          fontSize: 25,
+                          fontWeight: "700",
+                          color: "#879DFF",
+                        }}
+                      >
+                        {tour.title}
+                      </Card.Title>
+                      <hr
+                        style={{
+                          border: "0.5px solid #D0D0D0",
+                          width: "100%",
+                          margin: "10px 0",
+                        }}
                       />
-                    </span>
-                  </Button>
-                </Col>
-                <Col
-                  className={` ${
-                    screenSize.screenSize < 786 ? "mx-1" : "my-2 mx-1"
-                  } pointer`}
-                  style={{
-                    float: "right",
-                    width: screenSize.screenSize < 786 ? "100%" : "100%",
-                    height: screenSize.screenSize < 786 ? "50%" : "60%",
-                    objectFit: "cover",
-                  }}
-                  onClick={() => history.push(journeyOptions[2].path)}
-                >
-                  <img
-                    src={journeyOptions[2].imgPath}
-                    alt="Paris"
-                    style={{
-                      float: "right",
-                      width: "100%",
-                      height: screenSize.screenSize < 786 ? "75%" : "100%",
-                      objectFit: "cover",
-                    }}
-                  />
-                  <Button className="align-items-center mh-15 mt-2 w-100 bg-dark-blue justify-content-center d-flex">
-                    <span
-                      onClick={() => history.push(journeyOptions[2].path)}
-                      className="bold pointer fs-auto p-2 d-inline-flex m-0 fw-bold"
-                      style={{ fontFamily: "OldStandard" }}
-                    >
-                      {journeyOptions[2].name}
-                    </span>
-                    <span className="text-nowrap">
-                      <LuChevronRightCircle
-                      className=" pointer"
-                        size={screenSize.screenSize < 786 ? "20px" : "30px"}
-                        onClick={() => history.push(journeyOptions[2].path)}
-                      />
-                    </span>
-                  </Button>
-                </Col>
-              </div>
-            </div>
-            {/* <Row className="w-100 m-0 p-0 d-flex justify-content-center">
-              <Col
-                md={4}
-                sm={9}
-                xs={8}
-                lg={4}
-                xl={4}
-                xxl={4}
-                className={`p-0 ${style.leftcolumn}`}
-              >
-                <Card
-                  className={` ${
-                    screenSize.screenSize < 786 ? "mx-1" : "my-2 mx-1"
-                  } h-60`}
-                  onClick={() => history.push("/bharat-tours")}
-                >
-                  <Card.Body className="p-0 d-contents">
-                    <Card.Img
-                      className={`p-0 m-0 h-100 justify-content-center`}
+                      <Card.Subtitle
+                        style={{
+                          fontSize: 13,
+                          fontWeight: "400",
+                          color: "#879DFF",
+                          border: "0.2px solid #879DFF",
+                          padding: "2px 5px",
+                          borderRadius: "3px",
+                        }}
+                      >
+                        {tour.noOfDays}
+                      </Card.Subtitle>
+                    </div>
+
+                    <Card.Text
                       style={{
-                        padding: "0px !important",
-                        margin: "0px !important",
+                        fontSize: 16,
+                        fontWeight: "400",
+                        color: "#818181",
                       }}
-                      src={journeyOptions[0].path}
+                    >
+                      {tour.destinations.map(
+                        (destination) => destination + " "
+                      )}
+                      {/* <hr
+                        style={{
+                          border: "0.5px solid #D0D0D0",
+                          width: "80%",
+                          margin: "10px 0",
+                        }}
+                      /> */}
+                      {/* <div className="d-flex justify-content-between">
+                        <ul className="list-unstyled">
+                          {tour.includes.slice(0, 3).map((includes, index) => (
+                            <li
+                              key={index}
+                              style={{
+                                fontSize: 13,
+                                fontWeight: "400",
+                                color: "#818181",
+                                marginTop: 5,
+                              }}
+                            >
+                              <span
+                                style={{
+                                  color: "#879DFF",
+                                }}
+                              >
+                                •
+                              </span>{" "}
+                              {includes}
+                            </li>
+                          ))}
+                        </ul>
+                        <ul className="list-unstyled">
+                          {tour.includes.slice(3, 6).map((includes, index) => (
+                            <li
+                              key={index}
+                              style={{
+                                fontSize: 13,
+                                fontWeight: "400",
+                                color: "#818181",
+                                marginTop: 5,
+                              }}
+                            >
+                              <span
+                                style={{
+                                  color: "#879DFF",
+                                }}
+                              >
+                                •
+                              </span>{" "}
+                              {includes}
+                            </li>
+                          ))}
+                        </ul>
+                      </div> */}
+                    </Card.Text>
+                    <hr
+                      style={{
+                        border: "0.5px solid #D0D0D0",
+                        width: "100%",
+                        margin: "10px 0",
+                      }}
                     />
+                    <div className="d-flex justify-content-between align-items-center">
+                      <p
+                        className="d-flex align-items-center p-0 my-2"
+                        style={{
+                          fontSize: 16,
+                          fontWeight: "700",
+                          color: "#05A1A5",
+                        }}
+                      >
+                        <span>
+                          <select
+                            className="form-select pointer border border-0 w-100"
+                            aria-label="Default select example"
+                          >
+                            {tour?.packagePrice?.map(
+                              (price: string, index: number) => (
+                                <option key={index} value={price}>
+                                  {price}
+                                  {tour?.packagePrice.length === 1 && " INR"}
+                                </option>
+                              )
+                            )}
+                          </select>
+                        </span>
+                        <span
+                          style={{
+                            fontSize: 16,
+                            fontWeight: "700",
+                            color: "#868585",
+                          }}
+                        >
+                          / Person
+                        </span>
+                      </p>
+                      <Button
+                        onClick={() => {
+                          dispatch({
+                            type: SET_TOUR_PACKAGE_ID,
+                            payload: tour.packageId,
+                          });
+                          history.push(`/tour-detail:${tour.packageId}`);
+                        }}
+                        style={{
+                          backgroundColor: "#879DFF",
+                          fontWeight: "700",
+                          fontSize: 15,
+                          borderRadius: 0,
+                          borderWidth: 0,
+                        }}
+                      >
+                        View More
+                      </Button>
+                    </div>
                   </Card.Body>
                 </Card>
-                <Button className="align-items-center mh-15 mt-2 mx-1 w-100 bg-dark-blue justify-content-center d-flex">
-                  <span
-                    onClick={() => history.push("/bharat-tours")}
-                    className="bold fs-auto p-2 d-inline-flex m-0 fw-bold"
-                    style={{ fontFamily: "OldStandard" }}
-                  >
-                    {journeyOptions[0].name}
-                  </span>
-                  <span className="text-nowrap">
-                    <LuChevronRightCircle
-                      size={"30px"}
-                      onClick={() => history.push("/bharat-tours")}
-                    />
-                  </span>
-                </Button>
-              </Col>
-              <Col
-                md={8}
-                sm={3}
-                lg={8}
-                xs={4}
-                xl={8}
-                xxl={8}
-                className={`p-0 ${style.rightcolumn} h-60 ${
-                  screenSize.screenSize < 786 ? "" : "d-flex"
-                }`}
-              >
-                <Col md={6} lg={6} className="p-0">
-                  <Card
-                    className={` ${
-                      screenSize.screenSize < 786 ? "mx-1 mb-2" : "my-2 mx-1"
-                    } h-100`}
-                    onClick={() => history.push("/backpackers")}
-                  >
-                    <Card.Body className="p-0 d-contents">
-                      <Card.Img
-                        className={`p-0 m-0 h-100 justify-content-center`}
-                        style={{
-                          padding: "0px !important",
-                          margin: "0px !important",
-                        }}
-                        src={journeyOptions[1].path}
-                      />
-                    </Card.Body>
-                  </Card>
-                  <Button className="align-items-center mt-2 w-100 bg-dark-blue justify-content-center d-flex">
-                    <span
-                      onClick={() => history.push("/backpackers")}
-                      className="bold p-2 fs-auto m-0 fw-bold"
-                      style={{ fontFamily: "Bellota" }}
-                    >
-                      {journeyOptions[1].name}
-                    </span>
-                    <span className="text-nowrap">
-                      <LuChevronRightCircle
-                        onClick={() => history.push("/backpackers")}
-                        size={"30px"}
-                      />
-                    </span>
-                  </Button>
-                </Col>
-
-                <Col md={6} lg={6} className="p-0">
-                  <Card
-                    className={` ${
-                      screenSize.screenSize < 786 ? "mx-1 mt-2" : "my-2 mx-1"
-                    } h-100`}
-                    onClick={() => history.push("/combo")}
-                  >
-                    <Card.Body className="p-0 d-contents">
-                      <Card.Img
-                        className={`p-0 m-0 h-100 justify-content-center ${style.reasonCard}`}
-                        style={{
-                          // width: "100%",
-                          padding: "0px !important",
-                          margin: "0px !important",
-                        }}
-                        src={journeyOptions[2].path}
-                      />
-                    </Card.Body>
-                  </Card>
-                  <Button className="align-items-center mt-2 w-100 bg-dark-blue justify-content-center d-flex">
-                    <span
-                      className="bold p-2 fs-auto m-0 fw-bold"
-                      onClick={() => history.push("/combo")}
-                    >
-                      {journeyOptions[2].name}
-                    </span>
-                    <span className="text-nowrap">
-                      <LuChevronRightCircle
-                        onClick={() => history.push("/combo")}
-                        size={"30px"}
-                      />
-                    </span>
-                  </Button>
-                </Col>
-              </Col>
-            </Row> */}
-          </Col>
-        </Col>
-      </Col>
-    </>
+              ))}
+            </div>
+          </Carousel.Item>
+        ))}
+      </Carousel>
+    </div>
   );
 };
 
+const styles = {
+  lifetimeJourney: {
+    textAlign: "center" as const,
+    padding: "20px",
+  },
+  heading: {
+    marginBottom: "20px",
+  },
+  cardContainer: {
+    display: "flex",
+    justifyContent: "space-around",
+    marginBottom: "40px",
+  },
+  carouselCard: {
+    width: 382,
+    height: 370,
+    position: "relative" as "relative", // Ensure position is explicitly typed
+    margin: 0,
+    opacity: 1,
+  },
+  cardImage: {
+    width: "100%",
+    height: 250,
+    objectFit: "cover" as "cover", // Ensure objectFit is explicitly typed
+    padding: 0,
+    margin: 0,
+  },
+  cardTextOverlay: {
+    position: "relative" as "relative", // Ensure position is explicitly typed
+    padding: 10,
+    color: "black",
+    background: "white",
+    border: "1px solid black" as "1px solid black", // Ensure border is properly typed
+  },
+  card: {
+    backgroundColor: "#fff",
+    borderRadius: "4px",
+    textAlign: "left" as const, // Ensure textAlign is explicitly typed
+    width: 402,
+    padding: "20px",
+  },
+  image: {
+    width: "100%",
+    height: 228,
+    borderBottom: "1px solid #ddd",
+  },
+  cardTitle: {
+    fontSize: 35,
+    fontWeight: "700",
+    color: "#879DFF",
+    margin: "10px 0",
+  },
+  button: {
+    fontSize: 15,
+    fontWeight: "700",
+    color: "#fff",
+    border: "none",
+    padding: "10px 20px",
+    cursor: "pointer",
+    backgroundColor: "#879DFF",
+    marginBottom: 20,
+    display: "block",
+  },
+  buttonHover: {
+    backgroundColor: "#0056b3",
+  },
+};
 export default LifetimeJourney;

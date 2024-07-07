@@ -5,6 +5,8 @@ import Globe from "../../common/globe/Globe";
 import { IoIosPaperPlane } from "react-icons/io";
 import { escapeRoute } from "../../common/enum/escapePlanRoute";
 
+import About from "../../../Assets/About.png";
+import "./MapAndEscape.module.scss";
 const MapAndEscape: FC = () => {
   const data = [
     "Domestic Flights",
@@ -23,215 +25,154 @@ const MapAndEscape: FC = () => {
     "Activities",
     "Round the clock Multilingual Support",
   ];
+
+  const countries = [
+    {
+      name: "America",
+      imgSrc:
+        "https://plus.unsplash.com/premium_photo-1673639729701-c903b5d2be4b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YW1lcmljYXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    {
+      name: "India",
+      imgSrc:
+        "https://images.unsplash.com/photo-1565038181000-2c159d3fc28d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YW1lcmljYXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    {
+      name: "Europe",
+      imgSrc:
+        "https://plus.unsplash.com/premium_photo-1688410049290-d7394cc7d5df?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXVyb3BlfGVufDB8fDB8fHww",
+    },
+    {
+      name: "Japan",
+      imgSrc:
+        "https://images.unsplash.com/photo-1473951574080-01fe45ec8643?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZXVyb3BlfGVufDB8fDB8fHww",
+    },
+    {
+      name: "Sweden",
+      imgSrc:
+        "https://images.unsplash.com/photo-1610286378271-ca4ed49e101c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZXVyb3BlfGVufDB8fDB8fHww",
+    },
+    {
+      name: "North America",
+      imgSrc:
+        "https://images.unsplash.com/photo-1714259523626-2c5487107dc4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGV1cm9wZXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    {
+      name: "America",
+      imgSrc:
+        "https://plus.unsplash.com/premium_photo-1673639729701-c903b5d2be4b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YW1lcmljYXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    {
+      name: "India",
+      imgSrc:
+        "https://images.unsplash.com/photo-1565038181000-2c159d3fc28d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YW1lcmljYXxlbnwwfHwwfHx8MA%3D%3D",
+    },
+    {
+      name: "Europe",
+      imgSrc:
+        "https://plus.unsplash.com/premium_photo-1688410049290-d7394cc7d5df?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXVyb3BlfGVufDB8fDB8fHww",
+    },
+  ];
+
   return (
-    <Col
-      className="home-about-section sectionContainer d-flex justify-content-center py-42 px-0"
-      id="about"
+    <div
+      style={{
+        padding: 20,
+        textAlign: "center",
+        backgroundSize: "cover",
+        backgroundImage: `url(${About})`,
+      }}
     >
-      <Col lg={11} md={11} sx={11} xs={11}>
-        <Row className="g-4 p-0">
-          <Col md={6} className="align-self-center">
-            <div
-              className={`border-5 pt-32 border-white justify-content-start d-table p-0 border-3 ${style.card}`}
-              style={{ minHeight: "100%" }}
+      <div className="about-us">
+        <h2
+          style={{
+            fontSize: 45,
+            fontWeight: "400",
+            marginBottom: 40,
+            color: "#686868",
+            textAlign: "center",
+            position: "relative",
+          }}
+        >
+          About Us
+          <span
+            style={{
+              display: "block",
+              width: 90,
+              height: 6,
+              backgroundColor: "#879DFF",
+              position: "absolute",
+              bottom: -10,
+              left: "50%",
+              transform: "translateX(-50%)",
+              borderRadius: "0px 0px 5px 5px",
+              opacity: 0.7,
+            }}
+          />
+        </h2>
+        <p
+          style={{
+            fontSize: 20,
+            fontWeight: "400",
+            textAlign: "center",
+            marginInline: 60,
+            color: "#000000",
+          }}
+        >
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum."
+        </p>
+        <p
+          style={{
+            fontSize: 20,
+            fontWeight: "400",
+            textAlign: "center",
+            marginInline: 60,
+            marginBottom: 60,
+            marginTop: 40,
+            color: "#000000",
+          }}
+        >
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate veli
+        </p>
+      </div>
+      <div style={{ display: "flex", overflowX: "auto", padding: "10px 0" }}>
+        {countries.map((country, index) => (
+          <div key={index} style={{ flex: "0 0 auto", margin: "0 10px" }}>
+            <img
+              src={country.imgSrc}
+              alt={country.name}
+              style={{
+                width: 211,
+                height: 137,
+                objectFit: "cover",
+                borderRadius: "8px",
+              }}
+            />
+            <p
+              style={{
+                marginTop: 5,
+                fontSize: 20,
+                fontWeight: "700",
+                color: "#879DFF",
+                textAlign: "center",
+              }}
             >
-              <div className="card-body flex-wrap d-flex">
-                <span
-                  className={`text-shadow-light fw-bold fs-7 justify-content-center d-flex w-100 text-center`}
-                  style={{ color: "#213D66", fontFamily: "DISTILLERYSTRONG" }}
-                >
-                  Home among the Stars
-                </span>
-                {/* {mapDescription && (
-                  <p
-                    className={`text-center card-text`}
-                    style={{ color: "#354775", fontFamily: "AsapCondensed" }}
-                  >
-                    {mapDescription}
-                  </p>
-                )} */}
-                <Row className="d-flex mt-3 flex-row w-100 gap-2 flex-wrap">
-                  {data.map((d: string, index: number) => (
-                    <p
-                      key={index}
-                      className="text-white col py-2 px-3 small fit-content rounded-4 align-items-center justify-content-center d-flex"
-                      style={{ background: "#0752a1", fontFamily: "Archive" }}
-                    >
-                      {d}
-                    </p>
-                  ))}
-                  {/* <p
-                    className="text-white col py-2 px-3 fit-content rounded-4 align-items-center justify-content-center d-flex"
-                    style={{ background: "#0752a1", fontFamily: "Archive" }}
-                  >
-                    Domestic Flights
-                  </p>
-                  <p
-                    className="text-white py-2 px-3 col fit-content rounded-4 align-items-center justify-content-center d-flex"
-                    style={{ background: "#0752a1", fontFamily: "Archive" }}
-                  >
-                    800+ Stays
-                  </p>
-                  <p
-                    className="text-white py-2 col rounded-4 justify-content-center align-items-center d-flex"
-                    style={{ background: "#0752a1", fontFamily: "Archive" }}
-                  >
-                    3500+ Volunteers
-                  </p> */}
-                </Row>
-              </div>
-            </div>
-          </Col>
-
-          <Col
-            md={6}
-            className="align-self-center justify-content-center d-flex"
-          >
-            <div style={{ width: "50%", height: "50%", paddingLeft: "10px" }}>
-              <Globe />
-            </div>
-          </Col>
-          <Col className="card-12 pt-42 w-100 px-0 m-0">
-            <div
-              className={`border-5 pt-32 w-100 border-white justify-content-start d-table  p-0 m-0 border-3 ${style.card}`}
-              style={{ minHeight: "100%" }}
-            >
-              <div className=" flex-wrap d-flex">
-                <span
-                  className={`text-shadow-light fw-bold fs-7`}
-                  style={{ color: "#0752a0", fontFamily: "Aprila" }}
-                >
-                  The Escape Plan
-                </span>
-
-                <div
-                // className="card bg-transparent w-100 rounded-4 border-5 p-0 m-0"
-                // style={{ borderColor: "#0752a1 !important" }}
-                >
-                  <div className=" bg-transparent h-100">
-                    <Col className="justify-content-center align-items-center d-flex">
-                      <Col className="p-0 col-12 d-flex flex-md-row flex-sm-column flex-column p-4 mt-2 m-0 h-100 w-100 position-relative gap-4 align-items-end">
-                        <Col className="align-self-stretch d-grid p-0 m-0">
-                          <div className="scrolling-wrapper row flex-row flex-nowrap p-0 m-0">
-                            {escapeRoute.map((route: any, index: number) => {
-                              return (
-                                <>
-                                  {index === 0 ? (
-                                    <Row
-                                      key={index}
-                                      className="position-relative align-items-center col-2 p-0 mt-3 m-0 justify-content-center d-flex"
-                                    >
-                                      <Col className="col-6 float-start flex-column justify-content-start d-flex p-0 m-0">
-                                        <IoIosPaperPlane className="img-round w-100 h-50 border p-0 m-0 border-5" />
-                                        <Col className="w-100 justify-content-center d-flex p-0 m-0">
-                                          <div className="active small">
-                                            {route.stage}
-                                          </div>
-                                        </Col>{" "}
-                                      </Col>
-                                    </Row>
-                                  ) : (
-                                    <Row
-                                      key={index}
-                                      className="position-relative align-items-center col-3 p-0 mt-3 m-0 justify-content-around d-flex"
-                                    >
-                                      <Col className="col-7 border-top-1 border p-0 m-0 timeline-line"></Col>
-
-                                      <Col className="col-4 float-end flex-column justify-content-end d-flex p-0 m-0">
-                                        <IoIosPaperPlane className="img-round w-100 h-50 border p-0 m-0  border-5" />
-                                        {/* <img
-                                          className={`m-0 justify-content-center ${style.reasonCard}`}
-                                          style={{
-                                            padding: "0px !important",
-                                            margin: "0px !important",
-                                          }}
-                                          src={require("../../../Assets/tick1.png")}
-                                        /> */}
-                                        <Col className="w-100 justify-content-center d-flex p-0 m-0">
-                                          <div className="active small">
-                                            {route.stage}
-                                          </div>
-                                        </Col>{" "}
-                                      </Col>
-                                    </Row>
-                                  )}
-                                </>
-                              );
-                            })}
-                          </div>
-                          {/* {escapeRoute.map((route: any, index: number) => {
-                                return (
-                                  <Col className="mx-md-3 overflowX-auto w-100 d-inline-block position-relative">
-                                    {index === 0 ? (
-                                      <Col className="col-2 flex-column justify-content-start d-flex p-0 m-0">
-                                        <IoIosPaperPlane className="img-round w-75 h-50 border p-0 m-0  border-5" />
-                                        <div className="active small">Sign In</div>
-                                        <Col className="w-75 justify-content-center d-flex p-0 m-0">
-                                          <div className="active small">
-                                            {route.stage}
-                                          </div>
-                                        </Col>{" "}
-                                      </Col>
-                                    ) : (
-                                      <Col className="col-2 flex-column justify-content-center d-flex p-0 m-0">
-                                        <IoIosPaperPlane className="img-round w-75 h-50 border p-0 m-0  border-5" />
-                                        <div className="active small">Sign In</div>
-                                        <Col className="w-75 justify-content-center d-flex p-0 m-0">
-                                          <div className="active small">
-                                            {route.stage}
-                                          </div>
-                                        </Col>{" "}
-                                      </Col>
-                                    )}
-
-                                    <Col className="col-2 border-top-1 border p-0 m-0 timeline-line"></Col>
-                                  </Col>
-                                );
-                              })}
-                            </Row> */}
-                        </Col>
-                      </Col>
-
-                      {/* <Col className="position-absolute bg-transparent d-flex h-100 align-items-center text-dark fw-bold text-shadow-light" style={{fontSize:"7dvi"}}>Show After Login</Col> */}
-                      {/* <input
-                        className="rounded-circle display-1 p-5 w-50"
-                        type="text"
-                        value={""}
-                        style={{ background: "#19bca1" }}
-                        onChange={(e: any) => {
-                          {
-                          }
-                        }}
-                      />
-                      <input
-                        className="rounded-circle display-1 p-5 w-50"
-                        type="text"
-                        value={""}
-                        style={{ background: "#19bca1" }}
-                        onChange={(e: any) => {
-                          {
-                          }
-                        }}
-                      />{" "}
-                      <input
-                        className="rounded-circle display-1 p-5 w-50"
-                        type="text"
-                        value={""}
-                        style={{ background: "#19bca1" }}
-                        onChange={(e: any) => {
-                          {
-                          }
-                        }}
-                      /> */}
-                    </Col>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Col>
-        </Row>
-      </Col>
-    </Col>
+              {country.name}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 

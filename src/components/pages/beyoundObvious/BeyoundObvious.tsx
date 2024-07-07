@@ -125,11 +125,11 @@ const BeyoundObvious: FC = () => {
                             src={require("../../../Assets/header.jpg")}
                           />
                           <Card.Body className="py-0">
-                            <Card.Text className="bold w-30 p p-2 text-white position-absolute text-shadow-dark fw-bold bottom-0 end-0">
+                            <Card.Text className="bold col-3 p p-2 text-white position-absolute text-shadow-dark fw-bold bottom-0 end-0">
                               {/* <span className="col-12 h-100 border border-1 bg-success"> */}
-                              <span className="p-0 text-center fit-content">
+                              <span className="p-0 fs-24 m-0 text-center fit-content">
                                 <select
-                                  className="form-select pointer fit-content"
+                                  className="form-select pointer"
                                   aria-label="Default select example"
                                 >
                                   {list?.packagePrice?.map(
@@ -208,7 +208,7 @@ const BeyoundObvious: FC = () => {
                               {list.noOfDays}D
                             </Card.Text>
                             <Card.Text className="bold p p-2 text-white position-absolute fw-bold top-0 end-0">
-                              <span className="p-0 p m-0 text-center fit-content">
+                              <span className="p-0 fs-24 m-0 text-center fit-content">
                                 <select
                                   className="form-select pointer"
                                   aria-label="Default select example"

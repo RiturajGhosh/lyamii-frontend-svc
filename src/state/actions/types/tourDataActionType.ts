@@ -20,34 +20,21 @@ export interface selectedTourDataDto {
   packageId: string;
   packageName: string;
   title: string;
-  flagCode?: string;
-  description: string;
+  description: string[];
   overview: string;
   highlights: string[];
   noOfDays: number;
-  itinerary: Itinerary[];
+  itinerary: string[][];
   includes: string[];
   destinations: string[];
   packagePrice: string[];
   rating: number;
-  currencyLabel: string;
+  currencyLabel: any;
   tripType: string;
   country: string;
-  imageUri: string[];
+  imageUri: any[];
 }
-// export interface TimeLine {
-//   Day1: string[];
-//   Day2: string[];
-//   Day3: string[];
-//   Day4: string[];
-//   Day5: string[];
-//   Day6: string[];
-//   Day7: string[];
-// }
-export interface Itinerary {
-  "0": string;
-  "1": string[];
-}
+
 interface SetSelectedTourData {
   type: typeof SET_SELECTED_TOUR_DATA;
   payload: selectedTourDataDto;

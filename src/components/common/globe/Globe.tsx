@@ -42,7 +42,7 @@ const Globe: FC = () => {
       markerObjectID: markerObject.uuid,
       pointerEventPosition: { x: event.clientX, y: event.clientY },
     });
-    ({
+    dispatch({
       type: SET_SELECTED_LOCATION,
       payload: {
         city: marker.city,
@@ -66,19 +66,6 @@ const Globe: FC = () => {
       payload: {},
     });
   }
-  // console.log(
-  //   cities?.map((city: any, index: number) => {
-  //     return city?.Column2 && {
-  //       id: index.toString(),
-  //       city: city?.Column2,
-  //       color: "red",
-  //       coordinates: [
-  //         ...Array(parseFloat(city?.Column3), parseFloat(city?.Column4)),
-  //       ],
-  //       value: 50,
-  //     };
-  //   })
-  // );
   return (
     <div>
       <ReactGlobe

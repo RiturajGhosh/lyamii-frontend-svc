@@ -31,14 +31,7 @@ const RecentlyViewedTours: FC = () => {
           className="mx-md-3 col-12 d-inline-block position-relative"
         >
           <Card key={index} className={`p-0`}>
-            <TourCard
-              coordinates={[]}
-              className={"small"}
-              imageStyling={`img-fluid`}
-              imageRatio={150}
-              titleStyling="small"
-              tourData={tour}
-            />
+            <TourCard tourData={tour} key={index} />
           </Card>
         </Col>
       ))}

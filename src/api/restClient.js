@@ -24,9 +24,9 @@ export const restClient = async ({
   const axiosInstance = axios.create({
     timeout: 40000,
     // httpsAgent: new (require("https").Agent)({ rejectUnauthorized: false }),
-    baseURL: "http://localhost:8081",
-    // baseURL:
-    //   "https://internal-Lyamii-internalALB-1594084741.ap-south-1.elb.amazonaws.com",
+    // baseURL: "http://localhost:8081",
+    baseURL:
+      "https://internal-Lyamii-internalALB-1594084741.ap-south-1.elb.amazonaws.com",
     headers: headers,
   });
 

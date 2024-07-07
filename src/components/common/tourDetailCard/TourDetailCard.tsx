@@ -9,18 +9,19 @@ import {
   Popover,
   ButtonToolbar,
   OverlayTrigger,
+  Container,
 } from "react-bootstrap";
+import { FaPlane } from "react-icons/fa";
 import style from "./TourDetailCard.module.scss";
 import { BsShare } from "react-icons/bs";
 import { FaIndianRupeeSign } from "react-icons/fa6";
 import MainContainer from "../container/MainContainer";
 import Tick from "../icon/tick";
-import { useHistory, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { getPackageDetailsByPackageIdApi } from "../../../api/getPackageDetailsByPackageIdApi";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTourData } from "../../../state/selectors/selectTourData";
 import {
-  Itinerary,
   SET_SELECTED_TOUR_DATA,
   selectedTourDataDto,
 } from "../../../state/actions/types/tourDataActionType";
@@ -28,13 +29,17 @@ import { parseTourData } from "../../../utils/parseTourData";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { countries } from "../enum/countryCode";
 import { countryCode } from "../../../utils/countryCodes";
+import { departureData, styles } from "./TourUiData";
 
 const TourDetailCard: FC = () => {
   const tourData = useSelector(selectTourData);
   const [tour, setTour] = useState<selectedTourDataDto>(tourData);
   const [count, setCount] = useState(0);
+  const [showAllItinerary, setShowAllItinerary] = useState(false);
+  const [showAllDescription, setShowAllDescription] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
+  const [id, setId] = useState("");
   const [flagCode, setFlagCode] = useState("");
   const fetchTours = async () => {
     const response = await getPackageDetailsByPackageIdApi(
@@ -80,388 +85,285 @@ const TourDetailCard: FC = () => {
       </Row>
     </Popover>
   );
-
   return (
-    <MainContainer>
-      <Card.Img
-        className={`p-0 m-0 justify-content-center
- ${style.img}`}
-        style={{
-          // width: "100%",
-          height: "70vh",
-          padding: "0px !important",
-          margin: "0px !important",
-        }}
-        onClick={() => history.push(`/tour-detail:${tour.packageId}`)}
-        src={require("../../../Assets/header.jpg")}
-      />
-      <Col
-        className="gap-4 pt-5 d-flex text-dark flex-column"
-        style={{ background: "#8ca0bd" }}
-      >
-        <Col className="position-relative d-flex">
-          <Row
-            className={`${style.card} justify-content-center d-flex p-0`}
-            style={{ minHeight: "100%" }}
+    <div style={styles.card}>
+      <div style={styles.mainImageContainer}>
+        <img
+          src={require("../../../Assets/america.png")}
+          alt={"Main Tour Image"}
+          style={styles.mainImage}
+        />
+        <div style={styles.mainText}>
+          <p
+            className="p-0 m-0"
+            style={{
+              fontSize: 35,
+              fontWeight: "600",
+              color: "#1C1C1C",
+            }}
           >
-            <Col
-              md={4}
-              lg={4}
-              sm={11}
-              xs={11}
-              className={"p-0 mx-md-0 gap-4 m-0"}
-            >
-              <Col className="position-relative">
-                <Card
-                  style={{
-                    height: "15vw",
-                    fontSize: "5.5dvi",
-                    fontFamily: "initial",
-                  }}
-                  className={`rounded-4 bg-dark text-start w-100 px-4 justify-content-center text-white position-relative p-0 m-0 pb-2 ${style.tourNameHeight}`}
-                >
-                  <Col
-                    className={`position-absolute top-0 end-0 border-1 text-black justify-self-center d-flex pe-4`}
-                  >
-                    <img
-                      alt=""
-                      className="m-0 p-0"
-                      style={{ height: "10vh" }}
-                      src={`https://flagsapi.com/${flagCode}/flat/64.png`}
-                    />
-                  </Col>
-                  {tour?.packageName}
-                </Card>
-              </Col>{" "}
-            </Col>
-            <Col md={8} sm={11} lg={8} className="col-12 pt-4 pt-md-0 p-0 m-0">
-              <Col className="position-relative p-0">
-                <Card.Body className="p-0 px-4 gap-3 m-0 d-flex h-100 align-items-center d-flex flex-column m-0">
-                  {/* <Card.Title className="p text-wrap">
-                      {tour?.displayName?.text &&
-                        tour?.displayName?.text}
-                    </Card.Title> */}
-
-                  <span className="fs-16 p-0 m-0">
-                    <p>{tour?.description?.[0]}</p>
-                  </span>
-                </Card.Body>
-              </Col>
-            </Col>
-          </Row>
-        </Col>
-        <Col>
-          <Row className={`${style.card} p-0`} style={{ minHeight: "100%" }}>
-            <Col
-              xs={6}
-              md={6}
-              lg={6}
-              className="col-12 px-4 py-4 m-0 gap-4 d-grid"
-            >
-              <Row className="d-flex mb-2 justify-content-between">
-                <Col className="p-2 fs-24 col-2 align-items-center d-flex justify-content-center h-100 text-white text-center bg-dark">
-                  {tour.noOfDays}D
-                </Col>{" "}
-                <Col className="col-8 px-1 align-self-center text-white position-relative p-0 m-0">
-                  <Col
-                    className="rounded-4 border-1 flex-row d-flex align-items-center p-3 border-white border text-white shadow-sm p-2 bold fs-20"
-                    style={{ background: "#50809d" }}
-                  >
-                    <span className="p-0 m-0 fs-auto text-start fit-content">
-                      {tour.packageId}
-                    </span>
-                  </Col>
-                  <Col className="position-relative w-100 p-0 border-1 text-center mx-42 justify-content-end text-white">
-                    <span
-                      className="align-middle pointer justify-self-center p-1 fs-16 rounded-3 position-absolute mx-42 start-50 top-0 translate-middle"
-                      style={{
-                        background: "#024774",
-                        color: "white",
-                        width: "max-content",
-                      }}
-                      onClick={() => {}}
-                    >
-                      TOUR ID
-                    </span>
-                  </Col>
-                </Col>
-              </Row>
-              <Row
-                className={`${style.card} justify-content-between d-flex p-0`}
-                // style={{ minHeight: "100%" }}
-              >
-                <Col className="p-0 col-12 m-0">
-                  <Col>
-                    <Card
-                      className="text-white scroll position-relative p-0 m-0 p-2"
-                      style={{ background: "#8ca0bd" }}
-                    >
-                      <section
-                        className={`overflow-auto ${style?.routeTimeline}`}
-                      >
-                        {tour?.itinerary?.map((place: any, idx: number) => (
-                          <Col className="py-2">
-                            <Row>
-                              <Col className="p-0 fs-24 m-0 col-2 text-white align-self-center p-2 text-center bg-dark">
-                                {idx < 9 ? "0" + (idx + 1) : idx + 1}
-                              </Col>
-                              <Col>
-                                <div className="pl-2 fs-auto bold lh-sm p-0 m-0 text-dark ">
-                                  {place[0]}
-                                </div>
-                                <div className="p-2 fs-auto p-0 lh-sm m-0 text-dark">
-                                  {place
-                                    .slice(1)
-                                    ?.map((route: any, index: number) => (
-                                      <li>{route}</li>
-                                    ))}
-                                  {/* ))} */}
-                                </div>
-                              </Col>
-                            </Row>
-                          </Col>
-                        ))}
-                      </section>
-                    </Card>
-                  </Col>
-                </Col>
-              </Row>
-              <Row className="align-items-center d-flex justify-content-between">
-                <Col
-                  className="rounded-4 border-1 border-white border text-white shadow-sm p-2 col-6 bold fs-16"
-                  // style={{ background: "#a8c0f0" }}
-                >
-                  Departure Date :
-                  <input
-                    type="date"
-                    className="w-100 bg-transparent border-0 border small"
-                    placeholder=" "
-                    onChange={(e: any) => {}}
-                  ></input>
-                </Col>
-                <Col className="text-white p-2 bold fs-16 justify-content-end d-flex">
-                  Add Traveller :
-                </Col>
-                <Col
-                  md={2}
-                  lg={2}
-                  className="position-relative col-2 fs-16 align-items-end d-flex bg-white p-0 m-0 border-0 text-center justify-content-end"
-                >
-                  <InputGroup className="">
-                    <Button
-                      className="border-0 pointer fs-16 p-2 m-0"
-                      variant="outline-secondary"
-                      id="button-addon1"
-                      onClick={() => setCount(count - 1)}
-                    >
-                      -
-                    </Button>
-                    <Form.Control
-                      value={count}
-                      onChange={(e) => setCount(parseInt(e.target.value))}
-                      aria-label="Example text with button addon"
-                      aria-describedby="basic-addon1"
-                      className="w-10 p-2 m-0 fs-16 border-bottom-0 border-top-0"
-                    />
-                    <Button
-                      className="border-0 pointer fs-16 p-2 m-0"
-                      variant="outline-secondary"
-                      id="button-addon1"
-                      onClick={() => setCount(count + 1)}
-                    >
-                      +
-                    </Button>
-                  </InputGroup>
-                </Col>
-              </Row>
-              <ButtonToolbar className="fw-bold align-items-center w-100 text-white flex-nowrap py-3 justify-content-center flex-row d-flex m-0 p-0 position-relative">
-                <OverlayTrigger
-                  trigger={["hover", "focus"]}
-                  placement="top"
-                  overlay={popoverTop}
-                >
-                  <Button
-                    className="w-100"
-                    style={{ background: "#0752a1", fontFamily: "Archive" }}
-                  >
-                    Includes
-                  </Button>
-                </OverlayTrigger>
-              </ButtonToolbar>
-            </Col>
-            <Col xs={6} md={6} lg={6} className="col-12 p-0 m-0">
-              <Col className="position-relative h-100 d-flex align-items-center p-0">
-                <Card.Body className="p-0 px-4 gap-3 d-flex flex-column m-0">
-                  <Card
-                    style={{ height: window.innerWidth / 3 }}
-                    className={
-                      "text-white align-items-center d-flex h-100 bg-dark position-relative p-2 m-0"
-                    }
-                  >
-                    <section
-                      className={`pt-4 overflow-auto ${style.rivewCard}`}
-                    >
-                      {tour?.highlights?.map((review: string) => (
-                        <Row className="p-2">
-                          <Button
-                            style={{ background: "#5a8ffd" }}
-                            className="align-items-center justify-content-center p-2 col-1 btn btn-circle-sm d-flex"
-                          >
-                            <Tick width="50" height="50" />
-                          </Button>
-                          <Col className="fs-16 align-items-center pr-0 d-flex">
-                            {review}
-                          </Col>
-                        </Row>
-                      ))}
-                    </section>
-                    <Col lg={3} xs={3} className="col-6 py-2 align-self-end">
-                      <Row
-                        className={`fw-bold align-items-center text-nowrap text-secondary`}
-                      >
-                        <Row className="w-100 justify-content-center">
-                          {tour &&
-                            [...Array(tour?.rating || 0)]?.map(
-                              (index: number) => {
-                                return (
-                                  <AiFillStar
-                                    key={index}
-                                    size={25}
-                                    style={{
-                                      color: "#fed02b",
-                                      width: "fit-content",
-                                      paddingLeft: "0px",
-                                      paddingRight: "0px",
-                                      marginTop: "0px",
-                                    }}
-                                    className="d-flex"
-                                  />
-                                );
-                              }
-                            )}
-                          {tour &&
-                            [...Array(5 - tour?.rating || 0)]?.map(
-                              (index: number) => {
-                                return (
-                                  <AiOutlineStar
-                                    key={index}
-                                    size={25}
-                                    style={{
-                                      color: "white",
-                                      width: "fit-content",
-                                      paddingLeft: "0px",
-                                      paddingRight: "0px",
-                                      marginTop: "0px",
-                                    }}
-                                    className="d-flex"
-                                  />
-                                );
-                              }
-                            )}
-                        </Row>
-                      </Row>
-                    </Col>
-                  </Card>
-
-                  <Row className="position-relative justify-content-around d-flex w-100 p-0 m-0">
-                    <Col className="col-4 px-1 align-self-center text-white position-relative p-0 m-0">
-                      <Col
-                        className="rounded-4 border-1 flex-row d-flex align-items-center p-3 border-white border text-white shadow-sm p-2 bold fs-20"
-                        style={{ background: "#50809d" }}
-                      >
-                        <span className="p-0 fs-24 m-0 text-center fit-content">
-                          <select
-                            className="form-select pointer"
-                            aria-label="Default select example"
-                          >
-                            {["2000 INR", "24 USD"].map(
-                              (price: string, index: number) => (
-                                <option key={index} value={price}>
-                                  {price}
-                                </option>
-                              )
-                            )}
-                          </select>
-                        </span>
-                        {/* <FaIndianRupeeSign
-                          className="fit-content p-0 m-0"
-                          size={"30px"}
-                        /> */}
-                      </Col>
-                      <Col className="position-relative w-100 p-0 border-1 text-center mx-3 justify-content-end text-white">
-                        <span
-                          className="align-middle pointer fs-16 justify-self-center p-1 rounded-3 position-absolute top-100 ml-42 start-50 translate-middle"
-                          style={{
-                            background: "#024774",
-                            color: "white",
-                            width: "max-content",
-                          }}
-                          onClick={() => history.push("/checkout")}
-                        >
-                          Book Now
-                        </span>
-                      </Col>
-                    </Col>
-                    <Col className="col-4 px-1 align-self-center text-white position-relative p-0 m-0">
-                      <Col
-                        className="rounded-4 border-1 flex-row d-flex align-items-center p-3 border-white border text-white shadow-sm p-2 bold fs-20"
-                        style={{ background: "#50809d" }}
-                      >
-                        <span className="p-0 m-0 fs-24 text-center fit-content">
-                          <select
-                            className="form-select pointer"
-                            aria-label="Default select example"
-                          >
-                            {tour?.packagePrice?.map(
-                              (price: string, index: number) => (
-                                <option key={index} value={price}>
-                                  {price}
-                                  {tour?.packagePrice.length === 1 && " INR"}
-                                </option>
-                              )
-                            )}
-                          </select>
-                        </span>
-                        {/* <FaIndianRupeeSign
-                          className="fit-content p-0 m-0"
-                          size={"30px"}
-                        /> */}
-                      </Col>
-                      <Col className="position-relative w-100 p-0 border-1 text-center mx-3 justify-content-end text-white">
-                        <span
-                          className="align-middle fs-16 pointer justify-self-center p-1 shadow-sm border-0 rounded-3 position-absolute top-100 ml-42 start-50 translate-middle"
-                          style={{
-                            background: "#024774",
-                            color: "white",
-                            width: "max-content",
-                          }}
-                          onClick={() => history.push("/checkout")}
-                        >
-                          Buy Now
-                        </span>
-                      </Col>
-                    </Col>
-                    <Button className="align-items-center bg-white justify-content-center  col-2 btn btn-circle btn-xl fs-16 d-flex">
-                      <BsShare
-                        className="h-75 w-100 text-dark"
-                        onClick={() => {}}
+            {tour.title}
+          </p>
+          <div className="p-0 m-0">
+            {" "}
+            <Row className="w-100 justify-content-center">
+              {tourData?.rating &&
+                [...Array(tourData?.rating)]?.map(
+                  (star: any, index: number) => {
+                    return (
+                      <AiFillStar
+                        key={index}
+                        size={15}
+                        style={{
+                          color: "#f7de26",
+                          width: "fit-content",
+                          paddingLeft: "0px",
+                          paddingRight: "0px",
+                          marginTop: "0px",
+                        }}
+                        className="d-flex"
                       />
-                    </Button>
-                  </Row>
-                </Card.Body>
-              </Col>
-            </Col>
-          </Row>
-        </Col>
-        <Col className="position-relative p-0">
-          <Card.Body className="p-0 px-4 gap-3 d-flex flex-column m-0">
-            <Card.Text className="fs-16 min-vh-25">
-              <p>{tour?.description?.slice(1)}</p>
-            </Card.Text>
-          </Card.Body>
-        </Col>
-      </Col>
-    </MainContainer>
+                    );
+                  }
+                )}
+              {tourData.rating &&
+                [...Array(5 - tourData?.rating)]?.map((index: number) => {
+                  return (
+                    <AiOutlineStar
+                      key={index}
+                      size={15}
+                      style={{
+                        color: "f7de26",
+                        width: "fit-content",
+                        paddingLeft: "0px",
+                        paddingRight: "0px",
+                        marginTop: "0px",
+                      }}
+                      className="d-flex"
+                    />
+                  );
+                })}
+            </Row>
+          </div>
+          <p
+            className="p-0 m-0"
+            style={{
+              fontSize: 23,
+              fontWeight: "600",
+              color: "#879DFF",
+              marginTop: -10,
+            }}
+          >
+            {tour.noOfDays - 1}N/{tour.noOfDays}D
+          </p>
+
+          <span
+            style={{
+              padding: "5px 5px",
+              borderRadius: 0,
+              backgroundColor: "#F5F5F5",
+              color: "#6F82D3",
+              fontSize: 20,
+              fontWeight: "400",
+            }}
+          >
+            <select
+              className="form-select pointer border border-0 w-100"
+              aria-label="Default select example"
+            >
+              {tourData?.packagePrice?.map((price: string, index: number) => (
+                <option key={index} value={price}>
+                  {price}
+                  {tourData?.packagePrice.length === 1 && " INR"}
+                </option>
+              ))}
+            </select>
+          </span>
+          <button
+            onClick={() => history.push("/checkout")}
+            style={{
+              width: 164,
+              height: 53,
+              fontSize: 28,
+              fontWeight: "700",
+              color: "#FFFFFF",
+              backgroundColor: "#879DFF",
+              borderRadius: 0,
+              borderWidth: 0,
+            }}
+          >
+            Buy Now
+          </button>
+          <h4 className="fw-bold">Arrival Date</h4>
+          <div
+            style={{
+              display: "flex",
+              gap: "10px",
+              justifyContent: "flex-start",
+              alignItems: "flex-start",
+              marginBottom: 10,
+              marginLeft: 0,
+            }}
+          >
+            <span
+              style={{
+                padding: "5px 5px",
+                borderRadius: 0,
+                backgroundColor: "#F5F5F5",
+                color: "#6F82D3",
+                fontSize: 20,
+                fontWeight: "400",
+              }}
+            >
+              <input className="form-select border border-0" type="date" />
+            </span>
+            {/* ))} */}
+          </div>
+        </div>
+      </div>
+      <div style={styles.placesContainer}>
+        <p
+          style={{
+            fontSize: 30,
+            fontWeight: "600",
+          }}
+        >
+          Places You'll See
+        </p>
+        <div style={styles.placesList}>
+          {tour?.destinations?.map((place, index) => (
+            <div key={index} style={styles.placeContainer}>
+              <img
+                src={require("../../../Assets/america.png")}
+                alt={`Place ${index + 1}`}
+                style={styles.placeImage}
+              />
+              <span style={styles.placeName}>{place}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div>
+        <ul className="input-group d-flex">
+          <Col className="border border-top-0 border-end-0 border-start-0 p-3 w-100 text-dark">
+            <a
+              className="text-decoration-none text-dark fw-bold"
+              style={{ color: "#666" }}
+              onClick={() => setId("#about")}
+              href="#about"
+            >
+              About
+            </a>
+          </Col>
+          <Col className="border border-top-0 border-end-0 border-start-0 p-3 w-100 text-decoration-none text-dark">
+            <a
+              className="text-decoration-none text-dark fw-bold"
+              style={{ color: "#666" }}
+              onClick={() => setId("#highlights")}
+              href="#highlights"
+            >
+              Highlights
+            </a>
+          </Col>
+          <Col className="border border-top-0 border-end-0 border-start-0 p-3 w-100 text-decoration-none text-dark">
+            <a
+              className="text-decoration-none text-dark fw-bold"
+              style={{ color: "#666" }}
+              onClick={() => setId("#itinerary")}
+              href="#itinerary"
+            >
+              Itinerary
+            </a>
+          </Col>
+        </ul>
+      </div>
+      <div id="about" style={styles.aboutSection}>
+        <h2 style={styles.sectionHeading}>About</h2>
+        {tour?.description
+          ?.slice(showAllDescription ? 0 : 2)
+          ?.map((desc, index) => (
+            <p key={index} style={styles.aboutText}>
+              {desc}
+            </p>
+          ))}
+        <a
+          className="pl-3"
+          style={{
+            fontSize: 16,
+            color: "#879DFF",
+            fontWeight: "600",
+            textDecorationLine: "none",
+          }}
+          onClick={(e) => {
+            e.preventDefault();
+            setShowAllDescription(!showAllDescription);
+          }}
+        >
+          {showAllDescription ? "Read Less" : "Read More"}
+        </a>
+      </div>
+      <div id="highlights" style={styles.aboutSection}>
+        <h2 style={styles.sectionHeading}>Highlights</h2>
+        <ul style={styles.highlightList}>
+          {tour?.highlights?.map((highlight, index) => (
+            <li
+              key={index}
+              style={{
+                fontSize: 16,
+                fontWeight: "400",
+                margin: 5,
+                color: "#2E2E2E",
+              }}
+            >
+              {highlight}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div id="itinerary" style={styles.aboutSection}>
+        <h2 style={styles.sectionHeading}>Itinerary</h2>
+        <div style={styles.daysPlanContainer}>
+          <h2 style={styles.daysPlanTitle}>Days Plan</h2>
+          {tour?.itinerary
+            ?.slice(showAllItinerary ? 0 : 4)
+            ?.map((item: string[], index: number) => (
+              <div style={styles.dayContainer} key={index}>
+                <div style={styles.verticalLine}></div>
+                <div style={styles.dayDot}></div>
+                <div style={styles.dayContent}>
+                  <p style={styles.dayTitle}>{item[0]}</p>
+                  {item?.slice(1)?.map((place: string, i: number) => (
+                    <p key={i} style={styles.daySubtitle}>
+                      {place}
+                    </p>
+                  ))}
+                  {/* {item.description && (
+                  <p style={styles.dayDescription}>{item.description}</p>
+                )} */}
+                </div>
+              </div>
+            ))}
+          <Button
+            className="view-more-button"
+            onClick={() => {
+              setShowAllItinerary(!showAllItinerary);
+            }}
+            style={{
+              backgroundColor: "#4A90E2",
+              fontSize: 15,
+              fontWeight: "600",
+              color: "#FFFFFF",
+              border: "none",
+              borderRadius: 0,
+              alignSelf: "center",
+              margin: "20px auto 0",
+            }}
+          >
+            {showAllItinerary ? "View Less" : "View More"}
+          </Button>
+        </div>
+      </div>
+    </div>
   );
 };
 

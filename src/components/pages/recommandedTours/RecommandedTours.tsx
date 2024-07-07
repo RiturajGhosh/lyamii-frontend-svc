@@ -18,42 +18,12 @@ const RecommandedTours: FC = () => {
   return (
     <>
       {tourlist.length > 0 ? (
-        <HorizontalScroll
-          title={"Most Popular"}
-          setPage={(e: any) => setPage(e)}
-          page={page}
-        >
+        <>
+          {" "}
           {tourlist?.map((tour, index) => (
-            <Col
-              md={6}
-              lg={4}
-              sx={12}
-              sm={8}
-              key={index}
-              className="mx-md-3 col-12 d-inline-block position-relative"
-            >
-              <Card key={index} className={`p-0`}>
-                <TourCard
-                  coordinates={[]}
-                  className={"small"}
-                  imageStyling={`img-fluid`}
-                  imageRatio={150}
-                  titleStyling="small"
-                  tourData={tour}
-                />
-              </Card>
-            </Col>
+            <TourCard tourData={tour} key={index} />
           ))}
-          {loading && (
-            <div className="spinner-box h-100 ">
-              <Col className="p-0 h-100 m-0">
-                <div className="circle-border">
-                  <div className="circle-core"></div>
-                </div>
-              </Col>
-            </div>
-          )}
-        </HorizontalScroll>
+        </>
       ) : (
         <Col className="h3">There is no Tour for this Destination</Col>
       )}

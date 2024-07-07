@@ -1,123 +1,23 @@
-svg {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+.carouselCard {
+  width: 382px;
+  height: 520px;
+  position: relative;
+  margin: 0; /* No gap */
+  opacity: 1; /* Fully visible */
 }
 
-.bgBluePink {
-  background-image: linear-gradient(to top right, #fed8f7, #c4f1fe);
-  outline: white;
-}
-.navigationButton {
-  border-radius: 50px !important;
-  float: right;
-}
-.bgImage {
-  position: relative;
-  z-index: 0;
-  -webkit-mask-image: url(../../../Assets/image.png);
-  mask-image: url(../../../Assets/image.png);
-  background-color: #337d94;
-  background-position: top right;
-  background-repeat: no-repeat;
-  background-size: auto;
-  margin: 20px auto;
-  display: block;
+.cardImage {
   width: 100%;
-  height: 200px;
-  -webkit-mask-position: top right;
-  mask-position: top right;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-size: 120px 150px;
-  mask-size: 120px 150px;
-  @media only screen and (min-width: 768px) and (max-width: 1200px) {
-    height: 430px;
-    -webkit-mask-size: 120px 150px;
-    mask-size: 120px 150px;
-  }
-  @media only screen and (min-width: 500px) and (max-width: 767px) {
-    height: 500px;
-    -webkit-mask-size: 120px 150px;
-    mask-size: 120px 150px;
-  }
-  @media only screen and (min-width: 400px) and (max-width: 500px) {
-    height: 430px;
-    -webkit-mask-size: 120px 150px;
-    mask-size: 120px 150px;
-  }
-  @media only screen and (max-width: 400px) {
-    height: 360px;
-    -webkit-mask-size: 120px 150px;
-    mask-size: 120px 150px;
-  }
+  height: 250px;
+  object-fit: cover; /* Ensure image covers the entire area */
+  padding: 0; /* No padding */
+  margin: 0; /* No margin */
 }
-.downImage {
+
+.cardTextOverlay {
   position: relative;
-  z-index: 0;
-  -webkit-mask-image: url(../../../Assets/parachute.png);
-  mask-image: url(../../../Assets/parachute.png);
-  background-color: #337d94;
-  background-position: top left;
-  background-repeat: no-repeat;
-  background-size: auto;
-  display: block;
-  width: 100%;
-  height: 150px;
-  -webkit-mask-position: top left;
-  mask-position: top left;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-size: 200px 150px;
-  mask-size: 200px 150px;
-  @media only screen and (max-width: 1200px) {
-    height: 200px;
-    -webkit-mask-size: 200px 150px;
-    mask-size: 200px 150px;
-  }
-}
-.bgImage::before {
-  background-color: #fff !important;
-}
-.btmRght {
-  right: 10px !important;
-  bottom: 10px !important;
-}
-.img {
-  margin: 20px auto;
-  display: block;
-  width: 540px;
-  height: 600px;
-  -webkit-mask-image: url(https://cdnblog.webkul.com/blog/wp-content/uploads/2018/06/shape1.jpg);
-  mask-image: url(https://cdnblog.webkul.com/blog/wp-content/uploads/2018/06/shape1.jpg);
-  -webkit-mask-position: top left;
-  mask-position: top left;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-size: 450px 600px;
-  mask-size: 450px 600px;
-  @media only screen and (min-width: 768px) and (max-width: 1200px) {
-    width: 300px;
-    height: 430px;
-    -webkit-mask-size: 300px 430px;
-    mask-size: 300px 430px;
-  }
-  @media only screen and (min-width: 500px) and (max-width: 767px) {
-    width: 400px;
-    height: 500px;
-    -webkit-mask-size: 400px 500px;
-    mask-size: 400px 500px;
-  }
-  @media only screen and (min-width: 400px) and (max-width: 500px) {
-    width: 350px;
-    height: 430px;
-    -webkit-mask-size: 350px 450px;
-    mask-size: 350px 450px;
-  }
-  @media only screen and (max-width: 400px) {
-    width: 300px;
-    height: 360px;
-    -webkit-mask-size: 300px 400px;
-    mask-size: 300px 400px;
-  }
+  padding: 10px;
+  color: black;
+  background: white;
+  border: 1px solid #ddd; /* Light border for separation */
 }

@@ -1,107 +1,182 @@
 import React, { FC } from "react";
-import { Image, Col, Row, Ratio, Button } from "react-bootstrap";
-import style from "./TourCard.module.scss";
-import { AiFillStar, AiOutlineStar } from "react-icons/ai";
+import { Button, Card, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { LuChevronRightCircle } from "react-icons/lu";
 import { useHistory } from "react-router-dom";
 import {
   SET_TOUR_PACKAGE_ID,
   selectedTourDataDto,
 } from "../../../state/actions/types/tourDataActionType";
-import { GoDotFill } from "react-icons/go";
 
 type TourCardType = {
-  key?: number;
-  imageRatio?: number;
   tourData: selectedTourDataDto;
-  imageStyling?: string;
-  titleStyling?: string;
-  className?: string;
-  minHeight?: string;
-  coordinates?: number[];
-  tour?: selectedTourDataDto;
+  key: number;
 };
-const TourCard: FC<TourCardType> = ({
-  key,
-  imageRatio,
-  className,
-  tourData,
-  minHeight,
-  coordinates,
-  imageStyling,
-  tour,
-  titleStyling,
-}) => {
+const TourCard: FC<TourCardType> = ({ tourData, key }) => {
   const history = useHistory();
   const dispatch = useDispatch();
 
   return (
-    <Row
-      className={`${className} ${style.card} p-0`}
-      style={{ minHeight: "100%", background: "#c4cdfe" }}
+    <Card
+      key={key}
+      style={{
+        border: "1px solid #E0E0E0",
+        width: "100%",
+        borderRadius: 10,
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+      }}
     >
-      <Col md={6} lg={6} sm={6} className="p-0 col-6 m-0">
-        <Col>
-          <Col className="text-white position-relative p-2 m-0 pb-2">
-            {tourData?.imageUri && (
-              <Ratio aspectRatio={imageRatio}>
-                <>
-                  <Image
-                    className={`p-0 rounded-3 position-absolute ${imageStyling}`}
-                    src={require("../../../Assets/header.jpg")}
-                    alt="drive image"
-                    onClick={() => {
-                      dispatch({
-                        type: SET_TOUR_PACKAGE_ID,
-                        payload: tourData.packageId,
-                      });
-                      history.push(`/tour-detail:${tourData.packageId}`);
-                    }}
-                  />
-                  <Col className="position-relative p-0 border-1 pb-2 mb-5 text-center justify-content-end text-white">
-                    <select
-                      className="form-select pointer"
-                      aria-label="Default select example"
-                    >
-                      {tourData?.packagePrice?.map(
-                        (price: string, index: number) => (
-                          <option key={index} value={price}>
-                            {price}
-                            {tourData?.packagePrice.length === 1 && " INR"}
-                          </option>
-                        )
-                      )}
-                    </select>
-                  </Col>
-                </>
-              </Ratio>
-            )}
-          </Col>
-        </Col>
-        <div className="fw-bold align-items-center text-white flex-nowrap py-3 mx-4 justify-content-center flex-row d-flex m-0 p-0 position-relative">
-          <span className="p-0 m-0 display-5 d-flex flex-wrap w-90 text-center fit-content"></span>
-        </div>
-      </Col>
-      <Col
-        md={6}
-        lg={6}
-        sm={6}
-        xs={6}
-        sx={12}
-        className={`col-6 p-0 m-0 align-self-end`}
-      >
-        <Row className="p-0 m-0 h-90">
-          <Col className="position-relative m-0 d-flex p-0">
-            <Col className="p-0 gap-3 d-flex flex-column m-0">
-              <Col
-                className="position-relative justify-content-end d-flex w-100 pe-2 top-0 bold fs-3 fit-content my-4"
+      <div style={{ display: "flex", padding: "20px" }}>
+        <Card.Img
+          variant="center"
+          style={{
+            width: 322,
+            height: 319,
+            borderRadius: 10,
+            objectFit: "cover",
+          }}
+          onClick={() => {
+            dispatch({
+              type: SET_TOUR_PACKAGE_ID,
+              payload: tourData.packageId,
+            });
+            history.push(`/tour-detail:${tourData.packageId}`);
+          }}
+          src="https://plus.unsplash.com/premium_photo-1672082422409-879d79636902?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YW1lcmljYXxlbnwwfHwwfHx8MA%3D%3D"
+        />
+
+        <Card.Body style={{ flex: 1 }}>
+          <Card.Title
+            style={{
+              fontSize: 30,
+              fontWeight: "600",
+              color: "#4A90E2",
+              display: "flex",
+              justifyContent: "flex-start",
+              alignItems: "flex-start",
+            }}
+            onClick={() => {
+              dispatch({
+                type: SET_TOUR_PACKAGE_ID,
+                payload: tourData.packageId,
+              });
+              history.push(`/tour-detail:${tourData.packageId}`);
+            }}
+          >
+            {tourData?.title && tourData?.title}
+          </Card.Title>
+          <div
+            style={{
+              display: "flex",
+              gap: "10px",
+              justifyContent: "flex-start",
+              alignItems: "flex-start",
+              marginBottom: 10,
+            }}
+          >
+            {tourData.destinations.map((month) => (
+              <span
+                key={month}
                 style={{
-                  background: "#c4cdfe",
-                  color: "#0752a1",
-                  fontFamily: "NORWESTER",
-                  whiteSpace: "break-spaces",
+                  padding: "5px 10px",
+                  borderRadius: 0,
+                  backgroundColor: "#F0F4FF",
+                  color: "#4A90E2",
+                  fontSize: 14,
                 }}
+              >
+                {month}
+              </span>
+            ))}
+          </div>
+          <div
+            style={{
+              display: "flex",
+              gap: "10px",
+              marginBottom: 10,
+              justifyContent: "flex-start",
+              alignItems: "flex-start",
+            }}
+          >
+            {tourData?.includes?.slice(0, 4).map((item) => (
+              <span
+                key={item}
+                style={{
+                  padding: "5px 10px",
+                  borderRadius: 0,
+                  backgroundColor: "#F0F4FF",
+                  color: "#000000",
+                  fontSize: 14,
+                  fontWeight: "400",
+                }}
+              >
+                {item}
+              </span>
+            ))}
+            +{tourData?.includes.length - 4}
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "flex-end",
+              alignItems: "flex-end",
+              marginTop: -100,
+            }}
+          >
+            <div>
+              <span
+                style={{
+                  fontSize: 18,
+                  fontWeight: "700",
+                  color: "#818181",
+                  marginBottom: 10,
+                }}
+              >
+                Tour Duration:{" "}
+                <span
+                  style={{
+                    fontSize: 20,
+                    fontWeight: "600",
+                    color: "#879DFF",
+                  }}
+                >
+                  {tourData?.noOfDays - 1}N/{tourData?.noOfDays}D
+                </span>
+              </span>
+              <Row
+                className="align-items-center d-flex border border-0"
+                style={{
+                  fontSize: 18,
+                  fontWeight: "700",
+                  color: "#818181",
+                  marginBottom: 10,
+                }}
+              >
+                Total Cost:{" "}
+                {/* <span
+                  style={{
+                    fontSize: 20,
+                    fontWeight: "600",
+                    color: "#879DFF",
+                  }}
+                > */}
+                <select
+                  className="form-select w-60 border border-top-0 border-start-0 border-end-0 pointer"
+                  aria-label="Default select example"
+                >
+                  {tourData?.packagePrice?.map(
+                    (price: string, index: number) => (
+                      <option key={index} value={price}>
+                        {price}
+                        {tourData?.packagePrice.length === 1 && " INR"}
+                      </option>
+                    )
+                  )}
+                </select>
+                {/* </span> */}
+              </Row>
+              <br />
+              <Button
+                className="view-more-button"
                 onClick={() => {
                   dispatch({
                     type: SET_TOUR_PACKAGE_ID,
@@ -109,111 +184,69 @@ const TourCard: FC<TourCardType> = ({
                   });
                   history.push(`/tour-detail:${tourData.packageId}`);
                 }}
+                style={{
+                  width: 258,
+                  height: 52,
+                  backgroundColor: "#4A90E2",
+                  fontSize: 25,
+                  fontWeight: "600",
+                  color: "#FFFFFF",
+                  border: "none",
+                  borderRadius: 0,
+                  alignSelf: "center",
+                  margin: "20px auto 0",
+                }}
               >
-                {tourData?.packageName && tourData?.packageName}
-              </Col>
-              <Col
-                className="text-white flex-column d-flex h-100 position-relative m-0"
-                style={{ background: "#889dfe" }}
-              >
-                <Col
-                  className={`overflow-hidden mt-2 hidden-scroll ${style.routeTimeline}`}
-                >
-                  {tourData?.destinations.map((place: any, index: number) => (
-                    <Col key={index} className="py-2 d-inline fit-content">
-                      <Row className="d-flex gx-0 align-items-center">
-                        <Col>
-                          <div
-                            className="pl-2 float-right fs-medium p-0 m-0"
-                            style={{
-                              color: "#f7de26 ",
-                            }}
-                          >
-                            {place}
-                          </div>
-                        </Col>
-                        <Col className="col-2 align-items-center d-flex">
-                          <GoDotFill fill="#f7de26" />
-                        </Col>
-                      </Row>
-                    </Col>
-                  ))}
-                </Col>
-                <Row>
-                  <Col lg={8} xs={8} className="col-8 py-2 align-self-end">
-                    <Col lg={12} xs={12} className=" py-2 align-self-end">
-                      <Col
-                        className={`fw-bold d-flex flex-column align-items-center text-nowrap text-secondary`}
-                      >
-                        <Col
-                          className="display-6 justify-content-center"
-                          style={{
-                            color: "white",
-                          }}
-                        >
-                          {tourData?.noOfDays}D
-                        </Col>
-                        <Row className="w-100 justify-content-center">
-                          {[...Array(tourData?.rating)]?.map(
-                            (index: number) => {
-                              return (
-                                <AiFillStar
-                                  key={index}
-                                  size={15}
-                                  style={{
-                                    color: "#f7de26",
-                                    width: "fit-content",
-                                    paddingLeft: "0px",
-                                    paddingRight: "0px",
-                                    marginTop: "0px",
-                                  }}
-                                  className="d-flex"
-                                />
-                              );
-                            }
-                          )}
-                          {[...Array(5 - tourData?.rating)]?.map(
-                            (index: number) => {
-                              return (
-                                <AiOutlineStar
-                                  key={index}
-                                  size={15}
-                                  style={{
-                                    color: "f7de26",
-                                    width: "fit-content",
-                                    paddingLeft: "0px",
-                                    paddingRight: "0px",
-                                    marginTop: "0px",
-                                  }}
-                                  className="d-flex"
-                                />
-                              );
-                            }
-                          )}
-                        </Row>
-                      </Col>
-                    </Col>
-                  </Col>
-                  <Col className="col-4 justify-content-center p-0 align-self-center">
-                    <LuChevronRightCircle
-                      fill="#fed02b"
-                      size={"40px"}
-                      onClick={() => {
-                        dispatch({
-                          type: SET_TOUR_PACKAGE_ID,
-                          payload: tourData.packageId,
-                        });
-                        history.push(`/tour-detail:${tourData.packageId}`);
-                      }}
-                    />
-                  </Col>
-                </Row>
-              </Col>
-            </Col>
-          </Col>
-        </Row>
-      </Col>
-    </Row>
+                View More
+              </Button>
+            </div>
+          </div>
+
+          <hr style={{ border: "1px dotted #E0E0E0", margin: "10px 0" }} />
+          <div style={{ marginBottom: 10 }}>
+            <h5
+              style={{
+                fontSize: 20,
+                fontWeight: "600",
+                color: "#4A90E2",
+              }}
+            >
+              Highlights
+            </h5>
+            <ul
+              style={{
+                fontSize: 16,
+                fontWeight: "400",
+                color: "#2E2E2E",
+                paddingLeft: 20,
+              }}
+            >
+              {tourData.highlights.slice(3).map((highlight) => (
+                <li>{highlight}</li>
+              ))}
+            </ul>
+            <a
+              style={{
+                fontSize: 16,
+                color: "#879DFF",
+                fontWeight: "600",
+                textDecorationLine: "none",
+              }}
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch({
+                  type: SET_TOUR_PACKAGE_ID,
+                  payload: tourData.packageId,
+                });
+                history.push(`/tour-detail:${tourData.packageId}`);
+              }}
+            >
+              Read More
+            </a>
+          </div>
+        </Card.Body>
+      </div>
+    </Card>
   );
 };
 

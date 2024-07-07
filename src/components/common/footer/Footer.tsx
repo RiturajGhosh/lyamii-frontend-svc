@@ -11,13 +11,32 @@ const Footer: FC = () => {
   const user = cookie && JSON.parse(cookie);
   return (
     <footer>
-      <Col className="footer float-right p-0 w-100">
+      <Col
+        className="float-right p-0 m-0 w-100"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1471572891026-8ca1e66adf49?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGRhcmslMjBtb3VudGFpbnN8ZW58MHx8MHx8fDA%3D')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          color: "#fff",
+        }}
+      >
         <Col className="m-0 p-0 w-100">
           <Col className="mt-5 row d-flex justify-content-between m-5">
-            <Col md={12} lg={8}>
+            <Col md={12} lg={7}>
               <Row>
                 <Col md={4} lg={4} sm={12} className="p-0">
-                  <h2 className="ft-24 mt-2 fw-bold">Community</h2>
+                  <h2
+                    style={{
+                      fontSize: 26,
+                      fontWeight: "700",
+                      marginTop: 2,
+                      textAlign: 'center'
+                    }}
+                  >
+                    Community
+                  </h2>
                   <>
                     {communities.map((community: HeaderList, index: number) => {
                       return (
@@ -31,7 +50,14 @@ const Footer: FC = () => {
                               to={community.path}
                               className="py-0 text-decoration-none icon-colour"
                             >
-                              <p className="text-white p fw-bold">
+                              <p
+                                style={{
+                                  fontSize: 20,
+                                  fontWeight: "500",
+                                  color: "white",
+                                  textAlign: "center",
+                                }}
+                              >
                                 {community.name}
                               </p>
                             </Link>
@@ -42,7 +68,16 @@ const Footer: FC = () => {
                   </>
                 </Col>
                 <Col md={5} lg={4} sm={12} className="p-0">
-                  <h2 className="ft-24 mt-2 fw-bold">Must Reads</h2>
+                  <h2
+                    style={{
+                      fontSize: 26,
+                      fontWeight: "700",
+                      marginTop: 2,
+                       textAlign: 'center'
+                    }}
+                  >
+                    Must Reads
+                  </h2>
                   <>
                     {mustReads.map((reads: HeaderList, index: number) => {
                       return (
@@ -56,7 +91,14 @@ const Footer: FC = () => {
                               to={reads.path}
                               className="py-0 text-decoration-none icon-colour"
                             >
-                              <p className="text-white p fw-bold">
+                              <p
+                                style={{
+                                  fontSize: 20,
+                                  fontWeight: "500",
+                                  color: "white",
+                                  textAlign: "center",
+                                }}
+                              >
                                 {reads.name}
                               </p>
                             </Link>
@@ -67,7 +109,14 @@ const Footer: FC = () => {
                   </>
                 </Col>
                 <Col md={3} lg={4} sm={12} className="p-0 d-flex flex-column">
-                  <h2 className="ft-24 mt-2 justify-content-md-center d-flex fw-bold">
+                  <h2
+                    style={{
+                      fontSize: 26,
+                      fontWeight: "700",
+                      marginTop: 2,
+                       textAlign: 'center'
+                    }}
+                  >
                     Support
                   </h2>
                   <>
@@ -90,7 +139,14 @@ const Footer: FC = () => {
                               }
                               className="py-0 text-decoration-none icon-colour"
                             >
-                              <p className="text-white p fw-bold">
+                              <p
+                                style={{
+                                  fontSize: 20,
+                                  fontWeight: "500",
+                                  color: "white",
+                                  textAlign: "center",
+                                }}
+                              >
                                 {support.name}
                               </p>
                             </Link>
@@ -102,7 +158,7 @@ const Footer: FC = () => {
                 </Col>
               </Row>
             </Col>
-            <Col md={12} lg={4} className="mt-2">
+            <Col md={12} lg={5} className="mt-2">
               <span
                 className="display-1 text-white"
                 onClick={() => history.push("/")}
@@ -118,7 +174,7 @@ const Footer: FC = () => {
                     fontFamily: "DellaRespira",
                   }}
                   alt=""
-                 src={require("../../../Assets/lyamii.png")}
+                  src={require("../../../Assets/lyamii.png")}
                 />
                 <img
                   className={`p-0 m-0 pb-3 justify-content-center`}
