@@ -130,6 +130,7 @@ const LifetimeJourney: FC = () => {
   return (
     <div style={styles.lifetimeJourney}>
       <h2
+      className="bold"
         style={{
           fontSize: 45,
           fontWeight: "400",
@@ -158,7 +159,7 @@ const LifetimeJourney: FC = () => {
       <div style={styles.cardContainer}>
         <div style={styles.card}>
           <img
-            src="https://plus.unsplash.com/premium_photo-1661901620454-3259e60c54ba?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGZvcnR8ZW58MHx8MHx8fDA%3D"
+            src="https://drive.google.com/thumbnail?sz=w2000&id=1wOTvo27hpyi3ZvD2cdcJBNHhCdz2W8cF"
             alt="Royal Bharat Edition"
             style={styles.image}
           />
@@ -172,7 +173,7 @@ const LifetimeJourney: FC = () => {
         </div>
         <div style={styles.card}>
           <img
-            src="https://images.unsplash.com/uploads/141148589884100082977/a816dbd7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmFja3BhY2tlcnN8ZW58MHx8MHx8fDA%3D"
+            src="https://drive.google.com/thumbnail?sz=w2000&id=1wV2RNRvFCy8ew9aqzpeR-zbITwbY5sR1"
             alt="Backpackers Edition"
             style={styles.image}
           />
@@ -186,7 +187,7 @@ const LifetimeJourney: FC = () => {
         </div>
         <div style={styles.card}>
           <img
-            src="https://plus.unsplash.com/premium_photo-1694475008375-9644bce85c9e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bXVtYmFpJTIwbmlnaHR8ZW58MHx8MHx8fDA%3D"
+            src="https://drive.google.com/thumbnail?sz=w2000&id=1wQauWIEPsLvtFOVsHHu7gTYgECXxOgDg"
             alt="Combos"
             style={styles.image}
           />
@@ -201,6 +202,7 @@ const LifetimeJourney: FC = () => {
       </div>
       {/* International packages */}
       <h2
+      className="bold"
         style={{
           fontSize: 45,
           fontWeight: "400",
