@@ -7,7 +7,13 @@ import { escapeRoute } from "../../common/enum/escapePlanRoute";
 
 import About from "../../../Assets/About.png";
 import "./MapAndEscape.module.scss";
+import { useDispatch } from "react-redux";
+import { SET_SELECTED_LOCATION } from "../../../state/actions/types/globeDataActionType";
+import { useHistory } from "react-router-dom";
+
 const MapAndEscape: FC = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const data = [
     "Domestic Flights",
     "Lounge Access",
@@ -25,52 +31,80 @@ const MapAndEscape: FC = () => {
     "Activities",
     "Round the clock Multilingual Support",
   ];
-
+  const fetchTours = (location: string) => {
+    dispatch({
+      type: SET_SELECTED_LOCATION,
+      payload: {
+        city: location,
+        id: "",
+        value: "",
+        coordinates: "",
+        color: "",
+      },
+    });
+    window.scroll(0, 0);
+    history.push("/explore");
+  };
   const countries = [
     {
-      name: "America",
+      name: "Norway",
       imgSrc:
-        "https://plus.unsplash.com/premium_photo-1673639729701-c903b5d2be4b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YW1lcmljYXxlbnwwfHwwfHx8MA%3D%3D",
+        "https://drive.google.com/thumbnail?sz=w2000&id=1UIVoIsZB1I6_2ku1ci6JwGDzmlwYd-8u",
     },
     {
       name: "India",
       imgSrc:
-        "https://images.unsplash.com/photo-1565038181000-2c159d3fc28d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YW1lcmljYXxlbnwwfHwwfHx8MA%3D%3D",
+        "https://drive.google.com/thumbnail?sz=w2000&id=1a0ihfVPTywsq2S4GWYEaM_fg28kazDc1",
     },
     {
-      name: "Europe",
+      name: "Egypt",
       imgSrc:
-        "https://plus.unsplash.com/premium_photo-1688410049290-d7394cc7d5df?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXVyb3BlfGVufDB8fDB8fHww",
+        "https://drive.google.com/thumbnail?sz=w2000&id=1jNjhj41BLQ8zs3v1_BV66c4JXWzar3mg",
+    },
+    {
+      name: "Malaysia",
+      imgSrc:
+        "https://drive.google.com/thumbnail?sz=w2000&id=1XAq3t4SkFaXhN59ea6IRBG1jObYdRGSU",
     },
     {
       name: "Japan",
       imgSrc:
-        "https://images.unsplash.com/photo-1473951574080-01fe45ec8643?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZXVyb3BlfGVufDB8fDB8fHww",
+        "https://drive.google.com/thumbnail?sz=w2000&id=1QXyTFtnbOypR8gIhYhEgoLj11nfI6Mgg",
     },
     {
-      name: "Sweden",
+      name: "France",
       imgSrc:
-        "https://images.unsplash.com/photo-1610286378271-ca4ed49e101c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZXVyb3BlfGVufDB8fDB8fHww",
+        "https://drive.google.com/thumbnail?sz=w2000&id=1PIUQRnR6A7vT1TOWhKCNbVC7bUgeASGi",
     },
     {
-      name: "North America",
+      name: "Iceland",
       imgSrc:
-        "https://images.unsplash.com/photo-1714259523626-2c5487107dc4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGV1cm9wZXxlbnwwfHwwfHx8MA%3D%3D",
+        "https://drive.google.com/thumbnail?sz=w2000&id=1UwGr3tGAqRLsp0DyiQwB9JN_Rb1RRzcf",
     },
     {
-      name: "America",
+      name: "Norway",
       imgSrc:
-        "https://plus.unsplash.com/premium_photo-1673639729701-c903b5d2be4b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YW1lcmljYXxlbnwwfHwwfHx8MA%3D%3D",
+        "https://drive.google.com/thumbnail?sz=w2000&id=1UIVoIsZB1I6_2ku1ci6JwGDzmlwYd-8u",
     },
     {
-      name: "India",
+      name: "Egypt",
       imgSrc:
-        "https://images.unsplash.com/photo-1565038181000-2c159d3fc28d?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8YW1lcmljYXxlbnwwfHwwfHx8MA%3D%3D",
+        "https://drive.google.com/thumbnail?sz=w2000&id=1jNjhj41BLQ8zs3v1_BV66c4JXWzar3mg",
     },
     {
-      name: "Europe",
+      name: "Malaysia",
       imgSrc:
-        "https://plus.unsplash.com/premium_photo-1688410049290-d7394cc7d5df?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8ZXVyb3BlfGVufDB8fDB8fHww",
+        "https://drive.google.com/thumbnail?sz=w2000&id=1XAq3t4SkFaXhN59ea6IRBG1jObYdRGSU",
+    },
+    {
+      name: "Japan",
+      imgSrc:
+        "https://drive.google.com/thumbnail?sz=w2000&id=1QXyTFtnbOypR8gIhYhEgoLj11nfI6Mgg",
+    },
+    {
+      name: "France",
+      imgSrc:
+        "https://drive.google.com/thumbnail?sz=w2000&id=1PIUQRnR6A7vT1TOWhKCNbVC7bUgeASGi",
     },
   ];
 
@@ -119,13 +153,21 @@ const MapAndEscape: FC = () => {
             color: "#000000",
           }}
         >
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum."
+          Driven by a shared belief that travel has the power to broaden lifes,
+          and is the key to self exploration, a group of passionate travel
+          enthusiasts from India set out to develop Lyamii, a platform to
+          simplify foreign tourism with pre-loaded vacation chains. Team Lyamii
+          harnessed the power of technology and the love for exploration to
+          create a complete architecture to benefit the passionate travellers
+          worldwide. Currently Lyamii covers 50+ countries connecting more than
+          300+ destinations around the globe. So far Lyamii has opened two
+          office locations, 18 bootcamps and 64 helpdesks across India. Lyamii
+          also has received the Startup India recognition from the Indian
+          government, DIPP167414. Team Lyamii is composed of diverse
+          individuals, from seasoned world travellers, tech heads to active
+          customer support and friendly volunteers, we have assembled a
+          collective of talents who bring unique perspectives and skills to the
+          platform.
         </p>
         <p
           style={{
@@ -138,17 +180,21 @@ const MapAndEscape: FC = () => {
             color: "#000000",
           }}
         >
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate veli
+          Lyamii connects all dots of a foreign tour, from domestic flights to
+          accommodations and from currency exchange to authentic cultural
+          delights, our users enjoy seamless vacations away from home. With four
+          wings and four houses our operations team is more than just a
+          department; it's a commitment to excellence and is dedicated to a
+          seamless experience for the user from the beginning to the end with
+          precision and care. It's 2024, live more, choose your journey and
+          discover new dimensions of life with Lyamii.
         </p>
       </div>
       <div style={{ display: "flex", overflowX: "auto", padding: "10px 0" }}>
         {countries.map((country, index) => (
           <div key={index} style={{ flex: "0 0 auto", margin: "0 10px" }}>
             <img
+              onClick={() => fetchTours(country.name)}
               src={country.imgSrc}
               alt={country.name}
               style={{
@@ -159,6 +205,7 @@ const MapAndEscape: FC = () => {
               }}
             />
             <p
+              onClick={() => fetchTours(country.name)}
               style={{
                 marginTop: 5,
                 fontSize: 20,

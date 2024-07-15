@@ -84,7 +84,7 @@ const Header: FC = () => {
                   src={require("../../../Assets/logo.png")}
                 />
                 <img
-                  className={`px-1 p-0 m-0 justify-content-center`}
+                  className={`text-shadow-dark px-1 p-0 m-0 justify-content-center`}
                   style={{
                     width: "100px",
                     padding: "0px !important",
@@ -121,7 +121,7 @@ const Header: FC = () => {
                       to={header.path}
                       onClick={() => updateExpanded(false)}
                     >
-                      <h6 className="body fw-bold h6 m-0">{header?.name}</h6>
+                      <h6 className="text-shadow-dark body fw-bold h6 m-0">{header?.name}</h6>
                     </Nav.Link>
                   </Nav.Item>
                 );

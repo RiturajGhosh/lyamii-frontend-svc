@@ -21,6 +21,7 @@ import MainContainer from "../../common/container/MainContainer";
 import TourCard from "../../common/tourCard/TourCard";
 import RecommandedTours from "../recommandedTours/RecommandedTours";
 import RecentlyViewedTours from "../recentlyViewedTours/RecentlyViewedTours";
+import ControlledCarousel from "../coursel/Coursel";
 
 export type stateType = {
   data: any[];
@@ -99,7 +100,58 @@ const ExploreDestination: FC = () => {
       setShowFilter(false);
     }
   }, [screenSize]);
-
+  const data = [
+    {
+      packageId: "RIE07****",
+      imageUri:
+        "https://drive.google.com/thumbnail?sz=w2000&id=1Koq1lfmozRqaLFRnlDdVhIGTqUdUm4ml",
+    },
+    {
+      packageId: "RIE10****",
+      imageUri:
+        "https://drive.google.com/thumbnail?sz=w2000&id=1Kv43JJm2AsXyycIZuyYnmkh1fla5l0hz",
+    },
+    {
+      packageId: "RIE10****",
+      imageUri:
+        "https://drive.google.com/thumbnail?sz=w2000&id=1KvGGrfvTtAo2rPhATPyxACOrgmWHv4cE",
+    },
+    {
+      packageId: "RIE07****",
+      imageUri:
+        "https://drive.google.com/thumbnail?sz=w2000&id=1L5TNniaYtnbchWVeqyl4fZ9bELDmXa5r",
+    },
+    {
+      packageId: "RIE10****",
+      imageUri:
+        "https://drive.google.com/thumbnail?sz=w2000&id=1L8Sr3HzAvj-WQHB_Q-Cv7j_UqdSUF-Ev",
+    },
+    {
+      packageId: "RIE10****",
+      imageUri:
+        "https://drive.google.com/thumbnail?sz=w2000&id=1LCYIs31cQa4UA0brqKcqgJXuj7C6Cz4N",
+    },
+    {
+      packageId: "RIE07****",
+      imageUri:
+        "https://drive.google.com/thumbnail?sz=w2000&id=1LDowNiXiretdLQbpqIBasnR5pMM1HOdR",
+    },
+    {
+      packageId: "RIE10****",
+      imageUri:
+        "https://drive.google.com/thumbnail?sz=w2000&id=1LMXoAyLcs74oN_QTilC-wEE7OHIrIEd5",
+    },
+    {
+      packageId: "RIE10****",
+      imageUri:
+        "https://drive.google.com/thumbnail?sz=w2000&id=1LRNDbK-qzumpoe8Jt3ZDSaDom08trf_r",
+    },
+    {
+      packageId: "RIE10****",
+      imageUri:
+        "https://drive.google.com/thumbnail?sz=w2000&id=1LVRSOM5kC1LuLJnH1dIx_0vhnxrZ85_-",
+    },
+  ];
   const fetchTours = async () => {
     const filterData = markers.filter(
       (marker: any) =>
@@ -149,14 +201,16 @@ const ExploreDestination: FC = () => {
   return (
     <MainContainer>
       <div className="image-banner">
-        <img
+        <ControlledCarousel images={data} interval={3000} />
+
+        {/* <img
           src={sea}
           alt="Sea"
           style={{
             width: 1600,
             height: 470,
           }}
-        />
+        /> */}
       </div>
       <div className="search-bar-container mt-5 mb-5">
         <Row className="align-items-center justify-content-center">

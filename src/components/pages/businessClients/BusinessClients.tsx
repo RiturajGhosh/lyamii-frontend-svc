@@ -79,13 +79,13 @@ const BusinessClients: FC = () => {
                       {/* <Row className="d-flex justify-content-end col-12 flex-row flex-nowrap position-relative"> */}
                       <Row className="justify-content-center align-items-center p-0 m-0">
                         <Image
-                          className="mb-3 w-100 d-flex justify-content-start align-self-center"
+                          className="mb-3 w-75 h-75 d-flex justify-content-start align-self-center"
                           // style={{
                           //   width: "90dvi",
                           //   height: "100%",
                           // }}
                           alt=""
-                          src={`https://drive.google.com/thumbnail?id=${clients}`}
+                          src={`https://drive.google.com/thumbnail?sz=w3000&id=${clients}`}
                         />
                       </Row>
 

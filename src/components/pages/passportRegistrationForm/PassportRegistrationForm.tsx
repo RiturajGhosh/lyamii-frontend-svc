@@ -34,7 +34,7 @@ const PassportRegistrationForm: FC = () => {
       <Row className="py-42 g-5 flex-lg-row flex-column-reverse w-100">
         <Col
           lg={6}
-          className="col-12 position-relative align-items-center d-flex flex-column align-self-start justify-content-start"
+          className="col-12 position-relative d-flex flex-column align-self-start justify-content-start"
           // style={{ top: "90px" }}
         >
           <Col className="p-0 m-0 text-align-start flex-column d-flex">
@@ -46,7 +46,7 @@ const PassportRegistrationForm: FC = () => {
                   cursor: "pointer",
                 }}
               >
-                Upload here
+                Verify here
                 <input
                   id="file-upload"
                   type="file"
@@ -74,7 +74,7 @@ const PassportRegistrationForm: FC = () => {
           lg={6}
           className="col-12 align-self-start position-relative"
           // style={{ top: "90px" }}
-        >
+        ><h6>For Indian Citizens only*</h6>
           <Form className="gap-4 d-flex flex-column">
             <Col className="justify-content-center d-flex">
               <Row className="position-relative align-items-center p-0 my-3 m-0 justify-content-center d-flex w-100">
@@ -418,6 +418,11 @@ const PassportRegistrationForm: FC = () => {
                 </Button>
               </Col>
             </Row>
+
+          <div
+            className="border-1 d-lg-none border-opacity-25 border my-2"
+            style={{ border: "#14a8e3" }}
+          ></div>
           </Form>
         </Col>
       </Row>

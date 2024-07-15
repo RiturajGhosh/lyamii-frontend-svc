@@ -63,28 +63,28 @@ const Home: FC = () => {
       description:
         "Our global accommodation covers 77+ countries. 500+ volunteers are always there to assist you on the way. Find comfort wherever you wander.",
       image:
-        "https://images.unsplash.com/photo-1600907055749-d6cc7e75efd4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Z2xvYmV8ZW58MHx8MHx8fDA%3D", // Replace with your image URLs
+        "https://drive.google.com/thumbnail?sz=w2000&id=1wD5sVUQi-MTrmPZO_X3zTZSvNj436NE_", // Replace with your image URLs
     },
     {
       title: "Complete Tours",
       description:
         "The traveller ID solves all your headaches. Travel Insurance? Sorted. Air Tickets? Done. Government Documentation? Checked. All stays? Covered. Pack your bag and leave the rest to us.",
       image:
-        "https://images.unsplash.com/photo-1598194310253-4415c3c052ef?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGNvbXBsZXRlJTIwdG91cnxlbnwwfHwwfHx8MA%3D%3D", // Replace with your image URLs
+        "https://drive.google.com/thumbnail?sz=w2000&id=1jhBH7SaBQqMalwI4ircl0BVrBYAygc_3",
     },
     {
       title: "Secure & Convenient",
       description:
         "Experience secure and seamless transactions with our online/offline model. Embrace easy currency exchange for a Journey of a Lifetime.",
       image:
-        "https://images.unsplash.com/photo-1526666361175-e3595627c376?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8U2VjdXJlJTIwJTI2JTIwQ29udmVuaWVudHxlbnwwfHwwfHx8MA%3D%3D", // Replace with your image URLs
+        "https://drive.google.com/thumbnail?sz=w2000&id=1jhcvwatXJnwtvQm_rU_F5Onmst49rani",
     },
     {
       title: "Customer Support",
       description:
         "Our customer support is available 24/7 to assist you with all your needs and inquiries. Travel with peace of mind knowing we are always here to help.",
       image:
-        "https://plus.unsplash.com/premium_photo-1661434914660-c68d9fd54753?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Q3VzdG9tZXIlMjBTdXBwb3J0fGVufDB8fDB8fHww", // Replace with your image URLs
+        "https://drive.google.com/thumbnail?sz=w2000&id=1jpE3Rp5AwbiZ0ZbFmIzBgQyaMWY2tJM9",
     },
   ];
 
@@ -128,58 +128,58 @@ const Home: FC = () => {
   return (
     <section>
       {/* Top Navigation Bar */}
-      {/* <Navbar expand="lg" fixed="top" style={{ backgroundColor: "#1C1C1C" }}>
+      {/* <Navbar expand="lg"fixed="top"style={{ backgroundColor: "#1C1C1C"}}>
         <Container>
-          <div style={{ display: "flex", justifyContent: "flex-start" }}>
-            <Navbar.Brand href="#home" className="text-white ms-0">
+          <div style={{ display: "flex", justifyContent: "flex-start"}}>
+            <Navbar.Brand href="#home"className="text-white ms-0">
               <FontAwesomeIcon
                 icon={faEnvelope}
                 className="ms-2"
                 color="#879DFF"
-              />{" "}
+              />{""}
               Connect.helpdesk@lyamii.com
             </Navbar.Brand>
             <Nav
               className="ms-auto"
-              style={{ borderLeft: "1px solid #879DFF", paddingLeft: "10px" }}
+              style={{ borderLeft: "1px solid #879DFF", paddingLeft: "10px"}}
             >
-              <Nav.Link href="#home" className="text-white">
+              <Nav.Link href="#home"className="text-white">
                 <FontAwesomeIcon
                   icon={faPhone}
                   className="ms-2"
                   color="#879DFF"
-                />{" "}
+                />{""}
                 Connect.business@lyamii.com
               </Nav.Link>
               <Nav.Link
                 href="#"
                 className="text-white"
-                style={{ borderLeft: "1px solid #879DFF", paddingLeft: "10px" }}
+                style={{ borderLeft: "1px solid #879DFF", paddingLeft: "10px"}}
               >
                 <FontAwesomeIcon
                   icon={faMapMarkerAlt}
                   className="me-1"
                   color="#879DFF"
-                />{" "}
+                />{""}
                 Indra Nagar, Banglore
               </Nav.Link>
             </Nav>
           </div>
-          <div style={{ display: "flex", justifyContent: "flex-end" }}>
+          <div style={{ display: "flex", justifyContent: "flex-end"}}>
             <Nav>
-              <Nav.Link href="#" className="text-white">
-                <FontAwesomeIcon icon={faTwitter} className="ms-0" />
+              <Nav.Link href="#"className="text-white">
+                <FontAwesomeIcon icon={faTwitter} className="ms-0"/>
               </Nav.Link>
-              <Nav.Link href="#" className="text-white">
-                <FontAwesomeIcon icon={faInstagram} className="ms-0" />
+              <Nav.Link href="#"className="text-white">
+                <FontAwesomeIcon icon={faInstagram} className="ms-0"/>
               </Nav.Link>
-              <Nav.Link href="#" className="text-white">
-                <FontAwesomeIcon icon={faFacebook} className="ms-0" />
+              <Nav.Link href="#"className="text-white">
+                <FontAwesomeIcon icon={faFacebook} className="ms-0"/>
               </Nav.Link>
               <Nav.Link
                 href="#"
                 className="text-white"
-                style={{ backgroundColor: "#879DFF" }}
+                style={{ backgroundColor: "#879DFF"}}
               >
                 Log In
               </Nav.Link>
@@ -199,7 +199,7 @@ const Home: FC = () => {
         }}
       >
         <Container fluid>
-          <Navbar.Brand href="#home" style={{ marginRight: "auto" }}>
+          <Navbar.Brand href="#home"style={{ marginRight: "auto"}}>
             <img
               src="https://lyamii.com/static/media/logo.1f8ab1a3952e8db84941.png"
               style={{
@@ -216,9 +216,9 @@ const Home: FC = () => {
               }}
             />
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Toggle aria-controls="basic-navbar-nav"/>
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto" style={{ gap: "1rem" }}>
+            <Nav className="ms-auto"style={{ gap: "1rem"}}>
               <Nav.Link
                 href="#home"
                 style={{
@@ -273,26 +273,26 @@ const Home: FC = () => {
       >
         <Carousel.Item>
           <img
-            className="d-block w-100"
-            src="https://plus.unsplash.com/premium_photo-1673866900349-6a97ff688506?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHNlYSUyMHRyYXZlbHxlbnwwfHwwfHx8MA%3D%3D"
+            className="w-100 object-fit-cover"
+            src="https://drive.google.com/thumbnail?sz=w2000&id=1-TPIgLsncoqnuxsTZhBukQk2sQhctYot"
             alt="First slide"
-            style={{ height: "60vh", objectFit: "cover" }}
+            style={{ height: "65vh" }}
           />
         </Carousel.Item>
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="https://images.unsplash.com/photo-1618946467973-a5105efa83eb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2VhJTIwdHJhdmVsfGVufDB8fDB8fHww"
-            alt="Second slide"
-            style={{ height: "60vh", objectFit: "cover" }}
-          />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src="https://images.unsplash.com/photo-1653234031926-2ea39ccab91b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8c2VhJTIwdHJhdmVsfGVufDB8fDB8fHww"
+            src="https://drive.google.com/thumbnail?sz=w2000&id=1-VlCvmhlgKLh2tS5935El5uTpCT_CvzM"
             alt="Third slide"
-            style={{ height: "60vh", objectFit: "cover" }}
+            style={{ height: "65vh", objectFit: "cover" }}
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="https://drive.google.com/thumbnail?sz=w2000&id=1tDLklw45WQLVVIxQ5ebb8YtqO-py6Vtr"
+            alt="Second slide"
+            style={{ height: "65vh", objectFit: "cover" }}
           />
         </Carousel.Item>
       </Carousel>
@@ -306,7 +306,7 @@ const Home: FC = () => {
           width: "100%",
         }}
       >
-        <h1 className="text-center pb-5 text-shadow-light text-white">
+        <h1 className="text-center pb-5 textShadow text-shadow-dark text-white">
           Dream. Discover. Live.
         </h1>
         <Form className="d-flex justify-content-around mt-5">
@@ -340,7 +340,8 @@ const Home: FC = () => {
               Verify Passport
             </Button>
           </div>
-          <div className="mx-2 m-0 position-absolute bottom-0 end-0"
+          <div
+            className="mx-2 m-0 position-absolute bottom-0 end-0"
             style={{
               display: "flex",
               alignItems: "center",
@@ -425,6 +426,7 @@ const Home: FC = () => {
           How It Works
         </p> */}
         <h2
+          className="bold"
           style={{
             fontSize: 45,
             fontWeight: "400",
@@ -465,43 +467,168 @@ const Home: FC = () => {
               id: 1,
               title: "Sign In",
               description:
-                "We provide a range of digital marketing solutions including website design.",
+                "Use your preferred virtual id to Sign up and Log into your profile on Lyamii.",
               img: signin,
+              url: "/login",
             },
             {
               id: 2,
               title: "Profile Update",
               description:
-                "We provide a range of digital marketing solutions including website design.",
+                "Edit and update your profile in the My Profile section.",
               img: profileUpdate,
+              url: "/profile/personalData",
             },
             {
               id: 3,
               title: "Verification",
               description:
-                "We provide a range of digital marketing solutions including website design.",
+                "Verify your profile with your passport to generate the Traveller ID.",
               img: verification,
+              url: "/passportRegistration",
             },
             {
               id: 4,
               title: "Travel ID",
-              description:
-                "We provide a range of digital marketing solutions including website design.",
+              description: "Receive your Traveller ID in the User Dashboard.",
               img: travellerId,
+              url: "",
             },
             {
               id: 5,
               title: "First Tour",
               description:
-                "We provide a range of digital marketing solutions including website design.",
+                "Select your first Lyamii vacation and proceed with the book now option.",
               img: firstTour,
+              url: "/explore",
             },
             {
               id: 6,
               title: "Documentation",
               description:
-                "We provide a range of digital marketing solutions including website design.",
+                "Complete the documentation process for insurance papers and reservations.",
               img: documentation,
+              url: "/profile/documentations",
+            },
+            {
+              id: 7,
+              title: "Arrival",
+              description:
+                "Arrive at the destination and meet your assigned Lyamii volunteer at the airport",
+              img: documentation,
+              url: "/profile/documentations",
+            },
+            {
+              id: 8,
+              title: "Transaction",
+              description:
+                "Meet our representative at the common space of your day one accommodation and complete transaction and currency exchange seamlessly.",
+              img: documentation,
+              url: "/profile/documentations",
+            },
+            {
+              id: 9,
+              title: "Tour ID",
+              description:
+                "Receive your activated Tour ID that connects all the details of your vacation.",
+              img: documentation,
+              url: "/profile/documentations",
+            },
+            {
+              id: 10,
+              title: "Ongoing Tour",
+              description:
+                "Complete the documentation process for insurance papers and reservations.",
+              img: documentation,
+              url: "/profile/documentations",
+            },
+            {
+              id: 11,
+              title: "Departure",
+              description:
+                "Complete the documentation process for insurance papers and reservations.",
+              img: documentation,
+              url: "/profile/documentations",
+            },
+            {
+              id: 12,
+              title: "Journal",
+              description:
+                "Complete the documentation process for insurance papers and reservations.",
+              img: documentation,
+              url: "/profile/documentations",
+            },
+            {
+              id: 13,
+              title: "Souvenir",
+              description:
+                "Complete the documentation process for insurance papers and reservations.",
+              img: documentation,
+              url: "/profile/documentations",
+            },
+            {
+              id: 14,
+              title: "Second Tour",
+              description:
+                "Complete the documentation process for insurance papers and reservations.",
+              img: documentation,
+              url: "/profile/documentations",
+            },
+            {
+              id: 15,
+              title: "Arrival",
+              description:
+                "Complete the documentation process for insurance papers and reservations.",
+              img: documentation,
+              url: "/profile/documentations",
+            },
+            {
+              id: 16,
+              title: "Payment",
+              description:
+                "Complete the documentation process for insurance papers and reservations.",
+              img: documentation,
+              url: "/profile/documentations",
+            },
+            {
+              id: 17,
+              title: "Tour ID",
+              description:
+                "Complete the documentation process for insurance papers and reservations.",
+              img: documentation,
+              url: "/profile/documentations",
+            },
+            {
+              id: 18,
+              title: "Ongoing Tour",
+              description:
+                "Complete the documentation process for insurance papers and reservations.",
+              img: documentation,
+              url: "/profile/documentations",
+            },
+            {
+              id: 19,
+              title: "Departure",
+              description:
+                "Complete the documentation process for insurance papers and reservations.",
+              img: documentation,
+              url: "/profile/documentations",
+            },
+            {
+              id: 20,
+              title: "Journal",
+              description:
+                "Complete the documentation process for insurance papers and reservations.",
+              img: documentation,
+              url: "/profile/documentations",
+            },
+            {
+              id: 21,
+              title: "Souvenir",
+              description:
+                "Complete the documentation process for insurance papers and reservations.",
+              img: documentation,
+              url: "/profile/documentations",
             },
           ].map((step, index, arr) => (
             <React.Fragment key={step.id}>
@@ -528,6 +655,7 @@ const Home: FC = () => {
                   }}
                 >
                   <img
+                    onClick={() => history.push(step.url)}
                     src={step.img}
                     alt={`Step ${step.id}`}
                     style={{
@@ -616,7 +744,7 @@ const Home: FC = () => {
       <LifetimeJourney />
       <div style={{ position: "relative", padding: "50px 0" }}>
         {/* Background Image */}
-        <div
+        {/* <div
           style={{
             position: "absolute",
             top: 0,
@@ -629,14 +757,14 @@ const Home: FC = () => {
             zIndex: -1,
             filter: "brightness(50%)", // Adjust brightness to ensure text is readable
           }}
-        ></div>
+        ></div> */}
 
         {/* Text with background */}
         <p
           style={{
             fontSize: 45,
             fontWeight: "700",
-            color: "#000000",
+            color: "#686868",
             textAlign: "center",
             position: "relative",
             zIndex: 1,

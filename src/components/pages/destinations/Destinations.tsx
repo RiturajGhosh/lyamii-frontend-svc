@@ -132,6 +132,7 @@ const Destinations = () => {
       }}
     >
       <h2
+      className="bold"
         onClick={() => {
           history.push("/explore");
         }}
@@ -142,6 +143,7 @@ const Destinations = () => {
           marginBottom: 40,
           color: "#686868",
           textAlign: "center",
+          fontFamily:"Poppins, sans-serif",
           position: "relative",
         }}
       >
