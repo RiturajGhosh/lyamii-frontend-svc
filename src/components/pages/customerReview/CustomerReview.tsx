@@ -15,7 +15,7 @@ const CustomerReviews: FC = () => {
   }, [page]);
 
   return (
-    <Col className="flex-column home-about-section align-self-start d-flex min-vh-100 justify-content-center sectionContainer pt-42">
+    <Col className="flex-column mt-5 home-about-section align-self-start d-flex min-vh-100 justify-content-center sectionContainer pt-42">
       <Col lg={12} md={12} sx={12} xs={12} className="align-self-start d-flex">
         <Card.Body className="p-0 m-0 justify-content-center">
           <Row className="justify-content-between d-flex p-0 m-0 px-sm-5">
@@ -56,7 +56,7 @@ const CustomerReviews: FC = () => {
                             </Col>
 
                             <div className="col-4 position-absolute top-0 start-90 translate-middle-x pr-3">
-                              <US title="United States" className="" />
+                              {/* <US title="United States" className="" /> */}
                             </div>
                           </Row>
                           <Col className="">

@@ -41,6 +41,7 @@ const PassportRegistrationForm: FC = () => {
             <h6>
               Already have a Passport?{" "}
               <label
+                className="text-primary"
                 htmlFor="file-upload"
                 style={{
                   cursor: "pointer",
@@ -74,7 +75,8 @@ const PassportRegistrationForm: FC = () => {
           lg={6}
           className="col-12 align-self-start position-relative"
           // style={{ top: "90px" }}
-        ><h6>For Indian Citizens only*</h6>
+        >
+          <h6>For Indian Citizens only*</h6>
           <Form className="gap-4 d-flex flex-column">
             <Col className="justify-content-center d-flex">
               <Row className="position-relative align-items-center p-0 my-3 m-0 justify-content-center d-flex w-100">
@@ -419,10 +421,10 @@ const PassportRegistrationForm: FC = () => {
               </Col>
             </Row>
 
-          <div
-            className="border-1 d-lg-none border-opacity-25 border my-2"
-            style={{ border: "#14a8e3" }}
-          ></div>
+            <div
+              className="border-1 d-lg-none border-opacity-25 border my-2"
+              style={{ border: "#14a8e3" }}
+            ></div>
           </Form>
         </Col>
       </Row>

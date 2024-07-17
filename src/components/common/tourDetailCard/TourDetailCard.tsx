@@ -192,7 +192,7 @@ const TourDetailCard: FC = () => {
               borderWidth: 0,
             }}
           >
-            Buy Now
+            Book Now
           </button>
           <h4 className="fw-bold">Arrival Date</h4>
           <div
@@ -238,7 +238,7 @@ const TourDetailCard: FC = () => {
                 alt={`Place ${index + 1}`}
                 style={styles.placeImage}
               />
-              <span style={styles.placeName}>{place}</span>
+              {/* <span style={styles.placeName}>{place}</span> */}
             </div>
           ))}
         </div>
@@ -361,6 +361,93 @@ const TourDetailCard: FC = () => {
           >
             {showAllItinerary ? "View Less" : "View More"}
           </Button>
+          <Row className="col-6 gap-2 float-end justify-content-end">
+            <Col
+              style={{
+                padding: "5px 5px",
+                borderRadius: 0,
+                backgroundColor: "#F5F5F5",
+                color: "#6F82D3",
+                fontSize: 20,
+                fontWeight: "400",
+              }}
+            >
+              <select
+                className="form-select pointer border border-0 w-100"
+                aria-label="Default select example"
+              >
+                {(tourData?.country?.toLowerCase()?.includes("india")
+                  ? [
+                      "8 KWD",
+                      "10 BHD",
+                      "20 GBP",
+                      "22 CHF",
+                      "22 EUR",
+                      "24 USD",
+                      "36 AUD",
+                      "88 AED",
+                    ]
+                  : ["2000 INR"]
+                )?.map((price: string, index: number) => (
+                  <option key={index} value={price}>
+                    {price}
+                  </option>
+                ))}
+              </select>
+            </Col>
+            <button
+              onClick={() => history.push("/checkout")}
+              style={{
+                width: 164,
+                height: 48,
+                fontSize: 28,
+                fontWeight: "700",
+                color: "#FFFFFF",
+                backgroundColor: "#879DFF",
+                borderRadius: 0,
+                borderWidth: 0,
+              }}
+            >
+              Book Now
+            </button>
+            <Col
+              style={{
+                padding: "5px 5px",
+                borderRadius: 0,
+                backgroundColor: "#F5F5F5",
+                color: "#6F82D3",
+                fontSize: 20,
+                fontWeight: "400",
+              }}
+            >
+              <select
+                className="form-select pointer border border-0 w-100"
+                aria-label="Default select example"
+              >
+                {tourData?.packagePrice?.map((price: string, index: number) => (
+                  <option key={index} value={price}>
+                    {price}
+                    {tourData?.packagePrice.length === 1 && " INR"}
+                  </option>
+                ))}
+              </select>
+            </Col>
+            <button
+              onClick={() => history.push("/checkout")}
+              style={{
+                width: 164,
+                height: 48,
+                fontSize: 28,
+                fontWeight: "700",
+                color: "#FFFFFF",
+                backgroundColor: "#879DFF",
+                borderRadius: 0,
+                borderWidth: 0,
+              }}
+            >
+              Buy Now
+            </button>
+          </Row>
         </div>
       </div>
     </div>

@@ -130,7 +130,7 @@ const LifetimeJourney: FC = () => {
   return (
     <div style={styles.lifetimeJourney}>
       <h2
-      className="bold"
+        className="bold"
         style={{
           fontSize: 45,
           fontWeight: "400",
@@ -140,20 +140,9 @@ const LifetimeJourney: FC = () => {
           position: "relative",
         }}
       >
-        Incredible India
-        <span
-          style={{
-            display: "block",
-            width: 150,
-            height: 6,
-            backgroundColor: "#879DFF",
-            position: "absolute",
-            bottom: -10,
-            left: "50%",
-            transform: "translateX(-50%)",
-            borderRadius: "0px 0px 5px 5px",
-            opacity: 0.7,
-          }}
+        <img
+          className="col-md-4 col-sm-6 col-lg-3 col-sx-3 col-9"
+          src={require("../../../Assets/incredible.png")}
         />
       </h2>
       <div style={styles.cardContainer}>
@@ -187,7 +176,8 @@ const LifetimeJourney: FC = () => {
         </div>
         <div style={styles.card}>
           <img
-            src="https://drive.google.com/thumbnail?sz=w2000&id=1wQauWIEPsLvtFOVsHHu7gTYgECXxOgDg"
+            // src="https://drive.google.com/thumbnail?sz=w2000&id=1wQauWIEPsLvtFOVsHHu7gTYgECXxOgDg"
+            src={require("../../../Assets/1000135220.jpg")}
             alt="Combos"
             style={styles.image}
           />
@@ -202,30 +192,20 @@ const LifetimeJourney: FC = () => {
       </div>
       {/* International packages */}
       <h2
-      className="bold"
+        className=""
         style={{
-          fontSize: 45,
+          fontSize: 50,
+          fontFamily: "auto",
           fontWeight: "400",
           marginBottom: 40,
-          color: "#686868",
+          color: "black",
           textAlign: "center",
           position: "relative",
         }}
       >
-        Beyond obvious
-        <span
-          style={{
-            display: "block",
-            width: 180,
-            height: 6,
-            backgroundColor: "#879DFF",
-            position: "absolute",
-            bottom: -10,
-            left: "50%",
-            transform: "translateX(-50%)",
-            borderRadius: "0px 0px 5px 5px",
-            opacity: 0.7,
-          }}
+        <img
+          className="col-md-4 col-sm-6 col-lg-3 col-sx-3 col-9"
+          src={require("../../../Assets/beyond.png")}
         />
       </h2>
       <Carousel indicators={false} interval={null} pause={false}>

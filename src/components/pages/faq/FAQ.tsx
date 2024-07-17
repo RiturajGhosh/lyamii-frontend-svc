@@ -53,15 +53,6 @@ const FAQ: FC = () => {
   return (
     <section className="bg-white">
       <Col className="mt-5 justify-content-center align-self-center d-flex">
-        <Row
-          onClick={() => history.goBack()}
-          className={
-            "position-absolute pointer top-0 start-0 col-4 m-0 justify-content-start align-items-center p-0"
-          }
-        >
-          <Icon name="back" className="m-0 justify-content-start p-0 w-10" />
-          Back
-        </Row>
         <span className="fs-1 my-5 pl-4 text-decoration-underline col-10 text-dark fw-bold">
           FREQUENTLY ASKED QUESTIONS:
         </span>

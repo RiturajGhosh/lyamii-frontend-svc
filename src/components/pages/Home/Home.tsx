@@ -63,7 +63,7 @@ const Home: FC = () => {
       description:
         "Our global accommodation covers 77+ countries. 500+ volunteers are always there to assist you on the way. Find comfort wherever you wander.",
       image:
-        "https://drive.google.com/thumbnail?sz=w2000&id=1wD5sVUQi-MTrmPZO_X3zTZSvNj436NE_", // Replace with your image URLs
+        "https://drive.google.com/thumbnail?sz=w2000&id=1-i4SnWI_3JTAE1GqhHWzg5dNGBH9rtpb", // Replace with your image URLs
     },
     {
       title: "Complete Tours",
@@ -282,16 +282,24 @@ const Home: FC = () => {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="https://drive.google.com/thumbnail?sz=w2000&id=1-VlCvmhlgKLh2tS5935El5uTpCT_CvzM"
-            alt="Third slide"
+            src="https://drive.google.com/thumbnail?sz=w2000&id=1tDLklw45WQLVVIxQ5ebb8YtqO-py6Vtr"
+            alt="Second slide"
             style={{ height: "65vh", objectFit: "cover" }}
           />
         </Carousel.Item>
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="https://drive.google.com/thumbnail?sz=w2000&id=1tDLklw45WQLVVIxQ5ebb8YtqO-py6Vtr"
-            alt="Second slide"
+            src="https://drive.google.com/thumbnail?sz=w2000&id=1jqijmfsF5WN8fzJEt5PYyTZaTQMYfpHW"
+            alt="fourth slide"
+            style={{ height: "65vh", objectFit: "cover" }}
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="https://drive.google.com/thumbnail?sz=w2000&id=1k09rkJVx55oQIWijilw15vEuY5QRz0QU"
+            alt="fifth slide"
             style={{ height: "65vh", objectFit: "cover" }}
           />
         </Carousel.Item>
@@ -436,20 +444,9 @@ const Home: FC = () => {
             position: "relative",
           }}
         >
-          Escape Plan
-          <span
-            style={{
-              display: "block",
-              width: 180,
-              height: 6,
-              backgroundColor: "#879DFF",
-              position: "absolute",
-              bottom: -10,
-              left: "50%",
-              transform: "translateX(-50%)",
-              borderRadius: "0px 0px 5px 5px",
-              opacity: 0.7,
-            }}
+          <img
+            className="col-md-3 col-sm-4 col-lg-2 col-sx-2 col-6"
+            src={require("../../../Assets/escape.png")}
           />
         </h2>
         {/* Horizontal Scrollable Section */}
@@ -468,7 +465,7 @@ const Home: FC = () => {
               title: "Sign In",
               description:
                 "Use your preferred virtual id to Sign up and Log into your profile on Lyamii.",
-              img: signin,
+              img: "https://drive.google.com/thumbnail?sz=w2000&id=1jXzdnKb2wyyd2VQI1dqmpsP66xvyTc1W",
               url: "/login",
             },
             {
@@ -476,7 +473,7 @@ const Home: FC = () => {
               title: "Profile Update",
               description:
                 "Edit and update your profile in the My Profile section.",
-              img: profileUpdate,
+              img: "https://drive.google.com/thumbnail?sz=w2000&id=1jY813eDAowz63_r0ezpjDO84B0s-K2Yp",
               url: "/profile/personalData",
             },
             {
@@ -484,14 +481,14 @@ const Home: FC = () => {
               title: "Verification",
               description:
                 "Verify your profile with your passport to generate the Traveller ID.",
-              img: verification,
+              img: "https://drive.google.com/thumbnail?sz=w2000&id=1jZ8Vcb3-UrzpXFVn53HY39AWC8p0-WNR",
               url: "/passportRegistration",
             },
             {
               id: 4,
               title: "Travel ID",
               description: "Receive your Traveller ID in the User Dashboard.",
-              img: travellerId,
+              img: "https://drive.google.com/thumbnail?sz=w2000&id=1ja0YAdA4RrSoXsdyrYOfGvo7mHd6Vii1",
               url: "",
             },
             {
@@ -499,7 +496,7 @@ const Home: FC = () => {
               title: "First Tour",
               description:
                 "Select your first Lyamii vacation and proceed with the book now option.",
-              img: firstTour,
+              img: "https://drive.google.com/thumbnail?sz=w2000&id=1jaLTfXpjBo5etObenG7XdO5reNkmJYxg",
               url: "/explore",
             },
             {
@@ -515,7 +512,7 @@ const Home: FC = () => {
               title: "Arrival",
               description:
                 "Arrive at the destination and meet your assigned Lyamii volunteer at the airport",
-              img: documentation,
+              img: "https://drive.google.com/thumbnail?sz=w2000&id=1jcDFQemjeh6RCFm1JnznN-2NConKEAh4",
               url: "/profile/documentations",
             },
             {
@@ -523,7 +520,7 @@ const Home: FC = () => {
               title: "Transaction",
               description:
                 "Meet our representative at the common space of your day one accommodation and complete transaction and currency exchange seamlessly.",
-              img: documentation,
+              img: "https://drive.google.com/thumbnail?sz=w2000&id=1jeAD3DQ_lxFEYSioVAA6Od8rJXnMh3bh",
               url: "/profile/documentations",
             },
             {
@@ -531,71 +528,72 @@ const Home: FC = () => {
               title: "Tour ID",
               description:
                 "Receive your activated Tour ID that connects all the details of your vacation.",
-              img: documentation,
+              img: "https://drive.google.com/thumbnail?sz=w2000&id=1jeEFqh44Uw3ZJ6ahNIYlqEG6oAPcuav_",
               url: "/profile/documentations",
             },
             {
               id: 10,
               title: "Ongoing Tour",
               description:
-                "Complete the documentation process for insurance papers and reservations.",
-              img: documentation,
+                "Enjoy perfectly crafted preloaded Lyamii vacation chains in foreign countries.",
+              img: "https://drive.google.com/thumbnail?sz=w2000&id=1jgs36a5jysnk8RknsKEZrc8fL0W8NfLf",
               url: "/profile/documentations",
             },
             {
               id: 11,
               title: "Departure",
               description:
-                "Complete the documentation process for insurance papers and reservations.",
-              img: documentation,
+                "Return to your home with a suitcase full of memories.",
+              img: "https://drive.google.com/thumbnail?sz=w2000&id=1jj1q9biMYZZ-TXIbU8BbhurIqDkRPoiL",
               url: "/profile/documentations",
             },
             {
               id: 12,
               title: "Journal",
               description:
-                "Complete the documentation process for insurance papers and reservations.",
-              img: documentation,
+                "Receive your customised Tour Journal and cherish the everlasting moments of the vacation.",
+              img: "https://drive.google.com/thumbnail?sz=w2000&id=1jko6sxJ1iR2NK-1xhFTac76vZ1dwcZKH",
               url: "/profile/documentations",
             },
             {
               id: 13,
               title: "Souvenir",
               description:
-                "Complete the documentation process for insurance papers and reservations.",
-              img: documentation,
+                "Get your souvenir items (ordered on Lyamii during the ongoing tour) delivered at your doorstep.",
+              img: "https://drive.google.com/thumbnail?sz=w2000&id=1jmdpZ_6CQn59Y6gjRH_BdfJeXVFGv84F",
               url: "/profile/documentations",
             },
             {
               id: 14,
               title: "Second Tour",
               description:
-                "Complete the documentation process for insurance papers and reservations.",
-              img: documentation,
+                "With your already verified traveller ID book or buy your next vacation directly from the platform.",
+              img: "https://drive.google.com/thumbnail?sz=w2000&id=1jaLTfXpjBo5etObenG7XdO5reNkmJYxg",
               url: "/profile/documentations",
             },
+
             {
               id: 15,
               title: "Arrival",
               description:
-                "Complete the documentation process for insurance papers and reservations.",
-              img: documentation,
+                "Arrive at the destination and meet your assigned Lyamii volunteer at the airport",
+              img: "https://drive.google.com/thumbnail?sz=w2000&id=1jcDFQemjeh6RCFm1JnznN-2NConKEAh4",
               url: "/profile/documentations",
             },
             {
               id: 16,
-              title: "Payment",
+              title: "Transaction",
               description:
-                "Complete the documentation process for insurance papers and reservations.",
-              img: documentation,
+                "Meet our representative at the common space of your day one accommodation and complete transaction and currency exchange seamlessly.",
+              img: "https://drive.google.com/thumbnail?sz=w2000&id=1jeAD3DQ_lxFEYSioVAA6Od8rJXnMh3bh",
               url: "/profile/documentations",
             },
             {
               id: 17,
               title: "Tour ID",
               description:
-                "Complete the documentation process for insurance papers and reservations.",
-              img: documentation,
+                "Receive your activated Tour ID that connects all the details of your vacation.",
+              img: "https://drive.google.com/thumbnail?sz=w2000&id=1jeEFqh44Uw3ZJ6ahNIYlqEG6oAPcuav_",
               url: "/profile/documentations",
             },
             {
@@ -603,7 +601,7 @@ const Home: FC = () => {
               title: "Ongoing Tour",
               description:
                 "Complete the documentation process for insurance papers and reservations.",
-              img: documentation,
+              img: "https://drive.google.com/thumbnail?sz=w2000&id=1jgs36a5jysnk8RknsKEZrc8fL0W8NfLf",
               url: "/profile/documentations",
             },
             {
@@ -611,7 +609,7 @@ const Home: FC = () => {
               title: "Departure",
               description:
                 "Complete the documentation process for insurance papers and reservations.",
-              img: documentation,
+              img: "https://drive.google.com/thumbnail?sz=w2000&id=1jj1q9biMYZZ-TXIbU8BbhurIqDkRPoiL",
               url: "/profile/documentations",
             },
             {
@@ -619,7 +617,7 @@ const Home: FC = () => {
               title: "Journal",
               description:
                 "Complete the documentation process for insurance papers and reservations.",
-              img: documentation,
+              img: "https://drive.google.com/thumbnail?sz=w2000&id=1jko6sxJ1iR2NK-1xhFTac76vZ1dwcZKH",
               url: "/profile/documentations",
             },
             {
@@ -627,7 +625,7 @@ const Home: FC = () => {
               title: "Souvenir",
               description:
                 "Complete the documentation process for insurance papers and reservations.",
-              img: documentation,
+              img: "https://drive.google.com/thumbnail?sz=w2000&id=1jmdpZ_6CQn59Y6gjRH_BdfJeXVFGv84F",
               url: "/profile/documentations",
             },
           ].map((step, index, arr) => (
@@ -668,7 +666,7 @@ const Home: FC = () => {
                   <div
                     style={{
                       position: "absolute",
-                      top: 10,
+                      top: 50,
                       right: 10,
                       backgroundColor: "#879DFF",
                       width: 50,
@@ -682,7 +680,7 @@ const Home: FC = () => {
                       border: "4px solid white",
                     }}
                   >
-                    {`0${step.id}`}
+                    {`${step.id < 10 ? "0" : ""}${step.id}`}
                   </div>
                 </div>
                 <h3
@@ -770,20 +768,11 @@ const Home: FC = () => {
             zIndex: 1,
           }}
         >
-          Why Lyamii
+          <img
+            className="col-md-3 col-sm-4 col-lg-2 col-sx-2 col-6"
+            src={require("../../../Assets/whyLyami.png")}
+          />
         </p>
-        <div
-          style={{
-            width: "15%",
-            height: 6,
-            borderRadius: "0px 0px 5px 5px",
-            background: "#879DFF",
-            margin: "0 auto",
-            position: "relative",
-            top: -10, // Adjust to position below the text
-            zIndex: 1,
-          }}
-        ></div>
 
         {/* Horizontal cards */}
 

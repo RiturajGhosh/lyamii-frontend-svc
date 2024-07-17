@@ -11,7 +11,8 @@ const CustomerReviewSection: FC = () => {
       city: "Taipei",
       image:
         "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fHww/100",
-      review: "Pe utar alviuas lwpadit tas, vut et nihc egam yubulas. Si euvy",
+      review:
+        "L'hospitalité à son meilleur. C'est la première impression que je donne en expliquant mes vacances en Inde. J'ai rencontré 8 bénévoles Lyamii tout au long de notre voyage, et chacun d'entre eux a été très humble et serviable.",
       name: "Susan Day",
       rating: 5,
     },
@@ -19,7 +20,8 @@ const CustomerReviewSection: FC = () => {
       city: "Kaohsiung",
       image:
         "https://plus.unsplash.com/premium_photo-1658527049634-15142565537a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8fHww/100",
-      review: "Fe eter elviuas lwiqedit tas, vut et nihc egam yubulas. El euvy",
+      review:
+        "I want to thank lyamii for the day-to-day assistance I received during my 30 days of solo travelling in India. It was my fourth time visiting your country. My first three trips looked very funny when I compared those with my last tour. ",
       name: "Roger Brooks",
       rating: 5,
     },
@@ -27,7 +29,8 @@ const CustomerReviewSection: FC = () => {
       city: "Barcelona",
       image:
         "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXZhdGFyfGVufDB8fDB8fHww/100",
-      review: "Fa eter elviuas lwiqedit tas, vut et nihc egam yubulas. El euvy",
+      review:
+        "He viajado a 67 países hasta ahora y desearía tener a Lyamii en otros países también. Toda la asistencia fue tan equilibrada que nunca me di cuenta de que estaba solo en un país nuevo.",
       name: "James Fisher",
       rating: 5,
     },
@@ -36,8 +39,8 @@ const CustomerReviewSection: FC = () => {
       image:
         "https://images.unsplash.com/photo-1669475535925-a011d7c31d45?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZmlsZSUyMGltYWdlfGVufDB8fDB8fHww",
       review:
-        "Such a charming city with incredible views and amazing cuisine. Can't wait to visit again!",
-      name: "Emily Watson",
+        "India is definitely a vlogger’s paradise, from food to people, architecture to nature. I loved all of it. And I'm definitely enjoying the love I'm receiving on my recent contents on youtube from my Indian friends. Thank you Lyamii.",
+      name: "Watson",
       rating: 5,
     },
     {
@@ -45,7 +48,7 @@ const CustomerReviewSection: FC = () => {
       image:
         "https://images.unsplash.com/photo-1569443693539-175ea9f007e8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHRva3lvfGVufDB8fDB8fHwwfHw%3D/100",
       review:
-        "Tokyo is a bustling metropolis where tradition meets innovation. Loved exploring the vibrant neighborhoods!",
+        "Samaptika, nuestra voluntaria asignada en Jaipur y mi hija de 6 años se hicieron mejores amigas. Ella trajo un juguete hecho a mano para mi hija en nuestro último día en Jaipur. Fue un momento de pura joya para nosotros.",
       name: "Michael Chen",
       rating: 5,
     },
@@ -54,7 +57,7 @@ const CustomerReviewSection: FC = () => {
       image:
         "https://images.unsplash.com/photo-1684966609761-13027fd2a5c6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cHJvZmlsZSUyMGltYWdlfGVufDB8fDB8fHww",
       review:
-        "Walking through ancient ruins and savoring authentic Italian pasta—Rome exceeded my expectations in every way.",
+        "Each day of my 50 days backpacking tour was unique in its own way. Without Lyamii I could never imagine how multicultural this country is. And to my volunteer friends, I wish I had enough money to host you all in my hometown. Jk, we will meet again soon.",
       name: "Sophia Rossi",
       rating: 5,
     },
@@ -63,7 +66,7 @@ const CustomerReviewSection: FC = () => {
       image:
         "https://plus.unsplash.com/premium_photo-1668638804974-b0053235b8f7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHByb2ZpbGUlMjBpbWFnZXxlbnwwfHwwfHx8MA%3D%3D",
       review:
-        "The city that never sleeps! Loved the energy, Broadway shows, and the diversity of experiences. A must-visit!",
+        "All the properties we stayed in were very comforting and photogenic. We literally spent most of our days within our boutique hotels and honestly loved every bit of it, the hosts felt like home. The forts we stayed in Rajasthan were top notch.",
       name: "Daniel Lee",
       rating: 5,
     },
@@ -72,14 +75,14 @@ const CustomerReviewSection: FC = () => {
       image:
         "https://images.unsplash.com/photo-1669475535978-7479ef74e14f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHByb2ZpbGUlMjBpbWFnZXxlbnwwfHwwfHx8MA%3D%3D",
       review:
-        "Sydney's stunning harbor, friendly people, and delicious food made my trip unforgettable. Can't wait to return!",
+        "Les séjours et les transferts étaient bons, mais la nourriture était la meilleure partie. Saveurs après saveurs. Nous n’aurions jamais imaginé que des aliments aussi savoureux puissent exister. Buffets de cuisine, friandises surprises et promenades culinaires de rue avec des bénévoles, chaque jour était une fête pour un gourmet comme moi. ",
       name: "Olivia Johnson",
       rating: 5,
     },
   ];
 
   return (
-    <div style={styles.section}>
+    <div style={styles.section} className="reviewImage">
       <div style={styles.header}>
         <h2
           onClick={() => history.push("/customerReviews")}
@@ -118,8 +121,8 @@ const CustomerReviewSection: FC = () => {
               style={styles.reviewImage}
             />
             <div style={styles.reviewContent}>
-              <h3 style={styles.city}>{review.city}</h3>
-              <div style={styles.stars}>{"★".repeat(review.rating)}</div>
+              {/* <h3 style={styles.city}>{review.city}</h3>
+              <div style={styles.stars}>{"★".repeat(review.rating)}</div> */}
               <p style={styles.reviewText}>{review.review}</p>
               <p style={styles.reviewerName}>{review.name}</p>
             </div>
@@ -133,8 +136,6 @@ const CustomerReviewSection: FC = () => {
 const styles: { [key: string]: React.CSSProperties } = {
   section: {
     padding: "40px 20px",
-    background:
-      "url('https://images.unsplash.com/photo-1514737225560-e39275f9278f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bXVtYmFpJTIwbmlnaHR8ZW58MHx8MHx8fDA%3D') no-repeat center center/cover",
     color: "#fff",
     textAlign: "center" as const, // 'as const' ensures the correct type
   },
@@ -149,7 +150,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     WebkitOverflowScrolling: "touch",
   },
   reviewCard: {
-    flex: "0 0 300px",
+    flex: "0 0 400px",
     background: "#FFFFFF",
     marginRight: "20px",
     padding: "20px",

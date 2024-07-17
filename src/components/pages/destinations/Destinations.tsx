@@ -8,6 +8,7 @@ import {
   SET_TOUR_PACKAGE_ID,
   selectedTourDataDto,
 } from "../../../state/actions/types/tourDataActionType";
+import { TbWorldSearch } from "react-icons/tb";
 
 const Destinations = () => {
   const history = useHistory();
@@ -132,7 +133,7 @@ const Destinations = () => {
       }}
     >
       <h2
-      className="bold"
+        className="bold"
         onClick={() => {
           history.push("/explore");
         }}
@@ -143,11 +144,12 @@ const Destinations = () => {
           marginBottom: 40,
           color: "#686868",
           textAlign: "center",
-          fontFamily:"Poppins, sans-serif",
+          fontFamily: "Poppins, sans-serif",
           position: "relative",
         }}
       >
-        Lyamii Tours
+        Lyamii Tours {"  "}
+        <TbWorldSearch className="top-0 align-items-center"/>
         <span
           style={{
             display: "block",

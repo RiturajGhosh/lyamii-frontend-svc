@@ -111,7 +111,7 @@ export const reviews = [
   {
     review:
       "India is definitely a vlogger’s paradise, from food to people, architecture to nature. I loved all of it. And I'm definitely enjoying the love I'm receiving on my recent contents on youtube from my Indian friends. Thank you Lyamii.",
-    name: "Micheal, Sydney Samaptika",
+    name: "Micheal, Sydney",
   },
   {
     review:
@@ -179,62 +179,62 @@ export const reviews = [
     name: "John, California",
   },
   {
-    name: "Lisa T",
+    name: "Garrincha",
     review:
       "Always wanted to visit India someday, but could never gather enough information about the country. Just last year I got to know about this platform. My brother and I took our first trip to India with lyamii. The flow of the tour was pretty nice, we discoverd 4 different cultures in our 7 days tour.  ",
   },
   {
-    name: "Lisa T",
+    name: "Didi",
     review:
       "Loved our vacation in India. It was definitely our best 10 days in a foreign country. Beautiful stays, authentic indian cuisine and open hearted people everywhere. Thanks to our volunteer friends, we faced zero communication barrier throughout our journey.",
   },
   {
-    name: "Lisa T",
+    name: "Mauro",
     review:
       "Varanasi was our favourite, those two days were so powerful and calming, we never experienced such vibe from a city. Each transition between different cultures was top notch.",
   },
   {
-    name: "Lisa T",
+    name: "Vavá",
     review:
       "India is so precious, I mean we covered 6 cities and all of them had something special, something different to offer. The love we received from the local people will always stay with us, looking forward to come back with our families next winter.",
   },
   {
-    name: "Lisa T",
+    name: "Johnny Haynes",
     review:
       "I want to thank lyamii for the day-to-day assistance I received during my 30 days stay in India. It was my fourth time visiting your country. My first three trips looked very funny when I compared those with my last tour. ",
   },
   {
-    name: "Lisa T",
+    name: "Thomas Lawton",
     review:
       "I've been travelling around for quite a while now. The best thing about my trip with this platform was the transition from one culture to another. The diversity of India is truly very very unimaginable. Thank You lyamii for the experience.",
   },
   {
-    name: "Lisa T",
+    name: "Alfred Ernest Ramsey",
     review:
       "We loved our vacation, from each castle stay to all our day to day volunteers, the buffet meals, everything was well balanced and I don't think they left any margin for the guests to complain about.",
   },
   {
-    name: "Lisa T",
+    name: "Bobby Robson",
     review:
       "The vacation felt like a movie, from day one to day ten, everything was very professionally connected. The volunteer lady who helped me with the street foods in Kashmir was very humble, she denied any tip yet took an extra hour to see me off at the airport. ",
   },
   {
-    name: "Lisa T",
+    name: "Fritz Walter",
     review:
       "Thanks to Lyamii now I have more than a million happy memories to live with. Each city in my vacation in India was differently perfect. My volunteer friends, thankyou guys, all my best wishes for you all, will definitely meet again.",
   },
   {
-    name: "Lisa T",
+    name: "Roberto Baggio",
     review:
       "Communication was the main issue when I was planning to visit India. This country has more than 25 languages. Thankyou for solving that issue for me, I totally appreciate the effort of my volunteers, great support.",
   },
   {
-    name: "Lisa T",
+    name: "George Weah",
     review:
       "Got to know about this platform from a friend of mine, never thought my India tour would be this easy and exciting. Loved everything about the vacation. Will visit soon with more friends.",
   },
   {
-    name: "Lisa T",
+    name: "Roque Gastón Máspoli",
     review:
       "Had the best foods, best people and great locations throughout my 30 days backpacking vacation across India. I don't think any other country could have provided such diversity within a single vacation.",
   },
@@ -249,22 +249,22 @@ export const reviews = [
       "Overall, a great travel booking website! I found some fantastic deals and discounts on flights and hotels for my recent solo trip. The search filters were handy for narrowing down my options, and the booking process was smooth. The only reason I'm not giving it 5 stars is that I encountered a minor issue with my hotel reservation, but the customer support team promptly resolved it. I'd definitely use this website again for my next getaway.",
   },
   {
-    name: "Lisa T",
+    name: "Billy Bremner",
     review:
       "This website has a wide range of travel options, but my experience was a bit mixed. I found a great deal on a tour package to a beautiful destination, but the booking process felt a bit clunky, and I had some trouble with payment processing. Eventually, I managed to secure my reservation with the help of customer support, but it was a bit frustrating. On the positive side, the tour itself was fantastic, and the local guides were knowledgeable and friendly.",
   },
   {
-    name: "Sarah M",
+    name: "Brian Howard Clough",
     review:
       "I had an amazing experience booking my vacation through this website. The user-friendly interface made it super easy to browse through various destinations and find the perfect package for my family. The customer support team was incredibly helpful in answering all my questions and providing recommendations. Our trip went off without a hitch, and I can't wait to use this website again for my next adventure!",
   },
   {
-    name: "John D",
+    name: "David Beckham",
     review:
       "Overall, a great travel booking website! I found some fantastic deals and discounts on flights and hotels for my recent solo trip. The search filters were handy for narrowing down my options, and the booking process was smooth. The only reason I'm not giving it 5 stars is that I encountered a minor issue with my hotel reservation, but the customer support team promptly resolved it. I'd definitely use this website again for my next getaway.",
   },
   {
-    name: "Lisa T",
+    name: "Kenneth George Aston",
     review:
       "This website has a wide range of travel options, but my experience was a bit mixed. I found a great deal on a tour package to a beautiful destination, but the booking process felt a bit clunky, and I had some trouble with payment processing. Eventually, I managed to secure my reservation with the help of customer support, but it was a bit frustrating. On the positive side, the tour itself was fantastic, and the local guides were knowledgeable and friendly.",
   },
