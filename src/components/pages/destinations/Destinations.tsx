@@ -133,7 +133,7 @@ const Destinations = () => {
       }}
     >
       <h2
-        className="bold"
+        className="bold d-flex justify-content-center align-items-center"
         onClick={() => {
           history.push("/explore");
         }}
@@ -148,8 +148,8 @@ const Destinations = () => {
           position: "relative",
         }}
       >
-        Lyamii Tours {"  "}
-        <TbWorldSearch className="top-0 align-items-center"/>
+        <span>Lyamii Tours</span>
+        <TbWorldSearch className="top-0 align-items-center" />
         <span
           style={{
             display: "block",

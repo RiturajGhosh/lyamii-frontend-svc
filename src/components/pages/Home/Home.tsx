@@ -486,7 +486,7 @@ const Home: FC = () => {
             },
             {
               id: 4,
-              title: "Travel ID",
+              title: "Traveller ID",
               description: "Receive your Traveller ID in the User Dashboard.",
               img: "https://drive.google.com/thumbnail?sz=w2000&id=1ja0YAdA4RrSoXsdyrYOfGvo7mHd6Vii1",
               url: "",

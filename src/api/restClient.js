@@ -1,7 +1,6 @@
 import axios from "axios";
 import { axiosType } from "../components/common/enum/enum";
 import { getCookie } from "../components/common/enum/functions";
-
 export const restClient = async ({
   url,
   params = {},
@@ -14,7 +13,6 @@ export const restClient = async ({
     params,
     // responseType,
   };
-
   const cookie = getCookie("user");
   const token = (cookie && JSON.parse(cookie)?.token) || "";
   const headers =
