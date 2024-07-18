@@ -8,11 +8,9 @@ import { filterList, isoCountries } from "../../common/enum/enum";
 import { SET_SELECTED_LOCATION } from "../../../state/actions/types/globeDataActionType";
 import { FaSearch, FaFilter } from "react-icons/fa";
 import sea from "../../../Assets/sea.png";
-import { getPopularPackageApi } from "../../../api/popularPackage/getPopularPackageApi";
 import { getPackageByDestinationApi } from "../../../api/packageByDestination/getPackageByDestinationApi";
 import { tours } from "../../../state/selectors/selectTourData";
 import {
-  SET_POPULAR_PACKAGE,
   SET_TOUR_DATA,
 } from "../../../state/actions/types/tourDataActionType";
 import { getPackageDetailsByCountryAndDaysApi } from "../../../api/getPackageDetailsByCountryAndDaysApi";
@@ -44,10 +42,6 @@ const ExploreDestination: FC = () => {
   const [type, setType] = useState("text");
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
-  const [state, setState] = useState<stateType>({
-    data: tourData, // Your data from the API
-    hasMore: true,
-  });
 
   const [tourDetail, setTourDetail] = useState({
     destination: destination.city,
@@ -56,28 +50,23 @@ const ExploreDestination: FC = () => {
 
   const fetchTourData = async () => {
     window.scrollTo(0, 0);
-    const response = await getPopularPackageApi();
-    if (response.status === 200) {
-      dispatch({
-        type: SET_POPULAR_PACKAGE,
-        payload: parseTourDataArray(response.data),
-      });
-    }
-    getPackage();
+    // const response = await getPopularPackageApi();
+    // if (response.status === 200) {
+    //   dispatch({
+    //     type: SET_POPULAR_PACKAGE,
+    //     payload: parseTourDataArray(response.data),
+    //   });
+    // }
+    fetchTours();
   };
 
   const getPackage = async () => {
     const res = await getPackageByDestinationApi(tourDetail.destination);
     if (res.status === 200) {
-      const data = parseTourDataArray(res.data);
-      if (res.data?.length === 0) {
-        setState({ data: state.data, hasMore: false });
-      } else {
-        setState((prevState) => ({
-          data: [...prevState.data, ...data],
-          hasMore: true,
-        }));
-      }
+      dispatch({
+        type: SET_TOUR_DATA,
+        payload: parseTourDataArray(res.data),
+      });
     }
   };
 
@@ -85,13 +74,6 @@ const ExploreDestination: FC = () => {
     fetchTourData();
     setLoading(false);
   }, []);
-
-  useEffect(() => {
-    dispatch({
-      type: SET_TOUR_DATA,
-      payload: state.data,
-    });
-  }, [state.data]);
 
   useEffect(() => {
     if (screenSize.screenSize >= 1000) {
@@ -124,7 +106,7 @@ const ExploreDestination: FC = () => {
     {
       packageId: "RIE10****",
       imageUri:
-        "https://drive.google.com/thumbnail?sz=w2000&id=1L8Sr3HzAvj-WQHB_Q-Cv7j_UqdSUF-Ev",
+        "https://drive.google.com/thumbnail?sz=w2000&id=1LdNvDwTTIM4wfchObH9hhPs-2iPZRVMx",
     },
     {
       packageId: "RIE10****",
@@ -155,14 +137,17 @@ const ExploreDestination: FC = () => {
   const fetchTours = async () => {
     const filterData = markers.filter(
       (marker: any) =>
-        marker?.city?.toLowerCase()?.includes(tourDetail.destination) && marker
+        tourDetail.destination.length !== 0 &&
+        marker?.city?.toLowerCase()?.includes(tourDetail.destination) &&
+        marker
     );
+    console.log(filterData.length);
     if (filterData.length > 0) {
       dispatch({
         type: SET_SELECTED_LOCATION,
         payload: filterData[0],
       });
-      getPackage();
+      // getPackage();
     } else {
       const countryId =
         isoCountries.filter((country: any) => {
@@ -174,22 +159,16 @@ const ExploreDestination: FC = () => {
           )
             return country;
         })[0]?.id || 0;
-      if (countryId) {
-        const response = await getPackageDetailsByCountryAndDaysApi(
-          filter.noOfDays,
-          countryId
-        );
-        if (response.status === 200) {
-          const data = parseTourDataArray(response.data);
-          if (data?.length === 0) {
-            setState({ data: state.data, hasMore: false });
-          } else {
-            setState((prevState) => ({
-              data: [...prevState.data, ...data],
-              hasMore: true,
-            }));
-          }
-        }
+
+      const response = await getPackageDetailsByCountryAndDaysApi(
+        filter.noOfDays,
+        countryId
+      );
+      if (response.status === 200) {
+        dispatch({
+          type: SET_TOUR_DATA,
+          payload: parseTourDataArray(response.data),
+        });
       }
     }
   };
@@ -237,7 +216,6 @@ const ExploreDestination: FC = () => {
               <div className="input-group-append">
                 <Button
                   onClick={() => {
-                    setState({ data: [], hasMore: false });
                     fetchTours();
                   }}
                   style={{
@@ -348,9 +326,9 @@ const ExploreDestination: FC = () => {
           margin: "20px auto",
         }}
       >
-        {state?.data.length > 0 ? (
+        {tourData?.length > 0 ? (
           <>
-            {state?.data?.map((tour, index) => (
+            {tourData?.map((tour, index) => (
               <TourCard tourData={tour} key={index} />
             ))}
           </>

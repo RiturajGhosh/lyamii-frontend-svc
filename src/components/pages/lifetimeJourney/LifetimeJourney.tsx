@@ -3,7 +3,9 @@ import { Card, Container, Carousel, Button } from "react-bootstrap";
 import { journeyOptions } from "../../common/enum/enum";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { selectPopularPackage } from "../../../state/selectors/selectTourData";
+import {
+  selectNonIndianTours,
+} from "../../../state/selectors/selectTourData";
 import {
   SET_TOUR_PACKAGE_ID,
   selectedTourDataDto,
@@ -11,15 +13,16 @@ import {
 const LifetimeJourney: FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const popularTours = useSelector(selectPopularPackage);
-  const [tourlist, setTourList] = useState<selectedTourDataDto[]>(popularTours);
+  const nonIndianTours = useSelector(selectNonIndianTours);
+  const [tourlist, setTourList] =
+    useState<selectedTourDataDto[]>(nonIndianTours);
   useEffect(() => {
     filterData();
-    popularTours?.length > 0 && setTourList(filterData());
-  }, [popularTours]);
+    nonIndianTours?.length > 0 && setTourList(filterData());
+  }, [nonIndianTours]);
 
   const filterData = () => {
-    return popularTours.filter(
+    return nonIndianTours.filter(
       (tour) => tour.packageName.indexOf("India") === -1
     );
   };
@@ -224,10 +227,12 @@ const LifetimeJourney: FC = () => {
                     className="border border-0"
                     style={styles.cardTextOverlay}
                   >
-                    <div className="d-flex justify-content-between align-items-center">
+                    <div className="d-flex w-100 justify-content-between align-items-center">
                       <Card.Title
+                        className="w-100 justify-content-start d-flex"
                         style={{
                           fontSize: 25,
+                          whiteSpace:"pre",
                           fontWeight: "700",
                           color: "#879DFF",
                         }}
@@ -256,15 +261,18 @@ const LifetimeJourney: FC = () => {
                     </div>
 
                     <Card.Text
+                    className="justify-content-start d-flex"
                       style={{
                         fontSize: 16,
                         fontWeight: "400",
                         color: "#818181",
                       }}
                     >
-                      {tour.destinations.map(
-                        (destination) => destination + " "
-                      )}
+                      {tour.destinations
+                        .slice(0, 8)
+                        .map((destination) => destination + " ")}
+                      {tour.destinations.length > 8 &&
+                        (tour.destinations.length - 8)}
                       {/* <hr
                         style={{
                           border: "0.5px solid #D0D0D0",

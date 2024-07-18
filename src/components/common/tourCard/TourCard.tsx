@@ -77,7 +77,7 @@ const TourCard: FC<TourCardType> = ({ tourData, key }) => {
               marginBottom: 10,
             }}
           >
-            {tourData.destinations.map((month) => (
+            {tourData.destinations.slice(10).map((month) => (
               <span
                 key={month}
                 style={{

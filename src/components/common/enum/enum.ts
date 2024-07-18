@@ -15,25 +15,25 @@ export const reasons = [
     title: "Global Reach",
     img: require("../../../Assets/globe.png"),
     description:
-      "Our global accommodation covers 77+ countries. 500+ volunteers are always there to assist you on the way. Find comfort wherever you wander.",
+      "Lyamii accommodation covers 55+ countries. 3000+ volunteers are always there to assist you on the go. With Lyamii embrace global citizenship like never before.",
   },
   {
     title: "Complete Tours",
     img: require("../../../Assets/tick1.png"),
     description:
-      "The traveller ID solves all your headaches. Travel Insurance? Sorted. Air Tickets? Done. Government Documentation? Checked. All stays? Covered. Pack your bag and leave the rest to us.",
+      "The Tour IDs connect all dots of your tour. Domestic flights, stays, currency exchange, transfers, cuisines, entry passes, multilingual support, everything is covered with Lyamii.",
   },
   {
     title: "Secure & Convenient",
     img: require("../../../Assets/fingerprint1.png"),
     description:
-      "Experience secure and seamless transactions. Enjoy convenience and peace of mind with our online/offline payment model. Embrace effortless currency exchange in our Incredible India tours.",
+      "Experience secure and seamless transactions on Lyamii. We also accept doorstep and post arrival payments. For our new users we have introduced the Book Now option.",
   },
   {
-    title: "Has something for Everyone",
+    title: "Diverse & Dynamic",
     img: require("../../../Assets/gift1.png"),
     description:
-      "Lyamii presents vacations for everyone, to everywhere. Do not hesitate to dive into the exploration of yourself. Scroll through snow, ocean, wildlife, alleys and select your journey. You have us to handle the rest.",
+      "From mountain to ocean, Lyamii covers all kinds of terrains, connects diverse cultures, and caters various types of tours to different sets of audience, all at one platform.",
   },
 ];
 export const facilities = [
@@ -335,10 +335,10 @@ export const manuals = [
     path: "https://drive.google.com/file/d/1tKrozZRyGIHQ7Mm2qElaTk-HiMS4qfLF/view?usp=drive_link",
   },
   {
-    name:"Spanish",
+    name: "Spanish",
     imgPath: require("../../../Assets/spanish.png"),
-    path:"https://drive.google.com/file/d/1tkansuyZKHrWtqTZxVrI74SP0fdf77bB/view?usp=drive_link"
-  }
+    path: "https://drive.google.com/file/d/1tkansuyZKHrWtqTZxVrI74SP0fdf77bB/view?usp=drive_link",
+  },
 ];
 export const internationalTours = [
   {
@@ -1120,7 +1120,7 @@ export const backpackersTours = [
 //   (Kerala, Goa, Maharashtra, Gujrat)
 // ];
 export const amenities = [
-  { checked: false, label: "Local Tour", value: "LOCAL_TOUR" }, 
+  { checked: false, label: "Local Tour", value: "LOCAL_TOUR" },
   { checked: false, label: "BreakFast Buffet", value: "BREAKFAST_BUFFET" },
   { checked: false, label: "Wifi", value: "WIFI" },
   { checked: false, label: "Airport Transfer", value: "AIRPORT_TRANSFER" },
@@ -1129,7 +1129,7 @@ export const amenities = [
   { checked: false, label: "Gym", value: "GYM" },
 ];
 export const hostelAmenities = [
-  { checked: false, label: "Local Tour", value: "LOCAL_TOUR" }, 
+  { checked: false, label: "Local Tour", value: "LOCAL_TOUR" },
   { checked: false, label: "BreakFast Buffet", value: "BREAKFAST_BUFFET" },
   { checked: false, label: "Female Dorm", value: "FEMALE_DORM" },
   { checked: false, label: "Locker", value: "LOCKER" },
@@ -1205,7 +1205,7 @@ export const isoCountries = [
   },
   {
     id: 2,
-    country_name: "US",
+    country_name: "Srilanka",
     display_code: 1,
   },
   {

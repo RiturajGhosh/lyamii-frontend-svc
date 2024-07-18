@@ -3,7 +3,7 @@ import { Card, Container, Carousel, Button } from "react-bootstrap";
 import styles from "./Destinations.module.scss"; // Correct import path
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { selectPopularPackage } from "../../../state/selectors/selectTourData";
+import { tours } from "../../../state/selectors/selectTourData";
 import {
   SET_TOUR_PACKAGE_ID,
   selectedTourDataDto,
@@ -13,11 +13,11 @@ import { TbWorldSearch } from "react-icons/tb";
 const Destinations = () => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const popularTours = useSelector(selectPopularPackage);
-  const [tourlist, setTourList] = useState<selectedTourDataDto[]>(popularTours);
+  const indianTours = useSelector(tours);
+  const [tourlist, setTourList] = useState<selectedTourDataDto[]>(indianTours);
   useEffect(() => {
-    popularTours?.length > 0 && setTourList(popularTours);
-  }, [popularTours]);
+    indianTours?.length > 0 && setTourList(indianTours);
+  }, [indianTours]);
 
   // const tours = [
   //   {
@@ -186,6 +186,7 @@ const Destinations = () => {
                           fontSize: 25,
                           fontWeight: "700",
                           color: "#879DFF",
+                          whiteSpace: "pre",
                         }}
                       >
                         {tour.title}
@@ -218,9 +219,9 @@ const Destinations = () => {
                         color: "#818181",
                       }}
                     >
-                      {tour.destinations.map(
-                        (destination) => destination + " "
-                      )}
+                      {tour.destinations
+                        .slice(10)
+                        .map((destination) => destination + " ")}
                       <hr
                         style={{
                           border: "0.5px solid #D0D0D0",

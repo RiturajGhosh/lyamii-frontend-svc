@@ -40,7 +40,9 @@ const BharatTours: FC = () => {
       <Col className={`py-5 p-0 d-grid justify-content-center`}>
         <Row className="p-0">
           <Col className="text-dark align-self-center">
-            <span className="text-start fs-16 text-wrap">{description} </span>
+            <span className="text-start fs-16 text-wrap">
+              <i>{description} </i>
+            </span>
           </Col>
         </Row>
       </Col>

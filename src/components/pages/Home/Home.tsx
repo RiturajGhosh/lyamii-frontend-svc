@@ -36,14 +36,14 @@ import {
   faFacebook,
 } from "@fortawesome/free-brands-svg-icons";
 import { SET_SELECTED_LOCATION } from "../../../state/actions/types/globeDataActionType";
-import { useDispatch, useSelector } from "react-redux";
-import { getPopularPackageApi } from "../../../api/popularPackage/getPopularPackageApi";
+import { useDispatch } from "react-redux";
 import {
-  SET_POPULAR_PACKAGE,
-  selectedTourDataDto,
+  SET_NON_INDIAN_TOURS,
+  SET_TOUR_DATA,
 } from "../../../state/actions/types/tourDataActionType";
 import { parseTourDataArray } from "../../../utils/parseTourData";
-import { selectPopularPackage } from "../../../state/selectors/selectTourData";
+import { getNonIndianToursApi } from "../../../api/nonIndianTours/getNonIndianToursApi";
+import { getPackageDetailsByCountryAndDaysApi } from "../../../api/getPackageDetailsByCountryAndDaysApi";
 
 const Home: FC = () => {
   const [index, setIndex] = useState(0); // State to manage carousel index
@@ -111,11 +111,18 @@ const Home: FC = () => {
   };
   const fetchTourData = async () => {
     window.scrollTo(0, 0);
-    const response = await getPopularPackageApi();
+    const response = await getPackageDetailsByCountryAndDaysApi(0, 1);
     if (response.status === 200) {
       dispatch({
-        type: SET_POPULAR_PACKAGE,
+        type: SET_TOUR_DATA,
         payload: parseTourDataArray(response.data),
+      });
+    }
+    const res = await getNonIndianToursApi();
+    if (response.status === 200) {
+      dispatch({
+        type: SET_NON_INDIAN_TOURS,
+        payload: parseTourDataArray(res?.data),
       });
     }
   };
@@ -379,15 +386,15 @@ const Home: FC = () => {
                 boxShadow: "none",
               }}
             />
-            <div
+            {/* <div
               style={{
                 width: "1px",
                 height: "60px",
                 backgroundColor: "#ddd",
                 margin: "0 10px",
               }}
-            />
-            <Form.Control
+            /> */}
+            {/* <Form.Control
               type="date"
               className="border border-0"
               placeholder="Month"
@@ -398,7 +405,7 @@ const Home: FC = () => {
                 // border: "none",
                 boxShadow: "none",
               }}
-            />
+            /> */}
             <Button
               onClick={() => {
                 fetchTours();
@@ -434,7 +441,7 @@ const Home: FC = () => {
           How It Works
         </p> */}
         <h2
-          className="bold"
+          className="pt-5 bold"
           style={{
             fontSize: 45,
             fontWeight: "400",
