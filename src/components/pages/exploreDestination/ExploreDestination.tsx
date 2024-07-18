@@ -10,9 +10,7 @@ import { FaSearch, FaFilter } from "react-icons/fa";
 import sea from "../../../Assets/sea.png";
 import { getPackageByDestinationApi } from "../../../api/packageByDestination/getPackageByDestinationApi";
 import { tours } from "../../../state/selectors/selectTourData";
-import {
-  SET_TOUR_DATA,
-} from "../../../state/actions/types/tourDataActionType";
+import { SET_TOUR_DATA } from "../../../state/actions/types/tourDataActionType";
 import { getPackageDetailsByCountryAndDaysApi } from "../../../api/getPackageDetailsByCountryAndDaysApi";
 import { parseTourDataArray } from "../../../utils/parseTourData";
 import MainContainer from "../../common/container/MainContainer";
@@ -66,6 +64,11 @@ const ExploreDestination: FC = () => {
       dispatch({
         type: SET_TOUR_DATA,
         payload: parseTourDataArray(res.data),
+      });
+    } else {
+      dispatch({
+        type: SET_TOUR_DATA,
+        payload: [],
       });
     }
   };
@@ -147,7 +150,7 @@ const ExploreDestination: FC = () => {
         type: SET_SELECTED_LOCATION,
         payload: filterData[0],
       });
-      // getPackage();
+      getPackage();
     } else {
       const countryId =
         isoCountries.filter((country: any) => {
@@ -160,15 +163,24 @@ const ExploreDestination: FC = () => {
             return country;
         })[0]?.id || 0;
 
-      const response = await getPackageDetailsByCountryAndDaysApi(
-        filter.noOfDays,
-        countryId
-      );
-      if (response.status === 200) {
-        dispatch({
-          type: SET_TOUR_DATA,
-          payload: parseTourDataArray(response.data),
-        });
+      if (filter.noOfDays || countryId) {
+        const response = await getPackageDetailsByCountryAndDaysApi(
+          filter.noOfDays,
+          countryId
+        );
+        if (response.status === 200) {
+          dispatch({
+            type: SET_TOUR_DATA,
+            payload: parseTourDataArray(response.data),
+          });
+        } else {
+          dispatch({
+            type: SET_TOUR_DATA,
+            payload: [],
+          });
+        }
+      } else {
+        getPackage();
       }
     }
   };
@@ -333,7 +345,18 @@ const ExploreDestination: FC = () => {
             ))}
           </>
         ) : (
-          <Col className="h3">There is no Tour for this Destination</Col>
+          <Col
+            className="h3 justify-content-center d-flex m-5"
+            style={{
+              fontWeight: "700",
+              padding: "20px",
+              background: "#869cff",
+              color: "white",
+              margin: "50px",
+            }}
+          >
+            There is no Tour for this Destination
+          </Col>
         )}
       </div>
       {/* <Col className="my-5 p-0 m-0">
