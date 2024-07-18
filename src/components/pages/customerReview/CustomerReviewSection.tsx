@@ -95,7 +95,10 @@ const CustomerReviewSection: FC = () => {
             position: "relative",
           }}
         >
-          Reviews
+          <img
+            className="col-md-3 col-sm-4 col-lg-2 col-sx-2 col-6"
+            src={require("../../../Assets/reviews.png")}
+          />
           <span
             style={{
               display: "block",
