@@ -167,17 +167,28 @@ const TourDetailCard: FC = () => {
               fontWeight: "400",
             }}
           >
-            <select
+            {/* <select
+              style={{
+                WebkitAppearance: "none",
+                MozAppearance: "none",
+                background: "transparent",
+                fontSize: "16px",
+                fontWeight: "700",
+                color: "rgb(134, 133, 133)",
+              }}
               className="form-select pointer border border-0 w-100"
               aria-label="Default select example"
             >
               {tourData?.packagePrice?.map((price: string, index: number) => (
                 <option key={index} value={price}>
-                  {price}
-                  {tourData?.packagePrice.length === 1 && " INR"}
+                    {price.split(" ")[0]}
+                  {/* {tourData?.packagePrice.length === 1 && " INR"} 
                 </option>
               ))}
-            </select>
+            </select> */}
+
+            {tourData?.packagePrice?.length > 0 &&
+              tourData?.packagePrice[0]?.split(" ")[0]}
           </span>
           <button
             onClick={() => history.push("/checkout")}
@@ -372,7 +383,15 @@ const TourDetailCard: FC = () => {
                 fontWeight: "400",
               }}
             >
-              <select
+              {/* <select
+                style={{
+                  WebkitAppearance: "none",
+                  MozAppearance: "none",
+                  background: "transparent",
+                  fontSize: "16px",
+                  fontWeight: "700",
+                  color: "rgb(134, 133, 133)",
+                }}
                 className="form-select pointer border border-0 w-100"
                 aria-label="Default select example"
               >
@@ -390,10 +409,13 @@ const TourDetailCard: FC = () => {
                   : ["2000 INR"]
                 )?.map((price: string, index: number) => (
                   <option key={index} value={price}>
-                    {price}
+                     {price.split(" ")[0]}
                   </option>
                 ))}
-              </select>
+              </select> */}
+
+              {tourData?.packagePrice?.length > 0 &&
+                tourData?.packagePrice[0]?.split(" ")[0]}
             </Col>
             <button
               onClick={() => history.push("/checkout")}
@@ -420,17 +442,28 @@ const TourDetailCard: FC = () => {
                 fontWeight: "400",
               }}
             >
-              <select
+              {/* <select
+                style={{
+                  WebkitAppearance: "none",
+                  MozAppearance: "none",
+                  background: "transparent",
+                  fontSize: "16px",
+                  fontWeight: "700",
+                  color: "rgb(134, 133, 133)",
+                }}
                 className="form-select pointer border border-0 w-100"
                 aria-label="Default select example"
               >
                 {tourData?.packagePrice?.map((price: string, index: number) => (
                   <option key={index} value={price}>
-                    {price}
-                    {tourData?.packagePrice.length === 1 && " INR"}
+                      {price.split(" ")[0]}
+                    {/* {tourData?.packagePrice.length === 1 && " INR"} 
                   </option>
                 ))}
-              </select>
+              </select> */}
+
+              {tourData?.packagePrice?.length > 0 &&
+                tourData?.packagePrice[0]?.split(" ")[0]}
             </Col>
             <button
               onClick={() => history.push("/checkout")}

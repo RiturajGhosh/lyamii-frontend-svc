@@ -475,7 +475,7 @@ const JoinUs: FC = () => {
               </Col>
               <Col className="position-relative p-0 border-1 text-center mx-42 justify-content-end text-white">
                 <a
-                  className="align-middle text-nowrap pointer text-decoration-none p-2 rounded-3 fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary"
+                  className="align-middle text-nowrap pointer text-decoration-none p-2 rounded-3 fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary text-white"
                   style={{ background: "#0752a1" }}
                   href="https://surveyheart.com/form/668173f6c6a77f4279064d49"
                 >
@@ -510,7 +510,7 @@ const JoinUs: FC = () => {
               </Col>
               <Col className="position-relative p-0 border-1 text-center mx-42 justify-content-end text-white">
                 <a
-                  className="align-middle fs-auto pointer justify-self-center p-2 rounded-3 text-decoration-none position-absolute top-100 translate-middle btn-secondary"
+                  className="align-middle fs-auto pointer justify-self-center p-2 rounded-3 text-decoration-none position-absolute top-100 translate-middle btn-secondary text-white"
                   style={{ background: "#0752a1" }}
                   href="https://surveyheart.com/form/66818afec6a77f4279077fc8"
                 >
@@ -545,7 +545,7 @@ const JoinUs: FC = () => {
               </Col>
               <Col className="position-relative p-0 border-1 text-center mx-42 justify-content-end text-white">
                 <a
-                  className="align-middle fs-auto pointer p-2 rounded-3 text-decoration-none justify-self-center position-absolute top-100 translate-middle btn-secondary"
+                  className="align-middle fs-auto pointer p-2 rounded-3 text-decoration-none justify-self-center position-absolute top-100 translate-middle btn-secondary text-white"
                   style={{ background: "#0752a1" }}
                   href="https://surveyheart.com/form/66818d27c6a77f4279079c66"
                 >

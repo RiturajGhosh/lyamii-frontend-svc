@@ -45,13 +45,13 @@ const CustomerReviews: FC = () => {
                           <Row className="d-flex my-4 col-11 flex-row flex-nowrap position-relative justify-content-between">
                             <Col className="col-5">
                               <img
-                                className="mb-3"
+                                className="mb-3 rounded-circle"
                                 style={{
                                   width: "9dvi",
                                   height: "9dvi",
                                 }}
                                 alt=""
-                                src={avatar}
+                                src={review.image}
                               />
                             </Col>
 

@@ -98,7 +98,7 @@ const WhyLyamii: FC = () => {
                               padding: "0px !important",
                               margin: "0px !important",
                             }}
-                            src={reason.img}
+                            // src={reason}
                           />
                         </Card.Body>
                         <section

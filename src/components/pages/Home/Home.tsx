@@ -44,6 +44,7 @@ import {
 import { parseTourDataArray } from "../../../utils/parseTourData";
 import { getNonIndianToursApi } from "../../../api/nonIndianTours/getNonIndianToursApi";
 import { getPackageDetailsByCountryAndDaysApi } from "../../../api/getPackageDetailsByCountryAndDaysApi";
+import { reasons } from "../../common/enum/enum";
 
 const Home: FC = () => {
   const [index, setIndex] = useState(0); // State to manage carousel index
@@ -56,37 +57,6 @@ const Home: FC = () => {
   };
   const dispatch = useDispatch();
   const [flippedIndex, setFlippedIndex] = useState(-1);
-
-  const cards = [
-    {
-      title: "Global Reach",
-      description:
-        "Our global accommodation covers 77+ countries. 500+ volunteers are always there to assist you on the way. Find comfort wherever you wander.",
-      image:
-        "https://drive.google.com/thumbnail?sz=w2000&id=1-i4SnWI_3JTAE1GqhHWzg5dNGBH9rtpb", // Replace with your image URLs
-    },
-    {
-      title: "Complete Tours",
-      description:
-        "The traveller ID solves all your headaches. Travel Insurance? Sorted. Air Tickets? Done. Government Documentation? Checked. All stays? Covered. Pack your bag and leave the rest to us.",
-      image:
-        "https://drive.google.com/thumbnail?sz=w2000&id=1jhBH7SaBQqMalwI4ircl0BVrBYAygc_3",
-    },
-    {
-      title: "Secure & Convenient",
-      description:
-        "Experience secure and seamless transactions with our online/offline model. Embrace easy currency exchange for a Journey of a Lifetime.",
-      image:
-        "https://drive.google.com/thumbnail?sz=w2000&id=1jhcvwatXJnwtvQm_rU_F5Onmst49rani",
-    },
-    {
-      title: "Customer Support",
-      description:
-        "Our customer support is available 24/7 to assist you with all your needs and inquiries. Travel with peace of mind knowing we are always here to help.",
-      image:
-        "https://drive.google.com/thumbnail?sz=w2000&id=1jpE3Rp5AwbiZ0ZbFmIzBgQyaMWY2tJM9",
-    },
-  ];
 
   const handleCardHover = (index: number) => {
     setFlippedIndex(index);
@@ -417,7 +387,7 @@ const Home: FC = () => {
                 height: 60,
                 border: "none",
                 boxShadow: "none",
-                marginLeft: "10px",
+                marginLeft: "10px"
               }}
             >
               Find Now
@@ -794,7 +764,7 @@ const Home: FC = () => {
             zIndex: 1,
           }}
         >
-          {cards.map((card, index) => (
+          {reasons.map((card, index) => (
             <div
               key={index}
               onMouseEnter={() => handleCardHover(index)}

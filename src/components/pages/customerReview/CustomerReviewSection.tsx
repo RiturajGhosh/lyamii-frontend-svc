@@ -85,7 +85,6 @@ const CustomerReviewSection: FC = () => {
     <div style={styles.section} className="reviewImage">
       <div style={styles.header}>
         <h2
-          onClick={() => history.push("/customerReviews")}
           style={{
             fontSize: 45,
             fontWeight: "400",
@@ -96,6 +95,7 @@ const CustomerReviewSection: FC = () => {
           }}
         >
           <img
+            onClick={() => history.push("/customerReviews")}
             className="col-md-3 col-sm-4 col-lg-2 col-sx-2 col-6"
             src={require("../../../Assets/reviews.png")}
           />

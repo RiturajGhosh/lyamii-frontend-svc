@@ -444,7 +444,7 @@ const Login: FC = () => {
               </Col>
               <Col className="position-relative p-0 border-1 text-center mx-42 justify-content-end text-white">
                 <Button
-                  className="align-middle pointer fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary"
+                  className="align-middle fs-auto pointer justify-self-center position-absolute top-100 translate-middle btn-secondary"
                   style={{ background: "#0752a1" }}
                   onClick={() => history.push("/addHotel")}
                 >
@@ -477,13 +477,13 @@ const Login: FC = () => {
                 />
               </Col>
               <Col className="position-relative p-0 border-1 text-center mx-42 justify-content-end text-white">
-                <Button
-                  className="align-middle pointer text-nowrap fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary"
+                <a
+                  className="align-middle text-nowrap pointer text-decoration-none p-2 rounded-3 fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary text-white"
                   style={{ background: "#0752a1" }}
-                  onClick={() => history.push("/addHotel")}
+                  href="https://surveyheart.com/form/668173f6c6a77f4279064d49"
                 >
                   Tour Guide
-                </Button>
+                </a>
               </Col>
             </SubCard>
           </Col>
@@ -512,13 +512,13 @@ const Login: FC = () => {
                 />
               </Col>
               <Col className="position-relative p-0 border-1 text-center mx-42 justify-content-end text-white">
-                <Button
-                  className="align-middle pointer fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary"
+                <a
+                  className="align-middle fs-auto pointer justify-self-center p-2 rounded-3 text-decoration-none position-absolute top-100 translate-middle btn-secondary text-white"
                   style={{ background: "#0752a1" }}
-                  onClick={() => history.push("/")}
+                  href="https://surveyheart.com/form/66818afec6a77f4279077fc8"
                 >
                   Transfers
-                </Button>
+                </a>
               </Col>
             </SubCard>
           </Col>
@@ -535,7 +535,7 @@ const Login: FC = () => {
               className="h-100 align-items-center"
               cardColor="#7ed994"
             >
-              <Col className="w-100 position-relative">
+              <Col className="w-100 position-rephlative">
                 <Card.Img
                   className={`p-0 m-0 justify-content-center `}
                   style={{
@@ -547,13 +547,13 @@ const Login: FC = () => {
                 />
               </Col>
               <Col className="position-relative p-0 border-1 text-center mx-42 justify-content-end text-white">
-                <Button
-                  className="align-middle pointer fs-auto justify-self-center position-absolute top-100 translate-middle btn-secondary"
+                <a
+                  className="align-middle fs-auto pointer p-2 rounded-3 text-decoration-none justify-self-center position-absolute top-100 translate-middle btn-secondary text-white"
                   style={{ background: "#0752a1" }}
-                  onClick={() => history.push("/")}
+                  href="https://surveyheart.com/form/66818d27c6a77f4279079c66"
                 >
                   Volunteer
-                </Button>
+                </a>
               </Col>
             </SubCard>
           </Col>

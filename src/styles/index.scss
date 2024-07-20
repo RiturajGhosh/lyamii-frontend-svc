@@ -858,6 +858,9 @@ p > strong {
 }
 .w-90 {
   width: 90% !important;
+  @media only screen and (max-width: 500px) {
+    width: 100% !important;
+  }
 }
 .mw-10 {
   max-width: 10% !important;
@@ -2359,4 +2362,12 @@ input[type="range"]::-ms-thumb {
   cursor: pointer;
 }
 
-// date picker
+// carousel
+.carousel-control-prev {
+  width: 10% !important;
+  height: 10% !important;
+}
+.carousel-control-end {
+  width: 10% !important;
+  height: 10% !important;
+}

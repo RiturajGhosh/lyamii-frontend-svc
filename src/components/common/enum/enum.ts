@@ -13,25 +13,30 @@ export const mapDescription =
 export const reasons = [
   {
     title: "Global Reach",
-    img: require("../../../Assets/globe.png"),
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1-i4SnWI_3JTAE1GqhHWzg5dNGBH9rtpb", // Replace with your image URLs
+
     description:
       "Lyamii accommodation covers 55+ countries. 3000+ volunteers are always there to assist you on the go. With Lyamii embrace global citizenship like never before.",
   },
   {
     title: "Complete Tours",
-    img: require("../../../Assets/tick1.png"),
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1jhBH7SaBQqMalwI4ircl0BVrBYAygc_3",
     description:
       "The Tour IDs connect all dots of your tour. Domestic flights, stays, currency exchange, transfers, cuisines, entry passes, multilingual support, everything is covered with Lyamii.",
   },
   {
     title: "Secure & Convenient",
-    img: require("../../../Assets/fingerprint1.png"),
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1jhcvwatXJnwtvQm_rU_F5Onmst49rani",
     description:
       "Experience secure and seamless transactions on Lyamii. We also accept doorstep and post arrival payments. For our new users we have introduced the Book Now option.",
   },
   {
     title: "Diverse & Dynamic",
-    img: require("../../../Assets/gift1.png"),
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1jpE3Rp5AwbiZ0ZbFmIzBgQyaMWY2tJM9",
     description:
       "From mountain to ocean, Lyamii covers all kinds of terrains, connects diverse cultures, and caters various types of tours to different sets of audience, all at one platform.",
   },
@@ -94,177 +99,242 @@ export const months = [
 export const teamRating = [5, 4, 5, 4];
 export const reviews = [
   {
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1yMQ_4-zpbT5mWL_pANgspj3GJ_vhEOfE",
     review:
       "Hospitality at its finest. This is the first impression I give explaining my vacation in India. Met 8 lyamii volunteers throughout our journey, and each of them were very very humble and helpful.",
     name: "Jordan, Dublin",
   },
   {
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1yNaNPud3LrhRPGiKN8I-AAhCanNgCQ5p",
     review:
       "What people don't understand is India is a massive country with a ton of different cultures and languages. I visited India back in 2017 on my own and it was a chaos. Finally visited again this year and the overall experience was very different with Lyamii. Had a great time and made many friends, and will surely come back soon.",
     name: "Molina, California",
   },
   {
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1yR9JtGCoL74F8Ysw_-24S3aQvUWyn49c",
     review:
       "I have travelled to 67 countries so far, and I wish I had Lyamii in other countries too. The whole assistance was so balanced that I never realised I was alone in a new country.",
     name: "Jones, NYC",
   },
   {
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1yTe5baVXapqxh1Sn7faXUB-8kTIW_Zam",
     review:
       "India is definitely a vlogger’s paradise, from food to people, architecture to nature. I loved all of it. And I'm definitely enjoying the love I'm receiving on my recent contents on youtube from my Indian friends. Thank you Lyamii.",
     name: "Micheal, Sydney",
   },
   {
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1yUSIDQKK3R-tfeblZ0sFLUvUq43Lj7Kj",
     review:
       " our assigned volunteer in Jaipur and my 6 years old daughter became best friends. She brought a handmade toy for my girl on our last day in Jaipur. It was a pure gem moment for us.",
     name: "Antony, Maryland",
   },
   {
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1yVDL0wHV0MGOErlO9KRsB8UGWOTjQrjW",
     review:
       " Each day of my 50 days backpacking tour was unique in its own way. Without Lyamii I could never imagine how multicultural this country is. And to my volunteer friends, I wish I had enough money to host you all in my hometown. Jk, we will meet again soon.",
     name: "Francis, London",
   },
   {
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1yVbgtC5ySSuh1HjggNX1XDbVrLNYJ8Kv",
     review:
       "All the properties we stayed in were very comforting and photogenic. We literally spent most of our days within our boutique hotels and honestly loved every bit of it, the hosts felt like home. The forts we stayed in Rajasthan were top notch.",
     name: "Martin, NYC",
   },
   {
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1ygaqweGEP3XzGOjd_2kHTQrrY03nTxVV",
     review:
       "Stays, transfers were good, but food was the best part. Flavours after flavours. We never imagined such tasty foods could exist. Buffet cuisines, surprise treats and street food walks with volunteers, each day was a celebration for a foodie like me. ",
     name: "Philips, Florida",
   },
   {
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1yi5Vk_eTG_f0rUJQQ-b_6QNgTRpmBKvU",
     review:
       " I loved how all the volunteers in my day to day itinerary refused to take any tip from me, I mean this is very rare in other countries. All of them were very polite and professional.",
     name: "Martha, Ohio",
   },
   {
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1yiP9PJaQaWU4iE_ILW7J7nsrplyDNVy3",
     review:
       "Received my journal just today, it is beautiful. I had the best January of my life in India, and the best part about this country is their people. All my hosts and volunteer friends were very helpful.Although I'm a seasoned traveller, still backpacking for 75 days in such a big country was something I never thought of attempting. My vacation with your platform was so smooth and precious it still makes me wonder how a duration of two months felt not enough.",
     name: "Tayo, California",
   },
   {
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1yqczsmEilEhVNKQQj-HAdVEHxHy1Bnjt",
     review:
       " I'm from Tbilisi and I had the best day of my life in the streets of varanasi. Met Vandana as my volunteer in Varanasi, she helped me a lot with bargaining. My other volunteer friends were super nice and helpful too.",
     name: "Kelly, Tbilisi",
   },
   {
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1yrNRwtFCvheBioNl3uytM5cBt6gSV4Z3",
     review:
       " Thanks to lyamii, I found the love of my life in Indian foods. So far me and my wife have taken two Indian vacations with Lyamii in just three months. We don't think we'll ever stop coming back to this country. ",
     name: "Peter, Dublin",
   },
   {
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1yuy7Cx1EV_HN9Ok8LvCuexGmJqXtH1Vb",
     review:
       " Just returned from our first 30 days vacation in India. Let me assure you, you will never get bored. Each location in India has its own charm. With every transition the language, food, weather everything becomes new.",
     name: "Eva, NYC",
   },
   {
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1yvLpGSBuLuSktxisn76jZSbx-kIV8IPG",
     review:
       "I'm totally amazed by the attention to detail by Lyamii. I did have mixed feelings about the outcome of my vacation as it was my first time in India, however each day was super compact and my volunteers were very helpful in order to guide me from places to places.",
     name: "Mark, California",
   },
   {
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1yx-RoDpdpR8cKxonOPIcYGVToJfXhOZp",
     review:
       " Kolkata was the first city in our tour id and I could still feel the rhythms I discovered there. It was very calming yet very colourful. Our guide friend Ankur answered all my stupid questions and even helped me to choose my first saari.",
     name: "Bec, NYC",
   },
   {
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1z1_SYoHYd-fCjLoFPOOjkdJCzOSy_b9Y",
     review:
       "Loved the journal. Thankyou for all the good memories and wonderful new friends. Heartfully willing to meet all my hosts again. Each of them showered me with some kind of kindness that I never experienced before. ",
     name: "Lexi, Moscow",
   },
   {
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1z1a4OQVxyBoX6nBjDpT9e8BsJEWfu3U2",
     review:
       "I love travelling to new countries, found lyamii poster on my hostel wall in Barcelona, I was impressed but honestly not totally sure of my first vacation with you. But since the first call to the very last day of my 12 days tour, the overall experience was very comforting.",
     name: "John, California",
   },
   {
     name: "Garrincha",
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1z3HGNjKPdXXC460hlmzb_S4VzKLz0AZp",
     review:
       "Always wanted to visit India someday, but could never gather enough information about the country. Just last year I got to know about this platform. My brother and I took our first trip to India with lyamii. The flow of the tour was pretty nice, we discoverd 4 different cultures in our 7 days tour.  ",
   },
   {
     name: "Didi",
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1z4JYN3J5VqO0lem9T1RYOJplGLbMDqeF",
     review:
       "Loved our vacation in India. It was definitely our best 10 days in a foreign country. Beautiful stays, authentic indian cuisine and open hearted people everywhere. Thanks to our volunteer friends, we faced zero communication barrier throughout our journey.",
   },
   {
     name: "Mauro",
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1yn-eth8ZrDs3kJ9A3hGRwYtPcjlQ4O-p",
     review:
       "Varanasi was our favourite, those two days were so powerful and calming, we never experienced such vibe from a city. Each transition between different cultures was top notch.",
   },
   {
     name: "Vavá",
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1z4vVSpz9TiK52d_ZUUC9-rnP2tG7MELr",
     review:
       "India is so precious, I mean we covered 6 cities and all of them had something special, something different to offer. The love we received from the local people will always stay with us, looking forward to come back with our families next winter.",
   },
   {
     name: "Johnny Haynes",
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1z5E6HJo9Oww_ZTcwQJIvnmTQQru_0pSP",
     review:
       "I want to thank lyamii for the day-to-day assistance I received during my 30 days stay in India. It was my fourth time visiting your country. My first three trips looked very funny when I compared those with my last tour. ",
   },
   {
     name: "Thomas Lawton",
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1zBvXO3zX38m1AHN09_qvtdRyIJo-jasj",
     review:
       "I've been travelling around for quite a while now. The best thing about my trip with this platform was the transition from one culture to another. The diversity of India is truly very very unimaginable. Thank You lyamii for the experience.",
   },
   {
     name: "Alfred Ernest Ramsey",
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1zDr5POwFEOwVEkzmYdJwrdBdOvlSEXan",
     review:
       "We loved our vacation, from each castle stay to all our day to day volunteers, the buffet meals, everything was well balanced and I don't think they left any margin for the guests to complain about.",
   },
   {
     name: "Bobby Robson",
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1zLze2xBYe5WXB7sjcaSYkEWoGYBFA3qu",
     review:
       "The vacation felt like a movie, from day one to day ten, everything was very professionally connected. The volunteer lady who helped me with the street foods in Kashmir was very humble, she denied any tip yet took an extra hour to see me off at the airport. ",
   },
   {
     name: "Fritz Walter",
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1zM8FlAHytImyIbvvnNH2q4gHsMQRey8x",
     review:
       "Thanks to Lyamii now I have more than a million happy memories to live with. Each city in my vacation in India was differently perfect. My volunteer friends, thankyou guys, all my best wishes for you all, will definitely meet again.",
   },
   {
     name: "Roberto Baggio",
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1zQNSKQpyZbpY64w7390bvLsgRYl_48rk",
     review:
       "Communication was the main issue when I was planning to visit India. This country has more than 25 languages. Thankyou for solving that issue for me, I totally appreciate the effort of my volunteers, great support.",
   },
   {
     name: "George Weah",
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1zS-cE9GbcjitjbKm-hoXpOxl9uzWt9VH",
     review:
       "Got to know about this platform from a friend of mine, never thought my India tour would be this easy and exciting. Loved everything about the vacation. Will visit soon with more friends.",
   },
   {
     name: "Roque Gastón Máspoli",
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1zSJTJwxW0aUricMoLCE_Eo7f2dkNDaJc",
     review:
       "Had the best foods, best people and great locations throughout my 30 days backpacking vacation across India. I don't think any other country could have provided such diversity within a single vacation.",
   },
   {
     name: "Sarah M",
+    image:
+      "https://drive.google.com/thumbnail?sz=w2000&id=1zXrUN7N8E7smbEtHwbE6VuRvnmuO6syB",
     review:
       "I had an amazing experience booking my vacation through this website. The user-friendly interface made it super easy to browse through various destinations and find the perfect package for my family. The customer support team was incredibly helpful in answering all my questions and providing recommendations. Our trip went off without a hitch, and I can't wait to use this website again for my next adventure!",
   },
   {
     name: "John D",
+    image: "",
     review:
       "Overall, a great travel booking website! I found some fantastic deals and discounts on flights and hotels for my recent solo trip. The search filters were handy for narrowing down my options, and the booking process was smooth. The only reason I'm not giving it 5 stars is that I encountered a minor issue with my hotel reservation, but the customer support team promptly resolved it. I'd definitely use this website again for my next getaway.",
   },
   {
     name: "Billy Bremner",
+    image: "",
     review:
       "This website has a wide range of travel options, but my experience was a bit mixed. I found a great deal on a tour package to a beautiful destination, but the booking process felt a bit clunky, and I had some trouble with payment processing. Eventually, I managed to secure my reservation with the help of customer support, but it was a bit frustrating. On the positive side, the tour itself was fantastic, and the local guides were knowledgeable and friendly.",
   },
   {
     name: "Brian Howard Clough",
+    image: "",
     review:
       "I had an amazing experience booking my vacation through this website. The user-friendly interface made it super easy to browse through various destinations and find the perfect package for my family. The customer support team was incredibly helpful in answering all my questions and providing recommendations. Our trip went off without a hitch, and I can't wait to use this website again for my next adventure!",
   },
   {
     name: "David Beckham",
+    image: "",
     review:
       "Overall, a great travel booking website! I found some fantastic deals and discounts on flights and hotels for my recent solo trip. The search filters were handy for narrowing down my options, and the booking process was smooth. The only reason I'm not giving it 5 stars is that I encountered a minor issue with my hotel reservation, but the customer support team promptly resolved it. I'd definitely use this website again for my next getaway.",
   },
   {
     name: "Kenneth George Aston",
+    image: "",
     review:
       "This website has a wide range of travel options, but my experience was a bit mixed. I found a great deal on a tour package to a beautiful destination, but the booking process felt a bit clunky, and I had some trouble with payment processing. Eventually, I managed to secure my reservation with the help of customer support, but it was a bit frustrating. On the positive side, the tour itself was fantastic, and the local guides were knowledgeable and friendly.",
   },
@@ -312,32 +382,32 @@ export const manuals = [
   {
     name: "English",
     imgPath: require("../../../Assets/english.png"),
-    path: "https://drive.google.com/file/d/1tIkqcnDA3Jf8I7Fns6HtchTUi6OJfauO/view?usp=drive_link",
+    path: "https://drive.google.com/thumbnail?sz=w2000&id=1tIkqcnDA3Jf8I7Fns6HtchTUi6OJfauO",
   },
   {
     name: "French",
     imgPath: require("../../../Assets/french.png"),
-    path: "https://drive.google.com/file/d/1tKKq-Wj4SjTLkSfpUw66h-du7Ep2nUqF/view?usp=drive_link",
+    path: "https://drive.google.com/thumbnail?sz=w2000&id=1tKKq-Wj4SjTLkSfpUw66h-du7Ep2nUqF",
   },
   {
     name: "Portugues",
     imgPath: require("../../../Assets/portugues.png"),
-    path: "https://drive.google.com/file/d/1tn4wVlaXJvghzxWQ9NGORx_KqS2A9RAT/view?usp=drive_link",
+    path: "https://drive.google.com/thumbnail?sz=w2000&id=1tn4wVlaXJvghzxWQ9NGORx_KqS2A9RAT",
   },
   {
     name: "Arabic",
     imgPath: require("../../../Assets/arabic.png"),
-    path: "https://drive.google.com/file/d/1tUyIx9mEu14ASB7P88sY4jpLO_P5antT/view?usp=drive_link",
+    path: "https://drive.google.com/thumbnail?sz=w2000&id=1tUyIx9mEu14ASB7P88sY4jpLO_P5antT",
   },
   {
     name: "Russia",
     imgPath: require("../../../Assets/russian.png"),
-    path: "https://drive.google.com/file/d/1tKrozZRyGIHQ7Mm2qElaTk-HiMS4qfLF/view?usp=drive_link",
+    path: "https://drive.google.com/thumbnail?sz=w2000&id=1tKrozZRyGIHQ7Mm2qElaTk-HiMS4qfLF",
   },
   {
     name: "Spanish",
     imgPath: require("../../../Assets/spanish.png"),
-    path: "https://drive.google.com/file/d/1tkansuyZKHrWtqTZxVrI74SP0fdf77bB/view?usp=drive_link",
+    path: "https://drive.google.com/thumbnail?sz=w2000&id=1tkansuyZKHrWtqTZxVrI74SP0fdf77bB",
   },
 ];
 export const internationalTours = [

@@ -128,20 +128,30 @@ const BeyoundObvious: FC = () => {
                             <Card.Text className="bold col-3 p p-2 text-white position-absolute text-shadow-dark fw-bold bottom-0 end-0">
                               {/* <span className="col-12 h-100 border border-1 bg-success"> */}
                               <span className="p-0 fs-24 m-0 text-center fit-content">
-                                <select
+                                {/* <select
+                                  style={{
+                                    WebkitAppearance: "none",
+                                    MozAppearance: "none",
+                                    background: "transparent",
+                                    fontSize: "16px",
+                                    fontWeight: "700",
+                                    color: "rgb(134, 133, 133)",
+                                  }}
                                   className="form-select pointer"
                                   aria-label="Default select example"
                                 >
                                   {list?.packagePrice?.map(
                                     (price: string, index: number) => (
                                       <option key={index} value={price}>
-                                        {price}
-                                        {list?.packagePrice.length === 1 &&
-                                          " INR"}
+                                          {price.split(" ")[0]}
+                                        {/* {list?.packagePrice.length === 1 &&
+                                          " INR"} 
                                       </option>
                                     )
                                   )}
-                                </select>
+                                </select> */}
+
+                          {list?.packagePrice[0].split(" ")[0]}
                               </span>
                               {/* </span> */}
                             </Card.Text>
@@ -209,20 +219,30 @@ const BeyoundObvious: FC = () => {
                             </Card.Text>
                             <Card.Text className="bold p p-2 text-white position-absolute fw-bold top-0 end-0">
                               <span className="p-0 fs-24 m-0 text-center fit-content">
-                                <select
+                                {/* <select
+                                  style={{
+                                    WebkitAppearance: "none",
+                                    MozAppearance: "none",
+                                    background: "transparent",
+                                    fontSize: "16px",
+                                    fontWeight: "700",
+                                    color: "rgb(134, 133, 133)",
+                                  }}
                                   className="form-select pointer"
                                   aria-label="Default select example"
                                 >
                                   {list?.packagePrice?.map(
                                     (price: string, index: number) => (
                                       <option key={index} value={price}>
-                                        {price}
-                                        {list?.packagePrice.length === 1 &&
-                                          " INR"}
+                                          {price.split(" ")[0]}
+                                        {/* {list?.packagePrice.length === 1 &&
+                                          " INR"} 
                                       </option>
                                     )
                                   )}
-                                </select>
+                                </select> */}
+
+                          {list?.packagePrice[0].split(" ")[0]}
                               </span>
                             </Card.Text>
                             <Card.Text className="bold p p-2 text-white d-flex flex-nowrap position-absolute fw-bold top-50 translate-middle start-50">

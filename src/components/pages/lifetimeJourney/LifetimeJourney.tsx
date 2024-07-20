@@ -1,11 +1,9 @@
 import React, { FC, useEffect, useState } from "react";
-import { Card, Container, Carousel, Button } from "react-bootstrap";
+import { Card, Container, Carousel, Button, Col, Row } from "react-bootstrap";
 import { journeyOptions } from "../../common/enum/enum";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectNonIndianTours,
-} from "../../../state/selectors/selectTourData";
+import { selectNonIndianTours } from "../../../state/selectors/selectTourData";
 import {
   SET_TOUR_PACKAGE_ID,
   selectedTourDataDto,
@@ -131,7 +129,11 @@ const LifetimeJourney: FC = () => {
     },
   ];
   return (
-    <div style={styles.lifetimeJourney}>
+    <Container
+      fluid
+      className="d-flex flex-column"
+      style={styles.lifetimeJourney}
+    >
       <h2
         className="bold"
         style={{
@@ -210,79 +212,73 @@ const LifetimeJourney: FC = () => {
           className="col-md-4 col-sm-6 col-lg-3 col-sx-3 col-9"
           src={require("../../../Assets/beyond.png")}
         />
-      </h2>
-      <Carousel indicators={false} interval={null} pause={false}>
-        {[...Array(Math.ceil(tourlist.length / 3))].map((_, index) => (
-          <Carousel.Item key={index}>
-            <div className="d-flex m-1 justify-content-around">
-              {tourlist.slice(index * 3, index * 3 + 3).map((tour) => (
-                <Card key={""} style={styles.carouselCard}>
-                  <Card.Img
-                    variant="top"
-                    src={require("../../../Assets/america.png")}
-                    alt={tour.title}
-                    style={styles.cardImage}
-                  />
-                  <Card.Body
-                    className="border border-0"
-                    style={styles.cardTextOverlay}
-                  >
-                    <div className="d-flex w-100 justify-content-between align-items-center">
-                      <Card.Title
-                        className="w-100 justify-content-start d-flex"
-                        style={{
-                          fontSize: 25,
-                          whiteSpace:"pre",
-                          fontWeight: "700",
-                          color: "#879DFF",
-                        }}
-                      >
-                        {tour.title}
-                      </Card.Title>
-                      <hr
-                        style={{
-                          border: "0.5px solid #D0D0D0",
-                          width: "100%",
-                          margin: "10px 0",
-                        }}
-                      />
-                      <Card.Subtitle
-                        style={{
-                          fontSize: 13,
-                          fontWeight: "400",
-                          color: "#879DFF",
-                          border: "0.2px solid #879DFF",
-                          padding: "2px 5px",
-                          borderRadius: "3px",
-                        }}
-                      >
-                        {tour.noOfDays}
-                      </Card.Subtitle>
-                    </div>
-
-                    <Card.Text
-                    className="justify-content-start d-flex"
+      </h2>{" "}
+      <div className="scrolling-wrapper p-4 w-90 align-self-center row flex-row flex-nowrap">
+        {tourlist.map((tour) => {
+          return (
+            <Col
+              md={6}
+              lg={4}
+              sx={6}
+              sm={12}
+              className="expand col-12 d-inline-block position-relative"
+            >
+              <Card className={`${styles.carouselCard}`}>
+                <Card.Img
+                  variant="top"
+                  src={
+                    "https://drive.google.com/thumbnail?sz=w2000&id=1j8giF6uvrDsI-yfMYZFWxdBGe0wirl6w"
+                  }
+                  alt={tour.title}
+                  // className={styles.cardImage}
+                />
+                <Card.Body
+                  className={`align-items-between d-grid ${styles.cardTextOverlay}`}
+                >
+                  <div className="d-flex w-100 align-items-center justify-content-between align-content-between">
+                    <Card.Title
+                      className="position-absolute bg-white m-0 p-0"
                       style={{
-                        fontSize: 16,
-                        fontWeight: "400",
-                        color: "#818181",
+                        zIndex: "1",
+                        fontSize: 25,
+                        fontWeight: "700",
+                        color: "#879DFF",
+                        whiteSpace: "pre",
                       }}
                     >
-                      {tour.destinations
-                        .slice(0, 8)
-                        .map((destination) => destination + " ")}
-                      {tour.destinations.length > 8 &&
-                        (tour.destinations.length - 8)}
-                      {/* <hr
-                        style={{
-                          border: "0.5px solid #D0D0D0",
-                          width: "80%",
-                          margin: "10px 0",
-                        }}
-                      /> */}
-                      {/* <div className="d-flex justify-content-between">
-                        <ul className="list-unstyled">
-                          {tour.includes.slice(0, 3).map((includes, index) => (
+                      {tour.title}
+                    </Card.Title>
+                    <hr
+                      style={{
+                        zIndex: "0",
+                        border: "0.5px solid #D0D0D0",
+                        width: "100%",
+                        height: "1px",
+                        // margin: "10px 0",
+                      }}
+                    />
+                    <Card.Subtitle
+                      style={{
+                        fontSize: 13,
+                        height: "25px",
+                        fontWeight: "400",
+                        color: "#879DFF",
+                        border: "0.2px solid #879DFF",
+                        padding: "2px 5px",
+                        borderRadius: "3px",
+                        textAlign: "center",
+                        alignContent: "center",
+                      }}
+                    >
+                      {tour.noOfDays}
+                    </Card.Subtitle>
+                  </div>
+                  <Col className="pt-2">
+                    <div className="d-flex p-0 m-0 flex-row justify-content-between">
+                      <Row className="list-unstyled">
+                        {tour.destinations
+                          .slice(0, 4)
+                          .map((destination, index) => (
                             <li
                               key={index}
                               style={{
@@ -291,6 +287,7 @@ const LifetimeJourney: FC = () => {
                                 color: "#818181",
                                 marginTop: 5,
                               }}
+                              className="col px-0 mx-0"
                             >
                               <span
                                 style={{
@@ -299,34 +296,24 @@ const LifetimeJourney: FC = () => {
                               >
                                 •
                               </span>{" "}
-                              {includes}
+                              {destination}
                             </li>
                           ))}
-                        </ul>
-                        <ul className="list-unstyled">
-                          {tour.includes.slice(3, 6).map((includes, index) => (
-                            <li
-                              key={index}
-                              style={{
-                                fontSize: 13,
-                                fontWeight: "400",
-                                color: "#818181",
-                                marginTop: 5,
-                              }}
-                            >
-                              <span
-                                style={{
-                                  color: "#879DFF",
-                                }}
-                              >
-                                •
-                              </span>{" "}
-                              {includes}
-                            </li>
-                          ))}
-                        </ul>
-                      </div> */}
-                    </Card.Text>
+                        <span
+                          style={{
+                            fontSize: 13,
+                            fontWeight: "400",
+                            color: "#818181",
+                            marginTop: 5,
+                          }}
+                          className="col"
+                        >
+                          {tour.destinations.length > 5 &&
+                            tour.destinations.length - 5 + "+"}
+                        </span>
+                      </Row>
+                    </div>
+                    {/* </Card.Text> */}
                     <hr
                       style={{
                         border: "0.5px solid #D0D0D0",
@@ -344,19 +331,36 @@ const LifetimeJourney: FC = () => {
                         }}
                       >
                         <span>
-                          <select
-                            className="form-select pointer border border-0 w-100"
-                            aria-label="Default select example"
-                          >
-                            {tour?.packagePrice?.map(
-                              (price: string, index: number) => (
-                                <option key={index} value={price}>
-                                  {price}
-                                  {tour?.packagePrice.length === 1 && " INR"}
-                                </option>
-                              )
-                            )}
-                          </select>
+                          {/* <select
+                          style={{
+                            WebkitAppearance: "none",
+                            MozAppearance: "none",
+                            background: "transparent",
+                            fontSize: "16px",
+                            fontWeight: "700",
+                            color: "rgb(134, 133, 133)",
+                          }}
+                          className=" p-0 pointer border border-0 w-100"
+                          aria-label="Default select example"
+                        > */}
+                          {/* {tour?.packagePrice?.map(
+                            (price: string, index: number) => (
+                              <option
+                                key={index}
+                                value={price}
+                                style={{
+                                  fontSize: "16px",
+                                  fontWeight: "700",
+                                  color: "rgb(134, 133, 133)",
+                                }}
+                              >
+                                 {price.split(" ")[0]}
+                                {/* {tour?.packagePrice.length === 1 && " INR"} 
+                              </option>
+                            )
+                          )} */}
+                          {tour?.packagePrice[0].split(" ")[0]}
+                          {/* </select> */}
                         </span>
                         <span
                           style={{
@@ -369,13 +373,6 @@ const LifetimeJourney: FC = () => {
                         </span>
                       </p>
                       <Button
-                        onClick={() => {
-                          dispatch({
-                            type: SET_TOUR_PACKAGE_ID,
-                            payload: tour.packageId,
-                          });
-                          history.push(`/tour-detail:${tour.packageId}`);
-                        }}
                         style={{
                           backgroundColor: "#879DFF",
                           fontWeight: "700",
@@ -383,18 +380,25 @@ const LifetimeJourney: FC = () => {
                           borderRadius: 0,
                           borderWidth: 0,
                         }}
+                        onClick={() => {
+                          dispatch({
+                            type: SET_TOUR_PACKAGE_ID,
+                            payload: tour.packageId,
+                          });
+                          history.push(`/tour-detail:${tour.packageId}`);
+                        }}
                       >
                         View More
                       </Button>
                     </div>
-                  </Card.Body>
-                </Card>
-              ))}
-            </div>
-          </Carousel.Item>
-        ))}
-      </Carousel>
-    </div>
+                  </Col>
+                </Card.Body>
+              </Card>
+            </Col>
+          );
+        })}
+      </div>
+    </Container>
   );
 };
 
@@ -412,7 +416,7 @@ const styles = {
     marginBottom: "40px",
   },
   carouselCard: {
-    width: 382,
+    // width: 382,
     height: 370,
     position: "relative" as "relative", // Ensure position is explicitly typed
     margin: 0,
