@@ -290,13 +290,14 @@ const TourDetailCard: FC = () => {
       </div>
       <div id="about" style={styles.aboutSection}>
         <h2 style={styles.sectionHeading}>About</h2>
-        {tour?.description
-          ?.slice(showAllDescription ? 0 : 2)
-          ?.map((desc, index) => (
-            <p key={index} style={styles.aboutText}>
-              {desc}
-            </p>
-          ))}
+        {(showAllDescription
+          ? tour?.description
+          : tour?.description?.slice(0, 2)
+        )?.map((desc, index) => (
+          <p key={index} style={styles.aboutText}>
+            {desc}
+          </p>
+        ))}
         <a
           className="pl-3"
           style={{
