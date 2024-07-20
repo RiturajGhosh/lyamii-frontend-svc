@@ -3,6 +3,7 @@ import Community from "../components/common/community/Community";
 import ContainerSection from "../components/common/container/Container";
 import JoinUs from "../components/common/login/JoinUs";
 import Login from "../components/common/login/Login";
+import Cart from "../components/common/cart/Cart";
 import TourDetailCard from "../components/common/tourDetailCard/TourDetailCard";
 import Home from "../components/pages/Home/Home";
 import BackpackersTours from "../components/pages/backpackersTours/BackpackersTours";
@@ -93,7 +94,7 @@ export const commonSiteMap: UserRouteConfig[] = [
   {
     exact: true,
     path: "/cart",
-    Component: ContainerSection,
+    Component: Cart,
     access: AccessType.YES,
   },
   {

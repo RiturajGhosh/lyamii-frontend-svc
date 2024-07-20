@@ -32,7 +32,7 @@ const Footer: FC = () => {
                       fontSize: 26,
                       fontWeight: "700",
                       marginTop: 2,
-                      textAlign: 'center'
+                      textAlign: "center",
                     }}
                   >
                     Community
@@ -73,7 +73,7 @@ const Footer: FC = () => {
                       fontSize: 26,
                       fontWeight: "700",
                       marginTop: 2,
-                       textAlign: 'center'
+                      textAlign: "center",
                     }}
                   >
                     Must Reads
@@ -114,7 +114,7 @@ const Footer: FC = () => {
                       fontSize: 26,
                       fontWeight: "700",
                       marginTop: 2,
-                       textAlign: 'center'
+                      textAlign: "center",
                     }}
                   >
                     Support
