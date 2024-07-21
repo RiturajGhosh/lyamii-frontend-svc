@@ -91,10 +91,10 @@ export const styles: { [key: string]: React.CSSProperties } = {
   },
   dayContainer: {
     marginLeft: 30,
-    marginTop: 20,
+    marginTop: 0,
     display: "flex",
     alignItems: "flex-start",
-    marginBottom: "10px",
+    marginBottom: "0px",
     position: "relative",
   },
   dayDot: {

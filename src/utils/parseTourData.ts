@@ -8,6 +8,7 @@ export const parseTourData = (response: string) => {
   parseRes.highlights = parseRes.highlights.split("\n");
   parseRes.includes = parseRes.includes.split("\n");
   parseRes.packagePrice = parseRes.packagePrice.split("\n");
+  parseRes.imageUri = parseRes?.imageUri.split("\n");
   parseRes.itinerary = parseRes.itinerary
     ?.split(":\n")
     .slice(1)
@@ -30,6 +31,7 @@ export const parseTourDataArray = (response: string) => {
     res.highlights = res.highlights.split("\n");
     res.includes = res.includes.split("\n");
     res.packagePrice = res.packagePrice.split("\n");
+    res.imageUri = res.imageUri.split("\n");
     res.itinerary = res.itinerary = parseRes.itinerary
       ?.split(":\n")
       .slice(1)

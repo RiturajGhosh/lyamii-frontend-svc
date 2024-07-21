@@ -172,10 +172,10 @@ const ContactDetail: FC = () => {
                 </Col>
                 <Col
                   className="col-12 pointer fs-16 bold text-center text-white"
-                  onClick={(e) => {
-                    window.location.href = "mailto:no-reply@example.com";
-                    e.preventDefault();
-                  }}
+                  // onClick={(e) => {
+                  //   window.location.href = "mailto:no-reply@example.com";
+                  //   e.preventDefault();
+                  // }}
                 >
                   EMAIL
                 </Col>{" "}
@@ -189,6 +189,10 @@ const ContactDetail: FC = () => {
                   <span
                     className="fs-auto d-flex  justify-content-center"
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
+                    onClick={(e) => {
+                      window.location.href = "mailto:Connect.helpdesk@lyamii.com";
+                      e.preventDefault();
+                    }}
                   >
                     Connect.helpdesk@lyamii.com
                   </span>{" "}
@@ -201,6 +205,10 @@ const ContactDetail: FC = () => {
                   <span
                     className="fs-auto d-flex  justify-content-center"
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
+                    onClick={(e) => {
+                      window.location.href = "mailto:Connect.business@lyamii.com";
+                      e.preventDefault();
+                    }}
                   >
                     Connect.business@lyamii.com
                   </span>{" "}
@@ -213,6 +221,10 @@ const ContactDetail: FC = () => {
                   <span
                     className="fs-auto d-flex justify-content-center"
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
+                    onClick={(e) => {
+                      window.location.href = "mailto:Connect.bootcamp@lyamii.com";
+                      e.preventDefault();
+                    }}
                   >
                     Connect.bootcamp@lyamii.com
                   </span>
@@ -225,6 +237,10 @@ const ContactDetail: FC = () => {
                   <span
                     className="fs-auto d-flex justify-content-center"
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
+                    onClick={(e) => {
+                      window.location.href = "mailto:drop.feedback@lyamii.com";
+                      e.preventDefault();
+                    }}
                   >
                     drop.feedback@lyamii.com
                   </span>

@@ -86,10 +86,14 @@ const TourDetailCard: FC = () => {
     </Popover>
   );
   return (
-    <div style={styles.card}>
+    <div style={styles.card} className="mb-0">
       <div style={styles.mainImageContainer}>
         <img
-          src={require("../../../Assets/america.png")}
+          src={
+            tour?.imageUri?.length > 0
+              ? `https://drive.google.com/thumbnail?sz=w2000&id=${tour.imageUri[0]}`
+              : "https://drive.google.com/thumbnail?sz=w2000&id=1Cgy6eNCJJvCF1cRC6NSd1OedYI9zCD96"
+          }
           alt={"Main Tour Image"}
           style={styles.mainImage}
         />
@@ -316,7 +320,7 @@ const TourDetailCard: FC = () => {
       </div>
       <div id="highlights" style={styles.aboutSection}>
         <h2 style={styles.sectionHeading}>Highlights</h2>
-        <ul style={styles.highlightList}>
+        <ul className="list-unstyled" style={styles.highlightList}>
           {tour?.highlights?.map((highlight, index) => (
             <li
               key={index}
@@ -325,8 +329,18 @@ const TourDetailCard: FC = () => {
                 fontWeight: "400",
                 margin: 5,
                 color: "#2E2E2E",
+                marginLeft: "20px",
               }}
             >
+              <span
+                className="p-2"
+                style={{
+                  fontSize: 20,
+                  color: "#879DFF",
+                }}
+              >
+                •
+              </span>{" "}
               {highlight}
             </li>
           ))}
@@ -336,25 +350,40 @@ const TourDetailCard: FC = () => {
         <h2 style={styles.sectionHeading}>Itinerary</h2>
         <div style={styles.daysPlanContainer}>
           <h2 style={styles.daysPlanTitle}>Days Plan</h2>
-          {tour?.itinerary
-            ?.slice(showAllItinerary ? 0 : 4)
-            ?.map((item: string[], index: number) => (
-              <div style={styles.dayContainer} key={index}>
-                <div style={styles.verticalLine}></div>
-                <div style={styles.dayDot}></div>
-                <div style={styles.dayContent}>
-                  <p style={styles.dayTitle}>{item[0]}</p>
+          {(showAllItinerary
+            ? tour?.itinerary
+            : tour?.itinerary?.slice(0, 4)
+          )?.map((item: string[], index: number) => (
+            <div style={styles.dayContainer} key={index}>
+              <div style={styles.verticalLine}></div>
+              <div style={styles.dayDot}></div>
+              <div style={styles.dayContent}>
+                <p style={styles.dayTitle} className="p-0 m-0">
+                  {"Day " + (index + 1)}
+                </p>
+                {/* {item?.slice(1)?.map((place: string, i: number) => ( */}
+                <p className="p-0 m-0" style={styles.daySubtitle}>
+                  {item[0]}
+                </p>
+                <Row className="pb-2">
                   {item?.slice(1)?.map((place: string, i: number) => (
-                    <p key={i} style={styles.daySubtitle}>
+                    <li key={i} style={styles.dayDescription}>
                       {place}
-                    </p>
+                    </li>
                   ))}
-                  {/* {item.description && (
-                  <p style={styles.dayDescription}>{item.description}</p>
-                )} */}
-                </div>
+                </Row>
               </div>
-            ))}
+            </div>
+          ))}
+          {showAllItinerary && (
+            <div style={styles.dayContainer}>
+              <div style={styles.verticalLine} className="mb-3"></div>
+              <div style={styles.dayDot}></div>
+              <p style={styles.dayTitle} className="p-0 m-0">
+                {"Departure"}
+              </p>
+            </div>
+          )}
           <Button
             className="view-more-button"
             onClick={() => {
@@ -484,6 +513,11 @@ const TourDetailCard: FC = () => {
           </Row>
         </div>
       </div>
+      <img
+        src={require("../../../Assets/mahatma.png")}
+        alt={"Main Tour Image"}
+        className="w-100 position-relative h-50"
+      />
     </div>
   );
 };

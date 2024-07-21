@@ -12,7 +12,12 @@ const Cart: FC = () => {
     <section className="bg-white d-flex flex-column">
       <Col className="flex-column align-self-center d-flex">
         <span className="fs-1 my-5 py-5 pl-4 text-decoration-underline col-12 text-dark fw-bold">
-          Cart
+          <img
+            className="object-fit-cover justify-content-center d-flex"
+            src={require("../../../Assets/cart.png")}
+            alt="First slide"
+            style={{ height: "65vh" }}
+          />
         </span>
       </Col>{" "}
       <Col

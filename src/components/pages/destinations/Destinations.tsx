@@ -175,20 +175,23 @@ const Destinations = () => {
         />
       </h2>
       <div className="scrolling-wrapper p-4 w-90 align-self-center row flex-row flex-nowrap">
-        {tourlist.map((tour) => {
+        {tourlist.map((tour, index: number) => {
           return (
             <Col
               md={6}
               lg={4}
               sx={6}
               sm={12}
+              key={index}
               className="expand col-12 d-inline-block position-relative"
             >
               <Card className={`${styles.carouselCard}`}>
                 <Card.Img
                   variant="top"
                   src={
-                    "https://drive.google.com/thumbnail?sz=w2000&id=1j8giF6uvrDsI-yfMYZFWxdBGe0wirl6w"
+                    tour.imageUri.length > 0
+                      ? `https://drive.google.com/thumbnail?sz=w2000&id=${tour.imageUri[0]}`
+                      : "https://drive.google.com/thumbnail?sz=w2000&id=1j8giF6uvrDsI-yfMYZFWxdBGe0wirl6w"
                   }
                   alt={tour.title}
                   className={styles.cardImage}
@@ -202,7 +205,7 @@ const Destinations = () => {
                       style={{
                         fontSize: 25,
                         fontWeight: "700",
-                        zIndex:"1",
+                        zIndex: "1",
                         color: "#879DFF",
                         whiteSpace: "pre",
                       }}

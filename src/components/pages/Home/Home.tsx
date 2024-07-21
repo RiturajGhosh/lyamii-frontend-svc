@@ -11,7 +11,6 @@ import {
 import Destinations from "../destinations/Destinations";
 import WhyLyamii from "../whyLyamii/WhyLyamii";
 import MapAndEscape from "../mapAndEscape/MapAndEscape";
-import Contact from "../contact/Contact";
 import { useHistory } from "react-router-dom";
 import LifetimeJourney from "../lifetimeJourney/LifetimeJourney";
 import BeyoundObvious from "../beyoundObvious/BeyoundObvious";
@@ -387,7 +386,7 @@ const Home: FC = () => {
                 height: 60,
                 border: "none",
                 boxShadow: "none",
-                marginLeft: "10px"
+                marginLeft: "10px",
               }}
             >
               Find Now

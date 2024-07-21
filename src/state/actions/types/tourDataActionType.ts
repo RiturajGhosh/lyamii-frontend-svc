@@ -32,7 +32,7 @@ export interface selectedTourDataDto {
   currencyLabel: any;
   tripType: string;
   country: string;
-  imageUri: any[];
+  imageUri: string[];
 }
 
 interface SetSelectedTourData {

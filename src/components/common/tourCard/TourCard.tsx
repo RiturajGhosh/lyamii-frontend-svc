@@ -43,7 +43,7 @@ const TourCard: FC<TourCardType> = ({ tourData, key }) => {
           }}
           src={
             tourData.imageUri.length > 0
-              ? tourData.imageUri[0]
+              ? `https://drive.google.com/thumbnail?sz=w2000&id=${tourData.imageUri[0]}`
               : "https://drive.google.com/thumbnail?sz=w2000&id=1j8giF6uvrDsI-yfMYZFWxdBGe0wirl6w"
           }
         />

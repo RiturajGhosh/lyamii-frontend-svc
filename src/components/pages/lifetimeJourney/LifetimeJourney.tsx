@@ -151,35 +151,39 @@ const LifetimeJourney: FC = () => {
         />
       </h2>
       <div style={styles.cardContainer}>
-        <div style={styles.card}>
+        <div style={styles.card} className="text-center">
           <img
             src="https://drive.google.com/thumbnail?sz=w2000&id=1wOTvo27hpyi3ZvD2cdcJBNHhCdz2W8cF"
             alt="Royal Bharat Edition"
             style={styles.image}
           />
           <p style={styles.cardTitle}>Royal Bharat Edition</p>
-          <button
-            onClick={() => history.push(journeyOptions[0].path)}
-            style={styles.button}
-          >
-            View More
-          </button>
+          <Col className="w-100 justify-content-center d-flex">
+            <button
+              onClick={() => history.push(journeyOptions[0].path)}
+              style={styles.button}
+            >
+              View More
+            </button>
+          </Col>
         </div>
-        <div style={styles.card}>
+        <div style={styles.card} className="text-center">
           <img
             src="https://drive.google.com/thumbnail?sz=w2000&id=1wV2RNRvFCy8ew9aqzpeR-zbITwbY5sR1"
             alt="Backpackers Edition"
             style={styles.image}
           />
           <p style={styles.cardTitle}>Backpackers Edition</p>
-          <button
-            onClick={() => history.push(journeyOptions[1].path)}
-            style={styles.button}
-          >
-            View More
-          </button>
+          <Col className="w-100 justify-content-center d-flex">
+            <button
+              onClick={() => history.push(journeyOptions[1].path)}
+              style={styles.button}
+            >
+              View More
+            </button>
+          </Col>
         </div>
-        <div style={styles.card}>
+        <div style={styles.card} className="text-center">
           <img
             // src="https://drive.google.com/thumbnail?sz=w2000&id=1wQauWIEPsLvtFOVsHHu7gTYgECXxOgDg"
             src={require("../../../Assets/1000135220.jpg")}
@@ -187,12 +191,14 @@ const LifetimeJourney: FC = () => {
             style={styles.image}
           />
           <p style={styles.cardTitle}>Combos</p>
-          <button
-            onClick={() => history.push(journeyOptions[2].path)}
-            style={styles.button}
-          >
-            View More
-          </button>
+          <Col className="w-100 justify-content-center d-flex">
+            <button
+              onClick={() => history.push(journeyOptions[2].path)}
+              style={styles.button}
+            >
+              View More
+            </button>
+          </Col>
         </div>
       </div>
       {/* International packages */}
@@ -214,20 +220,23 @@ const LifetimeJourney: FC = () => {
         />
       </h2>{" "}
       <div className="scrolling-wrapper p-4 w-90 align-self-center row flex-row flex-nowrap">
-        {tourlist.map((tour) => {
+        {tourlist.map((tour, index: number) => {
           return (
             <Col
               md={6}
               lg={4}
               sx={6}
               sm={12}
+              key={index}
               className="expand col-12 d-inline-block position-relative"
             >
               <Card className={`${styles.carouselCard}`}>
                 <Card.Img
                   variant="top"
                   src={
-                    "https://drive.google.com/thumbnail?sz=w2000&id=1j8giF6uvrDsI-yfMYZFWxdBGe0wirl6w"
+                    tour.imageUri.length > 0
+                      ? `https://drive.google.com/thumbnail?sz=w2000&id=${tour.imageUri[0]}`
+                      : "https://drive.google.com/thumbnail?sz=w2000&id=1j8giF6uvrDsI-yfMYZFWxdBGe0wirl6w"
                   }
                   alt={tour.title}
                   // className={styles.cardImage}
