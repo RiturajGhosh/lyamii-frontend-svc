@@ -13,7 +13,7 @@ export const styles: { [key: string]: React.CSSProperties } = {
     display: "flex",
     justifyContent: "flex-start",
     width: "1036px",
-    height: "360px",
+    height: "500px",
   },
   mainText: {
     position: "absolute",

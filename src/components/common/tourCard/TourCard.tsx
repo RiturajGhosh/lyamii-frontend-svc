@@ -42,7 +42,7 @@ const TourCard: FC<TourCardType> = ({ tourData, key }) => {
             history.push(`/tour-detail:${tourData.packageId}`);
           }}
           src={
-            tourData.imageUri.length > 0
+            tourData?.imageUri?.length > 0 && tourData.imageUri[0] !== ""
               ? `https://drive.google.com/thumbnail?sz=w2000&id=${tourData.imageUri[0]}`
               : "https://drive.google.com/thumbnail?sz=w2000&id=1j8giF6uvrDsI-yfMYZFWxdBGe0wirl6w"
           }

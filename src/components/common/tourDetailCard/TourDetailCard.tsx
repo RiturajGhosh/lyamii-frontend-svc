@@ -90,7 +90,7 @@ const TourDetailCard: FC = () => {
       <div style={styles.mainImageContainer}>
         <img
           src={
-            tour?.imageUri?.length > 0
+            tour?.imageUri?.length > 0 && tour.imageUri[0] !== ""
               ? `https://drive.google.com/thumbnail?sz=w2000&id=${tour.imageUri[0]}`
               : "https://drive.google.com/thumbnail?sz=w2000&id=1Cgy6eNCJJvCF1cRC6NSd1OedYI9zCD96"
           }

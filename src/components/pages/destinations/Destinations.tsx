@@ -189,7 +189,7 @@ const Destinations = () => {
                 <Card.Img
                   variant="top"
                   src={
-                    tour.imageUri.length > 0
+                    tour?.imageUri?.length > 0 && tour.imageUri[0] !== ""
                       ? `https://drive.google.com/thumbnail?sz=w2000&id=${tour.imageUri[0]}`
                       : "https://drive.google.com/thumbnail?sz=w2000&id=1j8giF6uvrDsI-yfMYZFWxdBGe0wirl6w"
                   }
