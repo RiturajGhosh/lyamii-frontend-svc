@@ -42,13 +42,12 @@ const ContactDetail: FC = () => {
             <Row>
               <Col className="m-5 justify-content-center flex-column d-flex">
                 <Col className="col-12 justify-content-center d-flex p-0 m-0">
-                  <Icon
-                    fill={"#ffffff"}
+                  <img
                     className={`w-50 h-90 p-4 mr-1 rounded-circle`}
                     style={{
                       background: "#7ab3b5",
                     }}
-                    name={"MdOutlineLocationOn"}
+                    src={require("../../../Assets/map.png")}
                   />
                 </Col>
                 <Col
@@ -102,7 +101,7 @@ const ContactDetail: FC = () => {
                   </span> */}
                 </Col>
               </Col>
-              <Col className="m-5 justify-content-center flex-column d-flex">
+              {/* <Col className="m-5 justify-content-center flex-column d-flex">
                 <Col className="col-12 justify-content-center d-flex p-0 m-0">
                   <Icon
                     className={`w-50 h-90 p-4 mr-1 rounded-circle`}
@@ -136,7 +135,7 @@ const ContactDetail: FC = () => {
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
                   >
                     Business Related Support
-                  </span> */}
+                  </span> 
                   {/* <span
                     className="fs-auto d-flex  justify-content-center"
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
@@ -148,26 +147,25 @@ const ContactDetail: FC = () => {
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
                   >
                     FeedBack
-                  </span> */}
+                  </span> 
                   {/* <span
                     className="fs-auto d-flex justify-content-center"
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
                   >
                     Drop.Feedback@Lyamii.com
-                  </span> */}
+                  </span>
                 </Col>
-              </Col>
+              </Col> */}
               <Col className="m-5 justify-content-center flex-column d-flex">
                 <Col className="col-12 justify-content-center d-flex p-0 m-0">
-                  <Icon
+                  <img
                     className={`w-50 h-90 p-4 mr-1 rounded-circle`}
-                    fill={"#ffffff"}
                     style={{
                       background: "#7ab3b5",
                       padding: "0px !important",
                       margin: "0px !important",
                     }}
-                    name={"message"}
+                    src={require("../../../Assets/email.png")}
                   />{" "}
                 </Col>
                 <Col
@@ -190,7 +188,8 @@ const ContactDetail: FC = () => {
                     className="fs-auto d-flex  justify-content-center"
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
                     onClick={(e) => {
-                      window.location.href = "mailto:Connect.helpdesk@lyamii.com";
+                      window.location.href =
+                        "mailto:Connect.helpdesk@lyamii.com";
                       e.preventDefault();
                     }}
                   >
@@ -206,7 +205,8 @@ const ContactDetail: FC = () => {
                     className="fs-auto d-flex  justify-content-center"
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
                     onClick={(e) => {
-                      window.location.href = "mailto:Connect.business@lyamii.com";
+                      window.location.href =
+                        "mailto:Connect.business@lyamii.com";
                       e.preventDefault();
                     }}
                   >
@@ -222,7 +222,8 @@ const ContactDetail: FC = () => {
                     className="fs-auto d-flex justify-content-center"
                     style={{ color: "#ffffff", fontFamily: "Georgia (bold)" }}
                     onClick={(e) => {
-                      window.location.href = "mailto:Connect.bootcamp@lyamii.com";
+                      window.location.href =
+                        "mailto:Connect.bootcamp@lyamii.com";
                       e.preventDefault();
                     }}
                   >
@@ -272,7 +273,7 @@ const ContactDetail: FC = () => {
                   className="fs-24 d-flex justify-content-start text-start align-self-start text-shadow-light bold"
                   style={{ fontFamily: "Archivo Black", color: "#213D66" }}
                 >
-                  Message Us
+                  Register a callback
                 </span>
               </Col>
             </Col>
@@ -295,7 +296,7 @@ const ContactDetail: FC = () => {
                           className="mb-3"
                           controlId="exampleForm.ControlInput1"
                         >
-                          <Form.Label>Surname</Form.Label>
+                          <Form.Label>Country</Form.Label>
                           <Form.Control type="text" placeholder="" />
                         </Form.Group>
                       </Col>
@@ -316,7 +317,7 @@ const ContactDetail: FC = () => {
                           className="mb-3"
                           controlId="exampleForm.ControlInput1"
                         >
-                          <Form.Label>Subject</Form.Label>
+                          <Form.Label>Phone Number</Form.Label>
                           <Form.Control type="text" placeholder="" />
                         </Form.Group>
                       </Col>

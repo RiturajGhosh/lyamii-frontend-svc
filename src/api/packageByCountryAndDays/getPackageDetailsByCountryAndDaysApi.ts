@@ -1,4 +1,3 @@
-import { parseTourDataArray } from "../utils/parseTourData";
 import { getPackageDetailsByCountryAndDays } from "./getPackageDetailsByCountryAndDays";
 
 export async function getPackageDetailsByCountryAndDaysApi(

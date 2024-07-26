@@ -128,7 +128,7 @@ const BeyoundObvious: FC = () => {
                             <Card.Text className="bold col-3 p p-2 text-white position-absolute text-shadow-dark fw-bold bottom-0 end-0">
                               {/* <span className="col-12 h-100 border border-1 bg-success"> */}
                               <span className="p-0 fs-24 m-0 text-center fit-content">
-                                {/* <select
+                                <select
                                   style={{
                                     WebkitAppearance: "none",
                                     MozAppearance: "none",
@@ -140,18 +140,14 @@ const BeyoundObvious: FC = () => {
                                   className="form-select pointer"
                                   aria-label="Default select example"
                                 >
-                                  {list?.packagePrice?.map(
+                                  {list?.bookingPrice?.map(
                                     (price: string, index: number) => (
                                       <option key={index} value={price}>
-                                          {price.split(" ")[0]}
-                                        {/* {list?.packagePrice.length === 1 &&
-                                          " INR"} 
+                                        {price}
                                       </option>
                                     )
                                   )}
-                                </select> */}
-
-                          {list?.packagePrice[0].split(" ")[0]}
+                                </select>
                               </span>
                               {/* </span> */}
                             </Card.Text>
@@ -242,7 +238,7 @@ const BeyoundObvious: FC = () => {
                                   )}
                                 </select> */}
 
-                          {list?.packagePrice[0].split(" ")[0]}
+                                {list?.packagePrice[0].split(" ")[0]}
                               </span>
                             </Card.Text>
                             <Card.Text className="bold p p-2 text-white d-flex flex-nowrap position-absolute fw-bold top-50 translate-middle start-50">

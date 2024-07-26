@@ -4,6 +4,8 @@ export const SET_TOUR_PACKAGE_ID = "SET_TOUR_PACKAGE_ID";
 export const SET_TOUR_LOCATION = "SET_TOUR_LOCATION";
 export const SET_POPULAR_PACKAGE = "SET_POPULAR_PACKAGE";
 export const SET_NON_INDIAN_TOURS = "SET_NON_INDIAN_TOURS";
+export const SET_SELECTED_TOUR_DEPARTURE_DATE =
+  "SET_SELECTED_TOUR_DEPARTURE_DATE";
 
 export interface TourDataDto {
   id: string;
@@ -33,6 +35,7 @@ export interface selectedTourDataDto {
   tripType: string;
   country: string;
   imageUri: string[];
+  bookingPrice: string[];
 }
 
 interface SetSelectedTourData {
@@ -55,10 +58,15 @@ interface SetNonIndianTours {
   type: typeof SET_NON_INDIAN_TOURS;
   payload: selectedTourDataDto[];
 }
+interface SetSelectedTourDepartureDate {
+  type: typeof SET_SELECTED_TOUR_DEPARTURE_DATE;
+  payload: string;
+}
 export type tourDataActionType =
   | SetTourData
   | SetSelectedTourData
   | SetPopularPackageI
   | SetTourPackageId
   | SetTourLocation
-  | SetNonIndianTours;
+  | SetNonIndianTours
+  | SetSelectedTourDepartureDate;

@@ -7,6 +7,7 @@ export interface UserDataDto {
   email: string;
   phoneNumber: string;
   userFirstName: string;
+  userFullName: string;
   userLastName: string;
   birthDate: string;
   gender: string;

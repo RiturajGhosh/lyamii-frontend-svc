@@ -32,3 +32,7 @@ export const selectNonIndianTours = createSelector(
   tourData,
   (statuses): selectedTourDataDto[] => statuses.nonIndian
 );
+export const selctedTourDepartureDate = createSelector(
+  tourData,
+  (statuses): string => statuses.departureDate
+);

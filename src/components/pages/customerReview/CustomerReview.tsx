@@ -13,10 +13,17 @@ const CustomerReviews: FC = () => {
   useEffect(() => {
     console.log(page);
   }, [page]);
+  const numPages = Math.ceil(reviews.customerReviews?.length / 6);
 
   return (
     <Col className="flex-column mt-5 home-about-section align-self-start d-flex min-vh-100 justify-content-center sectionContainer pt-42">
-      <Col lg={12} md={12} sx={12} xs={12} className="align-self-start d-flex">
+      <Col
+        lg={12}
+        md={12}
+        sx={12}
+        xs={12}
+        className="align-self-start d-flex flex-column"
+      >
         <Card.Body className="p-0 m-0 justify-content-center">
           <Row className="justify-content-between d-flex p-0 m-0 px-sm-5">
             <div className="card-body w-25">
@@ -94,22 +101,16 @@ const CustomerReviews: FC = () => {
                   page > 0 && setPage(page - 1);
                 }}
               />
-              {[...Array(reviews.customerReviews?.length % 6)].map(
-                (review: any, idx: number) => (
-                  <Button
-                    style={{ width: "1%" }}
-                    className={
-                      "text-center d-flex align-items-center justify-content-center mx-0 border border-2 position-relative"
-                    }
-                    onClick={(e) => {
-                      setPage(idx);
-                    }}
-                    key={idx}
-                  >
-                    {idx}
-                  </Button>
-                )
-              )}
+              {Array.from({ length: numPages }, (_, idx) => (
+                <Button
+                  style={{ width: "1%" }}
+                  className="text-center d-flex align-items-center justify-content-center mx-0 border border-2 position-relative"
+                  onClick={() => setPage(idx)}
+                  key={idx}
+                >
+                  {idx + 1}
+                </Button>
+              ))}
 
               <IoIosArrowForward
                 size={40}
@@ -123,6 +124,13 @@ const CustomerReviews: FC = () => {
             </Row>
           </Row>
         </Card.Body>
+        {/* <img
+          src={
+            "https://drive.google.com/thumbnail?sz=w2000&id=1ErNWkq6tGcliGK5P_efm9uejbDZg_VaD"
+          }
+          alt={"Main Tour Image"}
+          className="w-100 position-relative h-50"
+        /> */}
       </Col>
     </Col>
   );

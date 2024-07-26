@@ -1,3 +1,4 @@
+import { departureData } from "../../components/common/tourDetailCard/TourUiData";
 import {
   SET_NON_INDIAN_TOURS,
   SET_POPULAR_PACKAGE,
@@ -8,6 +9,7 @@ import {
   TourDataDto,
   selectedTourDataDto,
   tourDataActionType,
+  SET_SELECTED_TOUR_DEPARTURE_DATE,
 } from "../actions/types/tourDataActionType";
 
 export interface tourDataState {
@@ -17,6 +19,7 @@ export interface tourDataState {
   tours: selectedTourDataDto[];
   nonIndian: selectedTourDataDto[];
   popularTour: selectedTourDataDto[];
+  departureDate: string;
 }
 const initialState: any = {
   selectedtourData: {},
@@ -31,6 +34,7 @@ const initialState: any = {
   nonIndian: [],
   tours: [],
   popularTour: [],
+  departureData: "",
 };
 
 export default function tourDataReducer(
@@ -68,6 +72,11 @@ export default function tourDataReducer(
       return {
         ...state,
         nonIndian: [...action.payload],
+      };
+    case SET_SELECTED_TOUR_DEPARTURE_DATE:
+      return {
+        ...state,
+        departureDate: action.payload,
       };
     default:
       return state;

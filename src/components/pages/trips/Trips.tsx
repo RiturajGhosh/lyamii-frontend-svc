@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getOngoingToursBriefDetailsApi } from "../../../api/ongoingToursBriefDetails/getOngoingToursBriefDetailsApi";
 import { DailyTourOverviewDto } from "../../../state/actions/types/dailyTourDetailDataType";
 import { selectOngoingTourDayBriefDetail } from "../../../state/selectors/selectOngoingTourDayDetail";
+import { selectUpcomingTours } from "../../../state/selectors/selectUpcomingTours";
 
 const Trips: FC = () => {
   const [toggle, setToggle] = useState(true);
@@ -20,6 +21,7 @@ const Trips: FC = () => {
   const user = cookie && JSON.parse(cookie);
   // const screenSize = useSelector(selectScreenSize);
   const tourDetails = useSelector(selectOngoingTourDayBriefDetail);
+  const upcomingTours = useSelector(selectUpcomingTours);
   // const description =
   //   "Royal India Edition is a luxurious experience of diverse cultures, each adding its unique hues to the nation's identity. From the resplendent palaces that dot the landscape to the tales of mighty kings and queens who shaped the nation's destiny, the legacy of royal India resonates through its architecture, traditions, and captivating stories. Includes all 5 star luxury stays, cultural cuisines, domestic flights, day to day individual assistance and transfers.";
   const [tourDetail, setTourDetail] =
@@ -112,7 +114,9 @@ const Trips: FC = () => {
                       className="bold fst-italic display-2"
                       style={{ fontFamily: "Bellota", color: "orange" }}
                     >
-                      Kashmir
+                      {upcomingTours &&
+                        upcomingTours?.upcomingTours?.packageDetailsResponse
+                          ?.packageName}
                     </div>
                     <span className="text-uppercase p">
                       where paradise awaits
@@ -228,7 +232,7 @@ const Trips: FC = () => {
                   <Col className="text-white">Trip Timeline</Col>
                   <Col className="col-9 text-shadow-dark align-self-center position-relative p-0 m-0">
                     <FaCircleArrowRight
-                    className="pointer"
+                      className="pointer"
                       fill={"transparent"}
                       onClick={() => {
                         history.push("/explore");

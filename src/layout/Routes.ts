@@ -215,7 +215,7 @@ export const commonSiteMap: UserRouteConfig[] = [
     exact: true,
     path: "/checkout",
     Component: CheckOut,
-    access: AccessType.YES,
+    access: AccessType.NO,
   },
   {
     exact: true,

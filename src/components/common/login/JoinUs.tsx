@@ -8,7 +8,7 @@ import {
   SET_LOGIN_DATA,
 } from "../../../state/actions/types/loginDataActionType";
 import { setCookie } from "../enum/functions";
-import { otpVerification } from "../../../api/otpVerfication";
+import { otpVerification } from "../../../api/otpVerification/otpVerfication";
 import { signUpApi } from "../../../api/signupApi";
 import { signInApi } from "../../../api/signinApi";
 import { getOtpApi } from "../../../api/otpApi";

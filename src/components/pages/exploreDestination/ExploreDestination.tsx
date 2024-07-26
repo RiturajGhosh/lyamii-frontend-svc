@@ -11,7 +11,7 @@ import sea from "../../../Assets/sea.png";
 import { getPackageByDestinationApi } from "../../../api/packageByDestination/getPackageByDestinationApi";
 import { tours } from "../../../state/selectors/selectTourData";
 import { SET_TOUR_DATA } from "../../../state/actions/types/tourDataActionType";
-import { getPackageDetailsByCountryAndDaysApi } from "../../../api/getPackageDetailsByCountryAndDaysApi";
+import { getPackageDetailsByCountryAndDaysApi } from "../../../api/packageByCountryAndDays/getPackageDetailsByCountryAndDaysApi";
 import { parseTourDataArray } from "../../../utils/parseTourData";
 import MainContainer from "../../common/container/MainContainer";
 import TourCard from "../../common/tourCard/TourCard";

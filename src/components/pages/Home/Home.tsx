@@ -42,7 +42,7 @@ import {
 } from "../../../state/actions/types/tourDataActionType";
 import { parseTourDataArray } from "../../../utils/parseTourData";
 import { getNonIndianToursApi } from "../../../api/nonIndianTours/getNonIndianToursApi";
-import { getPackageDetailsByCountryAndDaysApi } from "../../../api/getPackageDetailsByCountryAndDaysApi";
+import { getPackageDetailsByCountryAndDaysApi } from "../../../api/packageByCountryAndDays/getPackageDetailsByCountryAndDaysApi";
 import { reasons } from "../../common/enum/enum";
 
 const Home: FC = () => {

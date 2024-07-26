@@ -295,7 +295,7 @@ const Destinations = () => {
                         }}
                       >
                         <span>
-                          {/* <select
+                          <select
                             style={{
                               WebkitAppearance: "none",
                               MozAppearance: "none",
@@ -307,7 +307,7 @@ const Destinations = () => {
                             className=" p-0 pointer border border-0 w-100"
                             aria-label="Default select example"
                           >
-                            {tour?.packagePrice?.map(
+                            {tour?.bookingPrice?.map(
                               (price: string, index: number) => (
                                 <option
                                   key={index}
@@ -318,14 +318,11 @@ const Destinations = () => {
                                     color: "rgb(134, 133, 133)",
                                   }}
                                 >
-                                   {price.split(" ")[0]}
-                                  {/* {tour?.packagePrice.length === 1 && " INR"} 
+                                  {price}
                                 </option>
                               )
                             )}
-                          </select> */}
-
-                          {tour?.packagePrice[0]?.split(" ")[0]}
+                          </select>
                         </span>
                         <span
                           style={{

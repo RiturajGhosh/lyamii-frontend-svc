@@ -8,7 +8,7 @@ import {
   SET_LOGIN_DATA,
 } from "../../../state/actions/types/loginDataActionType";
 import { setCookie } from "../enum/functions";
-import { otpVerification } from "../../../api/otpVerfication";
+import { otpVerification } from "../../../api/otpVerification/otpVerfication";
 import { signUpApi } from "../../../api/signupApi";
 import { signInApi } from "../../../api/signinApi";
 import { getOtpApi } from "../../../api/otpApi";
@@ -186,17 +186,17 @@ const Login: FC = () => {
                             style={{ minHeight: "0%", background: "#4a915b" }}
                             onClick={(e: any) => {
                               e.preventDefault();
-                              if (!Object.keys(errors).includes("email")) {
+                              if (!Object.keys(errors)?.includes("email")) {
                                 setUsedEmailMessage("");
-                                getOtpApi(values.email).then(
+                                getOtpApi(values?.email).then(
                                   (response: any) => {
                                     if (response.status === 204) {
                                       setOtpSent(true);
                                       setOtpVerify(false);
                                     } else {
                                       setUsedEmailMessage(
-                                        response.response.data.errors[0]
-                                          .errorMessage
+                                        response?.response?.data?.errors[0]
+                                          ?.errorMessage
                                       );
                                       setOtpSent(false);
                                       setOtpVerify(false);
@@ -293,6 +293,9 @@ const Login: FC = () => {
                                   ...values,
                                   type: [eventKey?.toLowerCase()],
                                 });
+                                console.log("Updated type:", [
+                                  eventKey?.toLowerCase(),
+                                ]); // Debugging
                               }}
                             >
                               <Dropdown.Toggle
@@ -335,6 +338,7 @@ const Login: FC = () => {
                         className="round-edges pointer h2 h-100 py-1"
                         style={{ minHeight: "0%", background: "#4a915b" }}
                         onClick={(e: any) => {
+                          console.log("Submit values:", values); // Debugging values
                           e.preventDefault();
                           if (
                             !Object.keys(errors).includes("email") &&

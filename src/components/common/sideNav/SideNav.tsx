@@ -24,6 +24,14 @@ const SideNav: FC = () => {
   );
   const sidebarNavItems = [
     {
+      display: "Home",
+      height: "60px",
+      className: "d-inline mt-1",
+      icon: "person",
+      to: "/",
+      section: "personalData",
+    },
+    {
       display: "My Profile",
       height: "60px",
       className: "d-inline mt-1",

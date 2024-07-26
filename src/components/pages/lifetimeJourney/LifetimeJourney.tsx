@@ -236,36 +236,34 @@ const LifetimeJourney: FC = () => {
                         }}
                       >
                         <span>
-                          {/* <select
-                          style={{
-                            WebkitAppearance: "none",
-                            MozAppearance: "none",
-                            background: "transparent",
-                            fontSize: "16px",
-                            fontWeight: "700",
-                            color: "rgb(134, 133, 133)",
-                          }}
-                          className=" p-0 pointer border border-0 w-100"
-                          aria-label="Default select example"
-                        > */}
-                          {/* {tour?.packagePrice?.map(
-                            (price: string, index: number) => (
-                              <option
-                                key={index}
-                                value={price}
-                                style={{
-                                  fontSize: "16px",
-                                  fontWeight: "700",
-                                  color: "rgb(134, 133, 133)",
-                                }}
-                              >
-                                 {price.split(" ")[0]}
-                                {/* {tour?.packagePrice.length === 1 && " INR"} 
-                              </option>
-                            )
-                          )} */}
-                          {tour?.packagePrice[0].split(" ")[0]}
-                          {/* </select> */}
+                          <select
+                            style={{
+                              WebkitAppearance: "none",
+                              MozAppearance: "none",
+                              background: "transparent",
+                              fontSize: "16px",
+                              fontWeight: "700",
+                              color: "rgb(134, 133, 133)",
+                            }}
+                            className=" p-0 pointer border border-0 w-100"
+                            aria-label="Default select example"
+                          >
+                            {tour?.bookingPrice?.map(
+                              (price: string, index: number) => (
+                                <option
+                                  key={index}
+                                  value={price}
+                                  style={{
+                                    fontSize: "16px",
+                                    fontWeight: "700",
+                                    color: "rgb(134, 133, 133)",
+                                  }}
+                                >
+                                  {price}
+                                </option>
+                              )
+                            )}
+                          </select>
                         </span>
                         <span
                           style={{

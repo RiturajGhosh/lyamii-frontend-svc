@@ -1,5 +1,5 @@
-import { restClient } from "./restClient";
-import { axiosType } from "../components/common/enum/enum";
+import { restClient } from "../restClient";
+import { axiosType } from "../../components/common/enum/enum";
 
 export async function getPackageDetailsByPackageId(packageId?: string) {
   return restClient({

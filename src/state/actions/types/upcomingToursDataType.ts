@@ -6,6 +6,7 @@ export interface UpcomingToursDto {
   packageId: string;
   prfDepatureDate: string;
   packageDetailsResponse: selectedTourDataDto;
+  paymentDetail: any;
 }
 
 interface SetUpcomingToursData {

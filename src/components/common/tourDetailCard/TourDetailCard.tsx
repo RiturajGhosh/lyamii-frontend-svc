@@ -10,6 +10,7 @@ import {
   ButtonToolbar,
   OverlayTrigger,
   Container,
+  Modal,
 } from "react-bootstrap";
 import { FaPlane } from "react-icons/fa";
 import style from "./TourDetailCard.module.scss";
@@ -18,11 +19,12 @@ import { FaIndianRupeeSign } from "react-icons/fa6";
 import MainContainer from "../container/MainContainer";
 import Tick from "../icon/tick";
 import { Link, useHistory, useLocation } from "react-router-dom";
-import { getPackageDetailsByPackageIdApi } from "../../../api/getPackageDetailsByPackageIdApi";
+import { getPackageDetailsByPackageIdApi } from "../../../api/packageByPackageId/getPackageDetailsByPackageIdApi";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTourData } from "../../../state/selectors/selectTourData";
 import {
   SET_SELECTED_TOUR_DATA,
+  SET_SELECTED_TOUR_DEPARTURE_DATE,
   selectedTourDataDto,
 } from "../../../state/actions/types/tourDataActionType";
 import { parseTourData } from "../../../utils/parseTourData";
@@ -30,17 +32,53 @@ import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { countries } from "../enum/countryCode";
 import { countryCode } from "../../../utils/countryCodes";
 import { departureData, styles } from "./TourUiData";
+import { getCookie } from "../enum/functions";
 
+interface LoginPromptModalProps {
+  show: boolean;
+  handleClose: () => void;
+}
+const LoginPromptModal: FC<LoginPromptModalProps> = ({ show, handleClose }) => {
+  const history = useHistory();
+  return (
+    <Modal show={show} onHide={handleClose} centered>
+      <Modal.Header closeButton>
+        <Modal.Title>Please Login</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <p>
+          Kindly{" "}
+          <span
+            className={"bold pointer"}
+            onClick={() => history.push("/login")}
+          >
+            Login
+          </span>{" "}
+          First To continue Booking.
+        </p>
+      </Modal.Body>
+    </Modal>
+  );
+};
 const TourDetailCard: FC = () => {
   const tourData = useSelector(selectTourData);
+  const cookie = getCookie("user");
+  const isLoggedIn = cookie ? JSON.parse(cookie)?.token?.length > 0 : false;
+  console.log(isLoggedIn);
   const [tour, setTour] = useState<selectedTourDataDto>(tourData);
   const [count, setCount] = useState(0);
+  // const userData = useSelector("")
   const [showAllItinerary, setShowAllItinerary] = useState(false);
   const [showAllDescription, setShowAllDescription] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
   const [id, setId] = useState("");
   const [flagCode, setFlagCode] = useState("");
+  const [showLoginModal, setShowLoginModal] = useState(false);
+
+  const handleClose = () => setShowLoginModal(false);
+  const handleShow = () => setShowLoginModal(true);
+
   const fetchTours = async () => {
     const response = await getPackageDetailsByPackageIdApi(
       history.location.pathname.split(":")[1]
@@ -52,6 +90,7 @@ const TourDetailCard: FC = () => {
       });
     }
   };
+
   useEffect(() => {
     fetchTours();
   }, []);
@@ -85,13 +124,14 @@ const TourDetailCard: FC = () => {
       </Row>
     </Popover>
   );
+
   return (
     <div style={styles.card} className="mb-0">
       <div style={styles.mainImageContainer}>
         <img
           src={
             tour?.imageUri?.length > 0 && tour.imageUri[0] !== ""
-              ? `https://drive.google.com/thumbnail?sz=w2000&id=${tour.imageUri[0]}`
+              ? `https://drive.google.com/thumbnail?sz=w2000&id=${tour.imageUri[1]}`
               : "https://drive.google.com/thumbnail?sz=w2000&id=1Cgy6eNCJJvCF1cRC6NSd1OedYI9zCD96"
           }
           alt={"Main Tour Image"}
@@ -171,7 +211,7 @@ const TourDetailCard: FC = () => {
               fontWeight: "400",
             }}
           >
-            {/* <select
+            <select
               style={{
                 WebkitAppearance: "none",
                 MozAppearance: "none",
@@ -183,19 +223,17 @@ const TourDetailCard: FC = () => {
               className="form-select pointer border border-0 w-100"
               aria-label="Default select example"
             >
-              {tourData?.packagePrice?.map((price: string, index: number) => (
+              {tourData?.bookingPrice?.map((price: string, index: number) => (
                 <option key={index} value={price}>
-                    {price.split(" ")[0]}
-                  {/* {tourData?.packagePrice.length === 1 && " INR"} 
+                  {price}
                 </option>
               ))}
-            </select> */}
-
-            {tourData?.packagePrice?.length > 0 &&
-              tourData?.packagePrice[0]?.split(" ")[0]}
+            </select>
           </span>
           <button
-            onClick={() => history.push("/checkout")}
+            onClick={() =>
+              isLoggedIn ? history.push("/checkout") : handleShow
+            }
             style={{
               width: 164,
               height: 53,
@@ -230,12 +268,22 @@ const TourDetailCard: FC = () => {
                 fontWeight: "400",
               }}
             >
-              <input className="form-select border border-0" type="date" />
+              <input
+                className="border-0 bg-transparent"
+                onChange={(e) =>
+                  dispatch({
+                    type: SET_SELECTED_TOUR_DEPARTURE_DATE,
+                    payload: e.target.value,
+                  })
+                }
+                type="date"
+              />
             </span>
-            {/* ))} */}
           </div>
         </div>
       </div>
+
+      {/* Add the login prompt modal here */}
       <div style={styles.placesContainer}>
         <p
           style={{
@@ -246,10 +294,12 @@ const TourDetailCard: FC = () => {
           Places You'll See
         </p>
         <div style={styles.placesList}>
-          {tour?.destinations?.map((place, index) => (
+          {tour?.imageUri?.slice(1)?.map((img, index) => (
             <div key={index} style={styles.placeContainer}>
               <img
-                src={require("../../../Assets/america.png")}
+                src={`https://drive.google.com/thumbnail?sz=w2000&id=${
+                  tour?.imageUri?.slice(1)[index]
+                }`}
                 alt={`Place ${index + 1}`}
                 style={styles.placeImage}
               />
@@ -402,7 +452,7 @@ const TourDetailCard: FC = () => {
           >
             {showAllItinerary ? "View Less" : "View More"}
           </Button>
-          <Row className="col-6 gap-2 float-end justify-content-end">
+          <Row className="col-3 gap-2 float-end justify-content-end">
             <Col
               style={{
                 padding: "5px 5px",
@@ -413,7 +463,7 @@ const TourDetailCard: FC = () => {
                 fontWeight: "400",
               }}
             >
-              {/* <select
+              <select
                 style={{
                   WebkitAppearance: "none",
                   MozAppearance: "none",
@@ -425,30 +475,20 @@ const TourDetailCard: FC = () => {
                 className="form-select pointer border border-0 w-100"
                 aria-label="Default select example"
               >
-                {(tourData?.country?.toLowerCase()?.includes("india")
-                  ? [
-                      "8 KWD",
-                      "10 BHD",
-                      "20 GBP",
-                      "22 CHF",
-                      "22 EUR",
-                      "24 USD",
-                      "36 AUD",
-                      "88 AED",
-                    ]
-                  : ["2000 INR"]
-                )?.map((price: string, index: number) => (
+                {tourData?.bookingPrice?.map((price: string, index: number) => (
                   <option key={index} value={price}>
-                     {price.split(" ")[0]}
+                    {price}
                   </option>
                 ))}
-              </select> */}
-
+              </select>
+              {/* 
               {tourData?.packagePrice?.length > 0 &&
-                tourData?.packagePrice[0]?.split(" ")[0]}
+                tourData?.packagePrice[0]?.split(" ")[0]} */}
             </Col>
             <button
-              onClick={() => history.push("/checkout")}
+              onClick={() =>
+                isLoggedIn ? history.push("/checkout") : handleShow()
+              }
               style={{
                 width: 164,
                 height: 48,
@@ -462,7 +502,7 @@ const TourDetailCard: FC = () => {
             >
               Book Now
             </button>
-            <Col
+            {/* <Col
               style={{
                 padding: "5px 5px",
                 borderRadius: 0,
@@ -471,8 +511,8 @@ const TourDetailCard: FC = () => {
                 fontSize: 20,
                 fontWeight: "400",
               }}
-            >
-              {/* <select
+            > */}
+            {/* <select
                 style={{
                   WebkitAppearance: "none",
                   MozAppearance: "none",
@@ -492,7 +532,7 @@ const TourDetailCard: FC = () => {
                 ))}
               </select> */}
 
-              {tourData?.packagePrice?.length > 0 &&
+            {/* {tourData?.packagePrice?.length > 0 &&
                 tourData?.packagePrice[0]?.split(" ")[0]}
             </Col>
             <button
@@ -509,7 +549,7 @@ const TourDetailCard: FC = () => {
               }}
             >
               Buy Now
-            </button>
+            </button>*/}
           </Row>
         </div>
       </div>
@@ -518,6 +558,7 @@ const TourDetailCard: FC = () => {
         alt={"Main Tour Image"}
         className="w-100 position-relative h-50"
       />
+      <LoginPromptModal show={showLoginModal} handleClose={() => handleClose} />
     </div>
   );
 };

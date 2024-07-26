@@ -45,7 +45,7 @@ const InputForm: FC<InputFormProps> = ({
         maxLength={maxLength}
         style={style}
         touched={touched}
-        onClick={()=>onclick && onclick()}
+        onClick={() => onclick && onclick()}
         errors={errors}
         required={required}
         name={name}

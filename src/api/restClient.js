@@ -13,7 +13,6 @@ export const restClient = async ({ url, params = {}, type, payload = {} }) => {
 
   const axiosInstance = axios.create({
     baseURL: "https://backend.lyamii.com",
-    // baseURL: "http://localhost:8081",
     headers: headers,
     timeout: 40000,
   });
@@ -35,7 +34,7 @@ export const restClient = async ({ url, params = {}, type, payload = {} }) => {
       case axiosType.get:
         return await axiosInstance.get(url, { params });
       case axiosType.post:
-        return await axiosInstance.post(url, payload);
+        return await axiosInstance.post(url, payload, { params });
       case axiosType.put:
         return await axiosInstance.put(url, payload);
       case axiosType.delete:

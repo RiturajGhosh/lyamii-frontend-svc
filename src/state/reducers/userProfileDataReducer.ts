@@ -26,6 +26,7 @@ const initialState: userDataState = {
     phoneNumber: "",
     userFirstName: "",
     userLastName: "",
+    userFullName: "",
     birthDate: "",
     gender: "",
     bloodGroup: "",
