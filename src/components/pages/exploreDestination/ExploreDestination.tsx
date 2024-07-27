@@ -268,6 +268,7 @@ const ExploreDestination: FC = () => {
             <img
               src="https://images.unsplash.com/photo-1714259523626-2c5487107dc4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGV1cm9wZXxlbnwwfHwwfHx8MA%3D%3D" // Replace with your image URL
               alt="circular-img"
+              loading="lazy"
               style={{
                 width: 56,
                 height: 56,

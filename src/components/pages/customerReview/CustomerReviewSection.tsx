@@ -119,6 +119,7 @@ const CustomerReviewSection: FC = () => {
         {reviews.map((review, index) => (
           <div key={index} style={styles.reviewCard}>
             <img
+              loading="lazy"
               src={review.image}
               alt={review.city}
               style={styles.reviewImage}

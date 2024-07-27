@@ -252,6 +252,7 @@ const Home: FC = () => {
             className="w-100 object-fit-cover"
             src="https://drive.google.com/thumbnail?sz=w2000&id=1-TPIgLsncoqnuxsTZhBukQk2sQhctYot"
             alt="First slide"
+            loading="lazy"
             style={{ height: "65vh" }}
           />
         </Carousel.Item>
@@ -260,6 +261,7 @@ const Home: FC = () => {
             className="d-block w-100"
             src="https://drive.google.com/thumbnail?sz=w2000&id=1tDLklw45WQLVVIxQ5ebb8YtqO-py6Vtr"
             alt="Second slide"
+            loading="lazy"
             style={{ height: "65vh", objectFit: "cover" }}
           />
         </Carousel.Item>
@@ -268,6 +270,7 @@ const Home: FC = () => {
             className="d-block w-100"
             src="https://drive.google.com/thumbnail?sz=w2000&id=1jqijmfsF5WN8fzJEt5PYyTZaTQMYfpHW"
             alt="fourth slide"
+            loading="lazy"
             style={{ height: "65vh", objectFit: "cover" }}
           />
         </Carousel.Item>
@@ -276,6 +279,7 @@ const Home: FC = () => {
             className="d-block w-100"
             src="https://drive.google.com/thumbnail?sz=w2000&id=1k09rkJVx55oQIWijilw15vEuY5QRz0QU"
             alt="fifth slide"
+            loading="lazy"
             style={{ height: "65vh", objectFit: "cover" }}
           />
         </Carousel.Item>
@@ -631,6 +635,7 @@ const Home: FC = () => {
                   <img
                     onClick={() => history.push(step.url)}
                     src={step.img}
+                    loading="lazy"
                     alt={`Step ${step.id}`}
                     style={{
                       width: "100%",
@@ -792,6 +797,7 @@ const Home: FC = () => {
               >
                 <img
                   src={card.image}
+                  loading="lazy"
                   alt={card.title}
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
                 />

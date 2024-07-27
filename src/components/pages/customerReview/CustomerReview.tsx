@@ -61,6 +61,7 @@ const CustomerReviews: FC = () => {
                                   height: "9dvi",
                                 }}
                                 alt=""
+                                loading="lazy"
                                 src={review.image}
                               />
                             </Col>

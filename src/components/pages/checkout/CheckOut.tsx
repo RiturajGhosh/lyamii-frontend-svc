@@ -1,4 +1,11 @@
-import React, { FC, useEffect, useState } from "react";
+import React, {
+  ChangeEvent,
+  FC,
+  FocusEvent,
+  FormEvent,
+  useEffect,
+  useState,
+} from "react";
 import { Accordion, Card, Col, Form, Image, Row } from "react-bootstrap";
 import MainContainer from "../../common/container/MainContainer";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +21,11 @@ import { getUserProfileDataApi } from "../../../api/userProfileData/getUserProfi
 import { useHistory } from "react-router-dom";
 import { updateUserDetailsApi } from "../../../api/userProfileData/updateUserDetailsApi";
 import { userRegistrationApi } from "../../../api/userProfileData/userRegistrationApi";
+interface Errors {
+  userFullName?: string;
+  email?: string;
+  phoneNumber?: string;
+}
 
 const CheckOut: FC = () => {
   const dispatch = useDispatch();
@@ -23,6 +35,62 @@ const CheckOut: FC = () => {
   const [userDetail, setUserDetail] = useState<UserDataDto>(userData?.userData);
   const history = useHistory();
 
+  const [errors, setErrors] = useState<Errors>({});
+  const [touched, setTouched] = useState<string[]>([]);
+
+  const validateForm = (name: string): boolean => {
+    let valid = true;
+    const errors: Errors = {};
+    // Validate User Name
+    if (touched.includes("userFullName")) {
+      if (!userDetail.userFullName) {
+        errors.userFullName = "User Name is required";
+        valid = false;
+      } else if (userDetail.userFullName.length < 3) {
+        errors.userFullName = "User Name must be at least 3 characters";
+        valid = false;
+      }
+    }
+    // Validate Email
+    if (touched.includes("email")) {
+      if (!userDetail.email) {
+        errors.email = "Email is required";
+        valid = false;
+      } else if (!/\S+@\S+\.\S+/.test(userDetail.email)) {
+        errors.email = "Email is invalid";
+        valid = false;
+      }
+    }
+
+    // Validate Phone Number
+    if (touched.includes("phoneNumber")) {
+      if (!userDetail.phoneNumber) {
+        errors.phoneNumber = "Phone Number is required";
+        valid = false;
+      } else if (!/^\d{10}$/.test(userDetail.phoneNumber)) {
+        errors.phoneNumber = "Phone Number must be 10 digits";
+        valid = false;
+      }
+    }
+
+    setErrors(errors);
+    return valid;
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    const { name, value } = e.target;
+    setUserDetail((prevDetail) => ({ ...prevDetail, [name]: value }));
+  };
+
+  const handleFocus = (event: any): void => {
+    setTouched((prevValue) => [...prevValue, event.target.name]);
+  };
+
+  const handleBlur = (event: any): void => {
+    const { name } = event.target;
+    event.preventDefault();
+    validateForm(name);
+  };
   // const getUserData = async (user: any) => {
   //   getUserProfileDataApi(user?.email).then((response: any) => {
   //     if (response.status === 200) {
@@ -90,7 +158,7 @@ const CheckOut: FC = () => {
     <MainContainer className="p-3 py-5" background="white">
       <Row className="justify-content-between d-flex flex-row p-5">
         <Col md={7} lg={7} className="col-12 gap-3 d-flex flex-column">
-          <Accordion activeKey={activeKey}>
+          <Accordion activeKey={activeKey} className="shadow rounded-4">
             <Accordion.Item eventKey="0">
               <Accordion.Header
                 style={{ background: "#879DFF" }}
@@ -112,14 +180,18 @@ const CheckOut: FC = () => {
                         <Form.Control
                           className="border-secondary"
                           type="text"
+                          name="userFullName"
+                          onFocus={handleFocus}
+                          onBlur={handleBlur}
                           placeholder={userDetail?.userFullName}
-                          onChange={(e: any) =>
-                            setUserDetail({
-                              ...userDetail,
-                              userFullName: e.target.value,
-                            })
-                          }
+                          value={userDetail.userFullName}
+                          onChange={handleChange}
                         />
+                        {errors.userFullName && (
+                          <div style={{ color: "red", fontSize: "10px" }}>
+                            {errors.userFullName}
+                          </div>
+                        )}
                       </Form.Group>
                     </Col>
                     <Col md={6} lg={6} className="col-12">
@@ -133,14 +205,18 @@ const CheckOut: FC = () => {
                         <Form.Control
                           className="border-secondary"
                           type="email"
+                          name="email"
+                          onFocus={handleFocus}
+                          onBlur={handleBlur}
                           placeholder={userDetail?.email}
-                          onChange={(e: any) =>
-                            setUserDetail({
-                              ...userDetail,
-                              email: e.target.value,
-                            })
-                          }
+                          value={userDetail.email}
+                          onChange={handleChange}
                         />
+                        {errors.email && (
+                          <div style={{ color: "red", fontSize: "10px" }}>
+                            {errors.email}
+                          </div>
+                        )}
                       </Form.Group>
                     </Col>
                     <Col md={6} lg={6} className="col-12">
@@ -154,36 +230,21 @@ const CheckOut: FC = () => {
                         <Form.Control
                           className="border-secondary"
                           type="text"
+                          name="phoneNumber"
+                          onFocus={handleFocus}
+                          onBlur={handleBlur}
                           placeholder={userDetail?.phoneNumber}
-                          onChange={(e: any) =>
-                            setUserDetail({
-                              ...userDetail,
-                              phoneNumber: e.target.value,
-                            })
-                          }
+                          value={userDetail.phoneNumber}
+                          onChange={handleChange}
                         />
+                        {errors.phoneNumber && (
+                          <div style={{ color: "red", fontSize: "10px" }}>
+                            {errors.phoneNumber}
+                          </div>
+                        )}
                       </Form.Group>
                     </Col>
                   </Row>
-                  <button
-                    className="align-self-end"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      setUserData();
-                    }}
-                    style={{
-                      width: 164,
-                      height: 48,
-                      fontSize: 28,
-                      fontWeight: "700",
-                      color: "#FFFFFF",
-                      backgroundColor: "#879DFF",
-                      borderRadius: 0,
-                      borderWidth: 0,
-                    }}
-                  >
-                    Submit
-                  </button>
                 </Form>
               </Accordion.Body>
             </Accordion.Item>
@@ -207,7 +268,7 @@ const CheckOut: FC = () => {
                   >
                     <div style={{ display: "flex", padding: "20px" }}>
                       <Image
-                      className="d-flex w-40"
+                        className="d-flex w-40"
                         style={{
                           borderRadius: 10,
                           objectFit: "cover",
@@ -302,14 +363,14 @@ const CheckOut: FC = () => {
             </Accordion.Item>
           </Accordion>
 
-          <Payment />
+          <Payment userDetail={userDetail} />
         </Col>
-        <Col md={5} lg={5} className="col-12">
-          <Card className="text-start">
+        <Col md={5} lg={5} className="col-12 py-0">
+          <Card className="text-start py-0 m-0">
             <Card.Header className="bold">Price Details</Card.Header>
             <Card.Body>
               <Row className="justify-content-between">
-                <Card.Title className="col-6">Package Price</Card.Title>
+                <Card.Title className="col-6">Booking Price</Card.Title>
                 <Card.Text className="col-4 text-end">
                   {/* {tourData?.packagePrice?.length > 0 &&
                     tourData?.packagePrice[5]} */}

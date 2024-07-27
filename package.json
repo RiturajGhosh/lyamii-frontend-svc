@@ -97,5 +97,5 @@
   "overrides": {
     "autoprefixer": "10.4.5"
   },
-  "proxy": "https://backend.lyamii.com"
+  "proxy": "http://localhost:8081"
 }

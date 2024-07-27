@@ -135,6 +135,7 @@ const TourDetailCard: FC = () => {
               : "https://drive.google.com/thumbnail?sz=w2000&id=1Cgy6eNCJJvCF1cRC6NSd1OedYI9zCD96"
           }
           alt={"Main Tour Image"}
+          loading="lazy"
           style={styles.mainImage}
         />
         <div style={styles.mainText}>
@@ -224,7 +225,7 @@ const TourDetailCard: FC = () => {
               aria-label="Default select example"
             >
               {tourData?.bookingPrice?.map((price: string, index: number) => (
-                <option key={index} value={price}>
+                <option className={"p-0 m-0"} key={index} value={price}>
                   {price}
                 </option>
               ))}
@@ -297,6 +298,7 @@ const TourDetailCard: FC = () => {
           {tour?.imageUri?.slice(1)?.map((img, index) => (
             <div key={index} style={styles.placeContainer}>
               <img
+                loading="lazy"
                 src={`https://drive.google.com/thumbnail?sz=w2000&id=${
                   tour?.imageUri?.slice(1)[index]
                 }`}
@@ -452,8 +454,15 @@ const TourDetailCard: FC = () => {
           >
             {showAllItinerary ? "View Less" : "View More"}
           </Button>
-          <Row className="col-3 gap-2 float-end justify-content-end">
+          <Row
+            md={10}
+            xs={8}
+            sm={10}
+            lg={3}
+            className="col gap-2 float-end justify-content-end"
+          >
             <Col
+              className="align-content-center"
               style={{
                 padding: "5px 5px",
                 borderRadius: 0,
@@ -472,11 +481,11 @@ const TourDetailCard: FC = () => {
                   fontWeight: "700",
                   color: "rgb(134, 133, 133)",
                 }}
-                className="form-select pointer border border-0 w-100"
+                className="form-select pointer p-0 m-0 text-center border border-0 w-100"
                 aria-label="Default select example"
               >
                 {tourData?.bookingPrice?.map((price: string, index: number) => (
-                  <option key={index} value={price}>
+                  <option className={"p-0 m-0"} key={index} value={price}>
                     {price}
                   </option>
                 ))}
@@ -554,6 +563,7 @@ const TourDetailCard: FC = () => {
         </div>
       </div>
       <img
+        loading="lazy"
         src={require("../../../Assets/mahatma.png")}
         alt={"Main Tour Image"}
         className="w-100 position-relative h-50"

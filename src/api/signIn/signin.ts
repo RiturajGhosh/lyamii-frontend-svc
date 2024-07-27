@@ -1,5 +1,5 @@
-import { restClient } from "./restClient";
-import { axiosType } from "../components/common/enum/enum";
+import { axiosType } from "../../components/common/enum/enum";
+import { restClient } from "../restClient";
 
 export async function signIn(props: any) {
   return restClient({

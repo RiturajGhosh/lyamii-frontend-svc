@@ -18,7 +18,7 @@ import {
 } from "./state/actions/types/screenSizeType";
 import { useDispatch } from "react-redux";
 import { getCookie } from "./components/common/enum/functions";
-import { refreshApi } from "./api/refreshApi";
+import { refreshApi } from "./api/refresh/refreshApi";
 
 const App: FC = () => {
   let routesToBeMapped: UserRouteConfig[] = [...commonSiteMap];

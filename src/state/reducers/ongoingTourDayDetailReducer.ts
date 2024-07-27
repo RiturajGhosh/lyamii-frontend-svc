@@ -3,14 +3,18 @@ import {
   DailyTourOverviewDto,
   SET_DAILY_TOUR_DETAIL_DATA,
   SET_DAILY_TOUR_OVERVIEW_DATA,
+  SET_ONGOING_TOUR_DETAIL,
   dailyTourDetailDataType,
 } from "../actions/types/dailyTourDetailDataType";
+import { selectedTourDataDto } from "../actions/types/tourDataActionType";
 
 export interface dailyTourDetailState {
+  onGoingTourDetail: any;
   dailyTourOverview: DailyTourOverviewDto[];
   dailyTourDetail: DailyTourDetailDto;
 }
 const initialState: dailyTourDetailState = {
+  onGoingTourDetail: {},
   dailyTourOverview: [
     {
       dayNo: 1,
@@ -73,6 +77,12 @@ export default function ongoingTourDayDetailReducer(
       return {
         ...state,
         dailyTourOverview: [{ ...action.payload }],
+      };
+
+    case SET_ONGOING_TOUR_DETAIL:
+      return {
+        ...state,
+        onGoingTourDetail: { ...action.payload },
       };
 
     default:

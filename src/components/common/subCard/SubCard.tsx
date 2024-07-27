@@ -59,6 +59,7 @@ const SubCard: FC<subCardType> = ({
                   margin: "0px !important",
                 }}
                 alt={""}
+                loading="lazy"
                 src={img}
               />
             )}

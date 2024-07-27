@@ -54,21 +54,24 @@ const FAQ: FC = () => {
     <section className="bg-white">
       <Col className="mt-5 justify-content-center align-self-center d-flex">
         <span className="fs-1 my-5 pl-4 text-decoration-underline col-10 text-dark fw-bold">
-        <p
-          style={{
-            fontSize: 45,
-            fontWeight: "700",
-            color: "#686868",
-            textAlign: "start",
-            position: "relative",
-            zIndex: 1,
-          }}
-        >
-          <img
-            className="col-md-3 col-sm-4 col-lg-2 col-sx-2 col-6"
-            src={"https://drive.google.com/thumbnail?sz=w2000&id=1ErHp6DFIt-hkOp03XjEYZXnL4LWNAW9l"}
-          />
-        </p>
+          <p
+            style={{
+              fontSize: 45,
+              fontWeight: "700",
+              color: "#686868",
+              textAlign: "start",
+              position: "relative",
+              zIndex: 1,
+            }}
+          >
+            <img
+              loading="lazy"
+              className="col-md-3 col-sm-4 col-lg-2 col-sx-2 col-6"
+              src={
+                "https://drive.google.com/thumbnail?sz=w2000&id=1ErHp6DFIt-hkOp03XjEYZXnL4LWNAW9l"
+              }
+            />
+          </p>
         </span>
       </Col>
       <Accordion className="pb-5 justify-content-center d-flex">

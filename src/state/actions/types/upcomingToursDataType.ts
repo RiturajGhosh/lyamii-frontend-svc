@@ -5,7 +5,7 @@ export const SET_UPCOMING_TOURS = "SET_UPCOMING_TOURS";
 export interface UpcomingToursDto {
   packageId: string;
   prfDepatureDate: string;
-  packageDetailsResponse: selectedTourDataDto;
+  packageDetailsResponse: any;
   paymentDetail: any;
 }
 

@@ -81,6 +81,7 @@ const Header: FC = () => {
                     fontFamily: "DellaRespira",
                   }}
                   alt=""
+                  loading="lazy"
                   src={require("../../../Assets/logo.png")}
                 />
                 <img
@@ -92,6 +93,7 @@ const Header: FC = () => {
                     fontFamily: "DellaRespira",
                   }}
                   alt=""
+                  loading="lazy"
                   src={require("../../../Assets/lyamii.png")}
                 />
                 {/* Lyam<span className={style.dot}>ii</span>
@@ -109,7 +111,10 @@ const Header: FC = () => {
             <span></span>
             <span></span>
           </Navbar.Toggle>
-          <Navbar.Collapse className={`flex-grow-0 pointer`} id="responsive-navbar-nav">
+          <Navbar.Collapse
+            className={`flex-grow-0 pointer`}
+            id="responsive-navbar-nav"
+          >
             <Nav className="ml-auto" defaultActiveKey="#home">
               {headers?.map((header: HeaderList, index: number) => {
                 return (
@@ -121,7 +126,9 @@ const Header: FC = () => {
                       to={header.path}
                       onClick={() => updateExpanded(false)}
                     >
-                      <h6 className="text-shadow-dark body fw-bold h6 m-0">{header?.name}</h6>
+                      <h6 className="text-shadow-dark body fw-bold h6 m-0">
+                        {header?.name}
+                      </h6>
                     </Nav.Link>
                   </Nav.Item>
                 );

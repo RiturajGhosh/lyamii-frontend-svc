@@ -85,6 +85,7 @@ const BusinessClients: FC = () => {
                           //   height: "100%",
                           // }}
                           alt=""
+                          loading="lazy"
                           src={`https://drive.google.com/thumbnail?sz=w3000&id=${clients}`}
                         />
                       </Row>

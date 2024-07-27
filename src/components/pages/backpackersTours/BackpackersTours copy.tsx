@@ -45,9 +45,7 @@ const BackpackersTours: FC = () => {
     // Simulate an API call to get more data
     // Replace this with your actual API call
     const newData = markers;
-
-    // await getTours(''); /* Your API call here */
-
+    
     if (newData?.length === 0) {
       setState({ data: state.data, hasMore: false });
     } else {

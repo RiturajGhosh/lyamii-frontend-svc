@@ -9,14 +9,14 @@ import {
 } from "../../../state/actions/types/loginDataActionType";
 import { setCookie } from "../enum/functions";
 import { otpVerification } from "../../../api/otpVerification/otpVerfication";
-import { signUpApi } from "../../../api/signupApi";
-import { signInApi } from "../../../api/signinApi";
-import { getOtpApi } from "../../../api/otpApi";
+import { getOtpApi } from "../../../api/sentOtp/otpApi";
 import { Formik } from "formik";
 import { validate } from "../../../utils/validationForm";
 import InputForm from "../inputForm/InputForm";
 import { okErrorCode } from "../enum/errorCode";
 import SubCard from "../subCard/SubCard";
+import { signInApi } from "../../../api/signIn/signinApi";
+import { signUpApi } from "../../../api/signUp/signupApi";
 
 export type SideNavList = {
   name: string;

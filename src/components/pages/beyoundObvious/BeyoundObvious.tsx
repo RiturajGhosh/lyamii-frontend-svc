@@ -71,6 +71,7 @@ const BeyoundObvious: FC = () => {
             >
               Obvious{" "}
               <img
+                loading="lazy"
                 className={`inline-flex w-20 h-10`}
                 style={{
                   padding: "0px !important",
@@ -92,6 +93,7 @@ const BeyoundObvious: FC = () => {
                   style={{ color: "#4b7b57" }}
                 >
                   <img
+                    loading="lazy"
                     className={`fit-content h-10 justify-content-end`}
                     style={{
                       padding: "0px !important",

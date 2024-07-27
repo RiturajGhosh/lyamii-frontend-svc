@@ -174,6 +174,7 @@ const Footer: FC = () => {
                     fontFamily: "DellaRespira",
                   }}
                   alt=""
+                  loading="lazy"
                   src={require("../../../Assets/lyamii.png")}
                 />
                 <img
@@ -185,6 +186,7 @@ const Footer: FC = () => {
                     fontFamily: "DellaRespira",
                   }}
                   alt=""
+                  loading="lazy"
                   // src="https://drive.google.com/thumbnail?id=15g5EvDhBSNxSSEgZ_sryNZhqic0EB5lm" alt="drive image"
                   src={require("../../../Assets/logo.png")}
                 />

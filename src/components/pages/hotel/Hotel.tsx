@@ -2,7 +2,7 @@ import React, { FC, useState } from "react";
 import { useHistory } from "react-router-dom";
 import RegistrationForm from "../registrationForm/RegistrationForm";
 import { RegistrationDetailDto } from "../../../state/actions/types/registrationType";
-import { registration } from "../../../api/registration";
+import { registration } from "../../../api/registration/registration";
 import { imageUploadApi } from "../../../api/imageUploadApi";
 import { getBase64 } from "../../../utils/getBase64";
 

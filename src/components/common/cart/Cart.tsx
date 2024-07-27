@@ -13,6 +13,7 @@ const Cart: FC = () => {
       <Col className="flex-column align-self-center d-flex">
         <span className="fs-1 my-5 py-5 pl-4 text-decoration-underline col-12 text-dark fw-bold">
           <img
+            loading="lazy"
             className="object-fit-cover justify-content-center d-flex"
             src={require("../../../Assets/cart.png")}
             alt="First slide"

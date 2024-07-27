@@ -12,7 +12,8 @@ export const restClient = async ({ url, params = {}, type, payload = {} }) => {
     : { "Content-Type": "application/json" };
 
   const axiosInstance = axios.create({
-    baseURL: "https://backend.lyamii.com",
+    // baseURL: "https://backend.lyamii.com",
+    baseURL: "http://localhost:8081",
     headers: headers,
     timeout: 40000,
   });

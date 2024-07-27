@@ -78,6 +78,7 @@ const UserManual: FC = () => {
                     <img
                       src={option?.imgPath}
                       alt="Paris"
+                      loading="lazy"
                       style={{
                         float: "inherit",
                         width: "90%",

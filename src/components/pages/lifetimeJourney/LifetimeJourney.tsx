@@ -51,6 +51,7 @@ const LifetimeJourney: FC = () => {
           <img
             src="https://drive.google.com/thumbnail?sz=w2000&id=1wOTvo27hpyi3ZvD2cdcJBNHhCdz2W8cF"
             alt="Royal Bharat Edition"
+            loading="lazy"
             style={styles.image}
           />
           <p style={styles.cardTitle}>Royal Bharat Edition</p>
@@ -67,6 +68,7 @@ const LifetimeJourney: FC = () => {
           <img
             src="https://drive.google.com/thumbnail?sz=w2000&id=1wV2RNRvFCy8ew9aqzpeR-zbITwbY5sR1"
             alt="Backpackers Edition"
+            loading="lazy"
             style={styles.image}
           />
           <p style={styles.cardTitle}>Backpackers Edition</p>
@@ -84,6 +86,7 @@ const LifetimeJourney: FC = () => {
             // src="https://drive.google.com/thumbnail?sz=w2000&id=1wQauWIEPsLvtFOVsHHu7gTYgECXxOgDg"
             src={require("../../../Assets/1000135220.jpg")}
             alt="Combos"
+            loading="lazy"
             style={styles.image}
           />
           <p style={styles.cardTitle}>Combos</p>

@@ -5,7 +5,7 @@ import {
 } from "../actions/types/upcomingToursDataType";
 
 export interface upcomingToursState {
-  upcomingTours: any;
+  upcomingTours: UpcomingToursDto;
 }
 const initialState: upcomingToursState = {
   upcomingTours: {

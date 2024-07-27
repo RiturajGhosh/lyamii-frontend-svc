@@ -1,10 +1,11 @@
-import React, { FC } from "react";
+import React, { CSSProperties, FC } from "react";
 type InvertedCommaProp = {
   className?: string;
   width: string;
   height: string;
+  style?: CSSProperties;
 };
-const Tick: FC<InvertedCommaProp> = ({ className, width, height }) => {
+const Tick: FC<InvertedCommaProp> = ({ className, width, height, style }) => {
   return (
     <div
       className={`${className} curve-container b400 bundle-bb-curve-container`}
@@ -13,6 +14,7 @@ const Tick: FC<InvertedCommaProp> = ({ className, width, height }) => {
         xmlns="http://www.w3.org/2000/svg"
         width={width}
         height={height}
+        style={style}
         fill="white"
         className="bi bi-check"
         viewBox="0 0 16 16"

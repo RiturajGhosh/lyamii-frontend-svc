@@ -194,6 +194,7 @@ const MapAndEscape: FC = () => {
         {countries.map((country, index) => (
           <div key={index} style={{ flex: "0 0 auto", margin: "0 10px" }}>
             <img
+              loading="lazy"
               onClick={() => fetchTours(country.name)}
               src={country.imgSrc}
               alt={country.name}

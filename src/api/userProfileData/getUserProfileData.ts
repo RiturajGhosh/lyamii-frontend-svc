@@ -4,9 +4,6 @@ import { axiosType } from "../../components/common/enum/enum";
 export async function getUserProfileData(email: string) {
   return restClient({
     type: axiosType.get,
-    url: "/v1/user/business-details",
-    params: {
-      email,
-    },
+    url: `/v1/user/business-details?email=${email}`,
   });
 }

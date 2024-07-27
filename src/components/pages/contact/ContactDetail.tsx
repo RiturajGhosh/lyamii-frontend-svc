@@ -43,10 +43,11 @@ const ContactDetail: FC = () => {
               <Col className="m-5 justify-content-center flex-column d-flex">
                 <Col className="col-12 justify-content-center d-flex p-0 m-0">
                   <img
-                    className={`w-50 h-90 p-4 mr-1 rounded-circle`}
+                    className={`w-50 h-90 rounded-circle`}
                     style={{
                       background: "#7ab3b5",
                     }}
+                    loading="lazy"
                     src={require("../../../Assets/map.png")}
                   />
                 </Col>
@@ -159,12 +160,13 @@ const ContactDetail: FC = () => {
               <Col className="m-5 justify-content-center flex-column d-flex">
                 <Col className="col-12 justify-content-center d-flex p-0 m-0">
                   <img
-                    className={`w-50 h-90 p-4 mr-1 rounded-circle`}
+                    className={`w-50 h-90 rounded-circle`}
                     style={{
                       background: "#7ab3b5",
                       padding: "0px !important",
                       margin: "0px !important",
                     }}
+                    loading="lazy"
                     src={require("../../../Assets/email.png")}
                   />{" "}
                 </Col>
