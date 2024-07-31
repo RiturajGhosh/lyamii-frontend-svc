@@ -18,6 +18,7 @@ import TourCard from "../../common/tourCard/TourCard";
 import RecommandedTours from "../recommandedTours/RecommandedTours";
 import RecentlyViewedTours from "../recentlyViewedTours/RecentlyViewedTours";
 import ControlledCarousel from "../coursel/Coursel";
+import { getNonIndianTours } from "../../../api/nonIndianTours/getNonIndianTours";
 
 export type stateType = {
   data: any[];
@@ -92,7 +93,7 @@ const ExploreDestination: FC = () => {
         "https://drive.google.com/thumbnail?sz=w2000&id=1Koq1lfmozRqaLFRnlDdVhIGTqUdUm4ml",
     },
     {
-      packageId: "RIE10****",
+      packageId: "C15TG****",
       imageUri:
         "https://drive.google.com/thumbnail?sz=w2000&id=1Kv43JJm2AsXyycIZuyYnmkh1fla5l0hz",
     },
@@ -287,6 +288,7 @@ const ExploreDestination: FC = () => {
         }}
       >
         <Button
+          onClick={() => getPackage()}
           style={{
             backgroundColor: "#F0F4FF",
             fontSize: 25,
@@ -302,6 +304,15 @@ const ExploreDestination: FC = () => {
           All
         </Button>
         <Button
+          onClick={async () => {
+            const response = await getPackageDetailsByCountryAndDaysApi(0, 1);
+            if (response.status === 200) {
+              dispatch({
+                type: SET_TOUR_DATA,
+                payload: parseTourDataArray(response.data),
+              });
+            }
+          }}
           style={{
             backgroundColor: "#F0F4FF",
             fontSize: 25,
@@ -317,6 +328,15 @@ const ExploreDestination: FC = () => {
           Incredible India
         </Button>
         <Button
+          onClick={async () => {
+            const response = await getNonIndianTours();
+            if (response.status === 200) {
+              dispatch({
+                type: SET_TOUR_DATA,
+                payload: parseTourDataArray(response.data),
+              });
+            }
+          }}
           style={{
             backgroundColor: "#F0F4FF",
             fontSize: 25,

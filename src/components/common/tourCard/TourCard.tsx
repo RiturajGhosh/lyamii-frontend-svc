@@ -170,28 +170,26 @@ const TourCard: FC<TourCardType> = ({ tourData, key }) => {
                     color: "#879DFF",
                   }}
                 > */}
-                  {/* <select
-                  style={{
-                    WebkitAppearance: "none",
-                    MozAppearance: "none",
-                    background: "transparent",
-                    fontSize: "16px",
-                    fontWeight: "700",
-                    color: "rgb(134, 133, 133)",
-                  }}
-                  className="form-select w-60 border-0 pointer"
-                  aria-label="Default select example"
-                >
-                  {tourData?.packagePrice?.map(
-                    (price: string, index: number) => (
-                      <option key={index} value={price}>
-                        {price.split(" ")[0]}
-                        {/* {tourData?.packagePrice.length === 1 && " INR"}
-                      </option>
-                    )
-                  )}
-                </select> */}
-                  {tourData?.packagePrice[0].split(" ")[0]}
+                  <select
+                    style={{
+                      WebkitAppearance: "none",
+                      MozAppearance: "none",
+                      background: "transparent",
+                      fontSize: "16px",
+                      fontWeight: "700",
+                      color: "rgb(134, 133, 133)",
+                    }}
+                    className="form-select w-60 border-0 pointer"
+                    aria-label="Default select example"
+                  >
+                    {tourData?.packagePrice?.map(
+                      (price: string, index: number) => (
+                        <option key={index} value={price}>
+                          {price}
+                        </option>
+                      )
+                    )}
+                  </select>
                 </Row>
                 <Button
                   className="view-more-button"

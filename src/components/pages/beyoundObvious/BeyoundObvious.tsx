@@ -142,7 +142,7 @@ const BeyoundObvious: FC = () => {
                                   className="form-select pointer"
                                   aria-label="Default select example"
                                 >
-                                  {list?.bookingPrice?.map(
+                                  {list?.packagePrice?.map(
                                     (price: string, index: number) => (
                                       <option key={index} value={price}>
                                         {price}

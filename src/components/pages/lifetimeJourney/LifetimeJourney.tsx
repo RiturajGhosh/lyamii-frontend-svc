@@ -251,7 +251,7 @@ const LifetimeJourney: FC = () => {
                             className=" p-0 pointer border border-0 w-100"
                             aria-label="Default select example"
                           >
-                            {tour?.bookingPrice?.map(
+                            {tour?.packagePrice?.map(
                               (price: string, index: number) => (
                                 <option
                                   key={index}

@@ -48,15 +48,17 @@ const TourOverviewCard: FC<TourOverviewCardType> = ({
       >
         <Col lg={11} md={11} sx={11} xs={11}>
           {children}
-          <Col
-            md={12}
-            lg={12}
-            className="justify-content-between p-0 d-flex overflow-auto"
+          <div
+            style={{
+              justifyContent: "space-between",
+              maxWidth: 1331,
+              margin: "20px auto",
+            }}
           >
             {tours?.map((tour, index) => (
               <TourCard tourData={tour} key={index} />
             ))}
-          </Col>
+          </div>
         </Col>
       </Col>
     </section>

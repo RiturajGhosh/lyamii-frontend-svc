@@ -11,6 +11,7 @@ import {
   OverlayTrigger,
   Container,
   Modal,
+  Carousel,
 } from "react-bootstrap";
 import { FaPlane } from "react-icons/fa";
 import style from "./TourDetailCard.module.scss";
@@ -106,6 +107,23 @@ const TourDetailCard: FC = () => {
     tourData && setTour(tourData);
   }, [tourData]);
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const scroll = () => {
+      setCurrentIndex(
+        (prevIndex) => (prevIndex + 1) % tourData?.imageUri?.length
+      );
+    };
+
+    const id = setInterval(scroll, 4000);
+    return () => clearInterval(id);
+  }, [tourData?.imageUri?.length]);
+
+  const handleSelect = (selectedIndex: number) => {
+    setCurrentIndex(selectedIndex);
+  };
+
   const popoverTop = (
     <Popover
       id="popover-positioned-top"
@@ -128,7 +146,21 @@ const TourDetailCard: FC = () => {
   return (
     <div style={styles.card} className="mb-0">
       <div style={styles.mainImageContainer}>
-        <img
+        <Carousel activeIndex={currentIndex} onSelect={handleSelect}>
+          {tourData?.imageUri?.slice(1)?.map((image) => {
+            return (
+              <Carousel.Item>
+                <img
+                  src={`https://drive.google.com/thumbnail?sz=w2000&id=${image}`}
+                  alt={"Main Tour Image"}
+                  loading="lazy"
+                  style={styles.mainImage}
+                />
+              </Carousel.Item>
+            );
+          })}
+        </Carousel>
+        {/* <img
           src={
             tour?.imageUri?.length > 0 && tour.imageUri[0] !== ""
               ? `https://drive.google.com/thumbnail?sz=w2000&id=${tour.imageUri[1]}`
@@ -137,7 +169,7 @@ const TourDetailCard: FC = () => {
           alt={"Main Tour Image"}
           loading="lazy"
           style={styles.mainImage}
-        />
+        /> */}
         <div style={styles.mainText}>
           <p
             className="p-0 m-0"
@@ -568,7 +600,10 @@ const TourDetailCard: FC = () => {
         alt={"Main Tour Image"}
         className="w-100 position-relative h-50"
       />
-      <LoginPromptModal show={showLoginModal} handleClose={() => handleClose} />
+      <LoginPromptModal
+        show={showLoginModal}
+        handleClose={() => handleClose()}
+      />
     </div>
   );
 };
