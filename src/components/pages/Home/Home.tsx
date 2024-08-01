@@ -458,6 +458,14 @@ const Home: FC = () => {
             },
             {
               id: 3,
+              title: "First Tour",
+              description:
+                "Select your first Lyamii vacation and proceed with the book now option.",
+              img: "https://drive.google.com/thumbnail?sz=w2000&id=1jaLTfXpjBo5etObenG7XdO5reNkmJYxg",
+              url: "/explore",
+            },
+            {
+              id: 4,
               title: "Verification",
               description:
                 "Verify your profile with your passport to generate the Traveller ID.",
@@ -465,19 +473,11 @@ const Home: FC = () => {
               url: "/passportRegistration",
             },
             {
-              id: 4,
+              id: 5,
               title: "Traveller ID",
               description: "Receive your Traveller ID in the User Dashboard.",
               img: "https://drive.google.com/thumbnail?sz=w2000&id=1ja0YAdA4RrSoXsdyrYOfGvo7mHd6Vii1",
               url: "",
-            },
-            {
-              id: 5,
-              title: "First Tour",
-              description:
-                "Select your first Lyamii vacation and proceed with the book now option.",
-              img: "https://drive.google.com/thumbnail?sz=w2000&id=1jaLTfXpjBo5etObenG7XdO5reNkmJYxg",
-              url: "/explore",
             },
             {
               id: 6,

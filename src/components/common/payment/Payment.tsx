@@ -29,7 +29,7 @@ const Payment: FC<PaymentDto> = ({ userDetail }) => {
   const money = "24 USD";
   const createOrder = async () => {
     return await axios.post(
-      `http://localhost:8081/api/razorpay/createOrder?amount=${money
+      `https://backend.lyamii.com/api/razorpay/createOrder?amount=${money
         .split(" ")[0]
         .replace(/,/g, "")}&&currency=${money.split(" ")[1]}`
     );
