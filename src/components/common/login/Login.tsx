@@ -17,6 +17,7 @@ import { okErrorCode } from "../enum/errorCode";
 import SubCard from "../subCard/SubCard";
 import { signInApi } from "../../../api/signIn/signinApi";
 import { signUpApi } from "../../../api/signUp/signupApi";
+import { IoMdClose } from "react-icons/io";
 
 export type SideNavList = {
   name: string;
@@ -29,6 +30,7 @@ const Login: FC = () => {
   const history = useHistory();
   const location = useLocation();
   const [usedEmailMessage, setUsedEmailMessage] = useState("");
+  const [isForgetClicked, setForget] = useState(false);
   const [detail] = useState({
     email: "",
     password: "",
@@ -373,6 +375,7 @@ const Login: FC = () => {
                 <Col className="d-flex flex-column justify-content-center">
                   <span
                     className="d-flex align-self-center fit-content h4"
+                    onClick={() => setForget(true)}
                     style={{ color: "#4a915b" }}
                   >
                     Forget Password?
@@ -563,6 +566,25 @@ const Login: FC = () => {
           </Col>
         </Col>
       </Modal.Body>
+      <Modal show={isForgetClicked} onHide={() => setForget(false)} centered>
+        <Modal.Body className="flex-row d-flex justify-content-between w-100">
+          <p className="p-0 m-0 align-self-center">
+            Kindly drop us a mail in
+            <span
+              className={"bold pointer"}
+              onClick={(e) => {
+                window.location.href = "mailto:Connect.helpdesk@lyamii.com";
+                e.preventDefault();
+              }}
+            >
+              "connect.helpdesk@lyamii.com"
+            </span>{" "}
+          </p>
+          <span onClick={() => setForget(false)} className={" p-0 m-0 normal"}>
+            <IoMdClose className="p-0 m-0" />
+          </span>
+        </Modal.Body>
+      </Modal>
     </Col>
   );
 };

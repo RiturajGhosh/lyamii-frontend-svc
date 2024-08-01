@@ -278,7 +278,8 @@ const Home: FC = () => {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="https://drive.google.com/thumbnail?sz=w2000&id=1k09rkJVx55oQIWijilw15vEuY5QRz0QU"
+            // https://drive.google.com/thumbnail?sz=w2000&id=1k09rkJVx55oQIWijilw15vEuY5QRz0QU"
+            src="https://itstravelzone.com/wp-content/uploads/2024/06/Travel-Guide.webp"
             alt="fifth slide"
             loading="lazy"
             style={{ height: "65vh", objectFit: "cover" }}

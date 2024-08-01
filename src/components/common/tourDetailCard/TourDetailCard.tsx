@@ -67,6 +67,7 @@ const LoginPromptModal: FC<LoginPromptModalProps> = ({ show, handleClose }) => {
 };
 const TourDetailCard: FC = () => {
   const isMobile = useSelector(selectIsMobile);
+  const [minDate, setMinDate] = useState("");
   const screenSize = useSelector(selectScreenSize);
   const tourData = useSelector(selectTourData);
   const cookie = getCookie("user");
@@ -97,6 +98,17 @@ const TourDetailCard: FC = () => {
       });
     }
   };
+
+  useEffect(() => {
+    // Get the current date
+    const today = new Date();
+    // Add 30 days to the current date
+    const nextMonth = new Date(today.setDate(today.getDate() + 30));
+    // Format the date to YYYY-MM-DD
+    const formattedDate = nextMonth.toISOString().split("T")[0];
+    // Set the minDate state
+    setMinDate(formattedDate);
+  }, []);
 
   useEffect(() => {
     fetchTours();
@@ -158,7 +170,7 @@ const TourDetailCard: FC = () => {
           width: "100%",
         }}
       >
-        <Col lg={10} md={10} className="col-12">
+        <Col lg={9} md={9} className="col-12">
           <Carousel activeIndex={currentIndex} onSelect={handleSelect}>
             {tour?.imageUri?.length > 1 && tour.imageUri[1] !== "" ? (
               tourData?.imageUri?.slice(1)?.map((image) => {
@@ -199,8 +211,8 @@ const TourDetailCard: FC = () => {
         /> */}
 
         <Col
-          lg={2}
-          md={2}
+          lg={3}
+          md={3}
           className="col-12"
           style={{
             top: isMobile ? "auto" : "5%",
@@ -220,7 +232,7 @@ const TourDetailCard: FC = () => {
           // }}
         >
           <div className="w-100 d-flex flex-lg-column flex-md-column flex-row">
-            <Col lg={12} md={12} className="col-8">
+            <Col lg={12} md={12} className="col-7">
               <Row
                 className="p-0 m-0"
                 style={{
@@ -228,7 +240,7 @@ const TourDetailCard: FC = () => {
                   fontWeight: "600",
                   color: "#1C1C1C",
                   width: "100%",
-                  textAlign: isMobile ? "center" : "left",
+                  textAlign: "left",
                 }}
               >
                 {tour.title}
@@ -330,7 +342,7 @@ const TourDetailCard: FC = () => {
             <Col
               lg={12}
               md={12}
-              className="col-4 justify-content-center flex-column align-item-center d-flex"
+              className="col-5 justify-content-center flex-column align-item-center d-flex"
             >
               <button
                 className={`view-more-button w-100 ${
@@ -358,7 +370,7 @@ const TourDetailCard: FC = () => {
               </button>
               <h4 className="fw-bold py-3 my-0">Arrival Date</h4>
               <div
-              className="w-100"
+                className="w-100"
                 style={{
                   display: "flex",
                   gap: "10px",
@@ -369,7 +381,7 @@ const TourDetailCard: FC = () => {
                 }}
               >
                 <span
-                className="w-100"
+                  className="w-100"
                   style={{
                     padding: "5px 5px",
                     borderRadius: 0,
@@ -381,6 +393,7 @@ const TourDetailCard: FC = () => {
                 >
                   <input
                     className="border-0 bg-transparent w-100"
+                    min={minDate}
                     onChange={(e) =>
                       dispatch({
                         type: SET_SELECTED_TOUR_DEPARTURE_DATE,
@@ -702,6 +715,7 @@ const TourDetailCard: FC = () => {
               setShowAllItinerary(!showAllItinerary);
             }}
             style={{
+              marginTop: isMobile ? "42px" : 0,
               width: 164,
               fontWeight: "700",
               color: "#FFFFFF",
@@ -717,7 +731,7 @@ const TourDetailCard: FC = () => {
             xs={8}
             sm={10}
             lg={3}
-            className="col gap-2 float-end justify-content-end"
+            className="col gap-2 float-end justify-content-end  flex-column flex-lg-row flex-md-row"
           >
             <Col
               className="align-content-center"
