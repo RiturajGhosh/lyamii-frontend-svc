@@ -5,8 +5,8 @@ import { policies } from "../../common/enum/policies";
 const CancellationRefundPolicy: FC = () => {
   return (
     <section className="bg-white align-items-center d-flex justify-content-center flex-column">
-      <Col className="justify-content-center align-self-center d-flex">
-        <span className="fs-1 my-5 pl-4 text-decoration-underline col-12 text-dark fw-bold">
+      <Col className="justify-content-center align-self-center d-flex mt-5">
+        <span className="fs-1 mt-5 mb-3 pl-4 text-decoration-underline col-12 text-dark fw-bold">
           Cancellation and Refund Policy
         </span>
       </Col>

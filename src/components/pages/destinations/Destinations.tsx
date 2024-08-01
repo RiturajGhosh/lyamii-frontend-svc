@@ -187,8 +187,12 @@ const Destinations = () => {
               key={index}
               className="expand col-12 d-inline-block position-relative"
             >
-              <Card className={`${styles.carouselCard}`}>
+              <Card
+                className={`${styles.carouselCard}`}
+                style={{ minWidth: "290px" }}
+              >
                 <Card.Img
+                  style={{ minHeight: "290px" }}
                   variant="top"
                   src={
                     tour?.imageUri?.length > 0 && tour.imageUri[0] !== ""
@@ -342,6 +346,7 @@ const Destinations = () => {
                             color: "#868585",
                           }}
                         >
+                          {" "}
                           / Person
                         </span>
                       </p>

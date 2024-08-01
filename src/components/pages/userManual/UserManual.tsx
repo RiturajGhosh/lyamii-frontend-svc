@@ -30,11 +30,11 @@ const UserManual: FC = () => {
   return (
     <>
       <Col
-        className="home-about-section sectionContainer d-flex justify-content-center py-42 px-0"
+        className="home-about-section sectionContainer d-flex justify-content-center py-42 mt-5 px-0"
         id="about"
       >
         <Col lg={11} md={11} sx={11} xs={11}>
-          <Col className="card-body w-100">
+          <Col className="card-body w-100 text-center">
             {
               <>
                 <span
@@ -68,7 +68,7 @@ const UserManual: FC = () => {
                     sm={6}
                     xs={12}
                     key={index}
-                    className="d-flex pointer flex-column col-4 top-0 my-3"
+                    className="align-items-center d-flex pointer flex-column col-4 top-0 my-3"
                     style={{
                       float: "inherit",
                       objectFit: "cover",
@@ -91,7 +91,7 @@ const UserManual: FC = () => {
                         onClick={() =>
                           downloadFileFromGoogleDrive(option?.path)
                         }
-                        className="bold pointer fs-auto p-2 d-inline-flex m-0 fw-bold"
+                        className="bold pointer normal p-2 d-inline-flex m-0 fw-bold"
                         style={{ fontFamily: "OldStandard" }}
                       >
                         Download

@@ -4,8 +4,8 @@ import { Card, Col } from "react-bootstrap";
 const PrivacyPolicies: FC = () => {
   return (
     <section className="bg-white align-items-center d-flex justify-content-center flex-column">
-      <Col className="justify-content-center align-self-center d-flex">
-        <span className="fs-1 my-5 pl-4 text-decoration-underline col-12 text-dark fw-bold">
+      <Col className="justify-content-center align-self-center pt-5 d-flex">
+        <span className="fs-1 mt-5 mb-4 pl-4 text-decoration-underline col-12 text-dark fw-bold">
           Privacy Policy
         </span>
       </Col>
@@ -99,9 +99,18 @@ const PrivacyPolicies: FC = () => {
           country of residence.
         </div>
         <div className={"pb-2"} style={{ fontSize: "1.5dvi" }}>
-          If you have any concerns in the processing your data and wish to
+          {`If you have any concerns in the processing your data and wish to
           withdraw your consent, you may do so by writing to the following email
-          id: support@lyamii.com. However, if such processing of data is
+          id: ${(
+            <span
+              onClick={(e) => {
+                window.location.href = "mailto:Connect.helpdesk@lyamii.com";
+                e.preventDefault();
+              }}
+            >
+              connect.helpdesk@lyamii.com
+            </span>
+          )}. However, if such processing of data is
           essential for us to be able to provide service to you, then we may not
           be able to serve or confirm your bookings after your withdrawal of
           consent. For instance, if you want to book any international holiday
@@ -113,7 +122,7 @@ const PrivacyPolicies: FC = () => {
           stay, and they may further process this information for making
           suitable arrangements for you during the holiday. Such sharing and
           processing of information may extend to the hotel where you will stay
-          or the tour manager who will be your guide during the travel.
+          or the tour manager who will be your guide during the travel.`}
         </div>
         <div className={"pb-2"} style={{ fontSize: "1.5dvi" }}>
           A withdrawal of consent by you for us to process your information may:
@@ -858,22 +867,49 @@ const PrivacyPolicies: FC = () => {
           WITHDRAWAL OF CONSENT AND PERMISSION{" "}
         </div>
         <div className={"pb-2"} style={{ fontSize: "1.5dvi" }}>
-          You may withdraw your consent to submit any or all Personal
+          {`You may withdraw your consent to submit any or all Personal
           Information or decline to provide any permissions on its Website as
           covered above at any time. In case, you choose to do so then your
           access to the Website may be limited, or we might not be able to
           provide the services to you. You may withdraw your consent by sending
-          an email to&nbsp;support@lyamii.com&nbsp;
+          an email to&nbsp;${(
+            <span
+              onClick={(e) => {
+                window.location.href = "mailto:Connect.helpdesk@lyamii.com";
+                e.preventDefault();
+              }}
+            >
+              connect.helpdesk@lyamii.com
+            </span>
+          )}&nbsp;`}
         </div>
         <div className={"pb-2"} style={{ fontSize: "1.5dvi" }}>
           YOUR RIGHTS QUA PERSONAL INFORMATION{" "}
         </div>
         <div className={"pb-2"} style={{ fontSize: "1.5dvi" }}>
-          You may access your Personal Information from your user account with
+          {`You may access your Personal Information from your user account with
           LYAMII. You may also correct your personal information or delete such
           information (except some mandatory fields) from your user account
           directly. If you don&rsquo;t have such a user account, then you write
-          to <a href="mailto:support@lyamii.com">support@lyamii.com</a>
+          to <a href="mailto:${(
+            <span
+              onClick={(e) => {
+                window.location.href = "mailto:Connect.helpdesk@lyamii.com";
+                e.preventDefault();
+              }}
+            >
+              connect.helpdesk@lyamii.com
+            </span>
+          )}">${(
+            <span
+              onClick={(e) => {
+                window.location.href = "mailto:Connect.helpdesk@lyamii.com";
+                e.preventDefault();
+              }}
+            >
+              connect.helpdesk@lyamii.com
+            </span>
+          )}</a>`}
         </div>
         <div className={"pb-2"} style={{ fontSize: "1.5dvi" }}>
           ELIGIBILITY TO TRANSACT WITH LYAMII{" "}
@@ -891,11 +927,29 @@ const PrivacyPolicies: FC = () => {
           notify the users as may be necessary.
         </div>
         <div className={"pb-2"} style={{ fontSize: "1.5dvi" }}>
-          You may always submit concerns regarding this Privacy Policy via email
+          {`You may always submit concerns regarding this Privacy Policy via email
           to us at
-          <a href="mailto:support@lyamii.com">support@lyamii.com</a> LYAMII
+          <a href="mailto:${(
+            <span
+              onClick={(e) => {
+                window.location.href = "mailto:Connect.helpdesk@lyamii.com";
+                e.preventDefault();
+              }}
+            >
+              connect.helpdesk@lyamii.com
+            </span>
+          )}">${(
+            <span
+              onClick={(e) => {
+                window.location.href = "mailto:Connect.helpdesk@lyamii.com";
+                e.preventDefault();
+              }}
+            >
+              connect.helpdesk@lyamii.com
+            </span>
+          )}</a> LYAMII
           shall endeavor to respond to all reasonable concerns and inquires.
-          Privacy Policy (EU, UK and US){" "}
+          Privacy Policy (EU, UK and US) `}
         </div>
         <Card.Title style={{ fontSize: "2dvi" }}>Introduction:</Card.Title>
         <div className={"pb-2"} style={{ fontSize: "1.5dvi" }}>
@@ -1715,9 +1769,18 @@ const PrivacyPolicies: FC = () => {
           information amended or deleted.
         </div>
         <div className={"pb-2"} style={{ fontSize: "1.5dvi" }}>
-          Additionally, you may have the right to opt out of the processing of
+          {`Additionally, you may have the right to opt out of the processing of
           your personal data for targeted advertising, by managing your browser
-          settings or by contacting us at support@LYAMII.com
+          settings or by contacting us at ${(
+            <span
+              onClick={(e) => {
+                window.location.href = "mailto:Connect.helpdesk@lyamii.com";
+                e.preventDefault();
+              }}
+            >
+              connect.helpdesk@lyamii.com
+            </span>
+          )}`}
         </div>
         <div className={"pb-2"} style={{ fontSize: "1.5dvi" }}>
           Consent is required for customers under the age of 16 to be exposed to
@@ -1969,11 +2032,20 @@ const PrivacyPolicies: FC = () => {
           How to contact us{" "}
         </div>
         <div className={"pb-2"} style={{ fontSize: "1.5dvi" }}>
-          LYAMII&rsquo;s Data Protection Officer is responsible for monitoring
+          {`LYAMII&rsquo;s Data Protection Officer is responsible for monitoring
           compliance with relevant legislation in relation to the protection of
-          personal data. Please contact us at support@lyamii.com&nbsp;You can
+          personal data. Please contact us at ${(
+            <span
+              onClick={(e) => {
+                window.location.href = "mailto:Connect.helpdesk@lyamii.com";
+                e.preventDefault();
+              }}
+            >
+              connect.helpdesk@lyamii.com
+            </span>
+          )}&nbsp;You can
           contact us for any concerns or questions about your personal
-          information, those we process or store.
+          information, those we process or store.`}
         </div>
         <div className={"pb-2"} style={{ fontSize: "1.5dvi" }}>
           Our cookie statement may also be updated from time to time. If these

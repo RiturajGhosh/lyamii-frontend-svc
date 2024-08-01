@@ -6,7 +6,7 @@ const TermConditions: FC = () => {
   return (
     <section className="bg-white align-items-center d-flex justify-content-center flex-column">
       <Col className="justify-content-center align-self-center d-flex">
-        <span className="fs-1 my-5 pl-4 text-decoration-underline col-12 text-dark fw-bold">
+        <span className="fs-1 pb-3 mt-5 pl-4 pt-5 text-decoration-underline col-12 text-dark fw-bold">
           Term and Conditions
         </span>
       </Col>

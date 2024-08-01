@@ -35,9 +35,17 @@ const BlankPage: FC = () => {
                 className="col-12 position-absolute top-50 start-0 m-0 justify-content-center p-0"
                 style={{ fontSize: "5dvi" }}
               >
-                Coming Soon...
+                For Live Tours Only!.
               </Col>
             )}
+            {/* {pathname.includes("dashboard") && (
+              <Col
+                className="col-12 position-absolute top-50 start-0 m-0 justify-content-center p-0"
+                style={{ fontSize: "5dvi" }}
+              >
+                For Live Tours Only!.
+              </Col>
+            )} */}
             {pathname.includes("payments") && (
               <Col
                 className="col-12 position-absolute top-50 start-0 m-0 justify-content-center p-0"

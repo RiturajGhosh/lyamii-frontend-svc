@@ -51,7 +51,7 @@ const PrivacyAndSecurity: FC = () => {
         className="p-0 m-0 min-vh-100 justify-content-end d-flex flex-column w-100"
       >
         <Row className="p-0 m-0 min-vh-100 align-items-start justify-content-end d-flex">
-          <Col className="col-12 py-4 m-0 gap-4 align-items-center d-grid p-0">
+          <Col className="col-12 py-5 m-0 gap-4 align-items-center d-grid p-0">
             <Col>
               <div
                 className="py-5 display-5 fw-bold justify-content-start font-weight-normal pl-2 text-shadow-dark p-2"

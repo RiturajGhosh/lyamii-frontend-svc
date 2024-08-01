@@ -30,7 +30,7 @@ const CustomerReviews: FC = () => {
           <Row className="justify-content-between d-flex p-0 m-0 px-sm-5">
             <div className="card-body w-100">
               {
-                <Col className="justify-content-between d-flex">
+                <Col className="mx-4 justify-content-between d-flex">
                   <span
                     className="display-2 text-shadow-dark float-left fw-bold"
                     style={{

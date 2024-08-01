@@ -152,9 +152,13 @@ const LifetimeJourney: FC = () => {
               key={index}
               className="expand col-12 d-inline-block position-relative"
             >
-              <Card className={`${styles.carouselCard}`}>
+              <Card
+                className={`${styles.carouselCard}`}
+                style={{ minWidth: "290px" }}
+              >
                 <Card.Img
                   variant="top"
+                  style={{ minHeight: "290px" }}
                   src={
                     tour?.imageUri?.length > 0 && tour.imageUri[0] !== ""
                       ? `https://drive.google.com/thumbnail?sz=w2000&id=${tour.imageUri[0]}`
@@ -165,13 +169,15 @@ const LifetimeJourney: FC = () => {
                 />
                 <Card.Body
                   className={`align-items-between d-grid ${styles.cardTextOverlay}`}
+                  style={{ minHeight: "229px" }}
                 >
                   <div className="d-flex w-100 align-items-center justify-content-between align-content-between">
                     <Card.Title
                       className={`position-absolute bg-white m-0 p-0 ${
                         screenSize?.screenSize < 767
                           ? "normal"
-                          : screenSize?.screenSize > 767 && screenSize?.screenSize <969 
+                          : screenSize?.screenSize > 767 &&
+                            screenSize?.screenSize < 969
                           ? "fs-medium"
                           : "fs-auto"
                       }`}

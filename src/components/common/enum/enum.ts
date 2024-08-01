@@ -80,7 +80,6 @@ export const paths = [
   "/addHostel",
   "/profile",
   "/crm",
-  "/userManual",
 ];
 export const months = [
   "Jan",

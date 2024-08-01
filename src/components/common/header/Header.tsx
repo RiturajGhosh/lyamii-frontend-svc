@@ -143,7 +143,7 @@ const Header: FC = () => {
                     onClick={() => updateExpanded(false)}
                   >
                     <h6 className="body fw-bold h6 m-0">
-                      <FaCartShopping size={"2.5vh"} />
+                      <FaCartShopping size={"20px"} />
                     </h6>
                   </Nav.Link>
                 </Nav.Item>

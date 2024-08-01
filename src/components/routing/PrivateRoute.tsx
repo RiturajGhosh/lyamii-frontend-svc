@@ -55,6 +55,9 @@ const PrivateRoute: FC<PrivateRouteProps> = ({
     });
   }, [pathName, path]);
   const loginError = false; //will use selector
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [path]);
   // const openNav = () => {
   //   const ele = (document?.getElementById("sidenav") as HTMLElement).className.includes("d-flex");
   //   console.log(ele)

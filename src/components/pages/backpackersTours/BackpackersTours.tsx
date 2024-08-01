@@ -24,6 +24,7 @@ const BackpackersTours: FC = () => {
   };
   useEffect(() => {
     fetchTours();
+    window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {
@@ -42,7 +43,9 @@ const BackpackersTours: FC = () => {
         <Col className={`py-5 p-0 d-grid justify-content-center`}>
           <Row className="p-0">
             <Col className="text-dark align-self-center">
-              <span className="text-start fs-16 text-wrap"><i>{description}</i> </span>
+              <span className="text-start fs-16 text-wrap">
+                <i>{description}</i>{" "}
+              </span>
             </Col>
           </Row>
         </Col>

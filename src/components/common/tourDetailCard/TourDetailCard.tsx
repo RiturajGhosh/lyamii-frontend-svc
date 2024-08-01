@@ -111,6 +111,7 @@ const TourDetailCard: FC = () => {
   }, []);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     fetchTours();
   }, []);
 
@@ -357,7 +358,7 @@ const TourDetailCard: FC = () => {
                   isLoggedIn ? history.push("/checkout") : handleShow
                 }
                 style={{
-                  width: 164,
+                  width: 154,
                   height: 53,
                   fontWeight: "700",
                   color: "#FFFFFF",
@@ -716,7 +717,7 @@ const TourDetailCard: FC = () => {
             }}
             style={{
               marginTop: isMobile ? "42px" : 0,
-              width: 164,
+              width: 154,
               fontWeight: "700",
               color: "#FFFFFF",
               backgroundColor: "#879DFF",
@@ -736,7 +737,7 @@ const TourDetailCard: FC = () => {
             <Col
               className="align-content-center"
               style={{
-                width: 164,
+                width: 154,
                 padding: "5px 5px",
                 borderRadius: 0,
                 backgroundColor: "#F5F5F5",
@@ -779,7 +780,7 @@ const TourDetailCard: FC = () => {
                   : "fs-auto"
               }`}
               style={{
-                width: 164,
+                width: 154,
                 fontWeight: "700",
                 color: "#FFFFFF",
                 backgroundColor: "#879DFF",

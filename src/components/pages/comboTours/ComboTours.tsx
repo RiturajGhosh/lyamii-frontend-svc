@@ -23,6 +23,7 @@ const ComboTours: FC = () => {
   };
   useEffect(() => {
     fetchTours();
+    window.scrollTo(0, 0);
   }, []);
 
   useEffect(() => {

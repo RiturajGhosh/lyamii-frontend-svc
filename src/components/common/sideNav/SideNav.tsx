@@ -132,7 +132,10 @@ const SideNav: FC = () => {
               })}
             </Nav.Item>
           </Col>
-          <Col className="align-items-center p-0 m-0 justify-content-center d-flex">
+          <Col
+            onClick={() => history.push("/contact")}
+            className="align-items-center p-0 m-0 justify-content-center d-flex"
+          >
             <div
               className="form__input text-start d-flex flex-column p-0 m-0 p-3 fit-content"
               style={{ background: "#e0e8ff" }}

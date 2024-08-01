@@ -178,7 +178,8 @@ export const commonSiteMap: UserRouteConfig[] = [
   {
     exact: true,
     path: "/profile/dashboard",
-    Component: Dashboard,
+    // Component: Dashboard,
+    Component: BlankPage,
     access: AccessType.YES,
   },
   {

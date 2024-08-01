@@ -11,13 +11,17 @@ const Cart: FC = () => {
   return (
     <section className="bg-white d-flex flex-column">
       <Col className="flex-column align-self-center d-flex">
-        <span className="fs-1 my-5 py-5 pl-4 text-decoration-underline col-12 text-dark fw-bold">
-          <img
-            loading="lazy"
-            className="object-fit-cover justify-content-center d-flex"
+        <span className="fs-1 my-5 py-5 text-center text-decoration-underline text-dark fw-bold">
+          <Card.Img
+            className="col-3"
+            variant="center"
+            style={{
+              // width: 322,
+              // height: 319,
+              borderRadius: 10,
+              objectFit: "cover",
+            }}
             src={require("../../../Assets/cart.png")}
-            alt="First slide"
-            style={{ height: "65vh" }}
           />
         </span>
       </Col>{" "}
