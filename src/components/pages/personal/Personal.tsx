@@ -33,7 +33,9 @@ const Personal: FC = () => {
   const [detail, setDetail] = useState<UserDataDto>(userData);
   const dispatch = useDispatch();
   const setUserData = async (values: any) => {
+    setCookie("userProfile", {});
     setCookie("userProfile", JSON.stringify(values));
+    setDetail(JSON.parse(JSON.parse(getCookie("userProfile"))));
     try {
       if (userData.email) {
         const obj: any = {};
@@ -135,9 +137,6 @@ const Personal: FC = () => {
     }
   };
 
-  useEffect(() => {
-    setDetail(userData);
-  }, [userData]);
   return (
     <div
       className={`bg-violet-blue px-sx-5 px-3 py-5 min-vh-100 mw-100 w-100 align-items-center justify-content-end d-flex m-0`}
@@ -359,7 +358,7 @@ const Personal: FC = () => {
                                 onChange={(e: any) =>
                                   setDetail({
                                     ...detail,
-                                    birthDate: "",
+                                    birthDate: e.target.value,
                                   })
                                 }
                               />
@@ -690,7 +689,8 @@ const Personal: FC = () => {
                                   className="border-secondary fs-small"
                                   type="text"
                                   placeholder=""
-                                  onChange={(e: any) =>
+                                  onChange={(e: any) => {
+                                    console.log(e.target.value);
                                     setDetail({
                                       ...detail,
                                       address: {
@@ -703,8 +703,8 @@ const Personal: FC = () => {
                                         policeStation: e.target.value,
                                         postOffice: detail?.address?.postOffice,
                                       },
-                                    })
-                                  }
+                                    });
+                                  }}
                                 />
                               ) : (
                                 <div className="small text-dark p-0 m-0 px-2 font-weight-normal">
