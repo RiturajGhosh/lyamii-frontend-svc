@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Col, Row, Button, Container, Form } from "react-bootstrap";
 import SubCard from "../../common/subCard/SubCard";
 import RoundButton from "../../common/roundButton/RoundButton";
@@ -8,7 +8,7 @@ import {
   UserDataDto,
 } from "../../../state/actions/types/userDataActionType";
 import { userRegistrationApi } from "../../../api/userProfileData/userRegistrationApi";
-import { getCookie } from "../../common/enum/functions";
+import { getCookie, setCookie } from "../../common/enum/functions";
 import { getUserProfileDataApi } from "../../../api/userProfileData/getUserProfileDataApi";
 import { selectUserData } from "../../../state/selectors/selectUserData";
 import { useLocation } from "react-router-dom";
@@ -17,59 +17,62 @@ import { updateUserDetailsApi } from "../../../api/userProfileData/updateUserDet
 
 const Personal: FC = () => {
   const cookie = getCookie("user");
-  const user = cookie && JSON.parse(cookie);
+  const user = cookie ? JSON.parse(cookie) : null;
   const location = useLocation();
   const screenSize = useSelector(selectScreenSize);
+
   const [edit, setEdit] = useState(
     location?.pathname?.includes("edit") || false
   );
-  const userData = useSelector(selectUserData);
-  const [detail, setDetail] = useState<UserDataDto>(userData?.userData);
+
+  const userProfileCookie = getCookie("userProfile");
+  const userData = userProfileCookie
+    ? JSON.parse(JSON.parse(userProfileCookie))
+    : {};
+
+  const [detail, setDetail] = useState<UserDataDto>(userData);
   const dispatch = useDispatch();
   const setUserData = async (values: any) => {
+    setCookie("userProfile", JSON.stringify(values));
     try {
-      if (userData.userData.email) {
+      if (userData.email) {
         const obj: any = {};
-        if (userData.userData.birthDate !== values.birthDate) {
+        if (userData.birthDate !== values.birthDate) {
           obj.birthDate = values.birthDate;
         }
-        if (userData.userData.phoneNumber !== values.phoneNumber) {
+        if (userData.phoneNumber !== values.phoneNumber) {
           obj.phoneNumber = values.phoneNumber;
         }
-        if (userData.userData.userFirstName !== values.userFirstName) {
+        if (userData.userFirstName !== values.userFirstName) {
           obj.userFirstName = values.userFirstName;
         }
-        if (userData.userData.userLastName !== values.userLastName) {
+        if (userData.userLastName !== values.userLastName) {
           obj.userLastName = values.userLastName;
         }
-        if (userData.userData.email !== values.email) {
+        if (userData.email !== values.email) {
           obj.email = values.email;
         }
-        if (userData.userData.gender !== values.gender) {
+        if (userData.gender !== values.gender) {
           obj.gender = values.gender;
         }
-        if (userData.userData.bloodGroup !== values.bloodGroup) {
+        if (userData.bloodGroup !== values.bloodGroup) {
           obj.bloodGroup = values.bloodGroup;
         }
-        if (
-          JSON.stringify(userData.userData) !== JSON.stringify(values.birthDate)
-        ) {
+        if (JSON.stringify(userData) !== JSON.stringify(values.birthDate)) {
           obj.address = {};
-          if (
-            userData.userData.address.houseNumber !== values.address.houseNumber
-          ) {
+          if (userData.address.houseNumber !== values.address.houseNumber) {
             obj.address.houseNumber = values.address.houseNumber;
           }
-          if (userData.userData.address.street !== values.address.street) {
+          if (userData.address.street !== values.address.street) {
             obj.address.street = values.address.street;
           }
-          if (userData.userData.address.state !== values.address.state) {
+          if (userData.address.state !== values.address.state) {
             obj.address.state = values.address.state;
           }
-          if (userData.userData.address.pincode !== values.address.pincode) {
+          if (userData.address.pincode !== values.address.pincode) {
             obj.address.pincode = values.address.pincode;
           }
-          if (userData.userData.address.city !== values.address.city) {
+          if (userData.address.city !== values.address.city) {
             obj.address.city = values.address.city;
           }
         }
@@ -131,6 +134,10 @@ const Personal: FC = () => {
       console.log(error.message);
     }
   };
+
+  useEffect(() => {
+    setDetail(userData);
+  }, [userData]);
   return (
     <div
       className={`bg-violet-blue px-sx-5 px-3 py-5 min-vh-100 mw-100 w-100 align-items-center justify-content-end d-flex m-0`}
@@ -184,7 +191,7 @@ const Personal: FC = () => {
                             </Form.Label>
                             {edit ? (
                               <Form.Control
-                                className="border-secondary"
+                                className="border-secondary fs-small"
                                 type="text"
                                 placeholder={detail?.userFirstName}
                                 onChange={(e: any) =>
@@ -195,7 +202,7 @@ const Personal: FC = () => {
                                 }
                               />
                             ) : (
-                              <div className="fs-small text-dark p-0 px-2 m-0 font-weight-normal">
+                              <div className="small text-dark p-0 px-2 m-0 font-weight-normal">
                                 {detail?.userFirstName}
                               </div>
                             )}
@@ -214,7 +221,7 @@ const Personal: FC = () => {
                             </Form.Label>
                             {edit ? (
                               <Form.Control
-                                className="border-secondary"
+                                className="border-secondary fs-small"
                                 type="text"
                                 placeholder={detail?.userLastName}
                                 onChange={(e: any) =>
@@ -225,7 +232,7 @@ const Personal: FC = () => {
                                 }
                               />
                             ) : (
-                              <div className="fs-small text-dark p-0 px-2 m-0 font-weight-normal">
+                              <div className="small text-dark p-0 px-2 m-0 font-weight-normal">
                                 {detail?.userLastName}
                               </div>
                             )}
@@ -258,7 +265,7 @@ const Personal: FC = () => {
                           >
                             {edit ? (
                               <Form.Control
-                                className="border-secondary"
+                                className="border-secondary fs-small"
                                 type="email"
                                 placeholder={detail?.email}
                                 onChange={(e: any) =>
@@ -269,7 +276,7 @@ const Personal: FC = () => {
                                 }
                               />
                             ) : (
-                              <div className="fs-small text-dark px-2">
+                              <div className="small text-dark px-2">
                                 {detail?.email}
                               </div>
                             )}
@@ -302,7 +309,7 @@ const Personal: FC = () => {
                           >
                             {edit ? (
                               <Form.Control
-                                className="border-secondary"
+                                className="border-secondary fs-small"
                                 type="text"
                                 placeholder={detail?.phoneNumber}
                                 onChange={(e: any) =>
@@ -313,7 +320,7 @@ const Personal: FC = () => {
                                 }
                               />
                             ) : (
-                              <div className="fs-small text-dark px-2">
+                              <div className="small text-dark px-2">
                                 {detail?.phoneNumber}
                               </div>
                             )}
@@ -346,7 +353,7 @@ const Personal: FC = () => {
                           >
                             {edit ? (
                               <Form.Control
-                                className="border-secondary"
+                                className="border-secondary fs-small"
                                 type="date"
                                 placeholder={detail?.birthDate}
                                 onChange={(e: any) =>
@@ -357,7 +364,7 @@ const Personal: FC = () => {
                                 }
                               />
                             ) : (
-                              <div className="fs-small text-dark px-2">
+                              <div className="small text-dark px-2">
                                 {detail?.birthDate}
                               </div>
                             )}
@@ -406,7 +413,7 @@ const Personal: FC = () => {
                               </Form.Label>
                               {edit ? (
                                 <Form.Control
-                                  className="border-secondary"
+                                  className="border-secondary fs-small"
                                   type="text"
                                   placeholder={detail?.address?.houseNumber}
                                   onChange={(e: any) =>
@@ -427,7 +434,7 @@ const Personal: FC = () => {
                                 />
                               ) : (
                                 <div
-                                  className="fs-small pt-0 p-2 text-dark font-weight-normal"
+                                  className="small pt-0 p-2 text-dark font-weight-normal"
                                   style={{ minHeight: "29px" }}
                                 >
                                   {detail?.address?.houseNumber}
@@ -450,7 +457,7 @@ const Personal: FC = () => {
                               </Form.Label>
                               {edit ? (
                                 <Form.Control
-                                  className="border-secondary"
+                                  className="border-secondary fs-small"
                                   type="text"
                                   placeholder={detail?.address?.street}
                                   onChange={(e: any) =>
@@ -472,7 +479,7 @@ const Personal: FC = () => {
                                 />
                               ) : (
                                 <div
-                                  className="fs-small pt-0 p-2 text-dark m-0 font-weight-normal"
+                                  className="small pt-0 p-2 text-dark m-0 font-weight-normal"
                                   style={{ minHeight: "29px" }}
                                 >
                                   {detail?.address?.street}
@@ -495,7 +502,7 @@ const Personal: FC = () => {
                               </Form.Label>
                               {edit ? (
                                 <Form.Control
-                                  className="border-secondary"
+                                  className="border-secondary fs-small"
                                   type="text"
                                   placeholder={detail?.address?.city}
                                   onChange={(e: any) =>
@@ -516,7 +523,7 @@ const Personal: FC = () => {
                                   }
                                 />
                               ) : (
-                                <div className="fs-small pt-0 text-dark p-2 m-0 font-weight-normal">
+                                <div className="small pt-0 text-dark p-2 m-0 font-weight-normal">
                                   {detail?.address?.city}
                                 </div>
                               )}
@@ -535,7 +542,7 @@ const Personal: FC = () => {
                               </Form.Label>
                               {edit ? (
                                 <Form.Control
-                                  className="border-secondary"
+                                  className="border-secondary fs-small"
                                   type="text"
                                   placeholder={detail?.address?.state}
                                   onChange={(e: any) =>
@@ -557,7 +564,7 @@ const Personal: FC = () => {
                                 />
                               ) : (
                                 <div
-                                  className="fs-small pt-0 text-dark p-2 m-0 font-weight-normal"
+                                  className="small pt-0 text-dark p-2 m-0 font-weight-normal"
                                   style={{ minHeight: "29px" }}
                                 >
                                   {detail?.address?.state}
@@ -578,7 +585,7 @@ const Personal: FC = () => {
                               </Form.Label>
                               {edit ? (
                                 <Form.Control
-                                  className="border-secondary"
+                                  className="border-secondary fs-small text-start"
                                   type="number"
                                   placeholder={detail?.address?.pincode}
                                   onChange={(e: any) =>
@@ -600,7 +607,7 @@ const Personal: FC = () => {
                                 />
                               ) : (
                                 <div
-                                  className="fs-small pt-0 text-dark p-2 m-0 font-weight-normal"
+                                  className="small pt-0 text-dark p-2 m-0 font-weight-normal"
                                   style={{ minHeight: "29px" }}
                                 >
                                   {detail?.address?.pincode}
@@ -630,7 +637,7 @@ const Personal: FC = () => {
                               </Form.Label>
                               {edit ? (
                                 <Form.Control
-                                  className="border-secondary"
+                                  className="border-secondary fs-small"
                                   type="text"
                                   placeholder=""
                                   onChange={(e: any) =>
@@ -652,7 +659,7 @@ const Personal: FC = () => {
                                 />
                               ) : (
                                 <div
-                                  className="fs-small p-0 m-0 text-dark px-2 font-weight-normal"
+                                  className="small p-0 m-0 text-dark px-2 font-weight-normal"
                                   style={{ minHeight: "29px" }}
                                 >
                                   {detail?.address?.postOffice}
@@ -680,7 +687,7 @@ const Personal: FC = () => {
                               </Form.Label>
                               {edit ? (
                                 <Form.Control
-                                  className="border-secondary"
+                                  className="border-secondary fs-small"
                                   type="text"
                                   placeholder=""
                                   onChange={(e: any) =>
@@ -700,7 +707,7 @@ const Personal: FC = () => {
                                   }
                                 />
                               ) : (
-                                <div className="fs-small text-dark p-0 m-0 px-2 font-weight-normal">
+                                <div className="small text-dark p-0 m-0 px-2 font-weight-normal">
                                   {/* {detail?.address?.policeStation} */}
                                 </div>
                               )}
@@ -735,7 +742,7 @@ const Personal: FC = () => {
                           >
                             {edit ? (
                               <Form.Control
-                                className="border-secondary"
+                                className="border-secondary fs-small"
                                 type="text"
                                 placeholder={detail?.gender}
                                 onChange={(e: any) =>
@@ -748,7 +755,7 @@ const Personal: FC = () => {
                                 }
                               />
                             ) : (
-                              <div className="fs-small text-dark px-2">
+                              <div className="small text-dark px-2">
                                 {detail?.gender}
                               </div>
                             )}
@@ -780,7 +787,7 @@ const Personal: FC = () => {
                           >
                             {edit ? (
                               <Form.Control
-                                className="border-secondary"
+                                className="border-secondary fs-small"
                                 type="text"
                                 placeholder={detail?.bloodGroup}
                                 onChange={(e: any) =>
@@ -792,7 +799,7 @@ const Personal: FC = () => {
                               />
                             ) : (
                               <div
-                                className="fs-small bg-muted w-100 text-dark p-2"
+                                className="small bg-muted w-100 text-dark p-2"
                                 style={{ height: "30px" }}
                               >
                                 {detail?.bloodGroup}
@@ -814,7 +821,7 @@ const Personal: FC = () => {
                   >
                     Submit
                   </Button>
-                )}sat
+                )}
                 {!edit && (
                   <div
                     onClick={() => setEdit(true)}
