@@ -12,7 +12,10 @@ import { getCookie, setCookie } from "../../common/enum/functions";
 import { getUserProfileDataApi } from "../../../api/userProfileData/getUserProfileDataApi";
 import { selectUserData } from "../../../state/selectors/selectUserData";
 import { useLocation } from "react-router-dom";
-import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
+import {
+  selectIsMobile,
+  selectScreenSize,
+} from "../../../state/selectors/selectScreenSize";
 import { updateUserDetailsApi } from "../../../api/userProfileData/updateUserDetailsApi";
 
 const Personal: FC = () => {
@@ -20,6 +23,7 @@ const Personal: FC = () => {
   const user = cookie ? JSON.parse(cookie) : null;
   const location = useLocation();
   const screenSize = useSelector(selectScreenSize);
+  const isMobile = useSelector(selectIsMobile);
 
   const [edit, setEdit] = useState(
     location?.pathname?.includes("edit") || false
@@ -190,7 +194,9 @@ const Personal: FC = () => {
                             </Form.Label>
                             {edit ? (
                               <Form.Control
-                                className="border-secondary fs-small"
+                                className={`border-secondary ${
+                                  isMobile ? "fs-small" : "small"
+                                }`}
                                 type="text"
                                 placeholder={detail?.userFirstName}
                                 onChange={(e: any) =>
@@ -220,7 +226,9 @@ const Personal: FC = () => {
                             </Form.Label>
                             {edit ? (
                               <Form.Control
-                                className="border-secondary fs-small"
+                                className={`border-secondary ${
+                                  isMobile ? "fs-small" : "small"
+                                }`}
                                 type="text"
                                 placeholder={detail?.userLastName}
                                 onChange={(e: any) =>
@@ -264,7 +272,9 @@ const Personal: FC = () => {
                           >
                             {edit ? (
                               <Form.Control
-                                className="border-secondary fs-small"
+                                className={`border-secondary ${
+                                  isMobile ? "fs-small" : "small"
+                                }`}
                                 type="email"
                                 placeholder={detail?.email}
                                 onChange={(e: any) =>
@@ -308,7 +318,9 @@ const Personal: FC = () => {
                           >
                             {edit ? (
                               <Form.Control
-                                className="border-secondary fs-small"
+                                className={`border-secondary ${
+                                  isMobile ? "fs-small" : "small"
+                                }`}
                                 type="text"
                                 placeholder={detail?.phoneNumber}
                                 onChange={(e: any) =>
@@ -352,7 +364,9 @@ const Personal: FC = () => {
                           >
                             {edit ? (
                               <Form.Control
-                                className="border-secondary fs-small"
+                                className={`border-secondary ${
+                                  isMobile ? "fs-small" : "small"
+                                }`}
                                 type="date"
                                 placeholder={detail?.birthDate}
                                 onChange={(e: any) =>
@@ -412,7 +426,9 @@ const Personal: FC = () => {
                               </Form.Label>
                               {edit ? (
                                 <Form.Control
-                                  className="border-secondary fs-small"
+                                  className={`border-secondary ${
+                                    isMobile ? "fs-small" : "small"
+                                  }`}
                                   type="text"
                                   placeholder={detail?.address?.houseNumber}
                                   onChange={(e: any) =>
@@ -456,7 +472,9 @@ const Personal: FC = () => {
                               </Form.Label>
                               {edit ? (
                                 <Form.Control
-                                  className="border-secondary fs-small"
+                                  className={`border-secondary ${
+                                    isMobile ? "fs-small" : "small"
+                                  }`}
                                   type="text"
                                   placeholder={detail?.address?.street}
                                   onChange={(e: any) =>
@@ -501,7 +519,9 @@ const Personal: FC = () => {
                               </Form.Label>
                               {edit ? (
                                 <Form.Control
-                                  className="border-secondary fs-small"
+                                  className={`border-secondary ${
+                                    isMobile ? "fs-small" : "small"
+                                  }`}
                                   type="text"
                                   placeholder={detail?.address?.city}
                                   onChange={(e: any) =>
@@ -541,7 +561,9 @@ const Personal: FC = () => {
                               </Form.Label>
                               {edit ? (
                                 <Form.Control
-                                  className="border-secondary fs-small"
+                                  className={`border-secondary ${
+                                    isMobile ? "fs-small" : "small"
+                                  }`}
                                   type="text"
                                   placeholder={detail?.address?.state}
                                   onChange={(e: any) =>
@@ -584,7 +606,9 @@ const Personal: FC = () => {
                               </Form.Label>
                               {edit ? (
                                 <Form.Control
-                                  className="border-secondary fs-small text-start"
+                                  className={`border-secondary ${
+                                    isMobile ? "fs-small" : "small"
+                                  } text-start`}
                                   type="number"
                                   placeholder={detail?.address?.pincode}
                                   onChange={(e: any) =>
@@ -636,7 +660,9 @@ const Personal: FC = () => {
                               </Form.Label>
                               {edit ? (
                                 <Form.Control
-                                  className="border-secondary fs-small"
+                                  className={`border-secondary ${
+                                    isMobile ? "fs-small" : "small"
+                                  }`}
                                   type="text"
                                   placeholder=""
                                   onChange={(e: any) =>
@@ -686,7 +712,9 @@ const Personal: FC = () => {
                               </Form.Label>
                               {edit ? (
                                 <Form.Control
-                                  className="border-secondary fs-small"
+                                  className={`border-secondary ${
+                                    isMobile ? "fs-small" : "small"
+                                  }`}
                                   type="text"
                                   placeholder=""
                                   onChange={(e: any) => {
@@ -742,7 +770,9 @@ const Personal: FC = () => {
                           >
                             {edit ? (
                               <Form.Control
-                                className="border-secondary fs-small"
+                                className={`border-secondary ${
+                                  isMobile ? "fs-small" : "small"
+                                }`}
                                 type="text"
                                 placeholder={detail?.gender}
                                 onChange={(e: any) =>
@@ -787,7 +817,9 @@ const Personal: FC = () => {
                           >
                             {edit ? (
                               <Form.Control
-                                className="border-secondary fs-small"
+                                className={`border-secondary ${
+                                  isMobile ? "fs-small" : "small"
+                                }`}
                                 type="text"
                                 placeholder={detail?.bloodGroup}
                                 onChange={(e: any) =>
