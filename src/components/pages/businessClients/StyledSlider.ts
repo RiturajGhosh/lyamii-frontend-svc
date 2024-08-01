@@ -9,15 +9,18 @@ const StyledSlider = styled(Slider)`
   }
   .slick-slide div {
     justify-content: center;
-    align-self:center;
-    display:flex;
+    align-self: center;
+    display: flex;
     align-items: center;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     outline: none;
     background-color: white;
     width: 80%;
-    height:9dvi;
+    height: 9dvi;
     margin: auto auto;
+  }
+  .slick-arrow {
+    display: none !important;
   }
 `;
 export default StyledSlider;

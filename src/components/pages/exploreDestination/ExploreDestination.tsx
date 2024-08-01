@@ -206,11 +206,11 @@ const ExploreDestination: FC = () => {
       </div>
       <div className="search-bar-container mt-5 mb-5">
         <Row className="align-items-center justify-content-center">
-          <Col lg={8} className="text-center">
+          <Col lg={8} md={8} className="text-center col">
             <div
               className="input-group"
               style={{
-                width: 821,
+                width: "100%",
                 height: 55,
               }}
             >
@@ -232,10 +232,10 @@ const ExploreDestination: FC = () => {
                     fetchTours();
                   }}
                   style={{
-                    width: 169,
+                    width: "100%",
                     height: 56,
                     backgroundColor: "#879DFF",
-                    fontSize: 20,
+                    // fontSize: 20,
                     fontWeight: "600",
                     borderRadius: 0,
                   }}
@@ -245,10 +245,10 @@ const ExploreDestination: FC = () => {
               </div>
             </div>
           </Col>
-          <Col
+          <Col 
             onClick={() => setShow(!show)}
             lg="auto"
-            className="text-center"
+            className="text-center col-3"
             style={{ paddingLeft: 0 }}
           >
             <Button
@@ -265,7 +265,7 @@ const ExploreDestination: FC = () => {
               <FaFilter />
             </Button>
           </Col>
-          <Col lg="auto" className="text-center" style={{ paddingRight: 0 }}>
+          {/* <Col lg="auto" className="text-center" style={{ paddingRight: 0 }}>
             <img
               src="https://images.unsplash.com/photo-1714259523626-2c5487107dc4?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGV1cm9wZXxlbnwwfHwwfHx8MA%3D%3D" // Replace with your image URL
               alt="circular-img"
@@ -276,87 +276,99 @@ const ExploreDestination: FC = () => {
                 borderRadius: "50%",
               }}
             />
-          </Col>
+          </Col> */}
         </Row>
       </div>
 
       <div
-        className="tabs-container"
+        className="tabs-container gap-2 flex-lg-row flex-md-row flex-c d-flex"
         style={{
+          maxWidth: 1331,
+          margin: "20px auto",
           textAlign: "center",
           justifyContent: "space-between",
         }}
       >
-        <Button
-          onClick={() => getPackage()}
-          style={{
-            backgroundColor: "#F0F4FF",
-            fontSize: 25,
-            fontWeight: "600",
-            color: "#879DFF",
-            width: 409,
-            height: 55,
-            marginRight: 10,
-            borderRadius: 0,
-            borderWidth: 0,
-          }}
-        >
-          All
-        </Button>
-        <Button
-          onClick={async () => {
-            const response = await getPackageDetailsByCountryAndDaysApi(0, 1);
-            if (response.status === 200) {
-              dispatch({
-                type: SET_TOUR_DATA,
-                payload: parseTourDataArray(response.data),
-              });
-            }
-          }}
-          style={{
-            backgroundColor: "#F0F4FF",
-            fontSize: 25,
-            fontWeight: "600",
-            color: "#879DFF",
-            width: 409,
-            height: 55,
-            marginRight: 10,
-            borderRadius: 0,
-            borderWidth: 0,
-          }}
-        >
-          Incredible India
-        </Button>
-        <Button
-          onClick={async () => {
-            const response = await getNonIndianTours();
-            if (response.status === 200) {
-              dispatch({
-                type: SET_TOUR_DATA,
-                payload: parseTourDataArray(response.data),
-              });
-            }
-          }}
-          style={{
-            backgroundColor: "#F0F4FF",
-            fontSize: 25,
-            fontWeight: "600",
-            color: "#879DFF",
-            width: 409,
-            height: 55,
-            marginRight: 10,
-            borderRadius: 0,
-            borderWidth: 0,
-          }}
-        >
-          Beyond obvious
-        </Button>
+        <Col lg={4} md={4} className="col">
+          <Button
+            className="w-100 p-0 m-0"
+            onClick={() => getPackage()}
+            style={{
+              backgroundColor: "#F0F4FF",
+              // fontSize: 25,
+              fontWeight: "600",
+              color: "#879DFF",
+              // width: 409,
+              height: 55,
+              marginRight: 10,
+              borderRadius: 0,
+              borderWidth: 0,
+            }}
+          >
+            All
+          </Button>
+        </Col>
+        <Col lg={3} md={3} className="col">
+          <Button
+            className="w-100 p-0 m-0"
+            onClick={async () => {
+              const response = await getPackageDetailsByCountryAndDaysApi(0, 1);
+              if (response.status === 200) {
+                dispatch({
+                  type: SET_TOUR_DATA,
+                  payload: parseTourDataArray(response.data),
+                });
+              }
+            }}
+            style={{
+              backgroundColor: "#F0F4FF",
+              // fontSize: 25,
+              fontWeight: "600",
+              color: "#879DFF",
+              // width: 409,
+              height: 55,
+              marginRight: 10,
+              borderRadius: 0,
+              borderWidth: 0,
+            }}
+          >
+            Incredible India
+          </Button>{" "}
+        </Col>
+        <Col lg={4} md={4} className="col">
+          <Button
+            className="w-100 p-0 m-0"
+            onClick={async () => {
+              const response = await getNonIndianTours();
+              if (response.status === 200) {
+                dispatch({
+                  type: SET_TOUR_DATA,
+                  payload: parseTourDataArray(response.data),
+                });
+              }
+            }}
+            style={{
+              backgroundColor: "#F0F4FF",
+              // fontSize: 25,
+              fontWeight: "600",
+              color: "#879DFF",
+              // width: 409,
+              height: 55,
+              marginRight: 10,
+              borderRadius: 0,
+              borderWidth: 0,
+            }}
+          >
+            Beyond obvious
+          </Button>{" "}
+        </Col>
       </div>
       <div
+      className="mx-md-auto mx-lg-auto"
         style={{
           justifyContent: "space-between",
           maxWidth: 1331,
-          margin: "20px auto",
+          margin: "20px 20px",
         }}
       >
         {tourData?.length > 0 ? (

@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { selectCustomerReview } from "../../../state/selectors/selectCustomerReview";
 import { useSelector } from "react-redux";
 import { reviews } from "../../common/enum/enum";
+import { Col } from "react-bootstrap";
 
 const CustomerReviewSection: FC = () => {
   const history = useHistory();
@@ -44,7 +45,7 @@ const CustomerReviewSection: FC = () => {
       </div>
       <div style={styles.reviewContainer}>
         {reviews.map((review, index) => (
-          <div key={index} style={styles.reviewCard}>
+          <Col key={index} style={styles.reviewCard}>
             <img
               loading="lazy"
               src={review.image}
@@ -57,7 +58,7 @@ const CustomerReviewSection: FC = () => {
               <p style={styles.reviewText}>{review.review}</p>
               <p style={styles.reviewerName}>{review.name}</p>
             </div>
-          </div>
+          </Col>
         ))}
       </div>
     </div>
@@ -81,9 +82,8 @@ const styles: { [key: string]: React.CSSProperties } = {
     WebkitOverflowScrolling: "touch",
   },
   reviewCard: {
-    flex: "0 0 400px",
+    flex: "0 0 350px",
     background: "#FFFFFF",
-    marginRight: "20px",
     padding: "20px",
     borderRadius: "0px",
     textAlign: "left" as const, // 'as const' ensures the correct type

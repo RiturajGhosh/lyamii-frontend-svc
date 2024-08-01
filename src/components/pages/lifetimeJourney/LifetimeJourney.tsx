@@ -8,6 +8,7 @@ import {
   SET_TOUR_PACKAGE_ID,
   selectedTourDataDto,
 } from "../../../state/actions/types/tourDataActionType";
+import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
 const LifetimeJourney: FC = () => {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const LifetimeJourney: FC = () => {
       (tour) => tour.packageName.indexOf("India") === -1
     );
   };
+  const screenSize = useSelector(selectScreenSize);
   return (
     <Container
       fluid
@@ -46,8 +48,15 @@ const LifetimeJourney: FC = () => {
           src={require("../../../Assets/incredible.png")}
         />
       </h2>
-      <div style={styles.cardContainer}>
-        <div style={styles.card} className="text-center">
+      <div style={styles.cardContainer} className="row">
+        <Col
+          lg={4}
+          md={4}
+          sm={12}
+          sx={12}
+          style={styles.card}
+          className="text-center"
+        >
           <img
             src="https://drive.google.com/thumbnail?sz=w2000&id=1wOTvo27hpyi3ZvD2cdcJBNHhCdz2W8cF"
             alt="Royal Bharat Edition"
@@ -63,8 +72,15 @@ const LifetimeJourney: FC = () => {
               View More
             </button>
           </Col>
-        </div>
-        <div style={styles.card} className="text-center">
+        </Col>
+        <Col
+          lg={4}
+          md={4}
+          sm={12}
+          sx={12}
+          style={styles.card}
+          className="text-center"
+        >
           <img
             src="https://drive.google.com/thumbnail?sz=w2000&id=1wV2RNRvFCy8ew9aqzpeR-zbITwbY5sR1"
             alt="Backpackers Edition"
@@ -80,8 +96,15 @@ const LifetimeJourney: FC = () => {
               View More
             </button>
           </Col>
-        </div>
-        <div style={styles.card} className="text-center">
+        </Col>
+        <Col
+          lg={4}
+          md={4}
+          sm={12}
+          sx={12}
+          style={styles.card}
+          className="text-center"
+        >
           <img
             // src="https://drive.google.com/thumbnail?sz=w2000&id=1wQauWIEPsLvtFOVsHHu7gTYgECXxOgDg"
             src={require("../../../Assets/1000135220.jpg")}
@@ -98,7 +121,7 @@ const LifetimeJourney: FC = () => {
               View More
             </button>
           </Col>
-        </div>
+        </Col>
       </div>
       {/* International packages */}
       <h2
@@ -145,10 +168,16 @@ const LifetimeJourney: FC = () => {
                 >
                   <div className="d-flex w-100 align-items-center justify-content-between align-content-between">
                     <Card.Title
-                      className="position-absolute bg-white m-0 p-0"
+                      className={`position-absolute bg-white m-0 p-0 ${
+                        screenSize?.screenSize < 767
+                          ? "normal"
+                          : screenSize?.screenSize > 767 && screenSize?.screenSize <969 
+                          ? "fs-medium"
+                          : "fs-auto"
+                      }`}
                       style={{
                         zIndex: "1",
-                        fontSize: 25,
+                        // fontSize: 25,
                         fontWeight: "700",
                         color: "#879DFF",
                         whiteSpace: "pre",
@@ -166,8 +195,9 @@ const LifetimeJourney: FC = () => {
                       }}
                     />
                     <Card.Subtitle
+                      className="small"
                       style={{
-                        fontSize: 13,
+                        // fontSize: 13,
                         height: "25px",
                         fontWeight: "400",
                         color: "#879DFF",
@@ -244,11 +274,11 @@ const LifetimeJourney: FC = () => {
                               WebkitAppearance: "none",
                               MozAppearance: "none",
                               background: "transparent",
-                              fontSize: "16px",
+                              // fontSize: "16px",
                               fontWeight: "700",
                               color: "rgb(134, 133, 133)",
                             }}
-                            className=" p-0 pointer border border-0 w-100"
+                            className=" p-0 pointer border small border-0 w-100"
                             aria-label="Default select example"
                           >
                             {tour?.packagePrice?.map(
@@ -256,8 +286,9 @@ const LifetimeJourney: FC = () => {
                                 <option
                                   key={index}
                                   value={price}
+                                  className="small"
                                   style={{
-                                    fontSize: "16px",
+                                    // fontSize: "16px",
                                     fontWeight: "700",
                                     color: "rgb(134, 133, 133)",
                                   }}
@@ -269,8 +300,9 @@ const LifetimeJourney: FC = () => {
                           </select>
                         </span>
                         <span
+                          className="small"
                           style={{
-                            fontSize: 16,
+                            // fontSize: 16,
                             fontWeight: "700",
                             color: "#868585",
                           }}
@@ -279,10 +311,11 @@ const LifetimeJourney: FC = () => {
                         </span>
                       </p>
                       <Button
+                        className="small"
                         style={{
                           backgroundColor: "#879DFF",
                           fontWeight: "700",
-                          fontSize: 15,
+                          // fontSize: 15,
                           borderRadius: 0,
                           borderWidth: 0,
                         }}

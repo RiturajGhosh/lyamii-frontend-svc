@@ -161,7 +161,7 @@ const CheckOut: FC = () => {
           <Accordion activeKey={activeKey} className="shadow rounded-4">
             <Accordion.Item eventKey="0">
               <Accordion.Header
-                style={{ background: "#879DFF" }}
+                style={{ background: "#4A90E2" }}
                 onClick={() => handleToggle("0")}
               >
                 Booking Detail
@@ -250,7 +250,7 @@ const CheckOut: FC = () => {
             </Accordion.Item>
             <Accordion.Item eventKey="1">
               <Accordion.Header
-                style={{ background: "#879DFF" }}
+                style={{ background: "#4A90E2" }}
                 onClick={() => handleToggle("1")}
               >
                 Tour Detail
@@ -367,7 +367,7 @@ const CheckOut: FC = () => {
         </Col>
         <Col md={5} lg={5} className="col-12 py-0">
           <Card className="text-start py-0 m-0">
-            <Card.Header className="bold">Price Details</Card.Header>
+            <Card.Header className="bold text-white" style={{background:"#4A90E2"}}>Price Details</Card.Header>
             <Card.Body>
               <Row className="justify-content-between">
                 <Card.Title className="col-6">Booking Price</Card.Title>
@@ -399,7 +399,7 @@ const CheckOut: FC = () => {
                 </Card.Text>
               </Row>
             </Card.Body>
-            <Card.Footer className="text-muted">
+            <Card.Footer className="text-white" style={{background:"#4A90E2"}}>
               Your Total Saving is 0 Rs
             </Card.Footer>
           </Card>

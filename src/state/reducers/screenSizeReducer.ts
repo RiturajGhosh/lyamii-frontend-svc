@@ -5,7 +5,8 @@ import {
 } from "../actions/types/screenSizeType";
 
 const initialState: any = {
-  isMobile: window.innerWidth < 1000,
+  isMobile: window.innerWidth < 768,
+  isTab: window.innerWidth > 768 && window.innerWidth < 1001,
   isDesktop: window.innerWidth > 1000,
   screenSize: window.innerWidth,
 };

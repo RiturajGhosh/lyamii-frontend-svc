@@ -7,6 +7,7 @@ import {
   Form,
   Carousel,
   Button,
+  Row,
 } from "react-bootstrap";
 import Destinations from "../destinations/Destinations";
 import WhyLyamii from "../whyLyamii/WhyLyamii";
@@ -314,12 +315,11 @@ const Home: FC = () => {
               onClick={() => {
                 history.push("/passportRegistration");
               }}
-              className="p-2 m-0"
+              className="p-2 m-0 small"
               style={{
                 backgroundColor: "#879DFF",
-                fontSize: 20,
                 fontWeight: "bold",
-                height: 60,
+                height: 50,
                 border: "none",
                 boxShadow: "none",
                 // marginLeft: "10px",
@@ -329,7 +329,7 @@ const Home: FC = () => {
             </Button>
           </div>
           <div
-            className="mx-2 m-0 position-absolute bottom-0 end-0"
+            className="mx-2 m-0 position-absolute col-lg-4 col-8 bottom-0 end-0"
             style={{
               display: "flex",
               alignItems: "center",
@@ -353,8 +353,7 @@ const Home: FC = () => {
                 });
               }}
               style={{
-                width: 300,
-                height: 60,
+                height: 50,
                 // border: "none",
                 boxShadow: "none",
               }}
@@ -383,11 +382,11 @@ const Home: FC = () => {
               onClick={() => {
                 fetchTours();
               }}
+              className="small text-nowrap"
               style={{
                 backgroundColor: "#879DFF",
-                fontSize: 20,
                 fontWeight: "bold",
-                height: 60,
+                height: 50,
                 border: "none",
                 boxShadow: "none",
                 marginLeft: "10px",
@@ -757,7 +756,7 @@ const Home: FC = () => {
 
         {/* Horizontal cards */}
 
-        <div
+        <Row
           style={{
             display: "flex",
             justifyContent: "center",
@@ -769,7 +768,11 @@ const Home: FC = () => {
           }}
         >
           {reasons.map((card, index) => (
-            <div
+            <Col
+              lg={3}
+              md={6}
+              sm={6}
+              sx={6}
               key={index}
               onMouseEnter={() => handleCardHover(index)}
               onMouseLeave={handleCardLeave}
@@ -830,9 +833,9 @@ const Home: FC = () => {
                   {card.description}
                 </p>
               </div>
-            </div>
+            </Col>
           ))}
-        </div>
+        </Row>
       </div>
 
       {/* krna hai espe work */}

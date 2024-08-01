@@ -34,6 +34,10 @@ import { countries } from "../enum/countryCode";
 import { countryCode } from "../../../utils/countryCodes";
 import { departureData, styles } from "./TourUiData";
 import { getCookie } from "../enum/functions";
+import {
+  selectIsMobile,
+  selectScreenSize,
+} from "../../../state/selectors/selectScreenSize";
 
 interface LoginPromptModalProps {
   show: boolean;
@@ -62,6 +66,8 @@ const LoginPromptModal: FC<LoginPromptModalProps> = ({ show, handleClose }) => {
   );
 };
 const TourDetailCard: FC = () => {
+  const isMobile = useSelector(selectIsMobile);
+  const screenSize = useSelector(selectScreenSize);
   const tourData = useSelector(selectTourData);
   const cookie = getCookie("user");
   const isLoggedIn = cookie ? JSON.parse(cookie)?.token?.length > 0 : false;
@@ -145,21 +151,42 @@ const TourDetailCard: FC = () => {
 
   return (
     <div style={styles.card} className="mb-0">
-      <div style={styles.mainImageContainer}>
-        <Carousel activeIndex={currentIndex} onSelect={handleSelect}>
-          {tourData?.imageUri?.slice(1)?.map((image) => {
-            return (
+      <Row
+        style={{
+          ...styles.mainImageContainer,
+          position: "relative",
+          width: "100%",
+        }}
+      >
+        <Col lg={10} md={10} className="col-12">
+          <Carousel activeIndex={currentIndex} onSelect={handleSelect}>
+            {tour?.imageUri?.length > 1 && tour.imageUri[1] !== "" ? (
+              tourData?.imageUri?.slice(1)?.map((image) => {
+                return (
+                  <Carousel.Item>
+                    <img
+                      src={`https://drive.google.com/thumbnail?sz=w2000&id=${image}`}
+                      alt={"Main Tour Image"}
+                      loading="lazy"
+                      style={{ width: "100%", height: "auto" }}
+                    />
+                  </Carousel.Item>
+                );
+              })
+            ) : (
               <Carousel.Item>
                 <img
-                  src={`https://drive.google.com/thumbnail?sz=w2000&id=${image}`}
+                  src={
+                    "https://drive.google.com/thumbnail?sz=w2000&id=1Cgy6eNCJJvCF1cRC6NSd1OedYI9zCD96"
+                  }
                   alt={"Main Tour Image"}
                   loading="lazy"
-                  style={styles.mainImage}
+                  style={{ width: "100%", height: "auto" }}
                 />
               </Carousel.Item>
-            );
-          })}
-        </Carousel>
+            )}
+          </Carousel>
+        </Col>
         {/* <img
           src={
             tour?.imageUri?.length > 0 && tour.imageUri[0] !== ""
@@ -170,8 +197,203 @@ const TourDetailCard: FC = () => {
           loading="lazy"
           style={styles.mainImage}
         /> */}
-        <div style={styles.mainText}>
-          <p
+
+        <Col
+          lg={2}
+          md={2}
+          className="col-12"
+          style={{
+            top: isMobile ? "auto" : "5%",
+            left: isMobile ? "auto" : "5%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: isMobile ? "center" : "flex-start",
+            gap: "1rem",
+            marginTop: isMobile ? "1rem" : "0",
+          }}
+
+          // style={{
+          //   display: "flex",
+          //   justifyContent: "flex-end",
+          //   alignItems: "flex-end",
+          //   // marginTop: -50,
+          // }}
+        >
+          <div className="w-100 d-flex flex-lg-column flex-md-column flex-row">
+            <Col lg={12} md={12} className="col-8">
+              <Row
+                className="p-0 m-0"
+                style={{
+                  fontSize: "2rem",
+                  fontWeight: "600",
+                  color: "#1C1C1C",
+                  width: "100%",
+                  textAlign: isMobile ? "center" : "left",
+                }}
+              >
+                {tour.title}
+              </Row>
+              <div className="p-0 m-0">
+                {" "}
+                <Row className="w-100 justify-content-start py-2">
+                  {tourData?.rating &&
+                    [...Array(tourData?.rating)]?.map(
+                      (star: any, index: number) => {
+                        return (
+                          <AiFillStar
+                            key={index}
+                            size={20}
+                            style={{
+                              color: "#f7de26",
+                              width: "fit-content",
+                              paddingLeft: "0px",
+                              paddingRight: "0px",
+                              marginTop: "0px",
+                            }}
+                            className="d-flex"
+                          />
+                        );
+                      }
+                    )}
+                  {tourData.rating &&
+                    [...Array(5 - tourData?.rating)]?.map((index: number) => {
+                      return (
+                        <AiOutlineStar
+                          key={index}
+                          size={20}
+                          style={{
+                            color: "f7de26",
+                            width: "fit-content",
+                            paddingLeft: "0px",
+                            paddingRight: "0px",
+                            marginTop: "0px",
+                          }}
+                          className="d-flex"
+                        />
+                      );
+                    })}
+                </Row>
+              </div>
+              <span
+                className="medium"
+                style={{
+                  fontSize: 18,
+                  fontWeight: "700",
+                  color: "#818181",
+                  marginBottom: 10,
+                }}
+              >
+                <span
+                  className="normal"
+                  style={{
+                    // fontSize: 20,
+                    fontWeight: "600",
+                    color: "#879DFF",
+                  }}
+                >
+                  {tourData?.noOfDays - 1}N/{tourData?.noOfDays}D
+                </span>
+              </span>
+              <Row
+                className="align-items-center small d-flex border border-0"
+                style={{
+                  fontSize: 18,
+                  fontWeight: "700",
+                  color: "#818181",
+                  marginBottom: 10,
+                }}
+              >
+                <Col className="p-0 m-0">
+                  <select
+                    style={{
+                      WebkitAppearance: "none",
+                      MozAppearance: "none",
+                      background: "transparent",
+                      // fontSize: "16px",
+                      fontWeight: "700",
+                      color: "rgb(134, 133, 133)",
+                    }}
+                    className="form-select w-100 normal border-0 pointer p-0"
+                    aria-label="Default select example"
+                  >
+                    {tourData?.packagePrice?.map(
+                      (price: string, index: number) => (
+                        <option key={index} className={"w-100"} value={price}>
+                          {price}
+                        </option>
+                      )
+                    )}
+                  </select>
+                </Col>
+              </Row>
+            </Col>
+            <Col
+              lg={12}
+              md={12}
+              className="col-4 justify-content-center flex-column align-item-center d-flex"
+            >
+              <button
+                className={`view-more-button w-100 ${
+                  screenSize?.screenSize < 767
+                    ? "normal"
+                    : screenSize?.screenSize > 767 &&
+                      screenSize?.screenSize < 969
+                    ? "fs-medium"
+                    : "fs-auto"
+                }`}
+                onClick={() =>
+                  isLoggedIn ? history.push("/checkout") : handleShow
+                }
+                style={{
+                  width: 164,
+                  height: 53,
+                  fontWeight: "700",
+                  color: "#FFFFFF",
+                  backgroundColor: "#879DFF",
+                  borderRadius: 0,
+                  borderWidth: 0,
+                }}
+              >
+                Book Now
+              </button>
+              <h4 className="fw-bold py-3 my-0">Arrival Date</h4>
+              <div
+              className="w-100"
+                style={{
+                  display: "flex",
+                  gap: "10px",
+                  justifyContent: "flex-start",
+                  alignItems: "flex-start",
+                  marginBottom: 10,
+                  marginLeft: 0,
+                }}
+              >
+                <span
+                className="w-100"
+                  style={{
+                    padding: "5px 5px",
+                    borderRadius: 0,
+                    backgroundColor: "#F5F5F5",
+                    color: "#6F82D3",
+                    fontSize: 20,
+                    fontWeight: "400",
+                  }}
+                >
+                  <input
+                    className="border-0 bg-transparent w-100"
+                    onChange={(e) =>
+                      dispatch({
+                        type: SET_SELECTED_TOUR_DEPARTURE_DATE,
+                        payload: e.target.value,
+                      })
+                    }
+                    type="date"
+                  />
+                </span>
+              </div>
+            </Col>
+          </div>
+          {/* <p
             className="p-0 m-0"
             style={{
               fontSize: 35,
@@ -312,9 +534,9 @@ const TourDetailCard: FC = () => {
                 type="date"
               />
             </span>
-          </div>
-        </div>
-      </div>
+          </div> */}
+        </Col>
+      </Row>
 
       {/* Add the login prompt modal here */}
       <div style={styles.placesContainer}>
@@ -469,19 +691,23 @@ const TourDetailCard: FC = () => {
             </div>
           )}
           <Button
-            className="view-more-button"
+            className={`${
+              screenSize?.screenSize < 767
+                ? "normal"
+                : screenSize?.screenSize > 767 && screenSize?.screenSize < 969
+                ? "fs-medium"
+                : "fs-auto"
+            }`}
             onClick={() => {
               setShowAllItinerary(!showAllItinerary);
             }}
             style={{
-              backgroundColor: "#4A90E2",
-              fontSize: 15,
-              fontWeight: "600",
+              width: 164,
+              fontWeight: "700",
               color: "#FFFFFF",
-              border: "none",
+              backgroundColor: "#879DFF",
               borderRadius: 0,
-              alignSelf: "center",
-              margin: "20px auto 0",
+              borderWidth: 0,
             }}
           >
             {showAllItinerary ? "View Less" : "View More"}
@@ -496,6 +722,7 @@ const TourDetailCard: FC = () => {
             <Col
               className="align-content-center"
               style={{
+                width: 164,
                 padding: "5px 5px",
                 borderRadius: 0,
                 backgroundColor: "#F5F5F5",
@@ -526,14 +753,19 @@ const TourDetailCard: FC = () => {
               {tourData?.packagePrice?.length > 0 &&
                 tourData?.packagePrice[0]?.split(" ")[0]} */}
             </Col>
-            <button
+            <Button
               onClick={() =>
                 isLoggedIn ? history.push("/checkout") : handleShow()
               }
+              className={`${
+                screenSize?.screenSize < 767
+                  ? "normal"
+                  : screenSize?.screenSize > 767 && screenSize?.screenSize < 969
+                  ? "fs-medium"
+                  : "fs-auto"
+              }`}
               style={{
                 width: 164,
-                height: 48,
-                fontSize: 28,
                 fontWeight: "700",
                 color: "#FFFFFF",
                 backgroundColor: "#879DFF",
@@ -542,7 +774,7 @@ const TourDetailCard: FC = () => {
               }}
             >
               Book Now
-            </button>
+            </Button>
             {/* <Col
               style={{
                 padding: "5px 5px",

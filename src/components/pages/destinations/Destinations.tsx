@@ -9,6 +9,7 @@ import {
   selectedTourDataDto,
 } from "../../../state/actions/types/tourDataActionType";
 import { TbWorldSearch } from "react-icons/tb";
+import { selectScreenSize } from "../../../state/selectors/selectScreenSize";
 
 const Destinations = () => {
   const history = useHistory();
@@ -19,6 +20,7 @@ const Destinations = () => {
     indianTours?.length > 0 && setTourList(indianTours);
   }, [indianTours]);
 
+  const screenSize = useSelector(selectScreenSize);
   // const tours = [
   //   {
   //     id: 1,
@@ -201,7 +203,14 @@ const Destinations = () => {
                 >
                   <div className="d-flex w-100 align-items-center justify-content-between align-content-between">
                     <Card.Title
-                      className="position-absolute bg-white p-0 m-0"
+                      className={`position-absolute bg-white p-0 m-0 ${
+                        screenSize?.screenSize < 767
+                          ? "normal"
+                          : screenSize?.screenSize > 767 &&
+                            screenSize?.screenSize < 969
+                          ? "fs-medium"
+                          : "fs-auto"
+                      }`}
                       style={{
                         fontSize: 25,
                         fontWeight: "700",
@@ -300,11 +309,11 @@ const Destinations = () => {
                               WebkitAppearance: "none",
                               MozAppearance: "none",
                               background: "transparent",
-                              fontSize: "16px",
+                              // fontSize: "16px",
                               fontWeight: "700",
                               color: "rgb(134, 133, 133)",
                             }}
-                            className=" p-0 pointer border border-0 w-100"
+                            className=" p-0 pointer border border-0 w-100 small"
                             aria-label="Default select example"
                           >
                             {tour?.packagePrice?.map(
@@ -312,8 +321,9 @@ const Destinations = () => {
                                 <option
                                   key={index}
                                   value={price}
+                                  className="small"
                                   style={{
-                                    fontSize: "16px",
+                                    // fontSize: "16px",
                                     fontWeight: "700",
                                     color: "rgb(134, 133, 133)",
                                   }}
@@ -325,8 +335,9 @@ const Destinations = () => {
                           </select>
                         </span>
                         <span
+                          className="small"
                           style={{
-                            fontSize: 16,
+                            // fontSize: 16,
                             fontWeight: "700",
                             color: "#868585",
                           }}

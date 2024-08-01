@@ -136,7 +136,7 @@ const Payment: FC<PaymentDto> = ({ userDetail }) => {
           fontSize: 28,
           fontWeight: "700",
           color: "#FFFFFF",
-          backgroundColor: isDisabled ? "#aeaeae" : "#879DFF",
+          backgroundColor: isDisabled ? "#aeaeae" : "#4A90E2",
           borderRadius: 0,
           borderWidth: 0,
         }}

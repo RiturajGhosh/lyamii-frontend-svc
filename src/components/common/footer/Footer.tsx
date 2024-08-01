@@ -124,7 +124,7 @@ const Footer: FC = () => {
                       return (
                         <ul
                           key={index}
-                          className="p-0 my-0 justify-content-md-center d-flex"
+                          className="p-0 my-0 justify-content-center d-flex"
                         >
                           <li
                             key={index}
@@ -158,7 +158,7 @@ const Footer: FC = () => {
                 </Col>
               </Row>
             </Col>
-            <Col md={12} lg={5} className="mt-2">
+            <Col md={12} lg={5} className="mt-2 text-center text-lg-start">
               <span
                 className="display-1 text-white"
                 onClick={() => history.push("/")}

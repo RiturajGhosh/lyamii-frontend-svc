@@ -145,11 +145,12 @@ const MapAndEscape: FC = () => {
           />
         </h2>
         <p
+          className="fs-medium"
           style={{
-            fontSize: 20,
+            // fontSize: 20,
             fontWeight: "400",
             textAlign: "center",
-            marginInline: 60,
+            // marginInline: 60,
             color: "#000000",
           }}
         >
@@ -170,11 +171,12 @@ const MapAndEscape: FC = () => {
           platform.
         </p>
         <p
+          className="fs-medium"
           style={{
-            fontSize: 20,
+            // fontSize: 20,
             fontWeight: "400",
             textAlign: "center",
-            marginInline: 60,
+            // marginInline: 60,
             marginBottom: 60,
             marginTop: 40,
             color: "#000000",
