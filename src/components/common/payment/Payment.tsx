@@ -60,7 +60,7 @@ const Payment: FC<PaymentDto> = ({ userDetail }) => {
       amount: money.split(" ")[0],
       currency: money.split(" ")[1],
       name: "Lyamii",
-      description: `This ${tourData?.title} with packageID ${tourData.packageId} is booked by ${userDetail?.userFullName} on Dated ${departureDate}`,
+      description: `This ${tourData?.title} with packageID ${tourData.packageId} is booked by ${userDetail?.userFirstName} on Dated ${departureDate}`,
       image: "https://lyamii.com/static/media/logo.1f8ab1a3952e8db84941.png",
       order_id: order.data.id,
       handler: function (response: any) {
@@ -96,7 +96,7 @@ const Payment: FC<PaymentDto> = ({ userDetail }) => {
         //   });
       },
       prefill: {
-        name: userDetail.userFullName,
+        name: userDetail.userFirstName,
         email: userDetail?.email,
         contact: userDetail?.phoneNumber,
       },
@@ -118,7 +118,7 @@ const Payment: FC<PaymentDto> = ({ userDetail }) => {
   useEffect(() => {
     setIsDisabled(
       tourData?.packageId?.length < 4 ||
-        userDetail?.userFullName?.length < 4 ||
+        userDetail?.userFirstName?.length < 4 ||
         userDetail?.email?.length < 14 ||
         userDetail?.phoneNumber?.length < 10
     );

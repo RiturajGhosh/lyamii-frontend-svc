@@ -22,7 +22,7 @@ import { useHistory } from "react-router-dom";
 import { updateUserDetailsApi } from "../../../api/userProfileData/updateUserDetailsApi";
 import { userRegistrationApi } from "../../../api/userProfileData/userRegistrationApi";
 interface Errors {
-  userFullName?: string;
+  userFirstName?: string;
   email?: string;
   phoneNumber?: string;
 }
@@ -30,9 +30,13 @@ interface Errors {
 const CheckOut: FC = () => {
   const dispatch = useDispatch();
   const tourData = useSelector(selectTourData);
-  const userData = useSelector(selectUserData);
+  const userProfileCookie = getCookie("userProfile");
+  const userData = userProfileCookie
+    ? JSON.parse(JSON.parse(userProfileCookie))
+    : {};
+  // useSelector(selectUserData);
   const [activeKey, setActiveKey] = useState("0");
-  const [userDetail, setUserDetail] = useState<UserDataDto>(userData?.userData);
+  const [userDetail, setUserDetail] = useState<UserDataDto>(userData);
   const history = useHistory();
 
   const [errors, setErrors] = useState<Errors>({});
@@ -43,11 +47,11 @@ const CheckOut: FC = () => {
     const errors: Errors = {};
     // Validate User Name
     if (touched.includes("userFullName")) {
-      if (!userDetail.userFullName) {
-        errors.userFullName = "User Name is required";
+      if (!userDetail.userFirstName) {
+        errors.userFirstName = "User Name is required";
         valid = false;
-      } else if (userDetail.userFullName.length < 3) {
-        errors.userFullName = "User Name must be at least 3 characters";
+      } else if (userDetail.userFirstName.length < 3) {
+        errors.userFirstName = "User Name must be at least 3 characters";
         valid = false;
       }
     }
@@ -183,13 +187,13 @@ const CheckOut: FC = () => {
                           name="userFullName"
                           onFocus={handleFocus}
                           onBlur={handleBlur}
-                          placeholder={userDetail?.userFullName}
-                          value={userDetail.userFullName}
+                          placeholder={userDetail?.userFirstName}
+                          value={userDetail.userFirstName}
                           onChange={handleChange}
                         />
-                        {errors.userFullName && (
+                        {errors.userFirstName && (
                           <div style={{ color: "red", fontSize: "10px" }}>
-                            {errors.userFullName}
+                            {errors.userFirstName}
                           </div>
                         )}
                       </Form.Group>
