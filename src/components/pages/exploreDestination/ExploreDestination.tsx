@@ -88,7 +88,7 @@ const ExploreDestination: FC = () => {
   }, [screenSize]);
   const data = [
     {
-      packageId: "RIE07****",
+      packageId: "AU123****",
       imageUri:
         "https://drive.google.com/thumbnail?sz=w2000&id=1Koq1lfmozRqaLFRnlDdVhIGTqUdUm4ml",
     },
@@ -98,42 +98,42 @@ const ExploreDestination: FC = () => {
         "https://drive.google.com/thumbnail?sz=w2000&id=1Kv43JJm2AsXyycIZuyYnmkh1fla5l0hz",
     },
     {
-      packageId: "RIE10****",
+      packageId: "IT234",
       imageUri:
         "https://drive.google.com/thumbnail?sz=w2000&id=1KvGGrfvTtAo2rPhATPyxACOrgmWHv4cE",
     },
     {
-      packageId: "RIE07****",
+      packageId: "C14SV****",
       imageUri:
         "https://drive.google.com/thumbnail?sz=w2000&id=1L5TNniaYtnbchWVeqyl4fZ9bELDmXa5r",
     },
     {
-      packageId: "RIE10****",
+      packageId: "NOR567",
       imageUri:
         "https://drive.google.com/thumbnail?sz=w2000&id=1LdNvDwTTIM4wfchObH9hhPs-2iPZRVMx",
     },
     {
-      packageId: "RIE10****",
+      packageId: "C12R****",
       imageUri:
         "https://drive.google.com/thumbnail?sz=w2000&id=1LCYIs31cQa4UA0brqKcqgJXuj7C6Cz4N",
     },
     {
-      packageId: "RIE07****",
+      packageId: "CRO123****",
       imageUri:
         "https://drive.google.com/thumbnail?sz=w2000&id=1LDowNiXiretdLQbpqIBasnR5pMM1HOdR",
     },
     {
-      packageId: "RIE10****",
+      packageId: "C12WC****",
       imageUri:
         "https://drive.google.com/thumbnail?sz=w2000&id=1LMXoAyLcs74oN_QTilC-wEE7OHIrIEd5",
     },
     {
-      packageId: "RIE10****",
+      packageId: "KOR24****",
       imageUri:
         "https://drive.google.com/thumbnail?sz=w2000&id=1LRNDbK-qzumpoe8Jt3ZDSaDom08trf_r",
     },
     {
-      packageId: "RIE10****",
+      packageId: "EGY098",
       imageUri:
         "https://drive.google.com/thumbnail?sz=w2000&id=1LVRSOM5kC1LuLJnH1dIx_0vhnxrZ85_-",
     },
@@ -193,7 +193,7 @@ const ExploreDestination: FC = () => {
   return (
     <MainContainer>
       <div className="image-banner">
-        <ControlledCarousel images={data} interval={3000} />
+        <ControlledCarousel images={data} interval={5000} />
 
         {/* <img
           src={sea}
@@ -245,7 +245,7 @@ const ExploreDestination: FC = () => {
               </div>
             </div>
           </Col>
-          <Col 
+          <Col
             onClick={() => setShow(!show)}
             lg="auto"
             className="text-center col-3"
@@ -364,7 +364,7 @@ const ExploreDestination: FC = () => {
         </Col>
       </div>
       <div
-      className="mx-md-auto mx-lg-auto"
+        className="mx-md-auto mx-lg-auto"
         style={{
           justifyContent: "space-between",
           maxWidth: 1331,
