@@ -185,7 +185,7 @@ const LifetimeJourney: FC = () => {
                         zIndex: "1",
                         // fontSize: 25,
                         fontWeight: "700",
-                        color: "#879DFF",
+                        color: "#75abdc",
                         whiteSpace: "pre",
                       }}
                     >
@@ -206,8 +206,8 @@ const LifetimeJourney: FC = () => {
                         // fontSize: 13,
                         height: "25px",
                         fontWeight: "400",
-                        color: "#879DFF",
-                        border: "0.2px solid #879DFF",
+                        color: "#75abdc",
+                        border: "0.2px solid #75abdc",
                         padding: "2px 5px",
                         borderRadius: "3px",
                         textAlign: "center",
@@ -235,7 +235,7 @@ const LifetimeJourney: FC = () => {
                             >
                               <span
                                 style={{
-                                  color: "#879DFF",
+                                  color: "#75abdc",
                                 }}
                               >
                                 •
@@ -319,7 +319,7 @@ const LifetimeJourney: FC = () => {
                       <Button
                         className="small"
                         style={{
-                          backgroundColor: "#879DFF",
+                          backgroundColor: "#75abdc",
                           fontWeight: "700",
                           // fontSize: 15,
                           borderRadius: 0,
@@ -396,7 +396,7 @@ const styles = {
   cardTitle: {
     fontSize: 35,
     fontWeight: "700",
-    color: "#879DFF",
+    color: "#75abdc",
     margin: "10px 0",
   },
   button: {
@@ -406,7 +406,7 @@ const styles = {
     border: "none",
     padding: "10px 20px",
     cursor: "pointer",
-    backgroundColor: "#879DFF",
+    backgroundColor: "#75abdc",
     marginBottom: 20,
     display: "block",
   },

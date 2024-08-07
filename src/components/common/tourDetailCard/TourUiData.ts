@@ -118,7 +118,7 @@ export const styles: { [key: string]: React.CSSProperties } = {
   daySubtitle: {
     fontSize: 18,
     fontWeight: "700",
-    color: "#879DFF",
+    color: "#75abdc",
   },
   dayDescription: {
     fontSize: "16px",

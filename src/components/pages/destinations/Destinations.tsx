@@ -166,7 +166,7 @@ const Destinations = () => {
             display: "block",
             width: 90,
             height: 6,
-            backgroundColor: "#879DFF",
+            backgroundColor: "#75abdc",
             position: "absolute",
             bottom: -10,
             left: "50%",
@@ -219,7 +219,7 @@ const Destinations = () => {
                         fontSize: 25,
                         fontWeight: "700",
                         zIndex: "1",
-                        color: "#879DFF",
+                        color: "#75abdc",
                         whiteSpace: "pre",
                       }}
                     >
@@ -239,8 +239,8 @@ const Destinations = () => {
                         fontSize: 13,
                         height: "25px",
                         fontWeight: "400",
-                        color: "#879DFF",
-                        border: "0.2px solid #879DFF",
+                        color: "#75abdc",
+                        border: "0.2px solid #75abdc",
                         padding: "2px 5px",
                         borderRadius: "3px",
                         textAlign: "center",
@@ -268,7 +268,7 @@ const Destinations = () => {
                             >
                               <span
                                 style={{
-                                  color: "#879DFF",
+                                  color: "#75abdc",
                                 }}
                               >
                                 •
@@ -352,7 +352,7 @@ const Destinations = () => {
                       </p>
                       <Button
                         style={{
-                          backgroundColor: "#879DFF",
+                          backgroundColor: "#75abdc",
                           fontWeight: "700",
                           fontSize: 15,
                           borderRadius: 0,

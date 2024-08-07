@@ -6,7 +6,15 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { Accordion, Card, Col, Form, Image, Row } from "react-bootstrap";
+import {
+  Accordion,
+  Button,
+  Card,
+  Col,
+  Form,
+  Image,
+  Row,
+} from "react-bootstrap";
 import MainContainer from "../../common/container/MainContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { selectUserData } from "../../../state/selectors/selectUserData";
@@ -21,6 +29,8 @@ import { getUserProfileDataApi } from "../../../api/userProfileData/getUserProfi
 import { useHistory } from "react-router-dom";
 import { updateUserDetailsApi } from "../../../api/userProfileData/updateUserDetailsApi";
 import { userRegistrationApi } from "../../../api/userProfileData/userRegistrationApi";
+import { SET_TOUR_PACKAGE_ID } from "../../../state/actions/types/tourDataActionType";
+import { selectIsMobile } from "../../../state/selectors/selectScreenSize";
 interface Errors {
   userFirstName?: string;
   email?: string;
@@ -35,6 +45,7 @@ const CheckOut: FC = () => {
     ? JSON.parse(JSON.parse(userProfileCookie))
     : {};
   // useSelector(selectUserData);
+  const isMobile = useSelector(selectIsMobile);
   const [activeKey, setActiveKey] = useState("0");
   const [userDetail, setUserDetail] = useState<UserDataDto>(userData);
   const history = useHistory();
@@ -159,8 +170,11 @@ const CheckOut: FC = () => {
     });
   };
   return (
-    <MainContainer className="p-3 py-5" background="white">
-      <Row className="justify-content-between d-flex flex-row p-5">
+    <MainContainer
+      className="p-3 py-5 justify-content-center d-flex"
+      background="white"
+    >
+      <Row className="col-lg-10 col-md-10 justify-content-between d-flex flex-row py-5">
         <Col md={7} lg={7} className="col-12 gap-3 d-flex flex-column">
           <Accordion activeKey={activeKey} className="shadow rounded-4">
             <Accordion.Item eventKey="0">
@@ -270,7 +284,210 @@ const CheckOut: FC = () => {
                       boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
                     }}
                   >
-                    <div style={{ display: "flex", padding: "20px" }}>
+                    {" "}
+                    <Col
+                      style={{ display: "flex", padding: "20px" }}
+                      className="flex-sm-row flex-lg-row flex-md-column flex-column"
+                    >
+                      <Col lg={5} sm={5} md={12} className="col-12 p-0 m-0">
+                        <Card.Img
+                          className="col-12"
+                          variant="center"
+                          style={{
+                            // width: 322,
+                            // height: 319,
+                            borderRadius: 10,
+                            objectFit: "cover",
+                          }}
+                          onClick={() => {
+                            dispatch({
+                              type: SET_TOUR_PACKAGE_ID,
+                              payload: tourData.packageId,
+                            });
+                            history.push(`/tour-detail:${tourData.packageId}`);
+                          }}
+                          src={
+                            tourData?.imageUri?.length > 0 &&
+                            tourData.imageUri[0] !== ""
+                              ? `https://drive.google.com/thumbnail?sz=w2000&id=${tourData.imageUri[0]}`
+                              : "https://drive.google.com/thumbnail?sz=w2000&id=1j8giF6uvrDsI-yfMYZFWxdBGe0wirl6w"
+                          }
+                        />
+                      </Col>
+                      <Col lg={7} sm={7} md={12} className="col-12">
+                        <Card.Body
+                          style={{ flex: 1 }}
+                          className="px-0 ms-sm-4 ms-lg-4 mx-0"
+                        >
+                          <Card.Title
+                            style={{
+                              fontSize: 30,
+                              fontWeight: "600",
+                              color: "#4A90E2",
+                              display: "flex",
+                              justifyContent: "flex-start",
+                              alignItems: "flex-start",
+                            }}
+                            onClick={() => {
+                              dispatch({
+                                type: SET_TOUR_PACKAGE_ID,
+                                payload: tourData.packageId,
+                              });
+                              history.push(
+                                `/tour-detail:${tourData.packageId}`
+                              );
+                            }}
+                          >
+                            {tourData?.title && tourData?.title}
+                          </Card.Title>
+                          <Row>
+                            <Col lg={8} md={8} className="col-12">
+                              <div
+                                style={{
+                                  display: "flex",
+                                  gap: "10px",
+                                  justifyContent: "flex-start",
+                                  alignItems: "flex-start",
+                                  marginBottom: 10,
+                                }}
+                              >
+                                {tourData.destinations
+                                  .slice(0, isMobile ? 3 : 4)
+                                  .map((destination) => (
+                                    <span
+                                      key={destination}
+                                      style={{
+                                        padding: "5px 10px",
+                                        borderRadius: 0,
+                                        backgroundColor: "#F0F4FF",
+                                        color: "#4A90E2",
+                                        fontSize: 14,
+                                      }}
+                                    >
+                                      {destination}
+                                    </span>
+                                  ))}
+                                {tourData?.destinations.length >
+                                  (isMobile ? 3 : 4) &&
+                                  tourData?.destinations.length -
+                                    (isMobile ? 3 : 4) +
+                                    "+"}
+                              </div>
+                            </Col>
+                            <Col
+                              className="col-12"
+                              style={{
+                                display: "flex",
+                                justifyContent: "flex-end",
+                                alignItems: "flex-end",
+                                // marginTop: -50,
+                              }}
+                            >
+                              <div className="w-100 d-flex flex-lg-column flex-md-column flex-row">
+                                <Col lg={12} md={12} className="col-8">
+                                  <span
+                                    className="small"
+                                    style={{
+                                      // fontSize: 18,
+                                      fontWeight: "700",
+                                      color: "#818181",
+                                      marginBottom: 10,
+                                    }}
+                                  >
+                                    Tour Duration:{" "}
+                                    <span
+                                      style={{
+                                        fontSize: 20,
+                                        fontWeight: "600",
+                                        color: "#75abdc",
+                                      }}
+                                    >
+                                      {tourData?.noOfDays - 1}N/
+                                      {tourData?.noOfDays}D
+                                    </span>
+                                  </span>
+                                  <Row
+                                    className="align-items-center small d-flex border border-0"
+                                    style={{
+                                      // fontSize: 18,
+                                      fontWeight: "700",
+                                      color: "#818181",
+                                      marginBottom: 10,
+                                    }}
+                                  >
+                                    Total:{" "}
+                                    <Col className="p-0 m-0">
+                                      <select
+                                        style={{
+                                          WebkitAppearance: "none",
+                                          MozAppearance: "none",
+                                          background: "transparent",
+                                          // fontSize: "16px",
+                                          fontWeight: "700",
+                                          color: "rgb(134, 133, 133)",
+                                        }}
+                                        className="form-select w-100 small border-0 pointer p-0"
+                                        aria-label="Default select example"
+                                      >
+                                        {tourData?.packagePrice?.map(
+                                          (price: string, index: number) => (
+                                            <option
+                                              key={index}
+                                              className={"w-100"}
+                                              value={price}
+                                            >
+                                              {price}
+                                            </option>
+                                          )
+                                        )}
+                                      </select>
+                                    </Col>
+                                  </Row>
+                                </Col>
+                                <Col
+                                  lg={12}
+                                  md={12}
+                                  className="col-4 justify-content-center align-item-center d-flex"
+                                >
+                                  <Button
+                                    className="view-more-button small w-100"
+                                    onClick={() => {
+                                      dispatch({
+                                        type: SET_TOUR_PACKAGE_ID,
+                                        payload: tourData.packageId,
+                                      });
+                                      history.push(
+                                        `/tour-detail:${tourData.packageId}`
+                                      );
+                                    }}
+                                    style={{
+                                      // width: 258,
+                                      backgroundColor: "#4A90E2",
+                                      // fontSize: 25,
+                                      fontWeight: "600",
+                                      color: "#FFFFFF",
+                                      border: "none",
+                                      borderRadius: 0,
+                                      alignSelf: "center",
+                                    }}
+                                  >
+                                    View More
+                                  </Button>
+                                </Col>
+                              </div>
+                            </Col>
+                          </Row>
+
+                          <hr
+                            style={{
+                              border: "1px dotted #E0E0E0",
+                              margin: "10px 0",
+                            }}
+                          />
+                        </Card.Body>
+                      </Col>
+                    </Col>
+                    {/* <div style={{ display: "flex", padding: "20px" }}>
                       <Image
                         className="d-flex w-40"
                         style={{
@@ -299,7 +516,6 @@ const CheckOut: FC = () => {
                           {tourData?.title && tourData?.title}
                         </Card.Title>
                         <Row>
-                          {/* <Col className="col-8"> */}
                           <div
                             style={{
                               display: "flex",
@@ -340,14 +556,13 @@ const CheckOut: FC = () => {
                                 tourData?.destinations?.length - 10 + "+"}
                             </span>
                           </div>
-                          {/* </Col> */}
                         </Row>
                         <p
                           className="p-0 m-0 text-end"
                           style={{
                             fontSize: 23,
                             fontWeight: "600",
-                            color: "#879DFF",
+                            color: "#75abdc",
                             marginTop: -10,
                           }}
                         >
@@ -360,7 +575,7 @@ const CheckOut: FC = () => {
                           }}
                         />
                       </Card.Body>
-                    </div>
+                    </div> */}
                   </Card>
                 )}
               </Accordion.Body>

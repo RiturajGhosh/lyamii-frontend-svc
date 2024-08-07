@@ -166,7 +166,7 @@ const TourCard: FC<TourCardType> = ({ tourData, key }) => {
                           style={{
                             fontSize: 20,
                             fontWeight: "600",
-                            color: "#879DFF",
+                            color: "#75abdc",
                           }}
                         >
                           {tourData?.noOfDays - 1}N/{tourData?.noOfDays}D
@@ -269,7 +269,7 @@ const TourCard: FC<TourCardType> = ({ tourData, key }) => {
                 <a
                   style={{
                     fontSize: 16,
-                    color: "#879DFF",
+                    color: "#75abdc",
                     fontWeight: "600",
                     textDecorationLine: "none",
                   }}

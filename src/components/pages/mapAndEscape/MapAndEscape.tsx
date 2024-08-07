@@ -134,7 +134,7 @@ const MapAndEscape: FC = () => {
               display: "block",
               width: 90,
               height: 6,
-              backgroundColor: "#879DFF",
+              backgroundColor: "#75abdc",
               position: "absolute",
               bottom: -10,
               left: "50%",
@@ -213,7 +213,7 @@ const MapAndEscape: FC = () => {
                 marginTop: 5,
                 fontSize: 20,
                 fontWeight: "700",
-                color: "#879DFF",
+                color: "#75abdc",
                 textAlign: "center",
               }}
             >

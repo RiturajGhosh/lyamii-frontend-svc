@@ -32,7 +32,7 @@ const CustomerReviewSection: FC = () => {
               display: "block",
               width: 90,
               height: 6,
-              backgroundColor: "#879DFF",
+              backgroundColor: "#75abdc",
               position: "absolute",
               bottom: -10,
               left: "50%",
@@ -109,7 +109,7 @@ const styles: { [key: string]: React.CSSProperties } = {
     margin: "0",
   },
   stars: {
-    color: "#879DFF",
+    color: "#75abdc",
     margin: "10px 0",
   },
   reviewText: {

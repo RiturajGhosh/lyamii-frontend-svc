@@ -234,7 +234,7 @@ const ExploreDestination: FC = () => {
                   style={{
                     width: "100%",
                     height: 56,
-                    backgroundColor: "#879DFF",
+                    backgroundColor: "#75abdc",
                     // fontSize: 20,
                     fontWeight: "600",
                     borderRadius: 0,
@@ -253,7 +253,7 @@ const ExploreDestination: FC = () => {
           >
             <Button
               style={{
-                backgroundColor: "#879DFF",
+                backgroundColor: "#75abdc",
                 width: 63,
                 height: 56,
                 fontSize: 20,
@@ -297,7 +297,7 @@ const ExploreDestination: FC = () => {
               backgroundColor: "#F0F4FF",
               // fontSize: 25,
               fontWeight: "600",
-              color: "#879DFF",
+              color: "#75abdc",
               // width: 409,
               height: 55,
               marginRight: 10,
@@ -324,7 +324,7 @@ const ExploreDestination: FC = () => {
               backgroundColor: "#F0F4FF",
               // fontSize: 25,
               fontWeight: "600",
-              color: "#879DFF",
+              color: "#75abdc",
               // width: 409,
               height: 55,
               marginRight: 10,
@@ -351,7 +351,7 @@ const ExploreDestination: FC = () => {
               backgroundColor: "#F0F4FF",
               // fontSize: 25,
               fontWeight: "600",
-              color: "#879DFF",
+              color: "#75abdc",
               // width: 409,
               height: 55,
               marginRight: 10,

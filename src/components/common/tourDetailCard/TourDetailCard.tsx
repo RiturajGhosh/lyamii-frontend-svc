@@ -43,6 +43,11 @@ interface LoginPromptModalProps {
   show: boolean;
   handleClose: () => void;
 }
+interface BookingPromptModalProps {
+  show: boolean;
+  handleClose: () => void;
+  onClick: () => void;
+}
 const LoginPromptModal: FC<LoginPromptModalProps> = ({ show, handleClose }) => {
   const history = useHistory();
   return (
@@ -65,6 +70,76 @@ const LoginPromptModal: FC<LoginPromptModalProps> = ({ show, handleClose }) => {
     </Modal>
   );
 };
+const BookingPromptModal: FC<BookingPromptModalProps> = ({
+  show,
+  handleClose,
+  onClick,
+}) => {
+  const history = useHistory();
+  const screenSize = useSelector(selectScreenSize);
+  return (
+    <Modal show={show} onHide={handleClose} centered>
+      <Modal.Header closeButton>
+        <Modal.Title className="bold">Note</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <p
+          className={`p-2 ${
+            screenSize?.screenSize < 767
+              ? "normal"
+              : screenSize?.screenSize > 767 && screenSize?.screenSize < 969
+              ? "fs-medium"
+              : "fs-auto"
+          }`}
+        >
+          Before Buy you need to Book
+        </p>
+        <Row className="d-flex justify-content-between flex-row gap-3">
+          <button
+            className={`p-2 ${
+              screenSize?.screenSize < 767
+                ? "normal"
+                : screenSize?.screenSize > 767 && screenSize?.screenSize < 969
+                ? "fs-medium"
+                : "fs-auto"
+            }`}
+            onClick={handleClose}
+            style={{
+              width: 154,
+              fontWeight: "700",
+              color: "#FFFFFF",
+              backgroundColor: "#75abdc",
+              borderRadius: 0,
+              borderWidth: 0,
+            }}
+          >
+            Cancel
+          </button>{" "}
+          <button
+            className={`p-2 ${
+              screenSize?.screenSize < 767
+                ? "normal"
+                : screenSize?.screenSize > 767 && screenSize?.screenSize < 969
+                ? "fs-medium"
+                : "fs-auto"
+            }`}
+            onClick={onClick}
+            style={{
+              width: 154,
+              fontWeight: "700",
+              color: "#FFFFFF",
+              backgroundColor: "#75abdc",
+              borderRadius: 0,
+              borderWidth: 0,
+            }}
+          >
+            Book Now
+          </button>
+        </Row>
+      </Modal.Body>
+    </Modal>
+  );
+};
 const TourDetailCard: FC = () => {
   const isMobile = useSelector(selectIsMobile);
   const [minDate, setMinDate] = useState("");
@@ -83,8 +158,12 @@ const TourDetailCard: FC = () => {
   const [id, setId] = useState("");
   const [flagCode, setFlagCode] = useState("");
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showBookingModal, setShowBookingModal] = useState(false);
 
-  const handleClose = () => setShowLoginModal(false);
+  const handleClose = () => {
+    setShowBookingModal(false);
+    setShowLoginModal(false);
+  };
   const handleShow = () => setShowLoginModal(true);
 
   const fetchTours = async () => {
@@ -301,7 +380,7 @@ const TourDetailCard: FC = () => {
                   style={{
                     // fontSize: 20,
                     fontWeight: "600",
-                    color: "#879DFF",
+                    color: "#75abdc",
                   }}
                 >
                   {tourData?.noOfDays - 1}N/{tourData?.noOfDays}D
@@ -354,20 +433,18 @@ const TourDetailCard: FC = () => {
                     ? "fs-medium"
                     : "fs-auto"
                 }`}
-                onClick={() =>
-                  isLoggedIn ? history.push("/checkout") : handleShow
-                }
+                onClick={() => setShowBookingModal(true)}
                 style={{
                   width: 154,
                   height: 53,
                   fontWeight: "700",
                   color: "#FFFFFF",
-                  backgroundColor: "#879DFF",
+                  backgroundColor: "#75abdc",
                   borderRadius: 0,
                   borderWidth: 0,
                 }}
               >
-                Book Now
+                Buy Now
               </button>
               <h4 className="fw-bold py-3 my-0">Arrival Date</h4>
               <div
@@ -463,7 +540,7 @@ const TourDetailCard: FC = () => {
             style={{
               fontSize: 23,
               fontWeight: "600",
-              color: "#879DFF",
+              color: "#75abdc",
               marginTop: -10,
             }}
           >
@@ -509,7 +586,7 @@ const TourDetailCard: FC = () => {
               fontSize: 28,
               fontWeight: "700",
               color: "#FFFFFF",
-              backgroundColor: "#879DFF",
+              backgroundColor: "#75abdc",
               borderRadius: 0,
               borderWidth: 0,
             }}
@@ -578,9 +655,20 @@ const TourDetailCard: FC = () => {
           ))}
         </div>
       </div>
+
       <div>
-        <ul className="input-group d-flex">
-          <Col className="border border-top-0 border-end-0 border-start-0 p-3 w-100 text-dark">
+        <ul className="input-group d-flex p-0 text-center">
+          <Col className="border border-top-0 border-end-0 border-start-0 p-1 w-100 text-decoration-none text-dark">
+            <a
+              className="text-decoration-none text-dark fw-bold"
+              style={{ color: "#666" }}
+              onClick={() => setId("#itinerary")}
+              href="#includes"
+            >
+              Includes
+            </a>
+          </Col>
+          <Col className="border border-top-0 border-end-0 border-start-0 p-1 w-100 text-dark">
             <a
               className="text-decoration-none text-dark fw-bold"
               style={{ color: "#666" }}
@@ -590,7 +678,7 @@ const TourDetailCard: FC = () => {
               About
             </a>
           </Col>
-          <Col className="border border-top-0 border-end-0 border-start-0 p-3 w-100 text-decoration-none text-dark">
+          <Col className="border border-top-0 border-end-0 border-start-0 p-1 w-100 text-decoration-none text-dark">
             <a
               className="text-decoration-none text-dark fw-bold"
               style={{ color: "#666" }}
@@ -600,7 +688,7 @@ const TourDetailCard: FC = () => {
               Highlights
             </a>
           </Col>
-          <Col className="border border-top-0 border-end-0 border-start-0 p-3 w-100 text-decoration-none text-dark">
+          <Col className="border border-top-0 border-end-0 border-start-0 p-1 w-100 text-decoration-none text-dark">
             <a
               className="text-decoration-none text-dark fw-bold"
               style={{ color: "#666" }}
@@ -611,6 +699,35 @@ const TourDetailCard: FC = () => {
             </a>
           </Col>
         </ul>
+      </div>
+      <div id="includes" style={styles.aboutSection}>
+        <h2 style={styles.sectionHeading}>Includes</h2>
+        <div
+          className="pl-3 flex-wrap"
+          style={{
+            display: "flex",
+            gap: "10px",
+            marginBottom: 10,
+            justifyContent: "flex-start",
+            alignItems: "flex-start",
+          }}
+        >
+          {tourData?.includes?.map((item) => (
+            <span
+              key={item}
+              style={{
+                padding: "5px 10px",
+                borderRadius: 0,
+                backgroundColor: "#F0F4FF",
+                color: "#000000",
+                fontSize: 14,
+                fontWeight: "400",
+              }}
+            >
+              {item}
+            </span>
+          ))}
+        </div>
       </div>
       <div id="about" style={styles.aboutSection}>
         <h2 style={styles.sectionHeading}>About</h2>
@@ -626,7 +743,7 @@ const TourDetailCard: FC = () => {
           className="pl-3"
           style={{
             fontSize: 16,
-            color: "#879DFF",
+            color: "#75abdc",
             fontWeight: "600",
             textDecorationLine: "none",
           }}
@@ -656,7 +773,7 @@ const TourDetailCard: FC = () => {
                 className="p-2"
                 style={{
                   fontSize: 20,
-                  color: "#879DFF",
+                  color: "#75abdc",
                 }}
               >
                 •
@@ -720,7 +837,7 @@ const TourDetailCard: FC = () => {
               width: 154,
               fontWeight: "700",
               color: "#FFFFFF",
-              backgroundColor: "#879DFF",
+              backgroundColor: "#75abdc",
               borderRadius: 0,
               borderWidth: 0,
             }}
@@ -783,7 +900,7 @@ const TourDetailCard: FC = () => {
                 width: 154,
                 fontWeight: "700",
                 color: "#FFFFFF",
-                backgroundColor: "#879DFF",
+                backgroundColor: "#75abdc",
                 borderRadius: 0,
                 borderWidth: 0,
               }}
@@ -831,7 +948,7 @@ const TourDetailCard: FC = () => {
                 fontSize: 28,
                 fontWeight: "700",
                 color: "#FFFFFF",
-                backgroundColor: "#879DFF",
+                backgroundColor: "#75abdc",
                 borderRadius: 0,
                 borderWidth: 0,
               }}
@@ -850,6 +967,11 @@ const TourDetailCard: FC = () => {
       <LoginPromptModal
         show={showLoginModal}
         handleClose={() => handleClose()}
+      />
+      <BookingPromptModal
+        show={showBookingModal}
+        handleClose={() => handleClose()}
+        onClick={() => (isLoggedIn ? history.push("/checkout") : handleShow())}
       />
     </div>
   );

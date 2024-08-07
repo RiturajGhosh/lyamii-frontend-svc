@@ -112,31 +112,31 @@ const Home: FC = () => {
               <FontAwesomeIcon
                 icon={faEnvelope}
                 className="ms-2"
-                color="#879DFF"
+                color="#75abdc"
               />{""}
               Connect.helpdesk@lyamii.com
             </Navbar.Brand>
             <Nav
               className="ms-auto"
-              style={{ borderLeft: "1px solid #879DFF", paddingLeft: "10px"}}
+              style={{ borderLeft: "1px solid #75abdc", paddingLeft: "10px"}}
             >
               <Nav.Link href="#home"className="text-white">
                 <FontAwesomeIcon
                   icon={faPhone}
                   className="ms-2"
-                  color="#879DFF"
+                  color="#75abdc"
                 />{""}
                 Connect.business@lyamii.com
               </Nav.Link>
               <Nav.Link
                 href="#"
                 className="text-white"
-                style={{ borderLeft: "1px solid #879DFF", paddingLeft: "10px"}}
+                style={{ borderLeft: "1px solid #75abdc", paddingLeft: "10px"}}
               >
                 <FontAwesomeIcon
                   icon={faMapMarkerAlt}
                   className="me-1"
-                  color="#879DFF"
+                  color="#75abdc"
                 />{""}
                 Indra Nagar, Banglore
               </Nav.Link>
@@ -156,7 +156,7 @@ const Home: FC = () => {
               <Nav.Link
                 href="#"
                 className="text-white"
-                style={{ backgroundColor: "#879DFF"}}
+                style={{ backgroundColor: "#75abdc"}}
               >
                 Log In
               </Nav.Link>
@@ -317,7 +317,7 @@ const Home: FC = () => {
               }}
               className="p-2 m-0 small"
               style={{
-                backgroundColor: "#879DFF",
+                backgroundColor: "#75abdc",
                 fontWeight: "bold",
                 height: 50,
                 border: "none",
@@ -384,7 +384,7 @@ const Home: FC = () => {
               }}
               className="small text-nowrap"
               style={{
-                backgroundColor: "#879DFF",
+                backgroundColor: "#75abdc",
                 fontWeight: "bold",
                 height: 50,
                 border: "none",
@@ -405,7 +405,7 @@ const Home: FC = () => {
           style={{
             fontSize: 28,
             fontWeight: "400",
-            color: "#879DFF",
+            color: "#75abdc",
             marginBottom: 10,
             fontFamily: "cursive",
           }}
@@ -626,7 +626,7 @@ const Home: FC = () => {
                     margin: "0 auto 20px",
                     position: "relative",
                     border: "2px dotted #ccc",
-                    borderColor: "#879DFF",
+                    borderColor: "#75abdc",
                     padding: 20,
                     boxSizing: "border-box",
                   }}
@@ -648,7 +648,7 @@ const Home: FC = () => {
                       position: "absolute",
                       top: 50,
                       right: 10,
-                      backgroundColor: "#879DFF",
+                      backgroundColor: "#75abdc",
                       width: 50,
                       height: 50,
                       borderRadius: "50%",
@@ -825,7 +825,7 @@ const Home: FC = () => {
                 }}
               >
                 <h3
-                  style={{ fontSize: 25, fontWeight: "700", color: "#879DFF" }}
+                  style={{ fontSize: 25, fontWeight: "700", color: "#75abdc" }}
                 >
                   {card.title}
                 </h3>

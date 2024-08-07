@@ -56,7 +56,7 @@ const Payment: FC<PaymentDto> = ({ userDetail }) => {
     const order = await createOrder();
     console.log(order.data.id);
     const options = {
-      key: "rzp_live_lYUSgd2cL33ry3",
+      key: "rzp_test_5Ex2xyexn8bBiw",
       amount: money.split(" ")[0],
       currency: money.split(" ")[1],
       name: "Lyamii",
@@ -85,9 +85,11 @@ const Payment: FC<PaymentDto> = ({ userDetail }) => {
         //   />;
         // }
         // Send payment details to the backend for verification
-        // axios
-        //   .post("/api/razorpay/paymentVerification", paymentData)
-        //   .then((res) => {
+        axios
+          .post("/api/razorpay/paymentVerification", paymentData)
+          .then((res) => {
+            console.log(res);
+          });
         //     <PopupModal message={res.statusText} type="ERROR" open={true} />;
         //   })
         //   .catch((err) => {
