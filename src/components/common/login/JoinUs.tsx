@@ -29,8 +29,8 @@ const JoinUs: FC = () => {
   const [otpSent, setOtpSent] = useState(false);
   const history = useHistory();
   const location = useLocation();
-  const [isForgetClicked, setForget] = useState(false);
   const [usedEmailMessage, setUsedEmailMessage] = useState("");
+  const [isForgetClicked, setForget] = useState(false);
   const [detail] = useState({
     email: "",
     password: "",
@@ -38,17 +38,17 @@ const JoinUs: FC = () => {
     type: "",
     otp: "",
   });
-  const [have, setHave] = useState(false);
+  const [have, setHave] = useState(location?.pathname?.includes("/login"));
   const dispatch = useDispatch();
+
   useEffect(() => {
-    setOtpVerify(verificationStatus.status);
+    if (otpSent) {
+      setOtpVerify(verificationStatus?.status);
+    }
   }, [verificationStatus]);
 
   useEffect(() => {
-    setHave(
-      location.pathname.includes("/login") ||
-        location.pathname.includes("/joinus")
-    );
+    setHave(location.pathname.includes("/login"));
   }, [location]);
 
   const signIN = async (values: any) => {
@@ -70,6 +70,9 @@ const JoinUs: FC = () => {
       }
       if (response.data.roles[0] === "ROLE_USER") {
         history.push("/profile");
+      }
+      if (response.data.roles[0] === "ROLE_MODERATOR") {
+        history.push("/crm");
       }
     } catch (error: any) {
       console.log(error.message);
@@ -99,11 +102,11 @@ const JoinUs: FC = () => {
   return (
     <Col
       className="min-vh-100 align-items-center d-flex"
-      style={{ background: "#b5f4c5" }}
+      style={{ background: "#ffffff" }}
     >
       <Modal.Body
         className="p-5 align-items-center gap-5 d-flex flex-column"
-        style={{ background: "#b5f4c5" }}
+        style={{ background: "#ffffff" }}
       >
         <Formik
           initialValues={detail}
@@ -121,7 +124,7 @@ const JoinUs: FC = () => {
           }: any) => {
             return (
               <>
-                <Form className="" onSubmit={handleSubmit}>
+                <Form className="col-md-3 col-sm-6" onSubmit={handleSubmit}>
                   <Form.Group
                     className="gap-4 d-flex flex-column"
                     controlId="exampleForm.ControlInput1"
@@ -157,7 +160,7 @@ const JoinUs: FC = () => {
                       <Col className="px-1 align-self-center m-0">
                         <InputForm
                           label={""}
-                          className="w-100 bg-white h5 pointer justify-content-center p-2 px-2 text-dark text-center m-0 border-2 border-top-0 border-end-0 border-start-0"
+                          className="w-100 pointer bg-white h5 justify-content-center p-2 px-2 text-dark text-center m-0 border-2 border-top-0 border-end-0 border-start-0"
                           type="text"
                           placeholder="USER EMAIL"
                           values={values}
@@ -179,23 +182,23 @@ const JoinUs: FC = () => {
                         />
                       </Col>
                       {!have && (
-                        <Col className="col-4 align-self-center p-0 m-0">
+                        <Col className="col-4 pointer align-self-center p-0 m-0">
                           <Button
-                            className="round-edges h2 py-1 m-0 pointer"
+                            className="round-edges h2 py-1 m-0"
                             style={{ minHeight: "0%", background: "#4a915b" }}
                             onClick={(e: any) => {
                               e.preventDefault();
-                              if (!Object.keys(errors).includes("email")) {
+                              if (!Object.keys(errors)?.includes("email")) {
                                 setUsedEmailMessage("");
-                                getOtpApi(values.email).then(
+                                getOtpApi(values?.email).then(
                                   (response: any) => {
                                     if (response.status === 204) {
                                       setOtpSent(true);
                                       setOtpVerify(false);
                                     } else {
                                       setUsedEmailMessage(
-                                        response.response.data.errors[0]
-                                          .errorMessage
+                                        response?.response?.data?.errors[0]
+                                          ?.errorMessage
                                       );
                                       setOtpSent(false);
                                       setOtpVerify(false);
@@ -245,7 +248,7 @@ const JoinUs: FC = () => {
                         )}
                         <Col className="col-4 align-self-center p-0 m-0">
                           <Button
-                            className="round-edges h2 py-1 m-0 pointer"
+                            className="round-edges pointer h2 py-1 m-0"
                             style={{ minHeight: "0%", background: "#4a915b" }}
                             onClick={(e: any) => {
                               e.preventDefault();
@@ -290,8 +293,11 @@ const JoinUs: FC = () => {
                               onSelect={(eventKey: any) => {
                                 setValues({
                                   ...values,
-                                  type: [eventKey.toLowerCase()],
+                                  type: [eventKey?.toLowerCase()],
                                 });
+                                console.log("Updated type:", [
+                                  eventKey?.toLowerCase(),
+                                ]); // Debugging
                               }}
                             >
                               <Dropdown.Toggle
@@ -334,6 +340,7 @@ const JoinUs: FC = () => {
                         className="round-edges pointer h2 h-100 py-1"
                         style={{ minHeight: "0%", background: "#4a915b" }}
                         onClick={(e: any) => {
+                          console.log("Submit values:", values); // Debugging values
                           e.preventDefault();
                           if (
                             !Object.keys(errors).includes("email") &&
@@ -368,8 +375,8 @@ const JoinUs: FC = () => {
                 <Col className="d-flex flex-column justify-content-center">
                   <span
                     className="d-flex align-self-center fit-content h4"
-                    style={{ color: "#4a915b" }}
                     onClick={() => setForget(true)}
+                    style={{ color: "#4a915b" }}
                   >
                     Forget Password?
                   </span>
@@ -574,7 +581,7 @@ const JoinUs: FC = () => {
             </span>{" "}
           </p>
           <span onClick={() => setForget(false)} className={" p-0 m-0 normal"}>
-            <IoMdClose className="p-0 m-0"/>
+            <IoMdClose className="p-0 m-0" />
           </span>
         </Modal.Body>
       </Modal>

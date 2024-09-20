@@ -6,7 +6,7 @@ export const bussinessClintUrl = [
   "1wyfXtMydsGUL5j0fNQsib9iJ8zP8Z_vo",
   "1wuZPxzZhgZ6vVh2cNwr3Poyxk5Q8egFs",
   "1HuM6tl9H8_GJR4_si3_CzNN6JjSD0jZl",
-  "1IfUitOu4P7NSpN6PMbSHCJcgW5oaHeDz",
+  // "1IfUitOu4P7NSpN6PMbSHCJcgW5oaHeDz",
   "1Ip3z0XpdRG8v_N0xwgo3QKuAAgPQtna1",
   "1JJDbaes0Rfd0VMKSdolS3QRRY5Tlu4MF",
   "1I780NU7o8n9kxqK4fbWo-lA26M6izR4N",

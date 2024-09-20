@@ -326,7 +326,6 @@ export const communities: HeaderList[] = [
   { name: "About us", path: "/aboutus" },
   { name: "Our Mission", path: "/mission" },
   { name: "Join us", path: "/joinus" },
-  { name: "Reviews", path: "/review" },
 ];
 export const mustReads: HeaderList[] = [
   { name: "Terms and conditions", path: "/termconditions" },

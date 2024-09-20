@@ -102,11 +102,11 @@ const Login: FC = () => {
   return (
     <Col
       className="min-vh-100 align-items-center d-flex"
-      style={{ background: "#b5f4c5" }}
+      style={{ background: "#ffffff" }}
     >
       <Modal.Body
         className="p-5 align-items-center gap-5 d-flex flex-column"
-        style={{ background: "#b5f4c5" }}
+        style={{ background: "#ffffff" }}
       >
         <Formik
           initialValues={detail}

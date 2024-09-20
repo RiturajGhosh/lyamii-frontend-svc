@@ -2366,13 +2366,15 @@ input[type="range"]::-ms-thumb {
 .carousel-control-prev {
   width: 10% !important;
   height: 10% !important;
+  align-self: center !important;
 }
-.carousel-control-end {
+.carousel-control-next {
   width: 10% !important;
   height: 10% !important;
+  align-self: center !important;
 }
 
 .accordion-button {
-  background: #4A90E2 !important;
-  color:white !important;
+  background: #4a90e2 !important;
+  color: white !important;
 }

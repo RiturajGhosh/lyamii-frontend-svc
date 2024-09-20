@@ -769,16 +769,19 @@ const TourDetailCard: FC = () => {
                 marginLeft: "20px",
               }}
             >
-              <span
-                className="p-2"
-                style={{
-                  fontSize: 20,
-                  color: "#75abdc",
-                }}
-              >
-                •
-              </span>{" "}
-              {highlight}
+              <Row>
+                <span
+                  className="p-2 p-0 m-0"
+                  style={{
+                    width: "10px",
+                    fontSize: 20,
+                    color: "#75abdc",
+                  }}
+                >
+                  •
+                </span>{" "}
+                <Col className="w-100">{highlight}</Col>
+              </Row>
             </li>
           ))}
         </ul>
