@@ -23,12 +23,12 @@ export const team = [
   {
     img: require("../../../Assets/harpreet.png"),
     name: "Harpreet",
-    position: "COO",
+    position: "Operations",
   },
   {
     img: require("../../../Assets/subhendu.jpeg"),
     name: "Subhendu",
-    position: "CPO",
+    position: "Operations",
   },
   {
     img: require("../../../Assets/aritra.jpeg"),

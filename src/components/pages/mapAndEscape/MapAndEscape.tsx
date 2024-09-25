@@ -59,12 +59,12 @@ const MapAndEscape: FC = () => {
     {
       name: "Egypt",
       imgSrc:
-        "https://drive.google.com/thumbnail?sz=w2000&id=1jNjhj41BLQ8zs3v1_BV66c4JXWzar3mg",
+        "https://drive.google.com/thumbnail?sz=w2000&id=1iTIDnEGbTZLNEjaaIY9jCug__uFt0u-N",
     },
     {
       name: "Malaysia",
       imgSrc:
-        "https://drive.google.com/thumbnail?sz=w2000&id=1XAq3t4SkFaXhN59ea6IRBG1jObYdRGSU",
+        "https://drive.google.com/thumbnail?sz=w2000&id=1f9xcXqnhZ5x3kfwxYStH71kyOYaScdmD",
     },
     {
       name: "Japan",
@@ -79,7 +79,7 @@ const MapAndEscape: FC = () => {
     {
       name: "Iceland",
       imgSrc:
-        "https://drive.google.com/thumbnail?sz=w2000&id=1UwGr3tGAqRLsp0DyiQwB9JN_Rb1RRzcf",
+        "https://drive.google.com/thumbnail?sz=w2000&id=1RGFoNcN9F3JmeiUZ4tYVVyRFwOmjebwL",
     },
     {
       name: "Norway",
@@ -89,12 +89,12 @@ const MapAndEscape: FC = () => {
     {
       name: "Egypt",
       imgSrc:
-        "https://drive.google.com/thumbnail?sz=w2000&id=1jNjhj41BLQ8zs3v1_BV66c4JXWzar3mg",
+        "https://drive.google.com/thumbnail?sz=w2000&id=1iTIDnEGbTZLNEjaaIY9jCug__uFt0u-N",
     },
     {
       name: "Malaysia",
       imgSrc:
-        "https://drive.google.com/thumbnail?sz=w2000&id=1XAq3t4SkFaXhN59ea6IRBG1jObYdRGSU",
+        "https://drive.google.com/thumbnail?sz=w2000&id=1f9xcXqnhZ5x3kfwxYStH71kyOYaScdmD",
     },
     {
       name: "Japan",

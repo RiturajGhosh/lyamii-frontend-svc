@@ -251,19 +251,17 @@ const ExploreDestination: FC = () => {
             className="text-center col-3"
             style={{ paddingLeft: 0 }}
           >
-            <Button
+            <FaFilter
               style={{
-                backgroundColor: "#75abdc",
-                width: 63,
-                height: 56,
+                color: "#75abdc",
+                width: 30,
+                height: 30,
                 fontSize: 20,
                 fontWeight: "600",
                 borderRadius: 0,
                 textAlign: "center",
               }}
-            >
-              <FaFilter />
-            </Button>
+            />
           </Col>
           {/* <Col lg="auto" className="text-center" style={{ paddingRight: 0 }}>
             <img
@@ -428,7 +426,7 @@ const ExploreDestination: FC = () => {
               </Col>
             </Row>
           </div>
-          <div>
+          {/* <div>
             <h3 className="p-2">Price Range</h3>
             <div className="range-slider pt-3">
               <input
@@ -475,7 +473,7 @@ const ExploreDestination: FC = () => {
                 <span>{filter.maxPrice}</span>
               </Col>
             </Row>
-          </div>
+          </div> */}
         </Modal.Body>
       </Modal>
     </MainContainer>

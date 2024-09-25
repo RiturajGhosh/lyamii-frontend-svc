@@ -92,7 +92,7 @@ const BookingPromptModal: FC<BookingPromptModalProps> = ({
               : "fs-auto"
           }`}
         >
-          Before Buy you need to Book
+          First tour? Kindly Book now.
         </p>
         <Row className="d-flex justify-content-between flex-row gap-3">
           <button
@@ -963,9 +963,10 @@ const TourDetailCard: FC = () => {
       </div>
       <img
         loading="lazy"
-        src={require("../../../Assets/mahatma.png")}
+        src={require("../../../Assets/animation.png")}
         alt={"Main Tour Image"}
-        className="w-100 position-relative h-50"
+        className="w-100 position-relative"
+        style={{height:"220px"}}
       />
       <LoginPromptModal
         show={showLoginModal}

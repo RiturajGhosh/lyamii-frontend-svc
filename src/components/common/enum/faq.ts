@@ -1,7 +1,7 @@
 export const faqs = [
   {
     ques: "What is Lyamii",
-    ans: "Lyamii is an Indian Government registered forward-thinking travel startup. This dynamic platform specialises in offering unique foreign gateways to the users.",
+    ans: "Lyamii is an Indian Government recognised forward-thinking traveltech startup. This dynamic platform specialises in offering unique foreign gateways to the users.",
   },
   {
     ques: "Meaning of Lyamii",

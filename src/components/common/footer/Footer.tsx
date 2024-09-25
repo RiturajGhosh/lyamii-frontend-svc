@@ -4,6 +4,8 @@ import { HeaderList } from "../header/Header";
 import { Link, useHistory } from "react-router-dom";
 import { communities, mustReads, supports } from "../enum/enum";
 import { getCookie } from "../enum/functions";
+import footerImage from "../../../Assets/footerImage.png";
+import { url } from "inspector";
 
 const Footer: FC = () => {
   const history = useHistory();
@@ -14,8 +16,10 @@ const Footer: FC = () => {
       <Col
         className="float-right p-0 m-0 w-100"
         style={{
+          minHeight:"450px",
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1471572891026-8ca1e66adf49?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGRhcmslMjBtb3VudGFpbnN8ZW58MHx8MHx8fDA%3D')",
+            // "url('https://images.unsplash.com/photo-1603041080359-2f930d7db86e?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
+            "url('https://drive.google.com/thumbnail?sz=w2000&id=117w8IjpqjmzE125BhLwxtlVHumfXnyn7')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -28,6 +32,7 @@ const Footer: FC = () => {
               <Row>
                 <Col md={4} lg={4} sm={12} className="p-0">
                   <h2
+                    className="text-shadow-dark"
                     style={{
                       fontSize: 26,
                       fontWeight: "700",
@@ -51,6 +56,7 @@ const Footer: FC = () => {
                               className="py-0 text-decoration-none icon-colour"
                             >
                               <p
+                                className="text-shadow-dark"
                                 style={{
                                   fontSize: 20,
                                   fontWeight: "500",
@@ -69,6 +75,7 @@ const Footer: FC = () => {
                 </Col>
                 <Col md={5} lg={4} sm={12} className="p-0">
                   <h2
+                    className="text-shadow-dark"
                     style={{
                       fontSize: 26,
                       fontWeight: "700",
@@ -92,6 +99,7 @@ const Footer: FC = () => {
                               className="py-0 text-decoration-none icon-colour"
                             >
                               <p
+                                className="text-shadow-dark"
                                 style={{
                                   fontSize: 20,
                                   fontWeight: "500",
@@ -110,6 +118,7 @@ const Footer: FC = () => {
                 </Col>
                 <Col md={3} lg={4} sm={12} className="p-0 d-flex flex-column">
                   <h2
+                    className="text-shadow-dark"
                     style={{
                       fontSize: 26,
                       fontWeight: "700",
@@ -140,6 +149,7 @@ const Footer: FC = () => {
                               className="py-0 text-decoration-none icon-colour"
                             >
                               <p
+                                className="text-shadow-dark"
                                 style={{
                                   fontSize: 20,
                                   fontWeight: "500",

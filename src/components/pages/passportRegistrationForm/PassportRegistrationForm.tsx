@@ -61,13 +61,13 @@ const PassportRegistrationForm: FC = () => {
               style={{ border: "#14a8e3" }}
             ></div>
 
-            <p>Generate your passport in just 3 steps!</p>
+            <p>Receive your Passport within 30days</p>
             <ul>
               <li>
                 Fill up the required details and upload your documentations.
               </li>
               <li>Pay online seamlessly & securely.</li>
-              <li>Visit offline center and you will get it within few days</li>
+              <li>Visit your nearest Passport Seva Kendra</li>
             </ul>
           </Col>
         </Col>

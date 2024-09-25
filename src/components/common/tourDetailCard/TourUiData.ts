@@ -98,9 +98,9 @@ export const styles: { [key: string]: React.CSSProperties } = {
     position: "relative",
   },
   dayDot: {
-    width: "10px",
+    // width: "10px",
     height: "10px",
-    borderRadius: "50%",
+    borderRadius: "%",
     backgroundColor: "#6F82D3",
     marginTop: "5px",
     marginRight: "10px",
